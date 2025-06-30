@@ -189,7 +189,7 @@ public class TalangAttribute {
 
   public static final String SERIALIZED_NAME_CAMPAIGNS_COUNT = "campaignsCount";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS_COUNT)
-  private Long campaignsCount;
+  private Integer campaignsCount;
 
   public static final String SERIALIZED_NAME_EXAMPLE_VALUE = "exampleValue";
   @SerializedName(SERIALIZED_NAME_EXAMPLE_VALUE)
@@ -353,7 +353,7 @@ public class TalangAttribute {
   }
 
 
-  public TalangAttribute campaignsCount(Long campaignsCount) {
+  public TalangAttribute campaignsCount(Integer campaignsCount) {
     
     this.campaignsCount = campaignsCount;
     return this;
@@ -365,12 +365,12 @@ public class TalangAttribute {
   **/
   @ApiModelProperty(required = true, value = "The number of campaigns that refer to the attribute.")
 
-  public Long getCampaignsCount() {
+  public Integer getCampaignsCount() {
     return campaignsCount;
   }
 
 
-  public void setCampaignsCount(Long campaignsCount) {
+  public void setCampaignsCount(Integer campaignsCount) {
     this.campaignsCount = campaignsCount;
   }
 

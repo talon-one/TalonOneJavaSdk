@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
+**totalResultSize** | **Integer** |  | 
 **data** | [**List&lt;CustomerProfile&gt;**](CustomerProfile.md) |  | 
 
 

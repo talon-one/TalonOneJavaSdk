@@ -84,6 +84,8 @@ import one.talon.model.InlineResponse20046;
 import one.talon.model.InlineResponse20047;
 import one.talon.model.InlineResponse20048;
 import one.talon.model.InlineResponse20049;
+import one.talon.model.InlineResponse20050;
+import one.talon.model.InlineResponse20051;
 import one.talon.model.InlineResponse2007;
 import one.talon.model.InlineResponse2008;
 import one.talon.model.InlineResponse2009;
@@ -99,6 +101,7 @@ import one.talon.model.ModelImport;
 import one.talon.model.NewAdditionalCost;
 import one.talon.model.NewAttribute;
 import one.talon.model.NewCampaignCollection;
+import one.talon.model.NewCampaignStoreBudget;
 import one.talon.model.NewCollection;
 import one.talon.model.NewCouponCreationJob;
 import one.talon.model.NewCouponDeletionJob;
@@ -115,6 +118,9 @@ import one.talon.model.Referral;
 import one.talon.model.RoleV2;
 import one.talon.model.RoleV2Base;
 import one.talon.model.Ruleset;
+import one.talon.model.ScimBaseGroup;
+import one.talon.model.ScimGroup;
+import one.talon.model.ScimGroupsListResponse;
 import one.talon.model.ScimNewUser;
 import one.talon.model.ScimPatchRequest;
 import one.talon.model.ScimResourceTypesListResponse;
@@ -179,7 +185,7 @@ public class ManagementApiTest {
      */
     @Test
     public void addLoyaltyCardPointsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         AddLoyaltyPoints body = null;
         api.addLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, body);
@@ -215,8 +221,8 @@ public class ManagementApiTest {
      */
     @Test
     public void copyCampaignToApplicationsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         CampaignCopy body = null;
         InlineResponse2008 response = api.copyCampaignToApplications(applicationId, campaignId, body);
 
@@ -249,8 +255,8 @@ public class ManagementApiTest {
      */
     @Test
     public void createAchievementTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         CreateAchievement body = null;
         Achievement response = api.createAchievement(applicationId, campaignId, body);
 
@@ -299,7 +305,7 @@ public class ManagementApiTest {
      */
     @Test
     public void createBatchLoyaltyCardsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         LoyaltyCardBatch body = null;
         LoyaltyCardBatchResponse response = api.createBatchLoyaltyCards(loyaltyProgramId, body);
 
@@ -316,9 +322,27 @@ public class ManagementApiTest {
      */
     @Test
     public void createCampaignFromTemplateTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         CreateTemplateCampaign body = null;
         CreateTemplateCampaignResponse response = api.createCampaignFromTemplate(applicationId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Create campaign store budget
+     *
+     * Create a new store budget for a given campaign.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createCampaignStoreBudgetTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        NewCampaignStoreBudget body = null;
+        api.createCampaignStoreBudget(applicationId, campaignId, body);
 
         // TODO: test validations
     }
@@ -333,8 +357,8 @@ public class ManagementApiTest {
      */
     @Test
     public void createCollectionTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         NewCampaignCollection body = null;
         Collection response = api.createCollection(applicationId, campaignId, body);
 
@@ -351,8 +375,8 @@ public class ManagementApiTest {
      */
     @Test
     public void createCouponsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         NewCoupons body = null;
         String silent = null;
         InlineResponse20010 response = api.createCoupons(applicationId, campaignId, body, silent);
@@ -370,8 +394,8 @@ public class ManagementApiTest {
      */
     @Test
     public void createCouponsAsyncTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         NewCouponCreationJob body = null;
         AsyncCouponCreationResponse response = api.createCouponsAsync(applicationId, campaignId, body);
 
@@ -388,8 +412,8 @@ public class ManagementApiTest {
      */
     @Test
     public void createCouponsDeletionJobTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         NewCouponDeletionJob body = null;
         AsyncCouponDeletionJobResponse response = api.createCouponsDeletionJob(applicationId, campaignId, body);
 
@@ -406,8 +430,8 @@ public class ManagementApiTest {
      */
     @Test
     public void createCouponsForMultipleRecipientsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         NewCouponsForMultipleRecipients body = null;
         String silent = null;
         InlineResponse20010 response = api.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
@@ -489,7 +513,7 @@ public class ManagementApiTest {
      */
     @Test
     public void createStoreTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         NewStore body = null;
         Store response = api.createStore(applicationId, body);
 
@@ -522,7 +546,7 @@ public class ManagementApiTest {
      */
     @Test
     public void deductLoyaltyCardPointsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         DeductLoyaltyPoints body = null;
         api.deductLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, body);
@@ -540,7 +564,7 @@ public class ManagementApiTest {
      */
     @Test
     public void deleteAccountCollectionTest() throws ApiException {
-        Long collectionId = null;
+        Integer collectionId = null;
         api.deleteAccountCollection(collectionId);
 
         // TODO: test validations
@@ -556,9 +580,9 @@ public class ManagementApiTest {
      */
     @Test
     public void deleteAchievementTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long achievementId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer achievementId = null;
         api.deleteAchievement(applicationId, campaignId, achievementId);
 
         // TODO: test validations
@@ -574,9 +598,28 @@ public class ManagementApiTest {
      */
     @Test
     public void deleteCampaignTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         api.deleteCampaign(applicationId, campaignId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Delete campaign store budgets
+     *
+     * Delete the store budgets for a given campaign.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteCampaignStoreBudgetsTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        String action = null;
+        String period = null;
+        api.deleteCampaignStoreBudgets(applicationId, campaignId, action, period);
 
         // TODO: test validations
     }
@@ -591,9 +634,9 @@ public class ManagementApiTest {
      */
     @Test
     public void deleteCollectionTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long collectionId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer collectionId = null;
         api.deleteCollection(applicationId, campaignId, collectionId);
 
         // TODO: test validations
@@ -609,8 +652,8 @@ public class ManagementApiTest {
      */
     @Test
     public void deleteCouponTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         String couponId = null;
         api.deleteCoupon(applicationId, campaignId, couponId);
 
@@ -627,8 +670,8 @@ public class ManagementApiTest {
      */
     @Test
     public void deleteCouponsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         String value = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
@@ -639,7 +682,7 @@ public class ManagementApiTest {
         String valid = null;
         String batchId = null;
         String usable = null;
-        Long referralId = null;
+        Integer referralId = null;
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         api.deleteCoupons(applicationId, campaignId, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
@@ -657,7 +700,7 @@ public class ManagementApiTest {
      */
     @Test
     public void deleteLoyaltyCardTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         api.deleteLoyaltyCard(loyaltyProgramId, loyaltyCardId);
 
@@ -674,8 +717,8 @@ public class ManagementApiTest {
      */
     @Test
     public void deleteReferralTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         String referralId = null;
         api.deleteReferral(applicationId, campaignId, referralId);
 
@@ -692,7 +735,7 @@ public class ManagementApiTest {
      */
     @Test
     public void deleteStoreTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         String storeId = null;
         api.deleteStore(applicationId, storeId);
 
@@ -709,7 +752,7 @@ public class ManagementApiTest {
      */
     @Test
     public void deleteUserTest() throws ApiException {
-        Long userId = null;
+        Integer userId = null;
         api.deleteUser(userId);
 
         // TODO: test validations
@@ -756,8 +799,8 @@ public class ManagementApiTest {
      */
     @Test
     public void disconnectCampaignStoresTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         api.disconnectCampaignStores(applicationId, campaignId);
 
         // TODO: test validations
@@ -773,7 +816,7 @@ public class ManagementApiTest {
      */
     @Test
     public void exportAccountCollectionItemsTest() throws ApiException {
-        Long collectionId = null;
+        Integer collectionId = null;
         String response = api.exportAccountCollectionItems(collectionId);
 
         // TODO: test validations
@@ -789,9 +832,9 @@ public class ManagementApiTest {
      */
     @Test
     public void exportAchievementsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long achievementId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer achievementId = null;
         String response = api.exportAchievements(applicationId, campaignId, achievementId);
 
         // TODO: test validations
@@ -807,8 +850,27 @@ public class ManagementApiTest {
      */
     @Test
     public void exportAudiencesMembershipsTest() throws ApiException {
-        Long audienceId = null;
+        Integer audienceId = null;
         String response = api.exportAudiencesMemberships(audienceId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Export campaign store budgets
+     *
+     * Download a CSV file containing the store budgets for a given campaign.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void exportCampaignStoreBudgetsTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        String action = null;
+        String period = null;
+        String response = api.exportCampaignStoreBudgets(applicationId, campaignId, action, period);
 
         // TODO: test validations
     }
@@ -823,8 +885,8 @@ public class ManagementApiTest {
      */
     @Test
     public void exportCampaignStoresTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         String response = api.exportCampaignStores(applicationId, campaignId);
 
         // TODO: test validations
@@ -840,9 +902,9 @@ public class ManagementApiTest {
      */
     @Test
     public void exportCollectionItemsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long collectionId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer collectionId = null;
         String response = api.exportCollectionItems(applicationId, campaignId, collectionId);
 
         // TODO: test validations
@@ -858,7 +920,7 @@ public class ManagementApiTest {
      */
     @Test
     public void exportCouponsTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         BigDecimal campaignId = null;
         String sort = null;
         String value = null;
@@ -866,7 +928,7 @@ public class ManagementApiTest {
         OffsetDateTime createdAfter = null;
         String valid = null;
         String usable = null;
-        Long referralId = null;
+        Integer referralId = null;
         String recipientIntegrationId = null;
         String batchId = null;
         Boolean exactMatch = null;
@@ -881,14 +943,14 @@ public class ManagementApiTest {
     /**
      * Export customer sessions
      *
-     * Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/product/server-infrastructure-and-data-retention#data-retention-policy).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
+     * Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/dev/server-infrastructure-and-data-retention).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void exportCustomerSessionsTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
         String profileIntegrationId = null;
@@ -927,7 +989,7 @@ public class ManagementApiTest {
      */
     @Test
     public void exportEffectsTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         BigDecimal campaignId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
@@ -981,7 +1043,7 @@ public class ManagementApiTest {
      */
     @Test
     public void exportLoyaltyCardBalancesTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         OffsetDateTime endDate = null;
         String response = api.exportLoyaltyCardBalances(loyaltyProgramId, endDate);
 
@@ -998,7 +1060,7 @@ public class ManagementApiTest {
      */
     @Test
     public void exportLoyaltyCardLedgerTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
@@ -1018,7 +1080,7 @@ public class ManagementApiTest {
      */
     @Test
     public void exportLoyaltyCardsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String batchId = null;
         String dateFormat = null;
         String response = api.exportLoyaltyCards(loyaltyProgramId, batchId, dateFormat);
@@ -1056,7 +1118,7 @@ public class ManagementApiTest {
      */
     @Test
     public void exportPoolGiveawaysTest() throws ApiException {
-        Long poolId = null;
+        Integer poolId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
         String response = api.exportPoolGiveaways(poolId, createdBefore, createdAfter);
@@ -1074,7 +1136,7 @@ public class ManagementApiTest {
      */
     @Test
     public void exportReferralsTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         BigDecimal campaignId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
@@ -1097,14 +1159,14 @@ public class ManagementApiTest {
      */
     @Test
     public void getAccessLogsWithoutTotalCountTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
         String path = null;
         String method = null;
         String status = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         InlineResponse20022 response = api.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
 
@@ -1121,7 +1183,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getAccountTest() throws ApiException {
-        Long accountId = null;
+        Integer accountId = null;
         Account response = api.getAccount(accountId);
 
         // TODO: test validations
@@ -1137,7 +1199,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getAccountAnalyticsTest() throws ApiException {
-        Long accountId = null;
+        Integer accountId = null;
         AccountAnalytics response = api.getAccountAnalytics(accountId);
 
         // TODO: test validations
@@ -1153,7 +1215,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getAccountCollectionTest() throws ApiException {
-        Long collectionId = null;
+        Integer collectionId = null;
         Collection response = api.getAccountCollection(collectionId);
 
         // TODO: test validations
@@ -1169,9 +1231,9 @@ public class ManagementApiTest {
      */
     @Test
     public void getAchievementTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long achievementId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer achievementId = null;
         Achievement response = api.getAchievement(applicationId, campaignId, achievementId);
 
         // TODO: test validations
@@ -1187,7 +1249,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getAdditionalCostTest() throws ApiException {
-        Long additionalCostId = null;
+        Integer additionalCostId = null;
         AccountAdditionalCost response = api.getAdditionalCost(additionalCostId);
 
         // TODO: test validations
@@ -1203,8 +1265,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getAdditionalCostsTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         InlineResponse20038 response = api.getAdditionalCosts(pageSize, skip, sort);
 
@@ -1221,7 +1283,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         Application response = api.getApplication(applicationId);
 
         // TODO: test validations
@@ -1237,7 +1299,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationApiHealthTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         ApplicationApiHealth response = api.getApplicationApiHealth(applicationId);
 
         // TODO: test validations
@@ -1253,8 +1315,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationCustomerTest() throws ApiException {
-        Long applicationId = null;
-        Long customerId = null;
+        Integer applicationId = null;
+        Integer customerId = null;
         ApplicationCustomer response = api.getApplicationCustomer(applicationId, customerId);
 
         // TODO: test validations
@@ -1270,10 +1332,10 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationCustomerFriendsTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         String integrationId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         Boolean withTotalResultSize = null;
         InlineResponse20035 response = api.getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize);
@@ -1291,10 +1353,10 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationCustomersTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         String integrationId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         Boolean withTotalResultSize = null;
         InlineResponse20024 response = api.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
 
@@ -1311,10 +1373,10 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationCustomersByAttributesTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         CustomerProfileSearchQuery body = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         Boolean withTotalResultSize = null;
         InlineResponse20025 response = api.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
 
@@ -1331,9 +1393,9 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationEventTypesTest() throws ApiException {
-        Long applicationId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         InlineResponse20031 response = api.getApplicationEventTypes(applicationId, pageSize, skip, sort);
 
@@ -1350,9 +1412,9 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationEventsWithoutTotalCountTest() throws ApiException {
-        Long applicationId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String type = null;
         OffsetDateTime createdBefore = null;
@@ -1380,8 +1442,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationSessionTest() throws ApiException {
-        Long applicationId = null;
-        Long sessionId = null;
+        Integer applicationId = null;
+        Integer sessionId = null;
         ApplicationSession response = api.getApplicationSession(applicationId, sessionId);
 
         // TODO: test validations
@@ -1397,9 +1459,9 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationSessionsTest() throws ApiException {
-        Long applicationId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String profile = null;
         String state = null;
@@ -1424,8 +1486,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationsTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         InlineResponse2007 response = api.getApplications(pageSize, skip, sort);
 
@@ -1442,7 +1504,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getAttributeTest() throws ApiException {
-        Long attributeId = null;
+        Integer attributeId = null;
         Attribute response = api.getAttribute(attributeId);
 
         // TODO: test validations
@@ -1458,8 +1520,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getAttributesTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String entity = null;
         InlineResponse20036 response = api.getAttributes(pageSize, skip, sort, entity);
@@ -1477,9 +1539,9 @@ public class ManagementApiTest {
      */
     @Test
     public void getAudienceMembershipsTest() throws ApiException {
-        Long audienceId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer audienceId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String profileQuery = null;
         InlineResponse20034 response = api.getAudienceMemberships(audienceId, pageSize, skip, sort, profileQuery);
@@ -1497,8 +1559,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getAudiencesTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         Boolean withTotalResultSize = null;
         InlineResponse20032 response = api.getAudiences(pageSize, skip, sort, withTotalResultSize);
@@ -1533,8 +1595,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getCampaignTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         Campaign response = api.getCampaign(applicationId, campaignId);
 
         // TODO: test validations
@@ -1550,8 +1612,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getCampaignAnalyticsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
         String granularity = null;
@@ -1570,10 +1632,10 @@ public class ManagementApiTest {
      */
     @Test
     public void getCampaignByAttributesTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         CampaignSearch body = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String campaignState = null;
         InlineResponse2008 response = api.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
@@ -1591,7 +1653,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getCampaignGroupTest() throws ApiException {
-        Long campaignGroupId = null;
+        Integer campaignGroupId = null;
         CampaignGroup response = api.getCampaignGroup(campaignGroupId);
 
         // TODO: test validations
@@ -1607,8 +1669,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getCampaignGroupsTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         InlineResponse20013 response = api.getCampaignGroups(pageSize, skip, sort);
 
@@ -1625,13 +1687,13 @@ public class ManagementApiTest {
      */
     @Test
     public void getCampaignTemplatesTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String state = null;
         String name = null;
         String tags = null;
-        Long userId = null;
+        Integer userId = null;
         InlineResponse20014 response = api.getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId);
 
         // TODO: test validations
@@ -1647,18 +1709,18 @@ public class ManagementApiTest {
      */
     @Test
     public void getCampaignsTest() throws ApiException {
-        Long applicationId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String campaignState = null;
         String name = null;
         String tags = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        Long campaignGroupId = null;
-        Long templateId = null;
-        Long storeId = null;
+        Integer campaignGroupId = null;
+        Integer templateId = null;
+        Integer storeId = null;
         InlineResponse2008 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId);
 
         // TODO: test validations
@@ -1674,16 +1736,16 @@ public class ManagementApiTest {
      */
     @Test
     public void getChangesTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         BigDecimal applicationId = null;
         String entityPath = null;
-        Long userId = null;
+        Integer userId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
         Boolean withTotalResultSize = null;
-        Long managementKeyId = null;
+        Integer managementKeyId = null;
         Boolean includeOld = null;
         InlineResponse20044 response = api.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
 
@@ -1700,9 +1762,9 @@ public class ManagementApiTest {
      */
     @Test
     public void getCollectionTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long collectionId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer collectionId = null;
         Collection response = api.getCollection(applicationId, campaignId, collectionId);
 
         // TODO: test validations
@@ -1718,9 +1780,9 @@ public class ManagementApiTest {
      */
     @Test
     public void getCollectionItemsTest() throws ApiException {
-        Long collectionId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer collectionId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         InlineResponse20021 response = api.getCollectionItems(collectionId, pageSize, skip);
 
         // TODO: test validations
@@ -1736,10 +1798,10 @@ public class ManagementApiTest {
      */
     @Test
     public void getCouponsWithoutTotalCountTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String value = null;
         OffsetDateTime createdBefore = null;
@@ -1747,7 +1809,7 @@ public class ManagementApiTest {
         String valid = null;
         String usable = null;
         String redeemed = null;
-        Long referralId = null;
+        Integer referralId = null;
         String recipientIntegrationId = null;
         String batchId = null;
         Boolean exactMatch = null;
@@ -1773,10 +1835,10 @@ public class ManagementApiTest {
     public void getCustomerActivityReportTest() throws ApiException {
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
-        Long applicationId = null;
-        Long customerId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer customerId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         CustomerActivityReport response = api.getCustomerActivityReport(rangeStart, rangeEnd, applicationId, customerId, pageSize, skip);
 
         // TODO: test validations
@@ -1794,9 +1856,9 @@ public class ManagementApiTest {
     public void getCustomerActivityReportsWithoutTotalCountTest() throws ApiException {
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
-        Long applicationId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String name = null;
         String integrationId = null;
@@ -1817,10 +1879,10 @@ public class ManagementApiTest {
      */
     @Test
     public void getCustomerAnalyticsTest() throws ApiException {
-        Long applicationId = null;
-        Long customerId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer customerId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         CustomerAnalytics response = api.getCustomerAnalytics(applicationId, customerId, pageSize, skip, sort);
 
@@ -1837,7 +1899,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getCustomerProfileTest() throws ApiException {
-        Long customerId = null;
+        Integer customerId = null;
         CustomerProfile response = api.getCustomerProfile(customerId);
 
         // TODO: test validations
@@ -1853,13 +1915,13 @@ public class ManagementApiTest {
      */
     @Test
     public void getCustomerProfileAchievementProgressTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         String integrationId = null;
-        Long pageSize = null;
-        Long skip = null;
-        Long achievementId = null;
+        Integer pageSize = null;
+        Integer skip = null;
+        Integer achievementId = null;
         String title = null;
-        InlineResponse20049 response = api.getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title);
+        InlineResponse20051 response = api.getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title);
 
         // TODO: test validations
     }
@@ -1874,8 +1936,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getCustomerProfilesTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         Boolean sandbox = null;
         InlineResponse20027 response = api.getCustomerProfiles(pageSize, skip, sandbox);
 
@@ -1893,8 +1955,8 @@ public class ManagementApiTest {
     @Test
     public void getCustomersByAttributesTest() throws ApiException {
         CustomerProfileSearchQuery body = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         Boolean sandbox = null;
         InlineResponse20026 response = api.getCustomersByAttributes(body, pageSize, skip, sandbox);
 
@@ -1911,7 +1973,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getDashboardStatisticsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
         String subledgerId = null;
@@ -1932,8 +1994,8 @@ public class ManagementApiTest {
     public void getEventTypesTest() throws ApiException {
         String name = null;
         Boolean includeOldVersions = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         InlineResponse20042 response = api.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
 
@@ -1950,10 +2012,10 @@ public class ManagementApiTest {
      */
     @Test
     public void getExportsTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         BigDecimal applicationId = null;
-        Long campaignId = null;
+        Integer campaignId = null;
         String entity = null;
         InlineResponse20045 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
 
@@ -1970,7 +2032,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getLoyaltyCardTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         LoyaltyCard response = api.getLoyaltyCard(loyaltyProgramId, loyaltyCardId);
 
@@ -1987,12 +2049,12 @@ public class ManagementApiTest {
      */
     @Test
     public void getLoyaltyCardTransactionLogsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String subledgerId = null;
         InlineResponse20019 response = api.getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId);
 
@@ -2009,12 +2071,12 @@ public class ManagementApiTest {
      */
     @Test
     public void getLoyaltyCardsTest() throws ApiException {
-        Long loyaltyProgramId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer loyaltyProgramId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String identifier = null;
-        Long profileId = null;
+        Integer profileId = null;
         String batchId = null;
         InlineResponse20018 response = api.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId, batchId);
 
@@ -2048,7 +2110,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getLoyaltyProgramTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         LoyaltyProgram response = api.getLoyaltyProgram(loyaltyProgramId);
 
         // TODO: test validations
@@ -2064,13 +2126,13 @@ public class ManagementApiTest {
      */
     @Test
     public void getLoyaltyProgramTransactionsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyTransactionType = null;
         String subledgerId = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         InlineResponse20017 response = api.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
@@ -2101,7 +2163,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getLoyaltyStatisticsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         LoyaltyDashboardData response = api.getLoyaltyStatistics(loyaltyProgramId);
 
         // TODO: test validations
@@ -2128,8 +2190,8 @@ public class ManagementApiTest {
         Boolean isSuccessful = null;
         BigDecimal applicationId = null;
         BigDecimal campaignId = null;
-        Long loyaltyProgramId = null;
-        Long responseCode = null;
+        Integer loyaltyProgramId = null;
+        Integer responseCode = null;
         String webhookIDs = null;
         MessageLogEntries response = api.getMessageLogs(entityType, messageID, changeType, notificationIDs, createdBefore, createdAfter, cursor, period, isSuccessful, applicationId, campaignId, loyaltyProgramId, responseCode, webhookIDs);
 
@@ -2146,10 +2208,10 @@ public class ManagementApiTest {
      */
     @Test
     public void getReferralsWithoutTotalCountTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String code = null;
         OffsetDateTime createdBefore = null;
@@ -2172,7 +2234,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getRoleV2Test() throws ApiException {
-        Long roleId = null;
+        Integer roleId = null;
         RoleV2 response = api.getRoleV2(roleId);
 
         // TODO: test validations
@@ -2188,9 +2250,9 @@ public class ManagementApiTest {
      */
     @Test
     public void getRulesetTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long rulesetId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer rulesetId = null;
         Ruleset response = api.getRuleset(applicationId, campaignId, rulesetId);
 
         // TODO: test validations
@@ -2206,10 +2268,10 @@ public class ManagementApiTest {
      */
     @Test
     public void getRulesetsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         InlineResponse2009 response = api.getRulesets(applicationId, campaignId, pageSize, skip, sort);
 
@@ -2226,7 +2288,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getStoreTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         String storeId = null;
         Store response = api.getStore(applicationId, storeId);
 
@@ -2243,7 +2305,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getUserTest() throws ApiException {
-        Long userId = null;
+        Integer userId = null;
         User response = api.getUser(userId);
 
         // TODO: test validations
@@ -2259,8 +2321,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getUsersTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         InlineResponse20043 response = api.getUsers(pageSize, skip, sort);
 
@@ -2277,7 +2339,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getWebhookTest() throws ApiException {
-        Long webhookId = null;
+        Integer webhookId = null;
         Webhook response = api.getWebhook(webhookId);
 
         // TODO: test validations
@@ -2293,8 +2355,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getWebhookActivationLogsTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String integrationRequestUuid = null;
         BigDecimal webhookId = null;
@@ -2317,8 +2379,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getWebhookLogsTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String status = null;
         BigDecimal webhookId = null;
@@ -2344,11 +2406,11 @@ public class ManagementApiTest {
     public void getWebhooksTest() throws ApiException {
         String applicationIds = null;
         String sort = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String creationType = null;
         String visibility = null;
-        Long outgoingIntegrationsTypeId = null;
+        Integer outgoingIntegrationsTypeId = null;
         String title = null;
         InlineResponse20039 response = api.getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title);
 
@@ -2365,7 +2427,7 @@ public class ManagementApiTest {
      */
     @Test
     public void importAccountCollectionTest() throws ApiException {
-        Long collectionId = null;
+        Integer collectionId = null;
         String upFile = null;
         ModelImport response = api.importAccountCollection(collectionId, upFile);
 
@@ -2382,7 +2444,7 @@ public class ManagementApiTest {
      */
     @Test
     public void importAllowedListTest() throws ApiException {
-        Long attributeId = null;
+        Integer attributeId = null;
         String upFile = null;
         ModelImport response = api.importAllowedList(attributeId, upFile);
 
@@ -2399,9 +2461,29 @@ public class ManagementApiTest {
      */
     @Test
     public void importAudiencesMembershipsTest() throws ApiException {
-        Long audienceId = null;
+        Integer audienceId = null;
         String upFile = null;
         ModelImport response = api.importAudiencesMemberships(audienceId, upFile);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Import campaign store budgets
+     *
+     * Upload a CSV file containing store budgets for a given campaign.  Send the file as multipart data.  The CSV file **must** only contain the following columns: - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store.  The import **replaces** the previous list of store budgets. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void importCampaignStoreBudgetTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        String action = null;
+        String period = null;
+        String upFile = null;
+        ModelImport response = api.importCampaignStoreBudget(applicationId, campaignId, action, period, upFile);
 
         // TODO: test validations
     }
@@ -2416,8 +2498,8 @@ public class ManagementApiTest {
      */
     @Test
     public void importCampaignStoresTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         String upFile = null;
         ModelImport response = api.importCampaignStores(applicationId, campaignId, upFile);
 
@@ -2434,9 +2516,9 @@ public class ManagementApiTest {
      */
     @Test
     public void importCollectionTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long collectionId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer collectionId = null;
         String upFile = null;
         ModelImport response = api.importCollection(applicationId, campaignId, collectionId, upFile);
 
@@ -2453,8 +2535,8 @@ public class ManagementApiTest {
      */
     @Test
     public void importCouponsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         Boolean skipDuplicates = null;
         String upFile = null;
         ModelImport response = api.importCoupons(applicationId, campaignId, skipDuplicates, upFile);
@@ -2472,7 +2554,7 @@ public class ManagementApiTest {
      */
     @Test
     public void importLoyaltyCardsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String upFile = null;
         ModelImport response = api.importLoyaltyCards(loyaltyProgramId, upFile);
 
@@ -2489,7 +2571,7 @@ public class ManagementApiTest {
      */
     @Test
     public void importLoyaltyCustomersTiersTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String upFile = null;
         ModelImport response = api.importLoyaltyCustomersTiers(loyaltyProgramId, upFile);
 
@@ -2506,9 +2588,10 @@ public class ManagementApiTest {
      */
     @Test
     public void importLoyaltyPointsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
+        Boolean notificationsEnabled = null;
         String upFile = null;
-        ModelImport response = api.importLoyaltyPoints(loyaltyProgramId, upFile);
+        ModelImport response = api.importLoyaltyPoints(loyaltyProgramId, notificationsEnabled, upFile);
 
         // TODO: test validations
     }
@@ -2523,7 +2606,7 @@ public class ManagementApiTest {
      */
     @Test
     public void importPoolGiveawaysTest() throws ApiException {
-        Long poolId = null;
+        Integer poolId = null;
         String upFile = null;
         ModelImport response = api.importPoolGiveaways(poolId, upFile);
 
@@ -2540,8 +2623,8 @@ public class ManagementApiTest {
      */
     @Test
     public void importReferralsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         String upFile = null;
         ModelImport response = api.importReferrals(applicationId, campaignId, upFile);
 
@@ -2574,8 +2657,8 @@ public class ManagementApiTest {
      */
     @Test
     public void listAccountCollectionsTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         Boolean withTotalResultSize = null;
         String name = null;
@@ -2594,12 +2677,12 @@ public class ManagementApiTest {
      */
     @Test
     public void listAchievementsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String title = null;
-        InlineResponse20048 response = api.listAchievements(applicationId, campaignId, pageSize, skip, title);
+        InlineResponse20050 response = api.listAchievements(applicationId, campaignId, pageSize, skip, title);
 
         // TODO: test validations
     }
@@ -2620,6 +2703,25 @@ public class ManagementApiTest {
     }
     
     /**
+     * List campaign store budget limits
+     *
+     * Return the store budget limits for a given campaign.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listCampaignStoreBudgetLimitsTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        String action = null;
+        String period = null;
+        InlineResponse20048 response = api.listCampaignStoreBudgetLimits(applicationId, campaignId, action, period);
+
+        // TODO: test validations
+    }
+    
+    /**
      * List items in a catalog
      *
      * Return a paginated list of cart items in the given catalog. 
@@ -2629,9 +2731,9 @@ public class ManagementApiTest {
      */
     @Test
     public void listCatalogItemsTest() throws ApiException {
-        Long catalogId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer catalogId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         Boolean withTotalResultSize = null;
         List<String> sku = null;
         List<String> productNames = null;
@@ -2650,10 +2752,10 @@ public class ManagementApiTest {
      */
     @Test
     public void listCollectionsTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         Boolean withTotalResultSize = null;
         String name = null;
@@ -2672,9 +2774,9 @@ public class ManagementApiTest {
      */
     @Test
     public void listCollectionsInApplicationTest() throws ApiException {
-        Long applicationId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         Boolean withTotalResultSize = null;
         String name = null;
@@ -2693,9 +2795,9 @@ public class ManagementApiTest {
      */
     @Test
     public void listStoresTest() throws ApiException {
-        Long applicationId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer applicationId = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         Boolean withTotalResultSize = null;
         BigDecimal campaignId = null;
@@ -2757,6 +2859,22 @@ public class ManagementApiTest {
     }
     
     /**
+     * Create SCIM group
+     *
+     * Create a new Talon.One group using the SCIM Group provisioning protocol with an identity provider, for example, Microsoft Entra ID, and assign members from the payload to the new group. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimCreateGroupTest() throws ApiException {
+        ScimBaseGroup body = null;
+        ScimGroup response = api.scimCreateGroup(body);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Create SCIM user
      *
      * Create a new Talon.One user using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.
@@ -2773,6 +2891,22 @@ public class ManagementApiTest {
     }
     
     /**
+     * Delete SCIM group
+     *
+     * Delete a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimDeleteGroupTest() throws ApiException {
+        Integer groupId = null;
+        api.scimDeleteGroup(groupId);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Delete SCIM user
      *
      * Delete a specific Talon.One user created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.
@@ -2782,8 +2916,39 @@ public class ManagementApiTest {
      */
     @Test
     public void scimDeleteUserTest() throws ApiException {
-        Long userId = null;
+        Integer userId = null;
         api.scimDeleteUser(userId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get SCIM group
+     *
+     * Retrieve data for a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimGetGroupTest() throws ApiException {
+        Integer groupId = null;
+        ScimGroup response = api.scimGetGroup(groupId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List SCIM groups
+     *
+     * Retrieve a paginated list of groups created using the SCIM protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimGetGroupsTest() throws ApiException {
+        ScimGroupsListResponse response = api.scimGetGroups();
 
         // TODO: test validations
     }
@@ -2843,7 +3008,7 @@ public class ManagementApiTest {
      */
     @Test
     public void scimGetUserTest() throws ApiException {
-        Long userId = null;
+        Integer userId = null;
         ScimUser response = api.scimGetUser(userId);
 
         // TODO: test validations
@@ -2865,6 +3030,23 @@ public class ManagementApiTest {
     }
     
     /**
+     * Update SCIM group attributes
+     *
+     * Update certain attributes of a group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint allows for selective adding, removing, or replacing of specific group attributes while other attributes remain unchanged. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimPatchGroupTest() throws ApiException {
+        Integer groupId = null;
+        ScimPatchRequest body = null;
+        ScimGroup response = api.scimPatchGroup(groupId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Update SCIM user attributes
      *
      * Update certain attributes of a specific Talon.One user created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.  This endpoint allows for selective adding, removing, or replacing specific attributes while leaving other attributes unchanged. 
@@ -2874,9 +3056,26 @@ public class ManagementApiTest {
      */
     @Test
     public void scimPatchUserTest() throws ApiException {
-        Long userId = null;
+        Integer userId = null;
         ScimPatchRequest body = null;
         ScimUser response = api.scimPatchUser(userId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update SCIM group
+     *
+     * Update the details of a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint replaces all attributes of the given group with the attributes provided in the request payload. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimReplaceGroupAttributesTest() throws ApiException {
+        Integer groupId = null;
+        ScimBaseGroup body = null;
+        ScimGroup response = api.scimReplaceGroupAttributes(groupId, body);
 
         // TODO: test validations
     }
@@ -2891,7 +3090,7 @@ public class ManagementApiTest {
      */
     @Test
     public void scimReplaceUserAttributesTest() throws ApiException {
-        Long userId = null;
+        Integer userId = null;
         ScimNewUser body = null;
         ScimUser response = api.scimReplaceUserAttributes(userId, body);
 
@@ -2908,17 +3107,17 @@ public class ManagementApiTest {
      */
     @Test
     public void searchCouponsAdvancedApplicationWideWithoutTotalCountTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         Object body = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String value = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
         String valid = null;
         String usable = null;
-        Long referralId = null;
+        Integer referralId = null;
         String recipientIntegrationId = null;
         String batchId = null;
         Boolean exactMatch = null;
@@ -2938,22 +3137,39 @@ public class ManagementApiTest {
      */
     @Test
     public void searchCouponsAdvancedWithoutTotalCountTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         Object body = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         String sort = null;
         String value = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
         String valid = null;
         String usable = null;
-        Long referralId = null;
+        Integer referralId = null;
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         String batchId = null;
         InlineResponse20011 response = api.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get summary of campaign store budgets
+     *
+     * Fetch a summary of all store budget information for a given campaign.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void summarizeCampaignStoreBudgetTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        InlineResponse20049 response = api.summarizeCampaignStoreBudget(applicationId, campaignId);
 
         // TODO: test validations
     }
@@ -2968,7 +3184,7 @@ public class ManagementApiTest {
      */
     @Test
     public void transferLoyaltyCardTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         TransferLoyaltyCard body = null;
         api.transferLoyaltyCard(loyaltyProgramId, loyaltyCardId, body);
@@ -2986,7 +3202,7 @@ public class ManagementApiTest {
      */
     @Test
     public void updateAccountCollectionTest() throws ApiException {
-        Long collectionId = null;
+        Integer collectionId = null;
         UpdateCollection body = null;
         Collection response = api.updateAccountCollection(collectionId, body);
 
@@ -3003,9 +3219,9 @@ public class ManagementApiTest {
      */
     @Test
     public void updateAchievementTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long achievementId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer achievementId = null;
         UpdateAchievement body = null;
         Achievement response = api.updateAchievement(applicationId, campaignId, achievementId, body);
 
@@ -3022,7 +3238,7 @@ public class ManagementApiTest {
      */
     @Test
     public void updateAdditionalCostTest() throws ApiException {
-        Long additionalCostId = null;
+        Integer additionalCostId = null;
         NewAdditionalCost body = null;
         AccountAdditionalCost response = api.updateAdditionalCost(additionalCostId, body);
 
@@ -3039,7 +3255,7 @@ public class ManagementApiTest {
      */
     @Test
     public void updateAttributeTest() throws ApiException {
-        Long attributeId = null;
+        Integer attributeId = null;
         NewAttribute body = null;
         Attribute response = api.updateAttribute(attributeId, body);
 
@@ -3056,8 +3272,8 @@ public class ManagementApiTest {
      */
     @Test
     public void updateCampaignTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         UpdateCampaign body = null;
         Campaign response = api.updateCampaign(applicationId, campaignId, body);
 
@@ -3074,9 +3290,9 @@ public class ManagementApiTest {
      */
     @Test
     public void updateCollectionTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
-        Long collectionId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer collectionId = null;
         UpdateCampaignCollection body = null;
         Collection response = api.updateCollection(applicationId, campaignId, collectionId, body);
 
@@ -3093,8 +3309,8 @@ public class ManagementApiTest {
      */
     @Test
     public void updateCouponTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         String couponId = null;
         UpdateCoupon body = null;
         Coupon response = api.updateCoupon(applicationId, campaignId, couponId, body);
@@ -3112,8 +3328,8 @@ public class ManagementApiTest {
      */
     @Test
     public void updateCouponBatchTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         UpdateCouponBatch body = null;
         api.updateCouponBatch(applicationId, campaignId, body);
 
@@ -3130,7 +3346,7 @@ public class ManagementApiTest {
      */
     @Test
     public void updateLoyaltyCardTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         UpdateLoyaltyCard body = null;
         LoyaltyCard response = api.updateLoyaltyCard(loyaltyProgramId, loyaltyCardId, body);
@@ -3148,8 +3364,8 @@ public class ManagementApiTest {
      */
     @Test
     public void updateReferralTest() throws ApiException {
-        Long applicationId = null;
-        Long campaignId = null;
+        Integer applicationId = null;
+        Integer campaignId = null;
         String referralId = null;
         UpdateReferral body = null;
         Referral response = api.updateReferral(applicationId, campaignId, referralId, body);
@@ -3167,7 +3383,7 @@ public class ManagementApiTest {
      */
     @Test
     public void updateRoleV2Test() throws ApiException {
-        Long roleId = null;
+        Integer roleId = null;
         RoleV2Base body = null;
         RoleV2 response = api.updateRoleV2(roleId, body);
 
@@ -3184,7 +3400,7 @@ public class ManagementApiTest {
      */
     @Test
     public void updateStoreTest() throws ApiException {
-        Long applicationId = null;
+        Integer applicationId = null;
         String storeId = null;
         NewStore body = null;
         Store response = api.updateStore(applicationId, storeId, body);
@@ -3202,7 +3418,7 @@ public class ManagementApiTest {
      */
     @Test
     public void updateUserTest() throws ApiException {
-        Long userId = null;
+        Integer userId = null;
         UpdateUser body = null;
         User response = api.updateUser(userId, body);
 

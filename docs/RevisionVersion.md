@@ -6,20 +6,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints. | 
-**accountId** | **Long** |  | 
-**applicationId** | **Long** |  | 
-**campaignId** | **Long** |  | 
+**id** | **Integer** | Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints. | 
+**accountId** | **Integer** |  | 
+**applicationId** | **Integer** |  | 
+**campaignId** | **Integer** |  | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
-**createdBy** | **Long** |  | 
-**revisionId** | **Long** |  | 
-**version** | **Long** |  | 
+**createdBy** | **Integer** |  | 
+**revisionId** | **Integer** |  | 
+**version** | **Integer** |  | 
 **name** | **String** | A user-facing name for this campaign. |  [optional]
 **startTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the campaign will become active. |  [optional]
 **endTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the campaign will become inactive. |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign. |  [optional]
 **description** | **String** | A detailed description of the campaign. |  [optional]
-**activeRulesetId** | **Long** | The ID of the ruleset this campaign template will use. |  [optional]
+**activeRulesetId** | **Integer** | The ID of the ruleset this campaign template will use. |  [optional]
 **tags** | **List&lt;String&gt;** | A list of tags for the campaign template. |  [optional]
 **couponSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]
 **referralSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]

@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **String** | The coupon code that was rejected. | 
 **rejectionReason** | **String** | The reason why this coupon was rejected. | 
-**conditionIndex** | **Long** | The index of the condition that caused the rejection of the coupon. |  [optional]
-**effectIndex** | **Long** | The index of the effect that caused the rejection of the coupon. |  [optional]
+**conditionIndex** | **Integer** | The index of the condition that caused the rejection of the coupon. |  [optional]
+**effectIndex** | **Integer** | The index of the effect that caused the rejection of the coupon. |  [optional]
 **details** | **String** | More details about the failure. |  [optional]
 **campaignExclusionReason** | **String** | The reason why the campaign was not applied. |  [optional]
 

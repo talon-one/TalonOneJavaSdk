@@ -31,14 +31,14 @@ import java.io.IOException;
 public class LoyaltyCardBatchResponse {
   public static final String SERIALIZED_NAME_NUMBER_OF_CARDS_GENERATED = "numberOfCardsGenerated";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_CARDS_GENERATED)
-  private Long numberOfCardsGenerated;
+  private Integer numberOfCardsGenerated;
 
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
   private String batchId;
 
 
-  public LoyaltyCardBatchResponse numberOfCardsGenerated(Long numberOfCardsGenerated) {
+  public LoyaltyCardBatchResponse numberOfCardsGenerated(Integer numberOfCardsGenerated) {
     
     this.numberOfCardsGenerated = numberOfCardsGenerated;
     return this;
@@ -50,12 +50,12 @@ public class LoyaltyCardBatchResponse {
   **/
   @ApiModelProperty(example = "5000", required = true, value = "Number of loyalty cards in the batch.")
 
-  public Long getNumberOfCardsGenerated() {
+  public Integer getNumberOfCardsGenerated() {
     return numberOfCardsGenerated;
   }
 
 
-  public void setNumberOfCardsGenerated(Long numberOfCardsGenerated) {
+  public void setNumberOfCardsGenerated(Integer numberOfCardsGenerated) {
     this.numberOfCardsGenerated = numberOfCardsGenerated;
   }
 

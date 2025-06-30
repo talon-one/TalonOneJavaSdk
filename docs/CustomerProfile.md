@@ -6,12 +6,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Internal ID of this entity. | 
+**id** | **Integer** | The internal ID of the customer profile. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **integrationId** | **String** | The integration ID set by your integration layer. | 
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this item. | 
-**accountId** | **Long** | The ID of the Talon.One account that owns this profile. | 
-**closedSessions** | **Long** | The total amount of closed sessions by a customer. A closed session is a successful purchase. | 
+**accountId** | **Integer** | The ID of the Talon.One account that owns this profile. | 
+**closedSessions** | **Integer** | The total number of closed sessions. Does not include closed sessions that have been cancelled or reopened. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states). | 
 **totalSales** | [**BigDecimal**](BigDecimal.md) | The total amount of money spent by the customer **before** discounts are applied.  The total sales amount excludes the following: - Cancelled or reopened sessions. - Returned items.  | 
 **loyaltyMemberships** | [**List&lt;LoyaltyMembership&gt;**](LoyaltyMembership.md) | **DEPRECATED** A list of loyalty programs joined by the customer.  |  [optional]
 **audienceMemberships** | [**List&lt;AudienceMembership&gt;**](AudienceMembership.md) | The audiences the customer belongs to. |  [optional]

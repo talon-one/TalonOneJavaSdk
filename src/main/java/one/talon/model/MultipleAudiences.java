@@ -34,14 +34,14 @@ import one.talon.model.MultipleAudiencesItem;
 public class MultipleAudiences {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_AUDIENCES = "audiences";
   @SerializedName(SERIALIZED_NAME_AUDIENCES)
   private List<MultipleAudiencesItem> audiences = new ArrayList<MultipleAudiencesItem>();
 
 
-  public MultipleAudiences accountId(Long accountId) {
+  public MultipleAudiences accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -53,12 +53,12 @@ public class MultipleAudiences {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 

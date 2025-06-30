@@ -40,7 +40,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CustomerSessionV2 {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -52,7 +52,7 @@ public class CustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
@@ -64,7 +64,7 @@ public class CustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
-  private List<Long> evaluableCampaignIds = null;
+  private List<Integer> evaluableCampaignIds = null;
 
   public static final String SERIALIZED_NAME_COUPON_CODES = "couponCodes";
   @SerializedName(SERIALIZED_NAME_COUPON_CODES)
@@ -170,24 +170,24 @@ public class CustomerSessionV2 {
   private OffsetDateTime updated;
 
 
-  public CustomerSessionV2 id(Long id) {
+  public CustomerSessionV2 id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -236,7 +236,7 @@ public class CustomerSessionV2 {
   }
 
 
-  public CustomerSessionV2 applicationId(Long applicationId) {
+  public CustomerSessionV2 applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -248,12 +248,12 @@ public class CustomerSessionV2 {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
@@ -303,15 +303,15 @@ public class CustomerSessionV2 {
   }
 
 
-  public CustomerSessionV2 evaluableCampaignIds(List<Long> evaluableCampaignIds) {
+  public CustomerSessionV2 evaluableCampaignIds(List<Integer> evaluableCampaignIds) {
     
     this.evaluableCampaignIds = evaluableCampaignIds;
     return this;
   }
 
-  public CustomerSessionV2 addEvaluableCampaignIdsItem(Long evaluableCampaignIdsItem) {
+  public CustomerSessionV2 addEvaluableCampaignIdsItem(Integer evaluableCampaignIdsItem) {
     if (this.evaluableCampaignIds == null) {
-      this.evaluableCampaignIds = new ArrayList<Long>();
+      this.evaluableCampaignIds = new ArrayList<Integer>();
     }
     this.evaluableCampaignIds.add(evaluableCampaignIdsItem);
     return this;
@@ -324,12 +324,12 @@ public class CustomerSessionV2 {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[10, 12]", value = "When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. ")
 
-  public List<Long> getEvaluableCampaignIds() {
+  public List<Integer> getEvaluableCampaignIds() {
     return evaluableCampaignIds;
   }
 
 
-  public void setEvaluableCampaignIds(List<Long> evaluableCampaignIds) {
+  public void setEvaluableCampaignIds(List<Integer> evaluableCampaignIds) {
     this.evaluableCampaignIds = evaluableCampaignIds;
   }
 

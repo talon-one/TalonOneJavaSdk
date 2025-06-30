@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **limits** | [**List&lt;TemplateLimitConfig&gt;**](TemplateLimitConfig.md) | The set of limits that will operate for this campaign template. |  [optional]
 **templateParams** | [**List&lt;CampaignTemplateParams&gt;**](CampaignTemplateParams.md) | Fields which can be used to replace values in a rule. |  [optional]
 **campaignCollections** | [**List&lt;CampaignTemplateCollection&gt;**](CampaignTemplateCollection.md) | The campaign collections from the blueprint campaign for the template. |  [optional]
-**defaultCampaignGroupId** | **Long** | The default campaign group ID. |  [optional]
+**defaultCampaignGroupId** | **Integer** | The default campaign group ID. |  [optional]
 **campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items.  | 
 
 

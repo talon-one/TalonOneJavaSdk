@@ -109,7 +109,7 @@ public class BaseCampaign {
 
   public static final String SERIALIZED_NAME_ACTIVE_RULESET_ID = "activeRulesetId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULESET_ID)
-  private Long activeRulesetId;
+  private Integer activeRulesetId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -188,7 +188,7 @@ public class BaseCampaign {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUPS = "campaignGroups";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
-  private List<Long> campaignGroups = null;
+  private List<Integer> campaignGroups = null;
 
   /**
    * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
@@ -243,7 +243,7 @@ public class BaseCampaign {
 
   public static final String SERIALIZED_NAME_LINKED_STORE_IDS = "linkedStoreIds";
   @SerializedName(SERIALIZED_NAME_LINKED_STORE_IDS)
-  private List<Long> linkedStoreIds = null;
+  private List<Integer> linkedStoreIds = null;
 
 
   public BaseCampaign name(String name) {
@@ -382,7 +382,7 @@ public class BaseCampaign {
   }
 
 
-  public BaseCampaign activeRulesetId(Long activeRulesetId) {
+  public BaseCampaign activeRulesetId(Integer activeRulesetId) {
     
     this.activeRulesetId = activeRulesetId;
     return this;
@@ -395,12 +395,12 @@ public class BaseCampaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "[ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. ")
 
-  public Long getActiveRulesetId() {
+  public Integer getActiveRulesetId() {
     return activeRulesetId;
   }
 
 
-  public void setActiveRulesetId(Long activeRulesetId) {
+  public void setActiveRulesetId(Integer activeRulesetId) {
     this.activeRulesetId = activeRulesetId;
   }
 
@@ -532,15 +532,15 @@ public class BaseCampaign {
   }
 
 
-  public BaseCampaign campaignGroups(List<Long> campaignGroups) {
+  public BaseCampaign campaignGroups(List<Integer> campaignGroups) {
     
     this.campaignGroups = campaignGroups;
     return this;
   }
 
-  public BaseCampaign addCampaignGroupsItem(Long campaignGroupsItem) {
+  public BaseCampaign addCampaignGroupsItem(Integer campaignGroupsItem) {
     if (this.campaignGroups == null) {
-      this.campaignGroups = new ArrayList<Long>();
+      this.campaignGroups = new ArrayList<Integer>();
     }
     this.campaignGroups.add(campaignGroupsItem);
     return this;
@@ -553,12 +553,12 @@ public class BaseCampaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 3]", value = "The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups) this campaign belongs to. ")
 
-  public List<Long> getCampaignGroups() {
+  public List<Integer> getCampaignGroups() {
     return campaignGroups;
   }
 
 
-  public void setCampaignGroups(List<Long> campaignGroups) {
+  public void setCampaignGroups(List<Integer> campaignGroups) {
     this.campaignGroups = campaignGroups;
   }
 
@@ -586,15 +586,15 @@ public class BaseCampaign {
   }
 
 
-  public BaseCampaign linkedStoreIds(List<Long> linkedStoreIds) {
+  public BaseCampaign linkedStoreIds(List<Integer> linkedStoreIds) {
     
     this.linkedStoreIds = linkedStoreIds;
     return this;
   }
 
-  public BaseCampaign addLinkedStoreIdsItem(Long linkedStoreIdsItem) {
+  public BaseCampaign addLinkedStoreIdsItem(Integer linkedStoreIdsItem) {
     if (this.linkedStoreIds == null) {
-      this.linkedStoreIds = new ArrayList<Long>();
+      this.linkedStoreIds = new ArrayList<Integer>();
     }
     this.linkedStoreIds.add(linkedStoreIdsItem);
     return this;
@@ -607,12 +607,12 @@ public class BaseCampaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of store IDs that you want to link to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. ")
 
-  public List<Long> getLinkedStoreIds() {
+  public List<Integer> getLinkedStoreIds() {
     return linkedStoreIds;
   }
 
 
-  public void setLinkedStoreIds(List<Long> linkedStoreIds) {
+  public void setLinkedStoreIds(List<Integer> linkedStoreIds) {
     this.linkedStoreIds = linkedStoreIds;
   }
 

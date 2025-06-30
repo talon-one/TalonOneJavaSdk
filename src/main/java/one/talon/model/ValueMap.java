@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ValueMap {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -40,14 +40,14 @@ public class ValueMap {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
 
-  public ValueMap id(Long id) {
+  public ValueMap id(Integer id) {
     
     this.id = id;
     return this;
@@ -59,12 +59,12 @@ public class ValueMap {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -92,7 +92,7 @@ public class ValueMap {
   }
 
 
-  public ValueMap createdBy(Long createdBy) {
+  public ValueMap createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -105,17 +105,17 @@ public class ValueMap {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the user who created the value map.")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 
 
-  public ValueMap campaignId(Long campaignId) {
+  public ValueMap campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -127,12 +127,12 @@ public class ValueMap {
   **/
   @ApiModelProperty(example = "244", required = true, value = "")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 

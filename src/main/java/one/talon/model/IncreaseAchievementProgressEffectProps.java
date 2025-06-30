@@ -33,7 +33,7 @@ import java.math.BigDecimal;
 public class IncreaseAchievementProgressEffectProps {
   public static final String SERIALIZED_NAME_ACHIEVEMENT_ID = "achievementId";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_ID)
-  private Long achievementId;
+  private Integer achievementId;
 
   public static final String SERIALIZED_NAME_ACHIEVEMENT_NAME = "achievementName";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_NAME)
@@ -41,7 +41,7 @@ public class IncreaseAchievementProgressEffectProps {
 
   public static final String SERIALIZED_NAME_PROGRESS_TRACKER_ID = "progressTrackerId";
   @SerializedName(SERIALIZED_NAME_PROGRESS_TRACKER_ID)
-  private Long progressTrackerId;
+  private Integer progressTrackerId;
 
   public static final String SERIALIZED_NAME_DELTA = "delta";
   @SerializedName(SERIALIZED_NAME_DELTA)
@@ -60,7 +60,7 @@ public class IncreaseAchievementProgressEffectProps {
   private Boolean isJustCompleted;
 
 
-  public IncreaseAchievementProgressEffectProps achievementId(Long achievementId) {
+  public IncreaseAchievementProgressEffectProps achievementId(Integer achievementId) {
     
     this.achievementId = achievementId;
     return this;
@@ -72,12 +72,12 @@ public class IncreaseAchievementProgressEffectProps {
   **/
   @ApiModelProperty(example = "10", required = true, value = "The internal ID of the achievement.")
 
-  public Long getAchievementId() {
+  public Integer getAchievementId() {
     return achievementId;
   }
 
 
-  public void setAchievementId(Long achievementId) {
+  public void setAchievementId(Integer achievementId) {
     this.achievementId = achievementId;
   }
 
@@ -104,7 +104,7 @@ public class IncreaseAchievementProgressEffectProps {
   }
 
 
-  public IncreaseAchievementProgressEffectProps progressTrackerId(Long progressTrackerId) {
+  public IncreaseAchievementProgressEffectProps progressTrackerId(Integer progressTrackerId) {
     
     this.progressTrackerId = progressTrackerId;
     return this;
@@ -117,12 +117,12 @@ public class IncreaseAchievementProgressEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The internal ID of the achievement progress tracker.")
 
-  public Long getProgressTrackerId() {
+  public Integer getProgressTrackerId() {
     return progressTrackerId;
   }
 
 
-  public void setProgressTrackerId(Long progressTrackerId) {
+  public void setProgressTrackerId(Integer progressTrackerId) {
     this.progressTrackerId = progressTrackerId;
   }
 

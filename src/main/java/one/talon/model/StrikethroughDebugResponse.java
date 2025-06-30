@@ -34,22 +34,22 @@ import one.talon.model.StrikethroughEffect;
 public class StrikethroughDebugResponse {
   public static final String SERIALIZED_NAME_CAMPAIGNS_I_DS = "campaignsIDs";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS_I_DS)
-  private List<Long> campaignsIDs = null;
+  private List<Integer> campaignsIDs = null;
 
   public static final String SERIALIZED_NAME_EFFECTS = "effects";
   @SerializedName(SERIALIZED_NAME_EFFECTS)
   private List<StrikethroughEffect> effects = null;
 
 
-  public StrikethroughDebugResponse campaignsIDs(List<Long> campaignsIDs) {
+  public StrikethroughDebugResponse campaignsIDs(List<Integer> campaignsIDs) {
     
     this.campaignsIDs = campaignsIDs;
     return this;
   }
 
-  public StrikethroughDebugResponse addCampaignsIDsItem(Long campaignsIDsItem) {
+  public StrikethroughDebugResponse addCampaignsIDsItem(Integer campaignsIDsItem) {
     if (this.campaignsIDs == null) {
-      this.campaignsIDs = new ArrayList<Long>();
+      this.campaignsIDs = new ArrayList<Integer>();
     }
     this.campaignsIDs.add(campaignsIDsItem);
     return this;
@@ -62,12 +62,12 @@ public class StrikethroughDebugResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The campaign IDs that got fetched for the evaluation process.")
 
-  public List<Long> getCampaignsIDs() {
+  public List<Integer> getCampaignsIDs() {
     return campaignsIDs;
   }
 
 
-  public void setCampaignsIDs(List<Long> campaignsIDs) {
+  public void setCampaignsIDs(List<Integer> campaignsIDs) {
     this.campaignsIDs = campaignsIDs;
   }
 

@@ -37,11 +37,11 @@ import org.threeten.bp.OffsetDateTime;
 public class StrikethroughChangedItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalogId";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
-  private Long catalogId;
+  private Integer catalogId;
 
   public static final String SERIALIZED_NAME_SKU = "sku";
   @SerializedName(SERIALIZED_NAME_SKU)
@@ -49,7 +49,7 @@ public class StrikethroughChangedItem {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Long version;
+  private Integer version;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -64,7 +64,7 @@ public class StrikethroughChangedItem {
   private List<StrikethroughEffect> effects = null;
 
 
-  public StrikethroughChangedItem id(Long id) {
+  public StrikethroughChangedItem id(Integer id) {
     
     this.id = id;
     return this;
@@ -76,17 +76,17 @@ public class StrikethroughChangedItem {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the event that triggered the strikethrough labeling.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public StrikethroughChangedItem catalogId(Long catalogId) {
+  public StrikethroughChangedItem catalogId(Integer catalogId) {
     
     this.catalogId = catalogId;
     return this;
@@ -98,12 +98,12 @@ public class StrikethroughChangedItem {
   **/
   @ApiModelProperty(example = "10", required = true, value = "The ID of the catalog that the changed item belongs to.")
 
-  public Long getCatalogId() {
+  public Integer getCatalogId() {
     return catalogId;
   }
 
 
-  public void setCatalogId(Long catalogId) {
+  public void setCatalogId(Integer catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -130,7 +130,7 @@ public class StrikethroughChangedItem {
   }
 
 
-  public StrikethroughChangedItem version(Long version) {
+  public StrikethroughChangedItem version(Integer version) {
     
     this.version = version;
     return this;
@@ -143,12 +143,12 @@ public class StrikethroughChangedItem {
   **/
   @ApiModelProperty(example = "6", required = true, value = "The version of the changed item.")
 
-  public Long getVersion() {
+  public Integer getVersion() {
     return version;
   }
 
 
-  public void setVersion(Long version) {
+  public void setVersion(Integer version) {
     this.version = version;
   }
 

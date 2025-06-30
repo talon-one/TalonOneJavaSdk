@@ -34,14 +34,14 @@ import one.talon.model.AchievementStatusEntry;
 public class InlineResponse2001 {
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Long totalResultSize;
+  private Integer totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<AchievementStatusEntry> data = new ArrayList<AchievementStatusEntry>();
 
 
-  public InlineResponse2001 totalResultSize(Long totalResultSize) {
+  public InlineResponse2001 totalResultSize(Integer totalResultSize) {
     
     this.totalResultSize = totalResultSize;
     return this;
@@ -53,12 +53,12 @@ public class InlineResponse2001 {
   **/
   @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Long getTotalResultSize() {
+  public Integer getTotalResultSize() {
     return totalResultSize;
   }
 
 
-  public void setTotalResultSize(Long totalResultSize) {
+  public void setTotalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
   }
 

@@ -31,14 +31,14 @@ import java.io.IOException;
 public class ReturnedCartItem {
   public static final String SERIALIZED_NAME_POSITION = "position";
   @SerializedName(SERIALIZED_NAME_POSITION)
-  private Long position;
+  private Integer position;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private Long quantity;
+  private Integer quantity;
 
 
-  public ReturnedCartItem position(Long position) {
+  public ReturnedCartItem position(Integer position) {
     
     this.position = position;
     return this;
@@ -50,17 +50,17 @@ public class ReturnedCartItem {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The index of the cart item in the provided customer session's `cartItems` property.")
 
-  public Long getPosition() {
+  public Integer getPosition() {
     return position;
   }
 
 
-  public void setPosition(Long position) {
+  public void setPosition(Integer position) {
     this.position = position;
   }
 
 
-  public ReturnedCartItem quantity(Long quantity) {
+  public ReturnedCartItem quantity(Integer quantity) {
     
     this.quantity = quantity;
     return this;
@@ -73,12 +73,12 @@ public class ReturnedCartItem {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Number of cart items to return. ")
 
-  public Long getQuantity() {
+  public Integer getQuantity() {
     return quantity;
   }
 
 
-  public void setQuantity(Long quantity) {
+  public void setQuantity(Integer quantity) {
     this.quantity = quantity;
   }
 

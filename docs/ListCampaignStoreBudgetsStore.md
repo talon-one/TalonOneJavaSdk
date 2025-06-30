@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** |  | 
+**id** | **Integer** |  | 
 **integrationId** | **String** |  | 
 **name** | **String** |  | 
 

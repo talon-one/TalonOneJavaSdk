@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ApplicationCIF {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -48,15 +48,15 @@ public class ApplicationCIF {
 
   public static final String SERIALIZED_NAME_ACTIVE_EXPRESSION_ID = "activeExpressionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_EXPRESSION_ID)
-  private Long activeExpressionId;
+  private Integer activeExpressionId;
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Long modifiedBy;
+  private Integer modifiedBy;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
   public static final String SERIALIZED_NAME_MODIFIED = "modified";
   @SerializedName(SERIALIZED_NAME_MODIFIED)
@@ -64,27 +64,27 @@ public class ApplicationCIF {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
 
-  public ApplicationCIF id(Long id) {
+  public ApplicationCIF id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -156,7 +156,7 @@ public class ApplicationCIF {
   }
 
 
-  public ApplicationCIF activeExpressionId(Long activeExpressionId) {
+  public ApplicationCIF activeExpressionId(Integer activeExpressionId) {
     
     this.activeExpressionId = activeExpressionId;
     return this;
@@ -169,17 +169,17 @@ public class ApplicationCIF {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the expression that the Application cart item filter uses.")
 
-  public Long getActiveExpressionId() {
+  public Integer getActiveExpressionId() {
     return activeExpressionId;
   }
 
 
-  public void setActiveExpressionId(Long activeExpressionId) {
+  public void setActiveExpressionId(Integer activeExpressionId) {
     this.activeExpressionId = activeExpressionId;
   }
 
 
-  public ApplicationCIF modifiedBy(Long modifiedBy) {
+  public ApplicationCIF modifiedBy(Integer modifiedBy) {
     
     this.modifiedBy = modifiedBy;
     return this;
@@ -192,17 +192,17 @@ public class ApplicationCIF {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "334", value = "The ID of the user who last updated the Application cart item filter.")
 
-  public Long getModifiedBy() {
+  public Integer getModifiedBy() {
     return modifiedBy;
   }
 
 
-  public void setModifiedBy(Long modifiedBy) {
+  public void setModifiedBy(Integer modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
 
-  public ApplicationCIF createdBy(Long createdBy) {
+  public ApplicationCIF createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -215,12 +215,12 @@ public class ApplicationCIF {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the user who created the Application cart item filter.")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 
@@ -248,7 +248,7 @@ public class ApplicationCIF {
   }
 
 
-  public ApplicationCIF applicationId(Long applicationId) {
+  public ApplicationCIF applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -260,12 +260,12 @@ public class ApplicationCIF {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 

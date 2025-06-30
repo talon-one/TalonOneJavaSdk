@@ -35,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class WebhookWithOutgoingIntegrationDetails {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -47,7 +47,7 @@ public class WebhookWithOutgoingIntegrationDetails {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Long> applicationIds = new ArrayList<Long>();
+  private List<Integer> applicationIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -56,6 +56,10 @@ public class WebhookWithOutgoingIntegrationDetails {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_DRAFT = "draft";
+  @SerializedName(SERIALIZED_NAME_DRAFT)
+  private Boolean draft;
 
   /**
    * API method for this webhook.
@@ -136,35 +140,35 @@ public class WebhookWithOutgoingIntegrationDetails {
 
   public static final String SERIALIZED_NAME_OUTGOING_INTEGRATION_TEMPLATE_ID = "outgoingIntegrationTemplateId";
   @SerializedName(SERIALIZED_NAME_OUTGOING_INTEGRATION_TEMPLATE_ID)
-  private Long outgoingIntegrationTemplateId;
+  private Integer outgoingIntegrationTemplateId;
 
   public static final String SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_ID = "outgoingIntegrationTypeId";
   @SerializedName(SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_ID)
-  private Long outgoingIntegrationTypeId;
+  private Integer outgoingIntegrationTypeId;
 
   public static final String SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_NAME = "outgoingIntegrationTypeName";
   @SerializedName(SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_NAME)
   private String outgoingIntegrationTypeName;
 
 
-  public WebhookWithOutgoingIntegrationDetails id(Long id) {
+  public WebhookWithOutgoingIntegrationDetails id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -213,13 +217,13 @@ public class WebhookWithOutgoingIntegrationDetails {
   }
 
 
-  public WebhookWithOutgoingIntegrationDetails applicationIds(List<Long> applicationIds) {
+  public WebhookWithOutgoingIntegrationDetails applicationIds(List<Integer> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public WebhookWithOutgoingIntegrationDetails addApplicationIdsItem(Long applicationIdsItem) {
+  public WebhookWithOutgoingIntegrationDetails addApplicationIdsItem(Integer applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
@@ -230,12 +234,12 @@ public class WebhookWithOutgoingIntegrationDetails {
   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in `All Applications`. ")
 
-  public List<Long> getApplicationIds() {
+  public List<Integer> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(List<Long> applicationIds) {
+  public void setApplicationIds(List<Integer> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
@@ -282,6 +286,28 @@ public class WebhookWithOutgoingIntegrationDetails {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public WebhookWithOutgoingIntegrationDetails draft(Boolean draft) {
+    
+    this.draft = draft;
+    return this;
+  }
+
+   /**
+   * Indicates if the webhook is a draft.
+   * @return draft
+  **/
+  @ApiModelProperty(example = "false", required = true, value = "Indicates if the webhook is a draft.")
+
+  public Boolean getDraft() {
+    return draft;
+  }
+
+
+  public void setDraft(Boolean draft) {
+    this.draft = draft;
   }
 
 
@@ -428,7 +454,7 @@ public class WebhookWithOutgoingIntegrationDetails {
   }
 
 
-  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTemplateId(Long outgoingIntegrationTemplateId) {
+  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTemplateId(Integer outgoingIntegrationTemplateId) {
     
     this.outgoingIntegrationTemplateId = outgoingIntegrationTemplateId;
     return this;
@@ -441,17 +467,17 @@ public class WebhookWithOutgoingIntegrationDetails {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Identifier of the outgoing integration template.")
 
-  public Long getOutgoingIntegrationTemplateId() {
+  public Integer getOutgoingIntegrationTemplateId() {
     return outgoingIntegrationTemplateId;
   }
 
 
-  public void setOutgoingIntegrationTemplateId(Long outgoingIntegrationTemplateId) {
+  public void setOutgoingIntegrationTemplateId(Integer outgoingIntegrationTemplateId) {
     this.outgoingIntegrationTemplateId = outgoingIntegrationTemplateId;
   }
 
 
-  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTypeId(Long outgoingIntegrationTypeId) {
+  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTypeId(Integer outgoingIntegrationTypeId) {
     
     this.outgoingIntegrationTypeId = outgoingIntegrationTypeId;
     return this;
@@ -464,12 +490,12 @@ public class WebhookWithOutgoingIntegrationDetails {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Identifier of the outgoing integration type.")
 
-  public Long getOutgoingIntegrationTypeId() {
+  public Integer getOutgoingIntegrationTypeId() {
     return outgoingIntegrationTypeId;
   }
 
 
-  public void setOutgoingIntegrationTypeId(Long outgoingIntegrationTypeId) {
+  public void setOutgoingIntegrationTypeId(Integer outgoingIntegrationTypeId) {
     this.outgoingIntegrationTypeId = outgoingIntegrationTypeId;
   }
 
@@ -512,6 +538,7 @@ public class WebhookWithOutgoingIntegrationDetails {
         Objects.equals(this.applicationIds, webhookWithOutgoingIntegrationDetails.applicationIds) &&
         Objects.equals(this.title, webhookWithOutgoingIntegrationDetails.title) &&
         Objects.equals(this.description, webhookWithOutgoingIntegrationDetails.description) &&
+        Objects.equals(this.draft, webhookWithOutgoingIntegrationDetails.draft) &&
         Objects.equals(this.verb, webhookWithOutgoingIntegrationDetails.verb) &&
         Objects.equals(this.url, webhookWithOutgoingIntegrationDetails.url) &&
         Objects.equals(this.headers, webhookWithOutgoingIntegrationDetails.headers) &&
@@ -525,7 +552,7 @@ public class WebhookWithOutgoingIntegrationDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, applicationIds, title, description, verb, url, headers, payload, params, enabled, outgoingIntegrationTemplateId, outgoingIntegrationTypeId, outgoingIntegrationTypeName);
+    return Objects.hash(id, created, modified, applicationIds, title, description, draft, verb, url, headers, payload, params, enabled, outgoingIntegrationTemplateId, outgoingIntegrationTypeId, outgoingIntegrationTypeName);
   }
 
 
@@ -539,6 +566,7 @@ public class WebhookWithOutgoingIntegrationDetails {
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
     sb.append("    verb: ").append(toIndentedString(verb)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");

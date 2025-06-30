@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ApplicationEvent {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,15 +44,15 @@ public class ApplicationEvent {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Long profileId;
+  private Integer profileId;
 
   public static final String SERIALIZED_NAME_STORE_ID = "storeId";
   @SerializedName(SERIALIZED_NAME_STORE_ID)
-  private Long storeId;
+  private Integer storeId;
 
   public static final String SERIALIZED_NAME_STORE_INTEGRATION_ID = "storeIntegrationId";
   @SerializedName(SERIALIZED_NAME_STORE_INTEGRATION_ID)
@@ -60,7 +60,7 @@ public class ApplicationEvent {
 
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
-  private Long sessionId;
+  private Integer sessionId;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -79,24 +79,24 @@ public class ApplicationEvent {
   private List<RuleFailureReason> ruleFailureReasons = null;
 
 
-  public ApplicationEvent id(Long id) {
+  public ApplicationEvent id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -123,7 +123,7 @@ public class ApplicationEvent {
   }
 
 
-  public ApplicationEvent applicationId(Long applicationId) {
+  public ApplicationEvent applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -135,17 +135,17 @@ public class ApplicationEvent {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public ApplicationEvent profileId(Long profileId) {
+  public ApplicationEvent profileId(Integer profileId) {
     
     this.profileId = profileId;
     return this;
@@ -158,17 +158,17 @@ public class ApplicationEvent {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "138", value = "The globally unique Talon.One ID of the customer that created this entity.")
 
-  public Long getProfileId() {
+  public Integer getProfileId() {
     return profileId;
   }
 
 
-  public void setProfileId(Long profileId) {
+  public void setProfileId(Integer profileId) {
     this.profileId = profileId;
   }
 
 
-  public ApplicationEvent storeId(Long storeId) {
+  public ApplicationEvent storeId(Integer storeId) {
     
     this.storeId = storeId;
     return this;
@@ -181,12 +181,12 @@ public class ApplicationEvent {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The ID of the store.")
 
-  public Long getStoreId() {
+  public Integer getStoreId() {
     return storeId;
   }
 
 
-  public void setStoreId(Long storeId) {
+  public void setStoreId(Integer storeId) {
     this.storeId = storeId;
   }
 
@@ -214,7 +214,7 @@ public class ApplicationEvent {
   }
 
 
-  public ApplicationEvent sessionId(Long sessionId) {
+  public ApplicationEvent sessionId(Integer sessionId) {
     
     this.sessionId = sessionId;
     return this;
@@ -227,12 +227,12 @@ public class ApplicationEvent {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The globally unique Talon.One ID of the session that contains this event.")
 
-  public Long getSessionId() {
+  public Integer getSessionId() {
     return sessionId;
   }
 
 
-  public void setSessionId(Long sessionId) {
+  public void setSessionId(Integer sessionId) {
     this.sessionId = sessionId;
   }
 

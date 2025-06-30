@@ -32,30 +32,30 @@ import java.io.IOException;
 public class ApplicationCampaignStats {
   public static final String SERIALIZED_NAME_DISABLED = "disabled";
   @SerializedName(SERIALIZED_NAME_DISABLED)
-  private Long disabled;
+  private Integer disabled;
 
   public static final String SERIALIZED_NAME_STAGED = "staged";
   @SerializedName(SERIALIZED_NAME_STAGED)
-  private Long staged;
+  private Integer staged;
 
   public static final String SERIALIZED_NAME_SCHEDULED = "scheduled";
   @SerializedName(SERIALIZED_NAME_SCHEDULED)
-  private Long scheduled;
+  private Integer scheduled;
 
   public static final String SERIALIZED_NAME_RUNNING = "running";
   @SerializedName(SERIALIZED_NAME_RUNNING)
-  private Long running;
+  private Integer running;
 
   public static final String SERIALIZED_NAME_EXPIRED = "expired";
   @SerializedName(SERIALIZED_NAME_EXPIRED)
-  private Long expired;
+  private Integer expired;
 
   public static final String SERIALIZED_NAME_ARCHIVED = "archived";
   @SerializedName(SERIALIZED_NAME_ARCHIVED)
-  private Long archived;
+  private Integer archived;
 
 
-  public ApplicationCampaignStats disabled(Long disabled) {
+  public ApplicationCampaignStats disabled(Integer disabled) {
     
     this.disabled = disabled;
     return this;
@@ -67,17 +67,17 @@ public class ApplicationCampaignStats {
   **/
   @ApiModelProperty(required = true, value = "Number of disabled campaigns.")
 
-  public Long getDisabled() {
+  public Integer getDisabled() {
     return disabled;
   }
 
 
-  public void setDisabled(Long disabled) {
+  public void setDisabled(Integer disabled) {
     this.disabled = disabled;
   }
 
 
-  public ApplicationCampaignStats staged(Long staged) {
+  public ApplicationCampaignStats staged(Integer staged) {
     
     this.staged = staged;
     return this;
@@ -89,17 +89,17 @@ public class ApplicationCampaignStats {
   **/
   @ApiModelProperty(required = true, value = "Number of staged campaigns.")
 
-  public Long getStaged() {
+  public Integer getStaged() {
     return staged;
   }
 
 
-  public void setStaged(Long staged) {
+  public void setStaged(Integer staged) {
     this.staged = staged;
   }
 
 
-  public ApplicationCampaignStats scheduled(Long scheduled) {
+  public ApplicationCampaignStats scheduled(Integer scheduled) {
     
     this.scheduled = scheduled;
     return this;
@@ -111,17 +111,17 @@ public class ApplicationCampaignStats {
   **/
   @ApiModelProperty(required = true, value = "Number of scheduled campaigns.")
 
-  public Long getScheduled() {
+  public Integer getScheduled() {
     return scheduled;
   }
 
 
-  public void setScheduled(Long scheduled) {
+  public void setScheduled(Integer scheduled) {
     this.scheduled = scheduled;
   }
 
 
-  public ApplicationCampaignStats running(Long running) {
+  public ApplicationCampaignStats running(Integer running) {
     
     this.running = running;
     return this;
@@ -133,17 +133,17 @@ public class ApplicationCampaignStats {
   **/
   @ApiModelProperty(required = true, value = "Number of running campaigns.")
 
-  public Long getRunning() {
+  public Integer getRunning() {
     return running;
   }
 
 
-  public void setRunning(Long running) {
+  public void setRunning(Integer running) {
     this.running = running;
   }
 
 
-  public ApplicationCampaignStats expired(Long expired) {
+  public ApplicationCampaignStats expired(Integer expired) {
     
     this.expired = expired;
     return this;
@@ -155,17 +155,17 @@ public class ApplicationCampaignStats {
   **/
   @ApiModelProperty(required = true, value = "Number of expired campaigns.")
 
-  public Long getExpired() {
+  public Integer getExpired() {
     return expired;
   }
 
 
-  public void setExpired(Long expired) {
+  public void setExpired(Integer expired) {
     this.expired = expired;
   }
 
 
-  public ApplicationCampaignStats archived(Long archived) {
+  public ApplicationCampaignStats archived(Integer archived) {
     
     this.archived = archived;
     return this;
@@ -177,12 +177,12 @@ public class ApplicationCampaignStats {
   **/
   @ApiModelProperty(required = true, value = "Number of archived campaigns.")
 
-  public Long getArchived() {
+  public Integer getArchived() {
     return archived;
   }
 
 
-  public void setArchived(Long archived) {
+  public void setArchived(Integer archived) {
     this.archived = archived;
   }
 

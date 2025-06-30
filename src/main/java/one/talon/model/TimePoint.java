@@ -32,30 +32,30 @@ import java.io.IOException;
 public class TimePoint {
   public static final String SERIALIZED_NAME_MONTH = "month";
   @SerializedName(SERIALIZED_NAME_MONTH)
-  private Long month;
+  private Integer month;
 
   public static final String SERIALIZED_NAME_DAY_OF_MONTH = "dayOfMonth";
   @SerializedName(SERIALIZED_NAME_DAY_OF_MONTH)
-  private Long dayOfMonth;
+  private Integer dayOfMonth;
 
   public static final String SERIALIZED_NAME_DAY_OF_WEEK = "dayOfWeek";
   @SerializedName(SERIALIZED_NAME_DAY_OF_WEEK)
-  private Long dayOfWeek;
+  private Integer dayOfWeek;
 
   public static final String SERIALIZED_NAME_HOUR = "hour";
   @SerializedName(SERIALIZED_NAME_HOUR)
-  private Long hour;
+  private Integer hour;
 
   public static final String SERIALIZED_NAME_MINUTE = "minute";
   @SerializedName(SERIALIZED_NAME_MINUTE)
-  private Long minute;
+  private Integer minute;
 
   public static final String SERIALIZED_NAME_SECOND = "second";
   @SerializedName(SERIALIZED_NAME_SECOND)
-  private Long second;
+  private Integer second;
 
 
-  public TimePoint month(Long month) {
+  public TimePoint month(Integer month) {
     
     this.month = month;
     return this;
@@ -70,17 +70,17 @@ public class TimePoint {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "11", value = "The achievement ends and resets in this month.  **Note**: Only applicable if the period is set to `Y`. ")
 
-  public Long getMonth() {
+  public Integer getMonth() {
     return month;
   }
 
 
-  public void setMonth(Long month) {
+  public void setMonth(Integer month) {
     this.month = month;
   }
 
 
-  public TimePoint dayOfMonth(Long dayOfMonth) {
+  public TimePoint dayOfMonth(Integer dayOfMonth) {
     
     this.dayOfMonth = dayOfMonth;
     return this;
@@ -95,17 +95,17 @@ public class TimePoint {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "23", value = "The achievement ends and resets on this day of the month.  **Note**: Only applicable if the period is set to `Y` or `M`. ")
 
-  public Long getDayOfMonth() {
+  public Integer getDayOfMonth() {
     return dayOfMonth;
   }
 
 
-  public void setDayOfMonth(Long dayOfMonth) {
+  public void setDayOfMonth(Integer dayOfMonth) {
     this.dayOfMonth = dayOfMonth;
   }
 
 
-  public TimePoint dayOfWeek(Long dayOfWeek) {
+  public TimePoint dayOfWeek(Integer dayOfWeek) {
     
     this.dayOfWeek = dayOfWeek;
     return this;
@@ -120,17 +120,17 @@ public class TimePoint {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The achievement ends and resets on this day of the week. `1` represents `Monday` and `7` represents `Sunday`.  **Note**: Only applicable if the period is set to `W`. ")
 
-  public Long getDayOfWeek() {
+  public Integer getDayOfWeek() {
     return dayOfWeek;
   }
 
 
-  public void setDayOfWeek(Long dayOfWeek) {
+  public void setDayOfWeek(Integer dayOfWeek) {
     this.dayOfWeek = dayOfWeek;
   }
 
 
-  public TimePoint hour(Long hour) {
+  public TimePoint hour(Integer hour) {
     
     this.hour = hour;
     return this;
@@ -142,17 +142,17 @@ public class TimePoint {
   **/
   @ApiModelProperty(example = "23", required = true, value = "The achievement ends and resets at this hour.")
 
-  public Long getHour() {
+  public Integer getHour() {
     return hour;
   }
 
 
-  public void setHour(Long hour) {
+  public void setHour(Integer hour) {
     this.hour = hour;
   }
 
 
-  public TimePoint minute(Long minute) {
+  public TimePoint minute(Integer minute) {
     
     this.minute = minute;
     return this;
@@ -164,17 +164,17 @@ public class TimePoint {
   **/
   @ApiModelProperty(example = "59", required = true, value = "The achievement ends and resets at this minute.")
 
-  public Long getMinute() {
+  public Integer getMinute() {
     return minute;
   }
 
 
-  public void setMinute(Long minute) {
+  public void setMinute(Integer minute) {
     this.minute = minute;
   }
 
 
-  public TimePoint second(Long second) {
+  public TimePoint second(Integer second) {
     
     this.second = second;
     return this;
@@ -186,12 +186,12 @@ public class TimePoint {
   **/
   @ApiModelProperty(example = "59", required = true, value = "The achievement ends and resets at this second.")
 
-  public Long getSecond() {
+  public Integer getSecond() {
     return second;
   }
 
 
-  public void setSecond(Long second) {
+  public void setSecond(Integer second) {
     this.second = second;
   }
 

@@ -38,7 +38,7 @@ public class CardLedgerTransactionLogEntry {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Long programId;
+  private Integer programId;
 
   public static final String SERIALIZED_NAME_CARD_IDENTIFIER = "cardIdentifier";
   @SerializedName(SERIALIZED_NAME_CARD_IDENTIFIER)
@@ -46,11 +46,11 @@ public class CardLedgerTransactionLogEntry {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
-  private Long sessionId;
+  private Integer sessionId;
 
   public static final String SERIALIZED_NAME_CUSTOMER_SESSION_ID = "customerSessionId";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_SESSION_ID)
@@ -129,7 +129,7 @@ public class CardLedgerTransactionLogEntry {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
 
   public CardLedgerTransactionLogEntry created(OffsetDateTime created) {
@@ -154,7 +154,7 @@ public class CardLedgerTransactionLogEntry {
   }
 
 
-  public CardLedgerTransactionLogEntry programId(Long programId) {
+  public CardLedgerTransactionLogEntry programId(Integer programId) {
     
     this.programId = programId;
     return this;
@@ -166,12 +166,12 @@ public class CardLedgerTransactionLogEntry {
   **/
   @ApiModelProperty(example = "324", required = true, value = "ID of the loyalty program.")
 
-  public Long getProgramId() {
+  public Integer getProgramId() {
     return programId;
   }
 
 
-  public void setProgramId(Long programId) {
+  public void setProgramId(Integer programId) {
     this.programId = programId;
   }
 
@@ -198,7 +198,7 @@ public class CardLedgerTransactionLogEntry {
   }
 
 
-  public CardLedgerTransactionLogEntry applicationId(Long applicationId) {
+  public CardLedgerTransactionLogEntry applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -211,17 +211,17 @@ public class CardLedgerTransactionLogEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "322", value = "The ID of the Application that owns this entity.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CardLedgerTransactionLogEntry sessionId(Long sessionId) {
+  public CardLedgerTransactionLogEntry sessionId(Integer sessionId) {
     
     this.sessionId = sessionId;
     return this;
@@ -234,12 +234,12 @@ public class CardLedgerTransactionLogEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "233", value = "The **internal** ID of the session. ")
 
-  public Long getSessionId() {
+  public Integer getSessionId() {
     return sessionId;
   }
 
 
-  public void setSessionId(Long sessionId) {
+  public void setSessionId(Integer sessionId) {
     this.sessionId = sessionId;
   }
 
@@ -399,7 +399,7 @@ public class CardLedgerTransactionLogEntry {
   }
 
 
-  public CardLedgerTransactionLogEntry id(Long id) {
+  public CardLedgerTransactionLogEntry id(Integer id) {
     
     this.id = id;
     return this;
@@ -411,12 +411,12 @@ public class CardLedgerTransactionLogEntry {
   **/
   @ApiModelProperty(example = "123", required = true, value = "ID of the loyalty ledger entry.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

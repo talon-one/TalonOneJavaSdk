@@ -36,11 +36,11 @@ public class UpdateApplicationCIF {
 
   public static final String SERIALIZED_NAME_ACTIVE_EXPRESSION_ID = "activeExpressionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_EXPRESSION_ID)
-  private Long activeExpressionId;
+  private Integer activeExpressionId;
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Long modifiedBy;
+  private Integer modifiedBy;
 
   public static final String SERIALIZED_NAME_MODIFIED = "modified";
   @SerializedName(SERIALIZED_NAME_MODIFIED)
@@ -70,7 +70,7 @@ public class UpdateApplicationCIF {
   }
 
 
-  public UpdateApplicationCIF activeExpressionId(Long activeExpressionId) {
+  public UpdateApplicationCIF activeExpressionId(Integer activeExpressionId) {
     
     this.activeExpressionId = activeExpressionId;
     return this;
@@ -83,17 +83,17 @@ public class UpdateApplicationCIF {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the expression that the Application cart item filter uses.")
 
-  public Long getActiveExpressionId() {
+  public Integer getActiveExpressionId() {
     return activeExpressionId;
   }
 
 
-  public void setActiveExpressionId(Long activeExpressionId) {
+  public void setActiveExpressionId(Integer activeExpressionId) {
     this.activeExpressionId = activeExpressionId;
   }
 
 
-  public UpdateApplicationCIF modifiedBy(Long modifiedBy) {
+  public UpdateApplicationCIF modifiedBy(Integer modifiedBy) {
     
     this.modifiedBy = modifiedBy;
     return this;
@@ -106,12 +106,12 @@ public class UpdateApplicationCIF {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "334", value = "The ID of the user who last updated the Application cart item filter.")
 
-  public Long getModifiedBy() {
+  public Integer getModifiedBy() {
     return modifiedBy;
   }
 
 
-  public void setModifiedBy(Long modifiedBy) {
+  public void setModifiedBy(Integer modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 

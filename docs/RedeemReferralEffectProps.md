@@ -7,7 +7,7 @@ This effect is **deprecated**. The properties specific to the \"redeemReferral\"
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | The id of the referral code that was redeemed. | 
+**id** | **Integer** | The id of the referral code that was redeemed. | 
 **value** | **String** | The referral code that was redeemed. | 
 
 

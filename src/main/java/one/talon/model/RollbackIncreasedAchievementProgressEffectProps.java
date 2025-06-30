@@ -33,7 +33,7 @@ import java.math.BigDecimal;
 public class RollbackIncreasedAchievementProgressEffectProps {
   public static final String SERIALIZED_NAME_ACHIEVEMENT_ID = "achievementId";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_ID)
-  private Long achievementId;
+  private Integer achievementId;
 
   public static final String SERIALIZED_NAME_ACHIEVEMENT_NAME = "achievementName";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_NAME)
@@ -41,7 +41,7 @@ public class RollbackIncreasedAchievementProgressEffectProps {
 
   public static final String SERIALIZED_NAME_PROGRESS_TRACKER_ID = "progressTrackerId";
   @SerializedName(SERIALIZED_NAME_PROGRESS_TRACKER_ID)
-  private Long progressTrackerId;
+  private Integer progressTrackerId;
 
   public static final String SERIALIZED_NAME_DECREASE_PROGRESS_BY = "decreaseProgressBy";
   @SerializedName(SERIALIZED_NAME_DECREASE_PROGRESS_BY)
@@ -56,7 +56,7 @@ public class RollbackIncreasedAchievementProgressEffectProps {
   private BigDecimal target;
 
 
-  public RollbackIncreasedAchievementProgressEffectProps achievementId(Long achievementId) {
+  public RollbackIncreasedAchievementProgressEffectProps achievementId(Integer achievementId) {
     
     this.achievementId = achievementId;
     return this;
@@ -68,12 +68,12 @@ public class RollbackIncreasedAchievementProgressEffectProps {
   **/
   @ApiModelProperty(example = "10", required = true, value = "The internal ID of the achievement.")
 
-  public Long getAchievementId() {
+  public Integer getAchievementId() {
     return achievementId;
   }
 
 
-  public void setAchievementId(Long achievementId) {
+  public void setAchievementId(Integer achievementId) {
     this.achievementId = achievementId;
   }
 
@@ -100,7 +100,7 @@ public class RollbackIncreasedAchievementProgressEffectProps {
   }
 
 
-  public RollbackIncreasedAchievementProgressEffectProps progressTrackerId(Long progressTrackerId) {
+  public RollbackIncreasedAchievementProgressEffectProps progressTrackerId(Integer progressTrackerId) {
     
     this.progressTrackerId = progressTrackerId;
     return this;
@@ -112,12 +112,12 @@ public class RollbackIncreasedAchievementProgressEffectProps {
   **/
   @ApiModelProperty(required = true, value = "The internal ID of the achievement progress tracker.")
 
-  public Long getProgressTrackerId() {
+  public Integer getProgressTrackerId() {
     return progressTrackerId;
   }
 
 
-  public void setProgressTrackerId(Long progressTrackerId) {
+  public void setProgressTrackerId(Integer progressTrackerId) {
     this.progressTrackerId = progressTrackerId;
   }
 

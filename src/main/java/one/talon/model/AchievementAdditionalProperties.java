@@ -31,11 +31,11 @@ import java.io.IOException;
 public class AchievementAdditionalProperties {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Long userId;
+  private Integer userId;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
@@ -101,7 +101,7 @@ public class AchievementAdditionalProperties {
   private StatusEnum status;
 
 
-  public AchievementAdditionalProperties campaignId(Long campaignId) {
+  public AchievementAdditionalProperties campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -113,17 +113,17 @@ public class AchievementAdditionalProperties {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the campaign the achievement belongs to.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public AchievementAdditionalProperties userId(Long userId) {
+  public AchievementAdditionalProperties userId(Integer userId) {
     
     this.userId = userId;
     return this;
@@ -135,12 +135,12 @@ public class AchievementAdditionalProperties {
   **/
   @ApiModelProperty(example = "1234", required = true, value = "ID of the user that created this achievement.")
 
-  public Long getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Long userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 

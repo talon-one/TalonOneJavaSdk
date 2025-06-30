@@ -31,7 +31,7 @@ import java.io.IOException;
 public class ProductSearchMatch {
   public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
   @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
-  private Long productId;
+  private Integer productId;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -39,10 +39,10 @@ public class ProductSearchMatch {
 
   public static final String SERIALIZED_NAME_PRODUCT_SKU_ID = "productSkuId";
   @SerializedName(SERIALIZED_NAME_PRODUCT_SKU_ID)
-  private Long productSkuId;
+  private Integer productSkuId;
 
 
-  public ProductSearchMatch productId(Long productId) {
+  public ProductSearchMatch productId(Integer productId) {
     
     this.productId = productId;
     return this;
@@ -55,12 +55,12 @@ public class ProductSearchMatch {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the product.")
 
-  public Long getProductId() {
+  public Integer getProductId() {
     return productId;
   }
 
 
-  public void setProductId(Long productId) {
+  public void setProductId(Integer productId) {
     this.productId = productId;
   }
 
@@ -87,7 +87,7 @@ public class ProductSearchMatch {
   }
 
 
-  public ProductSearchMatch productSkuId(Long productSkuId) {
+  public ProductSearchMatch productSkuId(Integer productSkuId) {
     
     this.productSkuId = productSkuId;
     return this;
@@ -100,12 +100,12 @@ public class ProductSearchMatch {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the SKU linked to a product. If empty, this is an product.")
 
-  public Long getProductSkuId() {
+  public Integer getProductSkuId() {
     return productSkuId;
   }
 
 
-  public void setProductSkuId(Long productSkuId) {
+  public void setProductSkuId(Integer productSkuId) {
     this.productSkuId = productSkuId;
   }
 

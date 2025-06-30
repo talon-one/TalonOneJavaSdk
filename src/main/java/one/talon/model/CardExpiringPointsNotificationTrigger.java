@@ -31,7 +31,7 @@ import java.io.IOException;
 public class CardExpiringPointsNotificationTrigger {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private Long amount;
+  private Integer amount;
 
   /**
    * Notification period indicated by a letter; \&quot;w\&quot; means week, \&quot;d\&quot; means day.
@@ -85,7 +85,7 @@ public class CardExpiringPointsNotificationTrigger {
   private PeriodEnum period;
 
 
-  public CardExpiringPointsNotificationTrigger amount(Long amount) {
+  public CardExpiringPointsNotificationTrigger amount(Integer amount) {
     
     this.amount = amount;
     return this;
@@ -98,12 +98,12 @@ public class CardExpiringPointsNotificationTrigger {
   **/
   @ApiModelProperty(required = true, value = "The amount of period.")
 
-  public Long getAmount() {
+  public Integer getAmount() {
     return amount;
   }
 
 
-  public void setAmount(Long amount) {
+  public void setAmount(Integer amount) {
     this.amount = amount;
   }
 

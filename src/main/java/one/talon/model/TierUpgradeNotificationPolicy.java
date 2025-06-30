@@ -39,7 +39,7 @@ public class TierUpgradeNotificationPolicy {
 
   public static final String SERIALIZED_NAME_BATCH_SIZE = "batchSize";
   @SerializedName(SERIALIZED_NAME_BATCH_SIZE)
-  private Long batchSize = 1000l;
+  private Integer batchSize;
 
 
   public TierUpgradeNotificationPolicy name(String name) {
@@ -87,7 +87,7 @@ public class TierUpgradeNotificationPolicy {
   }
 
 
-  public TierUpgradeNotificationPolicy batchSize(Long batchSize) {
+  public TierUpgradeNotificationPolicy batchSize(Integer batchSize) {
     
     this.batchSize = batchSize;
     return this;
@@ -100,12 +100,12 @@ public class TierUpgradeNotificationPolicy {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1000", value = "The required size of each batch of data. This value applies only when `batchingEnabled` is `true`.")
 
-  public Long getBatchSize() {
+  public Integer getBatchSize() {
     return batchSize;
   }
 
 
-  public void setBatchSize(Long batchSize) {
+  public void setBatchSize(Integer batchSize) {
     this.batchSize = batchSize;
   }
 

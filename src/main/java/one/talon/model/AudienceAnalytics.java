@@ -32,14 +32,14 @@ import java.io.IOException;
 public class AudienceAnalytics {
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
-  private Long audienceId;
+  private Integer audienceId;
 
   public static final String SERIALIZED_NAME_MEMBERS_COUNT = "membersCount";
   @SerializedName(SERIALIZED_NAME_MEMBERS_COUNT)
-  private Long membersCount;
+  private Integer membersCount;
 
 
-  public AudienceAnalytics audienceId(Long audienceId) {
+  public AudienceAnalytics audienceId(Integer audienceId) {
     
     this.audienceId = audienceId;
     return this;
@@ -52,17 +52,17 @@ public class AudienceAnalytics {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the audience.")
 
-  public Long getAudienceId() {
+  public Integer getAudienceId() {
     return audienceId;
   }
 
 
-  public void setAudienceId(Long audienceId) {
+  public void setAudienceId(Integer audienceId) {
     this.audienceId = audienceId;
   }
 
 
-  public AudienceAnalytics membersCount(Long membersCount) {
+  public AudienceAnalytics membersCount(Integer membersCount) {
     
     this.membersCount = membersCount;
     return this;
@@ -75,12 +75,12 @@ public class AudienceAnalytics {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1234", value = "The member count of the audience.")
 
-  public Long getMembersCount() {
+  public Integer getMembersCount() {
     return membersCount;
   }
 
 
-  public void setMembersCount(Long membersCount) {
+  public void setMembersCount(Integer membersCount) {
     this.membersCount = membersCount;
   }
 

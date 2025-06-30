@@ -32,14 +32,14 @@ import java.math.BigDecimal;
 public class NewCampaignStoreBudgetStoreLimit {
   public static final String SERIALIZED_NAME_STORE_ID = "storeId";
   @SerializedName(SERIALIZED_NAME_STORE_ID)
-  private Long storeId;
+  private Integer storeId;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   private BigDecimal limit;
 
 
-  public NewCampaignStoreBudgetStoreLimit storeId(Long storeId) {
+  public NewCampaignStoreBudgetStoreLimit storeId(Integer storeId) {
     
     this.storeId = storeId;
     return this;
@@ -51,12 +51,12 @@ public class NewCampaignStoreBudgetStoreLimit {
   **/
   @ApiModelProperty(example = "17", required = true, value = "The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint. ")
 
-  public Long getStoreId() {
+  public Integer getStoreId() {
     return storeId;
   }
 
 
-  public void setStoreId(Long storeId) {
+  public void setStoreId(Integer storeId) {
     this.storeId = storeId;
   }
 

@@ -32,14 +32,14 @@ import java.io.IOException;
 public class ScimServiceProviderConfigResponseFilter {
   public static final String SERIALIZED_NAME_MAX_RESULTS = "maxResults";
   @SerializedName(SERIALIZED_NAME_MAX_RESULTS)
-  private Long maxResults;
+  private Integer maxResults;
 
   public static final String SERIALIZED_NAME_SUPPORTED = "supported";
   @SerializedName(SERIALIZED_NAME_SUPPORTED)
   private Boolean supported;
 
 
-  public ScimServiceProviderConfigResponseFilter maxResults(Long maxResults) {
+  public ScimServiceProviderConfigResponseFilter maxResults(Integer maxResults) {
     
     this.maxResults = maxResults;
     return this;
@@ -52,12 +52,12 @@ public class ScimServiceProviderConfigResponseFilter {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of resources that can be returned in a single filtered query response.")
 
-  public Long getMaxResults() {
+  public Integer getMaxResults() {
     return maxResults;
   }
 
 
-  public void setMaxResults(Long maxResults) {
+  public void setMaxResults(Integer maxResults) {
     this.maxResults = maxResults;
   }
 

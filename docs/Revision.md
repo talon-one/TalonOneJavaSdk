@@ -6,15 +6,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints. | 
+**id** | **Integer** | Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints. | 
 **activateAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**accountId** | **Long** |  | 
-**applicationId** | **Long** |  | 
-**campaignId** | **Long** |  | 
+**accountId** | **Integer** |  | 
+**applicationId** | **Integer** |  | 
+**campaignId** | **Integer** |  | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
-**createdBy** | **Long** |  | 
+**createdBy** | **Integer** |  | 
 **activatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**activatedBy** | **Long** |  |  [optional]
+**activatedBy** | **Integer** |  |  [optional]
 **currentVersion** | [**RevisionVersion**](RevisionVersion.md) |  |  [optional]
 
 

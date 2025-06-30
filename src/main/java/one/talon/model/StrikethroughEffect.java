@@ -33,15 +33,15 @@ import org.threeten.bp.OffsetDateTime;
 public class StrikethroughEffect {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_RULESET_ID = "rulesetId";
   @SerializedName(SERIALIZED_NAME_RULESET_ID)
-  private Long rulesetId;
+  private Integer rulesetId;
 
   public static final String SERIALIZED_NAME_RULE_INDEX = "ruleIndex";
   @SerializedName(SERIALIZED_NAME_RULE_INDEX)
-  private Long ruleIndex;
+  private Integer ruleIndex;
 
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
@@ -64,7 +64,7 @@ public class StrikethroughEffect {
   private OffsetDateTime endTime;
 
 
-  public StrikethroughEffect campaignId(Long campaignId) {
+  public StrikethroughEffect campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -76,17 +76,17 @@ public class StrikethroughEffect {
   **/
   @ApiModelProperty(example = "3", required = true, value = "The ID of the campaign that effect belongs to.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public StrikethroughEffect rulesetId(Long rulesetId) {
+  public StrikethroughEffect rulesetId(Integer rulesetId) {
     
     this.rulesetId = rulesetId;
     return this;
@@ -98,17 +98,17 @@ public class StrikethroughEffect {
   **/
   @ApiModelProperty(example = "11", required = true, value = "The ID of the ruleset containing the rule that triggered this effect.")
 
-  public Long getRulesetId() {
+  public Integer getRulesetId() {
     return rulesetId;
   }
 
 
-  public void setRulesetId(Long rulesetId) {
+  public void setRulesetId(Integer rulesetId) {
     this.rulesetId = rulesetId;
   }
 
 
-  public StrikethroughEffect ruleIndex(Long ruleIndex) {
+  public StrikethroughEffect ruleIndex(Integer ruleIndex) {
     
     this.ruleIndex = ruleIndex;
     return this;
@@ -120,12 +120,12 @@ public class StrikethroughEffect {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The position of the rule that triggered this effect within the ruleset.")
 
-  public Long getRuleIndex() {
+  public Integer getRuleIndex() {
     return ruleIndex;
   }
 
 
-  public void setRuleIndex(Long ruleIndex) {
+  public void setRuleIndex(Integer ruleIndex) {
     this.ruleIndex = ruleIndex;
   }
 

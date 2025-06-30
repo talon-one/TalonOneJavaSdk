@@ -46,7 +46,7 @@ public class NewRoleV2 {
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<Long> members = null;
+  private List<Integer> members = null;
 
 
   public NewRoleV2 name(String name) {
@@ -116,15 +116,15 @@ public class NewRoleV2 {
   }
 
 
-  public NewRoleV2 members(List<Long> members) {
+  public NewRoleV2 members(List<Integer> members) {
     
     this.members = members;
     return this;
   }
 
-  public NewRoleV2 addMembersItem(Long membersItem) {
+  public NewRoleV2 addMembersItem(Integer membersItem) {
     if (this.members == null) {
-      this.members = new ArrayList<Long>();
+      this.members = new ArrayList<Integer>();
     }
     this.members.add(membersItem);
     return this;
@@ -137,12 +137,12 @@ public class NewRoleV2 {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[10, 12]", value = "A list of user IDs the role is assigned to.")
 
-  public List<Long> getMembers() {
+  public List<Integer> getMembers() {
     return members;
   }
 
 
-  public void setMembers(List<Long> members) {
+  public void setMembers(List<Integer> members) {
     this.members = members;
   }
 

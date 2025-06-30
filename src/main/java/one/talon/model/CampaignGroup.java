@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CampaignGroup {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -46,7 +46,7 @@ public class CampaignGroup {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -58,31 +58,31 @@ public class CampaignGroup {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Long> subscribedApplicationsIds = null;
+  private List<Integer> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
-  private List<Long> campaignIds = null;
+  private List<Integer> campaignIds = null;
 
 
-  public CampaignGroup id(Long id) {
+  public CampaignGroup id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -131,7 +131,7 @@ public class CampaignGroup {
   }
 
 
-  public CampaignGroup accountId(Long accountId) {
+  public CampaignGroup accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -143,12 +143,12 @@ public class CampaignGroup {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
@@ -198,15 +198,15 @@ public class CampaignGroup {
   }
 
 
-  public CampaignGroup subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+  public CampaignGroup subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
     
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public CampaignGroup addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
+  public CampaignGroup addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Long>();
+      this.subscribedApplicationsIds = new ArrayList<Integer>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
@@ -219,25 +219,25 @@ public class CampaignGroup {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of IDs of the Applications that this campaign access group is enabled for.")
 
-  public List<Long> getSubscribedApplicationsIds() {
+  public List<Integer> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
 
-  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
 
-  public CampaignGroup campaignIds(List<Long> campaignIds) {
+  public CampaignGroup campaignIds(List<Integer> campaignIds) {
     
     this.campaignIds = campaignIds;
     return this;
   }
 
-  public CampaignGroup addCampaignIdsItem(Long campaignIdsItem) {
+  public CampaignGroup addCampaignIdsItem(Integer campaignIdsItem) {
     if (this.campaignIds == null) {
-      this.campaignIds = new ArrayList<Long>();
+      this.campaignIds = new ArrayList<Integer>();
     }
     this.campaignIds.add(campaignIdsItem);
     return this;
@@ -250,12 +250,12 @@ public class CampaignGroup {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[4, 6, 8]", value = "A list of IDs of the campaigns that are part of the campaign access group.")
 
-  public List<Long> getCampaignIds() {
+  public List<Integer> getCampaignIds() {
     return campaignIds;
   }
 
 
-  public void setCampaignIds(List<Long> campaignIds) {
+  public void setCampaignIds(List<Integer> campaignIds) {
     this.campaignIds = campaignIds;
   }
 

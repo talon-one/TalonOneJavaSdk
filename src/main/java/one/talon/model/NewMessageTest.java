@@ -43,6 +43,10 @@ public class NewMessageTest {
     
     CARD_ADDED_DEDUCTED_POINTS("card_added_deducted_points"),
     
+    LOYALTY_ADDED_DEDUCTED_POINTS_BALANCES("loyalty_added_deducted_points_balances"),
+    
+    LOYALTY_CARD_ADDED_DEDUCTED_POINTS_BALANCES("loyalty_card_added_deducted_points_balances"),
+    
     COUPON("coupon"),
     
     EXPIRING_COUPONS("expiring_coupons"),

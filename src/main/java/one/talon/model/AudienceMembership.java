@@ -31,14 +31,14 @@ import java.io.IOException;
 public class AudienceMembership {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
 
-  public AudienceMembership id(Long id) {
+  public AudienceMembership id(Integer id) {
     
     this.id = id;
     return this;
@@ -50,12 +50,12 @@ public class AudienceMembership {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The ID of the audience belonging to this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Internal ID of this entity. | 
+**id** | **Integer** | The internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **modified** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was last modified. | 
-**accountId** | **Long** | The ID of the account that owns this entity. | 
+**accountId** | **Integer** | The ID of the account that owns this entity. | 
 **name** | **String** | The name of this application. | 
 **description** | **String** | A longer description of the application. |  [optional]
 **timezone** | **String** | A string containing an IANA timezone descriptor. | 
@@ -24,8 +24,8 @@ Name | Type | Description | Notes
 **sandbox** | **Boolean** | Indicates if this is a live or sandbox Application. |  [optional]
 **enablePartialDiscounts** | **Boolean** | Indicates if this Application supports partial discounts. |  [optional]
 **defaultDiscountAdditionalCostPerItemScope** | [**DefaultDiscountAdditionalCostPerItemScopeEnum**](#DefaultDiscountAdditionalCostPerItemScopeEnum) | The default scope to apply &#x60;setDiscountPerItem&#x60; effects on if no scope was provided with the effect.  |  [optional]
-**defaultEvaluationGroupId** | **Long** | The ID of the default campaign evaluation group to which new campaigns will be added unless a different group is selected when creating the campaign. |  [optional]
-**defaultCartItemFilterId** | **Long** | The ID of the default Cart-Item-Filter for this application. |  [optional]
+**defaultEvaluationGroupId** | **Integer** | The ID of the default campaign evaluation group to which new campaigns will be added unless a different group is selected when creating the campaign. |  [optional]
+**defaultCartItemFilterId** | **Integer** | The ID of the default Cart-Item-Filter for this application. |  [optional]
 **enableCampaignStateManagement** | **Boolean** | Indicates whether the campaign staging and revisions feature is enabled for the Application.  **Important:** After this feature is enabled, it cannot be disabled.  |  [optional]
 **loyaltyPrograms** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) | An array containing all the loyalty programs to which this application is subscribed. | 
 

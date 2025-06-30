@@ -35,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Webhook {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -47,7 +47,7 @@ public class Webhook {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Long> applicationIds = new ArrayList<Long>();
+  private List<Integer> applicationIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -56,6 +56,10 @@ public class Webhook {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_DRAFT = "draft";
+  @SerializedName(SERIALIZED_NAME_DRAFT)
+  private Boolean draft;
 
   /**
    * API method for this webhook.
@@ -135,24 +139,24 @@ public class Webhook {
   private Boolean enabled;
 
 
-  public Webhook id(Long id) {
+  public Webhook id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -201,13 +205,13 @@ public class Webhook {
   }
 
 
-  public Webhook applicationIds(List<Long> applicationIds) {
+  public Webhook applicationIds(List<Integer> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public Webhook addApplicationIdsItem(Long applicationIdsItem) {
+  public Webhook addApplicationIdsItem(Integer applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
@@ -218,12 +222,12 @@ public class Webhook {
   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in `All Applications`. ")
 
-  public List<Long> getApplicationIds() {
+  public List<Integer> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(List<Long> applicationIds) {
+  public void setApplicationIds(List<Integer> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
@@ -270,6 +274,28 @@ public class Webhook {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public Webhook draft(Boolean draft) {
+    
+    this.draft = draft;
+    return this;
+  }
+
+   /**
+   * Indicates if the webhook is a draft.
+   * @return draft
+  **/
+  @ApiModelProperty(example = "false", required = true, value = "Indicates if the webhook is a draft.")
+
+  public Boolean getDraft() {
+    return draft;
+  }
+
+
+  public void setDraft(Boolean draft) {
+    this.draft = draft;
   }
 
 
@@ -431,6 +457,7 @@ public class Webhook {
         Objects.equals(this.applicationIds, webhook.applicationIds) &&
         Objects.equals(this.title, webhook.title) &&
         Objects.equals(this.description, webhook.description) &&
+        Objects.equals(this.draft, webhook.draft) &&
         Objects.equals(this.verb, webhook.verb) &&
         Objects.equals(this.url, webhook.url) &&
         Objects.equals(this.headers, webhook.headers) &&
@@ -441,7 +468,7 @@ public class Webhook {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, applicationIds, title, description, verb, url, headers, payload, params, enabled);
+    return Objects.hash(id, created, modified, applicationIds, title, description, draft, verb, url, headers, payload, params, enabled);
   }
 
 
@@ -455,6 +482,7 @@ public class Webhook {
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
     sb.append("    verb: ").append(toIndentedString(verb)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");

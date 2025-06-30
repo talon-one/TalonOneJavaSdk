@@ -105,7 +105,7 @@ public class AchievementProgressWithDefinition {
 
   public static final String SERIALIZED_NAME_ACHIEVEMENT_ID = "achievementId";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_ID)
-  private Long achievementId;
+  private Integer achievementId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -121,20 +121,22 @@ public class AchievementProgressWithDefinition {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
   private BigDecimal target;
 
   /**
-   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. - &#x60;on_completion&#x60;: When the customer progress status reaches &#x60;completed&#x60;, the achievement resets and becomes available again. 
    */
   @JsonAdapter(AchievementRecurrencePolicyEnum.Adapter.class)
   public enum AchievementRecurrencePolicyEnum {
     NO_RECURRENCE("no_recurrence"),
     
-    ON_EXPIRATION("on_expiration");
+    ON_EXPIRATION("on_expiration"),
+    
+    ON_COMPLETION("on_completion");
 
     private String value;
 
@@ -351,7 +353,7 @@ public class AchievementProgressWithDefinition {
   }
 
 
-  public AchievementProgressWithDefinition achievementId(Long achievementId) {
+  public AchievementProgressWithDefinition achievementId(Integer achievementId) {
     
     this.achievementId = achievementId;
     return this;
@@ -363,12 +365,12 @@ public class AchievementProgressWithDefinition {
   **/
   @ApiModelProperty(example = "3", required = true, value = "The internal ID of the achievement.")
 
-  public Long getAchievementId() {
+  public Integer getAchievementId() {
     return achievementId;
   }
 
 
-  public void setAchievementId(Long achievementId) {
+  public void setAchievementId(Integer achievementId) {
     this.achievementId = achievementId;
   }
 
@@ -439,7 +441,7 @@ public class AchievementProgressWithDefinition {
   }
 
 
-  public AchievementProgressWithDefinition campaignId(Long campaignId) {
+  public AchievementProgressWithDefinition campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -451,12 +453,12 @@ public class AchievementProgressWithDefinition {
   **/
   @ApiModelProperty(example = "3", required = true, value = "The ID of the campaign the achievement belongs to.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -491,10 +493,10 @@ public class AchievementProgressWithDefinition {
   }
 
    /**
-   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. - &#x60;on_completion&#x60;: When the customer progress status reaches &#x60;completed&#x60;, the achievement resets and becomes available again. 
    * @return achievementRecurrencePolicy
   **/
-  @ApiModelProperty(example = "no_recurrence", required = true, value = "The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. ")
+  @ApiModelProperty(example = "no_recurrence", required = true, value = "The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. - `on_completion`: When the customer progress status reaches `completed`, the achievement resets and becomes available again. ")
 
   public AchievementRecurrencePolicyEnum getAchievementRecurrencePolicy() {
     return achievementRecurrencePolicy;

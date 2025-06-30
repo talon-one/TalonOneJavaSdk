@@ -32,7 +32,7 @@ import java.io.IOException;
 public class RemoveFromAudienceEffectProps {
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
-  private Long audienceId;
+  private Integer audienceId;
 
   public static final String SERIALIZED_NAME_AUDIENCE_NAME = "audienceName";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_NAME)
@@ -44,10 +44,10 @@ public class RemoveFromAudienceEffectProps {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Long profileId;
+  private Integer profileId;
 
 
-  public RemoveFromAudienceEffectProps audienceId(Long audienceId) {
+  public RemoveFromAudienceEffectProps audienceId(Integer audienceId) {
     
     this.audienceId = audienceId;
     return this;
@@ -60,12 +60,12 @@ public class RemoveFromAudienceEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "10", value = "The internal ID of the audience.")
 
-  public Long getAudienceId() {
+  public Integer getAudienceId() {
     return audienceId;
   }
 
 
-  public void setAudienceId(Long audienceId) {
+  public void setAudienceId(Integer audienceId) {
     this.audienceId = audienceId;
   }
 
@@ -116,7 +116,7 @@ public class RemoveFromAudienceEffectProps {
   }
 
 
-  public RemoveFromAudienceEffectProps profileId(Long profileId) {
+  public RemoveFromAudienceEffectProps profileId(Integer profileId) {
     
     this.profileId = profileId;
     return this;
@@ -129,12 +129,12 @@ public class RemoveFromAudienceEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "150", value = "The internal ID of the customer profile.")
 
-  public Long getProfileId() {
+  public Integer getProfileId() {
     return profileId;
   }
 
 
-  public void setProfileId(Long profileId) {
+  public void setProfileId(Integer profileId) {
     this.profileId = profileId;
   }
 
