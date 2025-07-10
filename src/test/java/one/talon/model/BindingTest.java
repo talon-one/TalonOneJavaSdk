@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Assert;
@@ -72,6 +73,38 @@ public class BindingTest {
     @Test
     public void valueTypeTest() {
         // TODO: test valueType
+    }
+
+    /**
+     * Test the property 'minValue'
+     */
+    @Test
+    public void minValueTest() {
+        // TODO: test minValue
+    }
+
+    /**
+     * Test the property 'maxValue'
+     */
+    @Test
+    public void maxValueTest() {
+        // TODO: test maxValue
+    }
+
+    /**
+     * Test the property 'attributeId'
+     */
+    @Test
+    public void attributeIdTest() {
+        // TODO: test attributeId
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
     }
 
 }

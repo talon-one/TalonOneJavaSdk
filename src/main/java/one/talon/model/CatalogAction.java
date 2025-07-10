@@ -43,7 +43,9 @@ public class CatalogAction {
     
     REMOVE("REMOVE"),
     
-    REMOVE_MANY("REMOVE_MANY");
+    REMOVE_MANY("REMOVE_MANY"),
+    
+    ADD_PRICE_ADJUSTMENT("ADD_PRICE_ADJUSTMENT");
 
     private String value;
 

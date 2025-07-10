@@ -23,6 +23,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.UUID;
 
 /**
  * Definition of all properties that are present on all effects, independent of their type.
@@ -77,6 +79,18 @@ public class EffectEntity {
   public static final String SERIALIZED_NAME_CAMPAIGN_REVISION_VERSION_ID = "campaignRevisionVersionId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_REVISION_VERSION_ID)
   private Long campaignRevisionVersionId;
+
+  public static final String SERIALIZED_NAME_SELECTED_PRICE_TYPE = "selectedPriceType";
+  @SerializedName(SERIALIZED_NAME_SELECTED_PRICE_TYPE)
+  private String selectedPriceType;
+
+  public static final String SERIALIZED_NAME_SELECTED_PRICE = "selectedPrice";
+  @SerializedName(SERIALIZED_NAME_SELECTED_PRICE)
+  private BigDecimal selectedPrice;
+
+  public static final String SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID = "adjustmentReferenceId";
+  @SerializedName(SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID)
+  private UUID adjustmentReferenceId;
 
 
   public EffectEntity campaignId(Long campaignId) {
@@ -350,6 +364,75 @@ public class EffectEntity {
   }
 
 
+  public EffectEntity selectedPriceType(String selectedPriceType) {
+    
+    this.selectedPriceType = selectedPriceType;
+    return this;
+  }
+
+   /**
+   * The selected price type for the SKU targeted by this effect.
+   * @return selectedPriceType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "member", value = "The selected price type for the SKU targeted by this effect.")
+
+  public String getSelectedPriceType() {
+    return selectedPriceType;
+  }
+
+
+  public void setSelectedPriceType(String selectedPriceType) {
+    this.selectedPriceType = selectedPriceType;
+  }
+
+
+  public EffectEntity selectedPrice(BigDecimal selectedPrice) {
+    
+    this.selectedPrice = selectedPrice;
+    return this;
+  }
+
+   /**
+   * The value of the selected price type to apply to the SKU targeted by this effect, before any discounts are applied.
+   * @return selectedPrice
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "100.0", value = "The value of the selected price type to apply to the SKU targeted by this effect, before any discounts are applied.")
+
+  public BigDecimal getSelectedPrice() {
+    return selectedPrice;
+  }
+
+
+  public void setSelectedPrice(BigDecimal selectedPrice) {
+    this.selectedPrice = selectedPrice;
+  }
+
+
+  public EffectEntity adjustmentReferenceId(UUID adjustmentReferenceId) {
+    
+    this.adjustmentReferenceId = adjustmentReferenceId;
+    return this;
+  }
+
+   /**
+   * The reference identifier of the selected price adjustment for this SKU. This is only returned if the &#x60;selectedPrice&#x60; resulted from a price adjustment.
+   * @return adjustmentReferenceId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "68851723-e6fa-488f-ace9-112581e6c19b", value = "The reference identifier of the selected price adjustment for this SKU. This is only returned if the `selectedPrice` resulted from a price adjustment.")
+
+  public UUID getAdjustmentReferenceId() {
+    return adjustmentReferenceId;
+  }
+
+
+  public void setAdjustmentReferenceId(UUID adjustmentReferenceId) {
+    this.adjustmentReferenceId = adjustmentReferenceId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -370,12 +453,15 @@ public class EffectEntity {
         Objects.equals(this.evaluationGroupID, effectEntity.evaluationGroupID) &&
         Objects.equals(this.evaluationGroupMode, effectEntity.evaluationGroupMode) &&
         Objects.equals(this.campaignRevisionId, effectEntity.campaignRevisionId) &&
-        Objects.equals(this.campaignRevisionVersionId, effectEntity.campaignRevisionVersionId);
+        Objects.equals(this.campaignRevisionVersionId, effectEntity.campaignRevisionVersionId) &&
+        Objects.equals(this.selectedPriceType, effectEntity.selectedPriceType) &&
+        Objects.equals(this.selectedPrice, effectEntity.selectedPrice) &&
+        Objects.equals(this.adjustmentReferenceId, effectEntity.adjustmentReferenceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex, evaluationGroupID, evaluationGroupMode, campaignRevisionId, campaignRevisionVersionId);
+    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex, evaluationGroupID, evaluationGroupMode, campaignRevisionId, campaignRevisionVersionId, selectedPriceType, selectedPrice, adjustmentReferenceId);
   }
 
 
@@ -395,6 +481,9 @@ public class EffectEntity {
     sb.append("    evaluationGroupMode: ").append(toIndentedString(evaluationGroupMode)).append("\n");
     sb.append("    campaignRevisionId: ").append(toIndentedString(campaignRevisionId)).append("\n");
     sb.append("    campaignRevisionVersionId: ").append(toIndentedString(campaignRevisionVersionId)).append("\n");
+    sb.append("    selectedPriceType: ").append(toIndentedString(selectedPriceType)).append("\n");
+    sb.append("    selectedPrice: ").append(toIndentedString(selectedPrice)).append("\n");
+    sb.append("    adjustmentReferenceId: ").append(toIndentedString(adjustmentReferenceId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

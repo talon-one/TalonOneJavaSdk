@@ -34,6 +34,7 @@ import one.talon.model.Collection;
 import one.talon.model.FunctionDef;
 import one.talon.model.GiveawaysPool;
 import one.talon.model.LoyaltyProgram;
+import one.talon.model.PriceType;
 import one.talon.model.SlotDef;
 import one.talon.model.TemplateDef;
 import org.threeten.bp.OffsetDateTime;
@@ -103,6 +104,10 @@ public class Environment {
   @SerializedName(SERIALIZED_NAME_APPLICATION_CART_ITEM_FILTERS)
   private List<ApplicationCIF> applicationCartItemFilters = null;
 
+  public static final String SERIALIZED_NAME_PRICE_TYPES = "priceTypes";
+  @SerializedName(SERIALIZED_NAME_PRICE_TYPES)
+  private List<PriceType> priceTypes = null;
+
 
   public Environment id(Long id) {
     
@@ -111,10 +116,10 @@ public class Environment {
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
   public Long getId() {
     return id;
@@ -521,6 +526,37 @@ public class Environment {
   }
 
 
+  public Environment priceTypes(List<PriceType> priceTypes) {
+    
+    this.priceTypes = priceTypes;
+    return this;
+  }
+
+  public Environment addPriceTypesItem(PriceType priceTypesItem) {
+    if (this.priceTypes == null) {
+      this.priceTypes = new ArrayList<PriceType>();
+    }
+    this.priceTypes.add(priceTypesItem);
+    return this;
+  }
+
+   /**
+   * The price types that this Application can use.
+   * @return priceTypes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The price types that this Application can use.")
+
+  public List<PriceType> getPriceTypes() {
+    return priceTypes;
+  }
+
+
+  public void setPriceTypes(List<PriceType> priceTypes) {
+    this.priceTypes = priceTypes;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -544,12 +580,13 @@ public class Environment {
         Objects.equals(this.additionalCosts, environment.additionalCosts) &&
         Objects.equals(this.audiences, environment.audiences) &&
         Objects.equals(this.collections, environment.collections) &&
-        Objects.equals(this.applicationCartItemFilters, environment.applicationCartItemFilters);
+        Objects.equals(this.applicationCartItemFilters, environment.applicationCartItemFilters) &&
+        Objects.equals(this.priceTypes, environment.priceTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, slots, functions, templates, variables, giveawaysPools, loyaltyPrograms, achievements, attributes, additionalCosts, audiences, collections, applicationCartItemFilters);
+    return Objects.hash(id, created, applicationId, slots, functions, templates, variables, giveawaysPools, loyaltyPrograms, achievements, attributes, additionalCosts, audiences, collections, applicationCartItemFilters, priceTypes);
   }
 
 
@@ -572,6 +609,7 @@ public class Environment {
     sb.append("    audiences: ").append(toIndentedString(audiences)).append("\n");
     sb.append("    collections: ").append(toIndentedString(collections)).append("\n");
     sb.append("    applicationCartItemFilters: ").append(toIndentedString(applicationCartItemFilters)).append("\n");
+    sb.append("    priceTypes: ").append(toIndentedString(priceTypes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

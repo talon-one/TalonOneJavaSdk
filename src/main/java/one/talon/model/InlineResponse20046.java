@@ -25,51 +25,28 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.RoleV2;
+import one.talon.model.ListCampaignStoreBudgets;
 
 /**
  * InlineResponse20046
  */
 
 public class InlineResponse20046 {
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Long totalResultSize;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<RoleV2> data = new ArrayList<RoleV2>();
+  private List<ListCampaignStoreBudgets> data = null;
 
 
-  public InlineResponse20046 totalResultSize(Long totalResultSize) {
-    
-    this.totalResultSize = totalResultSize;
-    return this;
-  }
-
-   /**
-   * Get totalResultSize
-   * @return totalResultSize
-  **/
-  @ApiModelProperty(example = "1", required = true, value = "")
-
-  public Long getTotalResultSize() {
-    return totalResultSize;
-  }
-
-
-  public void setTotalResultSize(Long totalResultSize) {
-    this.totalResultSize = totalResultSize;
-  }
-
-
-  public InlineResponse20046 data(List<RoleV2> data) {
+  public InlineResponse20046 data(List<ListCampaignStoreBudgets> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20046 addDataItem(RoleV2 dataItem) {
+  public InlineResponse20046 addDataItem(ListCampaignStoreBudgets dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<ListCampaignStoreBudgets>();
+    }
     this.data.add(dataItem);
     return this;
   }
@@ -78,14 +55,15 @@ public class InlineResponse20046 {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public List<RoleV2> getData() {
+  public List<ListCampaignStoreBudgets> getData() {
     return data;
   }
 
 
-  public void setData(List<RoleV2> data) {
+  public void setData(List<ListCampaignStoreBudgets> data) {
     this.data = data;
   }
 
@@ -99,13 +77,12 @@ public class InlineResponse20046 {
       return false;
     }
     InlineResponse20046 inlineResponse20046 = (InlineResponse20046) o;
-    return Objects.equals(this.totalResultSize, inlineResponse20046.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse20046.data);
+    return Objects.equals(this.data, inlineResponse20046.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalResultSize, data);
+    return Objects.hash(data);
   }
 
 
@@ -113,7 +90,6 @@ public class InlineResponse20046 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20046 {\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

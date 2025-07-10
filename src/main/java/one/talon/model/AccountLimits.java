@@ -79,6 +79,14 @@ public class AccountLimits {
   @SerializedName(SERIALIZED_NAME_PROMOTION_TYPES)
   private List<String> promotionTypes = new ArrayList<String>();
 
+  public static final String SERIALIZED_NAME_SECONDARY_DEPLOYMENT_PRICE = "secondaryDeploymentPrice";
+  @SerializedName(SERIALIZED_NAME_SECONDARY_DEPLOYMENT_PRICE)
+  private Long secondaryDeploymentPrice;
+
+  public static final String SERIALIZED_NAME_CURRENCY_CODE = "currencyCode";
+  @SerializedName(SERIALIZED_NAME_CURRENCY_CODE)
+  private String currencyCode;
+
 
   public AccountLimits liveApplications(Long liveApplications) {
     
@@ -349,6 +357,50 @@ public class AccountLimits {
   }
 
 
+  public AccountLimits secondaryDeploymentPrice(Long secondaryDeploymentPrice) {
+    
+    this.secondaryDeploymentPrice = secondaryDeploymentPrice;
+    return this;
+  }
+
+   /**
+   * The price for a secondary deployment according to contractual agreements.
+   * @return secondaryDeploymentPrice
+  **/
+  @ApiModelProperty(required = true, value = "The price for a secondary deployment according to contractual agreements.")
+
+  public Long getSecondaryDeploymentPrice() {
+    return secondaryDeploymentPrice;
+  }
+
+
+  public void setSecondaryDeploymentPrice(Long secondaryDeploymentPrice) {
+    this.secondaryDeploymentPrice = secondaryDeploymentPrice;
+  }
+
+
+  public AccountLimits currencyCode(String currencyCode) {
+    
+    this.currencyCode = currencyCode;
+    return this;
+  }
+
+   /**
+   * The currency of the contract.
+   * @return currencyCode
+  **/
+  @ApiModelProperty(required = true, value = "The currency of the contract.")
+
+  public String getCurrencyCode() {
+    return currencyCode;
+  }
+
+
+  public void setCurrencyCode(String currencyCode) {
+    this.currencyCode = currencyCode;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -369,12 +421,14 @@ public class AccountLimits {
         Objects.equals(this.webhooks, accountLimits.webhooks) &&
         Objects.equals(this.users, accountLimits.users) &&
         Objects.equals(this.apiVolume, accountLimits.apiVolume) &&
-        Objects.equals(this.promotionTypes, accountLimits.promotionTypes);
+        Objects.equals(this.promotionTypes, accountLimits.promotionTypes) &&
+        Objects.equals(this.secondaryDeploymentPrice, accountLimits.secondaryDeploymentPrice) &&
+        Objects.equals(this.currencyCode, accountLimits.currencyCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(liveApplications, sandboxApplications, activeCampaigns, coupons, referralCodes, activeRules, liveLoyaltyPrograms, sandboxLoyaltyPrograms, webhooks, users, apiVolume, promotionTypes);
+    return Objects.hash(liveApplications, sandboxApplications, activeCampaigns, coupons, referralCodes, activeRules, liveLoyaltyPrograms, sandboxLoyaltyPrograms, webhooks, users, apiVolume, promotionTypes, secondaryDeploymentPrice, currencyCode);
   }
 
 
@@ -394,6 +448,8 @@ public class AccountLimits {
     sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("    apiVolume: ").append(toIndentedString(apiVolume)).append("\n");
     sb.append("    promotionTypes: ").append(toIndentedString(promotionTypes)).append("\n");
+    sb.append("    secondaryDeploymentPrice: ").append(toIndentedString(secondaryDeploymentPrice)).append("\n");
+    sb.append("    currencyCode: ").append(toIndentedString(currencyCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

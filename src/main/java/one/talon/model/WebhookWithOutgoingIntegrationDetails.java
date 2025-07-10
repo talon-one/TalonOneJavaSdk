@@ -57,6 +57,10 @@ public class WebhookWithOutgoingIntegrationDetails {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_DRAFT = "draft";
+  @SerializedName(SERIALIZED_NAME_DRAFT)
+  private Boolean draft;
+
   /**
    * API method for this webhook.
    */
@@ -134,6 +138,10 @@ public class WebhookWithOutgoingIntegrationDetails {
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
 
+  public static final String SERIALIZED_NAME_AUTHENTICATION_ID = "authenticationId";
+  @SerializedName(SERIALIZED_NAME_AUTHENTICATION_ID)
+  private Long authenticationId;
+
   public static final String SERIALIZED_NAME_OUTGOING_INTEGRATION_TEMPLATE_ID = "outgoingIntegrationTemplateId";
   @SerializedName(SERIALIZED_NAME_OUTGOING_INTEGRATION_TEMPLATE_ID)
   private Long outgoingIntegrationTemplateId;
@@ -154,10 +162,10 @@ public class WebhookWithOutgoingIntegrationDetails {
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
   public Long getId() {
     return id;
@@ -282,6 +290,28 @@ public class WebhookWithOutgoingIntegrationDetails {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public WebhookWithOutgoingIntegrationDetails draft(Boolean draft) {
+    
+    this.draft = draft;
+    return this;
+  }
+
+   /**
+   * Indicates if the webhook is a draft.
+   * @return draft
+  **/
+  @ApiModelProperty(example = "false", required = true, value = "Indicates if the webhook is a draft.")
+
+  public Boolean getDraft() {
+    return draft;
+  }
+
+
+  public void setDraft(Boolean draft) {
+    this.draft = draft;
   }
 
 
@@ -428,6 +458,29 @@ public class WebhookWithOutgoingIntegrationDetails {
   }
 
 
+  public WebhookWithOutgoingIntegrationDetails authenticationId(Long authenticationId) {
+    
+    this.authenticationId = authenticationId;
+    return this;
+  }
+
+   /**
+   * The ID of the credential that this webhook is using.
+   * @return authenticationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "The ID of the credential that this webhook is using.")
+
+  public Long getAuthenticationId() {
+    return authenticationId;
+  }
+
+
+  public void setAuthenticationId(Long authenticationId) {
+    this.authenticationId = authenticationId;
+  }
+
+
   public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTemplateId(Long outgoingIntegrationTemplateId) {
     
     this.outgoingIntegrationTemplateId = outgoingIntegrationTemplateId;
@@ -512,12 +565,14 @@ public class WebhookWithOutgoingIntegrationDetails {
         Objects.equals(this.applicationIds, webhookWithOutgoingIntegrationDetails.applicationIds) &&
         Objects.equals(this.title, webhookWithOutgoingIntegrationDetails.title) &&
         Objects.equals(this.description, webhookWithOutgoingIntegrationDetails.description) &&
+        Objects.equals(this.draft, webhookWithOutgoingIntegrationDetails.draft) &&
         Objects.equals(this.verb, webhookWithOutgoingIntegrationDetails.verb) &&
         Objects.equals(this.url, webhookWithOutgoingIntegrationDetails.url) &&
         Objects.equals(this.headers, webhookWithOutgoingIntegrationDetails.headers) &&
         Objects.equals(this.payload, webhookWithOutgoingIntegrationDetails.payload) &&
         Objects.equals(this.params, webhookWithOutgoingIntegrationDetails.params) &&
         Objects.equals(this.enabled, webhookWithOutgoingIntegrationDetails.enabled) &&
+        Objects.equals(this.authenticationId, webhookWithOutgoingIntegrationDetails.authenticationId) &&
         Objects.equals(this.outgoingIntegrationTemplateId, webhookWithOutgoingIntegrationDetails.outgoingIntegrationTemplateId) &&
         Objects.equals(this.outgoingIntegrationTypeId, webhookWithOutgoingIntegrationDetails.outgoingIntegrationTypeId) &&
         Objects.equals(this.outgoingIntegrationTypeName, webhookWithOutgoingIntegrationDetails.outgoingIntegrationTypeName);
@@ -525,7 +580,7 @@ public class WebhookWithOutgoingIntegrationDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, applicationIds, title, description, verb, url, headers, payload, params, enabled, outgoingIntegrationTemplateId, outgoingIntegrationTypeId, outgoingIntegrationTypeName);
+    return Objects.hash(id, created, modified, applicationIds, title, description, draft, verb, url, headers, payload, params, enabled, authenticationId, outgoingIntegrationTemplateId, outgoingIntegrationTypeId, outgoingIntegrationTypeName);
   }
 
 
@@ -539,12 +594,14 @@ public class WebhookWithOutgoingIntegrationDetails {
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
     sb.append("    verb: ").append(toIndentedString(verb)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    authenticationId: ").append(toIndentedString(authenticationId)).append("\n");
     sb.append("    outgoingIntegrationTemplateId: ").append(toIndentedString(outgoingIntegrationTemplateId)).append("\n");
     sb.append("    outgoingIntegrationTypeId: ").append(toIndentedString(outgoingIntegrationTypeId)).append("\n");
     sb.append("    outgoingIntegrationTypeName: ").append(toIndentedString(outgoingIntegrationTypeName)).append("\n");
