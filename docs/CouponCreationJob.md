@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Internal ID of this entity. | 
+**id** | **Long** | The internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **campaignId** | **Long** | The ID of the campaign that owns this entity. | 
 **applicationId** | **Long** | The ID of the Application that owns this entity. | 

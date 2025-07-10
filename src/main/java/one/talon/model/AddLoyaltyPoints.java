@@ -73,7 +73,6 @@ public class AddLoyaltyPoints {
 
    /**
    * Amount of loyalty points.
-   * minimum: 0
    * maximum: 999999999999.99
    * @return points
   **/

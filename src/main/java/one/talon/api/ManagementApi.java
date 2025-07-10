@@ -112,6 +112,7 @@ import one.talon.model.ModelImport;
 import one.talon.model.NewAdditionalCost;
 import one.talon.model.NewAttribute;
 import one.talon.model.NewCampaignCollection;
+import one.talon.model.NewCampaignStoreBudget;
 import one.talon.model.NewCollection;
 import one.talon.model.NewCouponCreationJob;
 import one.talon.model.NewCouponDeletionJob;
@@ -128,6 +129,9 @@ import one.talon.model.Referral;
 import one.talon.model.RoleV2;
 import one.talon.model.RoleV2Base;
 import one.talon.model.Ruleset;
+import one.talon.model.ScimBaseGroup;
+import one.talon.model.ScimGroup;
+import one.talon.model.ScimGroupsListResponse;
 import one.talon.model.ScimNewUser;
 import one.talon.model.ScimPatchRequest;
 import one.talon.model.ScimResourceTypesListResponse;
@@ -1421,6 +1425,140 @@ public class ManagementApi {
         okhttp3.Call localVarCall = createCampaignFromTemplateValidateBeforeCall(applicationId, body, _callback);
         Type localVarReturnType = new TypeToken<CreateTemplateCampaignResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createCampaignStoreBudget
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param body body (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createCampaignStoreBudgetCall(Long applicationId, Long campaignId, NewCampaignStoreBudget body, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets"
+            .replaceAll("\\{" + "applicationId" + "\\}", localVarApiClient.escapeString(applicationId.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createCampaignStoreBudgetValidateBeforeCall(Long applicationId, Long campaignId, NewCampaignStoreBudget body, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'applicationId' is set
+        if (applicationId == null) {
+            throw new ApiException("Missing the required parameter 'applicationId' when calling createCampaignStoreBudget(Async)");
+        }
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling createCampaignStoreBudget(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createCampaignStoreBudget(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createCampaignStoreBudgetCall(applicationId, campaignId, body, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create campaign store budget
+     * Create a new store budget for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param body body (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
+     </table>
+     */
+    public void createCampaignStoreBudget(Long applicationId, Long campaignId, NewCampaignStoreBudget body) throws ApiException {
+        createCampaignStoreBudgetWithHttpInfo(applicationId, campaignId, body);
+    }
+
+    /**
+     * Create campaign store budget
+     * Create a new store budget for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param body body (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> createCampaignStoreBudgetWithHttpInfo(Long applicationId, Long campaignId, NewCampaignStoreBudget body) throws ApiException {
+        okhttp3.Call localVarCall = createCampaignStoreBudgetValidateBeforeCall(applicationId, campaignId, body, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Create campaign store budget (asynchronously)
+     * Create a new store budget for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param body body (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createCampaignStoreBudgetAsync(Long applicationId, Long campaignId, NewCampaignStoreBudget body, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createCampaignStoreBudgetValidateBeforeCall(applicationId, campaignId, body, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -3273,6 +3411,143 @@ public class ManagementApi {
         return localVarCall;
     }
     /**
+     * Build call for deleteCampaignStoreBudgets
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCampaignStoreBudgetsCall(Long applicationId, Long campaignId, String action, String period, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets"
+            .replaceAll("\\{" + "applicationId" + "\\}", localVarApiClient.escapeString(applicationId.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (action != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("action", action));
+        }
+
+        if (period != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCampaignStoreBudgetsValidateBeforeCall(Long applicationId, Long campaignId, String action, String period, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'applicationId' is set
+        if (applicationId == null) {
+            throw new ApiException("Missing the required parameter 'applicationId' when calling deleteCampaignStoreBudgets(Async)");
+        }
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling deleteCampaignStoreBudgets(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteCampaignStoreBudgetsCall(applicationId, campaignId, action, period, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Delete campaign store budgets
+     * Delete the store budgets for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteCampaignStoreBudgets(Long applicationId, Long campaignId, String action, String period) throws ApiException {
+        deleteCampaignStoreBudgetsWithHttpInfo(applicationId, campaignId, action, period);
+    }
+
+    /**
+     * Delete campaign store budgets
+     * Delete the store budgets for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteCampaignStoreBudgetsWithHttpInfo(Long applicationId, Long campaignId, String action, String period) throws ApiException {
+        okhttp3.Call localVarCall = deleteCampaignStoreBudgetsValidateBeforeCall(applicationId, campaignId, action, period, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Delete campaign store budgets (asynchronously)
+     * Delete the store budgets for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCampaignStoreBudgetsAsync(Long applicationId, Long campaignId, String action, String period, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCampaignStoreBudgetsValidateBeforeCall(applicationId, campaignId, action, period, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for deleteCollection
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
@@ -4949,6 +5224,155 @@ public class ManagementApi {
         return localVarCall;
     }
     /**
+     * Build call for exportCampaignStoreBudgets
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call exportCampaignStoreBudgetsCall(Long applicationId, Long campaignId, String action, String period, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets/export"
+            .replaceAll("\\{" + "applicationId" + "\\}", localVarApiClient.escapeString(applicationId.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (action != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("action", action));
+        }
+
+        if (period != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/csv"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call exportCampaignStoreBudgetsValidateBeforeCall(Long applicationId, Long campaignId, String action, String period, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'applicationId' is set
+        if (applicationId == null) {
+            throw new ApiException("Missing the required parameter 'applicationId' when calling exportCampaignStoreBudgets(Async)");
+        }
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling exportCampaignStoreBudgets(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = exportCampaignStoreBudgetsCall(applicationId, campaignId, action, period, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Export campaign store budgets
+     * Download a CSV file containing the store budgets for a given campaign.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store. 
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public String exportCampaignStoreBudgets(Long applicationId, Long campaignId, String action, String period) throws ApiException {
+        ApiResponse<String> localVarResp = exportCampaignStoreBudgetsWithHttpInfo(applicationId, campaignId, action, period);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Export campaign store budgets
+     * Download a CSV file containing the store budgets for a given campaign.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store. 
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<String> exportCampaignStoreBudgetsWithHttpInfo(Long applicationId, Long campaignId, String action, String period) throws ApiException {
+        okhttp3.Call localVarCall = exportCampaignStoreBudgetsValidateBeforeCall(applicationId, campaignId, action, period, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Export campaign store budgets (asynchronously)
+     * Download a CSV file containing the store budgets for a given campaign.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store. 
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call exportCampaignStoreBudgetsAsync(Long applicationId, Long campaignId, String action, String period, final ApiCallback<String> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = exportCampaignStoreBudgetsValidateBeforeCall(applicationId, campaignId, action, period, _callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for exportCampaignStores
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
@@ -5526,7 +5950,7 @@ public class ManagementApi {
 
     /**
      * Export customer sessions
-     * Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/product/server-infrastructure-and-data-retention#data-retention-policy).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
+     * Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/dev/server-infrastructure-and-data-retention).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
@@ -5548,7 +5972,7 @@ public class ManagementApi {
 
     /**
      * Export customer sessions
-     * Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/product/server-infrastructure-and-data-retention#data-retention-policy).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
+     * Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/dev/server-infrastructure-and-data-retention).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
@@ -5571,7 +5995,7 @@ public class ManagementApi {
 
     /**
      * Export customer sessions (asynchronously)
-     * Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/product/server-infrastructure-and-data-retention#data-retention-policy).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
+     * Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/dev/server-infrastructure-and-data-retention).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
@@ -6421,6 +6845,8 @@ public class ManagementApi {
      * Build call for exportLoyaltyCards
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param batchId Filter results by loyalty card batch ID. (optional)
+     * @param createdBefore Only return loyalty cards created before this timestamp.  **Note:** - This must be an RFC3339 timestamp string.  (optional)
+     * @param createdAfter Only return loyalty cards created after this timestamp.  **Note:** - This must be an RFC3339 timestamp string.  (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -6433,7 +6859,7 @@ public class ManagementApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportLoyaltyCardsCall(Long loyaltyProgramId, String batchId, String dateFormat, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call exportLoyaltyCardsCall(Long loyaltyProgramId, String batchId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -6444,6 +6870,14 @@ public class ManagementApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (batchId != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("batchId", batchId));
+        }
+
+        if (createdBefore != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdBefore", createdBefore));
+        }
+
+        if (createdAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdAfter", createdAfter));
         }
 
         if (dateFormat != null) {
@@ -6472,7 +6906,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call exportLoyaltyCardsValidateBeforeCall(Long loyaltyProgramId, String batchId, String dateFormat, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call exportLoyaltyCardsValidateBeforeCall(Long loyaltyProgramId, String batchId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -6480,7 +6914,7 @@ public class ManagementApi {
         }
         
 
-        okhttp3.Call localVarCall = exportLoyaltyCardsCall(loyaltyProgramId, batchId, dateFormat, _callback);
+        okhttp3.Call localVarCall = exportLoyaltyCardsCall(loyaltyProgramId, batchId, createdBefore, createdAfter, dateFormat, _callback);
         return localVarCall;
 
     }
@@ -6490,6 +6924,8 @@ public class ManagementApi {
      * Download a CSV file containing the loyalty cards from a specified loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns: - &#x60;identifier&#x60;: The unique identifier of the loyalty card. - &#x60;created&#x60;: The date and time the loyalty card was created. - &#x60;status&#x60;: The status of the loyalty card. - &#x60;userpercardlimit&#x60;: The maximum number of customer profiles that can be linked to the card. - &#x60;customerprofileids&#x60;: Integration IDs of the customer profiles linked to the card. - &#x60;blockreason&#x60;: The reason for transferring and blocking the loyalty card. - &#x60;generated&#x60;: An indicator of whether the loyalty card was generated. - &#x60;batchid&#x60;: The ID of the batch the loyalty card is in. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param batchId Filter results by loyalty card batch ID. (optional)
+     * @param createdBefore Only return loyalty cards created before this timestamp.  **Note:** - This must be an RFC3339 timestamp string.  (optional)
+     * @param createdAfter Only return loyalty cards created after this timestamp.  **Note:** - This must be an RFC3339 timestamp string.  (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6501,8 +6937,8 @@ public class ManagementApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public String exportLoyaltyCards(Long loyaltyProgramId, String batchId, String dateFormat) throws ApiException {
-        ApiResponse<String> localVarResp = exportLoyaltyCardsWithHttpInfo(loyaltyProgramId, batchId, dateFormat);
+    public String exportLoyaltyCards(Long loyaltyProgramId, String batchId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat) throws ApiException {
+        ApiResponse<String> localVarResp = exportLoyaltyCardsWithHttpInfo(loyaltyProgramId, batchId, createdBefore, createdAfter, dateFormat);
         return localVarResp.getData();
     }
 
@@ -6511,6 +6947,8 @@ public class ManagementApi {
      * Download a CSV file containing the loyalty cards from a specified loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns: - &#x60;identifier&#x60;: The unique identifier of the loyalty card. - &#x60;created&#x60;: The date and time the loyalty card was created. - &#x60;status&#x60;: The status of the loyalty card. - &#x60;userpercardlimit&#x60;: The maximum number of customer profiles that can be linked to the card. - &#x60;customerprofileids&#x60;: Integration IDs of the customer profiles linked to the card. - &#x60;blockreason&#x60;: The reason for transferring and blocking the loyalty card. - &#x60;generated&#x60;: An indicator of whether the loyalty card was generated. - &#x60;batchid&#x60;: The ID of the batch the loyalty card is in. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param batchId Filter results by loyalty card batch ID. (optional)
+     * @param createdBefore Only return loyalty cards created before this timestamp.  **Note:** - This must be an RFC3339 timestamp string.  (optional)
+     * @param createdAfter Only return loyalty cards created after this timestamp.  **Note:** - This must be an RFC3339 timestamp string.  (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6522,8 +6960,8 @@ public class ManagementApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<String> exportLoyaltyCardsWithHttpInfo(Long loyaltyProgramId, String batchId, String dateFormat) throws ApiException {
-        okhttp3.Call localVarCall = exportLoyaltyCardsValidateBeforeCall(loyaltyProgramId, batchId, dateFormat, null);
+    public ApiResponse<String> exportLoyaltyCardsWithHttpInfo(Long loyaltyProgramId, String batchId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat) throws ApiException {
+        okhttp3.Call localVarCall = exportLoyaltyCardsValidateBeforeCall(loyaltyProgramId, batchId, createdBefore, createdAfter, dateFormat, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -6533,6 +6971,8 @@ public class ManagementApi {
      * Download a CSV file containing the loyalty cards from a specified loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns: - &#x60;identifier&#x60;: The unique identifier of the loyalty card. - &#x60;created&#x60;: The date and time the loyalty card was created. - &#x60;status&#x60;: The status of the loyalty card. - &#x60;userpercardlimit&#x60;: The maximum number of customer profiles that can be linked to the card. - &#x60;customerprofileids&#x60;: Integration IDs of the customer profiles linked to the card. - &#x60;blockreason&#x60;: The reason for transferring and blocking the loyalty card. - &#x60;generated&#x60;: An indicator of whether the loyalty card was generated. - &#x60;batchid&#x60;: The ID of the batch the loyalty card is in. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param batchId Filter results by loyalty card batch ID. (optional)
+     * @param createdBefore Only return loyalty cards created before this timestamp.  **Note:** - This must be an RFC3339 timestamp string.  (optional)
+     * @param createdAfter Only return loyalty cards created after this timestamp.  **Note:** - This must be an RFC3339 timestamp string.  (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6545,9 +6985,9 @@ public class ManagementApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportLoyaltyCardsAsync(Long loyaltyProgramId, String batchId, String dateFormat, final ApiCallback<String> _callback) throws ApiException {
+    public okhttp3.Call exportLoyaltyCardsAsync(Long loyaltyProgramId, String batchId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat, final ApiCallback<String> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = exportLoyaltyCardsValidateBeforeCall(loyaltyProgramId, batchId, dateFormat, _callback);
+        okhttp3.Call localVarCall = exportLoyaltyCardsValidateBeforeCall(loyaltyProgramId, batchId, createdBefore, createdAfter, dateFormat, _callback);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11276,7 +11716,7 @@ public class ManagementApi {
      * @param withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  (optional)
      * @param managementKeyId Filter results that match the given management key ID. (optional)
      * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
-     * @return InlineResponse20044
+     * @return InlineResponse20042
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -11284,8 +11724,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20044 getChanges(Long pageSize, Long skip, String sort, BigDecimal applicationId, String entityPath, Long userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Long managementKeyId, Boolean includeOld) throws ApiException {
-        ApiResponse<InlineResponse20044> localVarResp = getChangesWithHttpInfo(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
+    public InlineResponse20042 getChanges(Long pageSize, Long skip, String sort, BigDecimal applicationId, String entityPath, Long userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Long managementKeyId, Boolean includeOld) throws ApiException {
+        ApiResponse<InlineResponse20042> localVarResp = getChangesWithHttpInfo(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
         return localVarResp.getData();
     }
 
@@ -11303,7 +11743,7 @@ public class ManagementApi {
      * @param withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  (optional)
      * @param managementKeyId Filter results that match the given management key ID. (optional)
      * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
-     * @return ApiResponse&lt;InlineResponse20044&gt;
+     * @return ApiResponse&lt;InlineResponse20042&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -11311,9 +11751,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20044> getChangesWithHttpInfo(Long pageSize, Long skip, String sort, BigDecimal applicationId, String entityPath, Long userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Long managementKeyId, Boolean includeOld) throws ApiException {
+    public ApiResponse<InlineResponse20042> getChangesWithHttpInfo(Long pageSize, Long skip, String sort, BigDecimal applicationId, String entityPath, Long userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Long managementKeyId, Boolean includeOld) throws ApiException {
         okhttp3.Call localVarCall = getChangesValidateBeforeCall(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20044>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20042>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -11340,10 +11780,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChangesAsync(Long pageSize, Long skip, String sort, BigDecimal applicationId, String entityPath, Long userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Long managementKeyId, Boolean includeOld, final ApiCallback<InlineResponse20044> _callback) throws ApiException {
+    public okhttp3.Call getChangesAsync(Long pageSize, Long skip, String sort, BigDecimal applicationId, String entityPath, Long userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Long managementKeyId, Boolean includeOld, final ApiCallback<InlineResponse20042> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getChangesValidateBeforeCall(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20044>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20042>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -13137,7 +13577,7 @@ public class ManagementApi {
      * @param pageSize The number of items in the response. (optional, default to 1000l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @return InlineResponse20042
+     * @return InlineResponse20040
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -13145,8 +13585,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20042 getEventTypes(String name, Boolean includeOldVersions, Long pageSize, Long skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20042> localVarResp = getEventTypesWithHttpInfo(name, includeOldVersions, pageSize, skip, sort);
+    public InlineResponse20040 getEventTypes(String name, Boolean includeOldVersions, Long pageSize, Long skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20040> localVarResp = getEventTypesWithHttpInfo(name, includeOldVersions, pageSize, skip, sort);
         return localVarResp.getData();
     }
 
@@ -13158,7 +13598,7 @@ public class ManagementApi {
      * @param pageSize The number of items in the response. (optional, default to 1000l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @return ApiResponse&lt;InlineResponse20042&gt;
+     * @return ApiResponse&lt;InlineResponse20040&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -13166,9 +13606,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20042> getEventTypesWithHttpInfo(String name, Boolean includeOldVersions, Long pageSize, Long skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20040> getEventTypesWithHttpInfo(String name, Boolean includeOldVersions, Long pageSize, Long skip, String sort) throws ApiException {
         okhttp3.Call localVarCall = getEventTypesValidateBeforeCall(name, includeOldVersions, pageSize, skip, sort, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20042>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20040>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -13189,10 +13629,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventTypesAsync(String name, Boolean includeOldVersions, Long pageSize, Long skip, String sort, final ApiCallback<InlineResponse20042> _callback) throws ApiException {
+    public okhttp3.Call getEventTypesAsync(String name, Boolean includeOldVersions, Long pageSize, Long skip, String sort, final ApiCallback<InlineResponse20040> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventTypesValidateBeforeCall(name, includeOldVersions, pageSize, skip, sort, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20042>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20040>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -13278,7 +13718,7 @@ public class ManagementApi {
      * @param applicationId Filter results by Application ID. (optional)
      * @param campaignId Filter by the campaign ID on which the limit counters are used. (optional)
      * @param entity The name of the entity type that was exported. (optional)
-     * @return InlineResponse20045
+     * @return InlineResponse20043
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -13286,8 +13726,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20045 getExports(Long pageSize, Long skip, BigDecimal applicationId, Long campaignId, String entity) throws ApiException {
-        ApiResponse<InlineResponse20045> localVarResp = getExportsWithHttpInfo(pageSize, skip, applicationId, campaignId, entity);
+    public InlineResponse20043 getExports(Long pageSize, Long skip, BigDecimal applicationId, Long campaignId, String entity) throws ApiException {
+        ApiResponse<InlineResponse20043> localVarResp = getExportsWithHttpInfo(pageSize, skip, applicationId, campaignId, entity);
         return localVarResp.getData();
     }
 
@@ -13299,7 +13739,7 @@ public class ManagementApi {
      * @param applicationId Filter results by Application ID. (optional)
      * @param campaignId Filter by the campaign ID on which the limit counters are used. (optional)
      * @param entity The name of the entity type that was exported. (optional)
-     * @return ApiResponse&lt;InlineResponse20045&gt;
+     * @return ApiResponse&lt;InlineResponse20043&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -13307,9 +13747,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20045> getExportsWithHttpInfo(Long pageSize, Long skip, BigDecimal applicationId, Long campaignId, String entity) throws ApiException {
+    public ApiResponse<InlineResponse20043> getExportsWithHttpInfo(Long pageSize, Long skip, BigDecimal applicationId, Long campaignId, String entity) throws ApiException {
         okhttp3.Call localVarCall = getExportsValidateBeforeCall(pageSize, skip, applicationId, campaignId, entity, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20045>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20043>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -13330,10 +13770,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExportsAsync(Long pageSize, Long skip, BigDecimal applicationId, Long campaignId, String entity, final ApiCallback<InlineResponse20045> _callback) throws ApiException {
+    public okhttp3.Call getExportsAsync(Long pageSize, Long skip, BigDecimal applicationId, Long campaignId, String entity, final ApiCallback<InlineResponse20043> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExportsValidateBeforeCall(pageSize, skip, applicationId, campaignId, entity, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20045>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20043>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -15534,7 +15974,7 @@ public class ManagementApi {
      * @param pageSize The number of items in the response. (optional, default to 1000l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @return InlineResponse20043
+     * @return InlineResponse20041
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -15542,8 +15982,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20043 getUsers(Long pageSize, Long skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20043> localVarResp = getUsersWithHttpInfo(pageSize, skip, sort);
+    public InlineResponse20041 getUsers(Long pageSize, Long skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20041> localVarResp = getUsersWithHttpInfo(pageSize, skip, sort);
         return localVarResp.getData();
     }
 
@@ -15553,7 +15993,7 @@ public class ManagementApi {
      * @param pageSize The number of items in the response. (optional, default to 1000l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @return ApiResponse&lt;InlineResponse20043&gt;
+     * @return ApiResponse&lt;InlineResponse20041&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -15561,9 +16001,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20043> getUsersWithHttpInfo(Long pageSize, Long skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20041> getUsersWithHttpInfo(Long pageSize, Long skip, String sort) throws ApiException {
         okhttp3.Call localVarCall = getUsersValidateBeforeCall(pageSize, skip, sort, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20043>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20041>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -15582,10 +16022,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUsersAsync(Long pageSize, Long skip, String sort, final ApiCallback<InlineResponse20043> _callback) throws ApiException {
+    public okhttp3.Call getUsersAsync(Long pageSize, Long skip, String sort, final ApiCallback<InlineResponse20041> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUsersValidateBeforeCall(pageSize, skip, sort, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20043>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20041>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -15697,360 +16137,6 @@ public class ManagementApi {
 
         okhttp3.Call localVarCall = getWebhookValidateBeforeCall(webhookId, _callback);
         Type localVarReturnType = new TypeToken<Webhook>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getWebhookActivationLogs
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @param integrationRequestUuid Filter results by integration request UUID. (optional)
-     * @param webhookId Filter results by webhook id. (optional)
-     * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign ID. (optional)
-     * @param createdBefore Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWebhookActivationLogsCall(Long pageSize, Long skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/webhook_activation_logs";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        if (skip != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("skip", skip));
-        }
-
-        if (sort != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
-        }
-
-        if (integrationRequestUuid != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("integrationRequestUuid", integrationRequestUuid));
-        }
-
-        if (webhookId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("webhookId", webhookId));
-        }
-
-        if (applicationId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("applicationId", applicationId));
-        }
-
-        if (campaignId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
-        }
-
-        if (createdBefore != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdBefore", createdBefore));
-        }
-
-        if (createdAfter != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdAfter", createdAfter));
-        }
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWebhookActivationLogsValidateBeforeCall(Long pageSize, Long skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = getWebhookActivationLogsCall(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * List webhook activation log entries
-     * Webhook activation log entries are created as soon as an integration request triggers a webhook effect. See the [docs](https://docs.talon.one/docs/dev/getting-started/webhooks). 
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @param integrationRequestUuid Filter results by integration request UUID. (optional)
-     * @param webhookId Filter results by webhook id. (optional)
-     * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign ID. (optional)
-     * @param createdBefore Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @return InlineResponse20040
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public InlineResponse20040 getWebhookActivationLogs(Long pageSize, Long skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
-        ApiResponse<InlineResponse20040> localVarResp = getWebhookActivationLogsWithHttpInfo(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
-        return localVarResp.getData();
-    }
-
-    /**
-     * List webhook activation log entries
-     * Webhook activation log entries are created as soon as an integration request triggers a webhook effect. See the [docs](https://docs.talon.one/docs/dev/getting-started/webhooks). 
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @param integrationRequestUuid Filter results by integration request UUID. (optional)
-     * @param webhookId Filter results by webhook id. (optional)
-     * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign ID. (optional)
-     * @param createdBefore Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @return ApiResponse&lt;InlineResponse20040&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InlineResponse20040> getWebhookActivationLogsWithHttpInfo(Long pageSize, Long skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
-        okhttp3.Call localVarCall = getWebhookActivationLogsValidateBeforeCall(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20040>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List webhook activation log entries (asynchronously)
-     * Webhook activation log entries are created as soon as an integration request triggers a webhook effect. See the [docs](https://docs.talon.one/docs/dev/getting-started/webhooks). 
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @param integrationRequestUuid Filter results by integration request UUID. (optional)
-     * @param webhookId Filter results by webhook id. (optional)
-     * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign ID. (optional)
-     * @param createdBefore Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWebhookActivationLogsAsync(Long pageSize, Long skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20040> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getWebhookActivationLogsValidateBeforeCall(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20040>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getWebhookLogs
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @param status Filter results by HTTP status codes. (optional)
-     * @param webhookId Filter results by webhook id. (optional)
-     * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign ID. (optional)
-     * @param requestUuid Filter results by request UUID. (optional)
-     * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWebhookLogsCall(Long pageSize, Long skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/webhook_logs";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        if (skip != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("skip", skip));
-        }
-
-        if (sort != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
-        }
-
-        if (status != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
-        }
-
-        if (webhookId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("webhookId", webhookId));
-        }
-
-        if (applicationId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("applicationId", applicationId));
-        }
-
-        if (campaignId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
-        }
-
-        if (requestUuid != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("requestUuid", requestUuid));
-        }
-
-        if (createdBefore != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdBefore", createdBefore));
-        }
-
-        if (createdAfter != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdAfter", createdAfter));
-        }
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWebhookLogsValidateBeforeCall(Long pageSize, Long skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = getWebhookLogsCall(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * List webhook log entries
-     * Retrieve all webhook log entries.
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @param status Filter results by HTTP status codes. (optional)
-     * @param webhookId Filter results by webhook id. (optional)
-     * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign ID. (optional)
-     * @param requestUuid Filter results by request UUID. (optional)
-     * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @return InlineResponse20041
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public InlineResponse20041 getWebhookLogs(Long pageSize, Long skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
-        ApiResponse<InlineResponse20041> localVarResp = getWebhookLogsWithHttpInfo(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
-        return localVarResp.getData();
-    }
-
-    /**
-     * List webhook log entries
-     * Retrieve all webhook log entries.
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @param status Filter results by HTTP status codes. (optional)
-     * @param webhookId Filter results by webhook id. (optional)
-     * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign ID. (optional)
-     * @param requestUuid Filter results by request UUID. (optional)
-     * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @return ApiResponse&lt;InlineResponse20041&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InlineResponse20041> getWebhookLogsWithHttpInfo(Long pageSize, Long skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
-        okhttp3.Call localVarCall = getWebhookLogsValidateBeforeCall(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20041>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List webhook log entries (asynchronously)
-     * Retrieve all webhook log entries.
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
-     * @param status Filter results by HTTP status codes. (optional)
-     * @param webhookId Filter results by webhook id. (optional)
-     * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign ID. (optional)
-     * @param requestUuid Filter results by request UUID. (optional)
-     * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWebhookLogsAsync(Long pageSize, Long skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20041> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getWebhookLogsValidateBeforeCall(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20041>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -16604,6 +16690,155 @@ public class ManagementApi {
     public okhttp3.Call importAudiencesMembershipsAsync(Long audienceId, String upFile, final ApiCallback<ModelImport> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = importAudiencesMembershipsValidateBeforeCall(audienceId, upFile, _callback);
+        Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for importCampaignStoreBudget
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @param upFile The file containing the data that is being imported. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call importCampaignStoreBudgetCall(Long applicationId, Long campaignId, String action, String period, String upFile, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets/import"
+            .replaceAll("\\{" + "applicationId" + "\\}", localVarApiClient.escapeString(applicationId.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (action != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("action", action));
+        }
+
+        if (period != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (upFile != null) {
+            localVarFormParams.put("upFile", upFile);
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "multipart/form-data"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call importCampaignStoreBudgetValidateBeforeCall(Long applicationId, Long campaignId, String action, String period, String upFile, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'applicationId' is set
+        if (applicationId == null) {
+            throw new ApiException("Missing the required parameter 'applicationId' when calling importCampaignStoreBudget(Async)");
+        }
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling importCampaignStoreBudget(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = importCampaignStoreBudgetCall(applicationId, campaignId, action, period, upFile, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Import campaign store budgets
+     * Upload a CSV file containing store budgets for a given campaign.  Send the file as multipart data.  The CSV file **must** only contain the following columns: - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store.  The import **replaces** the previous list of store budgets. 
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @param upFile The file containing the data that is being imported. (optional)
+     * @return ModelImport
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+     </table>
+     */
+    public ModelImport importCampaignStoreBudget(Long applicationId, Long campaignId, String action, String period, String upFile) throws ApiException {
+        ApiResponse<ModelImport> localVarResp = importCampaignStoreBudgetWithHttpInfo(applicationId, campaignId, action, period, upFile);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Import campaign store budgets
+     * Upload a CSV file containing store budgets for a given campaign.  Send the file as multipart data.  The CSV file **must** only contain the following columns: - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store.  The import **replaces** the previous list of store budgets. 
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @param upFile The file containing the data that is being imported. (optional)
+     * @return ApiResponse&lt;ModelImport&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ModelImport> importCampaignStoreBudgetWithHttpInfo(Long applicationId, Long campaignId, String action, String period, String upFile) throws ApiException {
+        okhttp3.Call localVarCall = importCampaignStoreBudgetValidateBeforeCall(applicationId, campaignId, action, period, upFile, null);
+        Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Import campaign store budgets (asynchronously)
+     * Upload a CSV file containing store budgets for a given campaign.  Send the file as multipart data.  The CSV file **must** only contain the following columns: - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store.  The import **replaces** the previous list of store budgets. 
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @param upFile The file containing the data that is being imported. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call importCampaignStoreBudgetAsync(Long applicationId, Long campaignId, String action, String period, String upFile, final ApiCallback<ModelImport> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = importCampaignStoreBudgetValidateBeforeCall(applicationId, campaignId, action, period, upFile, _callback);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -17290,6 +17525,7 @@ public class ManagementApi {
     /**
      * Build call for importLoyaltyPoints
      * @param loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;.  (optional)
      * @param upFile The file containing the data that is being imported. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -17300,7 +17536,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call importLoyaltyPointsCall(Long loyaltyProgramId, String upFile, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call importLoyaltyPointsCall(Long loyaltyProgramId, Boolean notificationsEnabled, String upFile, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -17309,6 +17545,10 @@ public class ManagementApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (notificationsEnabled != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("notificationsEnabled", notificationsEnabled));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -17335,7 +17575,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call importLoyaltyPointsValidateBeforeCall(Long loyaltyProgramId, String upFile, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call importLoyaltyPointsValidateBeforeCall(Long loyaltyProgramId, Boolean notificationsEnabled, String upFile, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -17343,7 +17583,7 @@ public class ManagementApi {
         }
         
 
-        okhttp3.Call localVarCall = importLoyaltyPointsCall(loyaltyProgramId, upFile, _callback);
+        okhttp3.Call localVarCall = importLoyaltyPointsCall(loyaltyProgramId, notificationsEnabled, upFile, _callback);
         return localVarCall;
 
     }
@@ -17352,6 +17592,7 @@ public class ManagementApi {
      * Import loyalty points
      * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;immediate&#x60;. Empty or missing values are considered &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
      * @param loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;.  (optional)
      * @param upFile The file containing the data that is being imported. (optional)
      * @return ModelImport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -17361,8 +17602,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ModelImport importLoyaltyPoints(Long loyaltyProgramId, String upFile) throws ApiException {
-        ApiResponse<ModelImport> localVarResp = importLoyaltyPointsWithHttpInfo(loyaltyProgramId, upFile);
+    public ModelImport importLoyaltyPoints(Long loyaltyProgramId, Boolean notificationsEnabled, String upFile) throws ApiException {
+        ApiResponse<ModelImport> localVarResp = importLoyaltyPointsWithHttpInfo(loyaltyProgramId, notificationsEnabled, upFile);
         return localVarResp.getData();
     }
 
@@ -17370,6 +17611,7 @@ public class ManagementApi {
      * Import loyalty points
      * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;immediate&#x60;. Empty or missing values are considered &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
      * @param loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;.  (optional)
      * @param upFile The file containing the data that is being imported. (optional)
      * @return ApiResponse&lt;ModelImport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -17379,8 +17621,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModelImport> importLoyaltyPointsWithHttpInfo(Long loyaltyProgramId, String upFile) throws ApiException {
-        okhttp3.Call localVarCall = importLoyaltyPointsValidateBeforeCall(loyaltyProgramId, upFile, null);
+    public ApiResponse<ModelImport> importLoyaltyPointsWithHttpInfo(Long loyaltyProgramId, Boolean notificationsEnabled, String upFile) throws ApiException {
+        okhttp3.Call localVarCall = importLoyaltyPointsValidateBeforeCall(loyaltyProgramId, notificationsEnabled, upFile, null);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -17389,6 +17631,7 @@ public class ManagementApi {
      * Import loyalty points (asynchronously)
      * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;immediate&#x60;. Empty or missing values are considered &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
      * @param loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;.  (optional)
      * @param upFile The file containing the data that is being imported. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -17399,9 +17642,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call importLoyaltyPointsAsync(Long loyaltyProgramId, String upFile, final ApiCallback<ModelImport> _callback) throws ApiException {
+    public okhttp3.Call importLoyaltyPointsAsync(Long loyaltyProgramId, Boolean notificationsEnabled, String upFile, final ApiCallback<ModelImport> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = importLoyaltyPointsValidateBeforeCall(loyaltyProgramId, upFile, _callback);
+        okhttp3.Call localVarCall = importLoyaltyPointsValidateBeforeCall(loyaltyProgramId, notificationsEnabled, upFile, _callback);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -18110,7 +18353,7 @@ public class ManagementApi {
     /**
      * List roles
      * List all roles.
-     * @return InlineResponse20046
+     * @return InlineResponse20044
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -18118,15 +18361,15 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20046 listAllRolesV2() throws ApiException {
-        ApiResponse<InlineResponse20046> localVarResp = listAllRolesV2WithHttpInfo();
+    public InlineResponse20044 listAllRolesV2() throws ApiException {
+        ApiResponse<InlineResponse20044> localVarResp = listAllRolesV2WithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * List roles
      * List all roles.
-     * @return ApiResponse&lt;InlineResponse20046&gt;
+     * @return ApiResponse&lt;InlineResponse20044&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -18134,9 +18377,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20046> listAllRolesV2WithHttpInfo() throws ApiException {
+    public ApiResponse<InlineResponse20044> listAllRolesV2WithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listAllRolesV2ValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<InlineResponse20046>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20044>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -18152,9 +18395,158 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAllRolesV2Async(final ApiCallback<InlineResponse20046> _callback) throws ApiException {
+    public okhttp3.Call listAllRolesV2Async(final ApiCallback<InlineResponse20044> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listAllRolesV2ValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<InlineResponse20044>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listCampaignStoreBudgetLimits
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCampaignStoreBudgetLimitsCall(Long applicationId, Long campaignId, String action, String period, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets"
+            .replaceAll("\\{" + "applicationId" + "\\}", localVarApiClient.escapeString(applicationId.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (action != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("action", action));
+        }
+
+        if (period != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listCampaignStoreBudgetLimitsValidateBeforeCall(Long applicationId, Long campaignId, String action, String period, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'applicationId' is set
+        if (applicationId == null) {
+            throw new ApiException("Missing the required parameter 'applicationId' when calling listCampaignStoreBudgetLimits(Async)");
+        }
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling listCampaignStoreBudgetLimits(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = listCampaignStoreBudgetLimitsCall(applicationId, campaignId, action, period, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List campaign store budget limits
+     * Return the store budget limits for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @return InlineResponse20046
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public InlineResponse20046 listCampaignStoreBudgetLimits(Long applicationId, Long campaignId, String action, String period) throws ApiException {
+        ApiResponse<InlineResponse20046> localVarResp = listCampaignStoreBudgetLimitsWithHttpInfo(applicationId, campaignId, action, period);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List campaign store budget limits
+     * Return the store budget limits for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @return ApiResponse&lt;InlineResponse20046&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<InlineResponse20046> listCampaignStoreBudgetLimitsWithHttpInfo(Long applicationId, Long campaignId, String action, String period) throws ApiException {
+        okhttp3.Call localVarCall = listCampaignStoreBudgetLimitsValidateBeforeCall(applicationId, campaignId, action, period, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20046>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List campaign store budget limits (asynchronously)
+     * Return the store budget limits for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param action The action that this budget is limiting. (optional)
+     * @param period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCampaignStoreBudgetLimitsAsync(Long applicationId, Long campaignId, String action, String period, final ApiCallback<InlineResponse20046> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listCampaignStoreBudgetLimitsValidateBeforeCall(applicationId, campaignId, action, period, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse20046>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -18198,11 +18590,11 @@ public class ManagementApi {
         }
 
         if (sku != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "sku", sku));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sku", sku));
         }
 
         if (productNames != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "productNames", productNames));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "productNames", productNames));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -18738,7 +19130,7 @@ public class ManagementApi {
      * @param name The name of the store. (optional)
      * @param integrationId The integration ID of the store. (optional)
      * @param query Filter results by &#x60;name&#x60; or &#x60;integrationId&#x60;. (optional)
-     * @return InlineResponse20047
+     * @return InlineResponse20045
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -18746,8 +19138,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20047 listStores(Long applicationId, Long pageSize, Long skip, String sort, Boolean withTotalResultSize, BigDecimal campaignId, String name, String integrationId, String query) throws ApiException {
-        ApiResponse<InlineResponse20047> localVarResp = listStoresWithHttpInfo(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query);
+    public InlineResponse20045 listStores(Long applicationId, Long pageSize, Long skip, String sort, Boolean withTotalResultSize, BigDecimal campaignId, String name, String integrationId, String query) throws ApiException {
+        ApiResponse<InlineResponse20045> localVarResp = listStoresWithHttpInfo(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query);
         return localVarResp.getData();
     }
 
@@ -18763,7 +19155,7 @@ public class ManagementApi {
      * @param name The name of the store. (optional)
      * @param integrationId The integration ID of the store. (optional)
      * @param query Filter results by &#x60;name&#x60; or &#x60;integrationId&#x60;. (optional)
-     * @return ApiResponse&lt;InlineResponse20047&gt;
+     * @return ApiResponse&lt;InlineResponse20045&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -18771,9 +19163,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20047> listStoresWithHttpInfo(Long applicationId, Long pageSize, Long skip, String sort, Boolean withTotalResultSize, BigDecimal campaignId, String name, String integrationId, String query) throws ApiException {
+    public ApiResponse<InlineResponse20045> listStoresWithHttpInfo(Long applicationId, Long pageSize, Long skip, String sort, Boolean withTotalResultSize, BigDecimal campaignId, String name, String integrationId, String query) throws ApiException {
         okhttp3.Call localVarCall = listStoresValidateBeforeCall(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20047>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20045>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -18798,10 +19190,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listStoresAsync(Long applicationId, Long pageSize, Long skip, String sort, Boolean withTotalResultSize, BigDecimal campaignId, String name, String integrationId, String query, final ApiCallback<InlineResponse20047> _callback) throws ApiException {
+    public okhttp3.Call listStoresAsync(Long applicationId, Long pageSize, Long skip, String sort, Boolean withTotalResultSize, BigDecimal campaignId, String name, String integrationId, String query, final ApiCallback<InlineResponse20045> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listStoresValidateBeforeCall(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20047>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20045>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -19151,6 +19543,116 @@ public class ManagementApi {
         return localVarCall;
     }
     /**
+     * Build call for scimCreateGroup
+     * @param body body (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimCreateGroupCall(ScimBaseGroup body, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v1/provisioning/scim/Groups";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call scimCreateGroupValidateBeforeCall(ScimBaseGroup body, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling scimCreateGroup(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = scimCreateGroupCall(body, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create SCIM group
+     * Create a new Talon.One group using the SCIM Group provisioning protocol with an identity provider, for example, Microsoft Entra ID, and assign members from the payload to the new group. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @param body body (required)
+     * @return ScimGroup
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ScimGroup scimCreateGroup(ScimBaseGroup body) throws ApiException {
+        ApiResponse<ScimGroup> localVarResp = scimCreateGroupWithHttpInfo(body);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create SCIM group
+     * Create a new Talon.One group using the SCIM Group provisioning protocol with an identity provider, for example, Microsoft Entra ID, and assign members from the payload to the new group. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @param body body (required)
+     * @return ApiResponse&lt;ScimGroup&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ScimGroup> scimCreateGroupWithHttpInfo(ScimBaseGroup body) throws ApiException {
+        okhttp3.Call localVarCall = scimCreateGroupValidateBeforeCall(body, null);
+        Type localVarReturnType = new TypeToken<ScimGroup>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create SCIM group (asynchronously)
+     * Create a new Talon.One group using the SCIM Group provisioning protocol with an identity provider, for example, Microsoft Entra ID, and assign members from the payload to the new group. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @param body body (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimCreateGroupAsync(ScimBaseGroup body, final ApiCallback<ScimGroup> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = scimCreateGroupValidateBeforeCall(body, _callback);
+        Type localVarReturnType = new TypeToken<ScimGroup>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for scimCreateUser
      * @param body body (required)
      * @param _callback Callback for upload/download progress
@@ -19261,6 +19763,113 @@ public class ManagementApi {
         return localVarCall;
     }
     /**
+     * Build call for scimDeleteGroup
+     * @param groupId The ID of the group. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimDeleteGroupCall(Long groupId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/provisioning/scim/Groups/{groupId}"
+            .replaceAll("\\{" + "groupId" + "\\}", localVarApiClient.escapeString(groupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call scimDeleteGroupValidateBeforeCall(Long groupId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'groupId' is set
+        if (groupId == null) {
+            throw new ApiException("Missing the required parameter 'groupId' when calling scimDeleteGroup(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = scimDeleteGroupCall(groupId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Delete SCIM group
+     * Delete a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @param groupId The ID of the group. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public void scimDeleteGroup(Long groupId) throws ApiException {
+        scimDeleteGroupWithHttpInfo(groupId);
+    }
+
+    /**
+     * Delete SCIM group
+     * Delete a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @param groupId The ID of the group. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> scimDeleteGroupWithHttpInfo(Long groupId) throws ApiException {
+        okhttp3.Call localVarCall = scimDeleteGroupValidateBeforeCall(groupId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Delete SCIM group (asynchronously)
+     * Delete a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @param groupId The ID of the group. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimDeleteGroupAsync(Long groupId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = scimDeleteGroupValidateBeforeCall(groupId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for scimDeleteUser
      * @param userId The ID of the user. (required)
      * @param _callback Callback for upload/download progress
@@ -19365,6 +19974,218 @@ public class ManagementApi {
 
         okhttp3.Call localVarCall = scimDeleteUserValidateBeforeCall(userId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for scimGetGroup
+     * @param groupId The ID of the group. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimGetGroupCall(Long groupId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/provisioning/scim/Groups/{groupId}"
+            .replaceAll("\\{" + "groupId" + "\\}", localVarApiClient.escapeString(groupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call scimGetGroupValidateBeforeCall(Long groupId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'groupId' is set
+        if (groupId == null) {
+            throw new ApiException("Missing the required parameter 'groupId' when calling scimGetGroup(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = scimGetGroupCall(groupId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get SCIM group
+     * Retrieve data for a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @param groupId The ID of the group. (required)
+     * @return ScimGroup
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public ScimGroup scimGetGroup(Long groupId) throws ApiException {
+        ApiResponse<ScimGroup> localVarResp = scimGetGroupWithHttpInfo(groupId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get SCIM group
+     * Retrieve data for a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @param groupId The ID of the group. (required)
+     * @return ApiResponse&lt;ScimGroup&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ScimGroup> scimGetGroupWithHttpInfo(Long groupId) throws ApiException {
+        okhttp3.Call localVarCall = scimGetGroupValidateBeforeCall(groupId, null);
+        Type localVarReturnType = new TypeToken<ScimGroup>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get SCIM group (asynchronously)
+     * Retrieve data for a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @param groupId The ID of the group. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimGetGroupAsync(Long groupId, final ApiCallback<ScimGroup> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = scimGetGroupValidateBeforeCall(groupId, _callback);
+        Type localVarReturnType = new TypeToken<ScimGroup>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for scimGetGroups
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of SCIM groups </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimGetGroupsCall(final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/provisioning/scim/Groups";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call scimGetGroupsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = scimGetGroupsCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List SCIM groups
+     * Retrieve a paginated list of groups created using the SCIM protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @return ScimGroupsListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of SCIM groups </td><td>  -  </td></tr>
+     </table>
+     */
+    public ScimGroupsListResponse scimGetGroups() throws ApiException {
+        ApiResponse<ScimGroupsListResponse> localVarResp = scimGetGroupsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * List SCIM groups
+     * Retrieve a paginated list of groups created using the SCIM protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @return ApiResponse&lt;ScimGroupsListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of SCIM groups </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ScimGroupsListResponse> scimGetGroupsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = scimGetGroupsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ScimGroupsListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List SCIM groups (asynchronously)
+     * Retrieve a paginated list of groups created using the SCIM protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of SCIM groups </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimGetGroupsAsync(final ApiCallback<ScimGroupsListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = scimGetGroupsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ScimGroupsListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -19883,6 +20704,126 @@ public class ManagementApi {
         return localVarCall;
     }
     /**
+     * Build call for scimPatchGroup
+     * @param groupId The ID of the group. (required)
+     * @param body body (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimPatchGroupCall(Long groupId, ScimPatchRequest body, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v1/provisioning/scim/Groups/{groupId}"
+            .replaceAll("\\{" + "groupId" + "\\}", localVarApiClient.escapeString(groupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call scimPatchGroupValidateBeforeCall(Long groupId, ScimPatchRequest body, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'groupId' is set
+        if (groupId == null) {
+            throw new ApiException("Missing the required parameter 'groupId' when calling scimPatchGroup(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling scimPatchGroup(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = scimPatchGroupCall(groupId, body, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Update SCIM group attributes
+     * Update certain attributes of a group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint allows for selective adding, removing, or replacing of specific group attributes while other attributes remain unchanged. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+     * @param groupId The ID of the group. (required)
+     * @param body body (required)
+     * @return ScimGroup
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public ScimGroup scimPatchGroup(Long groupId, ScimPatchRequest body) throws ApiException {
+        ApiResponse<ScimGroup> localVarResp = scimPatchGroupWithHttpInfo(groupId, body);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update SCIM group attributes
+     * Update certain attributes of a group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint allows for selective adding, removing, or replacing of specific group attributes while other attributes remain unchanged. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+     * @param groupId The ID of the group. (required)
+     * @param body body (required)
+     * @return ApiResponse&lt;ScimGroup&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ScimGroup> scimPatchGroupWithHttpInfo(Long groupId, ScimPatchRequest body) throws ApiException {
+        okhttp3.Call localVarCall = scimPatchGroupValidateBeforeCall(groupId, body, null);
+        Type localVarReturnType = new TypeToken<ScimGroup>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update SCIM group attributes (asynchronously)
+     * Update certain attributes of a group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint allows for selective adding, removing, or replacing of specific group attributes while other attributes remain unchanged. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+     * @param groupId The ID of the group. (required)
+     * @param body body (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimPatchGroupAsync(Long groupId, ScimPatchRequest body, final ApiCallback<ScimGroup> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = scimPatchGroupValidateBeforeCall(groupId, body, _callback);
+        Type localVarReturnType = new TypeToken<ScimGroup>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for scimPatchUser
      * @param userId The ID of the user. (required)
      * @param body body (required)
@@ -19999,6 +20940,126 @@ public class ManagementApi {
 
         okhttp3.Call localVarCall = scimPatchUserValidateBeforeCall(userId, body, _callback);
         Type localVarReturnType = new TypeToken<ScimUser>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for scimReplaceGroupAttributes
+     * @param groupId The ID of the group. (required)
+     * @param body body (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimReplaceGroupAttributesCall(Long groupId, ScimBaseGroup body, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v1/provisioning/scim/Groups/{groupId}"
+            .replaceAll("\\{" + "groupId" + "\\}", localVarApiClient.escapeString(groupId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call scimReplaceGroupAttributesValidateBeforeCall(Long groupId, ScimBaseGroup body, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'groupId' is set
+        if (groupId == null) {
+            throw new ApiException("Missing the required parameter 'groupId' when calling scimReplaceGroupAttributes(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling scimReplaceGroupAttributes(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = scimReplaceGroupAttributesCall(groupId, body, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Update SCIM group
+     * Update the details of a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint replaces all attributes of the given group with the attributes provided in the request payload. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+     * @param groupId The ID of the group. (required)
+     * @param body body (required)
+     * @return ScimGroup
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public ScimGroup scimReplaceGroupAttributes(Long groupId, ScimBaseGroup body) throws ApiException {
+        ApiResponse<ScimGroup> localVarResp = scimReplaceGroupAttributesWithHttpInfo(groupId, body);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update SCIM group
+     * Update the details of a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint replaces all attributes of the given group with the attributes provided in the request payload. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+     * @param groupId The ID of the group. (required)
+     * @param body body (required)
+     * @return ApiResponse&lt;ScimGroup&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ScimGroup> scimReplaceGroupAttributesWithHttpInfo(Long groupId, ScimBaseGroup body) throws ApiException {
+        okhttp3.Call localVarCall = scimReplaceGroupAttributesValidateBeforeCall(groupId, body, null);
+        Type localVarReturnType = new TypeToken<ScimGroup>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update SCIM group (asynchronously)
+     * Update the details of a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint replaces all attributes of the given group with the attributes provided in the request payload. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+     * @param groupId The ID of the group. (required)
+     * @param body body (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Group details </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scimReplaceGroupAttributesAsync(Long groupId, ScimBaseGroup body, final ApiCallback<ScimGroup> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = scimReplaceGroupAttributesValidateBeforeCall(groupId, body, _callback);
+        Type localVarReturnType = new TypeToken<ScimGroup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -20569,6 +21630,139 @@ public class ManagementApi {
 
         okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse20011>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for summarizeCampaignStoreBudget
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call summarizeCampaignStoreBudgetCall(Long applicationId, Long campaignId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets/summary"
+            .replaceAll("\\{" + "applicationId" + "\\}", localVarApiClient.escapeString(applicationId.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call summarizeCampaignStoreBudgetValidateBeforeCall(Long applicationId, Long campaignId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'applicationId' is set
+        if (applicationId == null) {
+            throw new ApiException("Missing the required parameter 'applicationId' when calling summarizeCampaignStoreBudget(Async)");
+        }
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling summarizeCampaignStoreBudget(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = summarizeCampaignStoreBudgetCall(applicationId, campaignId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get summary of campaign store budgets
+     * Fetch a summary of all store budget information for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @return InlineResponse20047
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public InlineResponse20047 summarizeCampaignStoreBudget(Long applicationId, Long campaignId) throws ApiException {
+        ApiResponse<InlineResponse20047> localVarResp = summarizeCampaignStoreBudgetWithHttpInfo(applicationId, campaignId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get summary of campaign store budgets
+     * Fetch a summary of all store budget information for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @return ApiResponse&lt;InlineResponse20047&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<InlineResponse20047> summarizeCampaignStoreBudgetWithHttpInfo(Long applicationId, Long campaignId) throws ApiException {
+        okhttp3.Call localVarCall = summarizeCampaignStoreBudgetValidateBeforeCall(applicationId, campaignId, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20047>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get summary of campaign store budgets (asynchronously)
+     * Fetch a summary of all store budget information for a given campaign.
+     * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call summarizeCampaignStoreBudgetAsync(Long applicationId, Long campaignId, final ApiCallback<InlineResponse20047> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = summarizeCampaignStoreBudgetValidateBeforeCall(applicationId, campaignId, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse20047>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

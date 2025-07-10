@@ -127,7 +127,8 @@ public class LedgerInfo {
    * Sum of negative points. This implies that &#x60;currentBalance&#x60; is &#x60;0&#x60;.
    * @return negativeBalance
   **/
-  @ApiModelProperty(example = "10.0", required = true, value = "Sum of negative points. This implies that `currentBalance` is `0`.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "10.0", value = "Sum of negative points. This implies that `currentBalance` is `0`.")
 
   public BigDecimal getNegativeBalance() {
     return negativeBalance;
@@ -238,7 +239,8 @@ public class LedgerInfo {
    * The tentative negative balance after all additions and deductions from the current customer session are applied to &#x60;negativeBalance&#x60;. When the session is closed, the tentative effects are applied and &#x60;negativeBalance&#x60; is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. 
    * @return tentativeNegativeBalance
   **/
-  @ApiModelProperty(example = "100.0", required = true, value = "The tentative negative balance after all additions and deductions from the current customer session are applied to `negativeBalance`. When the session is closed, the tentative effects are applied and `negativeBalance` is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. ")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "100.0", value = "The tentative negative balance after all additions and deductions from the current customer session are applied to `negativeBalance`. When the session is closed, the tentative effects are applied and `negativeBalance` is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. ")
 
   public BigDecimal getTentativeNegativeBalance() {
     return tentativeNegativeBalance;

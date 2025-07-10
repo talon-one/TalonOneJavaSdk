@@ -21,6 +21,8 @@ Name | Value
 CAMPAIGN | &quot;campaign&quot;
 LOYALTY_ADDED_DEDUCTED_POINTS | &quot;loyalty_added_deducted_points&quot;
 CARD_ADDED_DEDUCTED_POINTS | &quot;card_added_deducted_points&quot;
+LOYALTY_ADDED_DEDUCTED_POINTS_BALANCES | &quot;loyalty_added_deducted_points_balances&quot;
+LOYALTY_CARD_ADDED_DEDUCTED_POINTS_BALANCES | &quot;loyalty_card_added_deducted_points_balances&quot;
 COUPON | &quot;coupon&quot;
 EXPIRING_COUPONS | &quot;expiring_coupons&quot;
 EXPIRING_POINTS | &quot;expiring_points&quot;

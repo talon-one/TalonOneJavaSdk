@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.RoleV2;
+import one.talon.model.ListCampaignStoreBudgets;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,14 +41,6 @@ public class InlineResponse20046Test {
     @Test
     public void testInlineResponse20046() {
         // TODO: test InlineResponse20046
-    }
-
-    /**
-     * Test the property 'totalResultSize'
-     */
-    @Test
-    public void totalResultSizeTest() {
-        // TODO: test totalResultSize
     }
 
     /**

@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Internal ID of this entity. | 
+**id** | **Long** | The internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **applicationId** | **Long** | The ID of the Application that owns this entity. | 
 **accountId** | **Long** | The ID of the account that owns this entity. | 

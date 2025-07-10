@@ -86,7 +86,7 @@ public class CouponConstraints {
    /**
    * The total discount value that the code can give. Typically used to represent a gift card value. 
    * minimum: 0
-   * maximum: 999999
+   * maximum: 1E+15
    * @return discountLimit
   **/
   @javax.annotation.Nullable

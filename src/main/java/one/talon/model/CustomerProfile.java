@@ -87,10 +87,10 @@ public class CustomerProfile {
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of the customer profile.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of the customer profile.")
 
   public Long getId() {
     return id;
@@ -197,10 +197,10 @@ public class CustomerProfile {
   }
 
    /**
-   * The total amount of closed sessions by a customer. A closed session is a successful purchase.
+   * The total number of closed sessions. Does not include closed sessions that have been cancelled or reopened. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states).
    * @return closedSessions
   **/
-  @ApiModelProperty(example = "3", required = true, value = "The total amount of closed sessions by a customer. A closed session is a successful purchase.")
+  @ApiModelProperty(example = "3", required = true, value = "The total number of closed sessions. Does not include closed sessions that have been cancelled or reopened. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states).")
 
   public Long getClosedSessions() {
     return closedSessions;

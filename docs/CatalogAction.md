@@ -21,6 +21,7 @@ PATCH | &quot;PATCH&quot;
 PATCH_MANY | &quot;PATCH_MANY&quot;
 REMOVE | &quot;REMOVE&quot;
 REMOVE_MANY | &quot;REMOVE_MANY&quot;
+ADD_PRICE_ADJUSTMENT | &quot;ADD_PRICE_ADJUSTMENT&quot;
 
 
 

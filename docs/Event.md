@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Internal ID of this entity. | 
+**id** | **Long** | The internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **applicationId** | **Long** | The ID of the Application that owns this entity. | 
 **profileId** | **String** | ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known &#x60;profileId&#x60;, we recommend you use a guest &#x60;profileId&#x60;.  |  [optional]

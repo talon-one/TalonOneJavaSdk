@@ -6,8 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
-**data** | [**List&lt;RoleV2&gt;**](RoleV2.md) |  | 
+**data** | [**List&lt;ListCampaignStoreBudgets&gt;**](ListCampaignStoreBudgets.md) |  |  [optional]
 
 
 

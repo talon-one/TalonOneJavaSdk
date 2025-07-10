@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **users** | **Long** | Total number of allowed users in the account. | 
 **apiVolume** | **Long** | Allowed volume of API requests to the account. | 
 **promotionTypes** | **List&lt;String&gt;** | Array of promotion types that are employed in the account. | 
+**secondaryDeploymentPrice** | **Long** | The price for a secondary deployment according to contractual agreements. | 
+**currencyCode** | **String** | The currency of the contract. | 
 
 
 

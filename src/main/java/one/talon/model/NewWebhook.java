@@ -44,6 +44,10 @@ public class NewWebhook {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_DRAFT = "draft";
+  @SerializedName(SERIALIZED_NAME_DRAFT)
+  private Boolean draft;
+
   /**
    * API method for this webhook.
    */
@@ -121,6 +125,10 @@ public class NewWebhook {
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
 
+  public static final String SERIALIZED_NAME_AUTHENTICATION_ID = "authenticationId";
+  @SerializedName(SERIALIZED_NAME_AUTHENTICATION_ID)
+  private Long authenticationId;
+
 
   public NewWebhook applicationIds(List<Long> applicationIds) {
     
@@ -191,6 +199,28 @@ public class NewWebhook {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public NewWebhook draft(Boolean draft) {
+    
+    this.draft = draft;
+    return this;
+  }
+
+   /**
+   * Indicates if the webhook is a draft.
+   * @return draft
+  **/
+  @ApiModelProperty(example = "false", required = true, value = "Indicates if the webhook is a draft.")
+
+  public Boolean getDraft() {
+    return draft;
+  }
+
+
+  public void setDraft(Boolean draft) {
+    this.draft = draft;
   }
 
 
@@ -337,6 +367,29 @@ public class NewWebhook {
   }
 
 
+  public NewWebhook authenticationId(Long authenticationId) {
+    
+    this.authenticationId = authenticationId;
+    return this;
+  }
+
+   /**
+   * The ID of the credential that this webhook is using.
+   * @return authenticationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "The ID of the credential that this webhook is using.")
+
+  public Long getAuthenticationId() {
+    return authenticationId;
+  }
+
+
+  public void setAuthenticationId(Long authenticationId) {
+    this.authenticationId = authenticationId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -349,17 +402,19 @@ public class NewWebhook {
     return Objects.equals(this.applicationIds, newWebhook.applicationIds) &&
         Objects.equals(this.title, newWebhook.title) &&
         Objects.equals(this.description, newWebhook.description) &&
+        Objects.equals(this.draft, newWebhook.draft) &&
         Objects.equals(this.verb, newWebhook.verb) &&
         Objects.equals(this.url, newWebhook.url) &&
         Objects.equals(this.headers, newWebhook.headers) &&
         Objects.equals(this.payload, newWebhook.payload) &&
         Objects.equals(this.params, newWebhook.params) &&
-        Objects.equals(this.enabled, newWebhook.enabled);
+        Objects.equals(this.enabled, newWebhook.enabled) &&
+        Objects.equals(this.authenticationId, newWebhook.authenticationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationIds, title, description, verb, url, headers, payload, params, enabled);
+    return Objects.hash(applicationIds, title, description, draft, verb, url, headers, payload, params, enabled, authenticationId);
   }
 
 
@@ -370,12 +425,14 @@ public class NewWebhook {
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
     sb.append("    verb: ").append(toIndentedString(verb)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    authenticationId: ").append(toIndentedString(authenticationId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
