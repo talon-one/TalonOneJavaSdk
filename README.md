@@ -8,7 +8,7 @@ If you use Maven, we also host [Maven Artifacts](https://github.com/talon-one/ma
 
 Building the API client library requires:
 
-1. Java 1.7+
+1. Java 21+
 2. Maven/Gradle
 
 ## Installation
@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>13.0.0</version>
+  <version>13.1.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:13.0.0"
+compile "one.talon:talon-one-client:13.1.0"
 ```
 
 ### Others
