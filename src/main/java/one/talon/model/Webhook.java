@@ -57,6 +57,10 @@ public class Webhook {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_DRAFT = "draft";
+  @SerializedName(SERIALIZED_NAME_DRAFT)
+  private Boolean draft;
+
   /**
    * API method for this webhook.
    */
@@ -134,6 +138,10 @@ public class Webhook {
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
 
+  public static final String SERIALIZED_NAME_AUTHENTICATION_ID = "authenticationId";
+  @SerializedName(SERIALIZED_NAME_AUTHENTICATION_ID)
+  private Long authenticationId;
+
 
   public Webhook id(Long id) {
     
@@ -142,10 +150,10 @@ public class Webhook {
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
   public Long getId() {
     return id;
@@ -270,6 +278,28 @@ public class Webhook {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public Webhook draft(Boolean draft) {
+    
+    this.draft = draft;
+    return this;
+  }
+
+   /**
+   * Indicates if the webhook is a draft.
+   * @return draft
+  **/
+  @ApiModelProperty(example = "false", required = true, value = "Indicates if the webhook is a draft.")
+
+  public Boolean getDraft() {
+    return draft;
+  }
+
+
+  public void setDraft(Boolean draft) {
+    this.draft = draft;
   }
 
 
@@ -416,6 +446,29 @@ public class Webhook {
   }
 
 
+  public Webhook authenticationId(Long authenticationId) {
+    
+    this.authenticationId = authenticationId;
+    return this;
+  }
+
+   /**
+   * The ID of the credential that this webhook is using.
+   * @return authenticationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "The ID of the credential that this webhook is using.")
+
+  public Long getAuthenticationId() {
+    return authenticationId;
+  }
+
+
+  public void setAuthenticationId(Long authenticationId) {
+    this.authenticationId = authenticationId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -431,17 +484,19 @@ public class Webhook {
         Objects.equals(this.applicationIds, webhook.applicationIds) &&
         Objects.equals(this.title, webhook.title) &&
         Objects.equals(this.description, webhook.description) &&
+        Objects.equals(this.draft, webhook.draft) &&
         Objects.equals(this.verb, webhook.verb) &&
         Objects.equals(this.url, webhook.url) &&
         Objects.equals(this.headers, webhook.headers) &&
         Objects.equals(this.payload, webhook.payload) &&
         Objects.equals(this.params, webhook.params) &&
-        Objects.equals(this.enabled, webhook.enabled);
+        Objects.equals(this.enabled, webhook.enabled) &&
+        Objects.equals(this.authenticationId, webhook.authenticationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, applicationIds, title, description, verb, url, headers, payload, params, enabled);
+    return Objects.hash(id, created, modified, applicationIds, title, description, draft, verb, url, headers, payload, params, enabled, authenticationId);
   }
 
 
@@ -455,12 +510,14 @@ public class Webhook {
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
     sb.append("    verb: ").append(toIndentedString(verb)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    authenticationId: ").append(toIndentedString(authenticationId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -27,8 +27,11 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import one.talon.model.AdditionalCost;
+import one.talon.model.PriceDetail;
 import one.talon.model.Product;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * CartItem
@@ -98,6 +101,26 @@ public class CartItem {
   public static final String SERIALIZED_NAME_CATALOG_ITEM_I_D = "catalogItemID";
   @SerializedName(SERIALIZED_NAME_CATALOG_ITEM_I_D)
   private Long catalogItemID;
+
+  public static final String SERIALIZED_NAME_SELECTED_PRICE_TYPE = "selectedPriceType";
+  @SerializedName(SERIALIZED_NAME_SELECTED_PRICE_TYPE)
+  private String selectedPriceType;
+
+  public static final String SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID = "adjustmentReferenceId";
+  @SerializedName(SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID)
+  private UUID adjustmentReferenceId;
+
+  public static final String SERIALIZED_NAME_ADJUSTMENT_EFFECTIVE_FROM = "adjustmentEffectiveFrom";
+  @SerializedName(SERIALIZED_NAME_ADJUSTMENT_EFFECTIVE_FROM)
+  private OffsetDateTime adjustmentEffectiveFrom;
+
+  public static final String SERIALIZED_NAME_ADJUSTMENT_EFFECTIVE_UNTIL = "adjustmentEffectiveUntil";
+  @SerializedName(SERIALIZED_NAME_ADJUSTMENT_EFFECTIVE_UNTIL)
+  private OffsetDateTime adjustmentEffectiveUntil;
+
+  public static final String SERIALIZED_NAME_PRICES = "prices";
+  @SerializedName(SERIALIZED_NAME_PRICES)
+  private Map<String, PriceDetail> prices = null;
 
 
   public CartItem name(String name) {
@@ -459,11 +482,11 @@ public class CartItem {
   }
 
    /**
-   * The [catalog item ID](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs/#synchronizing-a-cart-item-catalog).
+   * The catalog item ID.
    * @return catalogItemID
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The [catalog item ID](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs/#synchronizing-a-cart-item-catalog).")
+  @ApiModelProperty(value = "The catalog item ID.")
 
   public Long getCatalogItemID() {
     return catalogItemID;
@@ -472,6 +495,129 @@ public class CartItem {
 
   public void setCatalogItemID(Long catalogItemID) {
     this.catalogItemID = catalogItemID;
+  }
+
+
+  public CartItem selectedPriceType(String selectedPriceType) {
+    
+    this.selectedPriceType = selectedPriceType;
+    return this;
+  }
+
+   /**
+   * The selected price type for this cart item (e.g. the price for members only).
+   * @return selectedPriceType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "member", value = "The selected price type for this cart item (e.g. the price for members only).")
+
+  public String getSelectedPriceType() {
+    return selectedPriceType;
+  }
+
+
+  public void setSelectedPriceType(String selectedPriceType) {
+    this.selectedPriceType = selectedPriceType;
+  }
+
+
+  public CartItem adjustmentReferenceId(UUID adjustmentReferenceId) {
+    
+    this.adjustmentReferenceId = adjustmentReferenceId;
+    return this;
+  }
+
+   /**
+   * The reference ID of the selected price adjustment for this cart item. Only returned if the selected price resulted from a price adjustment.
+   * @return adjustmentReferenceId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "68851723-e6fa-488f-ace9-112581e6c19b", value = "The reference ID of the selected price adjustment for this cart item. Only returned if the selected price resulted from a price adjustment.")
+
+  public UUID getAdjustmentReferenceId() {
+    return adjustmentReferenceId;
+  }
+
+
+  public void setAdjustmentReferenceId(UUID adjustmentReferenceId) {
+    this.adjustmentReferenceId = adjustmentReferenceId;
+  }
+
+
+  public CartItem adjustmentEffectiveFrom(OffsetDateTime adjustmentEffectiveFrom) {
+    
+    this.adjustmentEffectiveFrom = adjustmentEffectiveFrom;
+    return this;
+  }
+
+   /**
+   * The date and time from which the price adjustment is effective. Only returned if the selected price resulted from a price adjustment that contains this field.
+   * @return adjustmentEffectiveFrom
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-09-12T10:12:42Z", value = "The date and time from which the price adjustment is effective. Only returned if the selected price resulted from a price adjustment that contains this field.")
+
+  public OffsetDateTime getAdjustmentEffectiveFrom() {
+    return adjustmentEffectiveFrom;
+  }
+
+
+  public void setAdjustmentEffectiveFrom(OffsetDateTime adjustmentEffectiveFrom) {
+    this.adjustmentEffectiveFrom = adjustmentEffectiveFrom;
+  }
+
+
+  public CartItem adjustmentEffectiveUntil(OffsetDateTime adjustmentEffectiveUntil) {
+    
+    this.adjustmentEffectiveUntil = adjustmentEffectiveUntil;
+    return this;
+  }
+
+   /**
+   * The date and time until which the price adjustment is effective. Only returned if the selected price resulted from a price adjustment that contains this field.
+   * @return adjustmentEffectiveUntil
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-09-12T10:12:42Z", value = "The date and time until which the price adjustment is effective. Only returned if the selected price resulted from a price adjustment that contains this field.")
+
+  public OffsetDateTime getAdjustmentEffectiveUntil() {
+    return adjustmentEffectiveUntil;
+  }
+
+
+  public void setAdjustmentEffectiveUntil(OffsetDateTime adjustmentEffectiveUntil) {
+    this.adjustmentEffectiveUntil = adjustmentEffectiveUntil;
+  }
+
+
+  public CartItem prices(Map<String, PriceDetail> prices) {
+    
+    this.prices = prices;
+    return this;
+  }
+
+  public CartItem putPricesItem(String key, PriceDetail pricesItem) {
+    if (this.prices == null) {
+      this.prices = new HashMap<String, PriceDetail>();
+    }
+    this.prices.put(key, pricesItem);
+    return this;
+  }
+
+   /**
+   * A map of keys and values representing the price types and related price adjustment details for this cart item. The keys correspond to the &#x60;priceType&#x60; names. 
+   * @return prices
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{\"member\":{\"price\":90,\"adjustmentReferenceId\":\"68851723-e6fa-488f-ace9-112581e6c19b\",\"effectiveFrom\":\"2025-05-25T00:00:00Z\",\"effectiveUntil\":\"2025-05-30T00:00:00Z\"},\"base\":{\"price\":100}}", value = "A map of keys and values representing the price types and related price adjustment details for this cart item. The keys correspond to the `priceType` names. ")
+
+  public Map<String, PriceDetail> getPrices() {
+    return prices;
+  }
+
+
+  public void setPrices(Map<String, PriceDetail> prices) {
+    this.prices = prices;
   }
 
 
@@ -499,12 +645,17 @@ public class CartItem {
         Objects.equals(this.position, cartItem.position) &&
         Objects.equals(this.attributes, cartItem.attributes) &&
         Objects.equals(this.additionalCosts, cartItem.additionalCosts) &&
-        Objects.equals(this.catalogItemID, cartItem.catalogItemID);
+        Objects.equals(this.catalogItemID, cartItem.catalogItemID) &&
+        Objects.equals(this.selectedPriceType, cartItem.selectedPriceType) &&
+        Objects.equals(this.adjustmentReferenceId, cartItem.adjustmentReferenceId) &&
+        Objects.equals(this.adjustmentEffectiveFrom, cartItem.adjustmentEffectiveFrom) &&
+        Objects.equals(this.adjustmentEffectiveUntil, cartItem.adjustmentEffectiveUntil) &&
+        Objects.equals(this.prices, cartItem.prices);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, sku, quantity, returnedQuantity, remainingQuantity, price, category, product, weight, height, width, length, position, attributes, additionalCosts, catalogItemID);
+    return Objects.hash(name, sku, quantity, returnedQuantity, remainingQuantity, price, category, product, weight, height, width, length, position, attributes, additionalCosts, catalogItemID, selectedPriceType, adjustmentReferenceId, adjustmentEffectiveFrom, adjustmentEffectiveUntil, prices);
   }
 
 
@@ -528,6 +679,11 @@ public class CartItem {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalCosts: ").append(toIndentedString(additionalCosts)).append("\n");
     sb.append("    catalogItemID: ").append(toIndentedString(catalogItemID)).append("\n");
+    sb.append("    selectedPriceType: ").append(toIndentedString(selectedPriceType)).append("\n");
+    sb.append("    adjustmentReferenceId: ").append(toIndentedString(adjustmentReferenceId)).append("\n");
+    sb.append("    adjustmentEffectiveFrom: ").append(toIndentedString(adjustmentEffectiveFrom)).append("\n");
+    sb.append("    adjustmentEffectiveUntil: ").append(toIndentedString(adjustmentEffectiveUntil)).append("\n");
+    sb.append("    prices: ").append(toIndentedString(prices)).append("\n");
     sb.append("}");
     return sb.toString();
   }

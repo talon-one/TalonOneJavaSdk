@@ -138,4 +138,20 @@ public class AccountLimitsTest {
         // TODO: test promotionTypes
     }
 
+    /**
+     * Test the property 'secondaryDeploymentPrice'
+     */
+    @Test
+    public void secondaryDeploymentPriceTest() {
+        // TODO: test secondaryDeploymentPrice
+    }
+
+    /**
+     * Test the property 'currencyCode'
+     */
+    @Test
+    public void currencyCodeTest() {
+        // TODO: test currencyCode
+    }
+
 }

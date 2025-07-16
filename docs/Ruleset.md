@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Internal ID of this entity. | 
+**id** | **Long** | The internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **userId** | **Long** | The ID of the user associated with this entity. | 
 **rules** | [**List&lt;Rule&gt;**](Rule.md) | Set of rules to apply. | 

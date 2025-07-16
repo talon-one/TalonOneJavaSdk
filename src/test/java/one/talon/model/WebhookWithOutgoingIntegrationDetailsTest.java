@@ -93,6 +93,14 @@ public class WebhookWithOutgoingIntegrationDetailsTest {
     }
 
     /**
+     * Test the property 'draft'
+     */
+    @Test
+    public void draftTest() {
+        // TODO: test draft
+    }
+
+    /**
      * Test the property 'verb'
      */
     @Test
@@ -138,6 +146,14 @@ public class WebhookWithOutgoingIntegrationDetailsTest {
     @Test
     public void enabledTest() {
         // TODO: test enabled
+    }
+
+    /**
+     * Test the property 'authenticationId'
+     */
+    @Test
+    public void authenticationIdTest() {
+        // TODO: test authenticationId
     }
 
     /**

@@ -89,10 +89,10 @@ public class CouponDeletionJob {
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
   public Long getId() {
     return id;

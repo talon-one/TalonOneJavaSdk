@@ -99,6 +99,7 @@ import one.talon.model.ModelImport;
 import one.talon.model.NewAdditionalCost;
 import one.talon.model.NewAttribute;
 import one.talon.model.NewCampaignCollection;
+import one.talon.model.NewCampaignStoreBudget;
 import one.talon.model.NewCollection;
 import one.talon.model.NewCouponCreationJob;
 import one.talon.model.NewCouponDeletionJob;
@@ -115,6 +116,9 @@ import one.talon.model.Referral;
 import one.talon.model.RoleV2;
 import one.talon.model.RoleV2Base;
 import one.talon.model.Ruleset;
+import one.talon.model.ScimBaseGroup;
+import one.talon.model.ScimGroup;
+import one.talon.model.ScimGroupsListResponse;
 import one.talon.model.ScimNewUser;
 import one.talon.model.ScimPatchRequest;
 import one.talon.model.ScimResourceTypesListResponse;
@@ -319,6 +323,24 @@ public class ManagementApiTest {
         Long applicationId = null;
         CreateTemplateCampaign body = null;
         CreateTemplateCampaignResponse response = api.createCampaignFromTemplate(applicationId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Create campaign store budget
+     *
+     * Create a new store budget for a given campaign.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createCampaignStoreBudgetTest() throws ApiException {
+        Long applicationId = null;
+        Long campaignId = null;
+        NewCampaignStoreBudget body = null;
+        api.createCampaignStoreBudget(applicationId, campaignId, body);
 
         // TODO: test validations
     }
@@ -582,6 +604,25 @@ public class ManagementApiTest {
     }
     
     /**
+     * Delete campaign store budgets
+     *
+     * Delete the store budgets for a given campaign.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteCampaignStoreBudgetsTest() throws ApiException {
+        Long applicationId = null;
+        Long campaignId = null;
+        String action = null;
+        String period = null;
+        api.deleteCampaignStoreBudgets(applicationId, campaignId, action, period);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Delete campaign-level collection
      *
      * Delete a given campaign-level collection.
@@ -814,6 +855,25 @@ public class ManagementApiTest {
     }
     
     /**
+     * Export campaign store budgets
+     *
+     * Download a CSV file containing the store budgets for a given campaign.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void exportCampaignStoreBudgetsTest() throws ApiException {
+        Long applicationId = null;
+        Long campaignId = null;
+        String action = null;
+        String period = null;
+        String response = api.exportCampaignStoreBudgets(applicationId, campaignId, action, period);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Export stores
      *
      * Download a CSV file containing the stores linked to a specific campaign.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following column:  - &#x60;store_integration_id&#x60;: The identifier of the store. 
@@ -881,7 +941,7 @@ public class ManagementApiTest {
     /**
      * Export customer sessions
      *
-     * Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/product/server-infrastructure-and-data-retention#data-retention-policy).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
+     * Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/dev/server-infrastructure-and-data-retention).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1020,8 +1080,10 @@ public class ManagementApiTest {
     public void exportLoyaltyCardsTest() throws ApiException {
         Long loyaltyProgramId = null;
         String batchId = null;
+        OffsetDateTime createdBefore = null;
+        OffsetDateTime createdAfter = null;
         String dateFormat = null;
-        String response = api.exportLoyaltyCards(loyaltyProgramId, batchId, dateFormat);
+        String response = api.exportLoyaltyCards(loyaltyProgramId, batchId, createdBefore, createdAfter, dateFormat);
 
         // TODO: test validations
     }
@@ -1685,7 +1747,7 @@ public class ManagementApiTest {
         Boolean withTotalResultSize = null;
         Long managementKeyId = null;
         Boolean includeOld = null;
-        InlineResponse20044 response = api.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
+        InlineResponse20042 response = api.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
 
         // TODO: test validations
     }
@@ -1935,7 +1997,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse20042 response = api.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
+        InlineResponse20040 response = api.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1955,7 +2017,7 @@ public class ManagementApiTest {
         BigDecimal applicationId = null;
         Long campaignId = null;
         String entity = null;
-        InlineResponse20045 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
+        InlineResponse20043 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
 
         // TODO: test validations
     }
@@ -2262,7 +2324,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse20043 response = api.getUsers(pageSize, skip, sort);
+        InlineResponse20041 response = api.getUsers(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -2279,55 +2341,6 @@ public class ManagementApiTest {
     public void getWebhookTest() throws ApiException {
         Long webhookId = null;
         Webhook response = api.getWebhook(webhookId);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * List webhook activation log entries
-     *
-     * Webhook activation log entries are created as soon as an integration request triggers a webhook effect. See the [docs](https://docs.talon.one/docs/dev/getting-started/webhooks). 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getWebhookActivationLogsTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
-        String sort = null;
-        String integrationRequestUuid = null;
-        BigDecimal webhookId = null;
-        BigDecimal applicationId = null;
-        BigDecimal campaignId = null;
-        OffsetDateTime createdBefore = null;
-        OffsetDateTime createdAfter = null;
-        InlineResponse20040 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * List webhook log entries
-     *
-     * Retrieve all webhook log entries.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getWebhookLogsTest() throws ApiException {
-        Long pageSize = null;
-        Long skip = null;
-        String sort = null;
-        String status = null;
-        BigDecimal webhookId = null;
-        BigDecimal applicationId = null;
-        BigDecimal campaignId = null;
-        String requestUuid = null;
-        OffsetDateTime createdBefore = null;
-        OffsetDateTime createdAfter = null;
-        InlineResponse20041 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -2402,6 +2415,26 @@ public class ManagementApiTest {
         Long audienceId = null;
         String upFile = null;
         ModelImport response = api.importAudiencesMemberships(audienceId, upFile);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Import campaign store budgets
+     *
+     * Upload a CSV file containing store budgets for a given campaign.  Send the file as multipart data.  The CSV file **must** only contain the following columns: - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store.  The import **replaces** the previous list of store budgets. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void importCampaignStoreBudgetTest() throws ApiException {
+        Long applicationId = null;
+        Long campaignId = null;
+        String action = null;
+        String period = null;
+        String upFile = null;
+        ModelImport response = api.importCampaignStoreBudget(applicationId, campaignId, action, period, upFile);
 
         // TODO: test validations
     }
@@ -2507,8 +2540,9 @@ public class ManagementApiTest {
     @Test
     public void importLoyaltyPointsTest() throws ApiException {
         Long loyaltyProgramId = null;
+        Boolean notificationsEnabled = null;
         String upFile = null;
-        ModelImport response = api.importLoyaltyPoints(loyaltyProgramId, upFile);
+        ModelImport response = api.importLoyaltyPoints(loyaltyProgramId, notificationsEnabled, upFile);
 
         // TODO: test validations
     }
@@ -2614,7 +2648,26 @@ public class ManagementApiTest {
      */
     @Test
     public void listAllRolesV2Test() throws ApiException {
-        InlineResponse20046 response = api.listAllRolesV2();
+        InlineResponse20044 response = api.listAllRolesV2();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List campaign store budget limits
+     *
+     * Return the store budget limits for a given campaign.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listCampaignStoreBudgetLimitsTest() throws ApiException {
+        Long applicationId = null;
+        Long campaignId = null;
+        String action = null;
+        String period = null;
+        InlineResponse20046 response = api.listCampaignStoreBudgetLimits(applicationId, campaignId, action, period);
 
         // TODO: test validations
     }
@@ -2702,7 +2755,7 @@ public class ManagementApiTest {
         String name = null;
         String integrationId = null;
         String query = null;
-        InlineResponse20047 response = api.listStores(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query);
+        InlineResponse20045 response = api.listStores(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query);
 
         // TODO: test validations
     }
@@ -2757,6 +2810,22 @@ public class ManagementApiTest {
     }
     
     /**
+     * Create SCIM group
+     *
+     * Create a new Talon.One group using the SCIM Group provisioning protocol with an identity provider, for example, Microsoft Entra ID, and assign members from the payload to the new group. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimCreateGroupTest() throws ApiException {
+        ScimBaseGroup body = null;
+        ScimGroup response = api.scimCreateGroup(body);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Create SCIM user
      *
      * Create a new Talon.One user using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.
@@ -2773,6 +2842,22 @@ public class ManagementApiTest {
     }
     
     /**
+     * Delete SCIM group
+     *
+     * Delete a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimDeleteGroupTest() throws ApiException {
+        Long groupId = null;
+        api.scimDeleteGroup(groupId);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Delete SCIM user
      *
      * Delete a specific Talon.One user created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.
@@ -2784,6 +2869,37 @@ public class ManagementApiTest {
     public void scimDeleteUserTest() throws ApiException {
         Long userId = null;
         api.scimDeleteUser(userId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get SCIM group
+     *
+     * Retrieve data for a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimGetGroupTest() throws ApiException {
+        Long groupId = null;
+        ScimGroup response = api.scimGetGroup(groupId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List SCIM groups
+     *
+     * Retrieve a paginated list of groups created using the SCIM protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimGetGroupsTest() throws ApiException {
+        ScimGroupsListResponse response = api.scimGetGroups();
 
         // TODO: test validations
     }
@@ -2865,6 +2981,23 @@ public class ManagementApiTest {
     }
     
     /**
+     * Update SCIM group attributes
+     *
+     * Update certain attributes of a group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint allows for selective adding, removing, or replacing of specific group attributes while other attributes remain unchanged. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimPatchGroupTest() throws ApiException {
+        Long groupId = null;
+        ScimPatchRequest body = null;
+        ScimGroup response = api.scimPatchGroup(groupId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Update SCIM user attributes
      *
      * Update certain attributes of a specific Talon.One user created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.  This endpoint allows for selective adding, removing, or replacing specific attributes while leaving other attributes unchanged. 
@@ -2877,6 +3010,23 @@ public class ManagementApiTest {
         Long userId = null;
         ScimPatchRequest body = null;
         ScimUser response = api.scimPatchUser(userId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update SCIM group
+     *
+     * Update the details of a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint replaces all attributes of the given group with the attributes provided in the request payload. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimReplaceGroupAttributesTest() throws ApiException {
+        Long groupId = null;
+        ScimBaseGroup body = null;
+        ScimGroup response = api.scimReplaceGroupAttributes(groupId, body);
 
         // TODO: test validations
     }
@@ -2954,6 +3104,23 @@ public class ManagementApiTest {
         Boolean exactMatch = null;
         String batchId = null;
         InlineResponse20011 response = api.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get summary of campaign store budgets
+     *
+     * Fetch a summary of all store budget information for a given campaign.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void summarizeCampaignStoreBudgetTest() throws ApiException {
+        Long applicationId = null;
+        Long campaignId = null;
+        InlineResponse20047 response = api.summarizeCampaignStoreBudget(applicationId, campaignId);
 
         // TODO: test validations
     }

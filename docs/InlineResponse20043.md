@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Long** |  | 
-**data** | [**List&lt;User&gt;**](User.md) |  | 
+**data** | [**List&lt;Export&gt;**](Export.md) |  | 
 
 
 

@@ -130,10 +130,10 @@ public class CouponCreationJob {
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
   public Long getId() {
     return id;
@@ -266,7 +266,7 @@ public class CouponCreationJob {
    /**
    * The total discount value that the code can give. Typically used to represent a gift card value. 
    * minimum: 0
-   * maximum: 999999
+   * maximum: 1E+15
    * @return discountLimit
   **/
   @javax.annotation.Nullable

@@ -138,10 +138,10 @@ public class InventoryCoupon {
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of the coupon.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of the coupon.")
 
   public Long getId() {
     return id;
@@ -160,10 +160,10 @@ public class InventoryCoupon {
   }
 
    /**
-   * The time this entity was created.
+   * The time the coupon was created.
    * @return created
   **/
-  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
+  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time the coupon was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -252,7 +252,7 @@ public class InventoryCoupon {
    /**
    * The total discount value that the code can give. Typically used to represent a gift card value. 
    * minimum: 0
-   * maximum: 999999
+   * maximum: 1E+15
    * @return discountLimit
   **/
   @javax.annotation.Nullable

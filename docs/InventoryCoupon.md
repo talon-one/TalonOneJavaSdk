@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Internal ID of this entity. | 
-**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
+**id** | **Long** | The internal ID of the coupon. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time the coupon was created. | 
 **campaignId** | **Long** | The ID of the campaign that owns this entity. | 
 **value** | **String** | The coupon code. | 
 **usageLimit** | **Long** | The number of times the coupon code can be redeemed. &#x60;0&#x60; means unlimited redemptions but any campaign usage limits will still apply.  | 

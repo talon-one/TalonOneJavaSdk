@@ -51,6 +51,10 @@ public class IntegrationEventV2Request {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
+  public static final String SERIALIZED_NAME_LOYALTY_CARDS = "loyaltyCards";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_CARDS)
+  private List<String> loyaltyCards = null;
+
   /**
    * Gets or Sets responseContent
    */
@@ -233,6 +237,37 @@ public class IntegrationEventV2Request {
   }
 
 
+  public IntegrationEventV2Request loyaltyCards(List<String> loyaltyCards) {
+    
+    this.loyaltyCards = loyaltyCards;
+    return this;
+  }
+
+  public IntegrationEventV2Request addLoyaltyCardsItem(String loyaltyCardsItem) {
+    if (this.loyaltyCards == null) {
+      this.loyaltyCards = new ArrayList<String>();
+    }
+    this.loyaltyCards.add(loyaltyCardsItem);
+    return this;
+  }
+
+   /**
+   * Identifier of the loyalty card used during this event.
+   * @return loyaltyCards
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[loyalty-card-1]", value = "Identifier of the loyalty card used during this event.")
+
+  public List<String> getLoyaltyCards() {
+    return loyaltyCards;
+  }
+
+
+  public void setLoyaltyCards(List<String> loyaltyCards) {
+    this.loyaltyCards = loyaltyCards;
+  }
+
+
   public IntegrationEventV2Request responseContent(List<ResponseContentEnum> responseContent) {
     
     this.responseContent = responseContent;
@@ -278,12 +313,13 @@ public class IntegrationEventV2Request {
         Objects.equals(this.evaluableCampaignIds, integrationEventV2Request.evaluableCampaignIds) &&
         Objects.equals(this.type, integrationEventV2Request.type) &&
         Objects.equals(this.attributes, integrationEventV2Request.attributes) &&
+        Objects.equals(this.loyaltyCards, integrationEventV2Request.loyaltyCards) &&
         Objects.equals(this.responseContent, integrationEventV2Request.responseContent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, type, attributes, responseContent);
+    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, type, attributes, loyaltyCards, responseContent);
   }
 
 
@@ -296,6 +332,7 @@ public class IntegrationEventV2Request {
     sb.append("    evaluableCampaignIds: ").append(toIndentedString(evaluableCampaignIds)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    loyaltyCards: ").append(toIndentedString(loyaltyCards)).append("\n");
     sb.append("    responseContent: ").append(toIndentedString(responseContent)).append("\n");
     sb.append("}");
     return sb.toString();
