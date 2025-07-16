@@ -25,7 +25,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import one.talon.model.PriceDetail;
 import one.talon.model.StrikethroughEffect;
 import org.threeten.bp.OffsetDateTime;
 
@@ -54,6 +57,10 @@ public class StrikethroughChangedItem {
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
   private BigDecimal price;
+
+  public static final String SERIALIZED_NAME_PRICES = "prices";
+  @SerializedName(SERIALIZED_NAME_PRICES)
+  private Map<String, PriceDetail> prices = null;
 
   public static final String SERIALIZED_NAME_EVALUATED_AT = "evaluatedAt";
   @SerializedName(SERIALIZED_NAME_EVALUATED_AT)
@@ -175,6 +182,37 @@ public class StrikethroughChangedItem {
   }
 
 
+  public StrikethroughChangedItem prices(Map<String, PriceDetail> prices) {
+    
+    this.prices = prices;
+    return this;
+  }
+
+  public StrikethroughChangedItem putPricesItem(String key, PriceDetail pricesItem) {
+    if (this.prices == null) {
+      this.prices = new HashMap<String, PriceDetail>();
+    }
+    this.prices.put(key, pricesItem);
+    return this;
+  }
+
+   /**
+   * A map of keys and values representing the price types and related price adjustment details for this cart item.       The keys correspond to the &#x60;priceType&#x60; names. 
+   * @return prices
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{\"member\":{\"price\":90,\"adjustmentReferenceId\":\"68851723-e6fa-488f-ace9-112581e6c19b\",\"adjustmentEffectiveFrom\":\"2025-05-25T00:00:00Z\",\"adjustmentEffectiveUntil\":\"2025-05-30T00:00:00Z\"},\"base\":{\"price\":100}}", value = "A map of keys and values representing the price types and related price adjustment details for this cart item.       The keys correspond to the `priceType` names. ")
+
+  public Map<String, PriceDetail> getPrices() {
+    return prices;
+  }
+
+
+  public void setPrices(Map<String, PriceDetail> prices) {
+    this.prices = prices;
+  }
+
+
   public StrikethroughChangedItem evaluatedAt(OffsetDateTime evaluatedAt) {
     
     this.evaluatedAt = evaluatedAt;
@@ -242,13 +280,14 @@ public class StrikethroughChangedItem {
         Objects.equals(this.sku, strikethroughChangedItem.sku) &&
         Objects.equals(this.version, strikethroughChangedItem.version) &&
         Objects.equals(this.price, strikethroughChangedItem.price) &&
+        Objects.equals(this.prices, strikethroughChangedItem.prices) &&
         Objects.equals(this.evaluatedAt, strikethroughChangedItem.evaluatedAt) &&
         Objects.equals(this.effects, strikethroughChangedItem.effects);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, catalogId, sku, version, price, evaluatedAt, effects);
+    return Objects.hash(id, catalogId, sku, version, price, prices, evaluatedAt, effects);
   }
 
 
@@ -261,6 +300,7 @@ public class StrikethroughChangedItem {
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    prices: ").append(toIndentedString(prices)).append("\n");
     sb.append("    evaluatedAt: ").append(toIndentedString(evaluatedAt)).append("\n");
     sb.append("    effects: ").append(toIndentedString(effects)).append("\n");
     sb.append("}");

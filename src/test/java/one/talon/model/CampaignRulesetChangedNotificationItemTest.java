@@ -21,50 +21,57 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import one.talon.model.CampaignRulesetChangedNotificationItem;
+import one.talon.model.Campaign;
+import one.talon.model.Ruleset;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for CampaignRulesetChangedNotification
+ * Model tests for CampaignRulesetChangedNotificationItem
  */
-public class CampaignRulesetChangedNotificationTest {
-    private final CampaignRulesetChangedNotification model = new CampaignRulesetChangedNotification();
+public class CampaignRulesetChangedNotificationItemTest {
+    private final CampaignRulesetChangedNotificationItem model = new CampaignRulesetChangedNotificationItem();
 
     /**
-     * Model tests for CampaignRulesetChangedNotification
+     * Model tests for CampaignRulesetChangedNotificationItem
      */
     @Test
-    public void testCampaignRulesetChangedNotification() {
-        // TODO: test CampaignRulesetChangedNotification
+    public void testCampaignRulesetChangedNotificationItem() {
+        // TODO: test CampaignRulesetChangedNotificationItem
     }
 
     /**
-     * Test the property 'notificationType'
+     * Test the property 'event'
      */
     @Test
-    public void notificationTypeTest() {
-        // TODO: test notificationType
+    public void eventTest() {
+        // TODO: test event
     }
 
     /**
-     * Test the property 'totalResultSize'
+     * Test the property 'campaign'
      */
     @Test
-    public void totalResultSizeTest() {
-        // TODO: test totalResultSize
+    public void campaignTest() {
+        // TODO: test campaign
     }
 
     /**
-     * Test the property 'data'
+     * Test the property 'oldRuleset'
      */
     @Test
-    public void dataTest() {
-        // TODO: test data
+    public void oldRulesetTest() {
+        // TODO: test oldRuleset
+    }
+
+    /**
+     * Test the property 'ruleset'
+     */
+    @Test
+    public void rulesetTest() {
+        // TODO: test ruleset
     }
 
 }

@@ -21,50 +21,58 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import one.talon.model.CampaignRulesetChangedNotificationItem;
+import one.talon.model.Campaign;
+import one.talon.model.CampaignEvaluationPosition;
+import one.talon.model.Ruleset;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for CampaignRulesetChangedNotification
+ * Model tests for CampaignCreatedNotificationItem
  */
-public class CampaignRulesetChangedNotificationTest {
-    private final CampaignRulesetChangedNotification model = new CampaignRulesetChangedNotification();
+public class CampaignCreatedNotificationItemTest {
+    private final CampaignCreatedNotificationItem model = new CampaignCreatedNotificationItem();
 
     /**
-     * Model tests for CampaignRulesetChangedNotification
+     * Model tests for CampaignCreatedNotificationItem
      */
     @Test
-    public void testCampaignRulesetChangedNotification() {
-        // TODO: test CampaignRulesetChangedNotification
+    public void testCampaignCreatedNotificationItem() {
+        // TODO: test CampaignCreatedNotificationItem
     }
 
     /**
-     * Test the property 'notificationType'
+     * Test the property 'event'
      */
     @Test
-    public void notificationTypeTest() {
-        // TODO: test notificationType
+    public void eventTest() {
+        // TODO: test event
     }
 
     /**
-     * Test the property 'totalResultSize'
+     * Test the property 'campaign'
      */
     @Test
-    public void totalResultSizeTest() {
-        // TODO: test totalResultSize
+    public void campaignTest() {
+        // TODO: test campaign
     }
 
     /**
-     * Test the property 'data'
+     * Test the property 'ruleset'
      */
     @Test
-    public void dataTest() {
-        // TODO: test data
+    public void rulesetTest() {
+        // TODO: test ruleset
+    }
+
+    /**
+     * Test the property 'evaluationPosition'
+     */
+    @Test
+    public void evaluationPositionTest() {
+        // TODO: test evaluationPosition
     }
 
 }

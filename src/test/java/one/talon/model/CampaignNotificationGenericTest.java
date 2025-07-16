@@ -23,24 +23,23 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CampaignRulesetChangedNotificationItem;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for CampaignRulesetChangedNotification
+ * Model tests for CampaignNotificationGeneric
  */
-public class CampaignRulesetChangedNotificationTest {
-    private final CampaignRulesetChangedNotification model = new CampaignRulesetChangedNotification();
+public class CampaignNotificationGenericTest {
+    private final CampaignNotificationGeneric model = new CampaignNotificationGeneric();
 
     /**
-     * Model tests for CampaignRulesetChangedNotification
+     * Model tests for CampaignNotificationGeneric
      */
     @Test
-    public void testCampaignRulesetChangedNotification() {
-        // TODO: test CampaignRulesetChangedNotification
+    public void testCampaignNotificationGeneric() {
+        // TODO: test CampaignNotificationGeneric
     }
 
     /**

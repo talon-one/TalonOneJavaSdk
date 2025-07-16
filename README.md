@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>13.1.0</version>
+  <version>25.18.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:13.1.0"
+compile "one.talon:talon-one-client:25.18.0"
 ```
 
 ### Others
@@ -475,7 +475,6 @@ Class | Method | HTTP request | Description
 - [BaseSamlConnection](docs/BaseSamlConnection.md)
 - [Binding](docs/Binding.md)
 - [BulkApplicationNotification](docs/BulkApplicationNotification.md)
-- [BulkCampaignNotification](docs/BulkCampaignNotification.md)
 - [BulkOperationOnCampaigns](docs/BulkOperationOnCampaigns.md)
 - [Campaign](docs/Campaign.md)
 - [CampaignActivationRequest](docs/CampaignActivationRequest.md)
@@ -483,13 +482,17 @@ Class | Method | HTTP request | Description
 - [CampaignBudget](docs/CampaignBudget.md)
 - [CampaignCollection](docs/CampaignCollection.md)
 - [CampaignCollectionEditedNotification](docs/CampaignCollectionEditedNotification.md)
+- [CampaignCollectionEditedNotificationItem](docs/CampaignCollectionEditedNotificationItem.md)
 - [CampaignCollectionWithoutPayload](docs/CampaignCollectionWithoutPayload.md)
 - [CampaignCopy](docs/CampaignCopy.md)
 - [CampaignCreatedNotification](docs/CampaignCreatedNotification.md)
+- [CampaignCreatedNotificationItem](docs/CampaignCreatedNotificationItem.md)
 - [CampaignDeactivationRequest](docs/CampaignDeactivationRequest.md)
 - [CampaignDeletedNotification](docs/CampaignDeletedNotification.md)
+- [CampaignDeletedNotificationItem](docs/CampaignDeletedNotificationItem.md)
 - [CampaignDetail](docs/CampaignDetail.md)
 - [CampaignEditedNotification](docs/CampaignEditedNotification.md)
+- [CampaignEditedNotificationItem](docs/CampaignEditedNotificationItem.md)
 - [CampaignEntity](docs/CampaignEntity.md)
 - [CampaignEvaluationGroup](docs/CampaignEvaluationGroup.md)
 - [CampaignEvaluationPosition](docs/CampaignEvaluationPosition.md)
@@ -497,17 +500,19 @@ Class | Method | HTTP request | Description
 - [CampaignEvaluationTreeChangedNotification](docs/CampaignEvaluationTreeChangedNotification.md)
 - [CampaignGroup](docs/CampaignGroup.md)
 - [CampaignGroupEntity](docs/CampaignGroupEntity.md)
-- [CampaignNotification](docs/CampaignNotification.md)
-- [CampaignNotificationData](docs/CampaignNotificationData.md)
-- [CampaignNotificationMessage](docs/CampaignNotificationMessage.md)
+- [CampaignNotificationBase](docs/CampaignNotificationBase.md)
+- [CampaignNotificationGeneric](docs/CampaignNotificationGeneric.md)
+- [CampaignNotificationItemBase](docs/CampaignNotificationItemBase.md)
 - [CampaignNotificationPolicy](docs/CampaignNotificationPolicy.md)
 - [CampaignRulesetChangedNotification](docs/CampaignRulesetChangedNotification.md)
+- [CampaignRulesetChangedNotificationItem](docs/CampaignRulesetChangedNotificationItem.md)
 - [CampaignSearch](docs/CampaignSearch.md)
 - [CampaignSet](docs/CampaignSet.md)
 - [CampaignSetBranchNode](docs/CampaignSetBranchNode.md)
 - [CampaignSetLeafNode](docs/CampaignSetLeafNode.md)
 - [CampaignSetNode](docs/CampaignSetNode.md)
 - [CampaignStateChangedNotification](docs/CampaignStateChangedNotification.md)
+- [CampaignStateChangedNotificationItem](docs/CampaignStateChangedNotificationItem.md)
 - [CampaignStoreBudget](docs/CampaignStoreBudget.md)
 - [CampaignStoreBudgetLimitConfig](docs/CampaignStoreBudgetLimitConfig.md)
 - [CampaignTemplate](docs/CampaignTemplate.md)
