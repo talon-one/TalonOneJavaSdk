@@ -21,26 +21,23 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import one.talon.model.CampaignRulesetChangedNotificationItem;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for CampaignRulesetChangedNotification
+ * Model tests for CampaignNotificationBase
  */
-public class CampaignRulesetChangedNotificationTest {
-    private final CampaignRulesetChangedNotification model = new CampaignRulesetChangedNotification();
+public class CampaignNotificationBaseTest {
+    private final CampaignNotificationBase model = new CampaignNotificationBase();
 
     /**
-     * Model tests for CampaignRulesetChangedNotification
+     * Model tests for CampaignNotificationBase
      */
     @Test
-    public void testCampaignRulesetChangedNotification() {
-        // TODO: test CampaignRulesetChangedNotification
+    public void testCampaignNotificationBase() {
+        // TODO: test CampaignNotificationBase
     }
 
     /**
@@ -57,14 +54,6 @@ public class CampaignRulesetChangedNotificationTest {
     @Test
     public void totalResultSizeTest() {
         // TODO: test totalResultSize
-    }
-
-    /**
-     * Test the property 'data'
-     */
-    @Test
-    public void dataTest() {
-        // TODO: test data
     }
 
 }

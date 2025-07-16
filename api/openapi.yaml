@@ -11953,20 +11953,6 @@ components:
       - data
       - totalResultSize
       type: object
-    BulkCampaignNotification:
-      properties:
-        totalResultSize:
-          example: 1
-          format: int64
-          type: integer
-        data:
-          items:
-            $ref: '#/components/schemas/CampaignNotification'
-          type: array
-      required:
-      - data
-      - totalResultSize
-      type: object
     CampaignCollection:
       properties:
         id:
@@ -12104,6 +12090,27 @@ components:
             format: int64
             type: integer
           type: array
+      type: object
+    CampaignNotificationGeneric:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            properties: {}
+            type: object
+          type: array
+          x-fieldType: '[]interface{}'
+      required:
+      - Data
+      - TotalResultSize
       type: object
     CampaignStoreBudget:
       properties:
@@ -38714,52 +38721,28 @@ components:
       required:
       - itemFilter
       type: object
-    CampaignStateChangedNotification:
-      description: A notification regarding a campaign whose state changed.
+    CampaignNotificationBase:
       properties:
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-        oldState:
-          description: |
-            The campaign's old state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived']
-          example: disabled
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
           type: string
-        newState:
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+      required:
+      - TotalResultSize
+      type: object
+    CampaignNotificationItemBase:
+      properties:
+        Event:
           description: |
-            The campaign's new state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived']
-          example: running
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
           type: string
-        ruleset:
-          $ref: '#/components/schemas/Ruleset'
       required:
-      - campaign
-      - newState
-      - oldState
-      type: object
-    CampaignRulesetChangedNotification:
-      description: A notification regarding a campaign whose ruleset was changed.
-      properties:
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-        oldRuleset:
-          $ref: '#/components/schemas/Ruleset'
-        ruleset:
-          $ref: '#/components/schemas/Ruleset'
-      required:
-      - campaign
-      type: object
-    CampaignEditedNotification:
-      description: A notification regarding a campaign which was edited.
-      properties:
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-        oldCampaign:
-          $ref: '#/components/schemas/Campaign'
-        ruleset:
-          $ref: '#/components/schemas/Ruleset'
-      required:
-      - campaign
-      - oldCampaign
+      - Event
       type: object
     CampaignEvaluationPosition:
       description: The campaign position within the evaluation tree.
@@ -38785,9 +38768,14 @@ components:
       - groupName
       - position
       type: object
-    CampaignCreatedNotification:
+    CampaignCreatedNotificationItem:
       description: A notification regarding a campaign that was created.
       properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
         campaign:
           $ref: '#/components/schemas/Campaign'
         ruleset:
@@ -38795,12 +38783,192 @@ components:
         evaluationPosition:
           $ref: '#/components/schemas/CampaignEvaluationPosition'
       required:
+      - Event
       - campaign
       - evaluationPosition
       type: object
-    CampaignDeletedNotification:
+    CampaignCreatedNotification:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            $ref: '#/components/schemas/CampaignCreatedNotificationItem'
+          type: array
+      required:
+      - TotalResultSize
+      type: object
+    CampaignStateChangedNotificationItem:
+      description: A notification regarding a campaign whose state changed.
+      properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        oldState:
+          description: |
+            The campaign's old state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived']
+          example: disabled
+          type: string
+        newState:
+          description: |
+            The campaign's new state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived']
+          example: running
+          type: string
+        ruleset:
+          $ref: '#/components/schemas/Ruleset'
+      required:
+      - Event
+      - campaign
+      - newState
+      - oldState
+      type: object
+    CampaignStateChangedNotification:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            $ref: '#/components/schemas/CampaignStateChangedNotificationItem'
+          type: array
+      required:
+      - TotalResultSize
+      type: object
+    CampaignRulesetChangedNotificationItem:
+      description: A notification regarding a campaign whose ruleset was changed.
+      properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        oldRuleset:
+          $ref: '#/components/schemas/Ruleset'
+        ruleset:
+          $ref: '#/components/schemas/Ruleset'
+      required:
+      - Event
+      - campaign
+      type: object
+    CampaignRulesetChangedNotification:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            $ref: '#/components/schemas/CampaignRulesetChangedNotificationItem'
+          type: array
+      required:
+      - TotalResultSize
+      type: object
+    CampaignEditedNotificationItem:
+      description: A notification regarding a campaign which was edited.
+      properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        oldCampaign:
+          $ref: '#/components/schemas/Campaign'
+        ruleset:
+          $ref: '#/components/schemas/Ruleset'
+      required:
+      - Event
+      - campaign
+      - oldCampaign
+      type: object
+    CampaignEditedNotification:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            $ref: '#/components/schemas/CampaignEditedNotificationItem'
+          type: array
+      required:
+      - TotalResultSize
+      type: object
+    CampaignCollectionEditedNotificationItem:
+      description: A notification regarding a collection that was edited.
+      properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        ruleset:
+          $ref: '#/components/schemas/Ruleset'
+        collection:
+          $ref: '#/components/schemas/CollectionWithoutPayload'
+      required:
+      - Event
+      - campaign
+      - collection
+      type: object
+    CampaignCollectionEditedNotification:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            $ref: '#/components/schemas/CampaignCollectionEditedNotificationItem'
+          type: array
+      required:
+      - TotalResultSize
+      type: object
+    CampaignDeletedNotificationItem:
       description: A notification regarding a campaign that was deleted.
       properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
         campaign:
           $ref: '#/components/schemas/Campaign'
         deletedAt:
@@ -38809,49 +38977,16 @@ components:
           format: date-time
           type: string
       required:
+      - Event
       - campaign
       - deletedAt
       type: object
-    CampaignCollectionEditedNotification:
-      description: A notification regarding a collection that was edited.
+    CampaignDeletedNotification:
       properties:
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-        ruleset:
-          $ref: '#/components/schemas/Ruleset'
-        collection:
-          $ref: '#/components/schemas/CollectionWithoutPayload'
-      required:
-      - campaign
-      - collection
-      type: object
-    CampaignNotification:
-      properties:
-        event:
-          description: |
-            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
-          example: campaign_state_changed
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
           type: string
-      required:
-      - event
-      type: object
-    CampaignNotificationData:
-      properties:
-        Notification:
-          $ref: '#/components/schemas/CampaignNotification'
-        AccountID:
-          format: int64
-          type: integer
-        ApplicationID:
-          format: int64
-          type: integer
-      required:
-      - AccountID
-      - ApplicationID
-      - Notification
-      type: object
-    CampaignNotificationMessage:
-      properties:
         TotalResultSize:
           description: The total size of the result set.
           format: int64
@@ -38859,10 +38994,9 @@ components:
         Data:
           description: A list of campaign notification data.
           items:
-            $ref: '#/components/schemas/CampaignNotificationData'
+            $ref: '#/components/schemas/CampaignDeletedNotificationItem'
           type: array
       required:
-      - Data
       - TotalResultSize
       type: object
     CampaignEvaluationTreeChangedNotification:
@@ -38959,6 +39093,21 @@ components:
           description: The price of the changed item.
           example: 99.99
           type: number
+        prices:
+          additionalProperties:
+            $ref: '#/components/schemas/PriceDetail'
+          description: |
+            A map of keys and values representing the price types and related price adjustment details for this cart item.
+                  The keys correspond to the `priceType` names.
+          example:
+            member:
+              price: 90
+              adjustmentReferenceId: 68851723-e6fa-488f-ace9-112581e6c19b
+              adjustmentEffectiveFrom: 2025-05-25T00:00:00Z
+              adjustmentEffectiveUntil: 2025-05-30T00:00:00Z
+            base:
+              price: 100
+          type: object
         evaluatedAt:
           description: The evaluation time of the changed item.
           example: 2020-06-10T09:05:27.993483Z

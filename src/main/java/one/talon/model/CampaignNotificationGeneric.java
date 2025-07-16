@@ -25,13 +25,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CampaignDeletedNotificationItem;
 
 /**
- * CampaignDeletedNotification
+ * CampaignNotificationGeneric
  */
 
-public class CampaignDeletedNotification {
+public class CampaignNotificationGeneric {
   public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
   private String notificationType;
@@ -42,10 +41,10 @@ public class CampaignDeletedNotification {
 
   public static final String SERIALIZED_NAME_DATA = "Data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CampaignDeletedNotificationItem> data = null;
+  private List<Object> data = new ArrayList<Object>();
 
 
-  public CampaignDeletedNotification notificationType(String notificationType) {
+  public CampaignNotificationGeneric notificationType(String notificationType) {
     
     this.notificationType = notificationType;
     return this;
@@ -68,7 +67,7 @@ public class CampaignDeletedNotification {
   }
 
 
-  public CampaignDeletedNotification totalResultSize(Long totalResultSize) {
+  public CampaignNotificationGeneric totalResultSize(Long totalResultSize) {
     
     this.totalResultSize = totalResultSize;
     return this;
@@ -90,16 +89,13 @@ public class CampaignDeletedNotification {
   }
 
 
-  public CampaignDeletedNotification data(List<CampaignDeletedNotificationItem> data) {
+  public CampaignNotificationGeneric data(List<Object> data) {
     
     this.data = data;
     return this;
   }
 
-  public CampaignDeletedNotification addDataItem(CampaignDeletedNotificationItem dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<CampaignDeletedNotificationItem>();
-    }
+  public CampaignNotificationGeneric addDataItem(Object dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -108,15 +104,14 @@ public class CampaignDeletedNotification {
    * A list of campaign notification data.
    * @return data
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of campaign notification data.")
+  @ApiModelProperty(required = true, value = "A list of campaign notification data.")
 
-  public List<CampaignDeletedNotificationItem> getData() {
+  public List<Object> getData() {
     return data;
   }
 
 
-  public void setData(List<CampaignDeletedNotificationItem> data) {
+  public void setData(List<Object> data) {
     this.data = data;
   }
 
@@ -129,10 +124,10 @@ public class CampaignDeletedNotification {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CampaignDeletedNotification campaignDeletedNotification = (CampaignDeletedNotification) o;
-    return Objects.equals(this.notificationType, campaignDeletedNotification.notificationType) &&
-        Objects.equals(this.totalResultSize, campaignDeletedNotification.totalResultSize) &&
-        Objects.equals(this.data, campaignDeletedNotification.data);
+    CampaignNotificationGeneric campaignNotificationGeneric = (CampaignNotificationGeneric) o;
+    return Objects.equals(this.notificationType, campaignNotificationGeneric.notificationType) &&
+        Objects.equals(this.totalResultSize, campaignNotificationGeneric.totalResultSize) &&
+        Objects.equals(this.data, campaignNotificationGeneric.data);
   }
 
   @Override
@@ -144,7 +139,7 @@ public class CampaignDeletedNotification {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CampaignDeletedNotification {\n");
+    sb.append("class CampaignNotificationGeneric {\n");
     sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
