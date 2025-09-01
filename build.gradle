@@ -104,7 +104,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.14.7'
     compile 'com.google.code.gson:gson:2.8.6'
     compile 'io.gsonfire:gson-fire:1.8.4'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.18.0'
     compile 'org.threeten:threetenbp:1.4.3'
     testCompile 'junit:junit:4.13'
 }
