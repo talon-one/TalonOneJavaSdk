@@ -55,6 +55,10 @@ public class NewPriceAdjustment {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_UNTIL)
   private OffsetDateTime effectiveUntil;
 
+  public static final String SERIALIZED_NAME_CONTEXT_ID = "contextId";
+  @SerializedName(SERIALIZED_NAME_CONTEXT_ID)
+  private String contextId;
+
 
   public NewPriceAdjustment priceType(String priceType) {
     
@@ -192,6 +196,29 @@ public class NewPriceAdjustment {
   }
 
 
+  public NewPriceAdjustment contextId(String contextId) {
+    
+    this.contextId = contextId;
+    return this;
+  }
+
+   /**
+   * Identifier of the context of this price adjustment (e.g. summer sale).
+   * @return contextId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Summer2025", value = "Identifier of the context of this price adjustment (e.g. summer sale).")
+
+  public String getContextId() {
+    return contextId;
+  }
+
+
+  public void setContextId(String contextId) {
+    this.contextId = contextId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -206,12 +233,13 @@ public class NewPriceAdjustment {
         Objects.equals(this.referenceId, newPriceAdjustment.referenceId) &&
         Objects.equals(this.calculatedAt, newPriceAdjustment.calculatedAt) &&
         Objects.equals(this.effectiveFrom, newPriceAdjustment.effectiveFrom) &&
-        Objects.equals(this.effectiveUntil, newPriceAdjustment.effectiveUntil);
+        Objects.equals(this.effectiveUntil, newPriceAdjustment.effectiveUntil) &&
+        Objects.equals(this.contextId, newPriceAdjustment.contextId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(priceType, price, referenceId, calculatedAt, effectiveFrom, effectiveUntil);
+    return Objects.hash(priceType, price, referenceId, calculatedAt, effectiveFrom, effectiveUntil, contextId);
   }
 
 
@@ -225,6 +253,7 @@ public class NewPriceAdjustment {
     sb.append("    calculatedAt: ").append(toIndentedString(calculatedAt)).append("\n");
     sb.append("    effectiveFrom: ").append(toIndentedString(effectiveFrom)).append("\n");
     sb.append("    effectiveUntil: ").append(toIndentedString(effectiveUntil)).append("\n");
+    sb.append("    contextId: ").append(toIndentedString(contextId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

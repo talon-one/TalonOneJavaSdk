@@ -7,6 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Long** | ID of the loyalty ledger transaction. | 
+**transactionUUID** | **String** | Unique identifier of the transaction in the UUID format. | 
 **programId** | **Long** | ID of the loyalty program. | 
 **campaignId** | **Long** | ID of the campaign. |  [optional]
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | Date and time the loyalty transaction occurred. | 

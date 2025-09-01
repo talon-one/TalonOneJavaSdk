@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date for loyalty points. |  [optional]
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | The expiration date for loyalty points. |  [optional]
 **sessionIntegrationID** | **String** | The integration ID of the session through which the points were earned or lost. | 
-**notificationType** | [**NotificationTypeEnum**](#NotificationTypeEnum) | The type of notification. | 
 
 
 
@@ -38,15 +37,6 @@ Name | Value
 ---- | -----
 ADDITION | &quot;addition&quot;
 DEDUCTION | &quot;deduction&quot;
-
-
-
-## Enum: NotificationTypeEnum
-
-Name | Value
----- | -----
-LOYALTYPOINTSDEDUCTED | &quot;LoyaltyPointsDeducted&quot;
-LOYALTYPOINTSADDED | &quot;LoyaltyPointsAdded&quot;
 
 
 

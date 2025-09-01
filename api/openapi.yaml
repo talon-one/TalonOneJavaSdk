@@ -1918,6 +1918,29 @@ paths:
         schema:
           format: date-time
           type: string
+      - description: "Filter the results by a list of customer session IDs. \n\nTo\
+          \ include multiple IDs, repeat the parameter for each one, for example,\
+          \ \n`?customerSessionIDs=id1&customerSessionIDs=id2`.\n\nThe response contains\
+          \ only data associated with the specified sessions.\n"
+        explode: true
+        in: query
+        name: customerSessionIDs
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: "Filter the results by a list of transaction UUIDs.\n\nTo include\
+          \ multiple IDs, repeat the parameter for each one, for example, \n`?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.\n\
+          \nThe response contains only data associated with the specified transactions.\n"
+        explode: true
+        in: query
+        name: transactionUUIDs
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       - description: The number of items in the response.
         in: query
         name: pageSize
@@ -1996,6 +2019,29 @@ paths:
         required: true
         schema:
           type: string
+      - description: "Filter the results by a list of customer session IDs. \n\nTo\
+          \ include multiple IDs, repeat the parameter for each one, for example,\
+          \ \n`?customerSessionIDs=id1&customerSessionIDs=id2`.\n\nThe response contains\
+          \ only data associated with the specified sessions.\n"
+        explode: true
+        in: query
+        name: customerSessionIDs
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: "Filter the results by a list of transaction UUIDs.\n\nTo include\
+          \ multiple IDs, repeat the parameter for each one, for example, \n`?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.\n\
+          \nThe response contains only data associated with the specified transactions.\n"
+        explode: true
+        in: query
+        name: transactionUUIDs
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       - description: The ID of the subledger by which we filter the data.
         in: query
         name: subledgerId
@@ -4530,6 +4576,7 @@ paths:
         - `archived`: Whether the session related to the transaction is archived.
         - `campaignid`: The ID of the campaign.
         - `flags`: The flags of the transaction, when applicable. The `createsNegativeBalance` flag indicates whether the transaction results in a negative balance.
+        - `transactionUUID`: Unique identifier of the transaction in the UUID format.
       operationId: exportLoyaltyLedger
       parameters:
       - description: |
@@ -4834,6 +4881,29 @@ paths:
         name: subledgerId
         schema:
           type: string
+      - description: "Filter the results by a list of customer session IDs. \n\nTo\
+          \ include multiple IDs, repeat the parameter for each one, for example,\
+          \ \n`?customerSessionIDs=id1&customerSessionIDs=id2`.\n\nThe response contains\
+          \ only data associated with the specified sessions.\n"
+        explode: true
+        in: query
+        name: customerSessionIDs
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: "Filter the results by a list of transaction UUIDs.\n\nTo include\
+          \ multiple IDs, repeat the parameter for each one, for example, \n`?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.\n\
+          \nThe response contains only data associated with the specified transactions.\n"
+        explode: true
+        in: query
+        name: transactionUUIDs
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       - description: |
           Date and time from which results are returned. Results are filtered by transaction creation date.
 
@@ -4864,7 +4934,7 @@ paths:
         schema:
           default: 50
           format: int64
-          maximum: 50
+          maximum: 1000
           minimum: 1
           type: integer
       - description: The number of items to skip when paging through large result
@@ -5734,6 +5804,29 @@ paths:
         name: subledgerId
         schema:
           type: string
+      - description: "Filter the results by a list of customer session IDs. \n\nTo\
+          \ include multiple IDs, repeat the parameter for each one, for example,\
+          \ \n`?customerSessionIDs=id1&customerSessionIDs=id2`.\n\nThe response contains\
+          \ only data associated with the specified sessions.\n"
+        explode: true
+        in: query
+        name: customerSessionIDs
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: "Filter the results by a list of transaction UUIDs.\n\nTo include\
+          \ multiple IDs, repeat the parameter for each one, for example, \n`?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.\n\
+          \nThe response contains only data associated with the specified transactions.\n"
+        explode: true
+        in: query
+        name: transactionUUIDs
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -11953,20 +12046,6 @@ components:
       - data
       - totalResultSize
       type: object
-    BulkCampaignNotification:
-      properties:
-        totalResultSize:
-          example: 1
-          format: int64
-          type: integer
-        data:
-          items:
-            $ref: '#/components/schemas/CampaignNotification'
-          type: array
-      required:
-      - data
-      - totalResultSize
-      type: object
     CampaignCollection:
       properties:
         id:
@@ -12104,6 +12183,27 @@ components:
             format: int64
             type: integer
           type: array
+      type: object
+    CampaignNotificationGeneric:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            properties: {}
+            type: object
+          type: array
+          x-fieldType: '[]interface{}'
+      required:
+      - Data
+      - TotalResultSize
       type: object
     CampaignStoreBudget:
       properties:
@@ -14520,13 +14620,22 @@ components:
           items:
             type: string
           type: array
-        previousExpirationDate:
-          description: Expiry date before applying the extension.
-          format: date-time
-          type: string
+        previousExpirationDates:
+          description: Expiry dates of all active and pending points transactions
+            before applying the extension.
+          items:
+            format: date-time
+            type: string
+          type: array
+        newExpirationDates:
+          description: Expiry dates of all active and pending points transactions
+            after applying the extension.
+          items:
+            format: date-time
+            type: string
+          type: array
       required:
       - extensionDuration
-      - previousExpirationDate
       - programId
       - subLedgerId
       type: object
@@ -24683,6 +24792,7 @@ components:
         type: addition
         cardIdentifier: summer-loyalty-card-0543
         expiryDate: 2022-08-02T15:04:05Z07:00
+        transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
         subledgerId: sub-123
         name: Reward 10% points of a purchase's current total
         ruleName: Add 2 points
@@ -24690,6 +24800,10 @@ components:
         programId: 324
         startDate: 2022-01-02T15:04:05Z07:00
       properties:
+        transactionUUID:
+          description: Unique identifier of the transaction in the UUID format.
+          example: ce59f12a-f53b-4014-a745-636d93f2bd3f
+          type: string
         created:
           description: Date and time the loyalty card transaction occurred.
           format: date-time
@@ -24776,6 +24890,7 @@ components:
       - programId
       - startDate
       - subledgerId
+      - transactionUUID
       - type
       type: object
     LoyaltyLedgerEntryFlags:
@@ -24788,7 +24903,7 @@ components:
           type: boolean
       type: object
     LedgerTransactionLogEntryIntegrationAPI:
-      description: Log entry for a given loyalty card transaction.
+      description: Log entry for a given loyalty profile transaction.
       example:
         rulesetId: 11
         amount: 10.25
@@ -24798,6 +24913,7 @@ components:
         customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
         type: addition
         expiryDate: 2022-08-02T15:04:05Z07:00
+        transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
         subledgerId: sub-123
         name: Reward 10% points of a purchase's current total
         ruleName: Add 2 points
@@ -24805,6 +24921,10 @@ components:
         programId: 324
         startDate: 2022-01-02T15:04:05Z07:00
       properties:
+        transactionUUID:
+          description: Unique identifier of the transaction in the UUID format.
+          example: ce59f12a-f53b-4014-a745-636d93f2bd3f
+          type: string
         created:
           description: Date and time the loyalty transaction occurred.
           format: date-time
@@ -24885,6 +25005,7 @@ components:
       - programId
       - startDate
       - subledgerId
+      - transactionUUID
       - type
       type: object
     CardLedgerPointsEntryIntegrationAPI:
@@ -27323,6 +27444,50 @@ components:
       type: object
     StrikethroughEffectProps:
       type: object
+    LabelTargetNone:
+      description: Represents the target type when no entity is selected.
+      properties:
+        type:
+          enum:
+          - NONE
+          type: string
+      required:
+      - type
+      type: object
+    AudienceReference:
+      properties:
+        id:
+          description: The ID of the audience.
+          format: int64
+          type: integer
+        integration:
+          description: The third-party integration of the audience.
+          type: string
+        integrationId:
+          description: The ID of this audience in the third-party integration.
+          example: 382370BKDB946
+          maxLength: 1000
+          minLength: 1
+          type: string
+      required:
+      - id
+      type: object
+    LabelTargetAudience:
+      description: |
+        Represents the targeted audience.
+      properties:
+        type:
+          enum:
+          - AUDIENCE
+          type: string
+        audience:
+          $ref: '#/components/schemas/AudienceReference'
+      required:
+      - audience
+      - type
+      type: object
+    LabelTarget:
+      type: object
     StrikethroughEffect:
       description: The effect produced for the catalog item.
       properties:
@@ -27363,6 +27528,26 @@ components:
           example: 2021-10-01T02:00:00Z
           format: date-time
           type: string
+        selectedPriceType:
+          description: The selected price type for this cart item (e.g. the price
+            for members only).
+          example: member
+          type: string
+        selectedPrice:
+          description: The value of the selected price type to apply to the SKU targeted
+            by this effect, before any discounts are applied.
+          example: 100.0
+          type: number
+        adjustmentReferenceId:
+          description: The reference identifier of the selected price adjustment for
+            this cart item.
+          example: 68851723-e6fa-488f-ace9-112581e6c19b
+          type: string
+        targets:
+          description: A list of entities (e.g. audiences) targeted by this effect.
+          items:
+            $ref: '#/components/schemas/LabelTarget'
+          type: array
       required:
       - campaignId
       - props
@@ -31451,6 +31636,7 @@ components:
         userId: 5
         cardIdentifier: summer-loyalty-card-0543
         expiryDate: 2022-01-02T15:04:05Z07:00
+        transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
         importId: 4
         customerProfileId: kda0fajs0-fad9f-fd9dfsa9-fd9dasjf9
         subledgerId: sub-123
@@ -31466,6 +31652,10 @@ components:
           example: 123
           format: int64
           type: integer
+        transactionUUID:
+          description: Unique identifier of the transaction in the UUID format.
+          example: ce59f12a-f53b-4014-a745-636d93f2bd3f
+          type: string
         programId:
           description: ID of the loyalty program.
           example: 324
@@ -31575,6 +31765,7 @@ components:
       - programId
       - startDate
       - subledgerId
+      - transactionUUID
       - type
       type: object
     LoyaltyCardBatch:
@@ -31708,6 +31899,7 @@ components:
         type: addition
         cardIdentifier: summer-loyalty-card-0543
         expiryDate: 2022-08-02T15:04:05Z07:00
+        transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
         subledgerId: sub-123
         name: Reward 10% points of a purchase's current total
         id: 123
@@ -31715,6 +31907,10 @@ components:
         programId: 324
         startDate: 2022-01-02T15:04:05Z07:00
       properties:
+        transactionUUID:
+          description: Unique identifier of the transaction in the UUID format.
+          example: ce59f12a-f53b-4014-a745-636d93f2bd3f
+          type: string
         created:
           description: Date and time the loyalty card transaction occurred.
           format: date-time
@@ -31802,6 +31998,7 @@ components:
       - programId
       - startDate
       - subledgerId
+      - transactionUUID
       - type
       type: object
     TransferLoyaltyCard:
@@ -34876,6 +35073,7 @@ components:
         referenceId:
           description: A unique reference identifier, e.g. a UUID.
           example: 68851723-e6fa-488f-ace9-112581e6c19b
+          minLength: 1
           type: string
         calculatedAt:
           description: The time at which this price was calculated. If provided, this
@@ -34893,6 +35091,11 @@ components:
           description: The date and time until which the price adjustment is effective.
           example: 2021-09-12T10:12:42Z
           format: date-time
+          type: string
+        contextId:
+          description: Identifier of the context of this price adjustment (e.g. summer
+            sale).
+          example: Summer2025
           type: string
       required:
       - priceType
@@ -38714,52 +38917,28 @@ components:
       required:
       - itemFilter
       type: object
-    CampaignStateChangedNotification:
-      description: A notification regarding a campaign whose state changed.
+    CampaignNotificationBase:
       properties:
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-        oldState:
-          description: |
-            The campaign's old state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived']
-          example: disabled
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
           type: string
-        newState:
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+      required:
+      - TotalResultSize
+      type: object
+    CampaignNotificationItemBase:
+      properties:
+        Event:
           description: |
-            The campaign's new state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived']
-          example: running
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
           type: string
-        ruleset:
-          $ref: '#/components/schemas/Ruleset'
       required:
-      - campaign
-      - newState
-      - oldState
-      type: object
-    CampaignRulesetChangedNotification:
-      description: A notification regarding a campaign whose ruleset was changed.
-      properties:
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-        oldRuleset:
-          $ref: '#/components/schemas/Ruleset'
-        ruleset:
-          $ref: '#/components/schemas/Ruleset'
-      required:
-      - campaign
-      type: object
-    CampaignEditedNotification:
-      description: A notification regarding a campaign which was edited.
-      properties:
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-        oldCampaign:
-          $ref: '#/components/schemas/Campaign'
-        ruleset:
-          $ref: '#/components/schemas/Ruleset'
-      required:
-      - campaign
-      - oldCampaign
+      - Event
       type: object
     CampaignEvaluationPosition:
       description: The campaign position within the evaluation tree.
@@ -38785,9 +38964,14 @@ components:
       - groupName
       - position
       type: object
-    CampaignCreatedNotification:
+    CampaignCreatedNotificationItem:
       description: A notification regarding a campaign that was created.
       properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
         campaign:
           $ref: '#/components/schemas/Campaign'
         ruleset:
@@ -38795,12 +38979,192 @@ components:
         evaluationPosition:
           $ref: '#/components/schemas/CampaignEvaluationPosition'
       required:
+      - Event
       - campaign
       - evaluationPosition
       type: object
-    CampaignDeletedNotification:
+    CampaignCreatedNotification:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            $ref: '#/components/schemas/CampaignCreatedNotificationItem'
+          type: array
+      required:
+      - TotalResultSize
+      type: object
+    CampaignStateChangedNotificationItem:
+      description: A notification regarding a campaign whose state changed.
+      properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        oldState:
+          description: |
+            The campaign's old state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived']
+          example: disabled
+          type: string
+        newState:
+          description: |
+            The campaign's new state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived']
+          example: running
+          type: string
+        ruleset:
+          $ref: '#/components/schemas/Ruleset'
+      required:
+      - Event
+      - campaign
+      - newState
+      - oldState
+      type: object
+    CampaignStateChangedNotification:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            $ref: '#/components/schemas/CampaignStateChangedNotificationItem'
+          type: array
+      required:
+      - TotalResultSize
+      type: object
+    CampaignRulesetChangedNotificationItem:
+      description: A notification regarding a campaign whose ruleset was changed.
+      properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        oldRuleset:
+          $ref: '#/components/schemas/Ruleset'
+        ruleset:
+          $ref: '#/components/schemas/Ruleset'
+      required:
+      - Event
+      - campaign
+      type: object
+    CampaignRulesetChangedNotification:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            $ref: '#/components/schemas/CampaignRulesetChangedNotificationItem'
+          type: array
+      required:
+      - TotalResultSize
+      type: object
+    CampaignEditedNotificationItem:
+      description: A notification regarding a campaign which was edited.
+      properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        oldCampaign:
+          $ref: '#/components/schemas/Campaign'
+        ruleset:
+          $ref: '#/components/schemas/Ruleset'
+      required:
+      - Event
+      - campaign
+      - oldCampaign
+      type: object
+    CampaignEditedNotification:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            $ref: '#/components/schemas/CampaignEditedNotificationItem'
+          type: array
+      required:
+      - TotalResultSize
+      type: object
+    CampaignCollectionEditedNotificationItem:
+      description: A notification regarding a collection that was edited.
+      properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        ruleset:
+          $ref: '#/components/schemas/Ruleset'
+        collection:
+          $ref: '#/components/schemas/CollectionWithoutPayload'
+      required:
+      - Event
+      - campaign
+      - collection
+      type: object
+    CampaignCollectionEditedNotification:
+      properties:
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
+          type: string
+        TotalResultSize:
+          description: The total size of the result set.
+          format: int64
+          type: integer
+        Data:
+          description: A list of campaign notification data.
+          items:
+            $ref: '#/components/schemas/CampaignCollectionEditedNotificationItem'
+          type: array
+      required:
+      - TotalResultSize
+      type: object
+    CampaignDeletedNotificationItem:
       description: A notification regarding a campaign that was deleted.
       properties:
+        Event:
+          description: |
+            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
+          example: campaign_state_changed
+          type: string
         campaign:
           $ref: '#/components/schemas/Campaign'
         deletedAt:
@@ -38809,49 +39173,16 @@ components:
           format: date-time
           type: string
       required:
+      - Event
       - campaign
       - deletedAt
       type: object
-    CampaignCollectionEditedNotification:
-      description: A notification regarding a collection that was edited.
+    CampaignDeletedNotification:
       properties:
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-        ruleset:
-          $ref: '#/components/schemas/Ruleset'
-        collection:
-          $ref: '#/components/schemas/CollectionWithoutPayload'
-      required:
-      - campaign
-      - collection
-      type: object
-    CampaignNotification:
-      properties:
-        event:
-          description: |
-            The type of the event. Can be one of the following: ['campaign_state_changed', 'campaign_ruleset_changed', 'campaign_edited', 'campaign_created', 'campaign_deleted']
-          example: campaign_state_changed
+        NotificationType:
+          description: The type of the notification
+          example: CampaignNotification
           type: string
-      required:
-      - event
-      type: object
-    CampaignNotificationData:
-      properties:
-        Notification:
-          $ref: '#/components/schemas/CampaignNotification'
-        AccountID:
-          format: int64
-          type: integer
-        ApplicationID:
-          format: int64
-          type: integer
-      required:
-      - AccountID
-      - ApplicationID
-      - Notification
-      type: object
-    CampaignNotificationMessage:
-      properties:
         TotalResultSize:
           description: The total size of the result set.
           format: int64
@@ -38859,10 +39190,9 @@ components:
         Data:
           description: A list of campaign notification data.
           items:
-            $ref: '#/components/schemas/CampaignNotificationData'
+            $ref: '#/components/schemas/CampaignDeletedNotificationItem'
           type: array
       required:
-      - Data
       - TotalResultSize
       type: object
     CampaignEvaluationTreeChangedNotification:
@@ -38959,6 +39289,21 @@ components:
           description: The price of the changed item.
           example: 99.99
           type: number
+        prices:
+          additionalProperties:
+            $ref: '#/components/schemas/PriceDetail'
+          description: |
+            A map of keys and values representing the price types and related price adjustment details for this cart item.
+                  The keys correspond to the `priceType` names.
+          example:
+            member:
+              price: 90
+              adjustmentReferenceId: 68851723-e6fa-488f-ace9-112581e6c19b
+              adjustmentEffectiveFrom: 2025-05-25T00:00:00Z
+              adjustmentEffectiveUntil: 2025-05-30T00:00:00Z
+            base:
+              price: 100
+          type: object
         evaluatedAt:
           description: The evaluation time of the changed item.
           example: 2020-06-10T09:05:27.993483Z
@@ -39337,14 +39682,8 @@ components:
           items:
             $ref: '#/components/schemas/ExpiringPointsData'
           type: array
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - LoyaltyPointsExpiring
-          type: string
       required:
       - Data
-      - NotificationType
       - TotalResultSize
       type: object
     ExpiringCardPointsData:
@@ -39406,14 +39745,8 @@ components:
           items:
             $ref: '#/components/schemas/ExpiringCardPointsData'
           type: array
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - LoyaltyCardPointsExpiring
-          type: string
       required:
       - Data
-      - NotificationType
       - TotalResultSize
       type: object
     AddedDeductedPointsNotification:
@@ -39488,17 +39821,10 @@ components:
             were earned or lost.
           example: cc53e4fa-547f-4f5e-8333-76e05c381f67
           type: string
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - LoyaltyPointsDeducted
-          - LoyaltyPointsAdded
-          type: string
       required:
       - Amount
       - EmployeeName
       - LoyaltyProgramID
-      - NotificationType
       - Operation
       - ProfileIntegrationID
       - Reason
@@ -39562,14 +39888,8 @@ components:
           items:
             $ref: '#/components/schemas/PendingActivePointsData'
           type: array
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - LoyaltyPointsPendingToActive
-          type: string
       required:
       - Data
-      - NotificationType
       - TotalResultSize
       type: object
     TierUpgradeData:
@@ -39641,14 +39961,8 @@ components:
           items:
             $ref: '#/components/schemas/TierUpgradeData'
           type: array
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - TierUpgrade
-          type: string
       required:
       - Data
-      - NotificationType
       - TotalResultSize
       type: object
     TierDowngradeData:
@@ -39710,14 +40024,8 @@ components:
           items:
             $ref: '#/components/schemas/TierDowngradeData'
           type: array
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - TierDowngrade
-          type: string
       required:
       - Data
-      - NotificationType
       - TotalResultSize
       type: object
     TierWillDowngradeData:
@@ -39780,14 +40088,8 @@ components:
           items:
             $ref: '#/components/schemas/TierWillDowngradeData'
           type: array
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - TierWillDowngrade
-          type: string
       required:
       - Data
-      - NotificationType
       - TotalResultSize
       type: object
     ExpiringCouponsData:
@@ -39865,14 +40167,8 @@ components:
           items:
             $ref: '#/components/schemas/ExpiringCouponsData'
           type: array
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - CouponCodeExpiring
-          type: string
       required:
       - Data
-      - NotificationType
       - TotalResultSize
       type: object
     CardAddedDeductedPointsNotification:
@@ -39951,12 +40247,6 @@ components:
             were earned or lost.
           example: cc53e4fa-547f-4f5e-8333-76e05c381f67
           type: string
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - LoyaltyCardPointsDeducted
-          - LoyaltyCardPointsAdded
-          type: string
         CardIdentifier:
           description: Loyalty card identification number.
           example: 123-456-789ATBC
@@ -39972,7 +40262,6 @@ components:
       - CardIdentifier
       - EmployeeName
       - LoyaltyProgramID
-      - NotificationType
       - Operation
       - ProfileIntegrationIDs
       - Reason
@@ -40186,6 +40475,7 @@ components:
           type: addition
           cardIdentifier: summer-loyalty-card-0543
           expiryDate: 2022-08-02T15:04:05Z07:00
+          transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
           ruleName: Add 2 points
@@ -40199,6 +40489,7 @@ components:
           type: addition
           cardIdentifier: summer-loyalty-card-0543
           expiryDate: 2022-08-02T15:04:05Z07:00
+          transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
           ruleName: Add 2 points
@@ -40228,6 +40519,7 @@ components:
           customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
           type: addition
           expiryDate: 2022-08-02T15:04:05Z07:00
+          transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
           ruleName: Add 2 points
@@ -40242,6 +40534,7 @@ components:
           customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
           type: addition
           expiryDate: 2022-08-02T15:04:05Z07:00
+          transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
           ruleName: Add 2 points
@@ -42207,6 +42500,7 @@ components:
           userId: 5
           cardIdentifier: summer-loyalty-card-0543
           expiryDate: 2022-01-02T15:04:05Z07:00
+          transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           importId: 4
           customerProfileId: kda0fajs0-fad9f-fd9dfsa9-fd9dasjf9
           subledgerId: sub-123
@@ -42227,6 +42521,7 @@ components:
           userId: 5
           cardIdentifier: summer-loyalty-card-0543
           expiryDate: 2022-01-02T15:04:05Z07:00
+          transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           importId: 4
           customerProfileId: kda0fajs0-fad9f-fd9dfsa9-fd9dasjf9
           subledgerId: sub-123
@@ -42375,6 +42670,7 @@ components:
           type: addition
           cardIdentifier: summer-loyalty-card-0543
           expiryDate: 2022-08-02T15:04:05Z07:00
+          transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
           id: 123
@@ -42388,6 +42684,7 @@ components:
           type: addition
           cardIdentifier: summer-loyalty-card-0543
           expiryDate: 2022-08-02T15:04:05Z07:00
+          transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
           id: 123

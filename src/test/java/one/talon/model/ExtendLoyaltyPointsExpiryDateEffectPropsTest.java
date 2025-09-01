@@ -76,11 +76,19 @@ public class ExtendLoyaltyPointsExpiryDateEffectPropsTest {
     }
 
     /**
-     * Test the property 'previousExpirationDate'
+     * Test the property 'previousExpirationDates'
      */
     @Test
-    public void previousExpirationDateTest() {
-        // TODO: test previousExpirationDate
+    public void previousExpirationDatesTest() {
+        // TODO: test previousExpirationDates
+    }
+
+    /**
+     * Test the property 'newExpirationDates'
+     */
+    @Test
+    public void newExpirationDatesTest() {
+        // TODO: test newExpirationDates
     }
 
 }

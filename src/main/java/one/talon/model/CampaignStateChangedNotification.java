@@ -23,118 +23,101 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.Campaign;
-import one.talon.model.Ruleset;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.CampaignStateChangedNotificationItem;
 
 /**
- * A notification regarding a campaign whose state changed.
+ * CampaignStateChangedNotification
  */
-@ApiModel(description = "A notification regarding a campaign whose state changed.")
 
 public class CampaignStateChangedNotification {
-  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private Campaign campaign;
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
 
-  public static final String SERIALIZED_NAME_OLD_STATE = "oldState";
-  @SerializedName(SERIALIZED_NAME_OLD_STATE)
-  private String oldState;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "TotalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
 
-  public static final String SERIALIZED_NAME_NEW_STATE = "newState";
-  @SerializedName(SERIALIZED_NAME_NEW_STATE)
-  private String newState;
-
-  public static final String SERIALIZED_NAME_RULESET = "ruleset";
-  @SerializedName(SERIALIZED_NAME_RULESET)
-  private Ruleset ruleset;
+  public static final String SERIALIZED_NAME_DATA = "Data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<CampaignStateChangedNotificationItem> data = null;
 
 
-  public CampaignStateChangedNotification campaign(Campaign campaign) {
+  public CampaignStateChangedNotification notificationType(String notificationType) {
     
-    this.campaign = campaign;
+    this.notificationType = notificationType;
     return this;
   }
 
    /**
-   * Get campaign
-   * @return campaign
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public Campaign getCampaign() {
-    return campaign;
-  }
-
-
-  public void setCampaign(Campaign campaign) {
-    this.campaign = campaign;
-  }
-
-
-  public CampaignStateChangedNotification oldState(String oldState) {
-    
-    this.oldState = oldState;
-    return this;
-  }
-
-   /**
-   * The campaign&#39;s old state. Can be one of the following: [&#39;running&#39;, &#39;disabled&#39;, &#39;scheduled&#39;, &#39;expired&#39;, &#39;archived&#39;] 
-   * @return oldState
-  **/
-  @ApiModelProperty(example = "disabled", required = true, value = "The campaign's old state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived'] ")
-
-  public String getOldState() {
-    return oldState;
-  }
-
-
-  public void setOldState(String oldState) {
-    this.oldState = oldState;
-  }
-
-
-  public CampaignStateChangedNotification newState(String newState) {
-    
-    this.newState = newState;
-    return this;
-  }
-
-   /**
-   * The campaign&#39;s new state. Can be one of the following: [&#39;running&#39;, &#39;disabled&#39;, &#39;scheduled&#39;, &#39;expired&#39;, &#39;archived&#39;] 
-   * @return newState
-  **/
-  @ApiModelProperty(example = "running", required = true, value = "The campaign's new state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived'] ")
-
-  public String getNewState() {
-    return newState;
-  }
-
-
-  public void setNewState(String newState) {
-    this.newState = newState;
-  }
-
-
-  public CampaignStateChangedNotification ruleset(Ruleset ruleset) {
-    
-    this.ruleset = ruleset;
-    return this;
-  }
-
-   /**
-   * Get ruleset
-   * @return ruleset
+   * The type of the notification
+   * @return notificationType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "CampaignNotification", value = "The type of the notification")
 
-  public Ruleset getRuleset() {
-    return ruleset;
+  public String getNotificationType() {
+    return notificationType;
   }
 
 
-  public void setRuleset(Ruleset ruleset) {
-    this.ruleset = ruleset;
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
+  }
+
+
+  public CampaignStateChangedNotification totalResultSize(Long totalResultSize) {
+    
+    this.totalResultSize = totalResultSize;
+    return this;
+  }
+
+   /**
+   * The total size of the result set.
+   * @return totalResultSize
+  **/
+  @ApiModelProperty(required = true, value = "The total size of the result set.")
+
+  public Long getTotalResultSize() {
+    return totalResultSize;
+  }
+
+
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
+  }
+
+
+  public CampaignStateChangedNotification data(List<CampaignStateChangedNotificationItem> data) {
+    
+    this.data = data;
+    return this;
+  }
+
+  public CampaignStateChangedNotification addDataItem(CampaignStateChangedNotificationItem dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<CampaignStateChangedNotificationItem>();
+    }
+    this.data.add(dataItem);
+    return this;
+  }
+
+   /**
+   * A list of campaign notification data.
+   * @return data
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A list of campaign notification data.")
+
+  public List<CampaignStateChangedNotificationItem> getData() {
+    return data;
+  }
+
+
+  public void setData(List<CampaignStateChangedNotificationItem> data) {
+    this.data = data;
   }
 
 
@@ -147,15 +130,14 @@ public class CampaignStateChangedNotification {
       return false;
     }
     CampaignStateChangedNotification campaignStateChangedNotification = (CampaignStateChangedNotification) o;
-    return Objects.equals(this.campaign, campaignStateChangedNotification.campaign) &&
-        Objects.equals(this.oldState, campaignStateChangedNotification.oldState) &&
-        Objects.equals(this.newState, campaignStateChangedNotification.newState) &&
-        Objects.equals(this.ruleset, campaignStateChangedNotification.ruleset);
+    return Objects.equals(this.notificationType, campaignStateChangedNotification.notificationType) &&
+        Objects.equals(this.totalResultSize, campaignStateChangedNotification.totalResultSize) &&
+        Objects.equals(this.data, campaignStateChangedNotification.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaign, oldState, newState, ruleset);
+    return Objects.hash(notificationType, totalResultSize, data);
   }
 
 
@@ -163,10 +145,9 @@ public class CampaignStateChangedNotification {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignStateChangedNotification {\n");
-    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
-    sb.append("    oldState: ").append(toIndentedString(oldState)).append("\n");
-    sb.append("    newState: ").append(toIndentedString(newState)).append("\n");
-    sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

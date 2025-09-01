@@ -32,6 +32,10 @@ import org.threeten.bp.OffsetDateTime;
 @ApiModel(description = "Log entry for a given loyalty card transaction.")
 
 public class CardLedgerTransactionLogEntryIntegrationAPI {
+  public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "transactionUUID";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
+  private String transactionUUID;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
@@ -130,6 +134,28 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
   private String ruleName;
+
+
+  public CardLedgerTransactionLogEntryIntegrationAPI transactionUUID(String transactionUUID) {
+    
+    this.transactionUUID = transactionUUID;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the transaction in the UUID format.
+   * @return transactionUUID
+  **/
+  @ApiModelProperty(example = "ce59f12a-f53b-4014-a745-636d93f2bd3f", required = true, value = "Unique identifier of the transaction in the UUID format.")
+
+  public String getTransactionUUID() {
+    return transactionUUID;
+  }
+
+
+  public void setTransactionUUID(String transactionUUID) {
+    this.transactionUUID = transactionUUID;
+  }
 
 
   public CardLedgerTransactionLogEntryIntegrationAPI created(OffsetDateTime created) {
@@ -430,7 +456,8 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
       return false;
     }
     CardLedgerTransactionLogEntryIntegrationAPI cardLedgerTransactionLogEntryIntegrationAPI = (CardLedgerTransactionLogEntryIntegrationAPI) o;
-    return Objects.equals(this.created, cardLedgerTransactionLogEntryIntegrationAPI.created) &&
+    return Objects.equals(this.transactionUUID, cardLedgerTransactionLogEntryIntegrationAPI.transactionUUID) &&
+        Objects.equals(this.created, cardLedgerTransactionLogEntryIntegrationAPI.created) &&
         Objects.equals(this.programId, cardLedgerTransactionLogEntryIntegrationAPI.programId) &&
         Objects.equals(this.cardIdentifier, cardLedgerTransactionLogEntryIntegrationAPI.cardIdentifier) &&
         Objects.equals(this.customerSessionId, cardLedgerTransactionLogEntryIntegrationAPI.customerSessionId) &&
@@ -447,7 +474,7 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programId, cardIdentifier, customerSessionId, type, name, startDate, expiryDate, subledgerId, amount, id, rulesetId, ruleName);
+    return Objects.hash(transactionUUID, created, programId, cardIdentifier, customerSessionId, type, name, startDate, expiryDate, subledgerId, amount, id, rulesetId, ruleName);
   }
 
 
@@ -455,6 +482,7 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CardLedgerTransactionLogEntryIntegrationAPI {\n");
+    sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    programId: ").append(toIndentedString(programId)).append("\n");
     sb.append("    cardIdentifier: ").append(toIndentedString(cardIdentifier)).append("\n");

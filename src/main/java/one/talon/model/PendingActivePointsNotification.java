@@ -40,55 +40,6 @@ public class PendingActivePointsNotification {
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<PendingActivePointsData> data = new ArrayList<PendingActivePointsData>();
 
-  /**
-   * The type of notification.
-   */
-  @JsonAdapter(NotificationTypeEnum.Adapter.class)
-  public enum NotificationTypeEnum {
-    LOYALTYPOINTSPENDINGTOACTIVE("LoyaltyPointsPendingToActive");
-
-    private String value;
-
-    NotificationTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static NotificationTypeEnum fromValue(String value) {
-      for (NotificationTypeEnum b : NotificationTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<NotificationTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final NotificationTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public NotificationTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return NotificationTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
-  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
-  private NotificationTypeEnum notificationType;
-
 
   public PendingActivePointsNotification totalResultSize(Long totalResultSize) {
     
@@ -139,28 +90,6 @@ public class PendingActivePointsNotification {
   }
 
 
-  public PendingActivePointsNotification notificationType(NotificationTypeEnum notificationType) {
-    
-    this.notificationType = notificationType;
-    return this;
-  }
-
-   /**
-   * The type of notification.
-   * @return notificationType
-  **/
-  @ApiModelProperty(required = true, value = "The type of notification.")
-
-  public NotificationTypeEnum getNotificationType() {
-    return notificationType;
-  }
-
-
-  public void setNotificationType(NotificationTypeEnum notificationType) {
-    this.notificationType = notificationType;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -171,13 +100,12 @@ public class PendingActivePointsNotification {
     }
     PendingActivePointsNotification pendingActivePointsNotification = (PendingActivePointsNotification) o;
     return Objects.equals(this.totalResultSize, pendingActivePointsNotification.totalResultSize) &&
-        Objects.equals(this.data, pendingActivePointsNotification.data) &&
-        Objects.equals(this.notificationType, pendingActivePointsNotification.notificationType);
+        Objects.equals(this.data, pendingActivePointsNotification.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalResultSize, data, notificationType);
+    return Objects.hash(totalResultSize, data);
   }
 
 
@@ -187,7 +115,6 @@ public class PendingActivePointsNotification {
     sb.append("class PendingActivePointsNotification {\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

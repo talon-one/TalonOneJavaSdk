@@ -177,57 +177,6 @@ public class CardAddedDeductedPointsNotification {
   @SerializedName(SERIALIZED_NAME_SESSION_INTEGRATION_I_D)
   private String sessionIntegrationID;
 
-  /**
-   * The type of notification.
-   */
-  @JsonAdapter(NotificationTypeEnum.Adapter.class)
-  public enum NotificationTypeEnum {
-    LOYALTYCARDPOINTSDEDUCTED("LoyaltyCardPointsDeducted"),
-    
-    LOYALTYCARDPOINTSADDED("LoyaltyCardPointsAdded");
-
-    private String value;
-
-    NotificationTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static NotificationTypeEnum fromValue(String value) {
-      for (NotificationTypeEnum b : NotificationTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<NotificationTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final NotificationTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public NotificationTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return NotificationTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
-  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
-  private NotificationTypeEnum notificationType;
-
   public static final String SERIALIZED_NAME_CARD_IDENTIFIER = "CardIdentifier";
   @SerializedName(SERIALIZED_NAME_CARD_IDENTIFIER)
   private String cardIdentifier;
@@ -510,28 +459,6 @@ public class CardAddedDeductedPointsNotification {
   }
 
 
-  public CardAddedDeductedPointsNotification notificationType(NotificationTypeEnum notificationType) {
-    
-    this.notificationType = notificationType;
-    return this;
-  }
-
-   /**
-   * The type of notification.
-   * @return notificationType
-  **/
-  @ApiModelProperty(required = true, value = "The type of notification.")
-
-  public NotificationTypeEnum getNotificationType() {
-    return notificationType;
-  }
-
-
-  public void setNotificationType(NotificationTypeEnum notificationType) {
-    this.notificationType = notificationType;
-  }
-
-
   public CardAddedDeductedPointsNotification cardIdentifier(String cardIdentifier) {
     
     this.cardIdentifier = cardIdentifier;
@@ -597,14 +524,13 @@ public class CardAddedDeductedPointsNotification {
         Objects.equals(this.startDate, cardAddedDeductedPointsNotification.startDate) &&
         Objects.equals(this.expiryDate, cardAddedDeductedPointsNotification.expiryDate) &&
         Objects.equals(this.sessionIntegrationID, cardAddedDeductedPointsNotification.sessionIntegrationID) &&
-        Objects.equals(this.notificationType, cardAddedDeductedPointsNotification.notificationType) &&
         Objects.equals(this.cardIdentifier, cardAddedDeductedPointsNotification.cardIdentifier) &&
         Objects.equals(this.usersPerCardLimit, cardAddedDeductedPointsNotification.usersPerCardLimit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileIntegrationIDs, loyaltyProgramID, subledgerID, amount, reason, typeOfChange, employeeName, userID, operation, startDate, expiryDate, sessionIntegrationID, notificationType, cardIdentifier, usersPerCardLimit);
+    return Objects.hash(profileIntegrationIDs, loyaltyProgramID, subledgerID, amount, reason, typeOfChange, employeeName, userID, operation, startDate, expiryDate, sessionIntegrationID, cardIdentifier, usersPerCardLimit);
   }
 
 
@@ -624,7 +550,6 @@ public class CardAddedDeductedPointsNotification {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    sessionIntegrationID: ").append(toIndentedString(sessionIntegrationID)).append("\n");
-    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
     sb.append("    cardIdentifier: ").append(toIndentedString(cardIdentifier)).append("\n");
     sb.append("    usersPerCardLimit: ").append(toIndentedString(usersPerCardLimit)).append("\n");
     sb.append("}");

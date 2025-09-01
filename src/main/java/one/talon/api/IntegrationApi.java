@@ -2316,6 +2316,8 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
      * @param pageSize The number of items in the response. (optional, default to 50l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback Callback for upload/download progress
@@ -2330,7 +2332,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardTransactionsCall(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardTransactionsCall(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, List<String> customerSessionIDs, List<String> transactionUUIDs, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2354,6 +2356,14 @@ public class IntegrationApi {
 
         if (endDate != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("endDate", endDate));
+        }
+
+        if (customerSessionIDs != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "customerSessionIDs", customerSessionIDs));
+        }
+
+        if (transactionUUIDs != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "transactionUUIDs", transactionUUIDs));
         }
 
         if (pageSize != null) {
@@ -2386,7 +2396,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyCardTransactionsValidateBeforeCall(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyCardTransactionsValidateBeforeCall(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, List<String> customerSessionIDs, List<String> transactionUUIDs, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -2399,7 +2409,7 @@ public class IntegrationApi {
         }
         
 
-        okhttp3.Call localVarCall = getLoyaltyCardTransactionsCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyCardTransactionsCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, customerSessionIDs, transactionUUIDs, pageSize, skip, _callback);
         return localVarCall;
 
     }
@@ -2413,6 +2423,8 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
      * @param pageSize The number of items in the response. (optional, default to 50l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return InlineResponse2003
@@ -2426,8 +2438,8 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2003 getLoyaltyCardTransactions(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
-        ApiResponse<InlineResponse2003> localVarResp = getLoyaltyCardTransactionsWithHttpInfo(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+    public InlineResponse2003 getLoyaltyCardTransactions(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, List<String> customerSessionIDs, List<String> transactionUUIDs, Long pageSize, Long skip) throws ApiException {
+        ApiResponse<InlineResponse2003> localVarResp = getLoyaltyCardTransactionsWithHttpInfo(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, customerSessionIDs, transactionUUIDs, pageSize, skip);
         return localVarResp.getData();
     }
 
@@ -2440,6 +2452,8 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
      * @param pageSize The number of items in the response. (optional, default to 50l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2003&gt;
@@ -2453,8 +2467,8 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2003> getLoyaltyCardTransactionsWithHttpInfo(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, null);
+    public ApiResponse<InlineResponse2003> getLoyaltyCardTransactionsWithHttpInfo(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, List<String> customerSessionIDs, List<String> transactionUUIDs, Long pageSize, Long skip) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, customerSessionIDs, transactionUUIDs, pageSize, skip, null);
         Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2468,6 +2482,8 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
      * @param pageSize The number of items in the response. (optional, default to 50l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -2482,9 +2498,9 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardTransactionsAsync(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback<InlineResponse2003> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardTransactionsAsync(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, List<String> customerSessionIDs, List<String> transactionUUIDs, Long pageSize, Long skip, final ApiCallback<InlineResponse2003> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, customerSessionIDs, transactionUUIDs, pageSize, skip, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2658,6 +2674,8 @@ public class IntegrationApi {
      * Build call for getLoyaltyProgramProfileTransactions
      * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
@@ -2676,7 +2694,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfileTransactionsCall(Long loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfileTransactionsCall(Long loyaltyProgramId, String integrationId, List<String> customerSessionIDs, List<String> transactionUUIDs, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2686,6 +2704,14 @@ public class IntegrationApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (customerSessionIDs != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "customerSessionIDs", customerSessionIDs));
+        }
+
+        if (transactionUUIDs != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "transactionUUIDs", transactionUUIDs));
+        }
+
         if (subledgerId != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("subledgerId", subledgerId));
         }
@@ -2732,7 +2758,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyProgramProfileTransactionsValidateBeforeCall(Long loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyProgramProfileTransactionsValidateBeforeCall(Long loyaltyProgramId, String integrationId, List<String> customerSessionIDs, List<String> transactionUUIDs, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -2745,7 +2771,7 @@ public class IntegrationApi {
         }
         
 
-        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsCall(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsCall(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
         return localVarCall;
 
     }
@@ -2755,6 +2781,8 @@ public class IntegrationApi {
      * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date. If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  **Note:** To retrieve all loyalty program transaction logs in a given loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
      * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
@@ -2772,8 +2800,8 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2004 getLoyaltyProgramProfileTransactions(Long loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
-        ApiResponse<InlineResponse2004> localVarResp = getLoyaltyProgramProfileTransactionsWithHttpInfo(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+    public InlineResponse2004 getLoyaltyProgramProfileTransactions(Long loyaltyProgramId, String integrationId, List<String> customerSessionIDs, List<String> transactionUUIDs, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = getLoyaltyProgramProfileTransactionsWithHttpInfo(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
         return localVarResp.getData();
     }
 
@@ -2782,6 +2810,8 @@ public class IntegrationApi {
      * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date. If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  **Note:** To retrieve all loyalty program transaction logs in a given loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
      * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
@@ -2799,8 +2829,8 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2004> getLoyaltyProgramProfileTransactionsWithHttpInfo(Long loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, null);
+    public ApiResponse<InlineResponse2004> getLoyaltyProgramProfileTransactionsWithHttpInfo(Long loyaltyProgramId, String integrationId, List<String> customerSessionIDs, List<String> transactionUUIDs, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, null);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2810,6 +2840,8 @@ public class IntegrationApi {
      * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date. If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  **Note:** To retrieve all loyalty program transaction logs in a given loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
      * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
@@ -2828,9 +2860,9 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfileTransactionsAsync(Long loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfileTransactionsAsync(Long loyaltyProgramId, String integrationId, List<String> customerSessionIDs, List<String> transactionUUIDs, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

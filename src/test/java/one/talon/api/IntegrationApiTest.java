@@ -377,9 +377,11 @@ public class IntegrationApiTest {
         String loyaltyTransactionType = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
+        List<String> customerSessionIDs = null;
+        List<String> transactionUUIDs = null;
         Long pageSize = null;
         Long skip = null;
-        InlineResponse2003 response = api.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+        InlineResponse2003 response = api.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, customerSessionIDs, transactionUUIDs, pageSize, skip);
 
         // TODO: test validations
     }
@@ -417,13 +419,15 @@ public class IntegrationApiTest {
     public void getLoyaltyProgramProfileTransactionsTest() throws ApiException {
         Long loyaltyProgramId = null;
         String integrationId = null;
+        List<String> customerSessionIDs = null;
+        List<String> transactionUUIDs = null;
         String subledgerId = null;
         String loyaltyTransactionType = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
         Long pageSize = null;
         Long skip = null;
-        InlineResponse2004 response = api.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+        InlineResponse2004 response = api.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
     }

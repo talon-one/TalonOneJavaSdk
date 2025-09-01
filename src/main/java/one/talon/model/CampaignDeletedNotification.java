@@ -23,65 +23,101 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.Campaign;
-import org.threeten.bp.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.CampaignDeletedNotificationItem;
 
 /**
- * A notification regarding a campaign that was deleted.
+ * CampaignDeletedNotification
  */
-@ApiModel(description = "A notification regarding a campaign that was deleted.")
 
 public class CampaignDeletedNotification {
-  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private Campaign campaign;
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
 
-  public static final String SERIALIZED_NAME_DELETED_AT = "deletedAt";
-  @SerializedName(SERIALIZED_NAME_DELETED_AT)
-  private OffsetDateTime deletedAt;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "TotalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
+
+  public static final String SERIALIZED_NAME_DATA = "Data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<CampaignDeletedNotificationItem> data = null;
 
 
-  public CampaignDeletedNotification campaign(Campaign campaign) {
+  public CampaignDeletedNotification notificationType(String notificationType) {
     
-    this.campaign = campaign;
+    this.notificationType = notificationType;
     return this;
   }
 
    /**
-   * Get campaign
-   * @return campaign
+   * The type of the notification
+   * @return notificationType
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "CampaignNotification", value = "The type of the notification")
 
-  public Campaign getCampaign() {
-    return campaign;
+  public String getNotificationType() {
+    return notificationType;
   }
 
 
-  public void setCampaign(Campaign campaign) {
-    this.campaign = campaign;
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
   }
 
 
-  public CampaignDeletedNotification deletedAt(OffsetDateTime deletedAt) {
+  public CampaignDeletedNotification totalResultSize(Long totalResultSize) {
     
-    this.deletedAt = deletedAt;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Time when the campaign was deleted.
-   * @return deletedAt
+   * The total size of the result set.
+   * @return totalResultSize
   **/
-  @ApiModelProperty(example = "2022-11-10T23:00Z", required = true, value = "Time when the campaign was deleted.")
+  @ApiModelProperty(required = true, value = "The total size of the result set.")
 
-  public OffsetDateTime getDeletedAt() {
-    return deletedAt;
+  public Long getTotalResultSize() {
+    return totalResultSize;
   }
 
 
-  public void setDeletedAt(OffsetDateTime deletedAt) {
-    this.deletedAt = deletedAt;
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
+  }
+
+
+  public CampaignDeletedNotification data(List<CampaignDeletedNotificationItem> data) {
+    
+    this.data = data;
+    return this;
+  }
+
+  public CampaignDeletedNotification addDataItem(CampaignDeletedNotificationItem dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<CampaignDeletedNotificationItem>();
+    }
+    this.data.add(dataItem);
+    return this;
+  }
+
+   /**
+   * A list of campaign notification data.
+   * @return data
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A list of campaign notification data.")
+
+  public List<CampaignDeletedNotificationItem> getData() {
+    return data;
+  }
+
+
+  public void setData(List<CampaignDeletedNotificationItem> data) {
+    this.data = data;
   }
 
 
@@ -94,13 +130,14 @@ public class CampaignDeletedNotification {
       return false;
     }
     CampaignDeletedNotification campaignDeletedNotification = (CampaignDeletedNotification) o;
-    return Objects.equals(this.campaign, campaignDeletedNotification.campaign) &&
-        Objects.equals(this.deletedAt, campaignDeletedNotification.deletedAt);
+    return Objects.equals(this.notificationType, campaignDeletedNotification.notificationType) &&
+        Objects.equals(this.totalResultSize, campaignDeletedNotification.totalResultSize) &&
+        Objects.equals(this.data, campaignDeletedNotification.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaign, deletedAt);
+    return Objects.hash(notificationType, totalResultSize, data);
   }
 
 
@@ -108,8 +145,9 @@ public class CampaignDeletedNotification {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignDeletedNotification {\n");
-    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
-    sb.append("    deletedAt: ").append(toIndentedString(deletedAt)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date for loyalty points. |  [optional]
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | The expiration date for loyalty points. |  [optional]
 **sessionIntegrationID** | **String** | The integration ID of the session through which the points were earned or lost. | 
-**notificationType** | [**NotificationTypeEnum**](#NotificationTypeEnum) | The type of notification. | 
 **cardIdentifier** | **String** | Loyalty card identification number. | 
 **usersPerCardLimit** | **Long** | The max amount of user profiles with whom a card can be shared. This can be set to &#x60;0&#x60; for no limit. | 
 
@@ -40,15 +39,6 @@ Name | Value
 ---- | -----
 ADDITION | &quot;addition&quot;
 DEDUCTION | &quot;deduction&quot;
-
-
-
-## Enum: NotificationTypeEnum
-
-Name | Value
----- | -----
-LOYALTYCARDPOINTSDEDUCTED | &quot;LoyaltyCardPointsDeducted&quot;
-LOYALTYCARDPOINTSADDED | &quot;LoyaltyCardPointsAdded&quot;
 
 
 

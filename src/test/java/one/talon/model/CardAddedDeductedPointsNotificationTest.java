@@ -141,14 +141,6 @@ public class CardAddedDeductedPointsNotificationTest {
     }
 
     /**
-     * Test the property 'notificationType'
-     */
-    @Test
-    public void notificationTypeTest() {
-        // TODO: test notificationType
-    }
-
-    /**
      * Test the property 'cardIdentifier'
      */
     @Test

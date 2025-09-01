@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "one.talon",
     name := "talon-one-client",
-    version := "13.1.0",
+    version := "13.2.0",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),
@@ -13,7 +13,7 @@ lazy val root = (project in file(".")).
       "com.squareup.okhttp3" % "okhttp" % "3.14.7",
       "com.squareup.okhttp3" % "logging-interceptor" % "3.14.7",
       "com.google.code.gson" % "gson" % "2.8.6",
-      "org.apache.commons" % "commons-lang3" % "3.18.0",
+      "org.apache.commons" % "commons-lang3" % "3.10",
       "org.threeten" % "threetenbp" % "1.4.3" % "compile",
       "io.gsonfire" % "gson-fire" % "1.8.3" % "compile",
       "javax.annotation" % "javax.annotation-api" % "1.3.2" % "compile",

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **calculatedAt** | [**OffsetDateTime**](OffsetDateTime.md) | The time at which this price was calculated. If provided, this is used to determine the most recent price adjustment to choose if price adjustments overlap. Defaults to internal creation time if not provided. |  [optional]
 **effectiveFrom** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time from which the price adjustment is effective. |  [optional]
 **effectiveUntil** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time until which the price adjustment is effective. |  [optional]
+**contextId** | **String** | Identifier of the context of this price adjustment (e.g. summer sale). |  [optional]
 
 
 
