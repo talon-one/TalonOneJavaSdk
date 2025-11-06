@@ -83,4 +83,12 @@ public class CouponsNotificationDataTest {
         // TODO: test totalResultSize
     }
 
+    /**
+     * Test the property 'notificationType'
+     */
+    @Test
+    public void notificationTypeTest() {
+        // TODO: test notificationType
+    }
+
 }

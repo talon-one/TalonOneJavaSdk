@@ -8,6 +8,7 @@ Loyalty profile points with start and expiry dates.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Long** | ID of the transaction that adds loyalty points. | 
+**transactionUUID** | **String** | Unique identifier of the transaction in the UUID format. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | Date and time the loyalty points were added. | 
 **programId** | **Long** | ID of the loyalty program. | 
 **customerSessionId** | **String** | ID of the customer session where points were added. |  [optional]

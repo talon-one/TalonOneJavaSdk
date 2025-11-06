@@ -21,9 +21,11 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import one.talon.model.TemplateArgDef;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,22 +43,6 @@ public class NewMessageTestTest {
     @Test
     public void testNewMessageTest() {
         // TODO: test NewMessageTest
-    }
-
-    /**
-     * Test the property 'type'
-     */
-    @Test
-    public void typeTest() {
-        // TODO: test type
-    }
-
-    /**
-     * Test the property 'queryParams'
-     */
-    @Test
-    public void queryParamsTest() {
-        // TODO: test queryParams
     }
 
     /**
@@ -89,6 +75,22 @@ public class NewMessageTestTest {
     @Test
     public void payloadTest() {
         // TODO: test payload
+    }
+
+    /**
+     * Test the property 'params'
+     */
+    @Test
+    public void paramsTest() {
+        // TODO: test params
+    }
+
+    /**
+     * Test the property 'applicationIds'
+     */
+    @Test
+    public void applicationIdsTest() {
+        // TODO: test applicationIds
     }
 
 }

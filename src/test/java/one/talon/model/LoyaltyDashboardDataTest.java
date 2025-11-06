@@ -84,6 +84,14 @@ public class LoyaltyDashboardDataTest {
     }
 
     /**
+     * Test the property 'totalNegativePoints'
+     */
+    @Test
+    public void totalNegativePointsTest() {
+        // TODO: test totalNegativePoints
+    }
+
+    /**
      * Test the property 'totalMembers'
      */
     @Test

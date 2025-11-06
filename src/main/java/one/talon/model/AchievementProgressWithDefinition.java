@@ -239,6 +239,10 @@ public class AchievementProgressWithDefinition {
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_END_DATE)
   private OffsetDateTime achievementEndDate;
 
+  public static final String SERIALIZED_NAME_ACHIEVEMENT_ALLOW_ROLLBACK_AFTER_COMPLETION = "achievementAllowRollbackAfterCompletion";
+  @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_ALLOW_ROLLBACK_AFTER_COMPLETION)
+  private Boolean achievementAllowRollbackAfterCompletion;
+
 
   public AchievementProgressWithDefinition status(StatusEnum status) {
     
@@ -576,6 +580,29 @@ public class AchievementProgressWithDefinition {
   }
 
 
+  public AchievementProgressWithDefinition achievementAllowRollbackAfterCompletion(Boolean achievementAllowRollbackAfterCompletion) {
+    
+    this.achievementAllowRollbackAfterCompletion = achievementAllowRollbackAfterCompletion;
+    return this;
+  }
+
+   /**
+   * When &#x60;true&#x60;, customer progress can be rolled back in completed achievements.
+   * @return achievementAllowRollbackAfterCompletion
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "When `true`, customer progress can be rolled back in completed achievements.")
+
+  public Boolean getAchievementAllowRollbackAfterCompletion() {
+    return achievementAllowRollbackAfterCompletion;
+  }
+
+
+  public void setAchievementAllowRollbackAfterCompletion(Boolean achievementAllowRollbackAfterCompletion) {
+    this.achievementAllowRollbackAfterCompletion = achievementAllowRollbackAfterCompletion;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -599,12 +626,13 @@ public class AchievementProgressWithDefinition {
         Objects.equals(this.achievementRecurrencePolicy, achievementProgressWithDefinition.achievementRecurrencePolicy) &&
         Objects.equals(this.achievementActivationPolicy, achievementProgressWithDefinition.achievementActivationPolicy) &&
         Objects.equals(this.achievementFixedStartDate, achievementProgressWithDefinition.achievementFixedStartDate) &&
-        Objects.equals(this.achievementEndDate, achievementProgressWithDefinition.achievementEndDate);
+        Objects.equals(this.achievementEndDate, achievementProgressWithDefinition.achievementEndDate) &&
+        Objects.equals(this.achievementAllowRollbackAfterCompletion, achievementProgressWithDefinition.achievementAllowRollbackAfterCompletion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, progress, startDate, completionDate, endDate, achievementId, name, title, description, campaignId, target, achievementRecurrencePolicy, achievementActivationPolicy, achievementFixedStartDate, achievementEndDate);
+    return Objects.hash(status, progress, startDate, completionDate, endDate, achievementId, name, title, description, campaignId, target, achievementRecurrencePolicy, achievementActivationPolicy, achievementFixedStartDate, achievementEndDate, achievementAllowRollbackAfterCompletion);
   }
 
 
@@ -627,6 +655,7 @@ public class AchievementProgressWithDefinition {
     sb.append("    achievementActivationPolicy: ").append(toIndentedString(achievementActivationPolicy)).append("\n");
     sb.append("    achievementFixedStartDate: ").append(toIndentedString(achievementFixedStartDate)).append("\n");
     sb.append("    achievementEndDate: ").append(toIndentedString(achievementEndDate)).append("\n");
+    sb.append("    achievementAllowRollbackAfterCompletion: ").append(toIndentedString(achievementAllowRollbackAfterCompletion)).append("\n");
     sb.append("}");
     return sb.toString();
   }

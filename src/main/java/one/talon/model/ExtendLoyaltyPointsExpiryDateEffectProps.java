@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.OffsetDateTime;
+import one.talon.model.LoyaltyLedgerEntryExpiryDateChange;
 
 /**
  * The properties specific to the \&quot;extendLoyaltyPointsExpiryDate\&quot; effect. This gets triggered when a validated rule contains the \&quot;extend expiry date\&quot; effect. The current expiry date gets extended by the time frame given in the effect. 
@@ -45,13 +45,9 @@ public class ExtendLoyaltyPointsExpiryDateEffectProps {
   @SerializedName(SERIALIZED_NAME_EXTENSION_DURATION)
   private String extensionDuration;
 
-  public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_DS = "transactionUUIDs";
-  @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_DS)
-  private List<String> transactionUUIDs = null;
-
-  public static final String SERIALIZED_NAME_PREVIOUS_EXPIRATION_DATE = "previousExpirationDate";
-  @SerializedName(SERIALIZED_NAME_PREVIOUS_EXPIRATION_DATE)
-  private OffsetDateTime previousExpirationDate;
+  public static final String SERIALIZED_NAME_AFFECTED_TRANSACTIONS = "affectedTransactions";
+  @SerializedName(SERIALIZED_NAME_AFFECTED_TRANSACTIONS)
+  private List<LoyaltyLedgerEntryExpiryDateChange> affectedTransactions = null;
 
 
   public ExtendLoyaltyPointsExpiryDateEffectProps programId(Long programId) {
@@ -120,56 +116,34 @@ public class ExtendLoyaltyPointsExpiryDateEffectProps {
   }
 
 
-  public ExtendLoyaltyPointsExpiryDateEffectProps transactionUUIDs(List<String> transactionUUIDs) {
+  public ExtendLoyaltyPointsExpiryDateEffectProps affectedTransactions(List<LoyaltyLedgerEntryExpiryDateChange> affectedTransactions) {
     
-    this.transactionUUIDs = transactionUUIDs;
+    this.affectedTransactions = affectedTransactions;
     return this;
   }
 
-  public ExtendLoyaltyPointsExpiryDateEffectProps addTransactionUUIDsItem(String transactionUUIDsItem) {
-    if (this.transactionUUIDs == null) {
-      this.transactionUUIDs = new ArrayList<String>();
+  public ExtendLoyaltyPointsExpiryDateEffectProps addAffectedTransactionsItem(LoyaltyLedgerEntryExpiryDateChange affectedTransactionsItem) {
+    if (this.affectedTransactions == null) {
+      this.affectedTransactions = new ArrayList<LoyaltyLedgerEntryExpiryDateChange>();
     }
-    this.transactionUUIDs.add(transactionUUIDsItem);
+    this.affectedTransactions.add(affectedTransactionsItem);
     return this;
   }
 
    /**
-   * The list of identifiers of transactions affected affected by the extension.
-   * @return transactionUUIDs
+   * List of transactions affected by the expiry date update.
+   * @return affectedTransactions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of identifiers of transactions affected affected by the extension.")
+  @ApiModelProperty(value = "List of transactions affected by the expiry date update.")
 
-  public List<String> getTransactionUUIDs() {
-    return transactionUUIDs;
+  public List<LoyaltyLedgerEntryExpiryDateChange> getAffectedTransactions() {
+    return affectedTransactions;
   }
 
 
-  public void setTransactionUUIDs(List<String> transactionUUIDs) {
-    this.transactionUUIDs = transactionUUIDs;
-  }
-
-
-  public ExtendLoyaltyPointsExpiryDateEffectProps previousExpirationDate(OffsetDateTime previousExpirationDate) {
-    
-    this.previousExpirationDate = previousExpirationDate;
-    return this;
-  }
-
-   /**
-   * Expiry date before applying the extension.
-   * @return previousExpirationDate
-  **/
-  @ApiModelProperty(required = true, value = "Expiry date before applying the extension.")
-
-  public OffsetDateTime getPreviousExpirationDate() {
-    return previousExpirationDate;
-  }
-
-
-  public void setPreviousExpirationDate(OffsetDateTime previousExpirationDate) {
-    this.previousExpirationDate = previousExpirationDate;
+  public void setAffectedTransactions(List<LoyaltyLedgerEntryExpiryDateChange> affectedTransactions) {
+    this.affectedTransactions = affectedTransactions;
   }
 
 
@@ -185,13 +159,12 @@ public class ExtendLoyaltyPointsExpiryDateEffectProps {
     return Objects.equals(this.programId, extendLoyaltyPointsExpiryDateEffectProps.programId) &&
         Objects.equals(this.subLedgerId, extendLoyaltyPointsExpiryDateEffectProps.subLedgerId) &&
         Objects.equals(this.extensionDuration, extendLoyaltyPointsExpiryDateEffectProps.extensionDuration) &&
-        Objects.equals(this.transactionUUIDs, extendLoyaltyPointsExpiryDateEffectProps.transactionUUIDs) &&
-        Objects.equals(this.previousExpirationDate, extendLoyaltyPointsExpiryDateEffectProps.previousExpirationDate);
+        Objects.equals(this.affectedTransactions, extendLoyaltyPointsExpiryDateEffectProps.affectedTransactions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(programId, subLedgerId, extensionDuration, transactionUUIDs, previousExpirationDate);
+    return Objects.hash(programId, subLedgerId, extensionDuration, affectedTransactions);
   }
 
 
@@ -202,8 +175,7 @@ public class ExtendLoyaltyPointsExpiryDateEffectProps {
     sb.append("    programId: ").append(toIndentedString(programId)).append("\n");
     sb.append("    subLedgerId: ").append(toIndentedString(subLedgerId)).append("\n");
     sb.append("    extensionDuration: ").append(toIndentedString(extensionDuration)).append("\n");
-    sb.append("    transactionUUIDs: ").append(toIndentedString(transactionUUIDs)).append("\n");
-    sb.append("    previousExpirationDate: ").append(toIndentedString(previousExpirationDate)).append("\n");
+    sb.append("    affectedTransactions: ").append(toIndentedString(affectedTransactions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

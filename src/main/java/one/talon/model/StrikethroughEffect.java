@@ -23,6 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -62,6 +65,22 @@ public class StrikethroughEffect {
   public static final String SERIALIZED_NAME_END_TIME = "endTime";
   @SerializedName(SERIALIZED_NAME_END_TIME)
   private OffsetDateTime endTime;
+
+  public static final String SERIALIZED_NAME_SELECTED_PRICE_TYPE = "selectedPriceType";
+  @SerializedName(SERIALIZED_NAME_SELECTED_PRICE_TYPE)
+  private String selectedPriceType;
+
+  public static final String SERIALIZED_NAME_SELECTED_PRICE = "selectedPrice";
+  @SerializedName(SERIALIZED_NAME_SELECTED_PRICE)
+  private BigDecimal selectedPrice;
+
+  public static final String SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID = "adjustmentReferenceId";
+  @SerializedName(SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID)
+  private String adjustmentReferenceId;
+
+  public static final String SERIALIZED_NAME_TARGETS = "targets";
+  @SerializedName(SERIALIZED_NAME_TARGETS)
+  private List<Object> targets = null;
 
 
   public StrikethroughEffect campaignId(Long campaignId) {
@@ -242,6 +261,106 @@ public class StrikethroughEffect {
   }
 
 
+  public StrikethroughEffect selectedPriceType(String selectedPriceType) {
+    
+    this.selectedPriceType = selectedPriceType;
+    return this;
+  }
+
+   /**
+   * The selected price type for this cart item (e.g. the price for members only).
+   * @return selectedPriceType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "member", value = "The selected price type for this cart item (e.g. the price for members only).")
+
+  public String getSelectedPriceType() {
+    return selectedPriceType;
+  }
+
+
+  public void setSelectedPriceType(String selectedPriceType) {
+    this.selectedPriceType = selectedPriceType;
+  }
+
+
+  public StrikethroughEffect selectedPrice(BigDecimal selectedPrice) {
+    
+    this.selectedPrice = selectedPrice;
+    return this;
+  }
+
+   /**
+   * The value of the selected price type to apply to the SKU targeted by this effect, before any discounts are applied.
+   * @return selectedPrice
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "100.0", value = "The value of the selected price type to apply to the SKU targeted by this effect, before any discounts are applied.")
+
+  public BigDecimal getSelectedPrice() {
+    return selectedPrice;
+  }
+
+
+  public void setSelectedPrice(BigDecimal selectedPrice) {
+    this.selectedPrice = selectedPrice;
+  }
+
+
+  public StrikethroughEffect adjustmentReferenceId(String adjustmentReferenceId) {
+    
+    this.adjustmentReferenceId = adjustmentReferenceId;
+    return this;
+  }
+
+   /**
+   * The reference identifier of the selected price adjustment for this cart item.
+   * @return adjustmentReferenceId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "68851723-e6fa-488f-ace9-112581e6c19b", value = "The reference identifier of the selected price adjustment for this cart item.")
+
+  public String getAdjustmentReferenceId() {
+    return adjustmentReferenceId;
+  }
+
+
+  public void setAdjustmentReferenceId(String adjustmentReferenceId) {
+    this.adjustmentReferenceId = adjustmentReferenceId;
+  }
+
+
+  public StrikethroughEffect targets(List<Object> targets) {
+    
+    this.targets = targets;
+    return this;
+  }
+
+  public StrikethroughEffect addTargetsItem(Object targetsItem) {
+    if (this.targets == null) {
+      this.targets = new ArrayList<Object>();
+    }
+    this.targets.add(targetsItem);
+    return this;
+  }
+
+   /**
+   * A list of entities (e.g. audiences) targeted by this effect.
+   * @return targets
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A list of entities (e.g. audiences) targeted by this effect.")
+
+  public List<Object> getTargets() {
+    return targets;
+  }
+
+
+  public void setTargets(List<Object> targets) {
+    this.targets = targets;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -258,12 +377,16 @@ public class StrikethroughEffect {
         Objects.equals(this.type, strikethroughEffect.type) &&
         Objects.equals(this.props, strikethroughEffect.props) &&
         Objects.equals(this.startTime, strikethroughEffect.startTime) &&
-        Objects.equals(this.endTime, strikethroughEffect.endTime);
+        Objects.equals(this.endTime, strikethroughEffect.endTime) &&
+        Objects.equals(this.selectedPriceType, strikethroughEffect.selectedPriceType) &&
+        Objects.equals(this.selectedPrice, strikethroughEffect.selectedPrice) &&
+        Objects.equals(this.adjustmentReferenceId, strikethroughEffect.adjustmentReferenceId) &&
+        Objects.equals(this.targets, strikethroughEffect.targets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, type, props, startTime, endTime);
+    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, type, props, startTime, endTime, selectedPriceType, selectedPrice, adjustmentReferenceId, targets);
   }
 
 
@@ -279,6 +402,10 @@ public class StrikethroughEffect {
     sb.append("    props: ").append(toIndentedString(props)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    selectedPriceType: ").append(toIndentedString(selectedPriceType)).append("\n");
+    sb.append("    selectedPrice: ").append(toIndentedString(selectedPrice)).append("\n");
+    sb.append("    adjustmentReferenceId: ").append(toIndentedString(adjustmentReferenceId)).append("\n");
+    sb.append("    targets: ").append(toIndentedString(targets)).append("\n");
     sb.append("}");
     return sb.toString();
   }

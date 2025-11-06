@@ -7,6 +7,7 @@ Log entry for a given loyalty card transaction.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**transactionUUID** | **String** | Unique identifier of the transaction in the UUID format. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | Date and time the loyalty card transaction occurred. | 
 **programId** | **Long** | ID of the loyalty program. | 
 **cardIdentifier** | **String** | The alphanumeric identifier of the loyalty card.  | 

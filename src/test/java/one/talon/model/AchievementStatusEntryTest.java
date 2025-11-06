@@ -141,6 +141,14 @@ public class AchievementStatusEntryTest {
     }
 
     /**
+     * Test the property 'allowRollbackAfterCompletion'
+     */
+    @Test
+    public void allowRollbackAfterCompletionTest() {
+        // TODO: test allowRollbackAfterCompletion
+    }
+
+    /**
      * Test the property 'campaignId'
      */
     @Test

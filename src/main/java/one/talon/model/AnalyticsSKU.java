@@ -43,6 +43,14 @@ public class AnalyticsSKU {
   @SerializedName(SERIALIZED_NAME_LAST_UPDATED)
   private OffsetDateTime lastUpdated;
 
+  public static final String SERIALIZED_NAME_CATALOG_ID = "catalogId";
+  @SerializedName(SERIALIZED_NAME_CATALOG_ID)
+  private Long catalogId;
+
+  public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
+  private Long productId;
+
   public static final String SERIALIZED_NAME_UNITS_SOLD = "unitsSold";
   @SerializedName(SERIALIZED_NAME_UNITS_SOLD)
   private AnalyticsDataPointWithTrend unitsSold;
@@ -55,10 +63,10 @@ public class AnalyticsSKU {
   }
 
    /**
-   * The ID of the SKU linked to the application.
+   * The ID of the SKU linked to the Application.
    * @return id
   **/
-  @ApiModelProperty(example = "1", required = true, value = "The ID of the SKU linked to the application.")
+  @ApiModelProperty(example = "1", required = true, value = "The ID of the SKU linked to the Application.")
 
   public Long getId() {
     return id;
@@ -77,10 +85,10 @@ public class AnalyticsSKU {
   }
 
    /**
-   * The SKU linked to the application.
+   * The SKU linked to the Application.
    * @return sku
   **/
-  @ApiModelProperty(example = "SKU-123", required = true, value = "The SKU linked to the application.")
+  @ApiModelProperty(example = "SKU-123", required = true, value = "The SKU linked to the Application.")
 
   public String getSku() {
     return sku;
@@ -112,6 +120,52 @@ public class AnalyticsSKU {
 
   public void setLastUpdated(OffsetDateTime lastUpdated) {
     this.lastUpdated = lastUpdated;
+  }
+
+
+  public AnalyticsSKU catalogId(Long catalogId) {
+    
+    this.catalogId = catalogId;
+    return this;
+  }
+
+   /**
+   * The ID of the catalog that contains the SKU.
+   * @return catalogId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "The ID of the catalog that contains the SKU.")
+
+  public Long getCatalogId() {
+    return catalogId;
+  }
+
+
+  public void setCatalogId(Long catalogId) {
+    this.catalogId = catalogId;
+  }
+
+
+  public AnalyticsSKU productId(Long productId) {
+    
+    this.productId = productId;
+    return this;
+  }
+
+   /**
+   * The ID of the product that the SKU belongs to.
+   * @return productId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "The ID of the product that the SKU belongs to.")
+
+  public Long getProductId() {
+    return productId;
+  }
+
+
+  public void setProductId(Long productId) {
+    this.productId = productId;
   }
 
 
@@ -150,12 +204,14 @@ public class AnalyticsSKU {
     return Objects.equals(this.id, analyticsSKU.id) &&
         Objects.equals(this.sku, analyticsSKU.sku) &&
         Objects.equals(this.lastUpdated, analyticsSKU.lastUpdated) &&
+        Objects.equals(this.catalogId, analyticsSKU.catalogId) &&
+        Objects.equals(this.productId, analyticsSKU.productId) &&
         Objects.equals(this.unitsSold, analyticsSKU.unitsSold);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, sku, lastUpdated, unitsSold);
+    return Objects.hash(id, sku, lastUpdated, catalogId, productId, unitsSold);
   }
 
 
@@ -166,6 +222,8 @@ public class AnalyticsSKU {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    lastUpdated: ").append(toIndentedString(lastUpdated)).append("\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    unitsSold: ").append(toIndentedString(unitsSold)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -51,6 +51,14 @@ public class PriceDetailTest {
     }
 
     /**
+     * Test the property 'adjustmentContextId'
+     */
+    @Test
+    public void adjustmentContextIdTest() {
+        // TODO: test adjustmentContextId
+    }
+
+    /**
      * Test the property 'adjustmentReferenceId'
      */
     @Test

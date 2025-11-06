@@ -108,6 +108,10 @@ public class StrikethroughLabelingNotification {
   @SerializedName(SERIALIZED_NAME_CHANGED_ITEMS)
   private List<StrikethroughChangedItem> changedItems = new ArrayList<StrikethroughChangedItem>();
 
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
+
 
   public StrikethroughLabelingNotification version(VersionEnum version) {
     
@@ -270,6 +274,28 @@ public class StrikethroughLabelingNotification {
   }
 
 
+  public StrikethroughLabelingNotification notificationType(String notificationType) {
+    
+    this.notificationType = notificationType;
+    return this;
+  }
+
+   /**
+   * The type of the notification
+   * @return notificationType
+  **/
+  @ApiModelProperty(required = true, value = "The type of the notification")
+
+  public String getNotificationType() {
+    return notificationType;
+  }
+
+
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -285,12 +311,13 @@ public class StrikethroughLabelingNotification {
         Objects.equals(this.currentBatch, strikethroughLabelingNotification.currentBatch) &&
         Objects.equals(this.totalBatches, strikethroughLabelingNotification.totalBatches) &&
         Objects.equals(this.trigger, strikethroughLabelingNotification.trigger) &&
-        Objects.equals(this.changedItems, strikethroughLabelingNotification.changedItems);
+        Objects.equals(this.changedItems, strikethroughLabelingNotification.changedItems) &&
+        Objects.equals(this.notificationType, strikethroughLabelingNotification.notificationType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(version, validFrom, applicationId, currentBatch, totalBatches, trigger, changedItems);
+    return Objects.hash(version, validFrom, applicationId, currentBatch, totalBatches, trigger, changedItems, notificationType);
   }
 
 
@@ -305,6 +332,7 @@ public class StrikethroughLabelingNotification {
     sb.append("    totalBatches: ").append(toIndentedString(totalBatches)).append("\n");
     sb.append("    trigger: ").append(toIndentedString(trigger)).append("\n");
     sb.append("    changedItems: ").append(toIndentedString(changedItems)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

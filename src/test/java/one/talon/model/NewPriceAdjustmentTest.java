@@ -90,4 +90,12 @@ public class NewPriceAdjustmentTest {
         // TODO: test effectiveUntil
     }
 
+    /**
+     * Test the property 'contextId'
+     */
+    @Test
+    public void contextIdTest() {
+        // TODO: test contextId
+    }
+
 }

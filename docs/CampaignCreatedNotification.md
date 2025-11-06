@@ -2,14 +2,13 @@
 
 # CampaignCreatedNotification
 
-A notification regarding a campaign that was created.
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaign** | [**Campaign**](Campaign.md) |  | 
-**ruleset** | [**Ruleset**](Ruleset.md) |  |  [optional]
-**evaluationPosition** | [**CampaignEvaluationPosition**](CampaignEvaluationPosition.md) |  | 
+**notificationType** | **String** | The type of the notification | 
+**totalResultSize** | **Long** | The total size of the result set. | 
+**data** | [**List&lt;CampaignCreatedNotificationItem&gt;**](CampaignCreatedNotificationItem.md) | A list of campaign notification data. |  [optional]
 
 
 

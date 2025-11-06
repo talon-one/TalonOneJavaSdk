@@ -53,6 +53,10 @@ public class LoyaltyDashboardData {
   @SerializedName(SERIALIZED_NAME_TOTAL_EXPIRED_POINTS)
   private BigDecimal totalExpiredPoints;
 
+  public static final String SERIALIZED_NAME_TOTAL_NEGATIVE_POINTS = "totalNegativePoints";
+  @SerializedName(SERIALIZED_NAME_TOTAL_NEGATIVE_POINTS)
+  private BigDecimal totalNegativePoints;
+
   public static final String SERIALIZED_NAME_TOTAL_MEMBERS = "totalMembers";
   @SerializedName(SERIALIZED_NAME_TOTAL_MEMBERS)
   private BigDecimal totalMembers;
@@ -180,6 +184,28 @@ public class LoyaltyDashboardData {
   }
 
 
+  public LoyaltyDashboardData totalNegativePoints(BigDecimal totalNegativePoints) {
+    
+    this.totalNegativePoints = totalNegativePoints;
+    return this;
+  }
+
+   /**
+   * Total of negative points for this loyalty program.
+   * @return totalNegativePoints
+  **/
+  @ApiModelProperty(example = "32.0", required = true, value = "Total of negative points for this loyalty program.")
+
+  public BigDecimal getTotalNegativePoints() {
+    return totalNegativePoints;
+  }
+
+
+  public void setTotalNegativePoints(BigDecimal totalNegativePoints) {
+    this.totalNegativePoints = totalNegativePoints;
+  }
+
+
   public LoyaltyDashboardData totalMembers(BigDecimal totalMembers) {
     
     this.totalMembers = totalMembers;
@@ -282,6 +308,7 @@ public class LoyaltyDashboardData {
         Objects.equals(this.totalPendingPoints, loyaltyDashboardData.totalPendingPoints) &&
         Objects.equals(this.totalSpentPoints, loyaltyDashboardData.totalSpentPoints) &&
         Objects.equals(this.totalExpiredPoints, loyaltyDashboardData.totalExpiredPoints) &&
+        Objects.equals(this.totalNegativePoints, loyaltyDashboardData.totalNegativePoints) &&
         Objects.equals(this.totalMembers, loyaltyDashboardData.totalMembers) &&
         Objects.equals(this.newMembers, loyaltyDashboardData.newMembers) &&
         Objects.equals(this.spentPoints, loyaltyDashboardData.spentPoints) &&
@@ -290,7 +317,7 @@ public class LoyaltyDashboardData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, totalActivePoints, totalPendingPoints, totalSpentPoints, totalExpiredPoints, totalMembers, newMembers, spentPoints, earnedPoints);
+    return Objects.hash(date, totalActivePoints, totalPendingPoints, totalSpentPoints, totalExpiredPoints, totalNegativePoints, totalMembers, newMembers, spentPoints, earnedPoints);
   }
 
 
@@ -303,6 +330,7 @@ public class LoyaltyDashboardData {
     sb.append("    totalPendingPoints: ").append(toIndentedString(totalPendingPoints)).append("\n");
     sb.append("    totalSpentPoints: ").append(toIndentedString(totalSpentPoints)).append("\n");
     sb.append("    totalExpiredPoints: ").append(toIndentedString(totalExpiredPoints)).append("\n");
+    sb.append("    totalNegativePoints: ").append(toIndentedString(totalNegativePoints)).append("\n");
     sb.append("    totalMembers: ").append(toIndentedString(totalMembers)).append("\n");
     sb.append("    newMembers: ").append(toIndentedString(newMembers)).append("\n");
     sb.append("    spentPoints: ").append(toIndentedString(spentPoints)).append("\n");

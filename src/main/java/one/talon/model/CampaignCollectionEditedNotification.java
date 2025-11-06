@@ -23,93 +23,100 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.Campaign;
-import one.talon.model.CollectionWithoutPayload;
-import one.talon.model.Ruleset;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.CampaignCollectionEditedNotificationItem;
 
 /**
- * A notification regarding a collection that was edited.
+ * CampaignCollectionEditedNotification
  */
-@ApiModel(description = "A notification regarding a collection that was edited.")
 
 public class CampaignCollectionEditedNotification {
-  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private Campaign campaign;
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
 
-  public static final String SERIALIZED_NAME_RULESET = "ruleset";
-  @SerializedName(SERIALIZED_NAME_RULESET)
-  private Ruleset ruleset;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "TotalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
 
-  public static final String SERIALIZED_NAME_COLLECTION = "collection";
-  @SerializedName(SERIALIZED_NAME_COLLECTION)
-  private CollectionWithoutPayload collection;
+  public static final String SERIALIZED_NAME_DATA = "Data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<CampaignCollectionEditedNotificationItem> data = null;
 
 
-  public CampaignCollectionEditedNotification campaign(Campaign campaign) {
+  public CampaignCollectionEditedNotification notificationType(String notificationType) {
     
-    this.campaign = campaign;
+    this.notificationType = notificationType;
     return this;
   }
 
    /**
-   * Get campaign
-   * @return campaign
+   * The type of the notification
+   * @return notificationType
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "CampaignNotification", required = true, value = "The type of the notification")
 
-  public Campaign getCampaign() {
-    return campaign;
+  public String getNotificationType() {
+    return notificationType;
   }
 
 
-  public void setCampaign(Campaign campaign) {
-    this.campaign = campaign;
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
   }
 
 
-  public CampaignCollectionEditedNotification ruleset(Ruleset ruleset) {
+  public CampaignCollectionEditedNotification totalResultSize(Long totalResultSize) {
     
-    this.ruleset = ruleset;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get ruleset
-   * @return ruleset
+   * The total size of the result set.
+   * @return totalResultSize
+  **/
+  @ApiModelProperty(required = true, value = "The total size of the result set.")
+
+  public Long getTotalResultSize() {
+    return totalResultSize;
+  }
+
+
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
+  }
+
+
+  public CampaignCollectionEditedNotification data(List<CampaignCollectionEditedNotificationItem> data) {
+    
+    this.data = data;
+    return this;
+  }
+
+  public CampaignCollectionEditedNotification addDataItem(CampaignCollectionEditedNotificationItem dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<CampaignCollectionEditedNotificationItem>();
+    }
+    this.data.add(dataItem);
+    return this;
+  }
+
+   /**
+   * A list of campaign notification data.
+   * @return data
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A list of campaign notification data.")
 
-  public Ruleset getRuleset() {
-    return ruleset;
+  public List<CampaignCollectionEditedNotificationItem> getData() {
+    return data;
   }
 
 
-  public void setRuleset(Ruleset ruleset) {
-    this.ruleset = ruleset;
-  }
-
-
-  public CampaignCollectionEditedNotification collection(CollectionWithoutPayload collection) {
-    
-    this.collection = collection;
-    return this;
-  }
-
-   /**
-   * Get collection
-   * @return collection
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public CollectionWithoutPayload getCollection() {
-    return collection;
-  }
-
-
-  public void setCollection(CollectionWithoutPayload collection) {
-    this.collection = collection;
+  public void setData(List<CampaignCollectionEditedNotificationItem> data) {
+    this.data = data;
   }
 
 
@@ -122,14 +129,14 @@ public class CampaignCollectionEditedNotification {
       return false;
     }
     CampaignCollectionEditedNotification campaignCollectionEditedNotification = (CampaignCollectionEditedNotification) o;
-    return Objects.equals(this.campaign, campaignCollectionEditedNotification.campaign) &&
-        Objects.equals(this.ruleset, campaignCollectionEditedNotification.ruleset) &&
-        Objects.equals(this.collection, campaignCollectionEditedNotification.collection);
+    return Objects.equals(this.notificationType, campaignCollectionEditedNotification.notificationType) &&
+        Objects.equals(this.totalResultSize, campaignCollectionEditedNotification.totalResultSize) &&
+        Objects.equals(this.data, campaignCollectionEditedNotification.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaign, ruleset, collection);
+    return Objects.hash(notificationType, totalResultSize, data);
   }
 
 
@@ -137,9 +144,9 @@ public class CampaignCollectionEditedNotification {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignCollectionEditedNotification {\n");
-    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
-    sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
-    sb.append("    collection: ").append(toIndentedString(collection)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -249,11 +249,11 @@ public class CustomerProfile {
   }
 
    /**
-   * **DEPRECATED** A list of loyalty programs joined by the customer. 
+   * **DEPRECATED. Always returns &#x60;null&#x60;.** A list of loyalty programs joined by the customer. 
    * @return loyaltyMemberships
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "**DEPRECATED** A list of loyalty programs joined by the customer. ")
+  @ApiModelProperty(value = "**DEPRECATED. Always returns `null`.** A list of loyalty programs joined by the customer. ")
 
   public List<LoyaltyMembership> getLoyaltyMemberships() {
     return loyaltyMemberships;

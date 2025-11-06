@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **typeOfChange** | **String** |  | 
 **operation** | **String** |  | 
 **employeeName** | **String** |  | 
+**notificationType** | **String** | The type of the notification | 
 
 
 

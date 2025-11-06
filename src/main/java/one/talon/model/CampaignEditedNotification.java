@@ -23,92 +23,100 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.Campaign;
-import one.talon.model.Ruleset;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.CampaignEditedNotificationItem;
 
 /**
- * A notification regarding a campaign which was edited.
+ * CampaignEditedNotification
  */
-@ApiModel(description = "A notification regarding a campaign which was edited.")
 
 public class CampaignEditedNotification {
-  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private Campaign campaign;
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
 
-  public static final String SERIALIZED_NAME_OLD_CAMPAIGN = "oldCampaign";
-  @SerializedName(SERIALIZED_NAME_OLD_CAMPAIGN)
-  private Campaign oldCampaign;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "TotalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
 
-  public static final String SERIALIZED_NAME_RULESET = "ruleset";
-  @SerializedName(SERIALIZED_NAME_RULESET)
-  private Ruleset ruleset;
+  public static final String SERIALIZED_NAME_DATA = "Data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<CampaignEditedNotificationItem> data = null;
 
 
-  public CampaignEditedNotification campaign(Campaign campaign) {
+  public CampaignEditedNotification notificationType(String notificationType) {
     
-    this.campaign = campaign;
+    this.notificationType = notificationType;
     return this;
   }
 
    /**
-   * Get campaign
-   * @return campaign
+   * The type of the notification
+   * @return notificationType
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "CampaignNotification", required = true, value = "The type of the notification")
 
-  public Campaign getCampaign() {
-    return campaign;
+  public String getNotificationType() {
+    return notificationType;
   }
 
 
-  public void setCampaign(Campaign campaign) {
-    this.campaign = campaign;
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
   }
 
 
-  public CampaignEditedNotification oldCampaign(Campaign oldCampaign) {
+  public CampaignEditedNotification totalResultSize(Long totalResultSize) {
     
-    this.oldCampaign = oldCampaign;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get oldCampaign
-   * @return oldCampaign
+   * The total size of the result set.
+   * @return totalResultSize
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The total size of the result set.")
 
-  public Campaign getOldCampaign() {
-    return oldCampaign;
+  public Long getTotalResultSize() {
+    return totalResultSize;
   }
 
 
-  public void setOldCampaign(Campaign oldCampaign) {
-    this.oldCampaign = oldCampaign;
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
   }
 
 
-  public CampaignEditedNotification ruleset(Ruleset ruleset) {
+  public CampaignEditedNotification data(List<CampaignEditedNotificationItem> data) {
     
-    this.ruleset = ruleset;
+    this.data = data;
+    return this;
+  }
+
+  public CampaignEditedNotification addDataItem(CampaignEditedNotificationItem dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<CampaignEditedNotificationItem>();
+    }
+    this.data.add(dataItem);
     return this;
   }
 
    /**
-   * Get ruleset
-   * @return ruleset
+   * A list of campaign notification data.
+   * @return data
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A list of campaign notification data.")
 
-  public Ruleset getRuleset() {
-    return ruleset;
+  public List<CampaignEditedNotificationItem> getData() {
+    return data;
   }
 
 
-  public void setRuleset(Ruleset ruleset) {
-    this.ruleset = ruleset;
+  public void setData(List<CampaignEditedNotificationItem> data) {
+    this.data = data;
   }
 
 
@@ -121,14 +129,14 @@ public class CampaignEditedNotification {
       return false;
     }
     CampaignEditedNotification campaignEditedNotification = (CampaignEditedNotification) o;
-    return Objects.equals(this.campaign, campaignEditedNotification.campaign) &&
-        Objects.equals(this.oldCampaign, campaignEditedNotification.oldCampaign) &&
-        Objects.equals(this.ruleset, campaignEditedNotification.ruleset);
+    return Objects.equals(this.notificationType, campaignEditedNotification.notificationType) &&
+        Objects.equals(this.totalResultSize, campaignEditedNotification.totalResultSize) &&
+        Objects.equals(this.data, campaignEditedNotification.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaign, oldCampaign, ruleset);
+    return Objects.hash(notificationType, totalResultSize, data);
   }
 
 
@@ -136,9 +144,9 @@ public class CampaignEditedNotification {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignEditedNotification {\n");
-    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
-    sb.append("    oldCampaign: ").append(toIndentedString(oldCampaign)).append("\n");
-    sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

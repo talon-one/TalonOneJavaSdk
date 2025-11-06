@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **totalBatches** | **Long** | The total number of batches for the notification. | 
 **trigger** | [**StrikethroughTrigger**](StrikethroughTrigger.md) |  | 
 **changedItems** | [**List&lt;StrikethroughChangedItem&gt;**](StrikethroughChangedItem.md) |  | 
+**notificationType** | **String** | The type of the notification | 
 
 
 

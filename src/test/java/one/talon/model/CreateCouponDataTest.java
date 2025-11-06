@@ -91,4 +91,12 @@ public class CreateCouponDataTest {
         // TODO: test employeeName
     }
 
+    /**
+     * Test the property 'notificationType'
+     */
+    @Test
+    public void notificationTypeTest() {
+        // TODO: test notificationType
+    }
+
 }
