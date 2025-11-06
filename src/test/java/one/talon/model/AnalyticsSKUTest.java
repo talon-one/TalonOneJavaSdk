@@ -67,6 +67,22 @@ public class AnalyticsSKUTest {
     }
 
     /**
+     * Test the property 'catalogId'
+     */
+    @Test
+    public void catalogIdTest() {
+        // TODO: test catalogId
+    }
+
+    /**
+     * Test the property 'productId'
+     */
+    @Test
+    public void productIdTest() {
+        // TODO: test productId
+    }
+
+    /**
      * Test the property 'unitsSold'
      */
     @Test

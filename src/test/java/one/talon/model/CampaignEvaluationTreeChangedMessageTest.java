@@ -44,11 +44,11 @@ public class CampaignEvaluationTreeChangedMessageTest {
     }
 
     /**
-     * Test the property 'data'
+     * Test the property 'notificationType'
      */
     @Test
-    public void dataTest() {
-        // TODO: test data
+    public void notificationTypeTest() {
+        // TODO: test notificationType
     }
 
     /**
@@ -57,6 +57,14 @@ public class CampaignEvaluationTreeChangedMessageTest {
     @Test
     public void totalResultSizeTest() {
         // TODO: test totalResultSize
+    }
+
+    /**
+     * Test the property 'data'
+     */
+    @Test
+    public void dataTest() {
+        // TODO: test data
     }
 
 }

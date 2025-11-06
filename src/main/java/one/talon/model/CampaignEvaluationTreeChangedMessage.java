@@ -32,13 +32,61 @@ import one.talon.model.ApplicationNotification;
  */
 
 public class CampaignEvaluationTreeChangedMessage {
-  public static final String SERIALIZED_NAME_DATA = "Data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ApplicationNotification> data = null;
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
 
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "TotalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Long totalResultSize;
+
+  public static final String SERIALIZED_NAME_DATA = "Data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<ApplicationNotification> data = null;
+
+
+  public CampaignEvaluationTreeChangedMessage notificationType(String notificationType) {
+    
+    this.notificationType = notificationType;
+    return this;
+  }
+
+   /**
+   * The type of the notification
+   * @return notificationType
+  **/
+  @ApiModelProperty(example = "CampaignNotification", required = true, value = "The type of the notification")
+
+  public String getNotificationType() {
+    return notificationType;
+  }
+
+
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
+  }
+
+
+  public CampaignEvaluationTreeChangedMessage totalResultSize(Long totalResultSize) {
+    
+    this.totalResultSize = totalResultSize;
+    return this;
+  }
+
+   /**
+   * The total size of the result set.
+   * @return totalResultSize
+  **/
+  @ApiModelProperty(required = true, value = "The total size of the result set.")
+
+  public Long getTotalResultSize() {
+    return totalResultSize;
+  }
+
+
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
+  }
 
 
   public CampaignEvaluationTreeChangedMessage data(List<ApplicationNotification> data) {
@@ -72,29 +120,6 @@ public class CampaignEvaluationTreeChangedMessage {
   }
 
 
-  public CampaignEvaluationTreeChangedMessage totalResultSize(Long totalResultSize) {
-    
-    this.totalResultSize = totalResultSize;
-    return this;
-  }
-
-   /**
-   * Get totalResultSize
-   * @return totalResultSize
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "")
-
-  public Long getTotalResultSize() {
-    return totalResultSize;
-  }
-
-
-  public void setTotalResultSize(Long totalResultSize) {
-    this.totalResultSize = totalResultSize;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -104,13 +129,14 @@ public class CampaignEvaluationTreeChangedMessage {
       return false;
     }
     CampaignEvaluationTreeChangedMessage campaignEvaluationTreeChangedMessage = (CampaignEvaluationTreeChangedMessage) o;
-    return Objects.equals(this.data, campaignEvaluationTreeChangedMessage.data) &&
-        Objects.equals(this.totalResultSize, campaignEvaluationTreeChangedMessage.totalResultSize);
+    return Objects.equals(this.notificationType, campaignEvaluationTreeChangedMessage.notificationType) &&
+        Objects.equals(this.totalResultSize, campaignEvaluationTreeChangedMessage.totalResultSize) &&
+        Objects.equals(this.data, campaignEvaluationTreeChangedMessage.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalResultSize);
+    return Objects.hash(notificationType, totalResultSize, data);
   }
 
 
@@ -118,8 +144,9 @@ public class CampaignEvaluationTreeChangedMessage {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignEvaluationTreeChangedMessage {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

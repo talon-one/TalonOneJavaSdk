@@ -45,6 +45,10 @@ public class RoleV2RolesGroup {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ACCESS_GROUPS)
   private Map<String, String> campaignAccessGroups = null;
 
+  public static final String SERIALIZED_NAME_ACCOUNT = "account";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT)
+  private String account;
+
 
   public RoleV2RolesGroup applications(Map<String, RoleV2ApplicationDetails> applications) {
     
@@ -139,6 +143,29 @@ public class RoleV2RolesGroup {
   }
 
 
+  public RoleV2RolesGroup account(String account) {
+    
+    this.account = account;
+    return this;
+  }
+
+   /**
+   * Name of the account-level permission set
+   * @return account
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Name of the account-level permission set")
+
+  public String getAccount() {
+    return account;
+  }
+
+
+  public void setAccount(String account) {
+    this.account = account;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -150,12 +177,13 @@ public class RoleV2RolesGroup {
     RoleV2RolesGroup roleV2RolesGroup = (RoleV2RolesGroup) o;
     return Objects.equals(this.applications, roleV2RolesGroup.applications) &&
         Objects.equals(this.loyaltyPrograms, roleV2RolesGroup.loyaltyPrograms) &&
-        Objects.equals(this.campaignAccessGroups, roleV2RolesGroup.campaignAccessGroups);
+        Objects.equals(this.campaignAccessGroups, roleV2RolesGroup.campaignAccessGroups) &&
+        Objects.equals(this.account, roleV2RolesGroup.account);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applications, loyaltyPrograms, campaignAccessGroups);
+    return Objects.hash(applications, loyaltyPrograms, campaignAccessGroups, account);
   }
 
 
@@ -166,6 +194,7 @@ public class RoleV2RolesGroup {
     sb.append("    applications: ").append(toIndentedString(applications)).append("\n");
     sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
     sb.append("    campaignAccessGroups: ").append(toIndentedString(campaignAccessGroups)).append("\n");
+    sb.append("    account: ").append(toIndentedString(account)).append("\n");
     sb.append("}");
     return sb.toString();
   }

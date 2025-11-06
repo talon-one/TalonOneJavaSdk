@@ -162,4 +162,12 @@ public class AchievementProgressWithDefinitionTest {
         // TODO: test achievementEndDate
     }
 
+    /**
+     * Test the property 'achievementAllowRollbackAfterCompletion'
+     */
+    @Test
+    public void achievementAllowRollbackAfterCompletionTest() {
+        // TODO: test achievementAllowRollbackAfterCompletion
+    }
+
 }

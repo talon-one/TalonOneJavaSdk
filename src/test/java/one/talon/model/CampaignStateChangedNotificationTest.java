@@ -21,8 +21,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.Campaign;
-import one.talon.model.Ruleset;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.CampaignStateChangedNotificationItem;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -43,35 +44,27 @@ public class CampaignStateChangedNotificationTest {
     }
 
     /**
-     * Test the property 'campaign'
+     * Test the property 'notificationType'
      */
     @Test
-    public void campaignTest() {
-        // TODO: test campaign
+    public void notificationTypeTest() {
+        // TODO: test notificationType
     }
 
     /**
-     * Test the property 'oldState'
+     * Test the property 'totalResultSize'
      */
     @Test
-    public void oldStateTest() {
-        // TODO: test oldState
+    public void totalResultSizeTest() {
+        // TODO: test totalResultSize
     }
 
     /**
-     * Test the property 'newState'
+     * Test the property 'data'
      */
     @Test
-    public void newStateTest() {
-        // TODO: test newState
-    }
-
-    /**
-     * Test the property 'ruleset'
-     */
-    @Test
-    public void rulesetTest() {
-        // TODO: test ruleset
+    public void dataTest() {
+        // TODO: test data
     }
 
 }

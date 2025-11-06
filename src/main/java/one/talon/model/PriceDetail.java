@@ -35,6 +35,10 @@ public class PriceDetail {
   @SerializedName(SERIALIZED_NAME_PRICE)
   private Float price;
 
+  public static final String SERIALIZED_NAME_ADJUSTMENT_CONTEXT_ID = "adjustmentContextId";
+  @SerializedName(SERIALIZED_NAME_ADJUSTMENT_CONTEXT_ID)
+  private String adjustmentContextId;
+
   public static final String SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID = "adjustmentReferenceId";
   @SerializedName(SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID)
   private UUID adjustmentReferenceId;
@@ -68,6 +72,29 @@ public class PriceDetail {
 
   public void setPrice(Float price) {
     this.price = price;
+  }
+
+
+  public PriceDetail adjustmentContextId(String adjustmentContextId) {
+    
+    this.adjustmentContextId = adjustmentContextId;
+    return this;
+  }
+
+   /**
+   * The context identifier of the selected price adjustment.
+   * @return adjustmentContextId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "summer25", value = "The context identifier of the selected price adjustment.")
+
+  public String getAdjustmentContextId() {
+    return adjustmentContextId;
+  }
+
+
+  public void setAdjustmentContextId(String adjustmentContextId) {
+    this.adjustmentContextId = adjustmentContextId;
   }
 
 
@@ -150,6 +177,7 @@ public class PriceDetail {
     }
     PriceDetail priceDetail = (PriceDetail) o;
     return Objects.equals(this.price, priceDetail.price) &&
+        Objects.equals(this.adjustmentContextId, priceDetail.adjustmentContextId) &&
         Objects.equals(this.adjustmentReferenceId, priceDetail.adjustmentReferenceId) &&
         Objects.equals(this.adjustmentEffectiveFrom, priceDetail.adjustmentEffectiveFrom) &&
         Objects.equals(this.adjustmentEffectiveUntil, priceDetail.adjustmentEffectiveUntil);
@@ -157,7 +185,7 @@ public class PriceDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(price, adjustmentReferenceId, adjustmentEffectiveFrom, adjustmentEffectiveUntil);
+    return Objects.hash(price, adjustmentContextId, adjustmentReferenceId, adjustmentEffectiveFrom, adjustmentEffectiveUntil);
   }
 
 
@@ -166,6 +194,7 @@ public class PriceDetail {
     StringBuilder sb = new StringBuilder();
     sb.append("class PriceDetail {\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    adjustmentContextId: ").append(toIndentedString(adjustmentContextId)).append("\n");
     sb.append("    adjustmentReferenceId: ").append(toIndentedString(adjustmentReferenceId)).append("\n");
     sb.append("    adjustmentEffectiveFrom: ").append(toIndentedString(adjustmentEffectiveFrom)).append("\n");
     sb.append("    adjustmentEffectiveUntil: ").append(toIndentedString(adjustmentEffectiveUntil)).append("\n");

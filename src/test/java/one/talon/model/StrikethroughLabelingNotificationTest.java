@@ -101,4 +101,12 @@ public class StrikethroughLabelingNotificationTest {
         // TODO: test changedItems
     }
 
+    /**
+     * Test the property 'notificationType'
+     */
+    @Test
+    public void notificationTypeTest() {
+        // TODO: test notificationType
+    }
+
 }

@@ -52,6 +52,14 @@ public class LoyaltyProgramTransactionTest {
     }
 
     /**
+     * Test the property 'transactionUUID'
+     */
+    @Test
+    public void transactionUUIDTest() {
+        // TODO: test transactionUUID
+    }
+
+    /**
      * Test the property 'programId'
      */
     @Test

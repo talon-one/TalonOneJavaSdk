@@ -57,6 +57,10 @@ public class DeleteCouponsData {
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Long totalResultSize;
 
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
+
 
   public DeleteCouponsData typeOfChange(String typeOfChange) {
     
@@ -212,6 +216,28 @@ public class DeleteCouponsData {
   }
 
 
+  public DeleteCouponsData notificationType(String notificationType) {
+    
+    this.notificationType = notificationType;
+    return this;
+  }
+
+   /**
+   * The type of the notification
+   * @return notificationType
+  **/
+  @ApiModelProperty(required = true, value = "The type of the notification")
+
+  public String getNotificationType() {
+    return notificationType;
+  }
+
+
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -227,12 +253,13 @@ public class DeleteCouponsData {
         Objects.equals(this.batchID, deleteCouponsData.batchID) &&
         Objects.equals(this.applicationID, deleteCouponsData.applicationID) &&
         Objects.equals(this.campaignID, deleteCouponsData.campaignID) &&
-        Objects.equals(this.totalResultSize, deleteCouponsData.totalResultSize);
+        Objects.equals(this.totalResultSize, deleteCouponsData.totalResultSize) &&
+        Objects.equals(this.notificationType, deleteCouponsData.notificationType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(typeOfChange, operation, employeeName, batchID, applicationID, campaignID, totalResultSize);
+    return Objects.hash(typeOfChange, operation, employeeName, batchID, applicationID, campaignID, totalResultSize, notificationType);
   }
 
 
@@ -247,6 +274,7 @@ public class DeleteCouponsData {
     sb.append("    applicationID: ").append(toIndentedString(applicationID)).append("\n");
     sb.append("    campaignID: ").append(toIndentedString(campaignID)).append("\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

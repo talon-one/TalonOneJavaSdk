@@ -23,93 +23,100 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.Campaign;
-import one.talon.model.Ruleset;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.CampaignRulesetChangedNotificationItem;
 
 /**
- * A notification regarding a campaign whose ruleset was changed.
+ * CampaignRulesetChangedNotification
  */
-@ApiModel(description = "A notification regarding a campaign whose ruleset was changed.")
 
 public class CampaignRulesetChangedNotification {
-  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private Campaign campaign;
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
 
-  public static final String SERIALIZED_NAME_OLD_RULESET = "oldRuleset";
-  @SerializedName(SERIALIZED_NAME_OLD_RULESET)
-  private Ruleset oldRuleset;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "TotalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
 
-  public static final String SERIALIZED_NAME_RULESET = "ruleset";
-  @SerializedName(SERIALIZED_NAME_RULESET)
-  private Ruleset ruleset;
+  public static final String SERIALIZED_NAME_DATA = "Data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<CampaignRulesetChangedNotificationItem> data = null;
 
 
-  public CampaignRulesetChangedNotification campaign(Campaign campaign) {
+  public CampaignRulesetChangedNotification notificationType(String notificationType) {
     
-    this.campaign = campaign;
+    this.notificationType = notificationType;
     return this;
   }
 
    /**
-   * Get campaign
-   * @return campaign
+   * The type of the notification
+   * @return notificationType
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "CampaignNotification", required = true, value = "The type of the notification")
 
-  public Campaign getCampaign() {
-    return campaign;
+  public String getNotificationType() {
+    return notificationType;
   }
 
 
-  public void setCampaign(Campaign campaign) {
-    this.campaign = campaign;
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
   }
 
 
-  public CampaignRulesetChangedNotification oldRuleset(Ruleset oldRuleset) {
+  public CampaignRulesetChangedNotification totalResultSize(Long totalResultSize) {
     
-    this.oldRuleset = oldRuleset;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get oldRuleset
-   * @return oldRuleset
+   * The total size of the result set.
+   * @return totalResultSize
+  **/
+  @ApiModelProperty(required = true, value = "The total size of the result set.")
+
+  public Long getTotalResultSize() {
+    return totalResultSize;
+  }
+
+
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
+  }
+
+
+  public CampaignRulesetChangedNotification data(List<CampaignRulesetChangedNotificationItem> data) {
+    
+    this.data = data;
+    return this;
+  }
+
+  public CampaignRulesetChangedNotification addDataItem(CampaignRulesetChangedNotificationItem dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<CampaignRulesetChangedNotificationItem>();
+    }
+    this.data.add(dataItem);
+    return this;
+  }
+
+   /**
+   * A list of campaign notification data.
+   * @return data
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A list of campaign notification data.")
 
-  public Ruleset getOldRuleset() {
-    return oldRuleset;
+  public List<CampaignRulesetChangedNotificationItem> getData() {
+    return data;
   }
 
 
-  public void setOldRuleset(Ruleset oldRuleset) {
-    this.oldRuleset = oldRuleset;
-  }
-
-
-  public CampaignRulesetChangedNotification ruleset(Ruleset ruleset) {
-    
-    this.ruleset = ruleset;
-    return this;
-  }
-
-   /**
-   * Get ruleset
-   * @return ruleset
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Ruleset getRuleset() {
-    return ruleset;
-  }
-
-
-  public void setRuleset(Ruleset ruleset) {
-    this.ruleset = ruleset;
+  public void setData(List<CampaignRulesetChangedNotificationItem> data) {
+    this.data = data;
   }
 
 
@@ -122,14 +129,14 @@ public class CampaignRulesetChangedNotification {
       return false;
     }
     CampaignRulesetChangedNotification campaignRulesetChangedNotification = (CampaignRulesetChangedNotification) o;
-    return Objects.equals(this.campaign, campaignRulesetChangedNotification.campaign) &&
-        Objects.equals(this.oldRuleset, campaignRulesetChangedNotification.oldRuleset) &&
-        Objects.equals(this.ruleset, campaignRulesetChangedNotification.ruleset);
+    return Objects.equals(this.notificationType, campaignRulesetChangedNotification.notificationType) &&
+        Objects.equals(this.totalResultSize, campaignRulesetChangedNotification.totalResultSize) &&
+        Objects.equals(this.data, campaignRulesetChangedNotification.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaign, oldRuleset, ruleset);
+    return Objects.hash(notificationType, totalResultSize, data);
   }
 
 
@@ -137,9 +144,9 @@ public class CampaignRulesetChangedNotification {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignRulesetChangedNotification {\n");
-    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
-    sb.append("    oldRuleset: ").append(toIndentedString(oldRuleset)).append("\n");
-    sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

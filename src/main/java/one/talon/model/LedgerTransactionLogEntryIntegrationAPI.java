@@ -28,11 +28,15 @@ import one.talon.model.LoyaltyLedgerEntryFlags;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * Log entry for a given loyalty card transaction.
+ * Log entry for a given loyalty profile transaction.
  */
-@ApiModel(description = "Log entry for a given loyalty card transaction.")
+@ApiModel(description = "Log entry for a given loyalty profile transaction.")
 
 public class LedgerTransactionLogEntryIntegrationAPI {
+  public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "transactionUUID";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
+  private String transactionUUID;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
@@ -131,6 +135,28 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   public static final String SERIALIZED_NAME_FLAGS = "flags";
   @SerializedName(SERIALIZED_NAME_FLAGS)
   private LoyaltyLedgerEntryFlags flags;
+
+
+  public LedgerTransactionLogEntryIntegrationAPI transactionUUID(String transactionUUID) {
+    
+    this.transactionUUID = transactionUUID;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the transaction in the UUID format.
+   * @return transactionUUID
+  **/
+  @ApiModelProperty(example = "ce59f12a-f53b-4014-a745-636d93f2bd3f", required = true, value = "Unique identifier of the transaction in the UUID format.")
+
+  public String getTransactionUUID() {
+    return transactionUUID;
+  }
+
+
+  public void setTransactionUUID(String transactionUUID) {
+    this.transactionUUID = transactionUUID;
+  }
 
 
   public LedgerTransactionLogEntryIntegrationAPI created(OffsetDateTime created) {
@@ -432,7 +458,8 @@ public class LedgerTransactionLogEntryIntegrationAPI {
       return false;
     }
     LedgerTransactionLogEntryIntegrationAPI ledgerTransactionLogEntryIntegrationAPI = (LedgerTransactionLogEntryIntegrationAPI) o;
-    return Objects.equals(this.created, ledgerTransactionLogEntryIntegrationAPI.created) &&
+    return Objects.equals(this.transactionUUID, ledgerTransactionLogEntryIntegrationAPI.transactionUUID) &&
+        Objects.equals(this.created, ledgerTransactionLogEntryIntegrationAPI.created) &&
         Objects.equals(this.programId, ledgerTransactionLogEntryIntegrationAPI.programId) &&
         Objects.equals(this.customerSessionId, ledgerTransactionLogEntryIntegrationAPI.customerSessionId) &&
         Objects.equals(this.type, ledgerTransactionLogEntryIntegrationAPI.type) &&
@@ -449,7 +476,7 @@ public class LedgerTransactionLogEntryIntegrationAPI {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programId, customerSessionId, type, name, startDate, expiryDate, subledgerId, amount, id, rulesetId, ruleName, flags);
+    return Objects.hash(transactionUUID, created, programId, customerSessionId, type, name, startDate, expiryDate, subledgerId, amount, id, rulesetId, ruleName, flags);
   }
 
 
@@ -457,6 +484,7 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LedgerTransactionLogEntryIntegrationAPI {\n");
+    sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    programId: ").append(toIndentedString(programId)).append("\n");
     sb.append("    customerSessionId: ").append(toIndentedString(customerSessionId)).append("\n");

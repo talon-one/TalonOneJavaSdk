@@ -79,7 +79,7 @@ public class AccountLimits {
   @SerializedName(SERIALIZED_NAME_PROMOTION_TYPES)
   private List<String> promotionTypes = new ArrayList<String>();
 
-  public static final String SERIALIZED_NAME_SECONDARY_DEPLOYMENT_PRICE = "secondaryDeploymentPrice";
+  public static final String SERIALIZED_NAME_SECONDARY_DEPLOYMENT_PRICE = "SecondaryDeploymentPrice";
   @SerializedName(SERIALIZED_NAME_SECONDARY_DEPLOYMENT_PRICE)
   private Long secondaryDeploymentPrice;
 

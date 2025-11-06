@@ -177,6 +177,10 @@ public class AchievementStatusEntry {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private OffsetDateTime endDate;
 
+  public static final String SERIALIZED_NAME_ALLOW_ROLLBACK_AFTER_COMPLETION = "allowRollbackAfterCompletion";
+  @SerializedName(SERIALIZED_NAME_ALLOW_ROLLBACK_AFTER_COMPLETION)
+  private Boolean allowRollbackAfterCompletion;
+
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private Long campaignId;
@@ -507,6 +511,29 @@ public class AchievementStatusEntry {
   }
 
 
+  public AchievementStatusEntry allowRollbackAfterCompletion(Boolean allowRollbackAfterCompletion) {
+    
+    this.allowRollbackAfterCompletion = allowRollbackAfterCompletion;
+    return this;
+  }
+
+   /**
+   * When &#x60;true&#x60;, customer progress can be rolled back in completed achievements.
+   * @return allowRollbackAfterCompletion
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "When `true`, customer progress can be rolled back in completed achievements.")
+
+  public Boolean getAllowRollbackAfterCompletion() {
+    return allowRollbackAfterCompletion;
+  }
+
+
+  public void setAllowRollbackAfterCompletion(Boolean allowRollbackAfterCompletion) {
+    this.allowRollbackAfterCompletion = allowRollbackAfterCompletion;
+  }
+
+
   public AchievementStatusEntry campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
@@ -597,6 +624,7 @@ public class AchievementStatusEntry {
         Objects.equals(this.activationPolicy, achievementStatusEntry.activationPolicy) &&
         Objects.equals(this.fixedStartDate, achievementStatusEntry.fixedStartDate) &&
         Objects.equals(this.endDate, achievementStatusEntry.endDate) &&
+        Objects.equals(this.allowRollbackAfterCompletion, achievementStatusEntry.allowRollbackAfterCompletion) &&
         Objects.equals(this.campaignId, achievementStatusEntry.campaignId) &&
         Objects.equals(this.status, achievementStatusEntry.status) &&
         Objects.equals(this.currentProgress, achievementStatusEntry.currentProgress);
@@ -604,7 +632,7 @@ public class AchievementStatusEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, name, title, description, target, period, periodEndOverride, recurrencePolicy, activationPolicy, fixedStartDate, endDate, campaignId, status, currentProgress);
+    return Objects.hash(id, created, name, title, description, target, period, periodEndOverride, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, campaignId, status, currentProgress);
   }
 
 
@@ -624,6 +652,7 @@ public class AchievementStatusEntry {
     sb.append("    activationPolicy: ").append(toIndentedString(activationPolicy)).append("\n");
     sb.append("    fixedStartDate: ").append(toIndentedString(fixedStartDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    allowRollbackAfterCompletion: ").append(toIndentedString(allowRollbackAfterCompletion)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    currentProgress: ").append(toIndentedString(currentProgress)).append("\n");

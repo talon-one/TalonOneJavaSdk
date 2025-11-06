@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.OffsetDateTime;
+import one.talon.model.LoyaltyLedgerEntryExpiryDateChange;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -68,19 +68,11 @@ public class ExtendLoyaltyPointsExpiryDateEffectPropsTest {
     }
 
     /**
-     * Test the property 'transactionUUIDs'
+     * Test the property 'affectedTransactions'
      */
     @Test
-    public void transactionUUIDsTest() {
-        // TODO: test transactionUUIDs
-    }
-
-    /**
-     * Test the property 'previousExpirationDate'
-     */
-    @Test
-    public void previousExpirationDateTest() {
-        // TODO: test previousExpirationDate
+    public void affectedTransactionsTest() {
+        // TODO: test affectedTransactions
     }
 
 }

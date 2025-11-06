@@ -23,96 +23,17 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import one.talon.model.TemplateArgDef;
 
 /**
  * NewMessageTest
  */
 
 public class NewMessageTest {
-  /**
-   * The message type.
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    CAMPAIGN("campaign"),
-    
-    LOYALTY_ADDED_DEDUCTED_POINTS("loyalty_added_deducted_points"),
-    
-    CARD_ADDED_DEDUCTED_POINTS("card_added_deducted_points"),
-    
-    LOYALTY_ADDED_DEDUCTED_POINTS_BALANCES("loyalty_added_deducted_points_balances"),
-    
-    LOYALTY_CARD_ADDED_DEDUCTED_POINTS_BALANCES("loyalty_card_added_deducted_points_balances"),
-    
-    COUPON("coupon"),
-    
-    EXPIRING_COUPONS("expiring_coupons"),
-    
-    EXPIRING_POINTS("expiring_points"),
-    
-    PENDING_TO_ACTIVE_POINTS("pending_to_active_points"),
-    
-    STRIKETHROUGH_PRICING("strikethrough_pricing"),
-    
-    TIER_DOWNGRADE("tier_downgrade"),
-    
-    TIER_UPGRADE("tier_upgrade"),
-    
-    TIER_WILL_DOWNGRADE("tier_will_downgrade"),
-    
-    CARD_EXPIRING_POINTS("card_expiring_points"),
-    
-    RULE_ENGINE_WEBHOOK("rule_engine_webhook");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
-
-  public static final String SERIALIZED_NAME_QUERY_PARAMS = "queryParams";
-  @SerializedName(SERIALIZED_NAME_QUERY_PARAMS)
-  private Map<String, String> queryParams = null;
-
   public static final String SERIALIZED_NAME_HEADERS = "headers";
   @SerializedName(SERIALIZED_NAME_HEADERS)
   private Map<String, String> headers = null;
@@ -182,58 +103,13 @@ public class NewMessageTest {
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
   private String payload;
 
+  public static final String SERIALIZED_NAME_PARAMS = "params";
+  @SerializedName(SERIALIZED_NAME_PARAMS)
+  private List<TemplateArgDef> params = null;
 
-  public NewMessageTest type(TypeEnum type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * The message type.
-   * @return type
-  **/
-  @ApiModelProperty(example = "loyalty_added_deducted_points", required = true, value = "The message type.")
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
-
-  public NewMessageTest queryParams(Map<String, String> queryParams) {
-    
-    this.queryParams = queryParams;
-    return this;
-  }
-
-  public NewMessageTest putQueryParamsItem(String key, String queryParamsItem) {
-    if (this.queryParams == null) {
-      this.queryParams = new HashMap<String, String>();
-    }
-    this.queryParams.put(key, queryParamsItem);
-    return this;
-  }
-
-   /**
-   * Array of query parameters.
-   * @return queryParams
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "{\"param1\":\"value1\",\"param2\":\"value2\"}", value = "Array of query parameters.")
-
-  public Map<String, String> getQueryParams() {
-    return queryParams;
-  }
-
-
-  public void setQueryParams(Map<String, String> queryParams) {
-    this.queryParams = queryParams;
-  }
+  public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
+  @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
+  private List<Long> applicationIds = null;
 
 
   public NewMessageTest headers(Map<String, String> headers) {
@@ -334,6 +210,68 @@ public class NewMessageTest {
   }
 
 
+  public NewMessageTest params(List<TemplateArgDef> params) {
+    
+    this.params = params;
+    return this;
+  }
+
+  public NewMessageTest addParamsItem(TemplateArgDef paramsItem) {
+    if (this.params == null) {
+      this.params = new ArrayList<TemplateArgDef>();
+    }
+    this.params.add(paramsItem);
+    return this;
+  }
+
+   /**
+   * Array of template argument definitions.
+   * @return params
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "Array of template argument definitions.")
+
+  public List<TemplateArgDef> getParams() {
+    return params;
+  }
+
+
+  public void setParams(List<TemplateArgDef> params) {
+    this.params = params;
+  }
+
+
+  public NewMessageTest applicationIds(List<Long> applicationIds) {
+    
+    this.applicationIds = applicationIds;
+    return this;
+  }
+
+  public NewMessageTest addApplicationIdsItem(Long applicationIdsItem) {
+    if (this.applicationIds == null) {
+      this.applicationIds = new ArrayList<Long>();
+    }
+    this.applicationIds.add(applicationIdsItem);
+    return this;
+  }
+
+   /**
+   * The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in &#x60;All Applications&#x60;. 
+   * @return applicationIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in `All Applications`. ")
+
+  public List<Long> getApplicationIds() {
+    return applicationIds;
+  }
+
+
+  public void setApplicationIds(List<Long> applicationIds) {
+    this.applicationIds = applicationIds;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -343,17 +281,17 @@ public class NewMessageTest {
       return false;
     }
     NewMessageTest newMessageTest = (NewMessageTest) o;
-    return Objects.equals(this.type, newMessageTest.type) &&
-        Objects.equals(this.queryParams, newMessageTest.queryParams) &&
-        Objects.equals(this.headers, newMessageTest.headers) &&
+    return Objects.equals(this.headers, newMessageTest.headers) &&
         Objects.equals(this.verb, newMessageTest.verb) &&
         Objects.equals(this.url, newMessageTest.url) &&
-        Objects.equals(this.payload, newMessageTest.payload);
+        Objects.equals(this.payload, newMessageTest.payload) &&
+        Objects.equals(this.params, newMessageTest.params) &&
+        Objects.equals(this.applicationIds, newMessageTest.applicationIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, queryParams, headers, verb, url, payload);
+    return Objects.hash(headers, verb, url, payload, params, applicationIds);
   }
 
 
@@ -361,12 +299,12 @@ public class NewMessageTest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewMessageTest {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    queryParams: ").append(toIndentedString(queryParams)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    verb: ").append(toIndentedString(verb)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
+    sb.append("    params: ").append(toIndentedString(params)).append("\n");
+    sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

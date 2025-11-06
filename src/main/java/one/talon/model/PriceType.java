@@ -165,10 +165,10 @@ public class PriceType {
   }
 
    /**
-   * The title of the price type.
+   * The name displayed in the Campaign Manager for the price type.
    * @return title
   **/
-  @ApiModelProperty(example = "Member Price", required = true, value = "The title of the price type.")
+  @ApiModelProperty(example = "Member Price", required = true, value = "The name displayed in the Campaign Manager for the price type.")
 
   public String getTitle() {
     return title;
@@ -187,11 +187,11 @@ public class PriceType {
   }
 
    /**
-   * The description of the price type.
+   * A description of the price type.
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Price available exclusively to members.", value = "The description of the price type.")
+  @ApiModelProperty(example = "The price available exclusively to members.", value = "A description of the price type.")
 
   public String getDescription() {
     return description;
@@ -264,10 +264,10 @@ public class PriceType {
   }
 
    /**
-   * A list of the IDs of the audiences that are targeted by this price type.
+   * A list of the IDs of the audiences targeted by this price type.
    * @return targetedAudiencesIds
   **/
-  @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "A list of the IDs of the audiences that are targeted by this price type.")
+  @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "A list of the IDs of the audiences targeted by this price type.")
 
   public List<Long> getTargetedAudiencesIds() {
     return targetedAudiencesIds;

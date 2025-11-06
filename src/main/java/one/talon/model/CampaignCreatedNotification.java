@@ -23,93 +23,100 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.Campaign;
-import one.talon.model.CampaignEvaluationPosition;
-import one.talon.model.Ruleset;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.CampaignCreatedNotificationItem;
 
 /**
- * A notification regarding a campaign that was created.
+ * CampaignCreatedNotification
  */
-@ApiModel(description = "A notification regarding a campaign that was created.")
 
 public class CampaignCreatedNotification {
-  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private Campaign campaign;
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
 
-  public static final String SERIALIZED_NAME_RULESET = "ruleset";
-  @SerializedName(SERIALIZED_NAME_RULESET)
-  private Ruleset ruleset;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "TotalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
 
-  public static final String SERIALIZED_NAME_EVALUATION_POSITION = "evaluationPosition";
-  @SerializedName(SERIALIZED_NAME_EVALUATION_POSITION)
-  private CampaignEvaluationPosition evaluationPosition;
+  public static final String SERIALIZED_NAME_DATA = "Data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<CampaignCreatedNotificationItem> data = null;
 
 
-  public CampaignCreatedNotification campaign(Campaign campaign) {
+  public CampaignCreatedNotification notificationType(String notificationType) {
     
-    this.campaign = campaign;
+    this.notificationType = notificationType;
     return this;
   }
 
    /**
-   * Get campaign
-   * @return campaign
+   * The type of the notification
+   * @return notificationType
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "CampaignNotification", required = true, value = "The type of the notification")
 
-  public Campaign getCampaign() {
-    return campaign;
+  public String getNotificationType() {
+    return notificationType;
   }
 
 
-  public void setCampaign(Campaign campaign) {
-    this.campaign = campaign;
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
   }
 
 
-  public CampaignCreatedNotification ruleset(Ruleset ruleset) {
+  public CampaignCreatedNotification totalResultSize(Long totalResultSize) {
     
-    this.ruleset = ruleset;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get ruleset
-   * @return ruleset
+   * The total size of the result set.
+   * @return totalResultSize
+  **/
+  @ApiModelProperty(required = true, value = "The total size of the result set.")
+
+  public Long getTotalResultSize() {
+    return totalResultSize;
+  }
+
+
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
+  }
+
+
+  public CampaignCreatedNotification data(List<CampaignCreatedNotificationItem> data) {
+    
+    this.data = data;
+    return this;
+  }
+
+  public CampaignCreatedNotification addDataItem(CampaignCreatedNotificationItem dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<CampaignCreatedNotificationItem>();
+    }
+    this.data.add(dataItem);
+    return this;
+  }
+
+   /**
+   * A list of campaign notification data.
+   * @return data
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A list of campaign notification data.")
 
-  public Ruleset getRuleset() {
-    return ruleset;
+  public List<CampaignCreatedNotificationItem> getData() {
+    return data;
   }
 
 
-  public void setRuleset(Ruleset ruleset) {
-    this.ruleset = ruleset;
-  }
-
-
-  public CampaignCreatedNotification evaluationPosition(CampaignEvaluationPosition evaluationPosition) {
-    
-    this.evaluationPosition = evaluationPosition;
-    return this;
-  }
-
-   /**
-   * Get evaluationPosition
-   * @return evaluationPosition
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public CampaignEvaluationPosition getEvaluationPosition() {
-    return evaluationPosition;
-  }
-
-
-  public void setEvaluationPosition(CampaignEvaluationPosition evaluationPosition) {
-    this.evaluationPosition = evaluationPosition;
+  public void setData(List<CampaignCreatedNotificationItem> data) {
+    this.data = data;
   }
 
 
@@ -122,14 +129,14 @@ public class CampaignCreatedNotification {
       return false;
     }
     CampaignCreatedNotification campaignCreatedNotification = (CampaignCreatedNotification) o;
-    return Objects.equals(this.campaign, campaignCreatedNotification.campaign) &&
-        Objects.equals(this.ruleset, campaignCreatedNotification.ruleset) &&
-        Objects.equals(this.evaluationPosition, campaignCreatedNotification.evaluationPosition);
+    return Objects.equals(this.notificationType, campaignCreatedNotification.notificationType) &&
+        Objects.equals(this.totalResultSize, campaignCreatedNotification.totalResultSize) &&
+        Objects.equals(this.data, campaignCreatedNotification.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaign, ruleset, evaluationPosition);
+    return Objects.hash(notificationType, totalResultSize, data);
   }
 
 
@@ -137,9 +144,9 @@ public class CampaignCreatedNotification {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignCreatedNotification {\n");
-    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
-    sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
-    sb.append("    evaluationPosition: ").append(toIndentedString(evaluationPosition)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

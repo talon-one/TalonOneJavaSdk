@@ -2,13 +2,13 @@
 
 # CampaignDeletedNotification
 
-A notification regarding a campaign that was deleted.
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaign** | [**Campaign**](Campaign.md) |  | 
-**deletedAt** | [**OffsetDateTime**](OffsetDateTime.md) | Time when the campaign was deleted. | 
+**notificationType** | **String** | The type of the notification | 
+**totalResultSize** | **Long** | The total size of the result set. | 
+**data** | [**List&lt;CampaignDeletedNotificationItem&gt;**](CampaignDeletedNotificationItem.md) | A list of campaign notification data. |  [optional]
 
 
 

@@ -56,6 +56,10 @@ public class CreateCouponData {
   @SerializedName(SERIALIZED_NAME_EMPLOYEE_NAME)
   private String employeeName;
 
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
+
 
   public CreateCouponData data(List<ExtendedCoupon> data) {
     
@@ -200,6 +204,28 @@ public class CreateCouponData {
   }
 
 
+  public CreateCouponData notificationType(String notificationType) {
+    
+    this.notificationType = notificationType;
+    return this;
+  }
+
+   /**
+   * The type of the not
+   * @return notificationType
+  **/
+  @ApiModelProperty(required = true, value = "The type of the not")
+
+  public String getNotificationType() {
+    return notificationType;
+  }
+
+
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -214,12 +240,13 @@ public class CreateCouponData {
         Objects.equals(this.batchID, createCouponData.batchID) &&
         Objects.equals(this.typeOfChange, createCouponData.typeOfChange) &&
         Objects.equals(this.operation, createCouponData.operation) &&
-        Objects.equals(this.employeeName, createCouponData.employeeName);
+        Objects.equals(this.employeeName, createCouponData.employeeName) &&
+        Objects.equals(this.notificationType, createCouponData.notificationType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalResultSize, batchID, typeOfChange, operation, employeeName);
+    return Objects.hash(data, totalResultSize, batchID, typeOfChange, operation, employeeName, notificationType);
   }
 
 
@@ -233,6 +260,7 @@ public class CreateCouponData {
     sb.append("    typeOfChange: ").append(toIndentedString(typeOfChange)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("    employeeName: ").append(toIndentedString(employeeName)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

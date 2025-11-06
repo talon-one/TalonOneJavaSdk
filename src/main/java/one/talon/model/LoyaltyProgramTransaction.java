@@ -36,6 +36,10 @@ public class LoyaltyProgramTransaction {
   @SerializedName(SERIALIZED_NAME_ID)
   private Long id;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "transactionUUID";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
+  private String transactionUUID;
+
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
   private Long programId;
@@ -175,6 +179,28 @@ public class LoyaltyProgramTransaction {
 
   public void setId(Long id) {
     this.id = id;
+  }
+
+
+  public LoyaltyProgramTransaction transactionUUID(String transactionUUID) {
+    
+    this.transactionUUID = transactionUUID;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the transaction in the UUID format.
+   * @return transactionUUID
+  **/
+  @ApiModelProperty(example = "ce59f12a-f53b-4014-a745-636d93f2bd3f", required = true, value = "Unique identifier of the transaction in the UUID format.")
+
+  public String getTransactionUUID() {
+    return transactionUUID;
+  }
+
+
+  public void setTransactionUUID(String transactionUUID) {
+    this.transactionUUID = transactionUUID;
   }
 
 
@@ -594,6 +620,7 @@ public class LoyaltyProgramTransaction {
     }
     LoyaltyProgramTransaction loyaltyProgramTransaction = (LoyaltyProgramTransaction) o;
     return Objects.equals(this.id, loyaltyProgramTransaction.id) &&
+        Objects.equals(this.transactionUUID, loyaltyProgramTransaction.transactionUUID) &&
         Objects.equals(this.programId, loyaltyProgramTransaction.programId) &&
         Objects.equals(this.campaignId, loyaltyProgramTransaction.campaignId) &&
         Objects.equals(this.created, loyaltyProgramTransaction.created) &&
@@ -616,7 +643,7 @@ public class LoyaltyProgramTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, programId, campaignId, created, type, amount, name, startDate, expiryDate, customerProfileId, cardIdentifier, subledgerId, customerSessionId, importId, userId, userEmail, rulesetId, ruleName, flags);
+    return Objects.hash(id, transactionUUID, programId, campaignId, created, type, amount, name, startDate, expiryDate, customerProfileId, cardIdentifier, subledgerId, customerSessionId, importId, userId, userEmail, rulesetId, ruleName, flags);
   }
 
 
@@ -625,6 +652,7 @@ public class LoyaltyProgramTransaction {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoyaltyProgramTransaction {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
     sb.append("    programId: ").append(toIndentedString(programId)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");

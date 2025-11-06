@@ -29,6 +29,10 @@ import java.io.IOException;
  */
 
 public class GenerateCampaignDescription {
+  public static final String SERIALIZED_NAME_CAMPAIGN_I_D = "campaignID";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_I_D)
+  private Long campaignID;
+
   public static final String SERIALIZED_NAME_RULESET_I_D = "rulesetID";
   @SerializedName(SERIALIZED_NAME_RULESET_I_D)
   private Long rulesetID;
@@ -36,6 +40,28 @@ public class GenerateCampaignDescription {
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
+
+
+  public GenerateCampaignDescription campaignID(Long campaignID) {
+    
+    this.campaignID = campaignID;
+    return this;
+  }
+
+   /**
+   * ID of a campaign.
+   * @return campaignID
+  **/
+  @ApiModelProperty(required = true, value = "ID of a campaign.")
+
+  public Long getCampaignID() {
+    return campaignID;
+  }
+
+
+  public void setCampaignID(Long campaignID) {
+    this.campaignID = campaignID;
+  }
 
 
   public GenerateCampaignDescription rulesetID(Long rulesetID) {
@@ -91,13 +117,14 @@ public class GenerateCampaignDescription {
       return false;
     }
     GenerateCampaignDescription generateCampaignDescription = (GenerateCampaignDescription) o;
-    return Objects.equals(this.rulesetID, generateCampaignDescription.rulesetID) &&
+    return Objects.equals(this.campaignID, generateCampaignDescription.campaignID) &&
+        Objects.equals(this.rulesetID, generateCampaignDescription.rulesetID) &&
         Objects.equals(this.currency, generateCampaignDescription.currency);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(rulesetID, currency);
+    return Objects.hash(campaignID, rulesetID, currency);
   }
 
 
@@ -105,6 +132,7 @@ public class GenerateCampaignDescription {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GenerateCampaignDescription {\n");
+    sb.append("    campaignID: ").append(toIndentedString(campaignID)).append("\n");
     sb.append("    rulesetID: ").append(toIndentedString(rulesetID)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("}");

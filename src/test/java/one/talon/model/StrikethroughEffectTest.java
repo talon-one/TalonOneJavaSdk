@@ -21,6 +21,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -103,6 +106,38 @@ public class StrikethroughEffectTest {
     @Test
     public void endTimeTest() {
         // TODO: test endTime
+    }
+
+    /**
+     * Test the property 'selectedPriceType'
+     */
+    @Test
+    public void selectedPriceTypeTest() {
+        // TODO: test selectedPriceType
+    }
+
+    /**
+     * Test the property 'selectedPrice'
+     */
+    @Test
+    public void selectedPriceTest() {
+        // TODO: test selectedPrice
+    }
+
+    /**
+     * Test the property 'adjustmentReferenceId'
+     */
+    @Test
+    public void adjustmentReferenceIdTest() {
+        // TODO: test adjustmentReferenceId
+    }
+
+    /**
+     * Test the property 'targets'
+     */
+    @Test
+    public void targetsTest() {
+        // TODO: test targets
     }
 
 }

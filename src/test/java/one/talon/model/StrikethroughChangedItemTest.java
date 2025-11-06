@@ -23,7 +23,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import one.talon.model.PriceDetail;
 import one.talon.model.StrikethroughEffect;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
@@ -83,6 +86,14 @@ public class StrikethroughChangedItemTest {
     @Test
     public void priceTest() {
         // TODO: test price
+    }
+
+    /**
+     * Test the property 'prices'
+     */
+    @Test
+    public void pricesTest() {
+        // TODO: test prices
     }
 
     /**

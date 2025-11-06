@@ -45,6 +45,10 @@ public class AsyncCouponsData {
   @SerializedName(SERIALIZED_NAME_EMPLOYEE_NAME)
   private String employeeName;
 
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
+
 
   public AsyncCouponsData batchID(String batchID) {
     
@@ -134,6 +138,28 @@ public class AsyncCouponsData {
   }
 
 
+  public AsyncCouponsData notificationType(String notificationType) {
+    
+    this.notificationType = notificationType;
+    return this;
+  }
+
+   /**
+   * The type of the notification
+   * @return notificationType
+  **/
+  @ApiModelProperty(required = true, value = "The type of the notification")
+
+  public String getNotificationType() {
+    return notificationType;
+  }
+
+
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -146,12 +172,13 @@ public class AsyncCouponsData {
     return Objects.equals(this.batchID, asyncCouponsData.batchID) &&
         Objects.equals(this.typeOfChange, asyncCouponsData.typeOfChange) &&
         Objects.equals(this.operation, asyncCouponsData.operation) &&
-        Objects.equals(this.employeeName, asyncCouponsData.employeeName);
+        Objects.equals(this.employeeName, asyncCouponsData.employeeName) &&
+        Objects.equals(this.notificationType, asyncCouponsData.notificationType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchID, typeOfChange, operation, employeeName);
+    return Objects.hash(batchID, typeOfChange, operation, employeeName, notificationType);
   }
 
 
@@ -163,6 +190,7 @@ public class AsyncCouponsData {
     sb.append("    typeOfChange: ").append(toIndentedString(typeOfChange)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("    employeeName: ").append(toIndentedString(employeeName)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

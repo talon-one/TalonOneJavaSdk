@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **applicationID** | **Long** |  | 
 **campaignID** | **Long** |  | 
 **totalResultSize** | **Long** |  | 
+**notificationType** | **String** | The type of the notification | 
 
 
 

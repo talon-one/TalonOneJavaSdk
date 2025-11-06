@@ -68,4 +68,12 @@ public class RoleV2RolesGroupTest {
         // TODO: test campaignAccessGroups
     }
 
+    /**
+     * Test the property 'account'
+     */
+    @Test
+    public void accountTest() {
+        // TODO: test account
+    }
+
 }

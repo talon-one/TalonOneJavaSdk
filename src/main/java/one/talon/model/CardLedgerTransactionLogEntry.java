@@ -32,6 +32,10 @@ import org.threeten.bp.OffsetDateTime;
 @ApiModel(description = "Log entry for a given loyalty card transaction.")
 
 public class CardLedgerTransactionLogEntry {
+  public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "transactionUUID";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
+  private String transactionUUID;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
@@ -130,6 +134,28 @@ public class CardLedgerTransactionLogEntry {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private Long id;
+
+
+  public CardLedgerTransactionLogEntry transactionUUID(String transactionUUID) {
+    
+    this.transactionUUID = transactionUUID;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the transaction in the UUID format.
+   * @return transactionUUID
+  **/
+  @ApiModelProperty(example = "ce59f12a-f53b-4014-a745-636d93f2bd3f", required = true, value = "Unique identifier of the transaction in the UUID format.")
+
+  public String getTransactionUUID() {
+    return transactionUUID;
+  }
+
+
+  public void setTransactionUUID(String transactionUUID) {
+    this.transactionUUID = transactionUUID;
+  }
 
 
   public CardLedgerTransactionLogEntry created(OffsetDateTime created) {
@@ -430,7 +456,8 @@ public class CardLedgerTransactionLogEntry {
       return false;
     }
     CardLedgerTransactionLogEntry cardLedgerTransactionLogEntry = (CardLedgerTransactionLogEntry) o;
-    return Objects.equals(this.created, cardLedgerTransactionLogEntry.created) &&
+    return Objects.equals(this.transactionUUID, cardLedgerTransactionLogEntry.transactionUUID) &&
+        Objects.equals(this.created, cardLedgerTransactionLogEntry.created) &&
         Objects.equals(this.programId, cardLedgerTransactionLogEntry.programId) &&
         Objects.equals(this.cardIdentifier, cardLedgerTransactionLogEntry.cardIdentifier) &&
         Objects.equals(this.applicationId, cardLedgerTransactionLogEntry.applicationId) &&
@@ -447,7 +474,7 @@ public class CardLedgerTransactionLogEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programId, cardIdentifier, applicationId, sessionId, customerSessionId, type, name, startDate, expiryDate, subledgerId, amount, id);
+    return Objects.hash(transactionUUID, created, programId, cardIdentifier, applicationId, sessionId, customerSessionId, type, name, startDate, expiryDate, subledgerId, amount, id);
   }
 
 
@@ -455,6 +482,7 @@ public class CardLedgerTransactionLogEntry {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CardLedgerTransactionLogEntry {\n");
+    sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    programId: ").append(toIndentedString(programId)).append("\n");
     sb.append("    cardIdentifier: ").append(toIndentedString(cardIdentifier)).append("\n");

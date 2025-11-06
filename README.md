@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>13.1.0</version>
+  <version>14.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:13.1.0"
+compile "one.talon:talon-one-client:14.0.0"
 ```
 
 ### Others
@@ -191,6 +191,7 @@ All URLs are relative to `https://yourbaseurl.talon.one`.
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*IntegrationApi* | [**bestPriorPrice**](docs/IntegrationApi.md#bestPriorPrice) | **POST** /v1/best_prior_price | Fetch best prior price
 *IntegrationApi* | [**createAudienceV2**](docs/IntegrationApi.md#createAudienceV2) | **POST** /v2/audiences | Create audience
 *IntegrationApi* | [**createCouponReservation**](docs/IntegrationApi.md#createCouponReservation) | **POST** /v1/coupon_reservations/{couponValue} | Create coupon reservation
 *IntegrationApi* | [**createReferral**](docs/IntegrationApi.md#createReferral) | **POST** /v1/referrals | Create referral code for an advocate
@@ -465,6 +466,7 @@ Class | Method | HTTP request | Description
 - [AudienceCustomer](docs/AudienceCustomer.md)
 - [AudienceIntegrationID](docs/AudienceIntegrationID.md)
 - [AudienceMembership](docs/AudienceMembership.md)
+- [AudienceReference](docs/AudienceReference.md)
 - [AwardGiveawayEffectProps](docs/AwardGiveawayEffectProps.md)
 - [BaseCampaign](docs/BaseCampaign.md)
 - [BaseLoyaltyProgram](docs/BaseLoyaltyProgram.md)
@@ -473,9 +475,12 @@ Class | Method | HTTP request | Description
 - [BaseNotificationWebhook](docs/BaseNotificationWebhook.md)
 - [BaseNotifications](docs/BaseNotifications.md)
 - [BaseSamlConnection](docs/BaseSamlConnection.md)
+- [BestPriorPrice](docs/BestPriorPrice.md)
+- [BestPriorPriceMetadata](docs/BestPriorPriceMetadata.md)
+- [BestPriorPriceRequest](docs/BestPriorPriceRequest.md)
+- [BestPriorPriceRequestTarget](docs/BestPriorPriceRequestTarget.md)
 - [Binding](docs/Binding.md)
 - [BulkApplicationNotification](docs/BulkApplicationNotification.md)
-- [BulkCampaignNotification](docs/BulkCampaignNotification.md)
 - [BulkOperationOnCampaigns](docs/BulkOperationOnCampaigns.md)
 - [Campaign](docs/Campaign.md)
 - [CampaignActivationRequest](docs/CampaignActivationRequest.md)
@@ -483,13 +488,17 @@ Class | Method | HTTP request | Description
 - [CampaignBudget](docs/CampaignBudget.md)
 - [CampaignCollection](docs/CampaignCollection.md)
 - [CampaignCollectionEditedNotification](docs/CampaignCollectionEditedNotification.md)
+- [CampaignCollectionEditedNotificationItem](docs/CampaignCollectionEditedNotificationItem.md)
 - [CampaignCollectionWithoutPayload](docs/CampaignCollectionWithoutPayload.md)
 - [CampaignCopy](docs/CampaignCopy.md)
 - [CampaignCreatedNotification](docs/CampaignCreatedNotification.md)
+- [CampaignCreatedNotificationItem](docs/CampaignCreatedNotificationItem.md)
 - [CampaignDeactivationRequest](docs/CampaignDeactivationRequest.md)
 - [CampaignDeletedNotification](docs/CampaignDeletedNotification.md)
+- [CampaignDeletedNotificationItem](docs/CampaignDeletedNotificationItem.md)
 - [CampaignDetail](docs/CampaignDetail.md)
 - [CampaignEditedNotification](docs/CampaignEditedNotification.md)
+- [CampaignEditedNotificationItem](docs/CampaignEditedNotificationItem.md)
 - [CampaignEntity](docs/CampaignEntity.md)
 - [CampaignEvaluationGroup](docs/CampaignEvaluationGroup.md)
 - [CampaignEvaluationPosition](docs/CampaignEvaluationPosition.md)
@@ -497,17 +506,19 @@ Class | Method | HTTP request | Description
 - [CampaignEvaluationTreeChangedNotification](docs/CampaignEvaluationTreeChangedNotification.md)
 - [CampaignGroup](docs/CampaignGroup.md)
 - [CampaignGroupEntity](docs/CampaignGroupEntity.md)
-- [CampaignNotification](docs/CampaignNotification.md)
-- [CampaignNotificationData](docs/CampaignNotificationData.md)
-- [CampaignNotificationMessage](docs/CampaignNotificationMessage.md)
+- [CampaignNotificationBase](docs/CampaignNotificationBase.md)
+- [CampaignNotificationGeneric](docs/CampaignNotificationGeneric.md)
+- [CampaignNotificationItemBase](docs/CampaignNotificationItemBase.md)
 - [CampaignNotificationPolicy](docs/CampaignNotificationPolicy.md)
 - [CampaignRulesetChangedNotification](docs/CampaignRulesetChangedNotification.md)
+- [CampaignRulesetChangedNotificationItem](docs/CampaignRulesetChangedNotificationItem.md)
 - [CampaignSearch](docs/CampaignSearch.md)
 - [CampaignSet](docs/CampaignSet.md)
 - [CampaignSetBranchNode](docs/CampaignSetBranchNode.md)
 - [CampaignSetLeafNode](docs/CampaignSetLeafNode.md)
 - [CampaignSetNode](docs/CampaignSetNode.md)
 - [CampaignStateChangedNotification](docs/CampaignStateChangedNotification.md)
+- [CampaignStateChangedNotificationItem](docs/CampaignStateChangedNotificationItem.md)
 - [CampaignStoreBudget](docs/CampaignStoreBudget.md)
 - [CampaignStoreBudgetLimitConfig](docs/CampaignStoreBudgetLimitConfig.md)
 - [CampaignTemplate](docs/CampaignTemplate.md)
@@ -608,12 +619,16 @@ Class | Method | HTTP request | Description
 - [FeaturesFeed](docs/FeaturesFeed.md)
 - [FuncArgDef](docs/FuncArgDef.md)
 - [FunctionDef](docs/FunctionDef.md)
+- [GenerateAuditLogSummary](docs/GenerateAuditLogSummary.md)
 - [GenerateCampaignDescription](docs/GenerateCampaignDescription.md)
 - [GenerateCampaignTags](docs/GenerateCampaignTags.md)
+- [GenerateCouponFailureDetailedSummary](docs/GenerateCouponFailureDetailedSummary.md)
+- [GenerateCouponFailureSummary](docs/GenerateCouponFailureSummary.md)
 - [GenerateItemFilterDescription](docs/GenerateItemFilterDescription.md)
 - [GenerateLoyaltyCard](docs/GenerateLoyaltyCard.md)
 - [GenerateRuleTitle](docs/GenerateRuleTitle.md)
 - [GenerateRuleTitleRule](docs/GenerateRuleTitleRule.md)
+- [GenerateUserSessionSummary](docs/GenerateUserSessionSummary.md)
 - [GetIntegrationCouponRequest](docs/GetIntegrationCouponRequest.md)
 - [Giveaway](docs/Giveaway.md)
 - [GiveawaysPool](docs/GiveawaysPool.md)
@@ -687,6 +702,9 @@ Class | Method | HTTP request | Description
 - [InventoryCoupon](docs/InventoryCoupon.md)
 - [InventoryReferral](docs/InventoryReferral.md)
 - [ItemAttribute](docs/ItemAttribute.md)
+- [JWT](docs/JWT.md)
+- [LabelTargetAudience](docs/LabelTargetAudience.md)
+- [LabelTargetNone](docs/LabelTargetNone.md)
 - [LedgerEntry](docs/LedgerEntry.md)
 - [LedgerInfo](docs/LedgerInfo.md)
 - [LedgerPointsEntryIntegrationAPI](docs/LedgerPointsEntryIntegrationAPI.md)
@@ -712,6 +730,7 @@ Class | Method | HTTP request | Description
 - [LoyaltyDashboardPointsBreakdown](docs/LoyaltyDashboardPointsBreakdown.md)
 - [LoyaltyLedger](docs/LoyaltyLedger.md)
 - [LoyaltyLedgerEntry](docs/LoyaltyLedgerEntry.md)
+- [LoyaltyLedgerEntryExpiryDateChange](docs/LoyaltyLedgerEntryExpiryDateChange.md)
 - [LoyaltyLedgerEntryFlags](docs/LoyaltyLedgerEntryFlags.md)
 - [LoyaltyLedgerTransactions](docs/LoyaltyLedgerTransactions.md)
 - [LoyaltyMembership](docs/LoyaltyMembership.md)
@@ -829,6 +848,8 @@ Class | Method | HTTP request | Description
 - [Picklist](docs/Picklist.md)
 - [PriceDetail](docs/PriceDetail.md)
 - [PriceType](docs/PriceType.md)
+- [PriceTypeReferenceDetail](docs/PriceTypeReferenceDetail.md)
+- [PriceTypeReferences](docs/PriceTypeReferences.md)
 - [Product](docs/Product.md)
 - [ProductSearchMatch](docs/ProductSearchMatch.md)
 - [ProductUnitAnalytics](docs/ProductUnitAnalytics.md)
@@ -904,6 +925,7 @@ Class | Method | HTTP request | Description
 - [SetDiscountPerAdditionalCostEffectProps](docs/SetDiscountPerAdditionalCostEffectProps.md)
 - [SetDiscountPerAdditionalCostPerItemEffectProps](docs/SetDiscountPerAdditionalCostPerItemEffectProps.md)
 - [SetDiscountPerItemEffectProps](docs/SetDiscountPerItemEffectProps.md)
+- [SetLoyaltyPointsExpiryDateEffectProps](docs/SetLoyaltyPointsExpiryDateEffectProps.md)
 - [ShowBundleMetadataEffectProps](docs/ShowBundleMetadataEffectProps.md)
 - [ShowNotificationEffectProps](docs/ShowNotificationEffectProps.md)
 - [SkuUnitAnalytics](docs/SkuUnitAnalytics.md)
@@ -960,6 +982,7 @@ Class | Method | HTTP request | Description
 - [UpdateLoyaltyProgram](docs/UpdateLoyaltyProgram.md)
 - [UpdateLoyaltyProgramTier](docs/UpdateLoyaltyProgramTier.md)
 - [UpdatePicklist](docs/UpdatePicklist.md)
+- [UpdatePriceType](docs/UpdatePriceType.md)
 - [UpdateReferral](docs/UpdateReferral.md)
 - [UpdateReferralBatch](docs/UpdateReferralBatch.md)
 - [UpdateRole](docs/UpdateRole.md)

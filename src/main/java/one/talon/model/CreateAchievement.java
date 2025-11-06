@@ -168,6 +168,10 @@ public class CreateAchievement {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private OffsetDateTime endDate;
 
+  public static final String SERIALIZED_NAME_ALLOW_ROLLBACK_AFTER_COMPLETION = "allowRollbackAfterCompletion";
+  @SerializedName(SERIALIZED_NAME_ALLOW_ROLLBACK_AFTER_COMPLETION)
+  private Boolean allowRollbackAfterCompletion;
+
 
   public CreateAchievement name(String name) {
     
@@ -395,6 +399,29 @@ public class CreateAchievement {
   }
 
 
+  public CreateAchievement allowRollbackAfterCompletion(Boolean allowRollbackAfterCompletion) {
+    
+    this.allowRollbackAfterCompletion = allowRollbackAfterCompletion;
+    return this;
+  }
+
+   /**
+   * When &#x60;true&#x60;, customer progress can be rolled back in completed achievements.
+   * @return allowRollbackAfterCompletion
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "When `true`, customer progress can be rolled back in completed achievements.")
+
+  public Boolean getAllowRollbackAfterCompletion() {
+    return allowRollbackAfterCompletion;
+  }
+
+
+  public void setAllowRollbackAfterCompletion(Boolean allowRollbackAfterCompletion) {
+    this.allowRollbackAfterCompletion = allowRollbackAfterCompletion;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -413,12 +440,13 @@ public class CreateAchievement {
         Objects.equals(this.recurrencePolicy, createAchievement.recurrencePolicy) &&
         Objects.equals(this.activationPolicy, createAchievement.activationPolicy) &&
         Objects.equals(this.fixedStartDate, createAchievement.fixedStartDate) &&
-        Objects.equals(this.endDate, createAchievement.endDate);
+        Objects.equals(this.endDate, createAchievement.endDate) &&
+        Objects.equals(this.allowRollbackAfterCompletion, createAchievement.allowRollbackAfterCompletion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, title, description, target, period, periodEndOverride, recurrencePolicy, activationPolicy, fixedStartDate, endDate);
+    return Objects.hash(name, title, description, target, period, periodEndOverride, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion);
   }
 
 
@@ -436,6 +464,7 @@ public class CreateAchievement {
     sb.append("    activationPolicy: ").append(toIndentedString(activationPolicy)).append("\n");
     sb.append("    fixedStartDate: ").append(toIndentedString(fixedStartDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    allowRollbackAfterCompletion: ").append(toIndentedString(allowRollbackAfterCompletion)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -52,6 +52,10 @@ public class CouponsNotificationData {
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Long totalResultSize;
 
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private String notificationType;
+
 
   public CouponsNotificationData typeOfChange(String typeOfChange) {
     
@@ -63,7 +67,7 @@ public class CouponsNotificationData {
    * The type of change that occurred.
    * @return typeOfChange
   **/
-  @ApiModelProperty(required = true, value = "The type of change that occurred.")
+  @ApiModelProperty(example = "campaign_manager", required = true, value = "The type of change that occurred.")
 
   public String getTypeOfChange() {
     return typeOfChange;
@@ -85,7 +89,7 @@ public class CouponsNotificationData {
    * The operation performed.
    * @return operation
   **/
-  @ApiModelProperty(required = true, value = "The operation performed.")
+  @ApiModelProperty(example = "CouponUpdated", required = true, value = "The operation performed.")
 
   public String getOperation() {
     return operation;
@@ -107,7 +111,7 @@ public class CouponsNotificationData {
    * The name of the employee associated with the operation.
    * @return employeeName
   **/
-  @ApiModelProperty(required = true, value = "The name of the employee associated with the operation.")
+  @ApiModelProperty(example = "Franziska Schneider", required = true, value = "The name of the employee associated with the operation.")
 
   public String getEmployeeName() {
     return employeeName;
@@ -173,6 +177,28 @@ public class CouponsNotificationData {
   }
 
 
+  public CouponsNotificationData notificationType(String notificationType) {
+    
+    this.notificationType = notificationType;
+    return this;
+  }
+
+   /**
+   * The type of the notification
+   * @return notificationType
+  **/
+  @ApiModelProperty(example = "CouponUpdated", required = true, value = "The type of the notification")
+
+  public String getNotificationType() {
+    return notificationType;
+  }
+
+
+  public void setNotificationType(String notificationType) {
+    this.notificationType = notificationType;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -186,12 +212,13 @@ public class CouponsNotificationData {
         Objects.equals(this.operation, couponsNotificationData.operation) &&
         Objects.equals(this.employeeName, couponsNotificationData.employeeName) &&
         Objects.equals(this.data, couponsNotificationData.data) &&
-        Objects.equals(this.totalResultSize, couponsNotificationData.totalResultSize);
+        Objects.equals(this.totalResultSize, couponsNotificationData.totalResultSize) &&
+        Objects.equals(this.notificationType, couponsNotificationData.notificationType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(typeOfChange, operation, employeeName, data, totalResultSize);
+    return Objects.hash(typeOfChange, operation, employeeName, data, totalResultSize, notificationType);
   }
 
 
@@ -204,6 +231,7 @@ public class CouponsNotificationData {
     sb.append("    employeeName: ").append(toIndentedString(employeeName)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

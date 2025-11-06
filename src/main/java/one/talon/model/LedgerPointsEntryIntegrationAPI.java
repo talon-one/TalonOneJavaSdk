@@ -36,6 +36,10 @@ public class LedgerPointsEntryIntegrationAPI {
   @SerializedName(SERIALIZED_NAME_ID)
   private Long id;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "transactionUUID";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
+  private String transactionUUID;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
@@ -88,6 +92,28 @@ public class LedgerPointsEntryIntegrationAPI {
 
   public void setId(Long id) {
     this.id = id;
+  }
+
+
+  public LedgerPointsEntryIntegrationAPI transactionUUID(String transactionUUID) {
+    
+    this.transactionUUID = transactionUUID;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the transaction in the UUID format.
+   * @return transactionUUID
+  **/
+  @ApiModelProperty(example = "ce59f12a-f53b-4014-a745-636d93f2bd3f", required = true, value = "Unique identifier of the transaction in the UUID format.")
+
+  public String getTransactionUUID() {
+    return transactionUUID;
+  }
+
+
+  public void setTransactionUUID(String transactionUUID) {
+    this.transactionUUID = transactionUUID;
   }
 
 
@@ -278,6 +304,7 @@ public class LedgerPointsEntryIntegrationAPI {
     }
     LedgerPointsEntryIntegrationAPI ledgerPointsEntryIntegrationAPI = (LedgerPointsEntryIntegrationAPI) o;
     return Objects.equals(this.id, ledgerPointsEntryIntegrationAPI.id) &&
+        Objects.equals(this.transactionUUID, ledgerPointsEntryIntegrationAPI.transactionUUID) &&
         Objects.equals(this.created, ledgerPointsEntryIntegrationAPI.created) &&
         Objects.equals(this.programId, ledgerPointsEntryIntegrationAPI.programId) &&
         Objects.equals(this.customerSessionId, ledgerPointsEntryIntegrationAPI.customerSessionId) &&
@@ -290,7 +317,7 @@ public class LedgerPointsEntryIntegrationAPI {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, programId, customerSessionId, name, startDate, expiryDate, subledgerId, amount);
+    return Objects.hash(id, transactionUUID, created, programId, customerSessionId, name, startDate, expiryDate, subledgerId, amount);
   }
 
 
@@ -299,6 +326,7 @@ public class LedgerPointsEntryIntegrationAPI {
     StringBuilder sb = new StringBuilder();
     sb.append("class LedgerPointsEntryIntegrationAPI {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    programId: ").append(toIndentedString(programId)).append("\n");
     sb.append("    customerSessionId: ").append(toIndentedString(customerSessionId)).append("\n");

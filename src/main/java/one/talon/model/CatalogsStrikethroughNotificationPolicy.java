@@ -37,6 +37,10 @@ public class CatalogsStrikethroughNotificationPolicy {
   @SerializedName(SERIALIZED_NAME_AHEAD_OF_DAYS_TRIGGER)
   private Long aheadOfDaysTrigger;
 
+  public static final String SERIALIZED_NAME_BATCH_SIZE = "batchSize";
+  @SerializedName(SERIALIZED_NAME_BATCH_SIZE)
+  private Long batchSize = 1000l;
+
 
   public CatalogsStrikethroughNotificationPolicy name(String name) {
     
@@ -85,6 +89,29 @@ public class CatalogsStrikethroughNotificationPolicy {
   }
 
 
+  public CatalogsStrikethroughNotificationPolicy batchSize(Long batchSize) {
+    
+    this.batchSize = batchSize;
+    return this;
+  }
+
+   /**
+   * The required size of each batch of data.
+   * @return batchSize
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1000", value = "The required size of each batch of data.")
+
+  public Long getBatchSize() {
+    return batchSize;
+  }
+
+
+  public void setBatchSize(Long batchSize) {
+    this.batchSize = batchSize;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -95,12 +122,13 @@ public class CatalogsStrikethroughNotificationPolicy {
     }
     CatalogsStrikethroughNotificationPolicy catalogsStrikethroughNotificationPolicy = (CatalogsStrikethroughNotificationPolicy) o;
     return Objects.equals(this.name, catalogsStrikethroughNotificationPolicy.name) &&
-        Objects.equals(this.aheadOfDaysTrigger, catalogsStrikethroughNotificationPolicy.aheadOfDaysTrigger);
+        Objects.equals(this.aheadOfDaysTrigger, catalogsStrikethroughNotificationPolicy.aheadOfDaysTrigger) &&
+        Objects.equals(this.batchSize, catalogsStrikethroughNotificationPolicy.batchSize);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, aheadOfDaysTrigger);
+    return Objects.hash(name, aheadOfDaysTrigger, batchSize);
   }
 
 
@@ -110,6 +138,7 @@ public class CatalogsStrikethroughNotificationPolicy {
     sb.append("class CatalogsStrikethroughNotificationPolicy {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    aheadOfDaysTrigger: ").append(toIndentedString(aheadOfDaysTrigger)).append("\n");
+    sb.append("    batchSize: ").append(toIndentedString(batchSize)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -123,4 +123,12 @@ public class AchievementBaseTest {
         // TODO: test endDate
     }
 
+    /**
+     * Test the property 'allowRollbackAfterCompletion'
+     */
+    @Test
+    public void allowRollbackAfterCompletionTest() {
+        // TODO: test allowRollbackAfterCompletion
+    }
+
 }

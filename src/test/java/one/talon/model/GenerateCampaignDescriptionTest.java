@@ -41,6 +41,14 @@ public class GenerateCampaignDescriptionTest {
     }
 
     /**
+     * Test the property 'campaignID'
+     */
+    @Test
+    public void campaignIDTest() {
+        // TODO: test campaignID
+    }
+
+    /**
      * Test the property 'rulesetID'
      */
     @Test
