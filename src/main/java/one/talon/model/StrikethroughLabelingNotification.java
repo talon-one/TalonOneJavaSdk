@@ -108,9 +108,58 @@ public class StrikethroughLabelingNotification {
   @SerializedName(SERIALIZED_NAME_CHANGED_ITEMS)
   private List<StrikethroughChangedItem> changedItems = new ArrayList<StrikethroughChangedItem>();
 
+  /**
+   * The type of notification.
+   */
+  @JsonAdapter(NotificationTypeEnum.Adapter.class)
+  public enum NotificationTypeEnum {
+    STRIKETHROUGHPRICE("StrikethroughPrice");
+
+    private String value;
+
+    NotificationTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static NotificationTypeEnum fromValue(String value) {
+      for (NotificationTypeEnum b : NotificationTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<NotificationTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final NotificationTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public NotificationTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return NotificationTypeEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
-  private String notificationType;
+  private NotificationTypeEnum notificationType;
+
+  public static final String SERIALIZED_NAME_SENT_AT = "sentAt";
+  @SerializedName(SERIALIZED_NAME_SENT_AT)
+  private OffsetDateTime sentAt;
 
 
   public StrikethroughLabelingNotification version(VersionEnum version) {
@@ -274,25 +323,47 @@ public class StrikethroughLabelingNotification {
   }
 
 
-  public StrikethroughLabelingNotification notificationType(String notificationType) {
+  public StrikethroughLabelingNotification notificationType(NotificationTypeEnum notificationType) {
     
     this.notificationType = notificationType;
     return this;
   }
 
    /**
-   * The type of the notification
+   * The type of notification.
    * @return notificationType
   **/
-  @ApiModelProperty(required = true, value = "The type of the notification")
+  @ApiModelProperty(required = true, value = "The type of notification.")
 
-  public String getNotificationType() {
+  public NotificationTypeEnum getNotificationType() {
     return notificationType;
   }
 
 
-  public void setNotificationType(String notificationType) {
+  public void setNotificationType(NotificationTypeEnum notificationType) {
     this.notificationType = notificationType;
+  }
+
+
+  public StrikethroughLabelingNotification sentAt(OffsetDateTime sentAt) {
+    
+    this.sentAt = sentAt;
+    return this;
+  }
+
+   /**
+   * Timestamp at which the notification was sent.
+   * @return sentAt
+  **/
+  @ApiModelProperty(required = true, value = "Timestamp at which the notification was sent.")
+
+  public OffsetDateTime getSentAt() {
+    return sentAt;
+  }
+
+
+  public void setSentAt(OffsetDateTime sentAt) {
+    this.sentAt = sentAt;
   }
 
 
@@ -312,12 +383,13 @@ public class StrikethroughLabelingNotification {
         Objects.equals(this.totalBatches, strikethroughLabelingNotification.totalBatches) &&
         Objects.equals(this.trigger, strikethroughLabelingNotification.trigger) &&
         Objects.equals(this.changedItems, strikethroughLabelingNotification.changedItems) &&
-        Objects.equals(this.notificationType, strikethroughLabelingNotification.notificationType);
+        Objects.equals(this.notificationType, strikethroughLabelingNotification.notificationType) &&
+        Objects.equals(this.sentAt, strikethroughLabelingNotification.sentAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(version, validFrom, applicationId, currentBatch, totalBatches, trigger, changedItems, notificationType);
+    return Objects.hash(version, validFrom, applicationId, currentBatch, totalBatches, trigger, changedItems, notificationType, sentAt);
   }
 
 
@@ -333,6 +405,7 @@ public class StrikethroughLabelingNotification {
     sb.append("    trigger: ").append(toIndentedString(trigger)).append("\n");
     sb.append("    changedItems: ").append(toIndentedString(changedItems)).append("\n");
     sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
+    sb.append("    sentAt: ").append(toIndentedString(sentAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -69,6 +69,10 @@ public class ManagementKey {
   @SerializedName(SERIALIZED_NAME_DISABLED)
   private Boolean disabled;
 
+  public static final String SERIALIZED_NAME_LAST_USED = "lastUsed";
+  @SerializedName(SERIALIZED_NAME_LAST_USED)
+  private OffsetDateTime lastUsed;
+
 
   public ManagementKey name(String name) {
     
@@ -283,6 +287,29 @@ public class ManagementKey {
   }
 
 
+  public ManagementKey lastUsed(OffsetDateTime lastUsed) {
+    
+    this.lastUsed = lastUsed;
+    return this;
+  }
+
+   /**
+   * The last time the management key was used.
+   * @return lastUsed
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2022-03-02T16:46:17.758585Z", value = "The last time the management key was used.")
+
+  public OffsetDateTime getLastUsed() {
+    return lastUsed;
+  }
+
+
+  public void setLastUsed(OffsetDateTime lastUsed) {
+    this.lastUsed = lastUsed;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -300,12 +327,13 @@ public class ManagementKey {
         Objects.equals(this.createdBy, managementKey.createdBy) &&
         Objects.equals(this.accountID, managementKey.accountID) &&
         Objects.equals(this.created, managementKey.created) &&
-        Objects.equals(this.disabled, managementKey.disabled);
+        Objects.equals(this.disabled, managementKey.disabled) &&
+        Objects.equals(this.lastUsed, managementKey.lastUsed);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, expiryDate, endpoints, allowedApplicationIds, id, createdBy, accountID, created, disabled);
+    return Objects.hash(name, expiryDate, endpoints, allowedApplicationIds, id, createdBy, accountID, created, disabled, lastUsed);
   }
 
 
@@ -322,6 +350,7 @@ public class ManagementKey {
     sb.append("    accountID: ").append(toIndentedString(accountID)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    disabled: ").append(toIndentedString(disabled)).append("\n");
+    sb.append("    lastUsed: ").append(toIndentedString(lastUsed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

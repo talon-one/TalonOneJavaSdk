@@ -12,7 +12,15 @@ Name | Type | Description | Notes
 **typeOfChange** | **String** |  | 
 **operation** | **String** |  | 
 **employeeName** | **String** |  | 
-**notificationType** | **String** | The type of the not | 
+**notificationType** | [**NotificationTypeEnum**](#NotificationTypeEnum) | The type of the not | 
+
+
+
+## Enum: NotificationTypeEnum
+
+Name | Value
+---- | -----
+COUPONCREATED | &quot;CouponCreated&quot;
 
 
 

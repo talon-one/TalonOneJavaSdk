@@ -276,6 +276,10 @@ public class CampaignTemplate {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
   private CampaignTypeEnum campaignType = CampaignTypeEnum.ADVANCED;
 
+  public static final String SERIALIZED_NAME_CAMPAIGNS_COUNT = "campaignsCount";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGNS_COUNT)
+  private Long campaignsCount;
+
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   private OffsetDateTime updated;
@@ -834,6 +838,29 @@ public class CampaignTemplate {
   }
 
 
+  public CampaignTemplate campaignsCount(Long campaignsCount) {
+    
+    this.campaignsCount = campaignsCount;
+    return this;
+  }
+
+   /**
+   * The number of Campaigns created from this template.
+   * @return campaignsCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3", value = "The number of Campaigns created from this template.")
+
+  public Long getCampaignsCount() {
+    return campaignsCount;
+  }
+
+
+  public void setCampaignsCount(Long campaignsCount) {
+    this.campaignsCount = campaignsCount;
+  }
+
+
   public CampaignTemplate updated(OffsetDateTime updated) {
     
     this.updated = updated;
@@ -961,6 +988,7 @@ public class CampaignTemplate {
         Objects.equals(this.campaignCollections, campaignTemplate.campaignCollections) &&
         Objects.equals(this.defaultCampaignGroupId, campaignTemplate.defaultCampaignGroupId) &&
         Objects.equals(this.campaignType, campaignTemplate.campaignType) &&
+        Objects.equals(this.campaignsCount, campaignTemplate.campaignsCount) &&
         Objects.equals(this.updated, campaignTemplate.updated) &&
         Objects.equals(this.updatedBy, campaignTemplate.updatedBy) &&
         Objects.equals(this.validApplicationIds, campaignTemplate.validApplicationIds) &&
@@ -969,7 +997,7 @@ public class CampaignTemplate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, userId, name, description, instructions, campaignAttributes, couponAttributes, state, activeRulesetId, tags, features, couponSettings, couponReservationSettings, referralSettings, limits, templateParams, applicationsIds, campaignCollections, defaultCampaignGroupId, campaignType, updated, updatedBy, validApplicationIds, isUserFavorite);
+    return Objects.hash(id, created, accountId, userId, name, description, instructions, campaignAttributes, couponAttributes, state, activeRulesetId, tags, features, couponSettings, couponReservationSettings, referralSettings, limits, templateParams, applicationsIds, campaignCollections, defaultCampaignGroupId, campaignType, campaignsCount, updated, updatedBy, validApplicationIds, isUserFavorite);
   }
 
 
@@ -999,6 +1027,7 @@ public class CampaignTemplate {
     sb.append("    campaignCollections: ").append(toIndentedString(campaignCollections)).append("\n");
     sb.append("    defaultCampaignGroupId: ").append(toIndentedString(defaultCampaignGroupId)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
+    sb.append("    campaignsCount: ").append(toIndentedString(campaignsCount)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("    validApplicationIds: ").append(toIndentedString(validApplicationIds)).append("\n");

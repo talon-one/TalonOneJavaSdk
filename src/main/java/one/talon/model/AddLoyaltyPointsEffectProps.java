@@ -88,6 +88,14 @@ public class AddLoyaltyPointsEffectProps {
   @SerializedName(SERIALIZED_NAME_BUNDLE_NAME)
   private String bundleName;
 
+  public static final String SERIALIZED_NAME_AWAITS_ACTIVATION = "awaitsActivation";
+  @SerializedName(SERIALIZED_NAME_AWAITS_ACTIVATION)
+  private Boolean awaitsActivation;
+
+  public static final String SERIALIZED_NAME_VALIDITY_DURATION = "validityDuration";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DURATION)
+  private String validityDuration;
+
 
   public AddLoyaltyPointsEffectProps name(String name) {
     
@@ -405,6 +413,52 @@ public class AddLoyaltyPointsEffectProps {
   }
 
 
+  public AddLoyaltyPointsEffectProps awaitsActivation(Boolean awaitsActivation) {
+    
+    this.awaitsActivation = awaitsActivation;
+    return this;
+  }
+
+   /**
+   * If &#x60;true&#x60;, the loyalty points are pending until  action-based activation takes place. The &#x60;startDate&#x60; parameter automatically  defaults to &#x60;on_action&#x60;. 
+   * @return awaitsActivation
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "If `true`, the loyalty points are pending until  action-based activation takes place. The `startDate` parameter automatically  defaults to `on_action`. ")
+
+  public Boolean getAwaitsActivation() {
+    return awaitsActivation;
+  }
+
+
+  public void setAwaitsActivation(Boolean awaitsActivation) {
+    this.awaitsActivation = awaitsActivation;
+  }
+
+
+  public AddLoyaltyPointsEffectProps validityDuration(String validityDuration) {
+    
+    this.validityDuration = validityDuration;
+    return this;
+  }
+
+   /**
+   * The duration for which the points remain active, relative to the  activation date. Example: &#x60;30D&#x60;.   **Note**: This value is only returned if &#x60;awaitsActivation&#x60; is &#x60;true&#x60;  and &#x60;expiryDate&#x60; is not set. 
+   * @return validityDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The duration for which the points remain active, relative to the  activation date. Example: `30D`.   **Note**: This value is only returned if `awaitsActivation` is `true`  and `expiryDate` is not set. ")
+
+  public String getValidityDuration() {
+    return validityDuration;
+  }
+
+
+  public void setValidityDuration(String validityDuration) {
+    this.validityDuration = validityDuration;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -427,12 +481,14 @@ public class AddLoyaltyPointsEffectProps {
         Objects.equals(this.cartItemSubPosition, addLoyaltyPointsEffectProps.cartItemSubPosition) &&
         Objects.equals(this.cardIdentifier, addLoyaltyPointsEffectProps.cardIdentifier) &&
         Objects.equals(this.bundleIndex, addLoyaltyPointsEffectProps.bundleIndex) &&
-        Objects.equals(this.bundleName, addLoyaltyPointsEffectProps.bundleName);
+        Objects.equals(this.bundleName, addLoyaltyPointsEffectProps.bundleName) &&
+        Objects.equals(this.awaitsActivation, addLoyaltyPointsEffectProps.awaitsActivation) &&
+        Objects.equals(this.validityDuration, addLoyaltyPointsEffectProps.validityDuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, programId, subLedgerId, value, desiredValue, recipientIntegrationId, startDate, expiryDate, transactionUUID, cartItemPosition, cartItemSubPosition, cardIdentifier, bundleIndex, bundleName);
+    return Objects.hash(name, programId, subLedgerId, value, desiredValue, recipientIntegrationId, startDate, expiryDate, transactionUUID, cartItemPosition, cartItemSubPosition, cardIdentifier, bundleIndex, bundleName, awaitsActivation, validityDuration);
   }
 
 
@@ -454,6 +510,8 @@ public class AddLoyaltyPointsEffectProps {
     sb.append("    cardIdentifier: ").append(toIndentedString(cardIdentifier)).append("\n");
     sb.append("    bundleIndex: ").append(toIndentedString(bundleIndex)).append("\n");
     sb.append("    bundleName: ").append(toIndentedString(bundleName)).append("\n");
+    sb.append("    awaitsActivation: ").append(toIndentedString(awaitsActivation)).append("\n");
+    sb.append("    validityDuration: ").append(toIndentedString(validityDuration)).append("\n");
     sb.append("}");
     return sb.toString();
   }

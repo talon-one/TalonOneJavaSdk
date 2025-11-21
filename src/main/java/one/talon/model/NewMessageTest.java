@@ -111,6 +111,10 @@ public class NewMessageTest {
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
   private List<Long> applicationIds = null;
 
+  public static final String SERIALIZED_NAME_AUTHENTICATION_ID = "authenticationId";
+  @SerializedName(SERIALIZED_NAME_AUTHENTICATION_ID)
+  private Long authenticationId;
+
 
   public NewMessageTest headers(Map<String, String> headers) {
     
@@ -272,6 +276,29 @@ public class NewMessageTest {
   }
 
 
+  public NewMessageTest authenticationId(Long authenticationId) {
+    
+    this.authenticationId = authenticationId;
+    return this;
+  }
+
+   /**
+   * The ID of the credential that this webhook is using.
+   * @return authenticationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "The ID of the credential that this webhook is using.")
+
+  public Long getAuthenticationId() {
+    return authenticationId;
+  }
+
+
+  public void setAuthenticationId(Long authenticationId) {
+    this.authenticationId = authenticationId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -286,12 +313,13 @@ public class NewMessageTest {
         Objects.equals(this.url, newMessageTest.url) &&
         Objects.equals(this.payload, newMessageTest.payload) &&
         Objects.equals(this.params, newMessageTest.params) &&
-        Objects.equals(this.applicationIds, newMessageTest.applicationIds);
+        Objects.equals(this.applicationIds, newMessageTest.applicationIds) &&
+        Objects.equals(this.authenticationId, newMessageTest.authenticationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(headers, verb, url, payload, params, applicationIds);
+    return Objects.hash(headers, verb, url, payload, params, applicationIds, authenticationId);
   }
 
 
@@ -305,6 +333,7 @@ public class NewMessageTest {
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
+    sb.append("    authenticationId: ").append(toIndentedString(authenticationId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

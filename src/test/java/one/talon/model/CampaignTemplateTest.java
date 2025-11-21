@@ -225,6 +225,14 @@ public class CampaignTemplateTest {
     }
 
     /**
+     * Test the property 'campaignsCount'
+     */
+    @Test
+    public void campaignsCountTest() {
+        // TODO: test campaignsCount
+    }
+
+    /**
      * Test the property 'updated'
      */
     @Test

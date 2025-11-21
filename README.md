@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>14.1.0</version>
+  <version>99.99.99</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:14.1.0"
+compile "one.talon:talon-one-client:99.99.99"
 ```
 
 ### Others
@@ -254,6 +254,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**deleteCoupon**](docs/ManagementApi.md#deleteCoupon) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Delete coupon
 *ManagementApi* | [**deleteCoupons**](docs/ManagementApi.md#deleteCoupons) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Delete coupons
 *ManagementApi* | [**deleteLoyaltyCard**](docs/ManagementApi.md#deleteLoyaltyCard) | **DELETE** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Delete loyalty card
+*ManagementApi* | [**deletePrismaticFlow**](docs/ManagementApi.md#deletePrismaticFlow) | **DELETE** /v1/prismatic/flow | de-registers a prismatic flow for an event
 *ManagementApi* | [**deleteReferral**](docs/ManagementApi.md#deleteReferral) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Delete referral
 *ManagementApi* | [**deleteStore**](docs/ManagementApi.md#deleteStore) | **DELETE** /v1/applications/{applicationId}/stores/{storeId} | Delete store
 *ManagementApi* | [**deleteUser**](docs/ManagementApi.md#deleteUser) | **DELETE** /v1/users/{userId} | Delete user
@@ -362,6 +363,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**listCollectionsInApplication**](docs/ManagementApi.md#listCollectionsInApplication) | **GET** /v1/applications/{applicationId}/collections | List collections in Application
 *ManagementApi* | [**listStores**](docs/ManagementApi.md#listStores) | **GET** /v1/applications/{applicationId}/stores | List stores
 *ManagementApi* | [**oktaEventHandlerChallenge**](docs/ManagementApi.md#oktaEventHandlerChallenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership
+*ManagementApi* | [**postPrismaticFlow**](docs/ManagementApi.md#postPrismaticFlow) | **POST** /v1/prismatic/flow | registers a prismatic flow for an event
 *ManagementApi* | [**removeLoyaltyPoints**](docs/ManagementApi.md#removeLoyaltyPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/deduct_points | Deduct points from customer profile
 *ManagementApi* | [**resetPassword**](docs/ManagementApi.md#resetPassword) | **POST** /v1/reset_password | Reset password
 *ManagementApi* | [**scimCreateGroup**](docs/ManagementApi.md#scimCreateGroup) | **POST** /v1/provisioning/scim/Groups | Create SCIM group
@@ -420,6 +422,8 @@ Class | Method | HTTP request | Description
 - [AchievementProgress](docs/AchievementProgress.md)
 - [AchievementProgressWithDefinition](docs/AchievementProgressWithDefinition.md)
 - [AchievementStatusEntry](docs/AchievementStatusEntry.md)
+- [ActivateLoyaltyPoints](docs/ActivateLoyaltyPoints.md)
+- [ActivateLoyaltyPointsResponse](docs/ActivateLoyaltyPointsResponse.md)
 - [AddFreeItemEffectProps](docs/AddFreeItemEffectProps.md)
 - [AddItemCatalogAction](docs/AddItemCatalogAction.md)
 - [AddLoyaltyPoints](docs/AddLoyaltyPoints.md)
@@ -506,6 +510,7 @@ Class | Method | HTTP request | Description
 - [CampaignEvaluationTreeChangedNotification](docs/CampaignEvaluationTreeChangedNotification.md)
 - [CampaignGroup](docs/CampaignGroup.md)
 - [CampaignGroupEntity](docs/CampaignGroupEntity.md)
+- [CampaignLogSummary](docs/CampaignLogSummary.md)
 - [CampaignNotificationBase](docs/CampaignNotificationBase.md)
 - [CampaignNotificationGeneric](docs/CampaignNotificationGeneric.md)
 - [CampaignNotificationItemBase](docs/CampaignNotificationItemBase.md)
@@ -602,6 +607,7 @@ Class | Method | HTTP request | Description
 - [Event](docs/Event.md)
 - [EventType](docs/EventType.md)
 - [EventV2](docs/EventV2.md)
+- [EventV3](docs/EventV3.md)
 - [ExpiringCardPointsData](docs/ExpiringCardPointsData.md)
 - [ExpiringCardPointsNotification](docs/ExpiringCardPointsNotification.md)
 - [ExpiringCouponsData](docs/ExpiringCouponsData.md)
@@ -694,7 +700,10 @@ Class | Method | HTTP request | Description
 - [IntegrationEntity](docs/IntegrationEntity.md)
 - [IntegrationEvent](docs/IntegrationEvent.md)
 - [IntegrationEventV2Request](docs/IntegrationEventV2Request.md)
+- [IntegrationEventV3Request](docs/IntegrationEventV3Request.md)
+- [IntegrationEventV3Response](docs/IntegrationEventV3Response.md)
 - [IntegrationProfileEntity](docs/IntegrationProfileEntity.md)
+- [IntegrationProfileEntityV3](docs/IntegrationProfileEntityV3.md)
 - [IntegrationRequest](docs/IntegrationRequest.md)
 - [IntegrationState](docs/IntegrationState.md)
 - [IntegrationStateV2](docs/IntegrationStateV2.md)
@@ -850,6 +859,9 @@ Class | Method | HTTP request | Description
 - [PriceType](docs/PriceType.md)
 - [PriceTypeReferenceDetail](docs/PriceTypeReferenceDetail.md)
 - [PriceTypeReferences](docs/PriceTypeReferences.md)
+- [PrismaticFlow](docs/PrismaticFlow.md)
+- [PrismaticFlowConfig](docs/PrismaticFlowConfig.md)
+- [PrismaticFlowWithConfig](docs/PrismaticFlowWithConfig.md)
 - [Product](docs/Product.md)
 - [ProductSearchMatch](docs/ProductSearchMatch.md)
 - [ProductUnitAnalytics](docs/ProductUnitAnalytics.md)

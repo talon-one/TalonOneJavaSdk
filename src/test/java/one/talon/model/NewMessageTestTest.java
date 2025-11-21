@@ -93,4 +93,12 @@ public class NewMessageTestTest {
         // TODO: test applicationIds
     }
 
+    /**
+     * Test the property 'authenticationId'
+     */
+    @Test
+    public void authenticationIdTest() {
+        // TODO: test authenticationId
+    }
+
 }

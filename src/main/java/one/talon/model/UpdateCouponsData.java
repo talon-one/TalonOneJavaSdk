@@ -53,9 +53,54 @@ public class UpdateCouponsData {
   @SerializedName(SERIALIZED_NAME_EMPLOYEE_NAME)
   private String employeeName;
 
+  /**
+   * The type of the notification
+   */
+  @JsonAdapter(NotificationTypeEnum.Adapter.class)
+  public enum NotificationTypeEnum {
+    COUPONSUPDATED("CouponsUpdated");
+
+    private String value;
+
+    NotificationTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static NotificationTypeEnum fromValue(String value) {
+      for (NotificationTypeEnum b : NotificationTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<NotificationTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final NotificationTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public NotificationTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return NotificationTypeEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
-  private String notificationType;
+  private NotificationTypeEnum notificationType;
 
 
   public UpdateCouponsData batchID(String batchID) {
@@ -190,7 +235,7 @@ public class UpdateCouponsData {
   }
 
 
-  public UpdateCouponsData notificationType(String notificationType) {
+  public UpdateCouponsData notificationType(NotificationTypeEnum notificationType) {
     
     this.notificationType = notificationType;
     return this;
@@ -202,12 +247,12 @@ public class UpdateCouponsData {
   **/
   @ApiModelProperty(required = true, value = "The type of the notification")
 
-  public String getNotificationType() {
+  public NotificationTypeEnum getNotificationType() {
     return notificationType;
   }
 
 
-  public void setNotificationType(String notificationType) {
+  public void setNotificationType(NotificationTypeEnum notificationType) {
     this.notificationType = notificationType;
   }
 
