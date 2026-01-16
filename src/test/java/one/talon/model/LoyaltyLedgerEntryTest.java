@@ -163,4 +163,12 @@ public class LoyaltyLedgerEntryTest {
         // TODO: test flags
     }
 
+    /**
+     * Test the property 'validityDuration'
+     */
+    @Test
+    public void validityDurationTest() {
+        // TODO: test validityDuration
+    }
+
 }

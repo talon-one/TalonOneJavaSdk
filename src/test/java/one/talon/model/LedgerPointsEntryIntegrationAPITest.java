@@ -122,4 +122,12 @@ public class LedgerPointsEntryIntegrationAPITest {
         // TODO: test amount
     }
 
+    /**
+     * Test the property 'validityDuration'
+     */
+    @Test
+    public void validityDurationTest() {
+        // TODO: test validityDuration
+    }
+
 }

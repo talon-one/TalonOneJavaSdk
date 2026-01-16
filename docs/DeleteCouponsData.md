@@ -13,7 +13,15 @@ Name | Type | Description | Notes
 **applicationID** | **Long** |  | 
 **campaignID** | **Long** |  | 
 **totalResultSize** | **Long** |  | 
-**notificationType** | **String** | The type of the notification | 
+**notificationType** | [**NotificationTypeEnum**](#NotificationTypeEnum) | The type of the notification | 
+
+
+
+## Enum: NotificationTypeEnum
+
+Name | Value
+---- | -----
+COUPONSDELETED | &quot;CouponsDeleted&quot;
 
 
 

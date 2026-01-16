@@ -37,6 +37,10 @@ public class ReturnedCartItem {
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private Long quantity;
 
+  public static final String SERIALIZED_NAME_SKU = "sku";
+  @SerializedName(SERIALIZED_NAME_SKU)
+  private String sku;
+
 
   public ReturnedCartItem position(Long position) {
     
@@ -48,7 +52,8 @@ public class ReturnedCartItem {
    * The index of the cart item in the provided customer session&#39;s &#x60;cartItems&#x60; property.
    * @return position
   **/
-  @ApiModelProperty(example = "2", required = true, value = "The index of the cart item in the provided customer session's `cartItems` property.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2", value = "The index of the cart item in the provided customer session's `cartItems` property.")
 
   public Long getPosition() {
     return position;
@@ -83,6 +88,29 @@ public class ReturnedCartItem {
   }
 
 
+  public ReturnedCartItem sku(String sku) {
+    
+    this.sku = sku;
+    return this;
+  }
+
+   /**
+   * The SKU of the cart item in the provided customer session&#39;s &#x60;cartItems&#x60; property.
+   * @return sku
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "SKU1241028", value = "The SKU of the cart item in the provided customer session's `cartItems` property.")
+
+  public String getSku() {
+    return sku;
+  }
+
+
+  public void setSku(String sku) {
+    this.sku = sku;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -93,12 +121,13 @@ public class ReturnedCartItem {
     }
     ReturnedCartItem returnedCartItem = (ReturnedCartItem) o;
     return Objects.equals(this.position, returnedCartItem.position) &&
-        Objects.equals(this.quantity, returnedCartItem.quantity);
+        Objects.equals(this.quantity, returnedCartItem.quantity) &&
+        Objects.equals(this.sku, returnedCartItem.sku);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(position, quantity);
+    return Objects.hash(position, quantity, sku);
   }
 
 
@@ -108,6 +137,7 @@ public class ReturnedCartItem {
     sb.append("class ReturnedCartItem {\n");
     sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("}");
     return sb.toString();
   }

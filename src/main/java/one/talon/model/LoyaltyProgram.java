@@ -323,10 +323,6 @@ public class LoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_CAN_UPDATE_TIERS)
   private Boolean canUpdateTiers = false;
 
-  public static final String SERIALIZED_NAME_CAN_UPDATE_JOIN_POLICY = "canUpdateJoinPolicy";
-  @SerializedName(SERIALIZED_NAME_CAN_UPDATE_JOIN_POLICY)
-  private Boolean canUpdateJoinPolicy;
-
   public static final String SERIALIZED_NAME_CAN_UPDATE_TIER_EXPIRATION_POLICY = "canUpdateTierExpirationPolicy";
   @SerializedName(SERIALIZED_NAME_CAN_UPDATE_TIER_EXPIRATION_POLICY)
   private Boolean canUpdateTierExpirationPolicy;
@@ -870,29 +866,6 @@ public class LoyaltyProgram {
   }
 
 
-  public LoyaltyProgram canUpdateJoinPolicy(Boolean canUpdateJoinPolicy) {
-    
-    this.canUpdateJoinPolicy = canUpdateJoinPolicy;
-    return this;
-  }
-
-   /**
-   * &#x60;True&#x60; if the program join policy can be updated. 
-   * @return canUpdateJoinPolicy
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "`True` if the program join policy can be updated. ")
-
-  public Boolean getCanUpdateJoinPolicy() {
-    return canUpdateJoinPolicy;
-  }
-
-
-  public void setCanUpdateJoinPolicy(Boolean canUpdateJoinPolicy) {
-    this.canUpdateJoinPolicy = canUpdateJoinPolicy;
-  }
-
-
   public LoyaltyProgram canUpdateTierExpirationPolicy(Boolean canUpdateTierExpirationPolicy) {
     
     this.canUpdateTierExpirationPolicy = canUpdateTierExpirationPolicy;
@@ -994,7 +967,6 @@ public class LoyaltyProgram {
         Objects.equals(this.timezone, loyaltyProgram.timezone) &&
         Objects.equals(this.cardBased, loyaltyProgram.cardBased) &&
         Objects.equals(this.canUpdateTiers, loyaltyProgram.canUpdateTiers) &&
-        Objects.equals(this.canUpdateJoinPolicy, loyaltyProgram.canUpdateJoinPolicy) &&
         Objects.equals(this.canUpdateTierExpirationPolicy, loyaltyProgram.canUpdateTierExpirationPolicy) &&
         Objects.equals(this.canUpgradeToAdvancedTiers, loyaltyProgram.canUpgradeToAdvancedTiers) &&
         Objects.equals(this.canUpdateSubledgers, loyaltyProgram.canUpdateSubledgers);
@@ -1002,7 +974,7 @@ public class LoyaltyProgram {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, programJoinPolicy, tiersExpirationPolicy, tierCycleStartDate, tiersExpireIn, tiersDowngradePolicy, cardCodeSettings, returnPolicy, accountID, name, tiers, timezone, cardBased, canUpdateTiers, canUpdateJoinPolicy, canUpdateTierExpirationPolicy, canUpgradeToAdvancedTiers, canUpdateSubledgers);
+    return Objects.hash(id, created, title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, programJoinPolicy, tiersExpirationPolicy, tierCycleStartDate, tiersExpireIn, tiersDowngradePolicy, cardCodeSettings, returnPolicy, accountID, name, tiers, timezone, cardBased, canUpdateTiers, canUpdateTierExpirationPolicy, canUpgradeToAdvancedTiers, canUpdateSubledgers);
   }
 
 
@@ -1033,7 +1005,6 @@ public class LoyaltyProgram {
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    cardBased: ").append(toIndentedString(cardBased)).append("\n");
     sb.append("    canUpdateTiers: ").append(toIndentedString(canUpdateTiers)).append("\n");
-    sb.append("    canUpdateJoinPolicy: ").append(toIndentedString(canUpdateJoinPolicy)).append("\n");
     sb.append("    canUpdateTierExpirationPolicy: ").append(toIndentedString(canUpdateTierExpirationPolicy)).append("\n");
     sb.append("    canUpgradeToAdvancedTiers: ").append(toIndentedString(canUpgradeToAdvancedTiers)).append("\n");
     sb.append("    canUpdateSubledgers: ").append(toIndentedString(canUpdateSubledgers)).append("\n");

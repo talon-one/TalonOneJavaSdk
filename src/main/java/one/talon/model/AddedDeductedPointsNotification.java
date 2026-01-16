@@ -31,25 +31,76 @@ import org.threeten.bp.OffsetDateTime;
  */
 
 public class AddedDeductedPointsNotification {
-  public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_I_D = "ProfileIntegrationID";
-  @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_I_D)
-  private String profileIntegrationID;
+  public static final String SERIALIZED_NAME_EMPLOYEE_NAME = "EmployeeName";
+  @SerializedName(SERIALIZED_NAME_EMPLOYEE_NAME)
+  private String employeeName;
 
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_I_D = "LoyaltyProgramID";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_I_D)
   private Long loyaltyProgramID;
 
+  /**
+   * The type of notification.
+   */
+  @JsonAdapter(NotificationTypeEnum.Adapter.class)
+  public enum NotificationTypeEnum {
+    LOYALTYPOINTSDEDUCTED("LoyaltyPointsDeducted"),
+    
+    LOYALTYPOINTSADDED("LoyaltyPointsAdded");
+
+    private String value;
+
+    NotificationTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static NotificationTypeEnum fromValue(String value) {
+      for (NotificationTypeEnum b : NotificationTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<NotificationTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final NotificationTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public NotificationTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return NotificationTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
+  private NotificationTypeEnum notificationType;
+
+  public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_I_D = "ProfileIntegrationID";
+  @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_I_D)
+  private String profileIntegrationID;
+
+  public static final String SERIALIZED_NAME_SESSION_INTEGRATION_I_D = "SessionIntegrationID";
+  @SerializedName(SERIALIZED_NAME_SESSION_INTEGRATION_I_D)
+  private String sessionIntegrationID;
+
   public static final String SERIALIZED_NAME_SUBLEDGER_I_D = "SubledgerID";
   @SerializedName(SERIALIZED_NAME_SUBLEDGER_I_D)
   private String subledgerID;
-
-  public static final String SERIALIZED_NAME_AMOUNT = "Amount";
-  @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private BigDecimal amount;
-
-  public static final String SERIALIZED_NAME_REASON = "Reason";
-  @SerializedName(SERIALIZED_NAME_REASON)
-  private String reason;
 
   /**
    * The notification source, that is, it indicates whether the points were added or deducted via one of the following routes:  - [The Campaign Manager](/docs/product/getting-started)  - [Management API](/management-api#tag/Loyalty)  - [Rule Engine](/docs/product/applications/evaluation-order-for-rules-and-filters) 
@@ -104,13 +155,17 @@ public class AddedDeductedPointsNotification {
   @SerializedName(SERIALIZED_NAME_TYPE_OF_CHANGE)
   private TypeOfChangeEnum typeOfChange;
 
-  public static final String SERIALIZED_NAME_EMPLOYEE_NAME = "EmployeeName";
-  @SerializedName(SERIALIZED_NAME_EMPLOYEE_NAME)
-  private String employeeName;
-
   public static final String SERIALIZED_NAME_USER_I_D = "UserID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
   private Long userID;
+
+  public static final String SERIALIZED_NAME_AMOUNT = "Amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private BigDecimal amount;
+
+  public static final String SERIALIZED_NAME_EXPIRY_DATE = "ExpiryDate";
+  @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
+  private OffsetDateTime expiryDate;
 
   /**
    * The action (addition or deduction) made with loyalty points.
@@ -163,89 +218,34 @@ public class AddedDeductedPointsNotification {
   @SerializedName(SERIALIZED_NAME_OPERATION)
   private OperationEnum operation;
 
+  public static final String SERIALIZED_NAME_REASON = "Reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  private String reason;
+
   public static final String SERIALIZED_NAME_START_DATE = "StartDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
 
-  public static final String SERIALIZED_NAME_EXPIRY_DATE = "ExpiryDate";
-  @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
-  private OffsetDateTime expiryDate;
 
-  public static final String SERIALIZED_NAME_SESSION_INTEGRATION_I_D = "SessionIntegrationID";
-  @SerializedName(SERIALIZED_NAME_SESSION_INTEGRATION_I_D)
-  private String sessionIntegrationID;
-
-  /**
-   * The type of notification.
-   */
-  @JsonAdapter(NotificationTypeEnum.Adapter.class)
-  public enum NotificationTypeEnum {
-    LOYALTYPOINTSDEDUCTED("LoyaltyPointsDeducted"),
+  public AddedDeductedPointsNotification employeeName(String employeeName) {
     
-    LOYALTYPOINTSADDED("LoyaltyPointsAdded");
-
-    private String value;
-
-    NotificationTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static NotificationTypeEnum fromValue(String value) {
-      for (NotificationTypeEnum b : NotificationTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<NotificationTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final NotificationTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public NotificationTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return NotificationTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "NotificationType";
-  @SerializedName(SERIALIZED_NAME_NOTIFICATION_TYPE)
-  private NotificationTypeEnum notificationType;
-
-
-  public AddedDeductedPointsNotification profileIntegrationID(String profileIntegrationID) {
-    
-    this.profileIntegrationID = profileIntegrationID;
+    this.employeeName = employeeName;
     return this;
   }
 
    /**
-   * The integration ID of the customer profile to whom points were added or deducted.
-   * @return profileIntegrationID
+   * The name of the employee who added or deducted points.
+   * @return employeeName
   **/
-  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID of the customer profile to whom points were added or deducted.")
+  @ApiModelProperty(example = "Franziska Schneider", required = true, value = "The name of the employee who added or deducted points.")
 
-  public String getProfileIntegrationID() {
-    return profileIntegrationID;
+  public String getEmployeeName() {
+    return employeeName;
   }
 
 
-  public void setProfileIntegrationID(String profileIntegrationID) {
-    this.profileIntegrationID = profileIntegrationID;
+  public void setEmployeeName(String employeeName) {
+    this.employeeName = employeeName;
   }
 
 
@@ -272,6 +272,72 @@ public class AddedDeductedPointsNotification {
   }
 
 
+  public AddedDeductedPointsNotification notificationType(NotificationTypeEnum notificationType) {
+    
+    this.notificationType = notificationType;
+    return this;
+  }
+
+   /**
+   * The type of notification.
+   * @return notificationType
+  **/
+  @ApiModelProperty(required = true, value = "The type of notification.")
+
+  public NotificationTypeEnum getNotificationType() {
+    return notificationType;
+  }
+
+
+  public void setNotificationType(NotificationTypeEnum notificationType) {
+    this.notificationType = notificationType;
+  }
+
+
+  public AddedDeductedPointsNotification profileIntegrationID(String profileIntegrationID) {
+    
+    this.profileIntegrationID = profileIntegrationID;
+    return this;
+  }
+
+   /**
+   * The integration ID of the customer profile to whom points were added or deducted.
+   * @return profileIntegrationID
+  **/
+  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID of the customer profile to whom points were added or deducted.")
+
+  public String getProfileIntegrationID() {
+    return profileIntegrationID;
+  }
+
+
+  public void setProfileIntegrationID(String profileIntegrationID) {
+    this.profileIntegrationID = profileIntegrationID;
+  }
+
+
+  public AddedDeductedPointsNotification sessionIntegrationID(String sessionIntegrationID) {
+    
+    this.sessionIntegrationID = sessionIntegrationID;
+    return this;
+  }
+
+   /**
+   * The integration ID of the session through which the points were earned or lost.
+   * @return sessionIntegrationID
+  **/
+  @ApiModelProperty(example = "cc53e4fa-547f-4f5e-8333-76e05c381f67", required = true, value = "The integration ID of the session through which the points were earned or lost.")
+
+  public String getSessionIntegrationID() {
+    return sessionIntegrationID;
+  }
+
+
+  public void setSessionIntegrationID(String sessionIntegrationID) {
+    this.sessionIntegrationID = sessionIntegrationID;
+  }
+
+
   public AddedDeductedPointsNotification subledgerID(String subledgerID) {
     
     this.subledgerID = subledgerID;
@@ -291,50 +357,6 @@ public class AddedDeductedPointsNotification {
 
   public void setSubledgerID(String subledgerID) {
     this.subledgerID = subledgerID;
-  }
-
-
-  public AddedDeductedPointsNotification amount(BigDecimal amount) {
-    
-    this.amount = amount;
-    return this;
-  }
-
-   /**
-   * The amount of added or deducted loyalty points.
-   * @return amount
-  **/
-  @ApiModelProperty(example = "10.99", required = true, value = "The amount of added or deducted loyalty points.")
-
-  public BigDecimal getAmount() {
-    return amount;
-  }
-
-
-  public void setAmount(BigDecimal amount) {
-    this.amount = amount;
-  }
-
-
-  public AddedDeductedPointsNotification reason(String reason) {
-    
-    this.reason = reason;
-    return this;
-  }
-
-   /**
-   * The reason for the points addition or deduction.
-   * @return reason
-  **/
-  @ApiModelProperty(example = "Compensation", required = true, value = "The reason for the points addition or deduction.")
-
-  public String getReason() {
-    return reason;
-  }
-
-
-  public void setReason(String reason) {
-    this.reason = reason;
   }
 
 
@@ -360,28 +382,6 @@ public class AddedDeductedPointsNotification {
   }
 
 
-  public AddedDeductedPointsNotification employeeName(String employeeName) {
-    
-    this.employeeName = employeeName;
-    return this;
-  }
-
-   /**
-   * The name of the employee who added or deducted points.
-   * @return employeeName
-  **/
-  @ApiModelProperty(example = "Franziska Schneider", required = true, value = "The name of the employee who added or deducted points.")
-
-  public String getEmployeeName() {
-    return employeeName;
-  }
-
-
-  public void setEmployeeName(String employeeName) {
-    this.employeeName = employeeName;
-  }
-
-
   public AddedDeductedPointsNotification userID(Long userID) {
     
     this.userID = userID;
@@ -390,7 +390,6 @@ public class AddedDeductedPointsNotification {
 
    /**
    * The ID of the employee who added or deducted points.
-   * minimum: 1
    * @return userID
   **/
   @ApiModelProperty(example = "25", required = true, value = "The ID of the employee who added or deducted points.")
@@ -405,48 +404,25 @@ public class AddedDeductedPointsNotification {
   }
 
 
-  public AddedDeductedPointsNotification operation(OperationEnum operation) {
+  public AddedDeductedPointsNotification amount(BigDecimal amount) {
     
-    this.operation = operation;
+    this.amount = amount;
     return this;
   }
 
    /**
-   * The action (addition or deduction) made with loyalty points.
-   * @return operation
+   * The amount of added or deducted loyalty points.
+   * @return amount
   **/
-  @ApiModelProperty(required = true, value = "The action (addition or deduction) made with loyalty points.")
+  @ApiModelProperty(example = "10.99", required = true, value = "The amount of added or deducted loyalty points.")
 
-  public OperationEnum getOperation() {
-    return operation;
+  public BigDecimal getAmount() {
+    return amount;
   }
 
 
-  public void setOperation(OperationEnum operation) {
-    this.operation = operation;
-  }
-
-
-  public AddedDeductedPointsNotification startDate(OffsetDateTime startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * The start date for loyalty points.
-   * @return startDate
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2023-01-24T14:15:22Z", value = "The start date for loyalty points.")
-
-  public OffsetDateTime getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
+  public void setAmount(BigDecimal amount) {
+    this.amount = amount;
   }
 
 
@@ -473,47 +449,70 @@ public class AddedDeductedPointsNotification {
   }
 
 
-  public AddedDeductedPointsNotification sessionIntegrationID(String sessionIntegrationID) {
+  public AddedDeductedPointsNotification operation(OperationEnum operation) {
     
-    this.sessionIntegrationID = sessionIntegrationID;
+    this.operation = operation;
     return this;
   }
 
    /**
-   * The integration ID of the session through which the points were earned or lost.
-   * @return sessionIntegrationID
+   * The action (addition or deduction) made with loyalty points.
+   * @return operation
   **/
-  @ApiModelProperty(example = "cc53e4fa-547f-4f5e-8333-76e05c381f67", required = true, value = "The integration ID of the session through which the points were earned or lost.")
+  @ApiModelProperty(required = true, value = "The action (addition or deduction) made with loyalty points.")
 
-  public String getSessionIntegrationID() {
-    return sessionIntegrationID;
+  public OperationEnum getOperation() {
+    return operation;
   }
 
 
-  public void setSessionIntegrationID(String sessionIntegrationID) {
-    this.sessionIntegrationID = sessionIntegrationID;
+  public void setOperation(OperationEnum operation) {
+    this.operation = operation;
   }
 
 
-  public AddedDeductedPointsNotification notificationType(NotificationTypeEnum notificationType) {
+  public AddedDeductedPointsNotification reason(String reason) {
     
-    this.notificationType = notificationType;
+    this.reason = reason;
     return this;
   }
 
    /**
-   * The type of notification.
-   * @return notificationType
+   * The reason for the points addition or deduction.
+   * @return reason
   **/
-  @ApiModelProperty(required = true, value = "The type of notification.")
+  @ApiModelProperty(example = "Compensation", required = true, value = "The reason for the points addition or deduction.")
 
-  public NotificationTypeEnum getNotificationType() {
-    return notificationType;
+  public String getReason() {
+    return reason;
   }
 
 
-  public void setNotificationType(NotificationTypeEnum notificationType) {
-    this.notificationType = notificationType;
+  public void setReason(String reason) {
+    this.reason = reason;
+  }
+
+
+  public AddedDeductedPointsNotification startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * The start date for loyalty points.
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2023-01-24T14:15:22Z", value = "The start date for loyalty points.")
+
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
   }
 
 
@@ -526,24 +525,24 @@ public class AddedDeductedPointsNotification {
       return false;
     }
     AddedDeductedPointsNotification addedDeductedPointsNotification = (AddedDeductedPointsNotification) o;
-    return Objects.equals(this.profileIntegrationID, addedDeductedPointsNotification.profileIntegrationID) &&
+    return Objects.equals(this.employeeName, addedDeductedPointsNotification.employeeName) &&
         Objects.equals(this.loyaltyProgramID, addedDeductedPointsNotification.loyaltyProgramID) &&
-        Objects.equals(this.subledgerID, addedDeductedPointsNotification.subledgerID) &&
-        Objects.equals(this.amount, addedDeductedPointsNotification.amount) &&
-        Objects.equals(this.reason, addedDeductedPointsNotification.reason) &&
-        Objects.equals(this.typeOfChange, addedDeductedPointsNotification.typeOfChange) &&
-        Objects.equals(this.employeeName, addedDeductedPointsNotification.employeeName) &&
-        Objects.equals(this.userID, addedDeductedPointsNotification.userID) &&
-        Objects.equals(this.operation, addedDeductedPointsNotification.operation) &&
-        Objects.equals(this.startDate, addedDeductedPointsNotification.startDate) &&
-        Objects.equals(this.expiryDate, addedDeductedPointsNotification.expiryDate) &&
+        Objects.equals(this.notificationType, addedDeductedPointsNotification.notificationType) &&
+        Objects.equals(this.profileIntegrationID, addedDeductedPointsNotification.profileIntegrationID) &&
         Objects.equals(this.sessionIntegrationID, addedDeductedPointsNotification.sessionIntegrationID) &&
-        Objects.equals(this.notificationType, addedDeductedPointsNotification.notificationType);
+        Objects.equals(this.subledgerID, addedDeductedPointsNotification.subledgerID) &&
+        Objects.equals(this.typeOfChange, addedDeductedPointsNotification.typeOfChange) &&
+        Objects.equals(this.userID, addedDeductedPointsNotification.userID) &&
+        Objects.equals(this.amount, addedDeductedPointsNotification.amount) &&
+        Objects.equals(this.expiryDate, addedDeductedPointsNotification.expiryDate) &&
+        Objects.equals(this.operation, addedDeductedPointsNotification.operation) &&
+        Objects.equals(this.reason, addedDeductedPointsNotification.reason) &&
+        Objects.equals(this.startDate, addedDeductedPointsNotification.startDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileIntegrationID, loyaltyProgramID, subledgerID, amount, reason, typeOfChange, employeeName, userID, operation, startDate, expiryDate, sessionIntegrationID, notificationType);
+    return Objects.hash(employeeName, loyaltyProgramID, notificationType, profileIntegrationID, sessionIntegrationID, subledgerID, typeOfChange, userID, amount, expiryDate, operation, reason, startDate);
   }
 
 
@@ -551,19 +550,19 @@ public class AddedDeductedPointsNotification {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AddedDeductedPointsNotification {\n");
-    sb.append("    profileIntegrationID: ").append(toIndentedString(profileIntegrationID)).append("\n");
-    sb.append("    loyaltyProgramID: ").append(toIndentedString(loyaltyProgramID)).append("\n");
-    sb.append("    subledgerID: ").append(toIndentedString(subledgerID)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
-    sb.append("    typeOfChange: ").append(toIndentedString(typeOfChange)).append("\n");
     sb.append("    employeeName: ").append(toIndentedString(employeeName)).append("\n");
-    sb.append("    userID: ").append(toIndentedString(userID)).append("\n");
-    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
-    sb.append("    sessionIntegrationID: ").append(toIndentedString(sessionIntegrationID)).append("\n");
+    sb.append("    loyaltyProgramID: ").append(toIndentedString(loyaltyProgramID)).append("\n");
     sb.append("    notificationType: ").append(toIndentedString(notificationType)).append("\n");
+    sb.append("    profileIntegrationID: ").append(toIndentedString(profileIntegrationID)).append("\n");
+    sb.append("    sessionIntegrationID: ").append(toIndentedString(sessionIntegrationID)).append("\n");
+    sb.append("    subledgerID: ").append(toIndentedString(subledgerID)).append("\n");
+    sb.append("    typeOfChange: ").append(toIndentedString(typeOfChange)).append("\n");
+    sb.append("    userID: ").append(toIndentedString(userID)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
+    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

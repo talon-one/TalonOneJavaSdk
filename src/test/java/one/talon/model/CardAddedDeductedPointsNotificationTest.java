@@ -45,51 +45,11 @@ public class CardAddedDeductedPointsNotificationTest {
     }
 
     /**
-     * Test the property 'profileIntegrationIDs'
+     * Test the property 'cardIdentifier'
      */
     @Test
-    public void profileIntegrationIDsTest() {
-        // TODO: test profileIntegrationIDs
-    }
-
-    /**
-     * Test the property 'loyaltyProgramID'
-     */
-    @Test
-    public void loyaltyProgramIDTest() {
-        // TODO: test loyaltyProgramID
-    }
-
-    /**
-     * Test the property 'subledgerID'
-     */
-    @Test
-    public void subledgerIDTest() {
-        // TODO: test subledgerID
-    }
-
-    /**
-     * Test the property 'amount'
-     */
-    @Test
-    public void amountTest() {
-        // TODO: test amount
-    }
-
-    /**
-     * Test the property 'reason'
-     */
-    @Test
-    public void reasonTest() {
-        // TODO: test reason
-    }
-
-    /**
-     * Test the property 'typeOfChange'
-     */
-    @Test
-    public void typeOfChangeTest() {
-        // TODO: test typeOfChange
+    public void cardIdentifierTest() {
+        // TODO: test cardIdentifier
     }
 
     /**
@@ -101,43 +61,11 @@ public class CardAddedDeductedPointsNotificationTest {
     }
 
     /**
-     * Test the property 'userID'
+     * Test the property 'loyaltyProgramID'
      */
     @Test
-    public void userIDTest() {
-        // TODO: test userID
-    }
-
-    /**
-     * Test the property 'operation'
-     */
-    @Test
-    public void operationTest() {
-        // TODO: test operation
-    }
-
-    /**
-     * Test the property 'startDate'
-     */
-    @Test
-    public void startDateTest() {
-        // TODO: test startDate
-    }
-
-    /**
-     * Test the property 'expiryDate'
-     */
-    @Test
-    public void expiryDateTest() {
-        // TODO: test expiryDate
-    }
-
-    /**
-     * Test the property 'sessionIntegrationID'
-     */
-    @Test
-    public void sessionIntegrationIDTest() {
-        // TODO: test sessionIntegrationID
+    public void loyaltyProgramIDTest() {
+        // TODO: test loyaltyProgramID
     }
 
     /**
@@ -149,11 +77,43 @@ public class CardAddedDeductedPointsNotificationTest {
     }
 
     /**
-     * Test the property 'cardIdentifier'
+     * Test the property 'profileIntegrationIDs'
      */
     @Test
-    public void cardIdentifierTest() {
-        // TODO: test cardIdentifier
+    public void profileIntegrationIDsTest() {
+        // TODO: test profileIntegrationIDs
+    }
+
+    /**
+     * Test the property 'sessionIntegrationID'
+     */
+    @Test
+    public void sessionIntegrationIDTest() {
+        // TODO: test sessionIntegrationID
+    }
+
+    /**
+     * Test the property 'subledgerID'
+     */
+    @Test
+    public void subledgerIDTest() {
+        // TODO: test subledgerID
+    }
+
+    /**
+     * Test the property 'typeOfChange'
+     */
+    @Test
+    public void typeOfChangeTest() {
+        // TODO: test typeOfChange
+    }
+
+    /**
+     * Test the property 'userID'
+     */
+    @Test
+    public void userIDTest() {
+        // TODO: test userID
     }
 
     /**
@@ -162,6 +122,46 @@ public class CardAddedDeductedPointsNotificationTest {
     @Test
     public void usersPerCardLimitTest() {
         // TODO: test usersPerCardLimit
+    }
+
+    /**
+     * Test the property 'amount'
+     */
+    @Test
+    public void amountTest() {
+        // TODO: test amount
+    }
+
+    /**
+     * Test the property 'expiryDate'
+     */
+    @Test
+    public void expiryDateTest() {
+        // TODO: test expiryDate
+    }
+
+    /**
+     * Test the property 'operation'
+     */
+    @Test
+    public void operationTest() {
+        // TODO: test operation
+    }
+
+    /**
+     * Test the property 'reason'
+     */
+    @Test
+    public void reasonTest() {
+        // TODO: test reason
+    }
+
+    /**
+     * Test the property 'startDate'
+     */
+    @Test
+    public void startDateTest() {
+        // TODO: test startDate
     }
 
 }

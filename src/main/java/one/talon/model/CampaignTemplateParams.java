@@ -48,6 +48,8 @@ public class CampaignTemplateParams {
     
     _LIST_STRING_("(list string)"),
     
+    _LIST_NUMBER_("(list number)"),
+    
     TIME("time");
 
     private String value;
