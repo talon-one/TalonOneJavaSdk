@@ -76,6 +76,10 @@ public class CardLedgerPointsEntryIntegrationAPI {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private BigDecimal amount;
 
+  public static final String SERIALIZED_NAME_VALIDITY_DURATION = "validityDuration";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DURATION)
+  private String validityDuration;
+
 
   public CardLedgerPointsEntryIntegrationAPI id(Long id) {
     
@@ -321,6 +325,29 @@ public class CardLedgerPointsEntryIntegrationAPI {
   }
 
 
+  public CardLedgerPointsEntryIntegrationAPI validityDuration(String validityDuration) {
+    
+    this.validityDuration = validityDuration;
+    return this;
+  }
+
+   /**
+   * The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which &#x60;awaitsActivation&#x60; is &#x60;true&#x60; and &#x60;expiryDate&#x60; is not set. 
+   * @return validityDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "30D", value = "The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set. ")
+
+  public String getValidityDuration() {
+    return validityDuration;
+  }
+
+
+  public void setValidityDuration(String validityDuration) {
+    this.validityDuration = validityDuration;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -340,12 +367,13 @@ public class CardLedgerPointsEntryIntegrationAPI {
         Objects.equals(this.startDate, cardLedgerPointsEntryIntegrationAPI.startDate) &&
         Objects.equals(this.expiryDate, cardLedgerPointsEntryIntegrationAPI.expiryDate) &&
         Objects.equals(this.subledgerId, cardLedgerPointsEntryIntegrationAPI.subledgerId) &&
-        Objects.equals(this.amount, cardLedgerPointsEntryIntegrationAPI.amount);
+        Objects.equals(this.amount, cardLedgerPointsEntryIntegrationAPI.amount) &&
+        Objects.equals(this.validityDuration, cardLedgerPointsEntryIntegrationAPI.validityDuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, transactionUUID, created, programId, customerProfileID, customerSessionId, name, startDate, expiryDate, subledgerId, amount);
+    return Objects.hash(id, transactionUUID, created, programId, customerProfileID, customerSessionId, name, startDate, expiryDate, subledgerId, amount, validityDuration);
   }
 
 
@@ -364,6 +392,7 @@ public class CardLedgerPointsEntryIntegrationAPI {
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    subledgerId: ").append(toIndentedString(subledgerId)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    validityDuration: ").append(toIndentedString(validityDuration)).append("\n");
     sb.append("}");
     return sb.toString();
   }

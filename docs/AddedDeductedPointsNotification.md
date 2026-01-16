@@ -6,19 +6,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profileIntegrationID** | **String** | The integration ID of the customer profile to whom points were added or deducted. | 
-**loyaltyProgramID** | **Long** | The ID of the loyalty program. | 
-**subledgerID** | **String** | The ID of the subledger within the loyalty program where these points were added. | 
-**amount** | [**BigDecimal**](BigDecimal.md) | The amount of added or deducted loyalty points. | 
-**reason** | **String** | The reason for the points addition or deduction. | 
-**typeOfChange** | [**TypeOfChangeEnum**](#TypeOfChangeEnum) | The notification source, that is, it indicates whether the points were added or deducted via one of the following routes:  - [The Campaign Manager](/docs/product/getting-started)  - [Management API](/management-api#tag/Loyalty)  - [Rule Engine](/docs/product/applications/evaluation-order-for-rules-and-filters)  | 
 **employeeName** | **String** | The name of the employee who added or deducted points. | 
-**userID** | **Long** | The ID of the employee who added or deducted points. | 
-**operation** | [**OperationEnum**](#OperationEnum) | The action (addition or deduction) made with loyalty points. | 
-**startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date for loyalty points. |  [optional]
-**expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | The expiration date for loyalty points. |  [optional]
-**sessionIntegrationID** | **String** | The integration ID of the session through which the points were earned or lost. | 
+**loyaltyProgramID** | **Long** | The ID of the loyalty program. | 
 **notificationType** | [**NotificationTypeEnum**](#NotificationTypeEnum) | The type of notification. | 
+**profileIntegrationID** | **String** | The integration ID of the customer profile to whom points were added or deducted. | 
+**sessionIntegrationID** | **String** | The integration ID of the session through which the points were earned or lost. | 
+**subledgerID** | **String** | The ID of the subledger within the loyalty program where these points were added. | 
+**typeOfChange** | [**TypeOfChangeEnum**](#TypeOfChangeEnum) | The notification source, that is, it indicates whether the points were added or deducted via one of the following routes:  - [The Campaign Manager](/docs/product/getting-started)  - [Management API](/management-api#tag/Loyalty)  - [Rule Engine](/docs/product/applications/evaluation-order-for-rules-and-filters)  | 
+**userID** | **Long** | The ID of the employee who added or deducted points. | 
+**amount** | [**BigDecimal**](BigDecimal.md) | The amount of added or deducted loyalty points. | 
+**expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | The expiration date for loyalty points. |  [optional]
+**operation** | [**OperationEnum**](#OperationEnum) | The action (addition or deduction) made with loyalty points. | 
+**reason** | **String** | The reason for the points addition or deduction. | 
+**startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date for loyalty points. |  [optional]
+
+
+
+## Enum: NotificationTypeEnum
+
+Name | Value
+---- | -----
+LOYALTYPOINTSDEDUCTED | &quot;LoyaltyPointsDeducted&quot;
+LOYALTYPOINTSADDED | &quot;LoyaltyPointsAdded&quot;
 
 
 
@@ -38,15 +47,6 @@ Name | Value
 ---- | -----
 ADDITION | &quot;addition&quot;
 DEDUCTION | &quot;deduction&quot;
-
-
-
-## Enum: NotificationTypeEnum
-
-Name | Value
----- | -----
-LOYALTYPOINTSDEDUCTED | &quot;LoyaltyPointsDeducted&quot;
-LOYALTYPOINTSADDED | &quot;LoyaltyPointsAdded&quot;
 
 
 

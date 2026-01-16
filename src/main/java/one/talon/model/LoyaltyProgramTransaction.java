@@ -159,6 +159,10 @@ public class LoyaltyProgramTransaction {
   @SerializedName(SERIALIZED_NAME_FLAGS)
   private LoyaltyLedgerEntryFlags flags;
 
+  public static final String SERIALIZED_NAME_VALIDITY_DURATION = "validityDuration";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DURATION)
+  private String validityDuration;
+
 
   public LoyaltyProgramTransaction id(Long id) {
     
@@ -344,10 +348,10 @@ public class LoyaltyProgramTransaction {
   }
 
    /**
-   * When points become active. Possible values:   - &#x60;immediate&#x60;: Points are immediately active.   - a timestamp value: Points become active at a given date and time. 
+   * When points become active. Possible values:   - &#x60;immediate&#x60;: Points are immediately active.   - &#x60;on_action&#x60;: Points become active based on the customer&#39;s action.   - a timestamp value: Points become active at a given date and time. 
    * @return startDate
   **/
-  @ApiModelProperty(example = "2022-01-02T15:04:05Z07:00", required = true, value = "When points become active. Possible values:   - `immediate`: Points are immediately active.   - a timestamp value: Points become active at a given date and time. ")
+  @ApiModelProperty(example = "2022-01-02T15:04:05Z07:00", required = true, value = "When points become active. Possible values:   - `immediate`: Points are immediately active.   - `on_action`: Points become active based on the customer's action.   - a timestamp value: Points become active at a given date and time. ")
 
   public String getStartDate() {
     return startDate;
@@ -610,6 +614,29 @@ public class LoyaltyProgramTransaction {
   }
 
 
+  public LoyaltyProgramTransaction validityDuration(String validityDuration) {
+    
+    this.validityDuration = validityDuration;
+    return this;
+  }
+
+   /**
+   * The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which &#x60;awaitsActivation&#x60; is &#x60;true&#x60; and &#x60;expiryDate&#x60; is not set. 
+   * @return validityDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "30D", value = "The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set. ")
+
+  public String getValidityDuration() {
+    return validityDuration;
+  }
+
+
+  public void setValidityDuration(String validityDuration) {
+    this.validityDuration = validityDuration;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -638,12 +665,13 @@ public class LoyaltyProgramTransaction {
         Objects.equals(this.userEmail, loyaltyProgramTransaction.userEmail) &&
         Objects.equals(this.rulesetId, loyaltyProgramTransaction.rulesetId) &&
         Objects.equals(this.ruleName, loyaltyProgramTransaction.ruleName) &&
-        Objects.equals(this.flags, loyaltyProgramTransaction.flags);
+        Objects.equals(this.flags, loyaltyProgramTransaction.flags) &&
+        Objects.equals(this.validityDuration, loyaltyProgramTransaction.validityDuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, transactionUUID, programId, campaignId, created, type, amount, name, startDate, expiryDate, customerProfileId, cardIdentifier, subledgerId, customerSessionId, importId, userId, userEmail, rulesetId, ruleName, flags);
+    return Objects.hash(id, transactionUUID, programId, campaignId, created, type, amount, name, startDate, expiryDate, customerProfileId, cardIdentifier, subledgerId, customerSessionId, importId, userId, userEmail, rulesetId, ruleName, flags, validityDuration);
   }
 
 
@@ -671,6 +699,7 @@ public class LoyaltyProgramTransaction {
     sb.append("    rulesetId: ").append(toIndentedString(rulesetId)).append("\n");
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
     sb.append("    flags: ").append(toIndentedString(flags)).append("\n");
+    sb.append("    validityDuration: ").append(toIndentedString(validityDuration)).append("\n");
     sb.append("}");
     return sb.toString();
   }

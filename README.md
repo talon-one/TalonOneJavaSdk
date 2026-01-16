@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>14.1.0</version>
+  <version>14.1.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:14.1.0"
+compile "one.talon:talon-one-client:14.1.1"
 ```
 
 ### Others
@@ -191,6 +191,7 @@ All URLs are relative to `https://yourbaseurl.talon.one`.
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*IntegrationApi* | [**activateLoyaltyPoints**](docs/IntegrationApi.md#activateLoyaltyPoints) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/activate_points | Activate loyalty points
 *IntegrationApi* | [**bestPriorPrice**](docs/IntegrationApi.md#bestPriorPrice) | **POST** /v1/best_prior_price | Fetch best prior price
 *IntegrationApi* | [**createAudienceV2**](docs/IntegrationApi.md#createAudienceV2) | **POST** /v2/audiences | Create audience
 *IntegrationApi* | [**createCouponReservation**](docs/IntegrationApi.md#createCouponReservation) | **POST** /v1/coupon_reservations/{couponValue} | Create coupon reservation
@@ -217,6 +218,7 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**returnCartItems**](docs/IntegrationApi.md#returnCartItems) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items
 *IntegrationApi* | [**syncCatalog**](docs/IntegrationApi.md#syncCatalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog
 *IntegrationApi* | [**trackEventV2**](docs/IntegrationApi.md#trackEventV2) | **POST** /v2/events | Track event
+*IntegrationApi* | [**unlinkLoyaltyCardFromProfile**](docs/IntegrationApi.md#unlinkLoyaltyCardFromProfile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/unlink_profile | Unlink customer profile from a loyalty card
 *IntegrationApi* | [**updateAudienceCustomersAttributes**](docs/IntegrationApi.md#updateAudienceCustomersAttributes) | **PUT** /v2/audience_customers/{audienceId}/attributes | Update profile attributes for all customers in audience
 *IntegrationApi* | [**updateAudienceV2**](docs/IntegrationApi.md#updateAudienceV2) | **PUT** /v2/audiences/{audienceId} | Update audience name
 *IntegrationApi* | [**updateCustomerProfileAudiences**](docs/IntegrationApi.md#updateCustomerProfileAudiences) | **POST** /v2/customer_audiences | Update multiple customer profiles&#39; audiences
@@ -325,8 +327,10 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getLoyaltyCard**](docs/ManagementApi.md#getLoyaltyCard) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Get loyalty card
 *ManagementApi* | [**getLoyaltyCardTransactionLogs**](docs/ManagementApi.md#getLoyaltyCardTransactionLogs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card&#39;s transactions
 *ManagementApi* | [**getLoyaltyCards**](docs/ManagementApi.md#getLoyaltyCards) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards | List loyalty cards
+*ManagementApi* | [**getLoyaltyLedgerBalances**](docs/ManagementApi.md#getLoyaltyLedgerBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_balances | Get customer&#39;s loyalty balances
 *ManagementApi* | [**getLoyaltyPoints**](docs/ManagementApi.md#getLoyaltyPoints) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId} | Get customer&#39;s full loyalty ledger
 *ManagementApi* | [**getLoyaltyProgram**](docs/ManagementApi.md#getLoyaltyProgram) | **GET** /v1/loyalty_programs/{loyaltyProgramId} | Get loyalty program
+*ManagementApi* | [**getLoyaltyProgramProfileLedgerTransactions**](docs/ManagementApi.md#getLoyaltyProgramProfileLedgerTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_transactions | List customer&#39;s loyalty transactions
 *ManagementApi* | [**getLoyaltyProgramTransactions**](docs/ManagementApi.md#getLoyaltyProgramTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/transactions | List loyalty program transactions
 *ManagementApi* | [**getLoyaltyPrograms**](docs/ManagementApi.md#getLoyaltyPrograms) | **GET** /v1/loyalty_programs | List loyalty programs
 *ManagementApi* | [**getLoyaltyStatistics**](docs/ManagementApi.md#getLoyaltyStatistics) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/statistics | Get loyalty program statistics
@@ -420,12 +424,16 @@ Class | Method | HTTP request | Description
 - [AchievementProgress](docs/AchievementProgress.md)
 - [AchievementProgressWithDefinition](docs/AchievementProgressWithDefinition.md)
 - [AchievementStatusEntry](docs/AchievementStatusEntry.md)
+- [ActivateLoyaltyPoints](docs/ActivateLoyaltyPoints.md)
+- [ActivateLoyaltyPointsResponse](docs/ActivateLoyaltyPointsResponse.md)
 - [AddFreeItemEffectProps](docs/AddFreeItemEffectProps.md)
 - [AddItemCatalogAction](docs/AddItemCatalogAction.md)
 - [AddLoyaltyPoints](docs/AddLoyaltyPoints.md)
 - [AddLoyaltyPointsEffectProps](docs/AddLoyaltyPointsEffectProps.md)
 - [AddPriceAdjustmentCatalogAction](docs/AddPriceAdjustmentCatalogAction.md)
 - [AddToAudienceEffectProps](docs/AddToAudienceEffectProps.md)
+- [AddedDeductedPointsBalancesAction](docs/AddedDeductedPointsBalancesAction.md)
+- [AddedDeductedPointsBalancesNotification](docs/AddedDeductedPointsBalancesNotification.md)
 - [AddedDeductedPointsBalancesNotificationPolicy](docs/AddedDeductedPointsBalancesNotificationPolicy.md)
 - [AddedDeductedPointsNotification](docs/AddedDeductedPointsNotification.md)
 - [AddedDeductedPointsNotificationPolicy](docs/AddedDeductedPointsNotificationPolicy.md)
@@ -478,7 +486,7 @@ Class | Method | HTTP request | Description
 - [BestPriorPrice](docs/BestPriorPrice.md)
 - [BestPriorPriceMetadata](docs/BestPriorPriceMetadata.md)
 - [BestPriorPriceRequest](docs/BestPriorPriceRequest.md)
-- [BestPriorPriceRequestTarget](docs/BestPriorPriceRequestTarget.md)
+- [BestPriorTarget](docs/BestPriorTarget.md)
 - [Binding](docs/Binding.md)
 - [BulkApplicationNotification](docs/BulkApplicationNotification.md)
 - [BulkOperationOnCampaigns](docs/BulkOperationOnCampaigns.md)
@@ -506,6 +514,7 @@ Class | Method | HTTP request | Description
 - [CampaignEvaluationTreeChangedNotification](docs/CampaignEvaluationTreeChangedNotification.md)
 - [CampaignGroup](docs/CampaignGroup.md)
 - [CampaignGroupEntity](docs/CampaignGroupEntity.md)
+- [CampaignLogSummary](docs/CampaignLogSummary.md)
 - [CampaignNotificationBase](docs/CampaignNotificationBase.md)
 - [CampaignNotificationGeneric](docs/CampaignNotificationGeneric.md)
 - [CampaignNotificationItemBase](docs/CampaignNotificationItemBase.md)
@@ -526,6 +535,7 @@ Class | Method | HTTP request | Description
 - [CampaignTemplateCouponReservationSettings](docs/CampaignTemplateCouponReservationSettings.md)
 - [CampaignTemplateParams](docs/CampaignTemplateParams.md)
 - [CampaignVersions](docs/CampaignVersions.md)
+- [CardAddedDeductedPointsBalancesNotification](docs/CardAddedDeductedPointsBalancesNotification.md)
 - [CardAddedDeductedPointsBalancesNotificationPolicy](docs/CardAddedDeductedPointsBalancesNotificationPolicy.md)
 - [CardAddedDeductedPointsNotification](docs/CardAddedDeductedPointsNotification.md)
 - [CardAddedDeductedPointsNotificationPolicy](docs/CardAddedDeductedPointsNotificationPolicy.md)
@@ -555,8 +565,10 @@ Class | Method | HTTP request | Description
 - [CouponDeletionFilters](docs/CouponDeletionFilters.md)
 - [CouponDeletionJob](docs/CouponDeletionJob.md)
 - [CouponEntity](docs/CouponEntity.md)
+- [CouponFailureSummary](docs/CouponFailureSummary.md)
 - [CouponLimitConfigs](docs/CouponLimitConfigs.md)
 - [CouponRejectionReason](docs/CouponRejectionReason.md)
+- [CouponRejections](docs/CouponRejections.md)
 - [CouponReservations](docs/CouponReservations.md)
 - [CouponSearch](docs/CouponSearch.md)
 - [CouponValue](docs/CouponValue.md)
@@ -586,6 +598,7 @@ Class | Method | HTTP request | Description
 - [DeductLoyaltyPoints](docs/DeductLoyaltyPoints.md)
 - [DeductLoyaltyPointsEffectProps](docs/DeductLoyaltyPointsEffectProps.md)
 - [DeleteCouponsData](docs/DeleteCouponsData.md)
+- [DeleteLoyaltyTransactionsRequest](docs/DeleteLoyaltyTransactionsRequest.md)
 - [DeleteUserRequest](docs/DeleteUserRequest.md)
 - [Effect](docs/Effect.md)
 - [EffectEntity](docs/EffectEntity.md)
@@ -602,6 +615,7 @@ Class | Method | HTTP request | Description
 - [Event](docs/Event.md)
 - [EventType](docs/EventType.md)
 - [EventV2](docs/EventV2.md)
+- [EventV3](docs/EventV3.md)
 - [ExpiringCardPointsData](docs/ExpiringCardPointsData.md)
 - [ExpiringCardPointsNotification](docs/ExpiringCardPointsNotification.md)
 - [ExpiringCouponsData](docs/ExpiringCouponsData.md)
@@ -621,6 +635,7 @@ Class | Method | HTTP request | Description
 - [FunctionDef](docs/FunctionDef.md)
 - [GenerateAuditLogSummary](docs/GenerateAuditLogSummary.md)
 - [GenerateCampaignDescription](docs/GenerateCampaignDescription.md)
+- [GenerateCampaignSummary](docs/GenerateCampaignSummary.md)
 - [GenerateCampaignTags](docs/GenerateCampaignTags.md)
 - [GenerateCouponFailureDetailedSummary](docs/GenerateCouponFailureDetailedSummary.md)
 - [GenerateCouponFailureSummary](docs/GenerateCouponFailureSummary.md)
@@ -694,7 +709,10 @@ Class | Method | HTTP request | Description
 - [IntegrationEntity](docs/IntegrationEntity.md)
 - [IntegrationEvent](docs/IntegrationEvent.md)
 - [IntegrationEventV2Request](docs/IntegrationEventV2Request.md)
+- [IntegrationEventV3Request](docs/IntegrationEventV3Request.md)
+- [IntegrationEventV3Response](docs/IntegrationEventV3Response.md)
 - [IntegrationProfileEntity](docs/IntegrationProfileEntity.md)
+- [IntegrationProfileEntityV3](docs/IntegrationProfileEntityV3.md)
 - [IntegrationRequest](docs/IntegrationRequest.md)
 - [IntegrationState](docs/IntegrationState.md)
 - [IntegrationStateV2](docs/IntegrationStateV2.md)
@@ -702,7 +720,6 @@ Class | Method | HTTP request | Description
 - [InventoryCoupon](docs/InventoryCoupon.md)
 - [InventoryReferral](docs/InventoryReferral.md)
 - [ItemAttribute](docs/ItemAttribute.md)
-- [JWT](docs/JWT.md)
 - [LabelTargetAudience](docs/LabelTargetAudience.md)
 - [LabelTargetNone](docs/LabelTargetNone.md)
 - [LedgerEntry](docs/LedgerEntry.md)
@@ -850,6 +867,15 @@ Class | Method | HTTP request | Description
 - [PriceType](docs/PriceType.md)
 - [PriceTypeReferenceDetail](docs/PriceTypeReferenceDetail.md)
 - [PriceTypeReferences](docs/PriceTypeReferences.md)
+- [PrismaticConfig](docs/PrismaticConfig.md)
+- [PrismaticEventPayloadCouponBasedNotifications](docs/PrismaticEventPayloadCouponBasedNotifications.md)
+- [PrismaticEventPayloadCouponBasedNotificationsLimits](docs/PrismaticEventPayloadCouponBasedNotificationsLimits.md)
+- [PrismaticEventPayloadLoyaltyProfileBasedNotifications](docs/PrismaticEventPayloadLoyaltyProfileBasedNotifications.md)
+- [PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction](docs/PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction.md)
+- [PrismaticFlow](docs/PrismaticFlow.md)
+- [PrismaticFlowConfig](docs/PrismaticFlowConfig.md)
+- [PrismaticFlowWithConfig](docs/PrismaticFlowWithConfig.md)
+- [PrismaticPaginatedEventPayload](docs/PrismaticPaginatedEventPayload.md)
 - [Product](docs/Product.md)
 - [ProductSearchMatch](docs/ProductSearchMatch.md)
 - [ProductUnitAnalytics](docs/ProductUnitAnalytics.md)
@@ -883,6 +909,7 @@ Class | Method | HTTP request | Description
 - [RoleV2Base](docs/RoleV2Base.md)
 - [RoleV2PermissionSet](docs/RoleV2PermissionSet.md)
 - [RoleV2Permissions](docs/RoleV2Permissions.md)
+- [RoleV2Readonly](docs/RoleV2Readonly.md)
 - [RoleV2RolesGroup](docs/RoleV2RolesGroup.md)
 - [RollbackAddedLoyaltyPointsEffectProps](docs/RollbackAddedLoyaltyPointsEffectProps.md)
 - [RollbackCouponEffectProps](docs/RollbackCouponEffectProps.md)
@@ -921,6 +948,7 @@ Class | Method | HTTP request | Description
 - [ScimUsersListResponse](docs/ScimUsersListResponse.md)
 - [SecondaryDeployment](docs/SecondaryDeployment.md)
 - [Session](docs/Session.md)
+- [SessionCoupons](docs/SessionCoupons.md)
 - [SetDiscountEffectProps](docs/SetDiscountEffectProps.md)
 - [SetDiscountPerAdditionalCostEffectProps](docs/SetDiscountPerAdditionalCostEffectProps.md)
 - [SetDiscountPerAdditionalCostPerItemEffectProps](docs/SetDiscountPerAdditionalCostPerItemEffectProps.md)
@@ -938,6 +966,7 @@ Class | Method | HTTP request | Description
 - [StrikethroughEffect](docs/StrikethroughEffect.md)
 - [StrikethroughLabelingNotification](docs/StrikethroughLabelingNotification.md)
 - [StrikethroughSetDiscountPerItemEffectProps](docs/StrikethroughSetDiscountPerItemEffectProps.md)
+- [StrikethroughSetDiscountPerItemMemberEffectProps](docs/StrikethroughSetDiscountPerItemMemberEffectProps.md)
 - [StrikethroughTrigger](docs/StrikethroughTrigger.md)
 - [SummaryCampaignStoreBudget](docs/SummaryCampaignStoreBudget.md)
 - [TalangAttribute](docs/TalangAttribute.md)

@@ -170,7 +170,7 @@ public class StrikethroughChangedItem {
    * The price of the changed item.
    * @return price
   **/
-  @ApiModelProperty(example = "99.99", required = true, value = "The price of the changed item.")
+  @ApiModelProperty(example = "100.0", required = true, value = "The price of the changed item.")
 
   public BigDecimal getPrice() {
     return price;

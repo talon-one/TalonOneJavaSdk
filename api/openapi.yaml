@@ -69,20 +69,6 @@ tags:
     See the [docs](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups).
   name: Campaign access groups
 - description: |
-    Represents the [notifications](/docs/product/applications/application-notifications/overview)
-    about campaign-related changes.
-
-    **Note:** The value of the `NotificationType` property indicates the campaign change:
-    - `CampaignNotification` signifies one of the following events:
-      - [Campaign created](#tag/Campaign-notifications/operation/campaignCreatedNotification)
-      - [Campaign state changed](#tag/Campaign-notifications/operation/campaignStateChangedNotification)
-      - [Campaign rules changed](#tag/Campaign-notifications/operation/campaignRulesetChangedNotification)
-      - [Campaign edited](#tag/Campaign-notifications/operation/campaignEditedNotification)
-      - [Campaign collection edited](#tag/Campaign-notifications/operation/campaignCollectionEditedNotification)
-      - [Campaign deleted](#tag/Campaign-notifications/operation/campaignDeletedNotification)
-    - `CampaignEvaluationTreeChanged` signifies [Campaign evaluation tree changed](#tag/Campaign-notifications/operation/campaignEvaluationTreeChangedNotification).
-  name: Campaign notifications
-- description: |
     Represents templates used to generate campaigns from.
   name: Campaign templates
 - description: |
@@ -101,10 +87,6 @@ tags:
 
     See the [docs](https://docs.talon.one/docs/product/campaigns/managing-collections).
   name: Collections
-- description: |
-    Represents the [notifications](/docs/product/applications/application-notifications/overview)
-    about coupons.
-  name: Coupon notifications
 - description: |
     Coupons are unique codes belonging to a particular campaign. They don't define any behavior on their own.
     Instead the campaign ruleset can include rules that validate coupons and carry out particular effects.
@@ -148,18 +130,11 @@ tags:
 
     See [the Product docs](https://docs.talon.one/docs/product/loyalty-programs/overview) for more information.
   name: Loyalty
-- description: Represents the [notifications](/docs/product/loyalty-programs/loyalty-notifications/overview)
-    about changes to loyalty points in card-based loyalty programs.
-  name: Loyalty card notifications
 - description: |
     Represents loyalty cards.
 
     [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) allow your customers to collect and spend loyalty points within a card-based loyalty program.
   name: Loyalty cards
-- description: |
-    Represents the [notifications](/docs/product/loyalty-programs/loyalty-notifications/overview)
-    about changes to loyalty points in profile-based loyalty programs.
-  name: Loyalty notifications
 - description: |
     A referral is a code shared between a customer and a prospect.
 
@@ -185,10 +160,6 @@ tags:
 - description: |
     Represents physical or digital stores, branches, and franchises.
   name: Stores
-- description: |
-    Represents the [notifications](/docs/product/applications/application-notifications/overview)
-    about strikethrough pricing updates.
-  name: Strikethrough pricing notifications
 - description: |
     A way to send information from Talon.One to the URI of your choice.
 
@@ -435,10 +406,10 @@ paths:
         \      <li>Update attribute value</li>\n      <li>Update cart item attribute\
         \ value</li>\n    </ul>\n  </div>\n\n\n</details>\n<p>To see an example of\
         \ a rollback, see the <a href=\"https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\"\
-        >Cancelling a session with campaign budgets</a>tutorial.</p>\n\n**Note:**\
+        >Cancelling a session with campaign budgets</a> tutorial.</p>\n\n**Note:**\
         \ If your order workflow requires you to create a new session instead of reopening\
-        \ a session, use the\n[Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)\
-        \ endpoint to cancel\na closed session and create a new one.\n"
+        \ a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)\
+        \ endpoint to cancel a closed session and create a new one.\n"
       operationId: reopenCustomerSession
       parameters:
       - description: |
@@ -939,6 +910,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       requestBody:
         content:
@@ -975,6 +947,73 @@ paths:
       security:
       - api_key_v1: []
       summary: Link customer profile to card
+      tags:
+      - integration
+      x-codegen-request-body-name: body
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/unlink_profile:
+    post:
+      description: |
+        Unlink a customer profile from a [registered](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card) loyalty card.
+
+        To get the `integrationId` of a customer profile, you can use the
+        [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2)
+        endpoint.
+      operationId: unlinkLoyaltyCardFromProfile
+      parameters:
+      - description: |
+          The identifier of the card-based loyalty program containing the loyalty card. You can get this ID using the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
+        in: path
+        name: loyaltyProgramId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: |
+          The identifier of the loyalty card. You can get this ID using the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
+        in: path
+        name: loyaltyCardId
+        required: true
+        schema:
+          maxLength: 108
+          minLength: 4
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoyaltyCardRegistration'
+        description: body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyCard'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Not found
+      security:
+      - api_key_v1: []
+      summary: Unlink customer profile from a loyalty card
       tags:
       - integration
       x-codegen-request-body-name: body
@@ -1217,7 +1256,10 @@ paths:
         coupon code.
       operationId: deleteCouponReservation
       parameters:
-      - description: The code of the coupon.
+      - description: "The code of the coupon.\n\n**Important:** The coupon code requires\
+          \ [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) \nif\
+          \ it contains special characters.\nFor example, you must encode `SUMMER25%OFF`\
+          \ as `SUMMER25%25OFF`.\n"
         in: path
         name: couponValue
         required: true
@@ -1262,28 +1304,48 @@ paths:
       x-accepts: application/json
     post:
       description: |
-        Create a coupon reservation for the specified customer profiles on the specified coupon.
+        Create a coupon reservation for the specified customer profiles on the
+        specified coupon.
+
         You can also create a reservation via the Campaign Manager using the
-        [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect.
+        [Create coupon code
+        reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code)
+        effect.
 
         **Note:**
 
-        - If the **Reservation mandatory** option was selected when creating the specified coupon,
-        the endpoint creates a **hard** reservation, meaning only users who have this coupon code reserved can redeem it.
-        Otherwise, the endpoint creates a **soft** reservation, meaning the coupon is associated with the specified customer profiles (they show up when using the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint), but any user can redeem it.
-        This can be useful, for example, to display a _coupon wallet_ for customers when they visit your store.
+        - If the **Reservation mandatory** option was selected when creating the
+          specified coupon, the endpoint creates a **hard** reservation, meaning only users who have
+          this coupon code reserved can redeem it.
+          Otherwise, the endpoint creates a **soft** reservation, meaning the coupon
+          is associated with the specified customer profiles (they show up when using
+          the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory)
+          endpoint), but any user can redeem it.
+          This can be useful, for example, to display a _coupon wallet_ for customers
+          when they visit your store.
 
-        - If the **Coupon visibility** option was selected when creating the specified coupon,
-        the coupon code is implicitly soft-reserved for all customers, and the code will be returned for all customer profiles in the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.
+        - If the **Coupon visibility** option was selected when creating the
+          specified coupon, the coupon code is implicitly soft-reserved for all customers, and the code
+          will be returned for all customer profiles in the [List customer
+          data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.
 
-        - This endpoint overrides the coupon reservation limit set when [the coupon is created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons).
-        To ensure that coupons cannot be reserved after the reservation limit is reached, use the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect in the Rule Builder
-        and the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint.
+        - This endpoint overrides the coupon reservation limit set when
+          [the coupon is created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons).
 
-        To delete a reservation, use the [Delete reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation) endpoint.
+        To ensure that coupons cannot be reserved after the reservation limit is
+        reached, use the [Create coupon code
+        reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code)
+        effect in the Rule Builder and the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+        endpoint.
+
+        To delete a reservation, use the
+        [Delete reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation) endpoint.
       operationId: createCouponReservation
       parameters:
-      - description: The code of the coupon.
+      - description: "The code of the coupon.\n\n**Important:** The coupon code requires\
+          \ [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) \nif\
+          \ it contains special characters.\nFor example, you must encode `SUMMER25%OFF`\
+          \ as `SUMMER25%25OFF`.\n"
         in: path
         name: couponValue
         required: true
@@ -1335,7 +1397,10 @@ paths:
         Return all customers that have this coupon marked as reserved. This includes hard and soft reservations.
       operationId: getReservedCustomers
       parameters:
-      - description: The code of the coupon.
+      - description: "The code of the coupon.\n\n**Important:** The coupon code requires\
+          \ [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) \nif\
+          \ it contains special characters.\nFor example, you must encode `SUMMER25%OFF`\
+          \ as `SUMMER25%25OFF`.\n"
         in: path
         name: couponValue
         required: true
@@ -1687,6 +1752,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       - description: |
           Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.
@@ -1843,6 +1909,108 @@ paths:
       tags:
       - integration
       x-accepts: application/json
+  /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_balances:
+    get:
+      description: |
+        Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program.
+        You can filter balances by date and subledger ID, and include tier-related information in the response.
+
+        **Note**: If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.
+
+        Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.
+
+        For more information, see:
+        - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)
+        - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data)
+      operationId: getLoyaltyLedgerBalances
+      parameters:
+      - description: |
+          Identifier of the profile-based loyalty program. You can get the ID with
+          the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
+        in: path
+        name: loyaltyProgramId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: |
+          The integration identifier for this customer profile. Must be:
+          - Unique within the deployment.
+          - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.
+
+          Once set, you cannot update this identifier.
+        in: path
+        name: integrationId
+        required: true
+        schema:
+          type: string
+      - description: |
+          Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.
+
+          **Note:**
+
+          - It must be an RFC3339 timestamp string.
+          - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
+        in: query
+        name: endDate
+        schema:
+          format: date-time
+          type: string
+      - description: The ID of the subledger used to filter the data. Leave this value
+          empty ("") to query the main ledger.
+        in: query
+        name: subledgerId
+        schema:
+          type: string
+      - description: |
+          Indicates whether tier information is included in the response.
+
+          When set to `true`, the response includes information about the current tier and the number of points required to move to next tier.
+        in: query
+        name: includeTiers
+        schema:
+          default: false
+          type: boolean
+      - description: |
+          Indicates whether the customer's projected tier information is included in the response.
+
+          When set to `true`, the response includes information about the customer's active points and the name of the projected tier.
+
+          **Note** We recommend filtering by `subledgerId` for better performance.
+        in: query
+        name: includeProjectedTier
+        schema:
+          default: false
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyBalancesWithTiers'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Not found
+      summary: Get customer's loyalty balances
+      tags:
+      - management
+      x-accepts: application/json
   /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transactions:
     get:
       description: |
@@ -1867,6 +2035,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       - description: Filter results by one or more subledger IDs. Must be exact match.
         explode: true
@@ -1953,6 +2122,14 @@ paths:
         schema:
           format: int64
           type: integer
+      - description: |
+          If `true`: Filters results to include only point transactions that have action-based activation and have not expired.
+
+          If `false`: Returns a `400` response.
+        in: query
+        name: awaitsActivation
+        schema:
+          type: boolean
       responses:
         "200":
           content:
@@ -2096,6 +2273,14 @@ paths:
         schema:
           format: int64
           type: integer
+      - description: |
+          If `true`: Filters results to include only point transactions that have action-based activation and have not expired.
+
+          If `false`: Returns a `400` response.
+        in: query
+        name: awaitsActivation
+        schema:
+          type: boolean
       responses:
         "200":
           content:
@@ -2127,6 +2312,156 @@ paths:
       tags:
       - integration
       x-accepts: application/json
+  /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_transactions:
+    get:
+      description: |
+        Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.
+
+        You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.
+
+        **Note:** To retrieve all loyalty program transaction logs in a given loyalty program,
+        use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint.
+      operationId: getLoyaltyProgramProfileLedgerTransactions
+      parameters:
+      - description: |
+          Identifier of the profile-based loyalty program. You can get the ID with
+          the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
+        in: path
+        name: loyaltyProgramId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: |
+          The integration identifier for this customer profile. Must be:
+          - Unique within the deployment.
+          - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.
+
+          Once set, you cannot update this identifier.
+        in: path
+        name: integrationId
+        required: true
+        schema:
+          type: string
+      - description: "Filter the results by a list of customer session IDs. \n\nTo\
+          \ include multiple IDs, repeat the parameter for each one, for example,\
+          \ \n`?customerSessionIDs=id1&customerSessionIDs=id2`.\n\nThe response contains\
+          \ only data associated with the specified sessions.\n"
+        explode: true
+        in: query
+        name: customerSessionIDs
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: "Filter the results by a list of transaction UUIDs.\n\nTo include\
+          \ multiple IDs, repeat the parameter for each one, for example, \n`?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.\n\
+          \nThe response contains only data associated with the specified transactions.\n"
+        explode: true
+        in: query
+        name: transactionUUIDs
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: The ID of the subledger used to filter the data. Leave this value
+          empty ("") to query the main ledger.
+        in: query
+        name: subledgerId
+        schema:
+          type: string
+      - description: |
+          Filter results by loyalty transaction type:
+          - `manual`: Loyalty transaction that was done manually.
+          - `session`: Loyalty transaction that resulted from a customer session.
+          - `import`: Loyalty transaction that was imported from a CSV file.
+        in: query
+        name: loyaltyTransactionType
+        schema:
+          enum:
+          - manual
+          - session
+          - import
+          type: string
+      - description: |
+          Date and time from which results are returned. Results are filtered by transaction creation date.
+
+          **Note:**
+
+          - It must be an RFC3339 timestamp string.
+          - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
+        in: query
+        name: startDate
+        schema:
+          format: date-time
+          type: string
+      - description: |
+          Date and time by which results are returned. Results are filtered by transaction creation date.
+
+          **Note:**
+
+          - It must be an RFC3339 timestamp string.
+          - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
+        in: query
+        name: endDate
+        schema:
+          format: date-time
+          type: string
+      - description: The number of items in the response.
+        in: query
+        name: pageSize
+        schema:
+          default: 50
+          format: int64
+          maximum: 1000
+          minimum: 1
+          type: integer
+      - description: The number of items to skip when paging through large result
+          sets.
+        in: query
+        name: skip
+        schema:
+          format: int64
+          type: integer
+      - description: |
+          If `true`: Filters results to include only point transactions that have action-based activation and have not expired.
+
+          If `false`: Returns a `400` response.
+        in: query
+        name: awaitsActivation
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Not found
+      summary: List customer's loyalty transactions
+      tags:
+      - management
+      x-accepts: application/json
   /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/points:
     get:
       description: |
@@ -2155,6 +2490,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       - description: Filter points based on their status.
         in: query
@@ -2534,6 +2870,38 @@ paths:
           use any time zone setting. Talon.One will convert to UTC internally.
         in: query
         name: createdAfter
+        schema:
+          format: date-time
+          type: string
+      - description: Filter results comparing the parameter value, expected to be
+          an RFC3339 timestamp string, to the campaign start time timestamp. You can
+          use any time zone setting. Talon.One will convert to UTC internally.
+        in: query
+        name: startBefore
+        schema:
+          format: date-time
+          type: string
+      - description: Filter results comparing the parameter value, expected to be
+          an RFC3339 timestamp string, to the campaign start time timestamp. You can
+          use any time zone setting. Talon.One will convert to UTC internally.
+        in: query
+        name: startAfter
+        schema:
+          format: date-time
+          type: string
+      - description: Filter results comparing the parameter value, expected to be
+          an RFC3339 timestamp string, to the campaign end time timestamp. You can
+          use any time zone setting. Talon.One will convert to UTC internally.
+        in: query
+        name: endBefore
+        schema:
+          format: date-time
+          type: string
+      - description: Filter results comparing the parameter value, expected to be
+          an RFC3339 timestamp string, to the campaign end time timestamp. You can
+          use any time zone setting. Talon.One will convert to UTC internally.
+        in: query
+        name: endAfter
         schema:
           format: date-time
           type: string
@@ -4226,6 +4594,64 @@ paths:
       tags:
       - management
       x-accepts: application/json
+  /v1/loyalty_programs/{loyaltyProgramId}/activate_points:
+    post:
+      description: "Activate points when a defined action occurs.\n\nYou can activate\
+        \ pending points using one of the following parameters:\n- `sessionId`: Activates\
+        \ all points earned in the specified session. \n- `transactionUUIDs`: Activates\
+        \ points earned in the transactions specified by the \ngiven UUIDs. \n"
+      operationId: activateLoyaltyPoints
+      parameters:
+      - description: |
+          The identifier for the loyalty program. You can get the ID with the [List loyalty
+          programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+          endpoint.
+        in: path
+        name: loyaltyProgramId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivateLoyaltyPoints'
+        description: body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivateLoyaltyPointsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseWithStatus'
+          description: Not found
+      security:
+      - api_key_v1: []
+      summary: Activate loyalty points
+      tags:
+      - integration
+      x-codegen-request-body-name: body
+      x-contentType: application/json
+      x-accepts: application/json
   /v1/loyalty_programs/{loyaltyProgramId}/dashboard:
     get:
       description: |
@@ -4287,50 +4713,49 @@ paths:
       x-accepts: application/json
   /v1/loyalty_programs/{loyaltyProgramId}/import_points:
     post:
-      description: |
-        Upload a CSV file containing the loyalty points you want to import into a given loyalty program.
-        Send the file as multipart data.
-
-        Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.
-
-        The CSV file contains the following columns:
-
-        - `customerprofileid` (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.
-
-          **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application
-          until a session or profile update is received for that profile.
-        - `identifier` (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported.
-        - `amount`: The amount of points to award to the customer profile.
-        - `startdate` (optional): The earliest date when the points can be redeemed. The points are `active` from this date until the expiration date.
-
-          **Note**: It must be an RFC3339 timestamp string or string `immediate`. Empty or missing values are considered `immediate`.
-        - `expirydate` (optional): The latest date when the points can be redeemed. The points are `expired` after this date.
-
-          **Note**: It must be an RFC3339 timestamp string or string `unlimited`. Empty or missing values are considered `unlimited`.
-        - `subledgerid` (optional): The ID of the subledger that should received the points.
-        - `reason` (optional): The reason why these points are awarded.
-
-        You can use the time zone of your choice. It is converted to UTC internally by Talon.One.
-
-        **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the
-        value provided for `startdate`. If `startdate` matches the current date, the imported points are _active_. If it is later, the points are _pending_ until
-        the date provided for `startdate` is reached.
-
-        **Note:** We recommend limiting your file size to 500MB.
-
-        **Example for profile-based programs:**
-
-        ```text
-        customerprofileid,amount,startdate,expirydate,subledgerid,reason
-        URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement
-        ```
-
-        **Example for card-based programs:**
-
-        ```text
-        identifier,amount,startdate,expirydate,subledgerid,reason
-        summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement
-        ```
+      description: "Upload a CSV file containing the loyalty points you want to import\
+        \ into a given loyalty program.\nSend the file as multipart data.\n\nDepending\
+        \ on the type of loyalty program, you can import points into a given customer\
+        \ profile or loyalty card.\n\nThe CSV file contains the following columns:\n\
+        \n- `customerprofileid` (optional): For profile-based loyalty programs, the\
+        \ integration ID of the customer profile where the loyalty points are imported.\n\
+        \n  **Note**: If the customer profile does not exist, it will be created.\
+        \ The profile will not be visible in any Application\n  until a session or\
+        \ profile update is received for that profile.\n- `identifier` (optional):\
+        \ For card-based loyalty programs, the identifier of the loyalty card where\
+        \ the loyalty points are imported.\n- `amount`: The amount of points to award\
+        \ to the customer profile.\n- `startdate` (optional): The earliest date when\
+        \ the points can be redeemed. The points are `active` from this date until\
+        \ the expiration date.\n\n  This parameter accepts one of the following values:\n\
+        \  - A timestamp string in RFC3339 format.\n  - `immediate`\n  - `on_action`\n\
+        \  \n  **Note**:\n  Empty or missing values default to `immediate`.\n- `expirydate`\
+        \ (optional): The latest date when the points can be redeemed. The points\
+        \ are `expired` after this date.\n\n  **Note**: It must be an RFC3339 timestamp\
+        \ string or string `unlimited`. Empty or missing values are considered `unlimited`.\n\
+        \  \n  If passed, `validityDuration` should be omitted.\n- `validityDuration`\
+        \ (optional): The duration for which the points remain active, relative to\
+        \ the \n  activation date.\n\n  The time format is an **integer** followed\
+        \ by one letter indicating the time unit.\n\n\n  Examples: `30s`, `40m`, `1h`,\
+        \ `5D`, `7W`, `10M`, `15Y`.\n\n\n  Available units:\n\n\n  - `s`: seconds\n\
+        \  - `m`: minutes\n  - `h`: hours\n  - `D`: days\n  - `W`: weeks\n  - `M`:\
+        \ months\n  - `Y`: years\n\n\n  You can round certain units up or down:\n\n\
+        \  - `_D` for rounding down days only. Signifies the start of the day.\n \
+        \ - `_U` for rounding up days, weeks, months and years. Signifies the end\
+        \ of\n  the day, week, month or year.\n\n  If passed, `expirydate` should\
+        \ be omitted.\n- `subledgerid` (optional): The ID of the subledger that should\
+        \ received the points.\n- `reason` (optional): The reason why these points\
+        \ are awarded.\n\nYou can use the time zone of your choice. It is converted\
+        \ to UTC internally by Talon.One.\n\n**Note:** For existing customer profiles\
+        \ and loyalty cards, the imported points are added to any previous active\
+        \ or pending points, depending on the\nvalue provided for `startdate`. If\
+        \ `startdate` matches the current date, the imported points are _active_.\
+        \ If it is later, the points are _pending_ until\nthe date provided for `startdate`\
+        \ is reached.\n\n**Note:** We recommend limiting your file size to 500MB.\n\
+        \n**Example for profile-based programs:**\n\n```text\ncustomerprofileid,amount,startdate,expirydate,subledgerid,reason\n\
+        URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement\n\
+        ```\n\n**Example for card-based programs:**\n\n```text\nidentifier,amount,startdate,expirydate,subledgerid,reason\n\
+        summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement\n\
+        ```\n"
       operationId: importLoyaltyPoints
       parameters:
       - description: |
@@ -4455,6 +4880,7 @@ paths:
       x-accepts: application/json
   /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}:
     get:
+      deprecated: true
       description: |
         Get the loyalty ledger for this profile integration ID.
 
@@ -5012,6 +5438,14 @@ paths:
         schema:
           format: int64
           type: integer
+      - description: |
+          If `true`: Filters results to include only point transactions that have action-based activation and have not expired.
+
+          If `false`: Returns a `400` response.
+        in: query
+        name: awaitsActivation
+        schema:
+          type: boolean
       responses:
         "200":
           content:
@@ -5468,6 +5902,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       responses:
         "204":
@@ -5510,6 +5945,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       responses:
         "200":
@@ -5562,6 +5998,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       requestBody:
         content:
@@ -5624,6 +6061,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       requestBody:
         content:
@@ -5683,6 +6121,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       requestBody:
         content:
@@ -5744,6 +6183,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       - description: |
           Only return results from after this timestamp.
@@ -5826,6 +6266,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       - description: |
           Date and time from which results are returned. Results are filtered by transaction creation date.
@@ -5946,6 +6387,7 @@ paths:
         required: true
         schema:
           maxLength: 108
+          minLength: 4
           type: string
       requestBody:
         content:
@@ -8316,6 +8758,34 @@ paths:
       - description: Returned attributes will be filtered by supplied entity.
         in: query
         name: entity
+        schema:
+          type: string
+      - description: Returned attributes will be filtered by supplied application
+          ids
+        in: query
+        name: applicationIds
+        schema:
+          type: string
+      - description: Returned attributes will be filtered by supplied type
+        in: query
+        name: type
+        schema:
+          type: string
+      - description: Returned attributes will be filtered by supplied kind (builtin
+          or custom)
+        in: query
+        name: kind
+        schema:
+          enum:
+          - builtin
+          - custom
+          type: string
+          x-generate-enum-go: true
+        x-generate-enum-go: true
+      - description: Returned attributes will be filtered by searching case insensitive
+          through Attribute name, description and type
+        in: query
+        name: search
         schema:
           type: string
       responses:
@@ -12286,6 +12756,8 @@ components:
       properties:
         NotificationType:
           description: The type of the notification
+          enum:
+          - CampaignNotification
           example: CampaignNotification
           type: string
         TotalResultSize:
@@ -12734,13 +13206,20 @@ components:
             $ref: '#/components/schemas/StrikethroughChangedItem'
           type: array
         NotificationType:
-          description: The type of the notification
+          description: The type of notification.
+          enum:
+          - StrikethroughPrice
+          type: string
+        sentAt:
+          description: Timestamp at which the notification was sent.
+          format: date-time
           type: string
       required:
       - NotificationType
       - applicationId
       - changedItems
       - currentBatch
+      - sentAt
       - totalBatches
       - trigger
       type: object
@@ -12824,6 +13303,30 @@ components:
       type: object
     UpdateRoleV2:
       $ref: '#/components/schemas/RoleV2Base'
+    PrismaticPaginatedEventPayload:
+      properties:
+        TotalResultSize:
+          format: int64
+          type: integer
+        EventType:
+          enum:
+          - LoyaltyPointsChanged
+          - LoyaltyTierDowngrade
+          - LoyaltyTierUpgrade
+          - CouponCreated
+          - CouponUpdated
+          - CouponDeleted
+          type: string
+          x-generate-enum-go: PrismaticEventType
+        Data:
+          items:
+            type: object
+          type: array
+      required:
+      - Data
+      - EventType
+      - TotalResultSize
+      type: object
     Entity:
       properties:
         id:
@@ -14007,6 +14510,7 @@ components:
         The alphanumeric identifier of the loyalty card.
       example: summer-loyalty-card-0543
       maxLength: 108
+      minLength: 4
       pattern: ^[A-Za-z0-9_-]*$
       type: string
     AddLoyaltyPointsEffectProps:
@@ -14059,6 +14563,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
         bundleIndex:
@@ -14068,6 +14573,15 @@ components:
           type: integer
         bundleName:
           description: The name of the bundle definition.
+          type: string
+        awaitsActivation:
+          description: |
+            If `true`, the loyalty points remain pending until a specific action is complete. The `startDate` parameter automatically sets to `on_action`.
+          type: boolean
+        validityDuration:
+          description: "The duration for which the points remain active, calculated\
+            \ relative to the \nactivation date.  \n\n**Note**: This value is returned\
+            \ only if `awaitsActivation` is `true` \nand `expiryDate` is not set.\n"
           type: string
       required:
       - name
@@ -14110,6 +14624,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
       required:
@@ -14308,6 +14823,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
       required:
@@ -14355,6 +14871,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
       required:
@@ -16036,6 +16553,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
         usersPerCardLimit:
@@ -16068,6 +16586,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
         newCardIdentifier:
@@ -16075,6 +16594,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
         batchId:
@@ -18312,6 +18832,7 @@ components:
       example:
         quantity: 1
         position: 2
+        sku: SKU1241028
       properties:
         position:
           description: The index of the cart item in the provided customer session's
@@ -18325,16 +18846,22 @@ components:
           example: 1
           format: int64
           type: integer
-      required:
-      - position
+        sku:
+          description: The SKU of the cart item in the provided customer session's
+            `cartItems` property.
+          example: SKU1241028
+          minLength: 1
+          type: string
       type: object
     NewReturn:
       example:
         returnedCartItems:
         - quantity: 1
           position: 2
+          sku: SKU1241028
         - quantity: 1
           position: 2
+          sku: SKU1241028
       properties:
         returnedCartItems:
           description: List of cart items to be returned.
@@ -18349,8 +18876,10 @@ components:
         returnedCartItems:
         - quantity: 1
           position: 2
+          sku: SKU1241028
         - quantity: 1
           position: 2
+          sku: SKU1241028
         accountId: 3886
         eventId: 123
         profileIntegrationId: 0c0e0207-eb30-4e06-a56c-2b7c8a64953c
@@ -19243,8 +19772,10 @@ components:
         - returnedCartItems:
           - quantity: 1
             position: 2
+            sku: SKU1241028
           - quantity: 1
             position: 2
+            sku: SKU1241028
           accountId: 3886
           eventId: 123
           profileIntegrationId: 0c0e0207-eb30-4e06-a56c-2b7c8a64953c
@@ -19258,8 +19789,10 @@ components:
         - returnedCartItems:
           - quantity: 1
             position: 2
+            sku: SKU1241028
           - quantity: 1
             position: 2
+            sku: SKU1241028
           accountId: 3886
           eventId: 123
           profileIntegrationId: 0c0e0207-eb30-4e06-a56c-2b7c8a64953c
@@ -19349,8 +19882,10 @@ components:
           returnedCartItems:
           - quantity: 1
             position: 2
+            sku: SKU1241028
           - quantity: 1
             position: 2
+            sku: SKU1241028
           accountId: 3886
           eventId: 123
           profileIntegrationId: 0c0e0207-eb30-4e06-a56c-2b7c8a64953c
@@ -19422,8 +19957,10 @@ components:
           returnedCartItems:
           - quantity: 1
             position: 2
+            sku: SKU1241028
           - quantity: 1
             position: 2
+            sku: SKU1241028
         responseContent:
         - customerSession
         - customerProfile
@@ -21436,10 +21973,10 @@ components:
         validityDuration:
           description: |
             The time format is either:
-            - `immediate` or,
+            - `unlimited` or,
             - an **integer** followed by one letter indicating the time unit.
 
-            Examples: `immediate`, `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.
+            Examples: `unlimited`, `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.
 
             Available units:
 
@@ -21878,7 +22415,6 @@ components:
         timezone: Europe/Berlin
         description: Customers collect 10 points per 1$ spent
         title: Point collection
-        canUpdateJoinPolicy: true
         canUpdateSubledgers: true
         programJoinPolicy: not_join
         accountID: 1
@@ -22128,11 +22664,6 @@ components:
             `True` if the tier definitions can be updated.
           example: true
           type: boolean
-        canUpdateJoinPolicy:
-          description: |
-            `True` if the program join policy can be updated.
-          example: true
-          type: boolean
         canUpdateTierExpirationPolicy:
           description: |
             `True` if the tier expiration policy can be updated.
@@ -22210,7 +22741,6 @@ components:
           timezone: Europe/Berlin
           description: Customers collect 10 points per 1$ spent
           title: Point collection
-          canUpdateJoinPolicy: true
           canUpdateSubledgers: true
           programJoinPolicy: not_join
           accountID: 1
@@ -22292,7 +22822,6 @@ components:
           timezone: Europe/Berlin
           description: Customers collect 10 points per 1$ spent
           title: Point collection
-          canUpdateJoinPolicy: true
           canUpdateSubledgers: true
           programJoinPolicy: not_join
           accountID: 1
@@ -24936,6 +25465,7 @@ components:
         transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
         subledgerId: sub-123
         name: Reward 10% points of a purchase's current total
+        validityDuration: 30D
         ruleName: Add 2 points
         id: 123
         programId: 324
@@ -24959,6 +25489,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
         customerSessionId:
@@ -24986,6 +25517,7 @@ components:
           description: |
             When points become active. Possible values:
               - `immediate`: Points are active immediately.
+              - `on_action`: Points become active based on the customer's action.
               - a timestamp value: Points become active at a given date and time.
           example: 2022-01-02T15:04:05Z07:00
           maxLength: 64
@@ -25020,6 +25552,13 @@ components:
         ruleName:
           description: The name of the rule that triggered this effect.
           example: Add 2 points
+          type: string
+        validityDuration:
+          description: |
+            The duration for which the points remain active, relative to the  activation date.
+
+            **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set.
+          example: 30D
           type: string
       required:
       - amount
@@ -25057,6 +25596,7 @@ components:
         transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
         subledgerId: sub-123
         name: Reward 10% points of a purchase's current total
+        validityDuration: 30D
         ruleName: Add 2 points
         id: 123
         programId: 324
@@ -25100,6 +25640,7 @@ components:
           description: |
             When points become active. Possible values:
               - `immediate`: Points are immediately active.
+              - `on_action`: Points become active based on the customer's action.
               - a timestamp value: Points become active at a given date and time.
           example: 2022-01-02T15:04:05Z07:00
           maxLength: 64
@@ -25137,6 +25678,13 @@ components:
           type: string
         flags:
           $ref: '#/components/schemas/LoyaltyLedgerEntryFlags'
+        validityDuration:
+          description: |
+            The duration for which the points remain active, relative to the  activation date.
+
+            **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set.
+          example: 30D
+          type: string
       required:
       - amount
       - created
@@ -25149,6 +25697,34 @@ components:
       - transactionUUID
       - type
       type: object
+    DeleteLoyaltyTransactionsRequest:
+      description: Request to delete transactions based on the specified scope.
+      properties:
+        scope:
+          description: |
+            `AllSubledgers` deletes all transactions for the specified customer profile from all ledgers in the loyalty program.
+
+            `SelectedSubledgers` deletes all transactions for the specified customer profile only from the given ledgers in the loyalty program.
+          enum:
+          - AllSubledgers
+          - SelectedSubledgers
+          example: SelectedSubledgers
+          type: string
+        subledgerIds:
+          description: |
+            The IDs of the ledgers from which to delete the customer's transactions. This parameter is required if the `scope` is set to `SelectedSubledgers`.
+
+            To specify the main ledger, provide an empty string ("").
+          example:
+          - subledger1
+          - subledger2
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - scope
+      type: object
     CardLedgerPointsEntryIntegrationAPI:
       description: Loyalty card points with start and expiry dates.
       example:
@@ -25159,6 +25735,7 @@ components:
         created: 2000-01-23T04:56:07.000+00:00
         subledgerId: sub-123
         name: Reward 10% points of a purchase's current total
+        validityDuration: 30D
         customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
         id: 123
         programId: 324
@@ -25220,6 +25797,13 @@ components:
           description: Amount of loyalty points added in the transaction.
           example: 10.25
           type: number
+        validityDuration:
+          description: |
+            The duration for which the points remain active, relative to the  activation date.
+
+            **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set.
+          example: 30D
+          type: string
       required:
       - amount
       - created
@@ -25240,6 +25824,7 @@ components:
         created: 2000-01-23T04:56:07.000+00:00
         subledgerId: sub-123
         name: Reward 10% points of a purchase's current total
+        validityDuration: 30D
         customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
         id: 123
         programId: 324
@@ -25297,6 +25882,13 @@ components:
           description: Amount of loyalty points added in the transaction.
           example: 10.25
           type: number
+        validityDuration:
+          description: |
+            The duration for which the points remain active, relative to the  activation date.
+
+            **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set.
+          example: 30D
+          type: string
       required:
       - amount
       - created
@@ -27601,6 +28193,21 @@ components:
       - name
       - payload
       type: object
+    StrikethroughSetDiscountPerItemMemberEffectProps:
+      description: setDiscountPerItem member effect in strikethrough pricing payload.
+      properties:
+        name:
+          description: effect name.
+          example: 10% off members only
+          type: string
+        value:
+          description: discount value.
+          example: "9"
+          type: object
+      required:
+      - name
+      - value
+      type: object
     StrikethroughEffectProps:
       type: object
     LabelTargetNone:
@@ -27936,6 +28543,11 @@ components:
             format: int64
             type: integer
           type: array
+        authenticationId:
+          description: The ID of the credential that this webhook is using.
+          example: 1
+          format: int64
+          type: integer
       required:
       - url
       - verb
@@ -29488,6 +30100,7 @@ components:
           - boolean
           - percent
           - (list string)
+          - (list number)
           - time
           example: number
           type: string
@@ -29653,6 +30266,7 @@ components:
           description: My collection of SKUs
         - name: My collection
           description: My collection of SKUs
+        campaignsCount: 3
         defaultCampaignGroupId: 42
         description: This is a template for a discount campaign.
         features:
@@ -29920,6 +30534,11 @@ components:
           - advanced
           example: advanced
           type: string
+        campaignsCount:
+          description: The number of Campaigns created from this template.
+          example: 3
+          format: int64
+          type: integer
         updated:
           description: Timestamp of the most recent update to the campaign template
             or any of its elements.
@@ -31107,6 +31726,180 @@ components:
             $ref: '#/components/schemas/NewLoyaltyTier'
           type: array
       type: object
+    ActivateLoyaltyPoints:
+      description: Activate loyalty points
+      example:
+        transactionUUIDs:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sessionId: sessionId
+      properties:
+        transactionUUIDs:
+          description: "An array of transaction UUIDs used to activate specific pending\
+            \ point transactions. \n\nIf provided, do not include the `sessionId`\
+            \ parameter.\n"
+          items:
+            format: uuid
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+          uniqueItems: true
+        sessionId:
+          description: |
+            The ID of the session containing the pending point transactions to activate.
+
+            If provided, do not include the `transactionUUIDs` parameter.
+          minLength: 1
+          type: string
+      type: object
+    LoyaltyLedgerEntry:
+      description: A single row of the ledger, describing one addition or deduction.
+      example:
+        eventID: 5
+        amount: 100.0
+        created: 2021-07-20T22:00:00Z
+        flags:
+          createsNegativeBalance: true
+        subLedgerID: mysubledger
+        customerSessionID: t2gy5s-47274
+        type: addition
+        userID: 499
+        expiryDate: 2022-07-20T22:00:00Z
+        archived: false
+        customerProfileID: URNGV8294NV
+        cardID: 241
+        name: Add points on purchase
+        validityDuration: 30D
+        programID: 5
+        startDate: 2021-07-20T22:00:00Z
+      properties:
+        created:
+          example: 2021-07-20T22:00:00Z
+          format: date-time
+          type: string
+        programID:
+          example: 5
+          format: int64
+          type: integer
+        customerProfileID:
+          example: URNGV8294NV
+          type: string
+        cardID:
+          example: 241
+          format: int64
+          type: integer
+        customerSessionID:
+          example: t2gy5s-47274
+          type: string
+        eventID:
+          example: 5
+          format: int64
+          type: integer
+        type:
+          description: |
+            The type of the ledger transaction. Possible values are:
+            - `addition`
+            - `subtraction`
+            - `expire`
+            - `expiring` (for expiring points ledgers)
+          example: addition
+          type: string
+        amount:
+          example: 100.0
+          type: number
+        startDate:
+          example: 2021-07-20T22:00:00Z
+          format: date-time
+          type: string
+        expiryDate:
+          example: 2022-07-20T22:00:00Z
+          format: date-time
+          type: string
+        name:
+          description: A name referencing the condition or effect that added this
+            entry, or the specific name provided in an API call.
+          example: Add points on purchase
+          type: string
+        subLedgerID:
+          description: This specifies if we are adding loyalty points to the main
+            ledger or a subledger.
+          example: mysubledger
+          type: string
+        userID:
+          description: This is the ID of the user who created this entry, if the addition
+            or subtraction was done manually.
+          example: 499
+          format: int64
+          type: integer
+        archived:
+          description: Indicates if the entry belongs to the archived session.
+          example: false
+          type: boolean
+        flags:
+          $ref: '#/components/schemas/LoyaltyLedgerEntryFlags'
+        validityDuration:
+          description: |
+            The duration for which the points remain active, relative to the  activation date.
+
+            **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set.
+          example: 30D
+          type: string
+      required:
+      - amount
+      - created
+      - name
+      - programID
+      - subLedgerID
+      - type
+      type: object
+    ActivateLoyaltyPointsResponse:
+      example:
+        ledgerEntries:
+        - eventID: 5
+          amount: 100.0
+          created: 2021-07-20T22:00:00Z
+          flags:
+            createsNegativeBalance: true
+          subLedgerID: mysubledger
+          customerSessionID: t2gy5s-47274
+          type: addition
+          userID: 499
+          expiryDate: 2022-07-20T22:00:00Z
+          archived: false
+          customerProfileID: URNGV8294NV
+          cardID: 241
+          name: Add points on purchase
+          validityDuration: 30D
+          programID: 5
+          startDate: 2021-07-20T22:00:00Z
+        - eventID: 5
+          amount: 100.0
+          created: 2021-07-20T22:00:00Z
+          flags:
+            createsNegativeBalance: true
+          subLedgerID: mysubledger
+          customerSessionID: t2gy5s-47274
+          type: addition
+          userID: 499
+          expiryDate: 2022-07-20T22:00:00Z
+          archived: false
+          customerProfileID: URNGV8294NV
+          cardID: 241
+          name: Add points on purchase
+          validityDuration: 30D
+          programID: 5
+          startDate: 2021-07-20T22:00:00Z
+      properties:
+        ledgerEntries:
+          description: Updated ledger entries after activation.
+          items:
+            $ref: '#/components/schemas/LoyaltyLedgerEntry'
+          type: array
+      type: object
     UpdateLoyaltyProgramTier:
       description: Update a tier in a specified loyalty program.
       properties:
@@ -31267,98 +32060,6 @@ components:
       - id
       - userId
       type: object
-    LoyaltyLedgerEntry:
-      description: A single row of the ledger, describing one addition or deduction.
-      example:
-        eventID: 5
-        amount: 100.0
-        created: 2021-07-20T22:00:00Z
-        flags:
-          createsNegativeBalance: true
-        subLedgerID: mysubledger
-        customerSessionID: t2gy5s-47274
-        type: addition
-        userID: 499
-        expiryDate: 2022-07-20T22:00:00Z
-        archived: false
-        customerProfileID: URNGV8294NV
-        cardID: 241
-        name: Add points on purchase
-        programID: 5
-        startDate: 2021-07-20T22:00:00Z
-      properties:
-        created:
-          example: 2021-07-20T22:00:00Z
-          format: date-time
-          type: string
-        programID:
-          example: 5
-          format: int64
-          type: integer
-        customerProfileID:
-          example: URNGV8294NV
-          type: string
-        cardID:
-          example: 241
-          format: int64
-          type: integer
-        customerSessionID:
-          example: t2gy5s-47274
-          type: string
-        eventID:
-          example: 5
-          format: int64
-          type: integer
-        type:
-          description: |
-            The type of the ledger transaction. Possible values are:
-            - `addition`
-            - `subtraction`
-            - `expire`
-            - `expiring` (for expiring points ledgers)
-          example: addition
-          type: string
-        amount:
-          example: 100.0
-          type: number
-        startDate:
-          example: 2021-07-20T22:00:00Z
-          format: date-time
-          type: string
-        expiryDate:
-          example: 2022-07-20T22:00:00Z
-          format: date-time
-          type: string
-        name:
-          description: A name referencing the condition or effect that added this
-            entry, or the specific name provided in an API call.
-          example: Add points on purchase
-          type: string
-        subLedgerID:
-          description: This specifies if we are adding loyalty points to the main
-            ledger or a subledger.
-          example: mysubledger
-          type: string
-        userID:
-          description: This is the ID of the user who created this entry, if the addition
-            or subtraction was done manually.
-          example: 499
-          format: int64
-          type: integer
-        archived:
-          description: Indicates if the entry belongs to the archived session.
-          example: false
-          type: boolean
-        flags:
-          $ref: '#/components/schemas/LoyaltyLedgerEntryFlags'
-      required:
-      - amount
-      - created
-      - name
-      - programID
-      - subLedgerID
-      - type
-      type: object
     LoyaltySubLedger:
       description: Ledger of Balance in Loyalty Program for a Customer.
       example:
@@ -31379,6 +32080,7 @@ components:
           customerProfileID: URNGV8294NV
           cardID: 241
           name: Add points on purchase
+          validityDuration: 30D
           programID: 5
           startDate: 2021-07-20T22:00:00Z
         - eventID: 5
@@ -31395,6 +32097,7 @@ components:
           customerProfileID: URNGV8294NV
           cardID: 241
           name: Add points on purchase
+          validityDuration: 30D
           programID: 5
           startDate: 2021-07-20T22:00:00Z
         expiringPoints:
@@ -31412,6 +32115,7 @@ components:
           customerProfileID: URNGV8294NV
           cardID: 241
           name: Add points on purchase
+          validityDuration: 30D
           programID: 5
           startDate: 2021-07-20T22:00:00Z
         - eventID: 5
@@ -31428,6 +32132,7 @@ components:
           customerProfileID: URNGV8294NV
           cardID: 241
           name: Add points on purchase
+          validityDuration: 30D
           programID: 5
           startDate: 2021-07-20T22:00:00Z
         totalActivePoints: 6.027456183070403
@@ -31449,6 +32154,7 @@ components:
           customerProfileID: URNGV8294NV
           cardID: 241
           name: Add points on purchase
+          validityDuration: 30D
           programID: 5
           startDate: 2021-07-20T22:00:00Z
         - eventID: 5
@@ -31465,6 +32171,7 @@ components:
           customerProfileID: URNGV8294NV
           cardID: 241
           name: Add points on purchase
+          validityDuration: 30D
           programID: 5
           startDate: 2021-07-20T22:00:00Z
         expiredPoints:
@@ -31482,6 +32189,7 @@ components:
           customerProfileID: URNGV8294NV
           cardID: 241
           name: Add points on purchase
+          validityDuration: 30D
           programID: 5
           startDate: 2021-07-20T22:00:00Z
         - eventID: 5
@@ -31498,6 +32206,7 @@ components:
           customerProfileID: URNGV8294NV
           cardID: 241
           name: Add points on purchase
+          validityDuration: 30D
           programID: 5
           startDate: 2021-07-20T22:00:00Z
         currentTier:
@@ -31521,6 +32230,7 @@ components:
           customerProfileID: URNGV8294NV
           cardID: 241
           name: Add points on purchase
+          validityDuration: 30D
           programID: 5
           startDate: 2021-07-20T22:00:00Z
         - eventID: 5
@@ -31537,6 +32247,7 @@ components:
           customerProfileID: URNGV8294NV
           cardID: 241
           name: Add points on purchase
+          validityDuration: 30D
           programID: 5
           startDate: 2021-07-20T22:00:00Z
       properties:
@@ -31625,6 +32336,7 @@ components:
             customerProfileID: URNGV8294NV
             cardID: 241
             name: Add points on purchase
+            validityDuration: 30D
             programID: 5
             startDate: 2021-07-20T22:00:00Z
           - eventID: 5
@@ -31641,6 +32353,7 @@ components:
             customerProfileID: URNGV8294NV
             cardID: 241
             name: Add points on purchase
+            validityDuration: 30D
             programID: 5
             startDate: 2021-07-20T22:00:00Z
           expiringPoints:
@@ -31658,6 +32371,7 @@ components:
             customerProfileID: URNGV8294NV
             cardID: 241
             name: Add points on purchase
+            validityDuration: 30D
             programID: 5
             startDate: 2021-07-20T22:00:00Z
           - eventID: 5
@@ -31674,6 +32388,7 @@ components:
             customerProfileID: URNGV8294NV
             cardID: 241
             name: Add points on purchase
+            validityDuration: 30D
             programID: 5
             startDate: 2021-07-20T22:00:00Z
           totalActivePoints: 6.027456183070403
@@ -31695,6 +32410,7 @@ components:
             customerProfileID: URNGV8294NV
             cardID: 241
             name: Add points on purchase
+            validityDuration: 30D
             programID: 5
             startDate: 2021-07-20T22:00:00Z
           - eventID: 5
@@ -31711,6 +32427,7 @@ components:
             customerProfileID: URNGV8294NV
             cardID: 241
             name: Add points on purchase
+            validityDuration: 30D
             programID: 5
             startDate: 2021-07-20T22:00:00Z
           expiredPoints:
@@ -31728,6 +32445,7 @@ components:
             customerProfileID: URNGV8294NV
             cardID: 241
             name: Add points on purchase
+            validityDuration: 30D
             programID: 5
             startDate: 2021-07-20T22:00:00Z
           - eventID: 5
@@ -31744,6 +32462,7 @@ components:
             customerProfileID: URNGV8294NV
             cardID: 241
             name: Add points on purchase
+            validityDuration: 30D
             programID: 5
             startDate: 2021-07-20T22:00:00Z
           currentTier:
@@ -31767,6 +32486,7 @@ components:
             customerProfileID: URNGV8294NV
             cardID: 241
             name: Add points on purchase
+            validityDuration: 30D
             programID: 5
             startDate: 2021-07-20T22:00:00Z
           - eventID: 5
@@ -31783,6 +32503,7 @@ components:
             customerProfileID: URNGV8294NV
             cardID: 241
             name: Add points on purchase
+            validityDuration: 30D
             programID: 5
             startDate: 2021-07-20T22:00:00Z
         subLedgers:
@@ -31860,6 +32581,7 @@ components:
         customerProfileId: kda0fajs0-fad9f-fd9dfsa9-fd9dasjf9
         subledgerId: sub-123
         name: Reward 50 points for each $500 purchase
+        validityDuration: 30D
         ruleName: 10 points for every $100 spent
         userEmail: john.doe@example.com
         id: 123
@@ -31913,6 +32635,7 @@ components:
           description: |
             When points become active. Possible values:
               - `immediate`: Points are immediately active.
+              - `on_action`: Points become active based on the customer's action.
               - a timestamp value: Points become active at a given date and time.
           example: 2022-01-02T15:04:05Z07:00
           maxLength: 64
@@ -31934,6 +32657,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
         subledgerId:
@@ -31975,6 +32699,13 @@ components:
           type: string
         flags:
           $ref: '#/components/schemas/LoyaltyLedgerEntryFlags'
+        validityDuration:
+          description: |
+            The duration for which the points remain active, relative to the  activation date.
+
+            **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set.
+          example: 30D
+          type: string
       required:
       - amount
       - created
@@ -32105,6 +32836,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
       type: object
@@ -32144,6 +32876,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
         applicationId:
@@ -32230,6 +32963,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          minLength: 4
           pattern: ^[A-Za-z0-9_-]*$
           type: string
         blockReason:
@@ -34894,6 +35628,29 @@ components:
       - title
       - type
       type: object
+    BestPriorTarget:
+      description: Specifies the target for which the best prior price calculation
+        is taken into consideration.
+      example:
+        targetType: AUDIENCE
+        audienceID: 4
+      properties:
+        targetType:
+          description: The type of price target.
+          enum:
+          - NONE
+          - AUDIENCE
+          example: AUDIENCE
+          type: string
+        audienceID:
+          description: The AudienceID of an audience. Must be used with "AUDIENCE"
+            target type.
+          example: 4
+          format: int64
+          type: integer
+      required:
+      - targetType
+      type: object
     BestPriorPriceRequest:
       example:
         timeframeEndDate: 2020-11-10T23:00:00Z
@@ -34926,7 +35683,6 @@ components:
           description: The number of days prior to the timeframeEndDate. Only prices
             within this look back period are considered for the best prior price evaluation.
           example: "30"
-          format: integer
           type: string
         strictEndDate:
           description: |
@@ -34936,7 +35692,7 @@ components:
           example: true
           type: boolean
         target:
-          $ref: '#/components/schemas/BestPriorPriceRequest_target'
+          $ref: '#/components/schemas/BestPriorTarget'
       required:
       - skus
       - strictEndDate
@@ -37790,9 +38546,22 @@ components:
             type: integer
           type: array
       type: object
+    RoleV2Readonly:
+      properties:
+        isReadonly:
+          default: false
+          description: Identifies if the role is read-only. For read-only roles, you
+            can only assign or unassign users. You cannot edit any other properties,
+            such as the name, description, or permissions. The 'isReadonly' property
+            cannot be set for new or existing roles. It is reserved for predefined
+            roles, such as the Talon.One support role.
+          example: false
+          type: boolean
+      type: object
     RoleV2:
       example:
         accountId: 3886
+        isReadonly: false
         created: 2020-06-10T09:05:27.993483Z
         permissions:
           permissionSets:
@@ -37880,6 +38649,15 @@ components:
             format: int64
             type: integer
           type: array
+        isReadonly:
+          default: false
+          description: Identifies if the role is read-only. For read-only roles, you
+            can only assign or unassign users. You cannot edit any other properties,
+            such as the name, description, or permissions. The 'isReadonly' property
+            cannot be set for new or existing roles. It is reserved for predefined
+            roles, such as the Talon.One support role.
+          example: false
+          type: boolean
       required:
       - accountId
       - created
@@ -38283,6 +39061,11 @@ components:
             when the user who created the key is disabled or deleted.
           example: true
           type: boolean
+        lastUsed:
+          description: The last time the management key was used.
+          example: 2022-03-02T16:46:17.758585Z
+          format: date-time
+          type: string
       required:
       - accountID
       - created
@@ -38345,6 +39128,11 @@ components:
             when the user who created the key is disabled or deleted.
           example: true
           type: boolean
+        lastUsed:
+          description: The last time the management key was used.
+          example: 2022-03-02T16:46:17.758585Z
+          format: date-time
+          type: string
         key:
           description: The management key.
           example: f45f90d21dcd9bac965c45e547e9754a3196891d09948e35adbcbedc4e9e4b01
@@ -38358,22 +39146,6 @@ components:
       - id
       - key
       - name
-      type: object
-    JWT:
-      description: JSON web token used for accessing integrations in Prismatic
-      properties:
-        accessToken:
-          description: Access token used to authenticate a user in Talon.One.
-          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-          type: string
-        expiresIn:
-          description: Time until the token expires (in seconds).
-          example: 1000
-          format: int64
-          type: integer
-      required:
-      - accessToken
-      - expiresIn
       type: object
     NewValueMap:
       type: object
@@ -39299,6 +40071,24 @@ components:
       required:
       - itemFilter
       type: object
+    GenerateCampaignSummary:
+      properties:
+        campaignID:
+          description: ID of a campaign.
+          format: int64
+          type: integer
+        rulesetID:
+          description: ID of a ruleset.
+          format: int64
+          type: integer
+        currency:
+          description: Currency for the campaign.
+          type: string
+      required:
+      - campaignID
+      - currency
+      - rulesetID
+      type: object
     GenerateUserSessionSummary:
       properties:
         sessionID:
@@ -39334,6 +40124,70 @@ components:
       required:
       - eventID
       type: object
+    CouponFailureSummary:
+      description: Summary of the reasons for coupon redemption failure.
+      properties:
+        id:
+          description: ID of the evaluation record.
+          example: 1
+          format: int64
+          type: integer
+        eventID:
+          description: ID of the event.
+          example: 1011
+          format: int64
+          type: integer
+        sessionID:
+          description: ID of the customer session set by your integration layer.
+          example: "1"
+          type: string
+        profileID:
+          description: ID of the customer profile set by your integration layer.
+          example: a48f10dddb5c9493aad194e49bb9c1dac
+          type: string
+        status:
+          description: Status defines if the coupon code was applied or rejected.
+          example: rejected
+          type: string
+        couponCode:
+          description: Coupon code passed for evaluation.
+          example: ABC123
+          type: string
+        language:
+          description: Language of the summary.
+          example: en
+          type: string
+        shortSummary:
+          description: A summary of the reasons for coupon redemption failure.
+          example: Session total was less than the required total.
+          type: string
+        longSummary:
+          description: A detailed summary of the reasons for coupon redemption failure
+            based on events of the entire session.
+          example: There were 5 items in the cart with SKUs 1,2,3,4,5 and the total
+            is $60 which is less than the required cart total.
+          type: string
+        createdAt:
+          description: Timestamp when the request was made.
+          example: 2021-07-20T21:59:00Z
+          format: date-time
+          type: string
+        updatedAt:
+          description: Timestamp when the request was last updated.
+          example: 2021-07-20T21:59:00Z
+          format: date-time
+          type: string
+      required:
+      - couponCode
+      - createdAt
+      - eventID
+      - id
+      - language
+      - longSummary
+      - shortSummary
+      - status
+      - updatedAt
+      type: object
     GenerateCouponFailureDetailedSummary:
       properties:
         applicationID:
@@ -39363,10 +40217,350 @@ components:
       - eventID
       - sessionID
       type: object
+    CampaignLogSummary:
+      description: Campaign Log Summary
+      properties:
+        name:
+          description: Name of the user that performed the change.
+          example: Admin
+          type: string
+        email:
+          description: E-mail of the user that performed the change.
+          example: admin@talon.one
+          type: string
+        created:
+          description: Date and time the change was performed.
+          format: date-time
+          type: string
+        action:
+          description: Action performed by the user.
+          enum:
+          - create
+          - delete
+          - update
+          example: create
+          type: string
+        summary:
+          description: AI-generated summary of the action performed.
+          type: string
+      required:
+      - action
+      - created
+      - email
+      - name
+      - summary
+      type: object
+    SessionCoupons:
+      properties:
+        sessionIntegrationId:
+          description: The integration ID of the session in which the coupons were
+            applied.
+          example: cc53e4fa-547f-4f5e-8333-76e05c381f67
+          type: string
+        couponCode:
+          description: The coupon codes for which rejection reason is needed.
+          example: SUMMER2025
+          type: string
+      required:
+      - sessionIntegrationId
+      type: object
+    CouponRejections:
+      properties:
+        sessionDetails:
+          description: Array containing details from session like session id and optional
+            coupon code used in the session. Only the first 15 entries will be processed.
+          items:
+            $ref: '#/components/schemas/SessionCoupons'
+          type: array
+        applicationId:
+          description: The application ID for which the coupon was used.
+          example: 123
+          format: int64
+          type: integer
+        language:
+          description: The language the summary will be generated in.
+          example: en
+          type: string
+      required:
+      - applicationId
+      - sessionDetails
+      type: object
+    PrismaticFlowConfig:
+      properties:
+        ApiKey:
+          type: string
+      required:
+      - ApiKey
+      type: object
+    PrismaticFlowWithConfig:
+      properties:
+        ApplicationID:
+          description: ID of application the flow is registered for.
+          example: 54
+          format: int64
+          type: integer
+        EventType:
+          description: The event type we want to register a flow for.
+          type: string
+          x-fieldType: PrismaticEventType
+        PrismaticFlowUrl:
+          description: The URL of the prismatic flow that we want to trigger for the
+            event.
+          type: string
+        Config:
+          $ref: '#/components/schemas/PrismaticFlowConfig'
+      required:
+      - Config
+      - EventType
+      - PrismaticFlowUrl
+      type: object
+    PrismaticFlow:
+      properties:
+        ApplicationID:
+          description: ID of application the flow is registered for.
+          example: 54
+          format: int64
+          type: integer
+        EventType:
+          description: The event type we want to register a flow for.
+          type: string
+          x-fieldType: PrismaticEventType
+        PrismaticFlowUrl:
+          description: The URL of the prismatic flow that we want to trigger for the
+            event.
+          type: string
+      required:
+      - EventType
+      - PrismaticFlowUrl
+      type: object
+    PrismaticConfig:
+      description: Config used for accessing integrations in Prismatic
+      properties:
+        prismaticUrl:
+          description: The url used to integrate the Prismatic Marketplace.
+          example: https://app.eu-west-1.prismatic.io/
+          type: string
+        accessToken:
+          description: Access token used to authenticate a user in Talon.One.
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+          type: string
+      required:
+      - accessToken
+      - prismaticUrl
+      type: object
+    IntegrationProfileEntityV3:
+      properties:
+        profileId:
+          description: |
+            ID of the customer profile set by your integration layer.
+
+            **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`.
+          example: URNGV8294NV
+          type: string
+      required:
+      - profileId
+      type: object
+    EventV3:
+      properties:
+        profileId:
+          description: |
+            ID of the customer profile set by your integration layer.
+
+            **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`.
+          example: URNGV8294NV
+          type: string
+        storeIntegrationId:
+          description: The integration ID of the store. You choose this ID when you
+            create a store.
+          example: STORE-001
+          maxLength: 1000
+          minLength: 1
+          type: string
+        evaluableCampaignIds:
+          description: |
+            When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.
+
+            These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them.
+          example:
+          - 10
+          - 12
+          items:
+            format: int64
+            type: integer
+          title: Campaigns to evaluate
+          type: array
+        integrationId:
+          description: |
+            The unique ID of the current event. Only one event with this ID could be activated, duplicated events are forbidden.
+          example: 175KJPS947296
+          minLength: 1
+          type: string
+        type:
+          description: |
+            A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type `event` in the Campaign Manager.
+          example: pageViewed
+          minLength: 1
+          title: Event Type
+          type: string
+        attributes:
+          description: Arbitrary additional JSON properties associated with the event.
+            They must be created in the Campaign Manager before setting them with
+            this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute).
+          example:
+            myAttribute: myValue
+          properties: {}
+          type: object
+        connectedSessionID:
+          description: The ID of the session that happened in the past.
+          example: 175KJPS947296
+          minLength: 1
+          type: string
+        previousEventID:
+          description: The unique identifier of the event that happened in the past.
+          example: 175KJPS947296
+          minLength: 1
+          type: string
+      required:
+      - integrationId
+      - profileId
+      - type
+      type: object
+    IntegrationEventV3Request:
+      properties:
+        profileId:
+          description: |
+            ID of the customer profile set by your integration layer.
+
+            **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`.
+          example: URNGV8294NV
+          type: string
+        storeIntegrationId:
+          description: The integration ID of the store. You choose this ID when you
+            create a store.
+          example: STORE-001
+          maxLength: 1000
+          minLength: 1
+          type: string
+        evaluableCampaignIds:
+          description: |
+            When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.
+
+            These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them.
+          example:
+          - 10
+          - 12
+          items:
+            format: int64
+            type: integer
+          title: Campaigns to evaluate
+          type: array
+        integrationId:
+          description: |
+            The unique ID of the current event. Only one event with this ID could be activated, duplicated events are forbidden.
+          example: 175KJPS947296
+          minLength: 1
+          type: string
+        type:
+          description: |
+            A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type `event` in the Campaign Manager.
+          example: pageViewed
+          minLength: 1
+          title: Event Type
+          type: string
+        attributes:
+          description: Arbitrary additional JSON properties associated with the event.
+            They must be created in the Campaign Manager before setting them with
+            this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute).
+          example:
+            myAttribute: myValue
+          properties: {}
+          type: object
+        connectedSessionID:
+          description: The ID of the session that happened in the past.
+          example: 175KJPS947296
+          minLength: 1
+          type: string
+        previousEventID:
+          description: The unique identifier of the event that happened in the past.
+          example: 175KJPS947296
+          minLength: 1
+          type: string
+        loyaltyCards:
+          description: Identifiers of the loyalty cards used during this event.
+          example:
+          - loyalty-card-1
+          items:
+            type: string
+          maxItems: 1
+          type: array
+        responseContent:
+          description: |
+            Optional list of requested information to be present on the response related to the tracking custom event.
+          example:
+          - triggeredCampaigns
+          - customerProfile
+          items:
+            enum:
+            - customerProfile
+            - triggeredCampaigns
+            - loyalty
+            - event
+            - awardedGiveaways
+            - ruleFailureReasons
+            type: string
+          type: array
+      required:
+      - integrationId
+      - profileId
+      - type
+      type: object
+    IntegrationEventV3Response:
+      description: |
+        This is the response type returned by the trackEventV3 endpoint.
+      properties:
+        customerProfile:
+          $ref: '#/components/schemas/CustomerProfile'
+        event:
+          $ref: '#/components/schemas/EventV3'
+        loyalty:
+          $ref: '#/components/schemas/Loyalty'
+        triggeredCampaigns:
+          items:
+            $ref: '#/components/schemas/Campaign'
+          type: array
+        ruleFailureReasons:
+          items:
+            $ref: '#/components/schemas/RuleFailureReason'
+          type: array
+        awardedGiveaways:
+          items:
+            $ref: '#/components/schemas/Giveaway'
+          type: array
+        effects:
+          description: The effects generated by the rules in your running campaigns.
+            See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
+          items:
+            $ref: '#/components/schemas/Effect'
+          type: array
+        createdCoupons:
+          items:
+            $ref: '#/components/schemas/Coupon'
+          type: array
+        createdReferrals:
+          items:
+            $ref: '#/components/schemas/Referral'
+          type: array
+      required:
+      - createdCoupons
+      - createdReferrals
+      - effects
+      type: object
     CampaignNotificationBase:
       properties:
         NotificationType:
           description: The type of the notification
+          enum:
+          - CampaignNotification
           example: CampaignNotification
           type: string
         TotalResultSize:
@@ -39434,6 +40628,8 @@ components:
       properties:
         NotificationType:
           description: The type of the notification
+          enum:
+          - CampaignNotification
           example: CampaignNotification
           type: string
         TotalResultSize:
@@ -39481,6 +40677,8 @@ components:
       properties:
         NotificationType:
           description: The type of the notification
+          enum:
+          - CampaignNotification
           example: CampaignNotification
           type: string
         TotalResultSize:
@@ -39518,6 +40716,8 @@ components:
       properties:
         NotificationType:
           description: The type of the notification
+          enum:
+          - CampaignNotification
           example: CampaignNotification
           type: string
         TotalResultSize:
@@ -39556,6 +40756,8 @@ components:
       properties:
         NotificationType:
           description: The type of the notification
+          enum:
+          - CampaignNotification
           example: CampaignNotification
           type: string
         TotalResultSize:
@@ -39594,6 +40796,8 @@ components:
       properties:
         NotificationType:
           description: The type of the notification
+          enum:
+          - CampaignNotification
           example: CampaignNotification
           type: string
         TotalResultSize:
@@ -39633,6 +40837,8 @@ components:
       properties:
         NotificationType:
           description: The type of the notification
+          enum:
+          - CampaignNotification
           example: CampaignNotification
           type: string
         TotalResultSize:
@@ -39669,6 +40875,8 @@ components:
       properties:
         NotificationType:
           description: The type of the notification
+          enum:
+          - CampaignNotification
           example: CampaignNotification
           type: string
         TotalResultSize:
@@ -39747,7 +40955,7 @@ components:
           type: integer
         price:
           description: The price of the changed item.
-          example: 99.99
+          example: 100.0
           type: number
         prices:
           additionalProperties:
@@ -39991,6 +41199,8 @@ components:
           type: string
         NotificationType:
           description: The type of the not
+          enum:
+          - CouponCreated
           type: string
       required:
       - EmployeeName
@@ -40023,6 +41233,9 @@ components:
           type: integer
         NotificationType:
           description: The type of the notification
+          enum:
+          - CouponUpdated
+          - CouponDeleted
           example: CouponUpdated
           type: string
       required:
@@ -40054,6 +41267,8 @@ components:
           type: string
         NotificationType:
           description: The type of the notification
+          enum:
+          - AsyncCouponsCreated
           type: string
       required:
       - BatchID
@@ -40080,6 +41295,8 @@ components:
           type: string
         NotificationType:
           description: The type of the notification
+          enum:
+          - CouponsUpdated
           type: string
       required:
       - ApplicationID
@@ -40111,6 +41328,8 @@ components:
           type: integer
         NotificationType:
           description: The type of the notification
+          enum:
+          - CouponsDeleted
           type: string
       required:
       - ApplicationID
@@ -40247,10 +41466,9 @@ components:
       type: object
     AddedDeductedPointsNotification:
       properties:
-        ProfileIntegrationID:
-          description: The integration ID of the customer profile to whom points were
-            added or deducted.
-          example: URNGV8294NV
+        EmployeeName:
+          description: The name of the employee who added or deducted points.
+          example: Franziska Schneider
           type: string
         LoyaltyProgramID:
           description: The ID of the loyalty program.
@@ -40258,18 +41476,26 @@ components:
           format: int64
           minimum: 1
           type: integer
+        NotificationType:
+          description: The type of notification.
+          enum:
+          - LoyaltyPointsDeducted
+          - LoyaltyPointsAdded
+          type: string
+        ProfileIntegrationID:
+          description: The integration ID of the customer profile to whom points were
+            added or deducted.
+          example: URNGV8294NV
+          type: string
+        SessionIntegrationID:
+          description: The integration ID of the session through which the points
+            were earned or lost.
+          example: cc53e4fa-547f-4f5e-8333-76e05c381f67
+          type: string
         SubledgerID:
           description: The ID of the subledger within the loyalty program where these
             points were added.
           example: sub-123
-          type: string
-        Amount:
-          description: The amount of added or deducted loyalty points.
-          example: 10.99
-          type: number
-        Reason:
-          description: The reason for the points addition or deduction.
-          example: Compensation
           type: string
         TypeOfChange:
           description: |
@@ -40286,16 +41512,58 @@ components:
           - rule_engine
           - management_api
           type: string
-        EmployeeName:
-          description: The name of the employee who added or deducted points.
-          example: Franziska Schneider
-          type: string
         UserID:
           description: The ID of the employee who added or deducted points.
           example: 25
           format: int64
-          minimum: 1
           type: integer
+        Amount:
+          description: The amount of added or deducted loyalty points.
+          example: 10.99
+          type: number
+        ExpiryDate:
+          description: The expiration date for loyalty points.
+          example: 2024-01-24T14:15:22Z
+          format: date-time
+          type: string
+        Operation:
+          description: The action (addition or deduction) made with loyalty points.
+          enum:
+          - addition
+          - deduction
+          type: string
+        Reason:
+          description: The reason for the points addition or deduction.
+          example: Compensation
+          type: string
+        StartDate:
+          description: The start date for loyalty points.
+          example: 2023-01-24T14:15:22Z
+          format: date-time
+          type: string
+      required:
+      - Amount
+      - EmployeeName
+      - LoyaltyProgramID
+      - NotificationType
+      - Operation
+      - ProfileIntegrationID
+      - Reason
+      - SessionIntegrationID
+      - SubledgerID
+      - TypeOfChange
+      - UserID
+      type: object
+    AddedDeductedPointsBalancesAction:
+      properties:
+        Amount:
+          description: The amount of added or deducted loyalty points.
+          example: 10.99
+          type: number
+        Reason:
+          description: The reason for the points addition or deduction.
+          example: Compensation
+          type: string
         Operation:
           description: The action (addition or deduction) made with loyalty points.
           enum:
@@ -40312,25 +41580,77 @@ components:
           example: 2024-01-24T14:15:22Z
           format: date-time
           type: string
+      required:
+      - Amount
+      - Operation
+      - Reason
+      type: object
+    AddedDeductedPointsBalancesNotification:
+      properties:
+        EmployeeName:
+          description: The name of the employee who added or deducted points.
+          example: Franziska Schneider
+          type: string
+        LoyaltyProgramID:
+          description: The ID of the loyalty program.
+          example: 5
+          format: int64
+          minimum: 1
+          type: integer
+        NotificationType:
+          description: The type of notification.
+          enum:
+          - LoyaltyAddedDeductedPointsBalances
+          type: string
+        ProfileIntegrationID:
+          description: The integration ID of the customer profile to whom points were
+            added or deducted.
+          example: URNGV8294NV
+          type: string
         SessionIntegrationID:
           description: The integration ID of the session through which the points
             were earned or lost.
           example: cc53e4fa-547f-4f5e-8333-76e05c381f67
           type: string
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - LoyaltyPointsDeducted
-          - LoyaltyPointsAdded
+        SubledgerID:
+          description: The ID of the subledger within the loyalty program where these
+            points were added.
+          example: sub-123
           type: string
+        TypeOfChange:
+          description: |
+            The notification source, that is, it indicates whether the points were added or deducted via one of the following routes:
+            - [The Campaign Manager](/docs/product/getting-started)
+            - [Management API](/management-api#tag/Loyalty)
+            - [Rule Engine](/docs/product/applications/evaluation-order-for-rules-and-filters)
+          enum:
+          - campaign_manager
+          - rule_engine
+          - management_api
+          type: string
+        UserID:
+          description: The ID of the employee who added or deducted points.
+          example: 25
+          format: int64
+          type: integer
+        Actions:
+          description: The list of actions that have been triggered in the loyalty
+            program.
+          items:
+            $ref: '#/components/schemas/AddedDeductedPointsBalancesAction'
+          minItems: 1
+          type: array
+        CurrentPoints:
+          description: The current points balance.
+          example: 10.99
+          type: number
       required:
-      - Amount
+      - Actions
+      - CurrentPoints
       - EmployeeName
       - LoyaltyProgramID
       - NotificationType
-      - Operation
       - ProfileIntegrationID
-      - Reason
       - SessionIntegrationID
       - SubledgerID
       - TypeOfChange
@@ -40706,6 +42026,26 @@ components:
       type: object
     CardAddedDeductedPointsNotification:
       properties:
+        CardIdentifier:
+          description: Loyalty card identification number.
+          example: 123-456-789ATBC
+          type: string
+        EmployeeName:
+          description: The name of the employee who added or deducted points.
+          example: Franziska Schneider
+          type: string
+        LoyaltyProgramID:
+          description: The ID of the loyalty program.
+          example: 5
+          format: int64
+          minimum: 1
+          type: integer
+        NotificationType:
+          description: The type of notification.
+          enum:
+          - LoyaltyCardPointsDeducted
+          - LoyaltyCardPointsAdded
+          type: string
         ProfileIntegrationIDs:
           description: The integration ID of the customer profile to whom points were
             added or deducted.
@@ -40715,24 +42055,15 @@ components:
           items:
             type: string
           type: array
-        LoyaltyProgramID:
-          description: The ID of the loyalty program.
-          example: 5
-          format: int64
-          minimum: 1
-          type: integer
+        SessionIntegrationID:
+          description: The integration ID of the session through which the points
+            were earned or lost.
+          example: cc53e4fa-547f-4f5e-8333-76e05c381f67
+          type: string
         SubledgerID:
           description: The ID of the subledger within the loyalty program where these
             points were added or deducted.
           example: sub-123
-          type: string
-        Amount:
-          description: The amount of added or deducted loyalty points.
-          example: 10.99
-          type: number
-        Reason:
-          description: The reason for the points addition or deduction.
-          example: Compensation
           type: string
         TypeOfChange:
           description: |
@@ -40749,53 +42080,41 @@ components:
           - rule_engine
           - management_api
           type: string
-        EmployeeName:
-          description: The name of the employee who added or deducted points.
-          example: Franziska Schneider
-          type: string
         UserID:
           description: The ID of the employee who added or deducted points.
           example: 25
           format: int64
-          minimum: 1
           type: integer
-        Operation:
-          description: The action (addition or deduction) made with loyalty points.
-          enum:
-          - addition
-          - deduction
-          type: string
-        StartDate:
-          description: The start date for loyalty points.
-          example: 2023-01-24T14:15:22Z
-          format: date-time
-          type: string
-        ExpiryDate:
-          description: The expiration date for loyalty points.
-          example: 2024-01-24T14:15:22Z
-          format: date-time
-          type: string
-        SessionIntegrationID:
-          description: The integration ID of the session through which the points
-            were earned or lost.
-          example: cc53e4fa-547f-4f5e-8333-76e05c381f67
-          type: string
-        NotificationType:
-          description: The type of notification.
-          enum:
-          - LoyaltyCardPointsDeducted
-          - LoyaltyCardPointsAdded
-          type: string
-        CardIdentifier:
-          description: Loyalty card identification number.
-          example: 123-456-789ATBC
-          type: string
         UsersPerCardLimit:
           description: The max amount of user profiles with whom a card can be shared.
             This can be set to `0` for no limit.
           example: 10
           format: int64
           type: integer
+        Amount:
+          description: The amount of added or deducted loyalty points.
+          example: 10.99
+          type: number
+        ExpiryDate:
+          description: The expiration date for loyalty points.
+          example: 2024-01-24T14:15:22Z
+          format: date-time
+          type: string
+        Operation:
+          description: The action (addition or deduction) made with loyalty points.
+          enum:
+          - addition
+          - deduction
+          type: string
+        Reason:
+          description: The reason for the points addition or deduction.
+          example: Compensation
+          type: string
+        StartDate:
+          description: The start date for loyalty points.
+          example: 2023-01-24T14:15:22Z
+          format: date-time
+          type: string
       required:
       - Amount
       - CardIdentifier
@@ -40811,6 +42130,252 @@ components:
       - UserID
       - UsersPerCardLimit
       type: object
+    CardAddedDeductedPointsBalancesNotification:
+      properties:
+        CardIdentifier:
+          description: Loyalty card identification number.
+          example: 123-456-789ATBC
+          type: string
+        EmployeeName:
+          description: The name of the employee who added or deducted points.
+          example: Franziska Schneider
+          type: string
+        LoyaltyProgramID:
+          description: The ID of the loyalty program.
+          example: 5
+          format: int64
+          minimum: 1
+          type: integer
+        NotificationType:
+          description: The type of notification.
+          enum:
+          - LoyaltyCardAddedDeductedPointsBalances
+          type: string
+        ProfileIntegrationIDs:
+          description: The integration ID of the customer profile to whom points were
+            added or deducted.
+          example:
+          - yJSObdNNtOetCHWHPFuz
+          - test-user-4zoj1c
+          items:
+            type: string
+          type: array
+        SessionIntegrationID:
+          description: The integration ID of the session through which the points
+            were earned or lost.
+          example: cc53e4fa-547f-4f5e-8333-76e05c381f67
+          type: string
+        SubledgerID:
+          description: The ID of the subledger within the loyalty program where these
+            points were added or deducted.
+          example: sub-123
+          type: string
+        TypeOfChange:
+          description: |
+            The notification source, that is, it indicates whether the points were added or deducted via one of the following routes:
+            - [The Campaign Manager](/docs/product/getting-started)
+            - [Management API](/management-api#tag/Loyalty)
+            - [Rule Engine](/docs/product/applications/evaluation-order-for-rules-and-filters)
+          enum:
+          - campaign_manager
+          - rule_engine
+          - management_api
+          type: string
+        UserID:
+          description: The ID of the employee who added or deducted points.
+          example: 25
+          format: int64
+          type: integer
+        UsersPerCardLimit:
+          description: The max amount of user profiles with whom a card can be shared.
+            This can be set to `0` for no limit.
+          example: 10
+          format: int64
+          type: integer
+        Actions:
+          description: The list of actions that have been triggered in the loyalty
+            program.
+          items:
+            $ref: '#/components/schemas/AddedDeductedPointsBalancesAction'
+          minItems: 1
+          type: array
+        CurrentPoints:
+          description: The current points balance.
+          example: 10.99
+          type: number
+      required:
+      - Actions
+      - CardIdentifier
+      - CurrentPoints
+      - EmployeeName
+      - LoyaltyProgramID
+      - NotificationType
+      - ProfileIntegrationIDs
+      - SessionIntegrationID
+      - SubledgerID
+      - TypeOfChange
+      - UserID
+      - UsersPerCardLimit
+      type: object
+    PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction:
+      properties:
+        Amount:
+          format: float
+          type: number
+        Reason:
+          type: string
+        Operation:
+          enum:
+          - addition
+          - deduction
+          type: string
+        StartDate:
+          format: date-time
+          type: string
+        ExpiryDate:
+          format: date-time
+          type: string
+      required:
+      - Amount
+      - Operation
+      type: object
+    PrismaticEventPayloadLoyaltyProfileBasedNotifications:
+      properties:
+        ProfileIntegrationID:
+          type: string
+        LoyaltyProgramID:
+          format: int64
+          type: integer
+        SubledgerID:
+          type: string
+        SourceOfEvent:
+          type: string
+        EmployeeName:
+          type: string
+        UserID:
+          format: int64
+          type: integer
+        SessionIntegrationID:
+          type: string
+        CurrentTier:
+          type: string
+        CurrentPoints:
+          format: float
+          type: number
+        OldTier:
+          type: string
+        PointsRequiredToTheNextTier:
+          format: float
+          type: number
+        NextTier:
+          type: string
+        TierExpirationDate:
+          format: date-time
+          type: string
+        TimestampOfTierChange:
+          format: date-time
+          type: string
+        Actions:
+          items:
+            $ref: '#/components/schemas/PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction'
+          type: array
+      required:
+      - CurrentPoints
+      - LoyaltyProgramID
+      - ProfileIntegrationID
+      - SourceOfEvent
+      - SubledgerID
+      type: object
+      x-discriminator-value: LoyaltyTierUpgrade
+      x-ms-discriminator-value: LoyaltyTierUpgrade
+    PrismaticEventPayloadCouponBasedNotificationsLimits:
+      properties:
+        Action:
+          type: string
+        Limit:
+          format: float
+          type: number
+        Period:
+          type: string
+        Entities:
+          items:
+            type: string
+          type: array
+      required:
+      - Action
+      - Entities
+      - Limit
+      type: object
+    PrismaticEventPayloadCouponBasedNotifications:
+      properties:
+        Id:
+          format: int64
+          type: integer
+        Created:
+          format: date-time
+          type: string
+        CampaignId:
+          format: int64
+          type: integer
+        Value:
+          type: string
+        UsageLimit:
+          format: int64
+          type: integer
+        DiscountLimit:
+          format: float
+          type: number
+        ReservationLimit:
+          format: int64
+          type: integer
+        StartDate:
+          format: date-time
+          type: string
+        ExpiryDate:
+          format: date-time
+          type: string
+        UsageCounter:
+          format: int64
+          type: integer
+        DiscountCounter:
+          format: float
+          type: number
+        DiscountRemainder:
+          format: float
+          type: number
+        ReferralId:
+          format: int64
+          type: integer
+        RecipientIntegrationId:
+          type: string
+        ImportId:
+          format: int64
+          type: integer
+        BatchId:
+          type: string
+        Attributes:
+          properties: {}
+          type: object
+        Limits:
+          items:
+            $ref: '#/components/schemas/PrismaticEventPayloadCouponBasedNotificationsLimits'
+          type: array
+        SourceOfEvent:
+          type: string
+        EmployeeName:
+          type: string
+      required:
+      - CampaignId
+      - Created
+      - EmployeeName
+      - Id
+      - SourceOfEvent
+      - UsageCounter
+      - UsageLimit
+      - Value
+      type: object
+      x-discriminator-value: CouponDeleted
+      x-ms-discriminator-value: CouponDeleted
     SetLoyaltyPointsExpiryDateEffectProps:
       description: |
         The properties specific to the "setLoyaltyPointsExpiryDate" effect. This gets triggered when a validated rule contains the "set expiry date" effect. The current expiry date gets set to the date given in the effect.
@@ -41048,6 +42613,7 @@ components:
           transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
+          validityDuration: 30D
           ruleName: Add 2 points
           id: 123
           programId: 324
@@ -41062,6 +42628,7 @@ components:
           transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
+          validityDuration: 30D
           ruleName: Add 2 points
           id: 123
           programId: 324
@@ -41092,6 +42659,7 @@ components:
           transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
+          validityDuration: 30D
           ruleName: Add 2 points
           id: 123
           programId: 324
@@ -41107,6 +42675,7 @@ components:
           transactionUUID: ce59f12a-f53b-4014-a745-636d93f2bd3f
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
+          validityDuration: 30D
           ruleName: Add 2 points
           id: 123
           programId: 324
@@ -41133,6 +42702,7 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
+          validityDuration: 30D
           customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
           id: 123
           programId: 324
@@ -41144,6 +42714,7 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
+          validityDuration: 30D
           customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
           id: 123
           programId: 324
@@ -41169,6 +42740,7 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
+          validityDuration: 30D
           customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
           id: 123
           programId: 324
@@ -41179,6 +42751,7 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           subledgerId: sub-123
           name: Reward 10% points of a purchase's current total
+          validityDuration: 30D
           customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
           id: 123
           programId: 324
@@ -41241,7 +42814,6 @@ components:
             timezone: Europe/Berlin
             description: Customers collect 10 points per 1$ spent
             title: Point collection
-            canUpdateJoinPolicy: true
             canUpdateSubledgers: true
             programJoinPolicy: not_join
             accountID: 1
@@ -41323,7 +42895,6 @@ components:
             timezone: Europe/Berlin
             description: Customers collect 10 points per 1$ spent
             title: Point collection
-            canUpdateJoinPolicy: true
             canUpdateSubledgers: true
             programJoinPolicy: not_join
             accountID: 1
@@ -41444,7 +43015,6 @@ components:
             timezone: Europe/Berlin
             description: Customers collect 10 points per 1$ spent
             title: Point collection
-            canUpdateJoinPolicy: true
             canUpdateSubledgers: true
             programJoinPolicy: not_join
             accountID: 1
@@ -41526,7 +43096,6 @@ components:
             timezone: Europe/Berlin
             description: Customers collect 10 points per 1$ spent
             title: Point collection
-            canUpdateJoinPolicy: true
             canUpdateSubledgers: true
             programJoinPolicy: not_join
             accountID: 1
@@ -42554,6 +44123,7 @@ components:
             description: My collection of SKUs
           - name: My collection
             description: My collection of SKUs
+          campaignsCount: 3
           defaultCampaignGroupId: 42
           description: This is a template for a discount campaign.
           features:
@@ -42694,6 +44264,7 @@ components:
             description: My collection of SKUs
           - name: My collection
             description: My collection of SKUs
+          campaignsCount: 3
           defaultCampaignGroupId: 42
           description: This is a template for a discount campaign.
           features:
@@ -42864,7 +44435,6 @@ components:
           timezone: Europe/Berlin
           description: Customers collect 10 points per 1$ spent
           title: Point collection
-          canUpdateJoinPolicy: true
           canUpdateSubledgers: true
           programJoinPolicy: not_join
           accountID: 1
@@ -42946,7 +44516,6 @@ components:
           timezone: Europe/Berlin
           description: Customers collect 10 points per 1$ spent
           title: Point collection
-          canUpdateJoinPolicy: true
           canUpdateSubledgers: true
           programJoinPolicy: not_join
           accountID: 1
@@ -43081,6 +44650,7 @@ components:
           customerProfileId: kda0fajs0-fad9f-fd9dfsa9-fd9dasjf9
           subledgerId: sub-123
           name: Reward 50 points for each $500 purchase
+          validityDuration: 30D
           ruleName: 10 points for every $100 spent
           userEmail: john.doe@example.com
           id: 123
@@ -43102,6 +44672,7 @@ components:
           customerProfileId: kda0fajs0-fad9f-fd9dfsa9-fd9dasjf9
           subledgerId: sub-123
           name: Reward 50 points for each $500 purchase
+          validityDuration: 30D
           ruleName: 10 points for every $100 spent
           userEmail: john.doe@example.com
           id: 123
@@ -44598,6 +46169,7 @@ components:
       example:
         data:
         - accountId: 3886
+          isReadonly: false
           created: 2020-06-10T09:05:27.993483Z
           permissions:
             permissionSets:
@@ -44645,6 +46217,7 @@ components:
             delete specific campaign access groups, and view loyalty programs.
           id: 6
         - accountId: 3886
+          isReadonly: false
           created: 2020-06-10T09:05:27.993483Z
           permissions:
             permissionSets:
@@ -44925,28 +46498,6 @@ components:
             type: object
           minItems: 1
           type: array
-    BestPriorPriceRequest_target:
-      description: Specifies the target for which the best prior price calculation
-        is taken into consideration.
-      example:
-        targetType: AUDIENCE
-        audienceID: 4
-      properties:
-        targetType:
-          description: The type of price target.
-          enum:
-          - NONE
-          - AUDIENCE
-          example: AUDIENCE
-          type: string
-        audienceID:
-          description: The AudienceID of an audience. Must be used with "AUDIENCE"
-            target type.
-          example: 4
-          format: int64
-          type: integer
-      required:
-      - targetType
     ScimBaseUser_name:
       description: The components of the user’s real name.
       example:
@@ -45016,28 +46567,19 @@ components:
           $ref: '#/components/schemas/AnalyticsDataPointWithTrend'
   securitySchemes:
     api_key_v1:
-      description: |
-        To authenticate with the Integration API, generate an API key in the Campaign Manager
-        and prefix it with `ApiKey-v1`.
-
-        To generate an API key:
-
-        1. Sign in to the Campaign Manager and open the Application of your choice, or create one.
-        1. Click **Settings** > **Integration API Keys**.
-        1. Click **Create API Key** and give it a name and an expiration date, then click **Create API Key**.
-
-        You can now use the API key in the HTTP header, prefixing it with `ApiKey-v1`:
-
-        ```
-        Authorization: ApiKey-v1 dbc644d33aa74d582bd9479c59e16f970fe13bf3
-        ```
-
-        Or use it inside [an SDK](https://docs.talon.one/docs/dev/sdks/overview), for example, with the JAVA SDK:
-
-        ```
-        iApi.getApiClient().setApiKeyPrefix("ApiKey-v1");
-        iApi.getApiClient().setApiKey("dbc644d33aa74d582bd9479c59e16f970fe13bf3");
-        ```
+      description: "To authenticate with the Integration API, generate an API key\
+        \ in the Campaign Manager\nand prefix it with `ApiKey-v1`.\n\nTo generate\
+        \ an API key:\n\n1. Sign in to the Campaign Manager and open the Application\
+        \ of your choice, or create one.\n1. Click **Settings** > **Integration API\
+        \ Keys**.\n1. Click **Create API Key** and give it a name and an expiration\
+        \ date, then click **Create API Key**.\n   \n   **Tip**: Avoid choosing expiration\
+        \ dates that fall at the end of\n   the year or during other high-traffic\
+        \ periods.\n\n\nYou can now use the API key in the HTTP header, prefixing\
+        \ it with `ApiKey-v1`:\n\n```\nAuthorization: ApiKey-v1 dbc644d33aa74d582bd9479c59e16f970fe13bf3\n\
+        ```\n\nOr use it inside [an SDK](https://docs.talon.one/docs/dev/sdks/overview),\
+        \ for example, with the JAVA SDK:\n\n```\niApi.getApiClient().setApiKeyPrefix(\"\
+        ApiKey-v1\");\niApi.getApiClient().setApiKey(\"dbc644d33aa74d582bd9479c59e16f970fe13bf3\"\
+        );\n```\n"
       in: header
       name: Authorization
       type: apiKey
@@ -45060,28 +46602,19 @@ components:
       name: Authorization
       type: apiKey
     management_key:
-      description: |
-        The API key authentication gives you access to the endpoints selected by the admin who created the key.
-        Using an API key is the recommended authentication method.
-
-        The key must be generated by an admin and given to the developer that requires it:
-
-        1. Sign in to the Campaign Manager and click **Account** > **Tools** > **Management API Keys**.
-        1. Click **Create Key** and give it a name.
-        1. Set an expiration date.
-        1. Choose the endpoints the key should give access to.
-        1. Click **Create Key**.
-        1. Share it with your developer.
-
-        The developer can now use the API key in the HTTP header, prefixing it with `ManagementKey-v1`:
-
-        ```
-        Authorization: ManagementKey-v1 bd9479c59e16f9dbc644d33aa74d58270fe13bf3
-        ```
+      description: "The API key authentication gives you access to the endpoints selected\
+        \ by the admin who created the key.\nUsing an API key is the recommended authentication\
+        \ method.\n\nThe key must be generated by an admin and given to the developer\
+        \ that requires it:\n\n1. Sign in to the Campaign Manager and click **Account**\
+        \ > **Tools** > **Management API Keys**.\n1. Click **Create Key** and give\
+        \ it a name.\n1. Set an expiration date. \n   \n   **Tip**: Avoid choosing\
+        \ expiration dates that fall at the end of\n   the year or during other high-traffic\
+        \ periods.\n\n1. Choose the endpoints the key should give access to.\n1. Click\
+        \ **Create Key**.\n1. Share it with your developer.\n\nThe developer can now\
+        \ use the API key in the HTTP header, prefixing it with `ManagementKey-v1`:\n\
+        \n```\nAuthorization: ManagementKey-v1 bd9479c59e16f9dbc644d33aa74d58270fe13bf3\n\
+        ```\n"
       in: header
       name: Authorization
       type: apiKey
-x-notifications-desc: |
-  Use [Application notifications](/docs/product/applications/application-notifications/overview) and [loyalty notifications](/docs/product/loyalty-programs/loyalty-notifications/overview) to notify the system of your choice of certain changes that happened in Talon.One.
-  **Note:** Required fields are not omitted if they are empty (have `null` value).
 

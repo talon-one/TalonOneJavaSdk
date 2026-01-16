@@ -87,6 +87,7 @@ import one.talon.model.InlineResponse20036;
 import one.talon.model.InlineResponse20037;
 import one.talon.model.InlineResponse20038;
 import one.talon.model.InlineResponse20039;
+import one.talon.model.InlineResponse2004;
 import one.talon.model.InlineResponse20040;
 import one.talon.model.InlineResponse20041;
 import one.talon.model.InlineResponse20042;
@@ -101,6 +102,7 @@ import one.talon.model.InlineResponse2007;
 import one.talon.model.InlineResponse2008;
 import one.talon.model.InlineResponse2009;
 import one.talon.model.LoginParams;
+import one.talon.model.LoyaltyBalancesWithTiers;
 import one.talon.model.LoyaltyCard;
 import one.talon.model.LoyaltyCardBatch;
 import one.talon.model.LoyaltyCardBatchResponse;
@@ -10053,6 +10055,10 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
      * @param entity Returned attributes will be filtered by supplied entity. (optional)
+     * @param applicationIds Returned attributes will be filtered by supplied application ids (optional)
+     * @param type Returned attributes will be filtered by supplied type (optional)
+     * @param kind Returned attributes will be filtered by supplied kind (builtin or custom) (optional)
+     * @param search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -10062,7 +10068,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAttributesCall(Long pageSize, Long skip, String sort, String entity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAttributesCall(Long pageSize, Long skip, String sort, String entity, String applicationIds, String type, String kind, String search, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -10084,6 +10090,22 @@ public class ManagementApi {
 
         if (entity != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("entity", entity));
+        }
+
+        if (applicationIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("applicationIds", applicationIds));
+        }
+
+        if (type != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
+        }
+
+        if (kind != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("kind", kind));
+        }
+
+        if (search != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -10108,10 +10130,10 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAttributesValidateBeforeCall(Long pageSize, Long skip, String sort, String entity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAttributesValidateBeforeCall(Long pageSize, Long skip, String sort, String entity, String applicationIds, String type, String kind, String search, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getAttributesCall(pageSize, skip, sort, entity, _callback);
+        okhttp3.Call localVarCall = getAttributesCall(pageSize, skip, sort, entity, applicationIds, type, kind, search, _callback);
         return localVarCall;
 
     }
@@ -10123,6 +10145,10 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
      * @param entity Returned attributes will be filtered by supplied entity. (optional)
+     * @param applicationIds Returned attributes will be filtered by supplied application ids (optional)
+     * @param type Returned attributes will be filtered by supplied type (optional)
+     * @param kind Returned attributes will be filtered by supplied kind (builtin or custom) (optional)
+     * @param search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type (optional)
      * @return InlineResponse20036
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -10131,8 +10157,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20036 getAttributes(Long pageSize, Long skip, String sort, String entity) throws ApiException {
-        ApiResponse<InlineResponse20036> localVarResp = getAttributesWithHttpInfo(pageSize, skip, sort, entity);
+    public InlineResponse20036 getAttributes(Long pageSize, Long skip, String sort, String entity, String applicationIds, String type, String kind, String search) throws ApiException {
+        ApiResponse<InlineResponse20036> localVarResp = getAttributesWithHttpInfo(pageSize, skip, sort, entity, applicationIds, type, kind, search);
         return localVarResp.getData();
     }
 
@@ -10143,6 +10169,10 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
      * @param entity Returned attributes will be filtered by supplied entity. (optional)
+     * @param applicationIds Returned attributes will be filtered by supplied application ids (optional)
+     * @param type Returned attributes will be filtered by supplied type (optional)
+     * @param kind Returned attributes will be filtered by supplied kind (builtin or custom) (optional)
+     * @param search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type (optional)
      * @return ApiResponse&lt;InlineResponse20036&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -10151,8 +10181,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20036> getAttributesWithHttpInfo(Long pageSize, Long skip, String sort, String entity) throws ApiException {
-        okhttp3.Call localVarCall = getAttributesValidateBeforeCall(pageSize, skip, sort, entity, null);
+    public ApiResponse<InlineResponse20036> getAttributesWithHttpInfo(Long pageSize, Long skip, String sort, String entity, String applicationIds, String type, String kind, String search) throws ApiException {
+        okhttp3.Call localVarCall = getAttributesValidateBeforeCall(pageSize, skip, sort, entity, applicationIds, type, kind, search, null);
         Type localVarReturnType = new TypeToken<InlineResponse20036>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -10164,6 +10194,10 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  (optional)
      * @param entity Returned attributes will be filtered by supplied entity. (optional)
+     * @param applicationIds Returned attributes will be filtered by supplied application ids (optional)
+     * @param type Returned attributes will be filtered by supplied type (optional)
+     * @param kind Returned attributes will be filtered by supplied kind (builtin or custom) (optional)
+     * @param search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -10173,9 +10207,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAttributesAsync(Long pageSize, Long skip, String sort, String entity, final ApiCallback<InlineResponse20036> _callback) throws ApiException {
+    public okhttp3.Call getAttributesAsync(Long pageSize, Long skip, String sort, String entity, String applicationIds, String type, String kind, String search, final ApiCallback<InlineResponse20036> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAttributesValidateBeforeCall(pageSize, skip, sort, entity, _callback);
+        okhttp3.Call localVarCall = getAttributesValidateBeforeCall(pageSize, skip, sort, entity, applicationIds, type, kind, search, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse20036>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11414,6 +11448,10 @@ public class ManagementApi {
      * @param tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param startBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param startAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param endBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param endAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param campaignGroupId Filter results to campaigns owned by the specified campaign access group ID. (optional)
      * @param templateId The ID of the campaign template this campaign was created from. (optional)
      * @param storeId Filter results to campaigns linked to the specified store ID. (optional)
@@ -11427,7 +11465,7 @@ public class ManagementApi {
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignsCall(Long applicationId, Long pageSize, Long skip, String sort, String campaignState, String name, String tags, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Long campaignGroupId, Long templateId, Long storeId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCampaignsCall(Long applicationId, Long pageSize, Long skip, String sort, String campaignState, String name, String tags, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startBefore, OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter, Long campaignGroupId, Long templateId, Long storeId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -11468,6 +11506,22 @@ public class ManagementApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdAfter", createdAfter));
         }
 
+        if (startBefore != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startBefore", startBefore));
+        }
+
+        if (startAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startAfter", startAfter));
+        }
+
+        if (endBefore != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endBefore", endBefore));
+        }
+
+        if (endAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endAfter", endAfter));
+        }
+
         if (campaignGroupId != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignGroupId", campaignGroupId));
         }
@@ -11502,7 +11556,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCampaignsValidateBeforeCall(Long applicationId, Long pageSize, Long skip, String sort, String campaignState, String name, String tags, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Long campaignGroupId, Long templateId, Long storeId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCampaignsValidateBeforeCall(Long applicationId, Long pageSize, Long skip, String sort, String campaignState, String name, String tags, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startBefore, OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter, Long campaignGroupId, Long templateId, Long storeId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -11510,7 +11564,7 @@ public class ManagementApi {
         }
         
 
-        okhttp3.Call localVarCall = getCampaignsCall(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId, _callback);
+        okhttp3.Call localVarCall = getCampaignsCall(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, startBefore, startAfter, endBefore, endAfter, campaignGroupId, templateId, storeId, _callback);
         return localVarCall;
 
     }
@@ -11527,6 +11581,10 @@ public class ManagementApi {
      * @param tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param startBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param startAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param endBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param endAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param campaignGroupId Filter results to campaigns owned by the specified campaign access group ID. (optional)
      * @param templateId The ID of the campaign template this campaign was created from. (optional)
      * @param storeId Filter results to campaigns linked to the specified store ID. (optional)
@@ -11539,8 +11597,8 @@ public class ManagementApi {
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2008 getCampaigns(Long applicationId, Long pageSize, Long skip, String sort, String campaignState, String name, String tags, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Long campaignGroupId, Long templateId, Long storeId) throws ApiException {
-        ApiResponse<InlineResponse2008> localVarResp = getCampaignsWithHttpInfo(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId);
+    public InlineResponse2008 getCampaigns(Long applicationId, Long pageSize, Long skip, String sort, String campaignState, String name, String tags, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startBefore, OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter, Long campaignGroupId, Long templateId, Long storeId) throws ApiException {
+        ApiResponse<InlineResponse2008> localVarResp = getCampaignsWithHttpInfo(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, startBefore, startAfter, endBefore, endAfter, campaignGroupId, templateId, storeId);
         return localVarResp.getData();
     }
 
@@ -11556,6 +11614,10 @@ public class ManagementApi {
      * @param tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param startBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param startAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param endBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param endAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param campaignGroupId Filter results to campaigns owned by the specified campaign access group ID. (optional)
      * @param templateId The ID of the campaign template this campaign was created from. (optional)
      * @param storeId Filter results to campaigns linked to the specified store ID. (optional)
@@ -11568,8 +11630,8 @@ public class ManagementApi {
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2008> getCampaignsWithHttpInfo(Long applicationId, Long pageSize, Long skip, String sort, String campaignState, String name, String tags, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Long campaignGroupId, Long templateId, Long storeId) throws ApiException {
-        okhttp3.Call localVarCall = getCampaignsValidateBeforeCall(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId, null);
+    public ApiResponse<InlineResponse2008> getCampaignsWithHttpInfo(Long applicationId, Long pageSize, Long skip, String sort, String campaignState, String name, String tags, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startBefore, OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter, Long campaignGroupId, Long templateId, Long storeId) throws ApiException {
+        okhttp3.Call localVarCall = getCampaignsValidateBeforeCall(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, startBefore, startAfter, endBefore, endAfter, campaignGroupId, templateId, storeId, null);
         Type localVarReturnType = new TypeToken<InlineResponse2008>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -11586,6 +11648,10 @@ public class ManagementApi {
      * @param tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param startBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param startAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param endBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
+     * @param endAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param campaignGroupId Filter results to campaigns owned by the specified campaign access group ID. (optional)
      * @param templateId The ID of the campaign template this campaign was created from. (optional)
      * @param storeId Filter results to campaigns linked to the specified store ID. (optional)
@@ -11599,9 +11665,9 @@ public class ManagementApi {
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignsAsync(Long applicationId, Long pageSize, Long skip, String sort, String campaignState, String name, String tags, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Long campaignGroupId, Long templateId, Long storeId, final ApiCallback<InlineResponse2008> _callback) throws ApiException {
+    public okhttp3.Call getCampaignsAsync(Long applicationId, Long pageSize, Long skip, String sort, String campaignState, String name, String tags, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startBefore, OffsetDateTime startAfter, OffsetDateTime endBefore, OffsetDateTime endAfter, Long campaignGroupId, Long templateId, Long storeId, final ApiCallback<InlineResponse2008> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCampaignsValidateBeforeCall(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId, _callback);
+        okhttp3.Call localVarCall = getCampaignsValidateBeforeCall(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, startBefore, startAfter, endBefore, endAfter, campaignGroupId, templateId, storeId, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2008>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -14271,6 +14337,171 @@ public class ManagementApi {
         return localVarCall;
     }
     /**
+     * Build call for getLoyaltyLedgerBalances
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param subledgerId The ID of the subledger used to filter the data. Leave this value empty (\&quot;\&quot;) to query the main ledger. (optional)
+     * @param includeTiers Indicates whether tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the current tier and the number of points required to move to next tier.  (optional, default to false)
+     * @param includeProjectedTier Indicates whether the customer&#39;s projected tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the customer&#39;s active points and the name of the projected tier.  **Note** We recommend filtering by &#x60;subledgerId&#x60; for better performance.  (optional, default to false)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLoyaltyLedgerBalancesCall(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_balances"
+            .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
+            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (endDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endDate", endDate));
+        }
+
+        if (subledgerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("subledgerId", subledgerId));
+        }
+
+        if (includeTiers != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeTiers", includeTiers));
+        }
+
+        if (includeProjectedTier != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeProjectedTier", includeProjectedTier));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "api_key_v1", "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getLoyaltyLedgerBalancesValidateBeforeCall(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'loyaltyProgramId' is set
+        if (loyaltyProgramId == null) {
+            throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyLedgerBalances(Async)");
+        }
+        
+        // verify the required parameter 'integrationId' is set
+        if (integrationId == null) {
+            throw new ApiException("Missing the required parameter 'integrationId' when calling getLoyaltyLedgerBalances(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getLoyaltyLedgerBalancesCall(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get customer&#39;s loyalty balances
+     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program. You can filter balances by date and subledger ID, and include tier-related information in the response.  **Note**: If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see: - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards) - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param subledgerId The ID of the subledger used to filter the data. Leave this value empty (\&quot;\&quot;) to query the main ledger. (optional)
+     * @param includeTiers Indicates whether tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the current tier and the number of points required to move to next tier.  (optional, default to false)
+     * @param includeProjectedTier Indicates whether the customer&#39;s projected tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the customer&#39;s active points and the name of the projected tier.  **Note** We recommend filtering by &#x60;subledgerId&#x60; for better performance.  (optional, default to false)
+     * @return LoyaltyBalancesWithTiers
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public LoyaltyBalancesWithTiers getLoyaltyLedgerBalances(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier) throws ApiException {
+        ApiResponse<LoyaltyBalancesWithTiers> localVarResp = getLoyaltyLedgerBalancesWithHttpInfo(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get customer&#39;s loyalty balances
+     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program. You can filter balances by date and subledger ID, and include tier-related information in the response.  **Note**: If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see: - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards) - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param subledgerId The ID of the subledger used to filter the data. Leave this value empty (\&quot;\&quot;) to query the main ledger. (optional)
+     * @param includeTiers Indicates whether tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the current tier and the number of points required to move to next tier.  (optional, default to false)
+     * @param includeProjectedTier Indicates whether the customer&#39;s projected tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the customer&#39;s active points and the name of the projected tier.  **Note** We recommend filtering by &#x60;subledgerId&#x60; for better performance.  (optional, default to false)
+     * @return ApiResponse&lt;LoyaltyBalancesWithTiers&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<LoyaltyBalancesWithTiers> getLoyaltyLedgerBalancesWithHttpInfo(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyLedgerBalancesValidateBeforeCall(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier, null);
+        Type localVarReturnType = new TypeToken<LoyaltyBalancesWithTiers>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get customer&#39;s loyalty balances (asynchronously)
+     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program. You can filter balances by date and subledger ID, and include tier-related information in the response.  **Note**: If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see: - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards) - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param subledgerId The ID of the subledger used to filter the data. Leave this value empty (\&quot;\&quot;) to query the main ledger. (optional)
+     * @param includeTiers Indicates whether tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the current tier and the number of points required to move to next tier.  (optional, default to false)
+     * @param includeProjectedTier Indicates whether the customer&#39;s projected tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the customer&#39;s active points and the name of the projected tier.  **Note** We recommend filtering by &#x60;subledgerId&#x60; for better performance.  (optional, default to false)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLoyaltyLedgerBalancesAsync(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback<LoyaltyBalancesWithTiers> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getLoyaltyLedgerBalancesValidateBeforeCall(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier, _callback);
+        Type localVarReturnType = new TypeToken<LoyaltyBalancesWithTiers>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getLoyaltyPoints
      * @param loyaltyProgramId The identifier for the loyalty program. (required)
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
@@ -14282,7 +14513,9 @@ public class ManagementApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getLoyaltyPointsCall(String loyaltyProgramId, String integrationId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
@@ -14314,6 +14547,7 @@ public class ManagementApi {
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getLoyaltyPointsValidateBeforeCall(String loyaltyProgramId, String integrationId, final ApiCallback _callback) throws ApiException {
         
@@ -14345,7 +14579,9 @@ public class ManagementApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public LoyaltyLedger getLoyaltyPoints(String loyaltyProgramId, String integrationId) throws ApiException {
         ApiResponse<LoyaltyLedger> localVarResp = getLoyaltyPointsWithHttpInfo(loyaltyProgramId, integrationId);
         return localVarResp.getData();
@@ -14363,7 +14599,9 @@ public class ManagementApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<LoyaltyLedger> getLoyaltyPointsWithHttpInfo(String loyaltyProgramId, String integrationId) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyPointsValidateBeforeCall(loyaltyProgramId, integrationId, null);
         Type localVarReturnType = new TypeToken<LoyaltyLedger>(){}.getType();
@@ -14383,7 +14621,9 @@ public class ManagementApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getLoyaltyPointsAsync(String loyaltyProgramId, String integrationId, final ApiCallback<LoyaltyLedger> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyPointsValidateBeforeCall(loyaltyProgramId, integrationId, _callback);
@@ -14503,16 +14743,18 @@ public class ManagementApi {
         return localVarCall;
     }
     /**
-     * Build call for getLoyaltyProgramTransactions
-     * @param loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
+     * Build call for getLoyaltyProgramProfileLedgerTransactions
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
      * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
+     * @param subledgerId The ID of the subledger used to filter the data. Leave this value empty (\&quot;\&quot;) to query the main ledger. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param pageSize The number of items in the response. (optional, default to 50l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
+     * @param awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -14525,7 +14767,211 @@ public class ManagementApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyProgramTransactionsCall(Long loyaltyProgramId, String loyaltyTransactionType, String subledgerId, List<String> customerSessionIDs, List<String> transactionUUIDs, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfileLedgerTransactionsCall(Long loyaltyProgramId, String integrationId, List<String> customerSessionIDs, List<String> transactionUUIDs, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, Boolean awaitsActivation, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_transactions"
+            .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
+            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (customerSessionIDs != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "customerSessionIDs", customerSessionIDs));
+        }
+
+        if (transactionUUIDs != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "transactionUUIDs", transactionUUIDs));
+        }
+
+        if (subledgerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("subledgerId", subledgerId));
+        }
+
+        if (loyaltyTransactionType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("loyaltyTransactionType", loyaltyTransactionType));
+        }
+
+        if (startDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startDate", startDate));
+        }
+
+        if (endDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endDate", endDate));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        if (skip != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("skip", skip));
+        }
+
+        if (awaitsActivation != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("awaitsActivation", awaitsActivation));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "api_key_v1", "management_key", "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getLoyaltyProgramProfileLedgerTransactionsValidateBeforeCall(Long loyaltyProgramId, String integrationId, List<String> customerSessionIDs, List<String> transactionUUIDs, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, Boolean awaitsActivation, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'loyaltyProgramId' is set
+        if (loyaltyProgramId == null) {
+            throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyProgramProfileLedgerTransactions(Async)");
+        }
+        
+        // verify the required parameter 'integrationId' is set
+        if (integrationId == null) {
+            throw new ApiException("Missing the required parameter 'integrationId' when calling getLoyaltyProgramProfileLedgerTransactions(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getLoyaltyProgramProfileLedgerTransactionsCall(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, awaitsActivation, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * List customer&#39;s loyalty transactions
+     * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  **Note:** To retrieve all loyalty program transaction logs in a given loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
+     * @param subledgerId The ID of the subledger used to filter the data. Leave this value empty (\&quot;\&quot;) to query the main ledger. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
+     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * @param awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  (optional)
+     * @return InlineResponse2004
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public InlineResponse2004 getLoyaltyProgramProfileLedgerTransactions(Long loyaltyProgramId, String integrationId, List<String> customerSessionIDs, List<String> transactionUUIDs, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, Boolean awaitsActivation) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = getLoyaltyProgramProfileLedgerTransactionsWithHttpInfo(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, awaitsActivation);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List customer&#39;s loyalty transactions
+     * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  **Note:** To retrieve all loyalty program transaction logs in a given loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
+     * @param subledgerId The ID of the subledger used to filter the data. Leave this value empty (\&quot;\&quot;) to query the main ledger. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
+     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * @param awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  (optional)
+     * @return ApiResponse&lt;InlineResponse2004&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<InlineResponse2004> getLoyaltyProgramProfileLedgerTransactionsWithHttpInfo(Long loyaltyProgramId, String integrationId, List<String> customerSessionIDs, List<String> transactionUUIDs, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, Boolean awaitsActivation) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyProgramProfileLedgerTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, awaitsActivation, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List customer&#39;s loyalty transactions (asynchronously)
+     * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  **Note:** To retrieve all loyalty program transaction logs in a given loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
+     * @param subledgerId The ID of the subledger used to filter the data. Leave this value empty (\&quot;\&quot;) to query the main ledger. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
+     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * @param awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLoyaltyProgramProfileLedgerTransactionsAsync(Long loyaltyProgramId, String integrationId, List<String> customerSessionIDs, List<String> transactionUUIDs, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, Boolean awaitsActivation, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getLoyaltyProgramProfileLedgerTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, awaitsActivation, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getLoyaltyProgramTransactions
+     * @param loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
+     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
+     * @param customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions.  (optional)
+     * @param transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  (optional)
+     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
+     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * @param awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLoyaltyProgramTransactionsCall(Long loyaltyProgramId, String loyaltyTransactionType, String subledgerId, List<String> customerSessionIDs, List<String> transactionUUIDs, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, Boolean awaitsActivation, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -14566,6 +15012,10 @@ public class ManagementApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("skip", skip));
         }
 
+        if (awaitsActivation != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("awaitsActivation", awaitsActivation));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -14588,7 +15038,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyProgramTransactionsValidateBeforeCall(Long loyaltyProgramId, String loyaltyTransactionType, String subledgerId, List<String> customerSessionIDs, List<String> transactionUUIDs, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyProgramTransactionsValidateBeforeCall(Long loyaltyProgramId, String loyaltyTransactionType, String subledgerId, List<String> customerSessionIDs, List<String> transactionUUIDs, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, Boolean awaitsActivation, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -14596,7 +15046,7 @@ public class ManagementApi {
         }
         
 
-        okhttp3.Call localVarCall = getLoyaltyProgramTransactionsCall(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyProgramTransactionsCall(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip, awaitsActivation, _callback);
         return localVarCall;
 
     }
@@ -14613,6 +15063,7 @@ public class ManagementApi {
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param pageSize The number of items in the response. (optional, default to 50l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
+     * @param awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  (optional)
      * @return InlineResponse20017
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -14624,8 +15075,8 @@ public class ManagementApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20017 getLoyaltyProgramTransactions(Long loyaltyProgramId, String loyaltyTransactionType, String subledgerId, List<String> customerSessionIDs, List<String> transactionUUIDs, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
-        ApiResponse<InlineResponse20017> localVarResp = getLoyaltyProgramTransactionsWithHttpInfo(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip);
+    public InlineResponse20017 getLoyaltyProgramTransactions(Long loyaltyProgramId, String loyaltyTransactionType, String subledgerId, List<String> customerSessionIDs, List<String> transactionUUIDs, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, Boolean awaitsActivation) throws ApiException {
+        ApiResponse<InlineResponse20017> localVarResp = getLoyaltyProgramTransactionsWithHttpInfo(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip, awaitsActivation);
         return localVarResp.getData();
     }
 
@@ -14641,6 +15092,7 @@ public class ManagementApi {
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param pageSize The number of items in the response. (optional, default to 50l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
+     * @param awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  (optional)
      * @return ApiResponse&lt;InlineResponse20017&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -14652,8 +15104,8 @@ public class ManagementApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20017> getLoyaltyProgramTransactionsWithHttpInfo(Long loyaltyProgramId, String loyaltyTransactionType, String subledgerId, List<String> customerSessionIDs, List<String> transactionUUIDs, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyProgramTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip, null);
+    public ApiResponse<InlineResponse20017> getLoyaltyProgramTransactionsWithHttpInfo(Long loyaltyProgramId, String loyaltyTransactionType, String subledgerId, List<String> customerSessionIDs, List<String> transactionUUIDs, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, Boolean awaitsActivation) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyProgramTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip, awaitsActivation, null);
         Type localVarReturnType = new TypeToken<InlineResponse20017>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -14670,6 +15122,7 @@ public class ManagementApi {
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param pageSize The number of items in the response. (optional, default to 50l)
      * @param skip The number of items to skip when paging through large result sets. (optional)
+     * @param awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -14682,9 +15135,9 @@ public class ManagementApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyProgramTransactionsAsync(Long loyaltyProgramId, String loyaltyTransactionType, String subledgerId, List<String> customerSessionIDs, List<String> transactionUUIDs, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback<InlineResponse20017> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramTransactionsAsync(Long loyaltyProgramId, String loyaltyTransactionType, String subledgerId, List<String> customerSessionIDs, List<String> transactionUUIDs, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, Boolean awaitsActivation, final ApiCallback<InlineResponse20017> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyProgramTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyProgramTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip, awaitsActivation, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse20017>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -17630,7 +18083,7 @@ public class ManagementApi {
 
     /**
      * Import loyalty points
-     * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;immediate&#x60;. Empty or missing values are considered &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
+     * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    This parameter accepts one of the following values:   - A timestamp string in RFC3339 format.   - &#x60;immediate&#x60;   - &#x60;on_action&#x60;      **Note**:   Empty or missing values default to &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;.      If passed, &#x60;validityDuration&#x60; should be omitted. - &#x60;validityDuration&#x60; (optional): The duration for which the points remain active, relative to the    activation date.    The time format is an **integer** followed by one letter indicating the time unit.     Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.     Available units:     - &#x60;s&#x60;: seconds   - &#x60;m&#x60;: minutes   - &#x60;h&#x60;: hours   - &#x60;D&#x60;: days   - &#x60;W&#x60;: weeks   - &#x60;M&#x60;: months   - &#x60;Y&#x60;: years     You can round certain units up or down:    - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day.   - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of   the day, week, month or year.    If passed, &#x60;expirydate&#x60; should be omitted. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
      * @param loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;.  (optional)
      * @param upFile The file containing the data that is being imported. (optional)
@@ -17649,7 +18102,7 @@ public class ManagementApi {
 
     /**
      * Import loyalty points
-     * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;immediate&#x60;. Empty or missing values are considered &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
+     * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    This parameter accepts one of the following values:   - A timestamp string in RFC3339 format.   - &#x60;immediate&#x60;   - &#x60;on_action&#x60;      **Note**:   Empty or missing values default to &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;.      If passed, &#x60;validityDuration&#x60; should be omitted. - &#x60;validityDuration&#x60; (optional): The duration for which the points remain active, relative to the    activation date.    The time format is an **integer** followed by one letter indicating the time unit.     Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.     Available units:     - &#x60;s&#x60;: seconds   - &#x60;m&#x60;: minutes   - &#x60;h&#x60;: hours   - &#x60;D&#x60;: days   - &#x60;W&#x60;: weeks   - &#x60;M&#x60;: months   - &#x60;Y&#x60;: years     You can round certain units up or down:    - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day.   - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of   the day, week, month or year.    If passed, &#x60;expirydate&#x60; should be omitted. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
      * @param loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;.  (optional)
      * @param upFile The file containing the data that is being imported. (optional)
@@ -17669,7 +18122,7 @@ public class ManagementApi {
 
     /**
      * Import loyalty points (asynchronously)
-     * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;immediate&#x60;. Empty or missing values are considered &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
+     * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    This parameter accepts one of the following values:   - A timestamp string in RFC3339 format.   - &#x60;immediate&#x60;   - &#x60;on_action&#x60;      **Note**:   Empty or missing values default to &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;.      If passed, &#x60;validityDuration&#x60; should be omitted. - &#x60;validityDuration&#x60; (optional): The duration for which the points remain active, relative to the    activation date.    The time format is an **integer** followed by one letter indicating the time unit.     Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.     Available units:     - &#x60;s&#x60;: seconds   - &#x60;m&#x60;: minutes   - &#x60;h&#x60;: hours   - &#x60;D&#x60;: days   - &#x60;W&#x60;: weeks   - &#x60;M&#x60;: months   - &#x60;Y&#x60;: years     You can round certain units up or down:    - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day.   - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of   the day, week, month or year.    If passed, &#x60;expirydate&#x60; should be omitted. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
      * @param loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;.  (optional)
      * @param upFile The file containing the data that is being imported. (optional)

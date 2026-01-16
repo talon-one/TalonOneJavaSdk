@@ -74,6 +74,7 @@ import one.talon.model.InlineResponse20036;
 import one.talon.model.InlineResponse20037;
 import one.talon.model.InlineResponse20038;
 import one.talon.model.InlineResponse20039;
+import one.talon.model.InlineResponse2004;
 import one.talon.model.InlineResponse20040;
 import one.talon.model.InlineResponse20041;
 import one.talon.model.InlineResponse20042;
@@ -88,6 +89,7 @@ import one.talon.model.InlineResponse2007;
 import one.talon.model.InlineResponse2008;
 import one.talon.model.InlineResponse2009;
 import one.talon.model.LoginParams;
+import one.talon.model.LoyaltyBalancesWithTiers;
 import one.talon.model.LoyaltyCard;
 import one.talon.model.LoyaltyCardBatch;
 import one.talon.model.LoyaltyCardBatchResponse;
@@ -1525,7 +1527,11 @@ public class ManagementApiTest {
         Long skip = null;
         String sort = null;
         String entity = null;
-        InlineResponse20036 response = api.getAttributes(pageSize, skip, sort, entity);
+        String applicationIds = null;
+        String type = null;
+        String kind = null;
+        String search = null;
+        InlineResponse20036 response = api.getAttributes(pageSize, skip, sort, entity, applicationIds, type, kind, search);
 
         // TODO: test validations
     }
@@ -1719,10 +1725,14 @@ public class ManagementApiTest {
         String tags = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
+        OffsetDateTime startBefore = null;
+        OffsetDateTime startAfter = null;
+        OffsetDateTime endBefore = null;
+        OffsetDateTime endAfter = null;
         Long campaignGroupId = null;
         Long templateId = null;
         Long storeId = null;
-        InlineResponse2008 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId);
+        InlineResponse2008 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, startBefore, startAfter, endBefore, endAfter, campaignGroupId, templateId, storeId);
 
         // TODO: test validations
     }
@@ -2087,6 +2097,27 @@ public class ManagementApiTest {
     }
     
     /**
+     * Get customer&#39;s loyalty balances
+     *
+     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program. You can filter balances by date and subledger ID, and include tier-related information in the response.  **Note**: If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see: - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards) - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getLoyaltyLedgerBalancesTest() throws ApiException {
+        Long loyaltyProgramId = null;
+        String integrationId = null;
+        OffsetDateTime endDate = null;
+        String subledgerId = null;
+        Boolean includeTiers = null;
+        Boolean includeProjectedTier = null;
+        LoyaltyBalancesWithTiers response = api.getLoyaltyLedgerBalances(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Get customer&#39;s full loyalty ledger
      *
      * Get the loyalty ledger for this profile integration ID.  To get the &#x60;integrationId&#x60; of the profile from a &#x60;sessionId&#x60;, use the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint.  **Important:** To get loyalty transaction logs for a given Integration ID in a loyalty program, we recommend using the Integration API&#39;s [Get customer&#39;s loyalty logs](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions). 
@@ -2120,6 +2151,32 @@ public class ManagementApiTest {
     }
     
     /**
+     * List customer&#39;s loyalty transactions
+     *
+     * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  **Note:** To retrieve all loyalty program transaction logs in a given loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getLoyaltyProgramProfileLedgerTransactionsTest() throws ApiException {
+        Long loyaltyProgramId = null;
+        String integrationId = null;
+        List<String> customerSessionIDs = null;
+        List<String> transactionUUIDs = null;
+        String subledgerId = null;
+        String loyaltyTransactionType = null;
+        OffsetDateTime startDate = null;
+        OffsetDateTime endDate = null;
+        Long pageSize = null;
+        Long skip = null;
+        Boolean awaitsActivation = null;
+        InlineResponse2004 response = api.getLoyaltyProgramProfileLedgerTransactions(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, awaitsActivation);
+
+        // TODO: test validations
+    }
+    
+    /**
      * List loyalty program transactions
      *
      * Retrieve loyalty program transaction logs in a given loyalty program with filtering options applied. Manual and imported transactions are also included. **Note:** If no filters are applied, the last 50 loyalty transactions for the given loyalty program are returned.  **Important:** To get loyalty transaction logs for a given Integration ID in a loyalty program, we recommend using the Integration API&#39;s [Get customer&#39;s loyalty logs](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions). 
@@ -2138,7 +2195,8 @@ public class ManagementApiTest {
         OffsetDateTime endDate = null;
         Long pageSize = null;
         Long skip = null;
-        InlineResponse20017 response = api.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip);
+        Boolean awaitsActivation = null;
+        InlineResponse20017 response = api.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip, awaitsActivation);
 
         // TODO: test validations
     }
@@ -2537,7 +2595,7 @@ public class ManagementApiTest {
     /**
      * Import loyalty points
      *
-     * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;immediate&#x60;. Empty or missing values are considered &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
+     * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    This parameter accepts one of the following values:   - A timestamp string in RFC3339 format.   - &#x60;immediate&#x60;   - &#x60;on_action&#x60;      **Note**:   Empty or missing values default to &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;.      If passed, &#x60;validityDuration&#x60; should be omitted. - &#x60;validityDuration&#x60; (optional): The duration for which the points remain active, relative to the    activation date.    The time format is an **integer** followed by one letter indicating the time unit.     Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.     Available units:     - &#x60;s&#x60;: seconds   - &#x60;m&#x60;: minutes   - &#x60;h&#x60;: hours   - &#x60;D&#x60;: days   - &#x60;W&#x60;: weeks   - &#x60;M&#x60;: months   - &#x60;Y&#x60;: years     You can round certain units up or down:    - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day.   - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of   the day, week, month or year.    If passed, &#x60;expirydate&#x60; should be omitted. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
      *
      * @throws ApiException
      *          if the Api call fails

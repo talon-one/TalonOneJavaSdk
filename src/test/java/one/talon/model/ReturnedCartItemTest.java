@@ -56,4 +56,12 @@ public class ReturnedCartItemTest {
         // TODO: test quantity
     }
 
+    /**
+     * Test the property 'sku'
+     */
+    @Test
+    public void skuTest() {
+        // TODO: test sku
+    }
+
 }

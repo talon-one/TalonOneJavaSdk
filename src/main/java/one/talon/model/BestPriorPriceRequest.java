@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.BestPriorPriceRequestTarget;
+import one.talon.model.BestPriorTarget;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -43,7 +43,7 @@ public class BestPriorPriceRequest {
 
   public static final String SERIALIZED_NAME_TIMEFRAME = "timeframe";
   @SerializedName(SERIALIZED_NAME_TIMEFRAME)
-  private Integer timeframe;
+  private String timeframe;
 
   public static final String SERIALIZED_NAME_STRICT_END_DATE = "strictEndDate";
   @SerializedName(SERIALIZED_NAME_STRICT_END_DATE)
@@ -51,7 +51,7 @@ public class BestPriorPriceRequest {
 
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
-  private BestPriorPriceRequestTarget target;
+  private BestPriorTarget target;
 
 
   public BestPriorPriceRequest skus(List<String> skus) {
@@ -103,7 +103,7 @@ public class BestPriorPriceRequest {
   }
 
 
-  public BestPriorPriceRequest timeframe(Integer timeframe) {
+  public BestPriorPriceRequest timeframe(String timeframe) {
     
     this.timeframe = timeframe;
     return this;
@@ -115,12 +115,12 @@ public class BestPriorPriceRequest {
   **/
   @ApiModelProperty(example = "30", required = true, value = "The number of days prior to the timeframeEndDate. Only prices within this look back period are considered for the best prior price evaluation.")
 
-  public Integer getTimeframe() {
+  public String getTimeframe() {
     return timeframe;
   }
 
 
-  public void setTimeframe(Integer timeframe) {
+  public void setTimeframe(String timeframe) {
     this.timeframe = timeframe;
   }
 
@@ -147,7 +147,7 @@ public class BestPriorPriceRequest {
   }
 
 
-  public BestPriorPriceRequest target(BestPriorPriceRequestTarget target) {
+  public BestPriorPriceRequest target(BestPriorTarget target) {
     
     this.target = target;
     return this;
@@ -160,12 +160,12 @@ public class BestPriorPriceRequest {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BestPriorPriceRequestTarget getTarget() {
+  public BestPriorTarget getTarget() {
     return target;
   }
 
 
-  public void setTarget(BestPriorPriceRequestTarget target) {
+  public void setTarget(BestPriorTarget target) {
     this.target = target;
   }
 

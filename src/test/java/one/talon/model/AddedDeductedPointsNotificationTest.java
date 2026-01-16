@@ -43,11 +43,11 @@ public class AddedDeductedPointsNotificationTest {
     }
 
     /**
-     * Test the property 'profileIntegrationID'
+     * Test the property 'employeeName'
      */
     @Test
-    public void profileIntegrationIDTest() {
-        // TODO: test profileIntegrationID
+    public void employeeNameTest() {
+        // TODO: test employeeName
     }
 
     /**
@@ -59,75 +59,19 @@ public class AddedDeductedPointsNotificationTest {
     }
 
     /**
-     * Test the property 'subledgerID'
+     * Test the property 'notificationType'
      */
     @Test
-    public void subledgerIDTest() {
-        // TODO: test subledgerID
+    public void notificationTypeTest() {
+        // TODO: test notificationType
     }
 
     /**
-     * Test the property 'amount'
+     * Test the property 'profileIntegrationID'
      */
     @Test
-    public void amountTest() {
-        // TODO: test amount
-    }
-
-    /**
-     * Test the property 'reason'
-     */
-    @Test
-    public void reasonTest() {
-        // TODO: test reason
-    }
-
-    /**
-     * Test the property 'typeOfChange'
-     */
-    @Test
-    public void typeOfChangeTest() {
-        // TODO: test typeOfChange
-    }
-
-    /**
-     * Test the property 'employeeName'
-     */
-    @Test
-    public void employeeNameTest() {
-        // TODO: test employeeName
-    }
-
-    /**
-     * Test the property 'userID'
-     */
-    @Test
-    public void userIDTest() {
-        // TODO: test userID
-    }
-
-    /**
-     * Test the property 'operation'
-     */
-    @Test
-    public void operationTest() {
-        // TODO: test operation
-    }
-
-    /**
-     * Test the property 'startDate'
-     */
-    @Test
-    public void startDateTest() {
-        // TODO: test startDate
-    }
-
-    /**
-     * Test the property 'expiryDate'
-     */
-    @Test
-    public void expiryDateTest() {
-        // TODO: test expiryDate
+    public void profileIntegrationIDTest() {
+        // TODO: test profileIntegrationID
     }
 
     /**
@@ -139,11 +83,67 @@ public class AddedDeductedPointsNotificationTest {
     }
 
     /**
-     * Test the property 'notificationType'
+     * Test the property 'subledgerID'
      */
     @Test
-    public void notificationTypeTest() {
-        // TODO: test notificationType
+    public void subledgerIDTest() {
+        // TODO: test subledgerID
+    }
+
+    /**
+     * Test the property 'typeOfChange'
+     */
+    @Test
+    public void typeOfChangeTest() {
+        // TODO: test typeOfChange
+    }
+
+    /**
+     * Test the property 'userID'
+     */
+    @Test
+    public void userIDTest() {
+        // TODO: test userID
+    }
+
+    /**
+     * Test the property 'amount'
+     */
+    @Test
+    public void amountTest() {
+        // TODO: test amount
+    }
+
+    /**
+     * Test the property 'expiryDate'
+     */
+    @Test
+    public void expiryDateTest() {
+        // TODO: test expiryDate
+    }
+
+    /**
+     * Test the property 'operation'
+     */
+    @Test
+    public void operationTest() {
+        // TODO: test operation
+    }
+
+    /**
+     * Test the property 'reason'
+     */
+    @Test
+    public void reasonTest() {
+        // TODO: test reason
+    }
+
+    /**
+     * Test the property 'startDate'
+     */
+    @Test
+    public void startDateTest() {
+        // TODO: test startDate
     }
 
 }

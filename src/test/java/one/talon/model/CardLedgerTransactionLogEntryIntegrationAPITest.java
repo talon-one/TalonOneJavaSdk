@@ -154,4 +154,12 @@ public class CardLedgerTransactionLogEntryIntegrationAPITest {
         // TODO: test ruleName
     }
 
+    /**
+     * Test the property 'validityDuration'
+     */
+    @Test
+    public void validityDurationTest() {
+        // TODO: test validityDuration
+    }
+
 }

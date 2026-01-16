@@ -65,6 +65,10 @@ public class RoleV2 {
   @SerializedName(SERIALIZED_NAME_MEMBERS)
   private List<Long> members = null;
 
+  public static final String SERIALIZED_NAME_IS_READONLY = "isReadonly";
+  @SerializedName(SERIALIZED_NAME_IS_READONLY)
+  private Boolean isReadonly = false;
+
 
   public RoleV2 id(Long id) {
     
@@ -254,6 +258,29 @@ public class RoleV2 {
   }
 
 
+  public RoleV2 isReadonly(Boolean isReadonly) {
+    
+    this.isReadonly = isReadonly;
+    return this;
+  }
+
+   /**
+   * Identifies if the role is read-only. For read-only roles, you can only assign or unassign users. You cannot edit any other properties, such as the name, description, or permissions. The &#39;isReadonly&#39; property cannot be set for new or existing roles. It is reserved for predefined roles, such as the Talon.One support role.
+   * @return isReadonly
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Identifies if the role is read-only. For read-only roles, you can only assign or unassign users. You cannot edit any other properties, such as the name, description, or permissions. The 'isReadonly' property cannot be set for new or existing roles. It is reserved for predefined roles, such as the Talon.One support role.")
+
+  public Boolean getIsReadonly() {
+    return isReadonly;
+  }
+
+
+  public void setIsReadonly(Boolean isReadonly) {
+    this.isReadonly = isReadonly;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -270,12 +297,13 @@ public class RoleV2 {
         Objects.equals(this.name, roleV2.name) &&
         Objects.equals(this.description, roleV2.description) &&
         Objects.equals(this.permissions, roleV2.permissions) &&
-        Objects.equals(this.members, roleV2.members);
+        Objects.equals(this.members, roleV2.members) &&
+        Objects.equals(this.isReadonly, roleV2.isReadonly);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, accountId, name, description, permissions, members);
+    return Objects.hash(id, created, modified, accountId, name, description, permissions, members, isReadonly);
   }
 
 
@@ -291,6 +319,7 @@ public class RoleV2 {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    members: ").append(toIndentedString(members)).append("\n");
+    sb.append("    isReadonly: ").append(toIndentedString(isReadonly)).append("\n");
     sb.append("}");
     return sb.toString();
   }

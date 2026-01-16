@@ -93,6 +93,10 @@ public class LoyaltyLedgerEntry {
   @SerializedName(SERIALIZED_NAME_FLAGS)
   private LoyaltyLedgerEntryFlags flags;
 
+  public static final String SERIALIZED_NAME_VALIDITY_DURATION = "validityDuration";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DURATION)
+  private String validityDuration;
+
 
   public LoyaltyLedgerEntry created(OffsetDateTime created) {
     
@@ -433,6 +437,29 @@ public class LoyaltyLedgerEntry {
   }
 
 
+  public LoyaltyLedgerEntry validityDuration(String validityDuration) {
+    
+    this.validityDuration = validityDuration;
+    return this;
+  }
+
+   /**
+   * The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which &#x60;awaitsActivation&#x60; is &#x60;true&#x60; and &#x60;expiryDate&#x60; is not set. 
+   * @return validityDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "30D", value = "The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set. ")
+
+  public String getValidityDuration() {
+    return validityDuration;
+  }
+
+
+  public void setValidityDuration(String validityDuration) {
+    this.validityDuration = validityDuration;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -456,12 +483,13 @@ public class LoyaltyLedgerEntry {
         Objects.equals(this.subLedgerID, loyaltyLedgerEntry.subLedgerID) &&
         Objects.equals(this.userID, loyaltyLedgerEntry.userID) &&
         Objects.equals(this.archived, loyaltyLedgerEntry.archived) &&
-        Objects.equals(this.flags, loyaltyLedgerEntry.flags);
+        Objects.equals(this.flags, loyaltyLedgerEntry.flags) &&
+        Objects.equals(this.validityDuration, loyaltyLedgerEntry.validityDuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programID, customerProfileID, cardID, customerSessionID, eventID, type, amount, startDate, expiryDate, name, subLedgerID, userID, archived, flags);
+    return Objects.hash(created, programID, customerProfileID, cardID, customerSessionID, eventID, type, amount, startDate, expiryDate, name, subLedgerID, userID, archived, flags, validityDuration);
   }
 
 
@@ -484,6 +512,7 @@ public class LoyaltyLedgerEntry {
     sb.append("    userID: ").append(toIndentedString(userID)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    flags: ").append(toIndentedString(flags)).append("\n");
+    sb.append("    validityDuration: ").append(toIndentedString(validityDuration)).append("\n");
     sb.append("}");
     return sb.toString();
   }

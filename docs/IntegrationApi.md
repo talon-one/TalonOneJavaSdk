@@ -4,6 +4,7 @@ All URLs are relative to `https://yourbaseurl.talon.one`.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**activateLoyaltyPoints**](IntegrationApi.md#activateLoyaltyPoints) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/activate_points | Activate loyalty points
 [**bestPriorPrice**](IntegrationApi.md#bestPriorPrice) | **POST** /v1/best_prior_price | Fetch best prior price
 [**createAudienceV2**](IntegrationApi.md#createAudienceV2) | **POST** /v2/audiences | Create audience
 [**createCouponReservation**](IntegrationApi.md#createCouponReservation) | **POST** /v1/coupon_reservations/{couponValue} | Create coupon reservation
@@ -30,6 +31,7 @@ Method | HTTP request | Description
 [**returnCartItems**](IntegrationApi.md#returnCartItems) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items
 [**syncCatalog**](IntegrationApi.md#syncCatalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog
 [**trackEventV2**](IntegrationApi.md#trackEventV2) | **POST** /v2/events | Track event
+[**unlinkLoyaltyCardFromProfile**](IntegrationApi.md#unlinkLoyaltyCardFromProfile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/unlink_profile | Unlink customer profile from a loyalty card
 [**updateAudienceCustomersAttributes**](IntegrationApi.md#updateAudienceCustomersAttributes) | **PUT** /v2/audience_customers/{audienceId}/attributes | Update profile attributes for all customers in audience
 [**updateAudienceV2**](IntegrationApi.md#updateAudienceV2) | **PUT** /v2/audiences/{audienceId} | Update audience name
 [**updateCustomerProfileAudiences**](IntegrationApi.md#updateCustomerProfileAudiences) | **POST** /v2/customer_audiences | Update multiple customer profiles&#39; audiences
@@ -37,6 +39,83 @@ Method | HTTP request | Description
 [**updateCustomerProfilesV2**](IntegrationApi.md#updateCustomerProfilesV2) | **PUT** /v2/customer_profiles | Update multiple customer profiles
 [**updateCustomerSessionV2**](IntegrationApi.md#updateCustomerSessionV2) | **PUT** /v2/customer_sessions/{customerSessionId} | Update customer session
 
+
+
+## activateLoyaltyPoints
+
+> ActivateLoyaltyPointsResponse activateLoyaltyPoints(loyaltyProgramId, body)
+
+Activate loyalty points
+
+Activate points when a defined action occurs.  You can activate pending points using one of the following parameters: - &#x60;sessionId&#x60;: Activates all points earned in the specified session.  - &#x60;transactionUUIDs&#x60;: Activates points earned in the transactions specified by the  given UUIDs.  
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: api_key_v1
+        ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+        api_key_v1.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_v1.setApiKeyPrefix("Token");
+
+        IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+        Long loyaltyProgramId = 56L; // Long | The identifier for the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        ActivateLoyaltyPoints body = new ActivateLoyaltyPoints(); // ActivateLoyaltyPoints | body
+        try {
+            ActivateLoyaltyPointsResponse result = apiInstance.activateLoyaltyPoints(loyaltyProgramId, body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IntegrationApi#activateLoyaltyPoints");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loyaltyProgramId** | **Long**| The identifier for the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **body** | [**ActivateLoyaltyPoints**](ActivateLoyaltyPoints.md)| body |
+
+### Return type cool
+
+[**ActivateLoyaltyPointsResponse**](ActivateLoyaltyPointsResponse.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not found |  -  |
 
 
 ## bestPriorPrice
@@ -204,7 +283,7 @@ Name | Type | Description  | Notes
 
 Create coupon reservation
 
-Create a coupon reservation for the specified customer profiles on the specified coupon. You can also create a reservation via the Campaign Manager using the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect.  **Note:**  - If the **Reservation mandatory** option was selected when creating the specified coupon, the endpoint creates a **hard** reservation, meaning only users who have this coupon code reserved can redeem it. Otherwise, the endpoint creates a **soft** reservation, meaning the coupon is associated with the specified customer profiles (they show up when using the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint), but any user can redeem it. This can be useful, for example, to display a _coupon wallet_ for customers when they visit your store.  - If the **Coupon visibility** option was selected when creating the specified coupon, the coupon code is implicitly soft-reserved for all customers, and the code will be returned for all customer profiles in the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.  - This endpoint overrides the coupon reservation limit set when [the coupon is created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons). To ensure that coupons cannot be reserved after the reservation limit is reached, use the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect in the Rule Builder and the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint.  To delete a reservation, use the [Delete reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation) endpoint. 
+Create a coupon reservation for the specified customer profiles on the specified coupon.  You can also create a reservation via the Campaign Manager using the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect.  **Note:**  - If the **Reservation mandatory** option was selected when creating the   specified coupon, the endpoint creates a **hard** reservation, meaning only users who have   this coupon code reserved can redeem it.   Otherwise, the endpoint creates a **soft** reservation, meaning the coupon   is associated with the specified customer profiles (they show up when using   the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory)   endpoint), but any user can redeem it.   This can be useful, for example, to display a _coupon wallet_ for customers   when they visit your store.  - If the **Coupon visibility** option was selected when creating the   specified coupon, the coupon code is implicitly soft-reserved for all customers, and the code   will be returned for all customer profiles in the [List customer   data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.  - This endpoint overrides the coupon reservation limit set when   [the coupon is created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons).  To ensure that coupons cannot be reserved after the reservation limit is reached, use the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect in the Rule Builder and the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint.  To delete a reservation, use the [Delete reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation) endpoint. 
 
 ### Example
 
@@ -229,7 +308,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        String couponValue = "couponValue_example"; // String | The code of the coupon.
+        String couponValue = "couponValue_example"; // String | The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode `SUMMER25%OFF` as `SUMMER25%25OFF`. 
         CouponReservations body = new CouponReservations(); // CouponReservations | body
         try {
             Coupon result = apiInstance.createCouponReservation(couponValue, body);
@@ -250,7 +329,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **couponValue** | **String**| The code of the coupon. |
+ **couponValue** | **String**| The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;.  |
  **body** | [**CouponReservations**](CouponReservations.md)| body |
 
 ### Return type cool
@@ -604,7 +683,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        String couponValue = "couponValue_example"; // String | The code of the coupon.
+        String couponValue = "couponValue_example"; // String | The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode `SUMMER25%OFF` as `SUMMER25%25OFF`. 
         CouponReservations body = new CouponReservations(); // CouponReservations | body
         try {
             apiInstance.deleteCouponReservation(couponValue, body);
@@ -624,7 +703,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **couponValue** | **String**| The code of the coupon. |
+ **couponValue** | **String**| The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;.  |
  **body** | [**CouponReservations**](CouponReservations.md)| body |
 
 ### Return type cool
@@ -1391,7 +1470,7 @@ Name | Type | Description  | Notes
 
 ## getLoyaltyCardTransactions
 
-> InlineResponse2003 getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, customerSessionIDs, transactionUUIDs, pageSize, skip)
+> InlineResponse2003 getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, customerSessionIDs, transactionUUIDs, pageSize, skip, awaitsActivation)
 
 List card&#39;s transactions
 
@@ -1430,8 +1509,9 @@ public class Example {
         List<String> transactionUUIDs = Arrays.asList(); // List<String> | Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  `?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.  The response contains only data associated with the specified transactions. 
         Long pageSize = 50lL; // Long | The number of items in the response.
         Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Boolean awaitsActivation = true; // Boolean | If `true`: Filters results to include only point transactions that have action-based activation and have not expired.  If `false`: Returns a `400` response. 
         try {
-            InlineResponse2003 result = apiInstance.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, customerSessionIDs, transactionUUIDs, pageSize, skip);
+            InlineResponse2003 result = apiInstance.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, customerSessionIDs, transactionUUIDs, pageSize, skip, awaitsActivation);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationApi#getLoyaltyCardTransactions");
@@ -1459,6 +1539,7 @@ Name | Type | Description  | Notes
  **transactionUUIDs** | [**List&lt;String&gt;**](String.md)| Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions.  | [optional]
  **pageSize** | **Long**| The number of items in the response. | [optional] [default to 50l]
  **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **awaitsActivation** | **Boolean**| If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  | [optional]
 
 ### Return type cool
 
@@ -1575,7 +1656,7 @@ Name | Type | Description  | Notes
 
 ## getLoyaltyProgramProfileTransactions
 
-> InlineResponse2004 getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip)
+> InlineResponse2004 getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, awaitsActivation)
 
 List customer&#39;s loyalty transactions
 
@@ -1614,8 +1695,9 @@ public class Example {
         OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         Long pageSize = 50lL; // Long | The number of items in the response.
         Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Boolean awaitsActivation = true; // Boolean | If `true`: Filters results to include only point transactions that have action-based activation and have not expired.  If `false`: Returns a `400` response. 
         try {
-            InlineResponse2004 result = apiInstance.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+            InlineResponse2004 result = apiInstance.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, awaitsActivation);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationApi#getLoyaltyProgramProfileTransactions");
@@ -1643,6 +1725,7 @@ Name | Type | Description  | Notes
  **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
  **pageSize** | **Long**| The number of items in the response. | [optional] [default to 50l]
  **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **awaitsActivation** | **Boolean**| If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response.  | [optional]
 
 ### Return type cool
 
@@ -1697,7 +1780,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        String couponValue = "couponValue_example"; // String | The code of the coupon.
+        String couponValue = "couponValue_example"; // String | The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode `SUMMER25%OFF` as `SUMMER25%25OFF`. 
         try {
             InlineResponse200 result = apiInstance.getReservedCustomers(couponValue);
             System.out.println(result);
@@ -1717,7 +1800,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **couponValue** | **String**| The code of the coupon. |
+ **couponValue** | **String**| The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;.  |
 
 ### Return type cool
 
@@ -1826,7 +1909,7 @@ Name | Type | Description  | Notes
 
 Reopen customer session
 
-Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to &#x60;open&#x60;. - Any modified budgets and triggered effects are rolled back when the session closes. - Depending on the [return policy](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-programs#return-policy)  in your loyalty programs, points are rolled back in the following ways:   - Pending points are rolled back automatically.   - If **Active points deduction** setting is enabled, any points that were earned and activated when the session closed    are rolled back.   - If **Negative balance** is enabled, the rollback can create a negative points balance.   &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session reopening&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;     &lt;p&gt;The following effects and budgets remain in the state they were in when the session closed:&lt;/p&gt;     &lt;ul&gt;       &lt;li&gt;Add free item effect&lt;/li&gt;       &lt;li&gt;Award giveaway&lt;/li&gt;       &lt;li&gt;Coupon and referral creation&lt;/li&gt;       &lt;li&gt;Coupon reservation&lt;/li&gt;       &lt;li&gt;Custom effect&lt;/li&gt;       &lt;li&gt;Update attribute value&lt;/li&gt;       &lt;li&gt;Update cart item attribute value&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt;   &lt;/details&gt; &lt;p&gt;To see an example of a rollback, see the &lt;a href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling a session with campaign budgets&lt;/a&gt;tutorial.&lt;/p&gt;  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
+Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to &#x60;open&#x60;. - Any modified budgets and triggered effects are rolled back when the session closes. - Depending on the [return policy](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-programs#return-policy)  in your loyalty programs, points are rolled back in the following ways:   - Pending points are rolled back automatically.   - If **Active points deduction** setting is enabled, any points that were earned and activated when the session closed    are rolled back.   - If **Negative balance** is enabled, the rollback can create a negative points balance.   &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session reopening&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;     &lt;p&gt;The following effects and budgets remain in the state they were in when the session closed:&lt;/p&gt;     &lt;ul&gt;       &lt;li&gt;Add free item effect&lt;/li&gt;       &lt;li&gt;Award giveaway&lt;/li&gt;       &lt;li&gt;Coupon and referral creation&lt;/li&gt;       &lt;li&gt;Coupon reservation&lt;/li&gt;       &lt;li&gt;Custom effect&lt;/li&gt;       &lt;li&gt;Update attribute value&lt;/li&gt;       &lt;li&gt;Update cart item attribute value&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt;   &lt;/details&gt; &lt;p&gt;To see an example of a rollback, see the &lt;a href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling a session with campaign budgets&lt;/a&gt; tutorial.&lt;/p&gt;  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
 
 ### Example
 
@@ -2128,6 +2211,85 @@ Name | Type | Description  | Notes
 | **400** | Bad request |  -  |
 | **401** | Unauthorized - Invalid API key |  -  |
 | **409** | Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). |  -  |
+
+
+## unlinkLoyaltyCardFromProfile
+
+> LoyaltyCard unlinkLoyaltyCardFromProfile(loyaltyProgramId, loyaltyCardId, body)
+
+Unlink customer profile from a loyalty card
+
+Unlink a customer profile from a [registered](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card) loyalty card.  To get the &#x60;integrationId&#x60; of a customer profile, you can use the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: api_key_v1
+        ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+        api_key_v1.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_v1.setApiKeyPrefix("Token");
+
+        IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+        Long loyaltyProgramId = 56L; // Long | The identifier of the card-based loyalty program containing the loyalty card. You can get this ID using the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        String loyaltyCardId = "loyaltyCardId_example"; // String | The identifier of the loyalty card. You can get this ID using the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+        LoyaltyCardRegistration body = new LoyaltyCardRegistration(); // LoyaltyCardRegistration | body
+        try {
+            LoyaltyCard result = apiInstance.unlinkLoyaltyCardFromProfile(loyaltyProgramId, loyaltyCardId, body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IntegrationApi#unlinkLoyaltyCardFromProfile");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loyaltyProgramId** | **Long**| The identifier of the card-based loyalty program containing the loyalty card. You can get this ID using the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyCardId** | **String**| The identifier of the loyalty card. You can get this ID using the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **body** | [**LoyaltyCardRegistration**](LoyaltyCardRegistration.md)| body |
+
+### Return type cool
+
+[**LoyaltyCard**](LoyaltyCard.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not found |  -  |
 
 
 ## updateAudienceCustomersAttributes

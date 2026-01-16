@@ -116,4 +116,12 @@ public class ManagementKeyTest {
         // TODO: test disabled
     }
 
+    /**
+     * Test the property 'lastUsed'
+     */
+    @Test
+    public void lastUsedTest() {
+        // TODO: test lastUsed
+    }
+
 }
