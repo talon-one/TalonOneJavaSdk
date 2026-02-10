@@ -33,6 +33,18 @@ public class PrismaticFlowConfig {
   @SerializedName(SERIALIZED_NAME_API_KEY)
   private String apiKey;
 
+  public static final String SERIALIZED_NAME_WORKER_COUNT = "WorkerCount";
+  @SerializedName(SERIALIZED_NAME_WORKER_COUNT)
+  private Long workerCount = 10l;
+
+  public static final String SERIALIZED_NAME_MAX_EVENTS_PER_MESSAGE = "MaxEventsPerMessage";
+  @SerializedName(SERIALIZED_NAME_MAX_EVENTS_PER_MESSAGE)
+  private Long maxEventsPerMessage = 1000l;
+
+  public static final String SERIALIZED_NAME_MAX_RETRIES = "MaxRetries";
+  @SerializedName(SERIALIZED_NAME_MAX_RETRIES)
+  private Long maxRetries = 10l;
+
 
   public PrismaticFlowConfig apiKey(String apiKey) {
     
@@ -56,6 +68,79 @@ public class PrismaticFlowConfig {
   }
 
 
+  public PrismaticFlowConfig workerCount(Long workerCount) {
+    
+    this.workerCount = workerCount;
+    return this;
+  }
+
+   /**
+   * Number of Prismatic workers to run in parallel for this flow (maximum 500).
+   * minimum: 1
+   * maximum: 500
+   * @return workerCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Number of Prismatic workers to run in parallel for this flow (maximum 500).")
+
+  public Long getWorkerCount() {
+    return workerCount;
+  }
+
+
+  public void setWorkerCount(Long workerCount) {
+    this.workerCount = workerCount;
+  }
+
+
+  public PrismaticFlowConfig maxEventsPerMessage(Long maxEventsPerMessage) {
+    
+    this.maxEventsPerMessage = maxEventsPerMessage;
+    return this;
+  }
+
+   /**
+   * Maximum number of events to send in a single message to Prismatic.
+   * minimum: 1
+   * @return maxEventsPerMessage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Maximum number of events to send in a single message to Prismatic.")
+
+  public Long getMaxEventsPerMessage() {
+    return maxEventsPerMessage;
+  }
+
+
+  public void setMaxEventsPerMessage(Long maxEventsPerMessage) {
+    this.maxEventsPerMessage = maxEventsPerMessage;
+  }
+
+
+  public PrismaticFlowConfig maxRetries(Long maxRetries) {
+    
+    this.maxRetries = maxRetries;
+    return this;
+  }
+
+   /**
+   * Maximum number of retries for a Prismatic event before it is ignored.
+   * minimum: 0
+   * @return maxRetries
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Maximum number of retries for a Prismatic event before it is ignored.")
+
+  public Long getMaxRetries() {
+    return maxRetries;
+  }
+
+
+  public void setMaxRetries(Long maxRetries) {
+    this.maxRetries = maxRetries;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -65,12 +150,15 @@ public class PrismaticFlowConfig {
       return false;
     }
     PrismaticFlowConfig prismaticFlowConfig = (PrismaticFlowConfig) o;
-    return Objects.equals(this.apiKey, prismaticFlowConfig.apiKey);
+    return Objects.equals(this.apiKey, prismaticFlowConfig.apiKey) &&
+        Objects.equals(this.workerCount, prismaticFlowConfig.workerCount) &&
+        Objects.equals(this.maxEventsPerMessage, prismaticFlowConfig.maxEventsPerMessage) &&
+        Objects.equals(this.maxRetries, prismaticFlowConfig.maxRetries);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiKey);
+    return Objects.hash(apiKey, workerCount, maxEventsPerMessage, maxRetries);
   }
 
 
@@ -79,6 +167,9 @@ public class PrismaticFlowConfig {
     StringBuilder sb = new StringBuilder();
     sb.append("class PrismaticFlowConfig {\n");
     sb.append("    apiKey: ").append(toIndentedString(apiKey)).append("\n");
+    sb.append("    workerCount: ").append(toIndentedString(workerCount)).append("\n");
+    sb.append("    maxEventsPerMessage: ").append(toIndentedString(maxEventsPerMessage)).append("\n");
+    sb.append("    maxRetries: ").append(toIndentedString(maxRetries)).append("\n");
     sb.append("}");
     return sb.toString();
   }

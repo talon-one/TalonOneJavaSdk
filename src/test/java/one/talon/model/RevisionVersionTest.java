@@ -190,6 +190,14 @@ public class RevisionVersionTest {
     }
 
     /**
+     * Test the property 'reevaluateOnReturn'
+     */
+    @Test
+    public void reevaluateOnReturnTest() {
+        // TODO: test reevaluateOnReturn
+    }
+
+    /**
      * Test the property 'features'
      */
     @Test

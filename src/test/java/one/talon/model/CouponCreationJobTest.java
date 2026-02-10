@@ -150,6 +150,14 @@ public class CouponCreationJobTest {
     }
 
     /**
+     * Test the property 'isReservationMandatory'
+     */
+    @Test
+    public void isReservationMandatoryTest() {
+        // TODO: test isReservationMandatory
+    }
+
+    /**
      * Test the property 'batchId'
      */
     @Test

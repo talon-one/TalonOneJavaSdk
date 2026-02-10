@@ -185,6 +185,10 @@ public class AdditionalCampaignProperties {
   @SerializedName(SERIALIZED_NAME_VALUE_MAPS_IDS)
   private List<Long> valueMapsIds = null;
 
+  public static final String SERIALIZED_NAME_EXPERIMENT_ID = "experimentId";
+  @SerializedName(SERIALIZED_NAME_EXPERIMENT_ID)
+  private Long experimentId;
+
 
   public AdditionalCampaignProperties budgets(List<CampaignBudget> budgets) {
     
@@ -752,6 +756,29 @@ public class AdditionalCampaignProperties {
   }
 
 
+  public AdditionalCampaignProperties experimentId(Long experimentId) {
+    
+    this.experimentId = experimentId;
+    return this;
+  }
+
+   /**
+   * The ID of the Experiment this Campaign is part of.
+   * @return experimentId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "The ID of the Experiment this Campaign is part of.")
+
+  public Long getExperimentId() {
+    return experimentId;
+  }
+
+
+  public void setExperimentId(Long experimentId) {
+    this.experimentId = experimentId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -784,12 +811,13 @@ public class AdditionalCampaignProperties {
         Objects.equals(this.templateId, additionalCampaignProperties.templateId) &&
         Objects.equals(this.frontendState, additionalCampaignProperties.frontendState) &&
         Objects.equals(this.storesImported, additionalCampaignProperties.storesImported) &&
-        Objects.equals(this.valueMapsIds, additionalCampaignProperties.valueMapsIds);
+        Objects.equals(this.valueMapsIds, additionalCampaignProperties.valueMapsIds) &&
+        Objects.equals(this.experimentId, additionalCampaignProperties.experimentId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported, valueMapsIds);
+    return Objects.hash(budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported, valueMapsIds, experimentId);
   }
 
 
@@ -821,6 +849,7 @@ public class AdditionalCampaignProperties {
     sb.append("    frontendState: ").append(toIndentedString(frontendState)).append("\n");
     sb.append("    storesImported: ").append(toIndentedString(storesImported)).append("\n");
     sb.append("    valueMapsIds: ").append(toIndentedString(valueMapsIds)).append("\n");
+    sb.append("    experimentId: ").append(toIndentedString(experimentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

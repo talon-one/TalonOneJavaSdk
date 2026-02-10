@@ -59,6 +59,7 @@ Method | HTTP request | Description
 [**exportLoyaltyLedger**](ManagementApi.md#exportLoyaltyLedger) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/export_log | Export customer&#39;s transaction logs
 [**exportPoolGiveaways**](ManagementApi.md#exportPoolGiveaways) | **GET** /v1/giveaways/pools/{poolId}/export | Export giveaway codes of a giveaway pool
 [**exportReferrals**](ManagementApi.md#exportReferrals) | **GET** /v1/applications/{applicationId}/export_referrals | Export referrals
+[**generateCouponRejections**](ManagementApi.md#generateCouponRejections) | **GET** /v1/coupon_rejections | Summarize coupon redemption failures in session
 [**getAccessLogsWithoutTotalCount**](ManagementApi.md#getAccessLogsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/access_logs/no_total | Get access logs for Application
 [**getAccount**](ManagementApi.md#getAccount) | **GET** /v1/accounts/{accountId} | Get account details
 [**getAccountAnalytics**](ManagementApi.md#getAccountAnalytics) | **GET** /v1/accounts/{accountId}/analytics | Get account analytics
@@ -4467,7 +4468,7 @@ public class Example {
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         String loyaltyProgramId = "loyaltyProgramId_example"; // String | The identifier for the loyalty program.
-        OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+        OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. - This parameter does not affect the `currentTier` field in the CSV file,  which shows the customer's tier at the time of export. 
         try {
             String result = apiInstance.exportLoyaltyBalances(loyaltyProgramId, endDate);
             System.out.println(result);
@@ -4488,7 +4489,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **String**| The identifier for the loyalty program. |
- **endDate** | **OffsetDateTime**| Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
+ **endDate** | **OffsetDateTime**| Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. - This parameter does not affect the &#x60;currentTier&#x60; field in the CSV file,  which shows the customer&#39;s tier at the time of export.  | [optional]
 
 ### Return type cool
 
@@ -5059,6 +5060,96 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/csv
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## generateCouponRejections
+
+> InlineResponse20050 generateCouponRejections(sessionIntegrationId, applicationId, language, couponCode)
+
+Summarize coupon redemption failures in session
+
+Create a summary of the reasons for coupon redemption failures in a given customer session. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: api_key_v1
+        ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+        api_key_v1.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_v1.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        String sessionIntegrationId = "sessionIntegrationId_example"; // String | The integration ID of the session to summarize.
+        BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
+        String language = "language_example"; // String | The [ISO-639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) code of the language in which the summary will be generated. 
+        String couponCode = "couponCode_example"; // String | The coupon code for which to get the rejection reason.
+        try {
+            InlineResponse20050 result = apiInstance.generateCouponRejections(sessionIntegrationId, applicationId, language, couponCode);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#generateCouponRejections");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sessionIntegrationId** | **String**| The integration ID of the session to summarize. |
+ **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
+ **language** | **String**| The [ISO-639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) code of the language in which the summary will be generated.  | [optional]
+ **couponCode** | **String**| The coupon code for which to get the rejection reason. | [optional]
+
+### Return type cool
+
+[**InlineResponse20050**](InlineResponse20050.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1), [management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

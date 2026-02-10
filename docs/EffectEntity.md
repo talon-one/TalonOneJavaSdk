@@ -7,6 +7,7 @@ Definition of all properties that are present on all effects, independent of the
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**experimentId** | **Long** | The ID of the experiment that campaign belongs to. |  [optional]
 **campaignId** | **Long** | The ID of the campaign that triggered this effect. | 
 **rulesetId** | **Long** | The ID of the ruleset that was active in the campaign when this effect was triggered. | 
 **ruleIndex** | **Long** | The position of the rule that triggered this effect within the ruleset. | 

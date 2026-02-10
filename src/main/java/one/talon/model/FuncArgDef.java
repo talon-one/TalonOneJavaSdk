@@ -42,7 +42,9 @@ public class FuncArgDef {
     
     TIME("time"),
     
-    _LIST_STRING_("(list string)");
+    _LIST_STRING_("(list string)"),
+    
+    _LIST_NUMBER_("(list number)");
 
     private String value;
 

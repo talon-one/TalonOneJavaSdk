@@ -115,6 +115,10 @@ public class BaseCampaign {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = new ArrayList<String>();
 
+  public static final String SERIALIZED_NAME_REEVALUATE_ON_RETURN = "reevaluateOnReturn";
+  @SerializedName(SERIALIZED_NAME_REEVALUATE_ON_RETURN)
+  private Boolean reevaluateOnReturn;
+
   /**
    * Gets or Sets features
    */
@@ -432,6 +436,29 @@ public class BaseCampaign {
   }
 
 
+  public BaseCampaign reevaluateOnReturn(Boolean reevaluateOnReturn) {
+    
+    this.reevaluateOnReturn = reevaluateOnReturn;
+    return this;
+  }
+
+   /**
+   * Indicates whether this campaign should be reevaluated when a customer returns an item.
+   * @return reevaluateOnReturn
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Indicates whether this campaign should be reevaluated when a customer returns an item.")
+
+  public Boolean getReevaluateOnReturn() {
+    return reevaluateOnReturn;
+  }
+
+
+  public void setReevaluateOnReturn(Boolean reevaluateOnReturn) {
+    this.reevaluateOnReturn = reevaluateOnReturn;
+  }
+
+
   public BaseCampaign features(List<FeaturesEnum> features) {
     
     this.features = features;
@@ -634,6 +661,7 @@ public class BaseCampaign {
         Objects.equals(this.state, baseCampaign.state) &&
         Objects.equals(this.activeRulesetId, baseCampaign.activeRulesetId) &&
         Objects.equals(this.tags, baseCampaign.tags) &&
+        Objects.equals(this.reevaluateOnReturn, baseCampaign.reevaluateOnReturn) &&
         Objects.equals(this.features, baseCampaign.features) &&
         Objects.equals(this.couponSettings, baseCampaign.couponSettings) &&
         Objects.equals(this.referralSettings, baseCampaign.referralSettings) &&
@@ -645,7 +673,7 @@ public class BaseCampaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds);
+    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, reevaluateOnReturn, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds);
   }
 
 
@@ -661,6 +689,7 @@ public class BaseCampaign {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    activeRulesetId: ").append(toIndentedString(activeRulesetId)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    reevaluateOnReturn: ").append(toIndentedString(reevaluateOnReturn)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
     sb.append("    couponSettings: ").append(toIndentedString(couponSettings)).append("\n");
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");

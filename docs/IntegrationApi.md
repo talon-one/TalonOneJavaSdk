@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**deleteAudienceV2**](IntegrationApi.md#deleteAudienceV2) | **DELETE** /v2/audiences/{audienceId} | Delete audience
 [**deleteCouponReservation**](IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponValue} | Delete coupon reservations
 [**deleteCustomerData**](IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete customer&#39;s personal data
+[**deleteLoyaltyTransactionsFromLedgers**](IntegrationApi.md#deleteLoyaltyTransactionsFromLedgers) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/delete_transactions | Delete customer&#39;s transactions from loyalty ledgers
 [**generateLoyaltyCard**](IntegrationApi.md#generateLoyaltyCard) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/cards | Generate loyalty card
 [**getCustomerAchievementHistory**](IntegrationApi.md#getCustomerAchievementHistory) | **GET** /v1/customer_profiles/{integrationId}/achievements/{achievementId} | List customer&#39;s achievement history
 [**getCustomerAchievements**](IntegrationApi.md#getCustomerAchievements) | **GET** /v1/customer_profiles/{integrationId}/achievements | List customer&#39;s available achievements
@@ -798,6 +799,84 @@ null (empty response body)
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
 | **401** | Unauthorized - Invalid API key |  -  |
+| **404** | Not found |  -  |
+
+
+## deleteLoyaltyTransactionsFromLedgers
+
+> deleteLoyaltyTransactionsFromLedgers(loyaltyProgramId, integrationId, body)
+
+Delete customer&#39;s transactions from loyalty ledgers
+
+Delete a customer&#39;s transactions in all loyalty ledgers or a specified ledger.  **Note:** To retrieve loyalty transaction logs for a specific customer in a given loyalty program, use the [List customer&#39;s loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions) endpoint. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: api_key_v1
+        ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+        api_key_v1.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_v1.setApiKeyPrefix("Token");
+
+        IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+        Long loyaltyProgramId = 56L; // Long | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        String integrationId = "integrationId_example"; // String | The integration ID of the customer profile. You can get the `integrationId` of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
+        DeleteLoyaltyTransactionsRequest body = new DeleteLoyaltyTransactionsRequest(); // DeleteLoyaltyTransactionsRequest | 
+        try {
+            apiInstance.deleteLoyaltyTransactionsFromLedgers(loyaltyProgramId, integrationId, body);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IntegrationApi#deleteLoyaltyTransactionsFromLedgers");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loyaltyProgramId** | **Long**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **integrationId** | **String**| The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
+ **body** | [**DeleteLoyaltyTransactionsRequest**](DeleteLoyaltyTransactionsRequest.md)|  |
+
+### Return type cool
+
+null (empty response body)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad request |  -  |
+| **401** | Unauthorized |  -  |
 | **404** | Not found |  -  |
 
 

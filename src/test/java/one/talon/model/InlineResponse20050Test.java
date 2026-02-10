@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Achievement;
+import one.talon.model.CouponFailureSummary;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,14 +41,6 @@ public class InlineResponse20050Test {
     @Test
     public void testInlineResponse20050() {
         // TODO: test InlineResponse20050
-    }
-
-    /**
-     * Test the property 'hasMore'
-     */
-    @Test
-    public void hasMoreTest() {
-        // TODO: test hasMore
     }
 
     /**

@@ -133,6 +133,10 @@ public class Campaign {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = new ArrayList<String>();
 
+  public static final String SERIALIZED_NAME_REEVALUATE_ON_RETURN = "reevaluateOnReturn";
+  @SerializedName(SERIALIZED_NAME_REEVALUATE_ON_RETURN)
+  private Boolean reevaluateOnReturn;
+
   /**
    * Gets or Sets features
    */
@@ -413,6 +417,10 @@ public class Campaign {
   public static final String SERIALIZED_NAME_VALUE_MAPS_IDS = "valueMapsIds";
   @SerializedName(SERIALIZED_NAME_VALUE_MAPS_IDS)
   private List<Long> valueMapsIds = null;
+
+  public static final String SERIALIZED_NAME_EXPERIMENT_ID = "experimentId";
+  @SerializedName(SERIALIZED_NAME_EXPERIMENT_ID)
+  private Long experimentId;
 
   /**
    * The campaign revision state displayed in the Campaign Manager.
@@ -760,6 +768,28 @@ public class Campaign {
 
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+
+  public Campaign reevaluateOnReturn(Boolean reevaluateOnReturn) {
+    
+    this.reevaluateOnReturn = reevaluateOnReturn;
+    return this;
+  }
+
+   /**
+   * Indicates whether this campaign should be reevaluated when a customer returns an item.
+   * @return reevaluateOnReturn
+  **/
+  @ApiModelProperty(example = "true", required = true, value = "Indicates whether this campaign should be reevaluated when a customer returns an item.")
+
+  public Boolean getReevaluateOnReturn() {
+    return reevaluateOnReturn;
+  }
+
+
+  public void setReevaluateOnReturn(Boolean reevaluateOnReturn) {
+    this.reevaluateOnReturn = reevaluateOnReturn;
   }
 
 
@@ -1513,6 +1543,29 @@ public class Campaign {
   }
 
 
+  public Campaign experimentId(Long experimentId) {
+    
+    this.experimentId = experimentId;
+    return this;
+  }
+
+   /**
+   * The ID of the Experiment this Campaign is part of.
+   * @return experimentId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "The ID of the Experiment this Campaign is part of.")
+
+  public Long getExperimentId() {
+    return experimentId;
+  }
+
+
+  public void setExperimentId(Long experimentId) {
+    this.experimentId = experimentId;
+  }
+
+
   public Campaign revisionFrontendState(RevisionFrontendStateEnum revisionFrontendState) {
     
     this.revisionFrontendState = revisionFrontendState;
@@ -1695,6 +1748,7 @@ public class Campaign {
         Objects.equals(this.state, campaign.state) &&
         Objects.equals(this.activeRulesetId, campaign.activeRulesetId) &&
         Objects.equals(this.tags, campaign.tags) &&
+        Objects.equals(this.reevaluateOnReturn, campaign.reevaluateOnReturn) &&
         Objects.equals(this.features, campaign.features) &&
         Objects.equals(this.couponSettings, campaign.couponSettings) &&
         Objects.equals(this.referralSettings, campaign.referralSettings) &&
@@ -1726,6 +1780,7 @@ public class Campaign {
         Objects.equals(this.frontendState, campaign.frontendState) &&
         Objects.equals(this.storesImported, campaign.storesImported) &&
         Objects.equals(this.valueMapsIds, campaign.valueMapsIds) &&
+        Objects.equals(this.experimentId, campaign.experimentId) &&
         Objects.equals(this.revisionFrontendState, campaign.revisionFrontendState) &&
         Objects.equals(this.activeRevisionId, campaign.activeRevisionId) &&
         Objects.equals(this.activeRevisionVersionId, campaign.activeRevisionVersionId) &&
@@ -1737,7 +1792,7 @@ public class Campaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported, valueMapsIds, revisionFrontendState, activeRevisionId, activeRevisionVersionId, version, currentRevisionId, currentRevisionVersionId, stageRevision);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, reevaluateOnReturn, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported, valueMapsIds, experimentId, revisionFrontendState, activeRevisionId, activeRevisionVersionId, version, currentRevisionId, currentRevisionVersionId, stageRevision);
   }
 
 
@@ -1757,6 +1812,7 @@ public class Campaign {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    activeRulesetId: ").append(toIndentedString(activeRulesetId)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    reevaluateOnReturn: ").append(toIndentedString(reevaluateOnReturn)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
     sb.append("    couponSettings: ").append(toIndentedString(couponSettings)).append("\n");
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
@@ -1788,6 +1844,7 @@ public class Campaign {
     sb.append("    frontendState: ").append(toIndentedString(frontendState)).append("\n");
     sb.append("    storesImported: ").append(toIndentedString(storesImported)).append("\n");
     sb.append("    valueMapsIds: ").append(toIndentedString(valueMapsIds)).append("\n");
+    sb.append("    experimentId: ").append(toIndentedString(experimentId)).append("\n");
     sb.append("    revisionFrontendState: ").append(toIndentedString(revisionFrontendState)).append("\n");
     sb.append("    activeRevisionId: ").append(toIndentedString(activeRevisionId)).append("\n");
     sb.append("    activeRevisionVersionId: ").append(toIndentedString(activeRevisionVersionId)).append("\n");

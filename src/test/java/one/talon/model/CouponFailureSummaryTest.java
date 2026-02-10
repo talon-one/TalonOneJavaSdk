@@ -98,19 +98,11 @@ public class CouponFailureSummaryTest {
     }
 
     /**
-     * Test the property 'shortSummary'
+     * Test the property 'summary'
      */
     @Test
-    public void shortSummaryTest() {
-        // TODO: test shortSummary
-    }
-
-    /**
-     * Test the property 'longSummary'
-     */
-    @Test
-    public void longSummaryTest() {
-        // TODO: test longSummary
+    public void summaryTest() {
+        // TODO: test summary
     }
 
     /**

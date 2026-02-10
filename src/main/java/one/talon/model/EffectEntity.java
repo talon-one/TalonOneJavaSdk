@@ -32,6 +32,10 @@ import java.util.UUID;
 @ApiModel(description = "Definition of all properties that are present on all effects, independent of their type.")
 
 public class EffectEntity {
+  public static final String SERIALIZED_NAME_EXPERIMENT_ID = "experimentId";
+  @SerializedName(SERIALIZED_NAME_EXPERIMENT_ID)
+  private Long experimentId;
+
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private Long campaignId;
@@ -91,6 +95,29 @@ public class EffectEntity {
   public static final String SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID = "adjustmentReferenceId";
   @SerializedName(SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID)
   private UUID adjustmentReferenceId;
+
+
+  public EffectEntity experimentId(Long experimentId) {
+    
+    this.experimentId = experimentId;
+    return this;
+  }
+
+   /**
+   * The ID of the experiment that campaign belongs to.
+   * @return experimentId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "12", value = "The ID of the experiment that campaign belongs to.")
+
+  public Long getExperimentId() {
+    return experimentId;
+  }
+
+
+  public void setExperimentId(Long experimentId) {
+    this.experimentId = experimentId;
+  }
 
 
   public EffectEntity campaignId(Long campaignId) {
@@ -442,7 +469,8 @@ public class EffectEntity {
       return false;
     }
     EffectEntity effectEntity = (EffectEntity) o;
-    return Objects.equals(this.campaignId, effectEntity.campaignId) &&
+    return Objects.equals(this.experimentId, effectEntity.experimentId) &&
+        Objects.equals(this.campaignId, effectEntity.campaignId) &&
         Objects.equals(this.rulesetId, effectEntity.rulesetId) &&
         Objects.equals(this.ruleIndex, effectEntity.ruleIndex) &&
         Objects.equals(this.ruleName, effectEntity.ruleName) &&
@@ -461,7 +489,7 @@ public class EffectEntity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex, evaluationGroupID, evaluationGroupMode, campaignRevisionId, campaignRevisionVersionId, selectedPriceType, selectedPrice, adjustmentReferenceId);
+    return Objects.hash(experimentId, campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex, evaluationGroupID, evaluationGroupMode, campaignRevisionId, campaignRevisionVersionId, selectedPriceType, selectedPrice, adjustmentReferenceId);
   }
 
 
@@ -469,6 +497,7 @@ public class EffectEntity {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EffectEntity {\n");
+    sb.append("    experimentId: ").append(toIndentedString(experimentId)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    rulesetId: ").append(toIndentedString(rulesetId)).append("\n");
     sb.append("    ruleIndex: ").append(toIndentedString(ruleIndex)).append("\n");

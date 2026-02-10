@@ -43,6 +43,14 @@ public class EffectEntityTest {
     }
 
     /**
+     * Test the property 'experimentId'
+     */
+    @Test
+    public void experimentIdTest() {
+        // TODO: test experimentId
+    }
+
+    /**
      * Test the property 'campaignId'
      */
     @Test

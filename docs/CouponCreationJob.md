@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **numberOfCoupons** | **Long** | The number of new coupon codes to generate for the campaign. | 
 **couponSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with coupons. | 
+**isReservationMandatory** | **Boolean** | An indication of whether the code can be redeemed only if it has been reserved first. |  [optional]
 **batchId** | **String** | The batch ID coupons created by this job will bear. | 
 **status** | **String** | The current status of this request. Possible values: - &#x60;pending verification&#x60; - &#x60;pending&#x60; - &#x60;completed&#x60; - &#x60;failed&#x60; - &#x60;coupon pattern full&#x60;  | 
 **createdAmount** | **Long** | The number of coupon codes that were already created for this request. | 

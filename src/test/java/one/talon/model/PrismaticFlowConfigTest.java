@@ -48,4 +48,28 @@ public class PrismaticFlowConfigTest {
         // TODO: test apiKey
     }
 
+    /**
+     * Test the property 'workerCount'
+     */
+    @Test
+    public void workerCountTest() {
+        // TODO: test workerCount
+    }
+
+    /**
+     * Test the property 'maxEventsPerMessage'
+     */
+    @Test
+    public void maxEventsPerMessageTest() {
+        // TODO: test maxEventsPerMessage
+    }
+
+    /**
+     * Test the property 'maxRetries'
+     */
+    @Test
+    public void maxRetriesTest() {
+        // TODO: test maxRetries
+    }
+
 }
