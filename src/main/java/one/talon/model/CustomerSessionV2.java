@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 import one.talon.model.AdditionalCost;
 import one.talon.model.CartItem;
+import one.talon.model.ExperimentVariantAllocation;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -136,6 +137,10 @@ public class CustomerSessionV2 {
   public static final String SERIALIZED_NAME_CART_ITEMS = "cartItems";
   @SerializedName(SERIALIZED_NAME_CART_ITEMS)
   private List<CartItem> cartItems = new ArrayList<CartItem>();
+
+  public static final String SERIALIZED_NAME_EXPERIMENT_VARIANT_ALLOCATIONS = "experimentVariantAllocations";
+  @SerializedName(SERIALIZED_NAME_EXPERIMENT_VARIANT_ALLOCATIONS)
+  private List<ExperimentVariantAllocation> experimentVariantAllocations = null;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COSTS = "additionalCosts";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COSTS)
@@ -468,6 +473,37 @@ public class CustomerSessionV2 {
   }
 
 
+  public CustomerSessionV2 experimentVariantAllocations(List<ExperimentVariantAllocation> experimentVariantAllocations) {
+    
+    this.experimentVariantAllocations = experimentVariantAllocations;
+    return this;
+  }
+
+  public CustomerSessionV2 addExperimentVariantAllocationsItem(ExperimentVariantAllocation experimentVariantAllocationsItem) {
+    if (this.experimentVariantAllocations == null) {
+      this.experimentVariantAllocations = new ArrayList<ExperimentVariantAllocation>();
+    }
+    this.experimentVariantAllocations.add(experimentVariantAllocationsItem);
+    return this;
+  }
+
+   /**
+   * The experiment variant allocations to add to this session. 
+   * @return experimentVariantAllocations
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The experiment variant allocations to add to this session. ")
+
+  public List<ExperimentVariantAllocation> getExperimentVariantAllocations() {
+    return experimentVariantAllocations;
+  }
+
+
+  public void setExperimentVariantAllocations(List<ExperimentVariantAllocation> experimentVariantAllocations) {
+    this.experimentVariantAllocations = experimentVariantAllocations;
+  }
+
+
   public CustomerSessionV2 additionalCosts(Map<String, AdditionalCost> additionalCosts) {
     
     this.additionalCosts = additionalCosts;
@@ -683,6 +719,7 @@ public class CustomerSessionV2 {
         Objects.equals(this.loyaltyCards, customerSessionV2.loyaltyCards) &&
         Objects.equals(this.state, customerSessionV2.state) &&
         Objects.equals(this.cartItems, customerSessionV2.cartItems) &&
+        Objects.equals(this.experimentVariantAllocations, customerSessionV2.experimentVariantAllocations) &&
         Objects.equals(this.additionalCosts, customerSessionV2.additionalCosts) &&
         Objects.equals(this.identifiers, customerSessionV2.identifiers) &&
         Objects.equals(this.attributes, customerSessionV2.attributes) &&
@@ -695,7 +732,7 @@ public class CustomerSessionV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, additionalCosts, identifiers, attributes, firstSession, total, cartItemTotal, additionalCostTotal, updated);
+    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, experimentVariantAllocations, additionalCosts, identifiers, attributes, firstSession, total, cartItemTotal, additionalCostTotal, updated);
   }
 
 
@@ -715,6 +752,7 @@ public class CustomerSessionV2 {
     sb.append("    loyaltyCards: ").append(toIndentedString(loyaltyCards)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    cartItems: ").append(toIndentedString(cartItems)).append("\n");
+    sb.append("    experimentVariantAllocations: ").append(toIndentedString(experimentVariantAllocations)).append("\n");
     sb.append("    additionalCosts: ").append(toIndentedString(additionalCosts)).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");

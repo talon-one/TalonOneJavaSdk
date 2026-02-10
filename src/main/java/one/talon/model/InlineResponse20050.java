@@ -25,52 +25,25 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Achievement;
+import one.talon.model.CouponFailureSummary;
 
 /**
  * InlineResponse20050
  */
 
 public class InlineResponse20050 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Achievement> data = new ArrayList<Achievement>();
+  private List<CouponFailureSummary> data = new ArrayList<CouponFailureSummary>();
 
 
-  public InlineResponse20050 hasMore(Boolean hasMore) {
-    
-    this.hasMore = hasMore;
-    return this;
-  }
-
-   /**
-   * Get hasMore
-   * @return hasMore
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getHasMore() {
-    return hasMore;
-  }
-
-
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
-  }
-
-
-  public InlineResponse20050 data(List<Achievement> data) {
+  public InlineResponse20050 data(List<CouponFailureSummary> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20050 addDataItem(Achievement dataItem) {
+  public InlineResponse20050 addDataItem(CouponFailureSummary dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -81,12 +54,12 @@ public class InlineResponse20050 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Achievement> getData() {
+  public List<CouponFailureSummary> getData() {
     return data;
   }
 
 
-  public void setData(List<Achievement> data) {
+  public void setData(List<CouponFailureSummary> data) {
     this.data = data;
   }
 
@@ -100,13 +73,12 @@ public class InlineResponse20050 {
       return false;
     }
     InlineResponse20050 inlineResponse20050 = (InlineResponse20050) o;
-    return Objects.equals(this.hasMore, inlineResponse20050.hasMore) &&
-        Objects.equals(this.data, inlineResponse20050.data);
+    return Objects.equals(this.data, inlineResponse20050.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(data);
   }
 
 
@@ -114,7 +86,6 @@ public class InlineResponse20050 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20050 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

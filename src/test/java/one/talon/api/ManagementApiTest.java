@@ -85,6 +85,7 @@ import one.talon.model.InlineResponse20046;
 import one.talon.model.InlineResponse20047;
 import one.talon.model.InlineResponse20048;
 import one.talon.model.InlineResponse20049;
+import one.talon.model.InlineResponse20050;
 import one.talon.model.InlineResponse2007;
 import one.talon.model.InlineResponse2008;
 import one.talon.model.InlineResponse2009;
@@ -1147,6 +1148,25 @@ public class ManagementApiTest {
         String batchId = null;
         String dateFormat = null;
         String response = api.exportReferrals(applicationId, campaignId, createdBefore, createdAfter, valid, usable, batchId, dateFormat);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Summarize coupon redemption failures in session
+     *
+     * Create a summary of the reasons for coupon redemption failures in a given customer session. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void generateCouponRejectionsTest() throws ApiException {
+        String sessionIntegrationId = null;
+        BigDecimal applicationId = null;
+        String language = null;
+        String couponCode = null;
+        InlineResponse20050 response = api.generateCouponRejections(sessionIntegrationId, applicationId, language, couponCode);
 
         // TODO: test validations
     }

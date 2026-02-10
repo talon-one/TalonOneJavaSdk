@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 import one.talon.model.AdditionalCost;
 import one.talon.model.CartItem;
+import one.talon.model.ExperimentVariantAllocation;
 
 /**
  * The representation of the customer session.
@@ -118,6 +119,10 @@ public class NewCustomerSessionV2 {
   public static final String SERIALIZED_NAME_CART_ITEMS = "cartItems";
   @SerializedName(SERIALIZED_NAME_CART_ITEMS)
   private List<CartItem> cartItems = null;
+
+  public static final String SERIALIZED_NAME_EXPERIMENT_VARIANT_ALLOCATIONS = "experimentVariantAllocations";
+  @SerializedName(SERIALIZED_NAME_EXPERIMENT_VARIANT_ALLOCATIONS)
+  private List<ExperimentVariantAllocation> experimentVariantAllocations = null;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COSTS = "additionalCosts";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COSTS)
@@ -348,6 +353,37 @@ public class NewCustomerSessionV2 {
   }
 
 
+  public NewCustomerSessionV2 experimentVariantAllocations(List<ExperimentVariantAllocation> experimentVariantAllocations) {
+    
+    this.experimentVariantAllocations = experimentVariantAllocations;
+    return this;
+  }
+
+  public NewCustomerSessionV2 addExperimentVariantAllocationsItem(ExperimentVariantAllocation experimentVariantAllocationsItem) {
+    if (this.experimentVariantAllocations == null) {
+      this.experimentVariantAllocations = new ArrayList<ExperimentVariantAllocation>();
+    }
+    this.experimentVariantAllocations.add(experimentVariantAllocationsItem);
+    return this;
+  }
+
+   /**
+   * The experiment variant allocations to add to this session. 
+   * @return experimentVariantAllocations
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The experiment variant allocations to add to this session. ")
+
+  public List<ExperimentVariantAllocation> getExperimentVariantAllocations() {
+    return experimentVariantAllocations;
+  }
+
+
+  public void setExperimentVariantAllocations(List<ExperimentVariantAllocation> experimentVariantAllocations) {
+    this.experimentVariantAllocations = experimentVariantAllocations;
+  }
+
+
   public NewCustomerSessionV2 additionalCosts(Map<String, AdditionalCost> additionalCosts) {
     
     this.additionalCosts = additionalCosts;
@@ -450,6 +486,7 @@ public class NewCustomerSessionV2 {
         Objects.equals(this.loyaltyCards, newCustomerSessionV2.loyaltyCards) &&
         Objects.equals(this.state, newCustomerSessionV2.state) &&
         Objects.equals(this.cartItems, newCustomerSessionV2.cartItems) &&
+        Objects.equals(this.experimentVariantAllocations, newCustomerSessionV2.experimentVariantAllocations) &&
         Objects.equals(this.additionalCosts, newCustomerSessionV2.additionalCosts) &&
         Objects.equals(this.identifiers, newCustomerSessionV2.identifiers) &&
         Objects.equals(this.attributes, newCustomerSessionV2.attributes);
@@ -457,7 +494,7 @@ public class NewCustomerSessionV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, additionalCosts, identifiers, attributes);
+    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, experimentVariantAllocations, additionalCosts, identifiers, attributes);
   }
 
 
@@ -473,6 +510,7 @@ public class NewCustomerSessionV2 {
     sb.append("    loyaltyCards: ").append(toIndentedString(loyaltyCards)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    cartItems: ").append(toIndentedString(cartItems)).append("\n");
+    sb.append("    experimentVariantAllocations: ").append(toIndentedString(experimentVariantAllocations)).append("\n");
     sb.append("    additionalCosts: ").append(toIndentedString(additionalCosts)).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");

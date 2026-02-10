@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **frontendState** | [**FrontendStateEnum**](#FrontendStateEnum) | The campaign state displayed in the Campaign Manager. | 
 **storesImported** | **Boolean** | Indicates whether the linked stores were imported via a CSV file. | 
 **valueMapsIds** | **List&lt;Long&gt;** | A list of value map IDs for the campaign. |  [optional]
+**experimentId** | **Long** | The ID of the Experiment this Campaign is part of. |  [optional]
 
 
 

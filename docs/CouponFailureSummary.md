@@ -14,8 +14,7 @@ Name | Type | Description | Notes
 **status** | **String** | Status defines if the coupon code was applied or rejected. | 
 **couponCode** | **String** | Coupon code passed for evaluation. | 
 **language** | **String** | Language of the summary. | 
-**shortSummary** | **String** | A summary of the reasons for coupon redemption failure. | 
-**longSummary** | **String** | A detailed summary of the reasons for coupon redemption failure based on events of the entire session. | 
+**summary** | **String** | A summary of the reasons for coupon redemption failure. | 
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the request was made. | 
 **updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the request was last updated. | 
 

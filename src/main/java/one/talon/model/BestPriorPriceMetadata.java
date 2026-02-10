@@ -25,6 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.AdjustmentDetails;
+import one.talon.model.InfluencingCampaignDetails;
 
 /**
  * Auxiliary data for found price observation.
@@ -32,66 +34,62 @@ import java.util.List;
 @ApiModel(description = "Auxiliary data for found price observation.")
 
 public class BestPriorPriceMetadata {
-  public static final String SERIALIZED_NAME_INFLUENCING_CAMPAIGN_I_DS = "influencingCampaignIDs";
-  @SerializedName(SERIALIZED_NAME_INFLUENCING_CAMPAIGN_I_DS)
-  private List<Long> influencingCampaignIDs = null;
+  public static final String SERIALIZED_NAME_INFLUENCING_CAMPAIGN_DETAILS = "influencingCampaignDetails";
+  @SerializedName(SERIALIZED_NAME_INFLUENCING_CAMPAIGN_DETAILS)
+  private List<InfluencingCampaignDetails> influencingCampaignDetails = new ArrayList<InfluencingCampaignDetails>();
 
-  public static final String SERIALIZED_NAME_ADJUSTMENT_REFERENCE_I_D = "adjustmentReferenceID";
-  @SerializedName(SERIALIZED_NAME_ADJUSTMENT_REFERENCE_I_D)
-  private String adjustmentReferenceID;
+  public static final String SERIALIZED_NAME_ADJUSTMENT_DETAILS = "adjustmentDetails";
+  @SerializedName(SERIALIZED_NAME_ADJUSTMENT_DETAILS)
+  private AdjustmentDetails adjustmentDetails;
 
 
-  public BestPriorPriceMetadata influencingCampaignIDs(List<Long> influencingCampaignIDs) {
+  public BestPriorPriceMetadata influencingCampaignDetails(List<InfluencingCampaignDetails> influencingCampaignDetails) {
     
-    this.influencingCampaignIDs = influencingCampaignIDs;
+    this.influencingCampaignDetails = influencingCampaignDetails;
     return this;
   }
 
-  public BestPriorPriceMetadata addInfluencingCampaignIDsItem(Long influencingCampaignIDsItem) {
-    if (this.influencingCampaignIDs == null) {
-      this.influencingCampaignIDs = new ArrayList<Long>();
-    }
-    this.influencingCampaignIDs.add(influencingCampaignIDsItem);
+  public BestPriorPriceMetadata addInfluencingCampaignDetailsItem(InfluencingCampaignDetails influencingCampaignDetailsItem) {
+    this.influencingCampaignDetails.add(influencingCampaignDetailsItem);
     return this;
   }
 
    /**
-   * Get influencingCampaignIDs
-   * @return influencingCampaignIDs
+   * Details about campaigns that influenced the final price.
+   * @return influencingCampaignDetails
+  **/
+  @ApiModelProperty(required = true, value = "Details about campaigns that influenced the final price.")
+
+  public List<InfluencingCampaignDetails> getInfluencingCampaignDetails() {
+    return influencingCampaignDetails;
+  }
+
+
+  public void setInfluencingCampaignDetails(List<InfluencingCampaignDetails> influencingCampaignDetails) {
+    this.influencingCampaignDetails = influencingCampaignDetails;
+  }
+
+
+  public BestPriorPriceMetadata adjustmentDetails(AdjustmentDetails adjustmentDetails) {
+    
+    this.adjustmentDetails = adjustmentDetails;
+    return this;
+  }
+
+   /**
+   * Get adjustmentDetails
+   * @return adjustmentDetails
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<Long> getInfluencingCampaignIDs() {
-    return influencingCampaignIDs;
+  public AdjustmentDetails getAdjustmentDetails() {
+    return adjustmentDetails;
   }
 
 
-  public void setInfluencingCampaignIDs(List<Long> influencingCampaignIDs) {
-    this.influencingCampaignIDs = influencingCampaignIDs;
-  }
-
-
-  public BestPriorPriceMetadata adjustmentReferenceID(String adjustmentReferenceID) {
-    
-    this.adjustmentReferenceID = adjustmentReferenceID;
-    return this;
-  }
-
-   /**
-   * Identifier related to the &#x60;referenceId&#x60; used during a &#x60;ADD_PRICE_ADJUSTMENT&#x60; action  using the [Sync cart item catalog endpoint](https://docs.talon.one/integration-api#tag/Catalogs/operation/syncCatalog).
-   * @return adjustmentReferenceID
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Identifier related to the `referenceId` used during a `ADD_PRICE_ADJUSTMENT` action  using the [Sync cart item catalog endpoint](https://docs.talon.one/integration-api#tag/Catalogs/operation/syncCatalog).")
-
-  public String getAdjustmentReferenceID() {
-    return adjustmentReferenceID;
-  }
-
-
-  public void setAdjustmentReferenceID(String adjustmentReferenceID) {
-    this.adjustmentReferenceID = adjustmentReferenceID;
+  public void setAdjustmentDetails(AdjustmentDetails adjustmentDetails) {
+    this.adjustmentDetails = adjustmentDetails;
   }
 
 
@@ -104,13 +102,13 @@ public class BestPriorPriceMetadata {
       return false;
     }
     BestPriorPriceMetadata bestPriorPriceMetadata = (BestPriorPriceMetadata) o;
-    return Objects.equals(this.influencingCampaignIDs, bestPriorPriceMetadata.influencingCampaignIDs) &&
-        Objects.equals(this.adjustmentReferenceID, bestPriorPriceMetadata.adjustmentReferenceID);
+    return Objects.equals(this.influencingCampaignDetails, bestPriorPriceMetadata.influencingCampaignDetails) &&
+        Objects.equals(this.adjustmentDetails, bestPriorPriceMetadata.adjustmentDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(influencingCampaignIDs, adjustmentReferenceID);
+    return Objects.hash(influencingCampaignDetails, adjustmentDetails);
   }
 
 
@@ -118,8 +116,8 @@ public class BestPriorPriceMetadata {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BestPriorPriceMetadata {\n");
-    sb.append("    influencingCampaignIDs: ").append(toIndentedString(influencingCampaignIDs)).append("\n");
-    sb.append("    adjustmentReferenceID: ").append(toIndentedString(adjustmentReferenceID)).append("\n");
+    sb.append("    influencingCampaignDetails: ").append(toIndentedString(influencingCampaignDetails)).append("\n");
+    sb.append("    adjustmentDetails: ").append(toIndentedString(adjustmentDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }

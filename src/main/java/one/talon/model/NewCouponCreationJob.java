@@ -64,6 +64,10 @@ public class NewCouponCreationJob {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
+  public static final String SERIALIZED_NAME_IS_RESERVATION_MANDATORY = "isReservationMandatory";
+  @SerializedName(SERIALIZED_NAME_IS_RESERVATION_MANDATORY)
+  private Boolean isReservationMandatory = false;
+
 
   public NewCouponCreationJob usageLimit(Long usageLimit) {
     
@@ -254,6 +258,29 @@ public class NewCouponCreationJob {
   }
 
 
+  public NewCouponCreationJob isReservationMandatory(Boolean isReservationMandatory) {
+    
+    this.isReservationMandatory = isReservationMandatory;
+    return this;
+  }
+
+   /**
+   * An indication of whether the code can be redeemed only if it has been reserved first.
+   * @return isReservationMandatory
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "An indication of whether the code can be redeemed only if it has been reserved first.")
+
+  public Boolean getIsReservationMandatory() {
+    return isReservationMandatory;
+  }
+
+
+  public void setIsReservationMandatory(Boolean isReservationMandatory) {
+    this.isReservationMandatory = isReservationMandatory;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -270,12 +297,13 @@ public class NewCouponCreationJob {
         Objects.equals(this.expiryDate, newCouponCreationJob.expiryDate) &&
         Objects.equals(this.numberOfCoupons, newCouponCreationJob.numberOfCoupons) &&
         Objects.equals(this.couponSettings, newCouponCreationJob.couponSettings) &&
-        Objects.equals(this.attributes, newCouponCreationJob.attributes);
+        Objects.equals(this.attributes, newCouponCreationJob.attributes) &&
+        Objects.equals(this.isReservationMandatory, newCouponCreationJob.isReservationMandatory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, numberOfCoupons, couponSettings, attributes);
+    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, numberOfCoupons, couponSettings, attributes, isReservationMandatory);
   }
 
 
@@ -291,6 +319,7 @@ public class NewCouponCreationJob {
     sb.append("    numberOfCoupons: ").append(toIndentedString(numberOfCoupons)).append("\n");
     sb.append("    couponSettings: ").append(toIndentedString(couponSettings)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    isReservationMandatory: ").append(toIndentedString(isReservationMandatory)).append("\n");
     sb.append("}");
     return sb.toString();
   }

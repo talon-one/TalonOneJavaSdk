@@ -237,4 +237,12 @@ public class AdditionalCampaignPropertiesTest {
         // TODO: test valueMapsIds
     }
 
+    /**
+     * Test the property 'experimentId'
+     */
+    @Test
+    public void experimentIdTest() {
+        // TODO: test experimentId
+    }
+
 }

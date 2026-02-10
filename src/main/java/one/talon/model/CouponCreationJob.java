@@ -86,6 +86,10 @@ public class CouponCreationJob {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
+  public static final String SERIALIZED_NAME_IS_RESERVATION_MANDATORY = "isReservationMandatory";
+  @SerializedName(SERIALIZED_NAME_IS_RESERVATION_MANDATORY)
+  private Boolean isReservationMandatory = false;
+
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
   private String batchId;
@@ -422,6 +426,29 @@ public class CouponCreationJob {
   }
 
 
+  public CouponCreationJob isReservationMandatory(Boolean isReservationMandatory) {
+    
+    this.isReservationMandatory = isReservationMandatory;
+    return this;
+  }
+
+   /**
+   * An indication of whether the code can be redeemed only if it has been reserved first.
+   * @return isReservationMandatory
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "An indication of whether the code can be redeemed only if it has been reserved first.")
+
+  public Boolean getIsReservationMandatory() {
+    return isReservationMandatory;
+  }
+
+
+  public void setIsReservationMandatory(Boolean isReservationMandatory) {
+    this.isReservationMandatory = isReservationMandatory;
+  }
+
+
   public CouponCreationJob batchId(String batchId) {
     
     this.batchId = batchId;
@@ -648,6 +675,7 @@ public class CouponCreationJob {
         Objects.equals(this.numberOfCoupons, couponCreationJob.numberOfCoupons) &&
         Objects.equals(this.couponSettings, couponCreationJob.couponSettings) &&
         Objects.equals(this.attributes, couponCreationJob.attributes) &&
+        Objects.equals(this.isReservationMandatory, couponCreationJob.isReservationMandatory) &&
         Objects.equals(this.batchId, couponCreationJob.batchId) &&
         Objects.equals(this.status, couponCreationJob.status) &&
         Objects.equals(this.createdAmount, couponCreationJob.createdAmount) &&
@@ -661,7 +689,7 @@ public class CouponCreationJob {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, applicationId, accountId, usageLimit, discountLimit, reservationLimit, startDate, expiryDate, numberOfCoupons, couponSettings, attributes, batchId, status, createdAmount, failCount, errors, createdBy, communicated, chunkExecutionCount, chunkSize);
+    return Objects.hash(id, created, campaignId, applicationId, accountId, usageLimit, discountLimit, reservationLimit, startDate, expiryDate, numberOfCoupons, couponSettings, attributes, isReservationMandatory, batchId, status, createdAmount, failCount, errors, createdBy, communicated, chunkExecutionCount, chunkSize);
   }
 
 
@@ -682,6 +710,7 @@ public class CouponCreationJob {
     sb.append("    numberOfCoupons: ").append(toIndentedString(numberOfCoupons)).append("\n");
     sb.append("    couponSettings: ").append(toIndentedString(couponSettings)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    isReservationMandatory: ").append(toIndentedString(isReservationMandatory)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAmount: ").append(toIndentedString(createdAmount)).append("\n");

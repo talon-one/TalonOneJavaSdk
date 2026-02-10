@@ -74,6 +74,10 @@ public class NewRevisionVersion {
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<LimitConfig> limits = null;
 
+  public static final String SERIALIZED_NAME_REEVALUATE_ON_RETURN = "reevaluateOnReturn";
+  @SerializedName(SERIALIZED_NAME_REEVALUATE_ON_RETURN)
+  private Boolean reevaluateOnReturn;
+
   /**
    * Gets or Sets features
    */
@@ -256,11 +260,11 @@ public class NewRevisionVersion {
   }
 
    /**
-   * The ID of the ruleset this campaign template will use.
+   * The ID of the ruleset this campaign will use.
    * @return activeRulesetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "5", value = "The ID of the ruleset this campaign template will use.")
+  @ApiModelProperty(example = "5", value = "The ID of the ruleset this campaign will use.")
 
   public Integer getActiveRulesetId() {
     return activeRulesetId;
@@ -287,11 +291,11 @@ public class NewRevisionVersion {
   }
 
    /**
-   * A list of tags for the campaign template.
+   * A list of tags for the campaign.
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of tags for the campaign template.")
+  @ApiModelProperty(value = "A list of tags for the campaign.")
 
   public List<String> getTags() {
     return tags;
@@ -380,6 +384,29 @@ public class NewRevisionVersion {
   }
 
 
+  public NewRevisionVersion reevaluateOnReturn(Boolean reevaluateOnReturn) {
+    
+    this.reevaluateOnReturn = reevaluateOnReturn;
+    return this;
+  }
+
+   /**
+   * Indicates whether this campaign should be reevaluated when a customer returns an item.
+   * @return reevaluateOnReturn
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Indicates whether this campaign should be reevaluated when a customer returns an item.")
+
+  public Boolean getReevaluateOnReturn() {
+    return reevaluateOnReturn;
+  }
+
+
+  public void setReevaluateOnReturn(Boolean reevaluateOnReturn) {
+    this.reevaluateOnReturn = reevaluateOnReturn;
+  }
+
+
   public NewRevisionVersion features(List<FeaturesEnum> features) {
     
     this.features = features;
@@ -395,11 +422,11 @@ public class NewRevisionVersion {
   }
 
    /**
-   * A list of features for the campaign template.
+   * A list of features for the campaign.
    * @return features
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of features for the campaign template.")
+  @ApiModelProperty(value = "A list of features for the campaign.")
 
   public List<FeaturesEnum> getFeatures() {
     return features;
@@ -430,12 +457,13 @@ public class NewRevisionVersion {
         Objects.equals(this.couponSettings, newRevisionVersion.couponSettings) &&
         Objects.equals(this.referralSettings, newRevisionVersion.referralSettings) &&
         Objects.equals(this.limits, newRevisionVersion.limits) &&
+        Objects.equals(this.reevaluateOnReturn, newRevisionVersion.reevaluateOnReturn) &&
         Objects.equals(this.features, newRevisionVersion.features);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, startTime, endTime, attributes, description, activeRulesetId, tags, couponSettings, referralSettings, limits, features);
+    return Objects.hash(name, startTime, endTime, attributes, description, activeRulesetId, tags, couponSettings, referralSettings, limits, reevaluateOnReturn, features);
   }
 
 
@@ -453,6 +481,7 @@ public class NewRevisionVersion {
     sb.append("    couponSettings: ").append(toIndentedString(couponSettings)).append("\n");
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
+    sb.append("    reevaluateOnReturn: ").append(toIndentedString(reevaluateOnReturn)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
     sb.append("}");
     return sb.toString();

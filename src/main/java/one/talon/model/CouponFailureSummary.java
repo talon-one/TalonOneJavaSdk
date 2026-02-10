@@ -59,13 +59,9 @@ public class CouponFailureSummary {
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
   private String language;
 
-  public static final String SERIALIZED_NAME_SHORT_SUMMARY = "shortSummary";
-  @SerializedName(SERIALIZED_NAME_SHORT_SUMMARY)
-  private String shortSummary;
-
-  public static final String SERIALIZED_NAME_LONG_SUMMARY = "longSummary";
-  @SerializedName(SERIALIZED_NAME_LONG_SUMMARY)
-  private String longSummary;
+  public static final String SERIALIZED_NAME_SUMMARY = "summary";
+  @SerializedName(SERIALIZED_NAME_SUMMARY)
+  private String summary;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -232,47 +228,25 @@ public class CouponFailureSummary {
   }
 
 
-  public CouponFailureSummary shortSummary(String shortSummary) {
+  public CouponFailureSummary summary(String summary) {
     
-    this.shortSummary = shortSummary;
+    this.summary = summary;
     return this;
   }
 
    /**
    * A summary of the reasons for coupon redemption failure.
-   * @return shortSummary
+   * @return summary
   **/
   @ApiModelProperty(example = "Session total was less than the required total.", required = true, value = "A summary of the reasons for coupon redemption failure.")
 
-  public String getShortSummary() {
-    return shortSummary;
+  public String getSummary() {
+    return summary;
   }
 
 
-  public void setShortSummary(String shortSummary) {
-    this.shortSummary = shortSummary;
-  }
-
-
-  public CouponFailureSummary longSummary(String longSummary) {
-    
-    this.longSummary = longSummary;
-    return this;
-  }
-
-   /**
-   * A detailed summary of the reasons for coupon redemption failure based on events of the entire session.
-   * @return longSummary
-  **/
-  @ApiModelProperty(example = "There were 5 items in the cart with SKUs 1,2,3,4,5 and the total is $60 which is less than the required cart total.", required = true, value = "A detailed summary of the reasons for coupon redemption failure based on events of the entire session.")
-
-  public String getLongSummary() {
-    return longSummary;
-  }
-
-
-  public void setLongSummary(String longSummary) {
-    this.longSummary = longSummary;
+  public void setSummary(String summary) {
+    this.summary = summary;
   }
 
 
@@ -336,15 +310,14 @@ public class CouponFailureSummary {
         Objects.equals(this.status, couponFailureSummary.status) &&
         Objects.equals(this.couponCode, couponFailureSummary.couponCode) &&
         Objects.equals(this.language, couponFailureSummary.language) &&
-        Objects.equals(this.shortSummary, couponFailureSummary.shortSummary) &&
-        Objects.equals(this.longSummary, couponFailureSummary.longSummary) &&
+        Objects.equals(this.summary, couponFailureSummary.summary) &&
         Objects.equals(this.createdAt, couponFailureSummary.createdAt) &&
         Objects.equals(this.updatedAt, couponFailureSummary.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, eventID, sessionID, profileID, status, couponCode, language, shortSummary, longSummary, createdAt, updatedAt);
+    return Objects.hash(id, eventID, sessionID, profileID, status, couponCode, language, summary, createdAt, updatedAt);
   }
 
 
@@ -359,8 +332,7 @@ public class CouponFailureSummary {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    couponCode: ").append(toIndentedString(couponCode)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    shortSummary: ").append(toIndentedString(shortSummary)).append("\n");
-    sb.append("    longSummary: ").append(toIndentedString(longSummary)).append("\n");
+    sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");

@@ -27,6 +27,7 @@ import one.talon.model.CustomerInventory;
 import one.talon.model.CustomerProfileAudienceRequest;
 import one.talon.model.CustomerProfileIntegrationRequestV2;
 import one.talon.model.CustomerProfileIntegrationResponseV2;
+import one.talon.model.DeleteLoyaltyTransactionsRequest;
 import one.talon.model.ErrorResponse;
 import one.talon.model.ErrorResponseWithStatus;
 import one.talon.model.GenerateLoyaltyCard;
@@ -234,6 +235,24 @@ public class IntegrationApiTest {
     public void deleteCustomerDataTest() throws ApiException {
         String integrationId = null;
         api.deleteCustomerData(integrationId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Delete customer&#39;s transactions from loyalty ledgers
+     *
+     * Delete a customer&#39;s transactions in all loyalty ledgers or a specified ledger.  **Note:** To retrieve loyalty transaction logs for a specific customer in a given loyalty program, use the [List customer&#39;s loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions) endpoint. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteLoyaltyTransactionsFromLedgersTest() throws ApiException {
+        Long loyaltyProgramId = null;
+        String integrationId = null;
+        DeleteLoyaltyTransactionsRequest body = null;
+        api.deleteLoyaltyTransactionsFromLedgers(loyaltyProgramId, integrationId, body);
 
         // TODO: test validations
     }
