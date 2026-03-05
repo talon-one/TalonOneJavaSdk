@@ -52,6 +52,8 @@ public class NewAttribute {
     
     GIVEAWAY("Giveaway"),
     
+    LOYALTYCARD("LoyaltyCard"),
+    
     REFERRAL("Referral"),
     
     STORE("Store");

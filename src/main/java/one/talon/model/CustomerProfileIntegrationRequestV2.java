@@ -41,10 +41,6 @@ public class CustomerProfileIntegrationRequestV2 {
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
   private List<Long> evaluableCampaignIds = null;
 
-  public static final String SERIALIZED_NAME_AUDIENCES_CHANGES = "audiencesChanges";
-  @SerializedName(SERIALIZED_NAME_AUDIENCES_CHANGES)
-  private ProfileAudiencesChanges audiencesChanges;
-
   /**
    * Gets or Sets responseContent
    */
@@ -104,6 +100,10 @@ public class CustomerProfileIntegrationRequestV2 {
   @SerializedName(SERIALIZED_NAME_RESPONSE_CONTENT)
   private List<ResponseContentEnum> responseContent = null;
 
+  public static final String SERIALIZED_NAME_AUDIENCES_CHANGES = "audiencesChanges";
+  @SerializedName(SERIALIZED_NAME_AUDIENCES_CHANGES)
+  private ProfileAudiencesChanges audiencesChanges;
+
 
   public CustomerProfileIntegrationRequestV2 attributes(Object attributes) {
     
@@ -159,6 +159,37 @@ public class CustomerProfileIntegrationRequestV2 {
   }
 
 
+  public CustomerProfileIntegrationRequestV2 responseContent(List<ResponseContentEnum> responseContent) {
+    
+    this.responseContent = responseContent;
+    return this;
+  }
+
+  public CustomerProfileIntegrationRequestV2 addResponseContentItem(ResponseContentEnum responseContentItem) {
+    if (this.responseContent == null) {
+      this.responseContent = new ArrayList<ResponseContentEnum>();
+    }
+    this.responseContent.add(responseContentItem);
+    return this;
+  }
+
+   /**
+   * Extends the response with the chosen data entities. Use this property to get as much data back as needed from one request instead of sending extra requests to other endpoints. 
+   * @return responseContent
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[triggeredCampaigns, customerProfile]", value = "Extends the response with the chosen data entities. Use this property to get as much data back as needed from one request instead of sending extra requests to other endpoints. ")
+
+  public List<ResponseContentEnum> getResponseContent() {
+    return responseContent;
+  }
+
+
+  public void setResponseContent(List<ResponseContentEnum> responseContent) {
+    this.responseContent = responseContent;
+  }
+
+
   public CustomerProfileIntegrationRequestV2 audiencesChanges(ProfileAudiencesChanges audiencesChanges) {
     
     this.audiencesChanges = audiencesChanges;
@@ -182,37 +213,6 @@ public class CustomerProfileIntegrationRequestV2 {
   }
 
 
-  public CustomerProfileIntegrationRequestV2 responseContent(List<ResponseContentEnum> responseContent) {
-    
-    this.responseContent = responseContent;
-    return this;
-  }
-
-  public CustomerProfileIntegrationRequestV2 addResponseContentItem(ResponseContentEnum responseContentItem) {
-    if (this.responseContent == null) {
-      this.responseContent = new ArrayList<ResponseContentEnum>();
-    }
-    this.responseContent.add(responseContentItem);
-    return this;
-  }
-
-   /**
-   * Extends the response with the chosen data entities. Use this property to get as much data as you need in one _Update customer profile_ request instead of sending extra requests to other endpoints. 
-   * @return responseContent
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "[triggeredCampaigns, customerProfile]", value = "Extends the response with the chosen data entities. Use this property to get as much data as you need in one _Update customer profile_ request instead of sending extra requests to other endpoints. ")
-
-  public List<ResponseContentEnum> getResponseContent() {
-    return responseContent;
-  }
-
-
-  public void setResponseContent(List<ResponseContentEnum> responseContent) {
-    this.responseContent = responseContent;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -224,13 +224,13 @@ public class CustomerProfileIntegrationRequestV2 {
     CustomerProfileIntegrationRequestV2 customerProfileIntegrationRequestV2 = (CustomerProfileIntegrationRequestV2) o;
     return Objects.equals(this.attributes, customerProfileIntegrationRequestV2.attributes) &&
         Objects.equals(this.evaluableCampaignIds, customerProfileIntegrationRequestV2.evaluableCampaignIds) &&
-        Objects.equals(this.audiencesChanges, customerProfileIntegrationRequestV2.audiencesChanges) &&
-        Objects.equals(this.responseContent, customerProfileIntegrationRequestV2.responseContent);
+        Objects.equals(this.responseContent, customerProfileIntegrationRequestV2.responseContent) &&
+        Objects.equals(this.audiencesChanges, customerProfileIntegrationRequestV2.audiencesChanges);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, evaluableCampaignIds, audiencesChanges, responseContent);
+    return Objects.hash(attributes, evaluableCampaignIds, responseContent, audiencesChanges);
   }
 
 
@@ -240,8 +240,8 @@ public class CustomerProfileIntegrationRequestV2 {
     sb.append("class CustomerProfileIntegrationRequestV2 {\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    evaluableCampaignIds: ").append(toIndentedString(evaluableCampaignIds)).append("\n");
-    sb.append("    audiencesChanges: ").append(toIndentedString(audiencesChanges)).append("\n");
     sb.append("    responseContent: ").append(toIndentedString(responseContent)).append("\n");
+    sb.append("    audiencesChanges: ").append(toIndentedString(audiencesChanges)).append("\n");
     sb.append("}");
     return sb.toString();
   }

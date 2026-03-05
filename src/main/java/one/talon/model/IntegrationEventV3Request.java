@@ -78,7 +78,7 @@ public class IntegrationEventV3Request {
     
     LOYALTY("loyalty"),
     
-    EVENT("event"),
+    ADVANCEDEVENT("advancedEvent"),
     
     AWARDEDGIVEAWAYS("awardedGiveaways"),
     

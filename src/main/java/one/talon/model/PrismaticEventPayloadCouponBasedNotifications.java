@@ -105,6 +105,10 @@ public class PrismaticEventPayloadCouponBasedNotifications {
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<PrismaticEventPayloadCouponBasedNotificationsLimits> limits = null;
 
+  public static final String SERIALIZED_NAME_PUBLISHED_AT = "PublishedAt";
+  @SerializedName(SERIALIZED_NAME_PUBLISHED_AT)
+  private OffsetDateTime publishedAt;
+
   public static final String SERIALIZED_NAME_SOURCE_OF_EVENT = "SourceOfEvent";
   @SerializedName(SERIALIZED_NAME_SOURCE_OF_EVENT)
   private String sourceOfEvent;
@@ -530,6 +534,28 @@ public class PrismaticEventPayloadCouponBasedNotifications {
   }
 
 
+  public PrismaticEventPayloadCouponBasedNotifications publishedAt(OffsetDateTime publishedAt) {
+    
+    this.publishedAt = publishedAt;
+    return this;
+  }
+
+   /**
+   * Timestamp when the event was published.
+   * @return publishedAt
+  **/
+  @ApiModelProperty(required = true, value = "Timestamp when the event was published.")
+
+  public OffsetDateTime getPublishedAt() {
+    return publishedAt;
+  }
+
+
+  public void setPublishedAt(OffsetDateTime publishedAt) {
+    this.publishedAt = publishedAt;
+  }
+
+
   public PrismaticEventPayloadCouponBasedNotifications sourceOfEvent(String sourceOfEvent) {
     
     this.sourceOfEvent = sourceOfEvent;
@@ -601,13 +627,14 @@ public class PrismaticEventPayloadCouponBasedNotifications {
         Objects.equals(this.batchId, prismaticEventPayloadCouponBasedNotifications.batchId) &&
         Objects.equals(this.attributes, prismaticEventPayloadCouponBasedNotifications.attributes) &&
         Objects.equals(this.limits, prismaticEventPayloadCouponBasedNotifications.limits) &&
+        Objects.equals(this.publishedAt, prismaticEventPayloadCouponBasedNotifications.publishedAt) &&
         Objects.equals(this.sourceOfEvent, prismaticEventPayloadCouponBasedNotifications.sourceOfEvent) &&
         Objects.equals(this.employeeName, prismaticEventPayloadCouponBasedNotifications.employeeName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, value, usageLimit, discountLimit, reservationLimit, startDate, expiryDate, usageCounter, discountCounter, discountRemainder, referralId, recipientIntegrationId, importId, batchId, attributes, limits, sourceOfEvent, employeeName);
+    return Objects.hash(id, created, campaignId, value, usageLimit, discountLimit, reservationLimit, startDate, expiryDate, usageCounter, discountCounter, discountRemainder, referralId, recipientIntegrationId, importId, batchId, attributes, limits, publishedAt, sourceOfEvent, employeeName);
   }
 
 
@@ -633,6 +660,7 @@ public class PrismaticEventPayloadCouponBasedNotifications {
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
+    sb.append("    publishedAt: ").append(toIndentedString(publishedAt)).append("\n");
     sb.append("    sourceOfEvent: ").append(toIndentedString(sourceOfEvent)).append("\n");
     sb.append("    employeeName: ").append(toIndentedString(employeeName)).append("\n");
     sb.append("}");

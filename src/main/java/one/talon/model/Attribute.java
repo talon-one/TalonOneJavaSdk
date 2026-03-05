@@ -65,6 +65,8 @@ public class Attribute {
     
     GIVEAWAY("Giveaway"),
     
+    LOYALTYCARD("LoyaltyCard"),
+    
     REFERRAL("Referral"),
     
     STORE("Store");

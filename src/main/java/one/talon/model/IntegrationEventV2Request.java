@@ -51,10 +51,6 @@ public class IntegrationEventV2Request {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
-  public static final String SERIALIZED_NAME_LOYALTY_CARDS = "loyaltyCards";
-  @SerializedName(SERIALIZED_NAME_LOYALTY_CARDS)
-  private List<String> loyaltyCards = null;
-
   /**
    * Gets or Sets responseContent
    */
@@ -113,6 +109,10 @@ public class IntegrationEventV2Request {
   public static final String SERIALIZED_NAME_RESPONSE_CONTENT = "responseContent";
   @SerializedName(SERIALIZED_NAME_RESPONSE_CONTENT)
   private List<ResponseContentEnum> responseContent = null;
+
+  public static final String SERIALIZED_NAME_LOYALTY_CARDS = "loyaltyCards";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_CARDS)
+  private List<String> loyaltyCards = null;
 
 
   public IntegrationEventV2Request profileId(String profileId) {
@@ -237,37 +237,6 @@ public class IntegrationEventV2Request {
   }
 
 
-  public IntegrationEventV2Request loyaltyCards(List<String> loyaltyCards) {
-    
-    this.loyaltyCards = loyaltyCards;
-    return this;
-  }
-
-  public IntegrationEventV2Request addLoyaltyCardsItem(String loyaltyCardsItem) {
-    if (this.loyaltyCards == null) {
-      this.loyaltyCards = new ArrayList<String>();
-    }
-    this.loyaltyCards.add(loyaltyCardsItem);
-    return this;
-  }
-
-   /**
-   * Identifier of the loyalty card used during this event.
-   * @return loyaltyCards
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "[loyalty-card-1]", value = "Identifier of the loyalty card used during this event.")
-
-  public List<String> getLoyaltyCards() {
-    return loyaltyCards;
-  }
-
-
-  public void setLoyaltyCards(List<String> loyaltyCards) {
-    this.loyaltyCards = loyaltyCards;
-  }
-
-
   public IntegrationEventV2Request responseContent(List<ResponseContentEnum> responseContent) {
     
     this.responseContent = responseContent;
@@ -283,11 +252,11 @@ public class IntegrationEventV2Request {
   }
 
    /**
-   * Optional list of requested information to be present on the response related to the tracking custom event. 
+   * Extends the response with the chosen data entities. Use this property to get as much data back as needed from one request instead of sending extra requests to other endpoints. 
    * @return responseContent
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[triggeredCampaigns, customerProfile]", value = "Optional list of requested information to be present on the response related to the tracking custom event. ")
+  @ApiModelProperty(example = "[triggeredCampaigns, customerProfile]", value = "Extends the response with the chosen data entities. Use this property to get as much data back as needed from one request instead of sending extra requests to other endpoints. ")
 
   public List<ResponseContentEnum> getResponseContent() {
     return responseContent;
@@ -296,6 +265,37 @@ public class IntegrationEventV2Request {
 
   public void setResponseContent(List<ResponseContentEnum> responseContent) {
     this.responseContent = responseContent;
+  }
+
+
+  public IntegrationEventV2Request loyaltyCards(List<String> loyaltyCards) {
+    
+    this.loyaltyCards = loyaltyCards;
+    return this;
+  }
+
+  public IntegrationEventV2Request addLoyaltyCardsItem(String loyaltyCardsItem) {
+    if (this.loyaltyCards == null) {
+      this.loyaltyCards = new ArrayList<String>();
+    }
+    this.loyaltyCards.add(loyaltyCardsItem);
+    return this;
+  }
+
+   /**
+   * Identifiers of the loyalty cards used during this event.
+   * @return loyaltyCards
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[loyalty-card-1]", value = "Identifiers of the loyalty cards used during this event.")
+
+  public List<String> getLoyaltyCards() {
+    return loyaltyCards;
+  }
+
+
+  public void setLoyaltyCards(List<String> loyaltyCards) {
+    this.loyaltyCards = loyaltyCards;
   }
 
 
@@ -313,13 +313,13 @@ public class IntegrationEventV2Request {
         Objects.equals(this.evaluableCampaignIds, integrationEventV2Request.evaluableCampaignIds) &&
         Objects.equals(this.type, integrationEventV2Request.type) &&
         Objects.equals(this.attributes, integrationEventV2Request.attributes) &&
-        Objects.equals(this.loyaltyCards, integrationEventV2Request.loyaltyCards) &&
-        Objects.equals(this.responseContent, integrationEventV2Request.responseContent);
+        Objects.equals(this.responseContent, integrationEventV2Request.responseContent) &&
+        Objects.equals(this.loyaltyCards, integrationEventV2Request.loyaltyCards);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, type, attributes, loyaltyCards, responseContent);
+    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, type, attributes, responseContent, loyaltyCards);
   }
 
 
@@ -332,8 +332,8 @@ public class IntegrationEventV2Request {
     sb.append("    evaluableCampaignIds: ").append(toIndentedString(evaluableCampaignIds)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    loyaltyCards: ").append(toIndentedString(loyaltyCards)).append("\n");
     sb.append("    responseContent: ").append(toIndentedString(responseContent)).append("\n");
+    sb.append("    loyaltyCards: ").append(toIndentedString(loyaltyCards)).append("\n");
     sb.append("}");
     return sb.toString();
   }

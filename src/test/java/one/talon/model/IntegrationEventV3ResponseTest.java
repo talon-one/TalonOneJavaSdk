@@ -60,14 +60,6 @@ public class IntegrationEventV3ResponseTest {
     }
 
     /**
-     * Test the property 'event'
-     */
-    @Test
-    public void eventTest() {
-        // TODO: test event
-    }
-
-    /**
      * Test the property 'loyalty'
      */
     @Test
@@ -84,27 +76,19 @@ public class IntegrationEventV3ResponseTest {
     }
 
     /**
-     * Test the property 'ruleFailureReasons'
-     */
-    @Test
-    public void ruleFailureReasonsTest() {
-        // TODO: test ruleFailureReasons
-    }
-
-    /**
-     * Test the property 'awardedGiveaways'
-     */
-    @Test
-    public void awardedGiveawaysTest() {
-        // TODO: test awardedGiveaways
-    }
-
-    /**
      * Test the property 'effects'
      */
     @Test
     public void effectsTest() {
         // TODO: test effects
+    }
+
+    /**
+     * Test the property 'ruleFailureReasons'
+     */
+    @Test
+    public void ruleFailureReasonsTest() {
+        // TODO: test ruleFailureReasons
     }
 
     /**
@@ -121,6 +105,22 @@ public class IntegrationEventV3ResponseTest {
     @Test
     public void createdReferralsTest() {
         // TODO: test createdReferrals
+    }
+
+    /**
+     * Test the property 'awardedGiveaways'
+     */
+    @Test
+    public void awardedGiveawaysTest() {
+        // TODO: test awardedGiveaways
+    }
+
+    /**
+     * Test the property 'advancedEvent'
+     */
+    @Test
+    public void advancedEventTest() {
+        // TODO: test advancedEvent
     }
 
 }

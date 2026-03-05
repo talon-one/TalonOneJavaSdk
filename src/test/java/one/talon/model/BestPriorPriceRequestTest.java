@@ -77,6 +77,14 @@ public class BestPriorPriceRequestTest {
     }
 
     /**
+     * Test the property 'timeframeEndDateType'
+     */
+    @Test
+    public void timeframeEndDateTypeTest() {
+        // TODO: test timeframeEndDateType
+    }
+
+    /**
      * Test the property 'target'
      */
     @Test

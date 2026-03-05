@@ -49,6 +49,59 @@ public class BestPriorPriceRequest {
   @SerializedName(SERIALIZED_NAME_STRICT_END_DATE)
   private Boolean strictEndDate;
 
+  /**
+   * Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - &#x60;strict&#x60;: The timeframe ends at the &#x60;timeframeEndDate&#x60; value. - &#x60;price&#x60;: The timeframe ends at the start of the current &#x60;contextId&#x60; with the current price value. Identical price records are merged. If there is no &#x60;contextId&#x60; for the most recent price, the most recent timestamp for the price is used.  - &#x60;sale&#x60;:  The timeframe ends at the start of current &#x60;contextId&#x60; and takes the prices prior to the start of the &#x60;contextId&#x60; into account. 
+   */
+  @JsonAdapter(TimeframeEndDateTypeEnum.Adapter.class)
+  public enum TimeframeEndDateTypeEnum {
+    STRICT("strict"),
+    
+    PRICE("price"),
+    
+    SALE("sale");
+
+    private String value;
+
+    TimeframeEndDateTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TimeframeEndDateTypeEnum fromValue(String value) {
+      for (TimeframeEndDateTypeEnum b : TimeframeEndDateTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TimeframeEndDateTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TimeframeEndDateTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TimeframeEndDateTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TimeframeEndDateTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TIMEFRAME_END_DATE_TYPE = "timeframeEndDateType";
+  @SerializedName(SERIALIZED_NAME_TIMEFRAME_END_DATE_TYPE)
+  private TimeframeEndDateTypeEnum timeframeEndDateType;
+
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
   private BestPriorTarget target;
@@ -132,10 +185,10 @@ public class BestPriorPriceRequest {
   }
 
    /**
-   * Indicates whether the timeframe includes the start of the current sale. - When &#x60;false&#x60;, the timeframe includes the start date of the current sale. - When &#x60;true&#x60;, the timeframe striclty uses the number of days specified in &#x60;timeframe&#x60;. 
+   * This property is **deprecated**. Use &#x60;timeframeEndDateType&#x60; instead.  Indicates whether the timeframe includes the start of the current sale. - When &#x60;false&#x60;, the timeframe includes the start date of the current sale. - When &#x60;true&#x60;, the timeframe strictly uses the number of days specified in &#x60;timeframe&#x60;. 
    * @return strictEndDate
   **/
-  @ApiModelProperty(example = "true", required = true, value = "Indicates whether the timeframe includes the start of the current sale. - When `false`, the timeframe includes the start date of the current sale. - When `true`, the timeframe striclty uses the number of days specified in `timeframe`. ")
+  @ApiModelProperty(example = "true", required = true, value = "This property is **deprecated**. Use `timeframeEndDateType` instead.  Indicates whether the timeframe includes the start of the current sale. - When `false`, the timeframe includes the start date of the current sale. - When `true`, the timeframe strictly uses the number of days specified in `timeframe`. ")
 
   public Boolean getStrictEndDate() {
     return strictEndDate;
@@ -144,6 +197,29 @@ public class BestPriorPriceRequest {
 
   public void setStrictEndDate(Boolean strictEndDate) {
     this.strictEndDate = strictEndDate;
+  }
+
+
+  public BestPriorPriceRequest timeframeEndDateType(TimeframeEndDateTypeEnum timeframeEndDateType) {
+    
+    this.timeframeEndDateType = timeframeEndDateType;
+    return this;
+  }
+
+   /**
+   * Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - &#x60;strict&#x60;: The timeframe ends at the &#x60;timeframeEndDate&#x60; value. - &#x60;price&#x60;: The timeframe ends at the start of the current &#x60;contextId&#x60; with the current price value. Identical price records are merged. If there is no &#x60;contextId&#x60; for the most recent price, the most recent timestamp for the price is used.  - &#x60;sale&#x60;:  The timeframe ends at the start of current &#x60;contextId&#x60; and takes the prices prior to the start of the &#x60;contextId&#x60; into account. 
+   * @return timeframeEndDateType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "sale", value = "Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - `strict`: The timeframe ends at the `timeframeEndDate` value. - `price`: The timeframe ends at the start of the current `contextId` with the current price value. Identical price records are merged. If there is no `contextId` for the most recent price, the most recent timestamp for the price is used.  - `sale`:  The timeframe ends at the start of current `contextId` and takes the prices prior to the start of the `contextId` into account. ")
+
+  public TimeframeEndDateTypeEnum getTimeframeEndDateType() {
+    return timeframeEndDateType;
+  }
+
+
+  public void setTimeframeEndDateType(TimeframeEndDateTypeEnum timeframeEndDateType) {
+    this.timeframeEndDateType = timeframeEndDateType;
   }
 
 
@@ -183,12 +259,13 @@ public class BestPriorPriceRequest {
         Objects.equals(this.timeframeEndDate, bestPriorPriceRequest.timeframeEndDate) &&
         Objects.equals(this.timeframe, bestPriorPriceRequest.timeframe) &&
         Objects.equals(this.strictEndDate, bestPriorPriceRequest.strictEndDate) &&
+        Objects.equals(this.timeframeEndDateType, bestPriorPriceRequest.timeframeEndDateType) &&
         Objects.equals(this.target, bestPriorPriceRequest.target);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(skus, timeframeEndDate, timeframe, strictEndDate, target);
+    return Objects.hash(skus, timeframeEndDate, timeframe, strictEndDate, timeframeEndDateType, target);
   }
 
 
@@ -200,6 +277,7 @@ public class BestPriorPriceRequest {
     sb.append("    timeframeEndDate: ").append(toIndentedString(timeframeEndDate)).append("\n");
     sb.append("    timeframe: ").append(toIndentedString(timeframe)).append("\n");
     sb.append("    strictEndDate: ").append(toIndentedString(strictEndDate)).append("\n");
+    sb.append("    timeframeEndDateType: ").append(toIndentedString(timeframeEndDateType)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("}");
     return sb.toString();

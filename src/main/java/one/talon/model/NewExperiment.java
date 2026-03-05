@@ -24,7 +24,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import one.talon.model.NewCampaign;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * NewExperiment
@@ -34,61 +33,6 @@ public class NewExperiment {
   public static final String SERIALIZED_NAME_IS_VARIANT_ASSIGNMENT_EXTERNAL = "isVariantAssignmentExternal";
   @SerializedName(SERIALIZED_NAME_IS_VARIANT_ASSIGNMENT_EXTERNAL)
   private Boolean isVariantAssignmentExternal;
-
-  public static final String SERIALIZED_NAME_ACTIVATED = "activated";
-  @SerializedName(SERIALIZED_NAME_ACTIVATED)
-  private OffsetDateTime activated;
-
-  /**
-   * A disabled experiment is not evaluated for rules or coupons. 
-   */
-  @JsonAdapter(StateEnum.Adapter.class)
-  public enum StateEnum {
-    ENABLED("enabled"),
-    
-    DISABLED("disabled");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StateEnum fromValue(String value) {
-      for (StateEnum b : StateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StateEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StateEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
-  private StateEnum state = StateEnum.DISABLED;
 
   public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN)
@@ -102,10 +46,10 @@ public class NewExperiment {
   }
 
    /**
-   * The source of the assignment. - false - The assignment to the variant is handled internally by the Talon.Oneandled internally by the Talon.One. - true - The assignment to the variant handled externally. 
+   * The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
    * @return isVariantAssignmentExternal
   **/
-  @ApiModelProperty(required = true, value = "The source of the assignment. - false - The assignment to the variant is handled internally by the Talon.Oneandled internally by the Talon.One. - true - The assignment to the variant handled externally. ")
+  @ApiModelProperty(required = true, value = "The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. ")
 
   public Boolean getIsVariantAssignmentExternal() {
     return isVariantAssignmentExternal;
@@ -114,52 +58,6 @@ public class NewExperiment {
 
   public void setIsVariantAssignmentExternal(Boolean isVariantAssignmentExternal) {
     this.isVariantAssignmentExternal = isVariantAssignmentExternal;
-  }
-
-
-  public NewExperiment activated(OffsetDateTime activated) {
-    
-    this.activated = activated;
-    return this;
-  }
-
-   /**
-   * The date and time the experiment was activated. 
-   * @return activated
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date and time the experiment was activated. ")
-
-  public OffsetDateTime getActivated() {
-    return activated;
-  }
-
-
-  public void setActivated(OffsetDateTime activated) {
-    this.activated = activated;
-  }
-
-
-  public NewExperiment state(StateEnum state) {
-    
-    this.state = state;
-    return this;
-  }
-
-   /**
-   * A disabled experiment is not evaluated for rules or coupons. 
-   * @return state
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "enabled", value = "A disabled experiment is not evaluated for rules or coupons. ")
-
-  public StateEnum getState() {
-    return state;
-  }
-
-
-  public void setState(StateEnum state) {
-    this.state = state;
   }
 
 
@@ -195,14 +93,12 @@ public class NewExperiment {
     }
     NewExperiment newExperiment = (NewExperiment) o;
     return Objects.equals(this.isVariantAssignmentExternal, newExperiment.isVariantAssignmentExternal) &&
-        Objects.equals(this.activated, newExperiment.activated) &&
-        Objects.equals(this.state, newExperiment.state) &&
         Objects.equals(this.campaign, newExperiment.campaign);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isVariantAssignmentExternal, activated, state, campaign);
+    return Objects.hash(isVariantAssignmentExternal, campaign);
   }
 
 
@@ -211,8 +107,6 @@ public class NewExperiment {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewExperiment {\n");
     sb.append("    isVariantAssignmentExternal: ").append(toIndentedString(isVariantAssignmentExternal)).append("\n");
-    sb.append("    activated: ").append(toIndentedString(activated)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
     sb.append("}");
     return sb.toString();

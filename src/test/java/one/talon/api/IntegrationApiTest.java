@@ -41,6 +41,7 @@ import one.talon.model.InlineResponse2006;
 import one.talon.model.InlineResponse201;
 import one.talon.model.IntegrationCustomerSessionResponse;
 import one.talon.model.IntegrationEventV2Request;
+import one.talon.model.IntegrationEventV2Response;
 import one.talon.model.IntegrationRequest;
 import one.talon.model.IntegrationStateV2;
 import one.talon.model.LoyaltyBalancesWithTiers;
@@ -53,10 +54,11 @@ import one.talon.model.NewAudience;
 import one.talon.model.NewReferral;
 import one.talon.model.NewReferralsForMultipleAdvocates;
 import org.threeten.bp.OffsetDateTime;
+import one.talon.model.PriceHistoryRequest;
+import one.talon.model.PriceHistoryResponse;
 import one.talon.model.Referral;
 import one.talon.model.ReopenSessionResponse;
 import one.talon.model.ReturnIntegrationRequest;
-import one.talon.model.TrackEventV2Response;
 import one.talon.model.UpdateAudience;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -260,7 +262,7 @@ public class IntegrationApiTest {
     /**
      * Generate loyalty card
      *
-     * Generate a loyalty card in a specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).  To link the card to one or more customer profiles, use the &#x60;customerProfileIds&#x60; parameter in the request body.  **Note:** - The number of customer profiles linked to the loyalty card cannot exceed the loyalty program&#39;s &#x60;usersPerCardLimit&#x60;. To find the program&#39;s limit, use the [Get loyalty program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram) endpoint. - If the loyalty program has a defined code format, it will be used for the loyalty card identifier. 
+     * Generate a loyalty card in a specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).  To link the card to one or more customer profiles, use the &#x60;customerProfileIds&#x60; parameter in the request body.  **Note:**  - The number of customer profiles linked to the loyalty card cannot exceed the loyalty program&#39;s &#x60;usersPerCardLimit&#x60;. To find the program&#39;s limit, use the [Get loyalty program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram) endpoint.  - If the loyalty program has a defined code format, it will be used for the loyalty card identifier. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -531,6 +533,22 @@ public class IntegrationApiTest {
     }
     
     /**
+     * Get summary of price history
+     *
+     * Fetch the historical price data for a given SKU within a defined timeframe. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void priceHistoryTest() throws ApiException {
+        PriceHistoryRequest body = null;
+        PriceHistoryResponse response = api.priceHistory(body);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Reopen customer session
      *
      * Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to &#x60;open&#x60;. - Any modified budgets and triggered effects are rolled back when the session closes. - Depending on the [return policy](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-programs#return-policy)  in your loyalty programs, points are rolled back in the following ways:   - Pending points are rolled back automatically.   - If **Active points deduction** setting is enabled, any points that were earned and activated when the session closed    are rolled back.   - If **Negative balance** is enabled, the rollback can create a negative points balance.   &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session reopening&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;     &lt;p&gt;The following effects and budgets remain in the state they were in when the session closed:&lt;/p&gt;     &lt;ul&gt;       &lt;li&gt;Add free item effect&lt;/li&gt;       &lt;li&gt;Award giveaway&lt;/li&gt;       &lt;li&gt;Coupon and referral creation&lt;/li&gt;       &lt;li&gt;Coupon reservation&lt;/li&gt;       &lt;li&gt;Custom effect&lt;/li&gt;       &lt;li&gt;Update attribute value&lt;/li&gt;       &lt;li&gt;Update cart item attribute value&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt;   &lt;/details&gt; &lt;p&gt;To see an example of a rollback, see the &lt;a href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling a session with campaign budgets&lt;/a&gt; tutorial.&lt;/p&gt;  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
@@ -595,7 +613,7 @@ public class IntegrationApiTest {
         String silent = null;
         Boolean dry = null;
         Boolean forceCompleteEvaluation = null;
-        TrackEventV2Response response = api.trackEventV2(body, silent, dry, forceCompleteEvaluation);
+        IntegrationEventV2Response response = api.trackEventV2(body, silent, dry, forceCompleteEvaluation);
 
         // TODO: test validations
     }

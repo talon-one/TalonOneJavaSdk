@@ -65,7 +65,9 @@ public class Experiment {
   public enum StateEnum {
     ENABLED("enabled"),
     
-    DISABLED("disabled");
+    DISABLED("disabled"),
+    
+    ARCHIVED("archived");
 
     private String value;
 
@@ -191,11 +193,11 @@ public class Experiment {
   }
 
    /**
-   * The source of the assignment. - false - The assignment to the variant is handled internally by the Talon.Oneandled internally by the Talon.One. - true - The assignment to the variant handled externally. 
+   * The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
    * @return isVariantAssignmentExternal
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The source of the assignment. - false - The assignment to the variant is handled internally by the Talon.Oneandled internally by the Talon.One. - true - The assignment to the variant handled externally. ")
+  @ApiModelProperty(value = "The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. ")
 
   public Boolean getIsVariantAssignmentExternal() {
     return isVariantAssignmentExternal;
@@ -263,8 +265,7 @@ public class Experiment {
    * A disabled experiment is not evaluated for rules or coupons. 
    * @return state
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "enabled", value = "A disabled experiment is not evaluated for rules or coupons. ")
+  @ApiModelProperty(example = "enabled", required = true, value = "A disabled experiment is not evaluated for rules or coupons. ")
 
   public StateEnum getState() {
     return state;

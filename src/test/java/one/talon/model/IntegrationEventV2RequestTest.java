@@ -83,19 +83,19 @@ public class IntegrationEventV2RequestTest {
     }
 
     /**
-     * Test the property 'loyaltyCards'
-     */
-    @Test
-    public void loyaltyCardsTest() {
-        // TODO: test loyaltyCards
-    }
-
-    /**
      * Test the property 'responseContent'
      */
     @Test
     public void responseContentTest() {
         // TODO: test responseContent
+    }
+
+    /**
+     * Test the property 'loyaltyCards'
+     */
+    @Test
+    public void loyaltyCardsTest() {
+        // TODO: test loyaltyCards
     }
 
 }

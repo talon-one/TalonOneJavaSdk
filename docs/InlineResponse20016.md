@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Long** |  | 
-**data** | [**List&lt;LoyaltyDashboardData&gt;**](LoyaltyDashboardData.md) |  | 
+**data** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) |  | 
 
 
 

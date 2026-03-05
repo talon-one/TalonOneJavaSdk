@@ -34,6 +34,7 @@ CARTITEM | &quot;CartItem&quot;
 COUPON | &quot;Coupon&quot;
 EVENT | &quot;Event&quot;
 GIVEAWAY | &quot;Giveaway&quot;
+LOYALTYCARD | &quot;LoyaltyCard&quot;
 REFERRAL | &quot;Referral&quot;
 STORE | &quot;Store&quot;
 

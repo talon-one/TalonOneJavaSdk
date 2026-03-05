@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **batchId** | **String** |  |  [optional]
 **attributes** | [**Object**](.md) |  |  [optional]
 **limits** | [**List&lt;PrismaticEventPayloadCouponBasedNotificationsLimits&gt;**](PrismaticEventPayloadCouponBasedNotificationsLimits.md) |  |  [optional]
+**publishedAt** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the event was published. | 
 **sourceOfEvent** | **String** |  | 
 **employeeName** | **String** |  | 
 

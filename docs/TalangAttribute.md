@@ -35,6 +35,7 @@ CUSTOMERSESSION | &quot;CustomerSession&quot;
 EVENT | &quot;Event&quot;
 ITEM | &quot;Item&quot;
 LOYALTY | &quot;Loyalty&quot;
+LOYALTYCARD | &quot;LoyaltyCard&quot;
 PROFILE | &quot;Profile&quot;
 GIVEAWAY | &quot;Giveaway&quot;
 REFERRAL | &quot;Referral&quot;

@@ -62,6 +62,8 @@ public class TalangAttribute {
     
     LOYALTY("Loyalty"),
     
+    LOYALTYCARD("LoyaltyCard"),
+    
     PROFILE("Profile"),
     
     GIVEAWAY("Giveaway"),

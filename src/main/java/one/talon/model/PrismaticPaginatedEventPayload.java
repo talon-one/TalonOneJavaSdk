@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * PrismaticPaginatedEventPayload
@@ -34,6 +35,10 @@ public class PrismaticPaginatedEventPayload {
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "TotalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Long totalResultSize;
+
+  public static final String SERIALIZED_NAME_BATCHED_AT = "BatchedAt";
+  @SerializedName(SERIALIZED_NAME_BATCHED_AT)
+  private OffsetDateTime batchedAt;
 
   /**
    * Gets or Sets eventType
@@ -121,6 +126,29 @@ public class PrismaticPaginatedEventPayload {
   }
 
 
+  public PrismaticPaginatedEventPayload batchedAt(OffsetDateTime batchedAt) {
+    
+    this.batchedAt = batchedAt;
+    return this;
+  }
+
+   /**
+   * Timestamp when the batch was created.
+   * @return batchedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Timestamp when the batch was created.")
+
+  public OffsetDateTime getBatchedAt() {
+    return batchedAt;
+  }
+
+
+  public void setBatchedAt(OffsetDateTime batchedAt) {
+    this.batchedAt = batchedAt;
+  }
+
+
   public PrismaticPaginatedEventPayload eventType(EventTypeEnum eventType) {
     
     this.eventType = eventType;
@@ -180,13 +208,14 @@ public class PrismaticPaginatedEventPayload {
     }
     PrismaticPaginatedEventPayload prismaticPaginatedEventPayload = (PrismaticPaginatedEventPayload) o;
     return Objects.equals(this.totalResultSize, prismaticPaginatedEventPayload.totalResultSize) &&
+        Objects.equals(this.batchedAt, prismaticPaginatedEventPayload.batchedAt) &&
         Objects.equals(this.eventType, prismaticPaginatedEventPayload.eventType) &&
         Objects.equals(this.data, prismaticPaginatedEventPayload.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalResultSize, eventType, data);
+    return Objects.hash(totalResultSize, batchedAt, eventType, data);
   }
 
 
@@ -195,6 +224,7 @@ public class PrismaticPaginatedEventPayload {
     StringBuilder sb = new StringBuilder();
     sb.append("class PrismaticPaginatedEventPayload {\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    batchedAt: ").append(toIndentedString(batchedAt)).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");

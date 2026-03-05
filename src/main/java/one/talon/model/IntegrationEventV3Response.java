@@ -45,10 +45,6 @@ public class IntegrationEventV3Response {
   @SerializedName(SERIALIZED_NAME_CUSTOMER_PROFILE)
   private CustomerProfile customerProfile;
 
-  public static final String SERIALIZED_NAME_EVENT = "event";
-  @SerializedName(SERIALIZED_NAME_EVENT)
-  private EventV3 event;
-
   public static final String SERIALIZED_NAME_LOYALTY = "loyalty";
   @SerializedName(SERIALIZED_NAME_LOYALTY)
   private Loyalty loyalty;
@@ -57,17 +53,13 @@ public class IntegrationEventV3Response {
   @SerializedName(SERIALIZED_NAME_TRIGGERED_CAMPAIGNS)
   private List<Campaign> triggeredCampaigns = null;
 
-  public static final String SERIALIZED_NAME_RULE_FAILURE_REASONS = "ruleFailureReasons";
-  @SerializedName(SERIALIZED_NAME_RULE_FAILURE_REASONS)
-  private List<RuleFailureReason> ruleFailureReasons = null;
-
-  public static final String SERIALIZED_NAME_AWARDED_GIVEAWAYS = "awardedGiveaways";
-  @SerializedName(SERIALIZED_NAME_AWARDED_GIVEAWAYS)
-  private List<Giveaway> awardedGiveaways = null;
-
   public static final String SERIALIZED_NAME_EFFECTS = "effects";
   @SerializedName(SERIALIZED_NAME_EFFECTS)
   private List<Effect> effects = new ArrayList<Effect>();
+
+  public static final String SERIALIZED_NAME_RULE_FAILURE_REASONS = "ruleFailureReasons";
+  @SerializedName(SERIALIZED_NAME_RULE_FAILURE_REASONS)
+  private List<RuleFailureReason> ruleFailureReasons = null;
 
   public static final String SERIALIZED_NAME_CREATED_COUPONS = "createdCoupons";
   @SerializedName(SERIALIZED_NAME_CREATED_COUPONS)
@@ -76,6 +68,14 @@ public class IntegrationEventV3Response {
   public static final String SERIALIZED_NAME_CREATED_REFERRALS = "createdReferrals";
   @SerializedName(SERIALIZED_NAME_CREATED_REFERRALS)
   private List<Referral> createdReferrals = new ArrayList<Referral>();
+
+  public static final String SERIALIZED_NAME_AWARDED_GIVEAWAYS = "awardedGiveaways";
+  @SerializedName(SERIALIZED_NAME_AWARDED_GIVEAWAYS)
+  private List<Giveaway> awardedGiveaways = null;
+
+  public static final String SERIALIZED_NAME_ADVANCED_EVENT = "advancedEvent";
+  @SerializedName(SERIALIZED_NAME_ADVANCED_EVENT)
+  private EventV3 advancedEvent;
 
 
   public IntegrationEventV3Response customerProfile(CustomerProfile customerProfile) {
@@ -98,29 +98,6 @@ public class IntegrationEventV3Response {
 
   public void setCustomerProfile(CustomerProfile customerProfile) {
     this.customerProfile = customerProfile;
-  }
-
-
-  public IntegrationEventV3Response event(EventV3 event) {
-    
-    this.event = event;
-    return this;
-  }
-
-   /**
-   * Get event
-   * @return event
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public EventV3 getEvent() {
-    return event;
-  }
-
-
-  public void setEvent(EventV3 event) {
-    this.event = event;
   }
 
 
@@ -162,11 +139,11 @@ public class IntegrationEventV3Response {
   }
 
    /**
-   * Get triggeredCampaigns
+   * The campaigns that were triggered as a result of processing the event.
    * @return triggeredCampaigns
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The campaigns that were triggered as a result of processing the event.")
 
   public List<Campaign> getTriggeredCampaigns() {
     return triggeredCampaigns;
@@ -175,68 +152,6 @@ public class IntegrationEventV3Response {
 
   public void setTriggeredCampaigns(List<Campaign> triggeredCampaigns) {
     this.triggeredCampaigns = triggeredCampaigns;
-  }
-
-
-  public IntegrationEventV3Response ruleFailureReasons(List<RuleFailureReason> ruleFailureReasons) {
-    
-    this.ruleFailureReasons = ruleFailureReasons;
-    return this;
-  }
-
-  public IntegrationEventV3Response addRuleFailureReasonsItem(RuleFailureReason ruleFailureReasonsItem) {
-    if (this.ruleFailureReasons == null) {
-      this.ruleFailureReasons = new ArrayList<RuleFailureReason>();
-    }
-    this.ruleFailureReasons.add(ruleFailureReasonsItem);
-    return this;
-  }
-
-   /**
-   * Get ruleFailureReasons
-   * @return ruleFailureReasons
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<RuleFailureReason> getRuleFailureReasons() {
-    return ruleFailureReasons;
-  }
-
-
-  public void setRuleFailureReasons(List<RuleFailureReason> ruleFailureReasons) {
-    this.ruleFailureReasons = ruleFailureReasons;
-  }
-
-
-  public IntegrationEventV3Response awardedGiveaways(List<Giveaway> awardedGiveaways) {
-    
-    this.awardedGiveaways = awardedGiveaways;
-    return this;
-  }
-
-  public IntegrationEventV3Response addAwardedGiveawaysItem(Giveaway awardedGiveawaysItem) {
-    if (this.awardedGiveaways == null) {
-      this.awardedGiveaways = new ArrayList<Giveaway>();
-    }
-    this.awardedGiveaways.add(awardedGiveawaysItem);
-    return this;
-  }
-
-   /**
-   * Get awardedGiveaways
-   * @return awardedGiveaways
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<Giveaway> getAwardedGiveaways() {
-    return awardedGiveaways;
-  }
-
-
-  public void setAwardedGiveaways(List<Giveaway> awardedGiveaways) {
-    this.awardedGiveaways = awardedGiveaways;
   }
 
 
@@ -267,6 +182,37 @@ public class IntegrationEventV3Response {
   }
 
 
+  public IntegrationEventV3Response ruleFailureReasons(List<RuleFailureReason> ruleFailureReasons) {
+    
+    this.ruleFailureReasons = ruleFailureReasons;
+    return this;
+  }
+
+  public IntegrationEventV3Response addRuleFailureReasonsItem(RuleFailureReason ruleFailureReasonsItem) {
+    if (this.ruleFailureReasons == null) {
+      this.ruleFailureReasons = new ArrayList<RuleFailureReason>();
+    }
+    this.ruleFailureReasons.add(ruleFailureReasonsItem);
+    return this;
+  }
+
+   /**
+   * The reasons why certain rules were not triggered during the event processing. 
+   * @return ruleFailureReasons
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The reasons why certain rules were not triggered during the event processing. ")
+
+  public List<RuleFailureReason> getRuleFailureReasons() {
+    return ruleFailureReasons;
+  }
+
+
+  public void setRuleFailureReasons(List<RuleFailureReason> ruleFailureReasons) {
+    this.ruleFailureReasons = ruleFailureReasons;
+  }
+
+
   public IntegrationEventV3Response createdCoupons(List<Coupon> createdCoupons) {
     
     this.createdCoupons = createdCoupons;
@@ -279,10 +225,10 @@ public class IntegrationEventV3Response {
   }
 
    /**
-   * Get createdCoupons
+   * The coupons that were created during the event processing.
    * @return createdCoupons
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The coupons that were created during the event processing.")
 
   public List<Coupon> getCreatedCoupons() {
     return createdCoupons;
@@ -306,10 +252,10 @@ public class IntegrationEventV3Response {
   }
 
    /**
-   * Get createdReferrals
+   * The referrals that were created during the event processing.
    * @return createdReferrals
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The referrals that were created during the event processing.")
 
   public List<Referral> getCreatedReferrals() {
     return createdReferrals;
@@ -318,6 +264,60 @@ public class IntegrationEventV3Response {
 
   public void setCreatedReferrals(List<Referral> createdReferrals) {
     this.createdReferrals = createdReferrals;
+  }
+
+
+  public IntegrationEventV3Response awardedGiveaways(List<Giveaway> awardedGiveaways) {
+    
+    this.awardedGiveaways = awardedGiveaways;
+    return this;
+  }
+
+  public IntegrationEventV3Response addAwardedGiveawaysItem(Giveaway awardedGiveawaysItem) {
+    if (this.awardedGiveaways == null) {
+      this.awardedGiveaways = new ArrayList<Giveaway>();
+    }
+    this.awardedGiveaways.add(awardedGiveawaysItem);
+    return this;
+  }
+
+   /**
+   * The giveaways that were awarded during the event processing.
+   * @return awardedGiveaways
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The giveaways that were awarded during the event processing.")
+
+  public List<Giveaway> getAwardedGiveaways() {
+    return awardedGiveaways;
+  }
+
+
+  public void setAwardedGiveaways(List<Giveaway> awardedGiveaways) {
+    this.awardedGiveaways = awardedGiveaways;
+  }
+
+
+  public IntegrationEventV3Response advancedEvent(EventV3 advancedEvent) {
+    
+    this.advancedEvent = advancedEvent;
+    return this;
+  }
+
+   /**
+   * Get advancedEvent
+   * @return advancedEvent
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public EventV3 getAdvancedEvent() {
+    return advancedEvent;
+  }
+
+
+  public void setAdvancedEvent(EventV3 advancedEvent) {
+    this.advancedEvent = advancedEvent;
   }
 
 
@@ -331,19 +331,19 @@ public class IntegrationEventV3Response {
     }
     IntegrationEventV3Response integrationEventV3Response = (IntegrationEventV3Response) o;
     return Objects.equals(this.customerProfile, integrationEventV3Response.customerProfile) &&
-        Objects.equals(this.event, integrationEventV3Response.event) &&
         Objects.equals(this.loyalty, integrationEventV3Response.loyalty) &&
         Objects.equals(this.triggeredCampaigns, integrationEventV3Response.triggeredCampaigns) &&
-        Objects.equals(this.ruleFailureReasons, integrationEventV3Response.ruleFailureReasons) &&
-        Objects.equals(this.awardedGiveaways, integrationEventV3Response.awardedGiveaways) &&
         Objects.equals(this.effects, integrationEventV3Response.effects) &&
+        Objects.equals(this.ruleFailureReasons, integrationEventV3Response.ruleFailureReasons) &&
         Objects.equals(this.createdCoupons, integrationEventV3Response.createdCoupons) &&
-        Objects.equals(this.createdReferrals, integrationEventV3Response.createdReferrals);
+        Objects.equals(this.createdReferrals, integrationEventV3Response.createdReferrals) &&
+        Objects.equals(this.awardedGiveaways, integrationEventV3Response.awardedGiveaways) &&
+        Objects.equals(this.advancedEvent, integrationEventV3Response.advancedEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerProfile, event, loyalty, triggeredCampaigns, ruleFailureReasons, awardedGiveaways, effects, createdCoupons, createdReferrals);
+    return Objects.hash(customerProfile, loyalty, triggeredCampaigns, effects, ruleFailureReasons, createdCoupons, createdReferrals, awardedGiveaways, advancedEvent);
   }
 
 
@@ -352,14 +352,14 @@ public class IntegrationEventV3Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationEventV3Response {\n");
     sb.append("    customerProfile: ").append(toIndentedString(customerProfile)).append("\n");
-    sb.append("    event: ").append(toIndentedString(event)).append("\n");
     sb.append("    loyalty: ").append(toIndentedString(loyalty)).append("\n");
     sb.append("    triggeredCampaigns: ").append(toIndentedString(triggeredCampaigns)).append("\n");
-    sb.append("    ruleFailureReasons: ").append(toIndentedString(ruleFailureReasons)).append("\n");
-    sb.append("    awardedGiveaways: ").append(toIndentedString(awardedGiveaways)).append("\n");
     sb.append("    effects: ").append(toIndentedString(effects)).append("\n");
+    sb.append("    ruleFailureReasons: ").append(toIndentedString(ruleFailureReasons)).append("\n");
     sb.append("    createdCoupons: ").append(toIndentedString(createdCoupons)).append("\n");
     sb.append("    createdReferrals: ").append(toIndentedString(createdReferrals)).append("\n");
+    sb.append("    awardedGiveaways: ").append(toIndentedString(awardedGiveaways)).append("\n");
+    sb.append("    advancedEvent: ").append(toIndentedString(advancedEvent)).append("\n");
     sb.append("}");
     return sb.toString();
   }

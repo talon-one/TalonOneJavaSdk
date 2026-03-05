@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.LoyaltyDashboardData;
+import one.talon.model.LoyaltyProgram;
 
 /**
  * InlineResponse20016
@@ -38,7 +38,7 @@ public class InlineResponse20016 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<LoyaltyDashboardData> data = new ArrayList<LoyaltyDashboardData>();
+  private List<LoyaltyProgram> data = new ArrayList<LoyaltyProgram>();
 
 
   public InlineResponse20016 totalResultSize(Long totalResultSize) {
@@ -63,13 +63,13 @@ public class InlineResponse20016 {
   }
 
 
-  public InlineResponse20016 data(List<LoyaltyDashboardData> data) {
+  public InlineResponse20016 data(List<LoyaltyProgram> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20016 addDataItem(LoyaltyDashboardData dataItem) {
+  public InlineResponse20016 addDataItem(LoyaltyProgram dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20016 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<LoyaltyDashboardData> getData() {
+  public List<LoyaltyProgram> getData() {
     return data;
   }
 
 
-  public void setData(List<LoyaltyDashboardData> data) {
+  public void setData(List<LoyaltyProgram> data) {
     this.data = data;
   }
 
