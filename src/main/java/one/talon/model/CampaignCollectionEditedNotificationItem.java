@@ -23,8 +23,11 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import one.talon.model.Campaign;
 import one.talon.model.CollectionWithoutPayload;
+import one.talon.model.PlaceholderDetails;
 import one.talon.model.Ruleset;
 
 /**
@@ -44,6 +47,10 @@ public class CampaignCollectionEditedNotificationItem {
   public static final String SERIALIZED_NAME_RULESET = "ruleset";
   @SerializedName(SERIALIZED_NAME_RULESET)
   private Ruleset ruleset;
+
+  public static final String SERIALIZED_NAME_PLACEHOLDERS = "placeholders";
+  @SerializedName(SERIALIZED_NAME_PLACEHOLDERS)
+  private List<PlaceholderDetails> placeholders = null;
 
   public static final String SERIALIZED_NAME_COLLECTION = "collection";
   @SerializedName(SERIALIZED_NAME_COLLECTION)
@@ -117,6 +124,37 @@ public class CampaignCollectionEditedNotificationItem {
   }
 
 
+  public CampaignCollectionEditedNotificationItem placeholders(List<PlaceholderDetails> placeholders) {
+    
+    this.placeholders = placeholders;
+    return this;
+  }
+
+  public CampaignCollectionEditedNotificationItem addPlaceholdersItem(PlaceholderDetails placeholdersItem) {
+    if (this.placeholders == null) {
+      this.placeholders = new ArrayList<PlaceholderDetails>();
+    }
+    this.placeholders.add(placeholdersItem);
+    return this;
+  }
+
+   /**
+   * The current details of the [placeholders](https://docs.talon.one/docs/product/campaigns/templates/create-templates#use-placeholders) in the campaign.
+   * @return placeholders
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The current details of the [placeholders](https://docs.talon.one/docs/product/campaigns/templates/create-templates#use-placeholders) in the campaign.")
+
+  public List<PlaceholderDetails> getPlaceholders() {
+    return placeholders;
+  }
+
+
+  public void setPlaceholders(List<PlaceholderDetails> placeholders) {
+    this.placeholders = placeholders;
+  }
+
+
   public CampaignCollectionEditedNotificationItem collection(CollectionWithoutPayload collection) {
     
     this.collection = collection;
@@ -151,12 +189,13 @@ public class CampaignCollectionEditedNotificationItem {
     return Objects.equals(this.event, campaignCollectionEditedNotificationItem.event) &&
         Objects.equals(this.campaign, campaignCollectionEditedNotificationItem.campaign) &&
         Objects.equals(this.ruleset, campaignCollectionEditedNotificationItem.ruleset) &&
+        Objects.equals(this.placeholders, campaignCollectionEditedNotificationItem.placeholders) &&
         Objects.equals(this.collection, campaignCollectionEditedNotificationItem.collection);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(event, campaign, ruleset, collection);
+    return Objects.hash(event, campaign, ruleset, placeholders, collection);
   }
 
 
@@ -167,6 +206,7 @@ public class CampaignCollectionEditedNotificationItem {
     sb.append("    event: ").append(toIndentedString(event)).append("\n");
     sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
     sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
+    sb.append("    placeholders: ").append(toIndentedString(placeholders)).append("\n");
     sb.append("    collection: ").append(toIndentedString(collection)).append("\n");
     sb.append("}");
     return sb.toString();

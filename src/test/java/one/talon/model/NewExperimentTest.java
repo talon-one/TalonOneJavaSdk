@@ -22,7 +22,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import one.talon.model.NewCampaign;
-import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -48,22 +47,6 @@ public class NewExperimentTest {
     @Test
     public void isVariantAssignmentExternalTest() {
         // TODO: test isVariantAssignmentExternal
-    }
-
-    /**
-     * Test the property 'activated'
-     */
-    @Test
-    public void activatedTest() {
-        // TODO: test activated
-    }
-
-    /**
-     * Test the property 'state'
-     */
-    @Test
-    public void stateTest() {
-        // TODO: test state
     }
 
     /**

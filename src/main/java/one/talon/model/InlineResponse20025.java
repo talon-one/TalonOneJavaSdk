@@ -32,17 +32,40 @@ import one.talon.model.ApplicationCustomer;
  */
 
 public class InlineResponse20025 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
-
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Long totalResultSize;
 
+  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
+
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<ApplicationCustomer> data = new ArrayList<ApplicationCustomer>();
+
+
+  public InlineResponse20025 totalResultSize(Long totalResultSize) {
+    
+    this.totalResultSize = totalResultSize;
+    return this;
+  }
+
+   /**
+   * Get totalResultSize
+   * @return totalResultSize
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "")
+
+  public Long getTotalResultSize() {
+    return totalResultSize;
+  }
+
+
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
+  }
 
 
   public InlineResponse20025 hasMore(Boolean hasMore) {
@@ -65,29 +88,6 @@ public class InlineResponse20025 {
 
   public void setHasMore(Boolean hasMore) {
     this.hasMore = hasMore;
-  }
-
-
-  public InlineResponse20025 totalResultSize(Long totalResultSize) {
-    
-    this.totalResultSize = totalResultSize;
-    return this;
-  }
-
-   /**
-   * Get totalResultSize
-   * @return totalResultSize
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Long getTotalResultSize() {
-    return totalResultSize;
-  }
-
-
-  public void setTotalResultSize(Long totalResultSize) {
-    this.totalResultSize = totalResultSize;
   }
 
 
@@ -127,14 +127,14 @@ public class InlineResponse20025 {
       return false;
     }
     InlineResponse20025 inlineResponse20025 = (InlineResponse20025) o;
-    return Objects.equals(this.hasMore, inlineResponse20025.hasMore) &&
-        Objects.equals(this.totalResultSize, inlineResponse20025.totalResultSize) &&
+    return Objects.equals(this.totalResultSize, inlineResponse20025.totalResultSize) &&
+        Objects.equals(this.hasMore, inlineResponse20025.hasMore) &&
         Objects.equals(this.data, inlineResponse20025.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, totalResultSize, data);
+    return Objects.hash(totalResultSize, hasMore, data);
   }
 
 
@@ -142,8 +142,8 @@ public class InlineResponse20025 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20025 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

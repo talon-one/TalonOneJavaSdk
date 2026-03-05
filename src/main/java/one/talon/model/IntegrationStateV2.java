@@ -31,6 +31,7 @@ import one.talon.model.CustomerProfile;
 import one.talon.model.CustomerSessionV2;
 import one.talon.model.Effect;
 import one.talon.model.Event;
+import one.talon.model.EventV3;
 import one.talon.model.Giveaway;
 import one.talon.model.IntegrationCoupon;
 import one.talon.model.InventoryReferral;
@@ -45,29 +46,13 @@ import one.talon.model.RuleFailureReason;
 @ApiModel(description = "Contains all entities that might interest Talon.One integrations. ")
 
 public class IntegrationStateV2 {
-  public static final String SERIALIZED_NAME_CUSTOMER_SESSION = "customerSession";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER_SESSION)
-  private CustomerSessionV2 customerSession;
-
   public static final String SERIALIZED_NAME_CUSTOMER_PROFILE = "customerProfile";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_PROFILE)
   private CustomerProfile customerProfile;
 
-  public static final String SERIALIZED_NAME_EVENT = "event";
-  @SerializedName(SERIALIZED_NAME_EVENT)
-  private Event event;
-
   public static final String SERIALIZED_NAME_LOYALTY = "loyalty";
   @SerializedName(SERIALIZED_NAME_LOYALTY)
   private Loyalty loyalty;
-
-  public static final String SERIALIZED_NAME_REFERRAL = "referral";
-  @SerializedName(SERIALIZED_NAME_REFERRAL)
-  private InventoryReferral referral;
-
-  public static final String SERIALIZED_NAME_COUPONS = "coupons";
-  @SerializedName(SERIALIZED_NAME_COUPONS)
-  private List<IntegrationCoupon> coupons = null;
 
   public static final String SERIALIZED_NAME_TRIGGERED_CAMPAIGNS = "triggeredCampaigns";
   @SerializedName(SERIALIZED_NAME_TRIGGERED_CAMPAIGNS)
@@ -93,6 +78,26 @@ public class IntegrationStateV2 {
   @SerializedName(SERIALIZED_NAME_AWARDED_GIVEAWAYS)
   private List<Giveaway> awardedGiveaways = null;
 
+  public static final String SERIALIZED_NAME_REFERRAL = "referral";
+  @SerializedName(SERIALIZED_NAME_REFERRAL)
+  private InventoryReferral referral;
+
+  public static final String SERIALIZED_NAME_COUPONS = "coupons";
+  @SerializedName(SERIALIZED_NAME_COUPONS)
+  private List<IntegrationCoupon> coupons = null;
+
+  public static final String SERIALIZED_NAME_EVENT = "event";
+  @SerializedName(SERIALIZED_NAME_EVENT)
+  private Event event;
+
+  public static final String SERIALIZED_NAME_ADVANCED_EVENT = "advancedEvent";
+  @SerializedName(SERIALIZED_NAME_ADVANCED_EVENT)
+  private EventV3 advancedEvent;
+
+  public static final String SERIALIZED_NAME_CUSTOMER_SESSION = "customerSession";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_SESSION)
+  private CustomerSessionV2 customerSession;
+
   public static final String SERIALIZED_NAME_RETURN = "return";
   @SerializedName(SERIALIZED_NAME_RETURN)
   private ModelReturn _return;
@@ -100,29 +105,6 @@ public class IntegrationStateV2 {
   public static final String SERIALIZED_NAME_PREVIOUS_RETURNS = "previousReturns";
   @SerializedName(SERIALIZED_NAME_PREVIOUS_RETURNS)
   private List<ModelReturn> previousReturns = null;
-
-
-  public IntegrationStateV2 customerSession(CustomerSessionV2 customerSession) {
-    
-    this.customerSession = customerSession;
-    return this;
-  }
-
-   /**
-   * Get customerSession
-   * @return customerSession
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public CustomerSessionV2 getCustomerSession() {
-    return customerSession;
-  }
-
-
-  public void setCustomerSession(CustomerSessionV2 customerSession) {
-    this.customerSession = customerSession;
-  }
 
 
   public IntegrationStateV2 customerProfile(CustomerProfile customerProfile) {
@@ -145,29 +127,6 @@ public class IntegrationStateV2 {
 
   public void setCustomerProfile(CustomerProfile customerProfile) {
     this.customerProfile = customerProfile;
-  }
-
-
-  public IntegrationStateV2 event(Event event) {
-    
-    this.event = event;
-    return this;
-  }
-
-   /**
-   * Get event
-   * @return event
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Event getEvent() {
-    return event;
-  }
-
-
-  public void setEvent(Event event) {
-    this.event = event;
   }
 
 
@@ -194,60 +153,6 @@ public class IntegrationStateV2 {
   }
 
 
-  public IntegrationStateV2 referral(InventoryReferral referral) {
-    
-    this.referral = referral;
-    return this;
-  }
-
-   /**
-   * Get referral
-   * @return referral
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public InventoryReferral getReferral() {
-    return referral;
-  }
-
-
-  public void setReferral(InventoryReferral referral) {
-    this.referral = referral;
-  }
-
-
-  public IntegrationStateV2 coupons(List<IntegrationCoupon> coupons) {
-    
-    this.coupons = coupons;
-    return this;
-  }
-
-  public IntegrationStateV2 addCouponsItem(IntegrationCoupon couponsItem) {
-    if (this.coupons == null) {
-      this.coupons = new ArrayList<IntegrationCoupon>();
-    }
-    this.coupons.add(couponsItem);
-    return this;
-  }
-
-   /**
-   * Get coupons
-   * @return coupons
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<IntegrationCoupon> getCoupons() {
-    return coupons;
-  }
-
-
-  public void setCoupons(List<IntegrationCoupon> coupons) {
-    this.coupons = coupons;
-  }
-
-
   public IntegrationStateV2 triggeredCampaigns(List<Campaign> triggeredCampaigns) {
     
     this.triggeredCampaigns = triggeredCampaigns;
@@ -263,11 +168,11 @@ public class IntegrationStateV2 {
   }
 
    /**
-   * Get triggeredCampaigns
+   * The campaigns that were triggered as a result of processing the event.
    * @return triggeredCampaigns
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The campaigns that were triggered as a result of processing the event.")
 
   public List<Campaign> getTriggeredCampaigns() {
     return triggeredCampaigns;
@@ -321,11 +226,11 @@ public class IntegrationStateV2 {
   }
 
    /**
-   * Get ruleFailureReasons
+   * The reasons why certain rules were not triggered during the event processing. 
    * @return ruleFailureReasons
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The reasons why certain rules were not triggered during the event processing. ")
 
   public List<RuleFailureReason> getRuleFailureReasons() {
     return ruleFailureReasons;
@@ -349,10 +254,10 @@ public class IntegrationStateV2 {
   }
 
    /**
-   * Get createdCoupons
+   * The coupons that were created during the event processing.
    * @return createdCoupons
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The coupons that were created during the event processing.")
 
   public List<Coupon> getCreatedCoupons() {
     return createdCoupons;
@@ -376,10 +281,10 @@ public class IntegrationStateV2 {
   }
 
    /**
-   * Get createdReferrals
+   * The referrals that were created during the event processing.
    * @return createdReferrals
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The referrals that were created during the event processing.")
 
   public List<Referral> getCreatedReferrals() {
     return createdReferrals;
@@ -406,11 +311,11 @@ public class IntegrationStateV2 {
   }
 
    /**
-   * Get awardedGiveaways
+   * The giveaways that were awarded during the event processing.
    * @return awardedGiveaways
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The giveaways that were awarded during the event processing.")
 
   public List<Giveaway> getAwardedGiveaways() {
     return awardedGiveaways;
@@ -419,6 +324,129 @@ public class IntegrationStateV2 {
 
   public void setAwardedGiveaways(List<Giveaway> awardedGiveaways) {
     this.awardedGiveaways = awardedGiveaways;
+  }
+
+
+  public IntegrationStateV2 referral(InventoryReferral referral) {
+    
+    this.referral = referral;
+    return this;
+  }
+
+   /**
+   * Get referral
+   * @return referral
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public InventoryReferral getReferral() {
+    return referral;
+  }
+
+
+  public void setReferral(InventoryReferral referral) {
+    this.referral = referral;
+  }
+
+
+  public IntegrationStateV2 coupons(List<IntegrationCoupon> coupons) {
+    
+    this.coupons = coupons;
+    return this;
+  }
+
+  public IntegrationStateV2 addCouponsItem(IntegrationCoupon couponsItem) {
+    if (this.coupons == null) {
+      this.coupons = new ArrayList<IntegrationCoupon>();
+    }
+    this.coupons.add(couponsItem);
+    return this;
+  }
+
+   /**
+   * The coupons that were processed.
+   * @return coupons
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The coupons that were processed.")
+
+  public List<IntegrationCoupon> getCoupons() {
+    return coupons;
+  }
+
+
+  public void setCoupons(List<IntegrationCoupon> coupons) {
+    this.coupons = coupons;
+  }
+
+
+  public IntegrationStateV2 event(Event event) {
+    
+    this.event = event;
+    return this;
+  }
+
+   /**
+   * Get event
+   * @return event
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Event getEvent() {
+    return event;
+  }
+
+
+  public void setEvent(Event event) {
+    this.event = event;
+  }
+
+
+  public IntegrationStateV2 advancedEvent(EventV3 advancedEvent) {
+    
+    this.advancedEvent = advancedEvent;
+    return this;
+  }
+
+   /**
+   * Get advancedEvent
+   * @return advancedEvent
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public EventV3 getAdvancedEvent() {
+    return advancedEvent;
+  }
+
+
+  public void setAdvancedEvent(EventV3 advancedEvent) {
+    this.advancedEvent = advancedEvent;
+  }
+
+
+  public IntegrationStateV2 customerSession(CustomerSessionV2 customerSession) {
+    
+    this.customerSession = customerSession;
+    return this;
+  }
+
+   /**
+   * Get customerSession
+   * @return customerSession
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CustomerSessionV2 getCustomerSession() {
+    return customerSession;
+  }
+
+
+  public void setCustomerSession(CustomerSessionV2 customerSession) {
+    this.customerSession = customerSession;
   }
 
 
@@ -460,11 +488,11 @@ public class IntegrationStateV2 {
   }
 
    /**
-   * Get previousReturns
+   * The previous returns associated with the event.
    * @return previousReturns
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The previous returns associated with the event.")
 
   public List<ModelReturn> getPreviousReturns() {
     return previousReturns;
@@ -485,25 +513,26 @@ public class IntegrationStateV2 {
       return false;
     }
     IntegrationStateV2 integrationStateV2 = (IntegrationStateV2) o;
-    return Objects.equals(this.customerSession, integrationStateV2.customerSession) &&
-        Objects.equals(this.customerProfile, integrationStateV2.customerProfile) &&
-        Objects.equals(this.event, integrationStateV2.event) &&
+    return Objects.equals(this.customerProfile, integrationStateV2.customerProfile) &&
         Objects.equals(this.loyalty, integrationStateV2.loyalty) &&
-        Objects.equals(this.referral, integrationStateV2.referral) &&
-        Objects.equals(this.coupons, integrationStateV2.coupons) &&
         Objects.equals(this.triggeredCampaigns, integrationStateV2.triggeredCampaigns) &&
         Objects.equals(this.effects, integrationStateV2.effects) &&
         Objects.equals(this.ruleFailureReasons, integrationStateV2.ruleFailureReasons) &&
         Objects.equals(this.createdCoupons, integrationStateV2.createdCoupons) &&
         Objects.equals(this.createdReferrals, integrationStateV2.createdReferrals) &&
         Objects.equals(this.awardedGiveaways, integrationStateV2.awardedGiveaways) &&
+        Objects.equals(this.referral, integrationStateV2.referral) &&
+        Objects.equals(this.coupons, integrationStateV2.coupons) &&
+        Objects.equals(this.event, integrationStateV2.event) &&
+        Objects.equals(this.advancedEvent, integrationStateV2.advancedEvent) &&
+        Objects.equals(this.customerSession, integrationStateV2.customerSession) &&
         Objects.equals(this._return, integrationStateV2._return) &&
         Objects.equals(this.previousReturns, integrationStateV2.previousReturns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerSession, customerProfile, event, loyalty, referral, coupons, triggeredCampaigns, effects, ruleFailureReasons, createdCoupons, createdReferrals, awardedGiveaways, _return, previousReturns);
+    return Objects.hash(customerProfile, loyalty, triggeredCampaigns, effects, ruleFailureReasons, createdCoupons, createdReferrals, awardedGiveaways, referral, coupons, event, advancedEvent, customerSession, _return, previousReturns);
   }
 
 
@@ -511,18 +540,19 @@ public class IntegrationStateV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationStateV2 {\n");
-    sb.append("    customerSession: ").append(toIndentedString(customerSession)).append("\n");
     sb.append("    customerProfile: ").append(toIndentedString(customerProfile)).append("\n");
-    sb.append("    event: ").append(toIndentedString(event)).append("\n");
     sb.append("    loyalty: ").append(toIndentedString(loyalty)).append("\n");
-    sb.append("    referral: ").append(toIndentedString(referral)).append("\n");
-    sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
     sb.append("    triggeredCampaigns: ").append(toIndentedString(triggeredCampaigns)).append("\n");
     sb.append("    effects: ").append(toIndentedString(effects)).append("\n");
     sb.append("    ruleFailureReasons: ").append(toIndentedString(ruleFailureReasons)).append("\n");
     sb.append("    createdCoupons: ").append(toIndentedString(createdCoupons)).append("\n");
     sb.append("    createdReferrals: ").append(toIndentedString(createdReferrals)).append("\n");
     sb.append("    awardedGiveaways: ").append(toIndentedString(awardedGiveaways)).append("\n");
+    sb.append("    referral: ").append(toIndentedString(referral)).append("\n");
+    sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
+    sb.append("    event: ").append(toIndentedString(event)).append("\n");
+    sb.append("    advancedEvent: ").append(toIndentedString(advancedEvent)).append("\n");
+    sb.append("    customerSession: ").append(toIndentedString(customerSession)).append("\n");
     sb.append("    _return: ").append(toIndentedString(_return)).append("\n");
     sb.append("    previousReturns: ").append(toIndentedString(previousReturns)).append("\n");
     sb.append("}");

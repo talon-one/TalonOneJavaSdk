@@ -28,6 +28,7 @@ Method | HTTP request | Description
 [**getLoyaltyProgramProfileTransactions**](IntegrationApi.md#getLoyaltyProgramProfileTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer&#39;s loyalty transactions
 [**getReservedCustomers**](IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved
 [**linkLoyaltyCardToProfile**](IntegrationApi.md#linkLoyaltyCardToProfile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card
+[**priceHistory**](IntegrationApi.md#priceHistory) | **POST** /v1/best_prior_price_history | Get summary of price history
 [**reopenCustomerSession**](IntegrationApi.md#reopenCustomerSession) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session
 [**returnCartItems**](IntegrationApi.md#returnCartItems) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items
 [**syncCatalog**](IntegrationApi.md#syncCatalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog
@@ -886,7 +887,7 @@ null (empty response body)
 
 Generate loyalty card
 
-Generate a loyalty card in a specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).  To link the card to one or more customer profiles, use the &#x60;customerProfileIds&#x60; parameter in the request body.  **Note:** - The number of customer profiles linked to the loyalty card cannot exceed the loyalty program&#39;s &#x60;usersPerCardLimit&#x60;. To find the program&#39;s limit, use the [Get loyalty program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram) endpoint. - If the loyalty program has a defined code format, it will be used for the loyalty card identifier. 
+Generate a loyalty card in a specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).  To link the card to one or more customer profiles, use the &#x60;customerProfileIds&#x60; parameter in the request body.  **Note:**  - The number of customer profiles linked to the loyalty card cannot exceed the loyalty program&#39;s &#x60;usersPerCardLimit&#x60;. To find the program&#39;s limit, use the [Get loyalty program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram) endpoint.  - If the loyalty program has a defined code format, it will be used for the loyalty card identifier. 
 
 ### Example
 
@@ -1982,6 +1983,90 @@ Name | Type | Description  | Notes
 | **404** | Not found |  -  |
 
 
+## priceHistory
+
+> PriceHistoryResponse priceHistory(body)
+
+Get summary of price history
+
+Fetch the historical price data for a given SKU within a defined timeframe. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: api_key_v1
+        ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+        api_key_v1.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_v1.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+        PriceHistoryRequest body = new PriceHistoryRequest(); // PriceHistoryRequest | body
+        try {
+            PriceHistoryResponse result = apiInstance.priceHistory(body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IntegrationApi#priceHistory");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**PriceHistoryRequest**](PriceHistoryRequest.md)| body |
+
+### Return type cool
+
+[**PriceHistoryResponse**](PriceHistoryResponse.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1), [management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
+
+
 ## reopenCustomerSession
 
 > ReopenSessionResponse reopenCustomerSession(customerSessionId)
@@ -2213,7 +2298,7 @@ Name | Type | Description  | Notes
 
 ## trackEventV2
 
-> TrackEventV2Response trackEventV2(body, silent, dry, forceCompleteEvaluation)
+> IntegrationEventV2Response trackEventV2(body, silent, dry, forceCompleteEvaluation)
 
 Track event
 
@@ -2247,7 +2332,7 @@ public class Example {
         Boolean dry = true; // Boolean | Indicates whether to persist the changes. Changes are ignored when `dry=true`. 
         Boolean forceCompleteEvaluation = false; // Boolean | Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires `dry=true`. 
         try {
-            TrackEventV2Response result = apiInstance.trackEventV2(body, silent, dry, forceCompleteEvaluation);
+            IntegrationEventV2Response result = apiInstance.trackEventV2(body, silent, dry, forceCompleteEvaluation);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationApi#trackEventV2");
@@ -2272,7 +2357,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**TrackEventV2Response**](TrackEventV2Response.md)
+[**IntegrationEventV2Response**](IntegrationEventV2Response.md)
 
 ### Authorization
 

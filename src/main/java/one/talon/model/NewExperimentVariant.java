@@ -57,7 +57,7 @@ public class NewExperimentVariant {
    * The name of this variant.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name of this variant.")
+  @ApiModelProperty(example = "Variant A", required = true, value = "The name of this variant.")
 
   public String getName() {
     return name;
@@ -76,11 +76,12 @@ public class NewExperimentVariant {
   }
 
    /**
-   * Get weight
+   * The percentage split of this variant. The sum of all variant percentages must be 100.
+   * minimum: 1
+   * maximum: 99
    * @return weight
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "13", value = "")
+  @ApiModelProperty(example = "13", required = true, value = "The percentage split of this variant. The sum of all variant percentages must be 100.")
 
   public Long getWeight() {
     return weight;

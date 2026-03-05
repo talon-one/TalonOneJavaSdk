@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -48,6 +49,14 @@ public class PrismaticPaginatedEventPayloadTest {
     @Test
     public void totalResultSizeTest() {
         // TODO: test totalResultSize
+    }
+
+    /**
+     * Test the property 'batchedAt'
+     */
+    @Test
+    public void batchedAtTest() {
+        // TODO: test batchedAt
     }
 
     /**

@@ -26,7 +26,7 @@ Name | Value
 CUSTOMERPROFILE | &quot;customerProfile&quot;
 TRIGGEREDCAMPAIGNS | &quot;triggeredCampaigns&quot;
 LOYALTY | &quot;loyalty&quot;
-EVENT | &quot;event&quot;
+ADVANCEDEVENT | &quot;advancedEvent&quot;
 AWARDEDGIVEAWAYS | &quot;awardedGiveaways&quot;
 RULEFAILUREREASONS | &quot;ruleFailureReasons&quot;
 

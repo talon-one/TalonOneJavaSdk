@@ -23,7 +23,10 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import one.talon.model.Campaign;
+import one.talon.model.PlaceholderDetails;
 import one.talon.model.Ruleset;
 
 /**
@@ -47,6 +50,10 @@ public class CampaignEditedNotificationItem {
   public static final String SERIALIZED_NAME_RULESET = "ruleset";
   @SerializedName(SERIALIZED_NAME_RULESET)
   private Ruleset ruleset;
+
+  public static final String SERIALIZED_NAME_PLACEHOLDERS = "placeholders";
+  @SerializedName(SERIALIZED_NAME_PLACEHOLDERS)
+  private List<PlaceholderDetails> placeholders = null;
 
 
   public CampaignEditedNotificationItem event(String event) {
@@ -138,6 +145,37 @@ public class CampaignEditedNotificationItem {
   }
 
 
+  public CampaignEditedNotificationItem placeholders(List<PlaceholderDetails> placeholders) {
+    
+    this.placeholders = placeholders;
+    return this;
+  }
+
+  public CampaignEditedNotificationItem addPlaceholdersItem(PlaceholderDetails placeholdersItem) {
+    if (this.placeholders == null) {
+      this.placeholders = new ArrayList<PlaceholderDetails>();
+    }
+    this.placeholders.add(placeholdersItem);
+    return this;
+  }
+
+   /**
+   * The current details of the [placeholders](https://docs.talon.one/docs/product/campaigns/templates/create-templates#use-placeholders) in the campaign.
+   * @return placeholders
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The current details of the [placeholders](https://docs.talon.one/docs/product/campaigns/templates/create-templates#use-placeholders) in the campaign.")
+
+  public List<PlaceholderDetails> getPlaceholders() {
+    return placeholders;
+  }
+
+
+  public void setPlaceholders(List<PlaceholderDetails> placeholders) {
+    this.placeholders = placeholders;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -150,12 +188,13 @@ public class CampaignEditedNotificationItem {
     return Objects.equals(this.event, campaignEditedNotificationItem.event) &&
         Objects.equals(this.campaign, campaignEditedNotificationItem.campaign) &&
         Objects.equals(this.oldCampaign, campaignEditedNotificationItem.oldCampaign) &&
-        Objects.equals(this.ruleset, campaignEditedNotificationItem.ruleset);
+        Objects.equals(this.ruleset, campaignEditedNotificationItem.ruleset) &&
+        Objects.equals(this.placeholders, campaignEditedNotificationItem.placeholders);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(event, campaign, oldCampaign, ruleset);
+    return Objects.hash(event, campaign, oldCampaign, ruleset, placeholders);
   }
 
 
@@ -167,6 +206,7 @@ public class CampaignEditedNotificationItem {
     sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
     sb.append("    oldCampaign: ").append(toIndentedString(oldCampaign)).append("\n");
     sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
+    sb.append("    placeholders: ").append(toIndentedString(placeholders)).append("\n");
     sb.append("}");
     return sb.toString();
   }

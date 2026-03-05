@@ -32,6 +32,10 @@ import org.threeten.bp.OffsetDateTime;
  */
 
 public class BestPriorPrice {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Long id;
+
   public static final String SERIALIZED_NAME_SKU = "sku";
   @SerializedName(SERIALIZED_NAME_SKU)
   private String sku;
@@ -55,6 +59,28 @@ public class BestPriorPrice {
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
   private Object target;
+
+
+  public BestPriorPrice id(Long id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The ID of the historical price.
+   * @return id
+  **/
+  @ApiModelProperty(example = "1", required = true, value = "The ID of the historical price.")
+
+  public Long getId() {
+    return id;
+  }
+
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 
 
   public BestPriorPrice sku(String sku) {
@@ -86,10 +112,10 @@ public class BestPriorPrice {
   }
 
    /**
-   * The date and time when the best price was observed.
+   * The date and time when the price was observed.
    * @return observedAt
   **/
-  @ApiModelProperty(example = "2020-11-10T23:00Z", required = true, value = "The date and time when the best price was observed.")
+  @ApiModelProperty(example = "2020-11-10T23:00Z", required = true, value = "The date and time when the price was observed.")
 
   public OffsetDateTime getObservedAt() {
     return observedAt;
@@ -111,7 +137,7 @@ public class BestPriorPrice {
    * The context ID of the context active at the time of observation. 
    * @return contextId
   **/
-  @ApiModelProperty(example = "Summer Sale 2007", required = true, value = "The context ID of the context active at the time of observation. ")
+  @ApiModelProperty(example = "Summer Sale 2025", required = true, value = "The context ID of the context active at the time of observation. ")
 
   public String getContextId() {
     return contextId;
@@ -198,7 +224,8 @@ public class BestPriorPrice {
       return false;
     }
     BestPriorPrice bestPriorPrice = (BestPriorPrice) o;
-    return Objects.equals(this.sku, bestPriorPrice.sku) &&
+    return Objects.equals(this.id, bestPriorPrice.id) &&
+        Objects.equals(this.sku, bestPriorPrice.sku) &&
         Objects.equals(this.observedAt, bestPriorPrice.observedAt) &&
         Objects.equals(this.contextId, bestPriorPrice.contextId) &&
         Objects.equals(this.price, bestPriorPrice.price) &&
@@ -208,7 +235,7 @@ public class BestPriorPrice {
 
   @Override
   public int hashCode() {
-    return Objects.hash(sku, observedAt, contextId, price, metadata, target);
+    return Objects.hash(id, sku, observedAt, contextId, price, metadata, target);
   }
 
 
@@ -216,6 +243,7 @@ public class BestPriorPrice {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BestPriorPrice {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    observedAt: ").append(toIndentedString(observedAt)).append("\n");
     sb.append("    contextId: ").append(toIndentedString(contextId)).append("\n");

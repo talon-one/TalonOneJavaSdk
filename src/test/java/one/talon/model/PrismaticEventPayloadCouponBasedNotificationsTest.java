@@ -189,6 +189,14 @@ public class PrismaticEventPayloadCouponBasedNotificationsTest {
     }
 
     /**
+     * Test the property 'publishedAt'
+     */
+    @Test
+    public void publishedAtTest() {
+        // TODO: test publishedAt
+    }
+
+    /**
      * Test the property 'sourceOfEvent'
      */
     @Test

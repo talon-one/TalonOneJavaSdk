@@ -21,8 +21,11 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import one.talon.model.Campaign;
 import one.talon.model.CollectionWithoutPayload;
+import one.talon.model.PlaceholderDetails;
 import one.talon.model.Ruleset;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -65,6 +68,14 @@ public class CampaignCollectionEditedNotificationItemTest {
     @Test
     public void rulesetTest() {
         // TODO: test ruleset
+    }
+
+    /**
+     * Test the property 'placeholders'
+     */
+    @Test
+    public void placeholdersTest() {
+        // TODO: test placeholders
     }
 
     /**

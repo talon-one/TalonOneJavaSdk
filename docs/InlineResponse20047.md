@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;SummaryCampaignStoreBudget&gt;**](SummaryCampaignStoreBudget.md) |  |  [optional]
+**data** | [**List&lt;ListCampaignStoreBudgets&gt;**](ListCampaignStoreBudgets.md) |  |  [optional]
 
 
 

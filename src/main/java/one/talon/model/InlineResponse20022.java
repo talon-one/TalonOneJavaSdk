@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AccessLogEntry;
+import one.talon.model.CollectionItem;
 
 /**
  * InlineResponse20022
@@ -38,7 +38,7 @@ public class InlineResponse20022 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<AccessLogEntry> data = new ArrayList<AccessLogEntry>();
+  private List<CollectionItem> data = new ArrayList<CollectionItem>();
 
 
   public InlineResponse20022 hasMore(Boolean hasMore) {
@@ -63,13 +63,13 @@ public class InlineResponse20022 {
   }
 
 
-  public InlineResponse20022 data(List<AccessLogEntry> data) {
+  public InlineResponse20022 data(List<CollectionItem> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20022 addDataItem(AccessLogEntry dataItem) {
+  public InlineResponse20022 addDataItem(CollectionItem dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20022 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<AccessLogEntry> getData() {
+  public List<CollectionItem> getData() {
     return data;
   }
 
 
-  public void setData(List<AccessLogEntry> data) {
+  public void setData(List<CollectionItem> data) {
     this.data = data;
   }
 

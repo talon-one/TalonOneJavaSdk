@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **campaign** | [**Campaign**](Campaign.md) |  | 
 **oldCampaign** | [**Campaign**](Campaign.md) |  | 
 **ruleset** | [**Ruleset**](Ruleset.md) |  |  [optional]
+**placeholders** | [**List&lt;PlaceholderDetails&gt;**](PlaceholderDetails.md) | The current details of the [placeholders](https://docs.talon.one/docs/product/campaigns/templates/create-templates#use-placeholders) in the campaign. |  [optional]
 
 
 

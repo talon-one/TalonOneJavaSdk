@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.SummaryCampaignStoreBudget;
+import one.talon.model.ListCampaignStoreBudgets;
 
 /**
  * InlineResponse20047
@@ -34,18 +34,18 @@ import one.talon.model.SummaryCampaignStoreBudget;
 public class InlineResponse20047 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<SummaryCampaignStoreBudget> data = null;
+  private List<ListCampaignStoreBudgets> data = null;
 
 
-  public InlineResponse20047 data(List<SummaryCampaignStoreBudget> data) {
+  public InlineResponse20047 data(List<ListCampaignStoreBudgets> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20047 addDataItem(SummaryCampaignStoreBudget dataItem) {
+  public InlineResponse20047 addDataItem(ListCampaignStoreBudgets dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<SummaryCampaignStoreBudget>();
+      this.data = new ArrayList<ListCampaignStoreBudgets>();
     }
     this.data.add(dataItem);
     return this;
@@ -58,12 +58,12 @@ public class InlineResponse20047 {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<SummaryCampaignStoreBudget> getData() {
+  public List<ListCampaignStoreBudgets> getData() {
     return data;
   }
 
 
-  public void setData(List<SummaryCampaignStoreBudget> data) {
+  public void setData(List<ListCampaignStoreBudgets> data) {
     this.data = data;
   }
 
