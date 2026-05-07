@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -36,6 +36,10 @@ public class InlineResponse20028 {
   @SerializedName(SERIALIZED_NAME_HAS_MORE)
   private Boolean hasMore;
 
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
+
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<CustomerProfile> data = new ArrayList<CustomerProfile>();
@@ -51,7 +55,8 @@ public class InlineResponse20028 {
    * Get hasMore
    * @return hasMore
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Boolean getHasMore() {
     return hasMore;
@@ -60,6 +65,29 @@ public class InlineResponse20028 {
 
   public void setHasMore(Boolean hasMore) {
     this.hasMore = hasMore;
+  }
+
+
+  public InlineResponse20028 totalResultSize(Long totalResultSize) {
+    
+    this.totalResultSize = totalResultSize;
+    return this;
+  }
+
+   /**
+   * Get totalResultSize
+   * @return totalResultSize
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Long getTotalResultSize() {
+    return totalResultSize;
+  }
+
+
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
   }
 
 
@@ -100,12 +128,13 @@ public class InlineResponse20028 {
     }
     InlineResponse20028 inlineResponse20028 = (InlineResponse20028) o;
     return Objects.equals(this.hasMore, inlineResponse20028.hasMore) &&
+        Objects.equals(this.totalResultSize, inlineResponse20028.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20028.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(hasMore, totalResultSize, data);
   }
 
 
@@ -114,6 +143,7 @@ public class InlineResponse20028 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20028 {\n");
     sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

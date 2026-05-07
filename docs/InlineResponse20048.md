@@ -6,7 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;SummaryCampaignStoreBudget&gt;**](SummaryCampaignStoreBudget.md) |  |  [optional]
+**hasMore** | **Boolean** |  |  [optional]
+**data** | [**List&lt;ApplicationCIF&gt;**](ApplicationCIF.md) |  | 
 
 
 

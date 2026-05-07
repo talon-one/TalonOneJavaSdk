@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
-**data** | [**List&lt;CustomerProfile&gt;**](CustomerProfile.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;IntegrationCampaign&gt;**](IntegrationCampaign.md) |  | 
 
 
 

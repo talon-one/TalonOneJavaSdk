@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Long** |  | 
-**data** | [**List&lt;AchievementStatusEntry&gt;**](AchievementStatusEntry.md) |  | 
+**data** | [**List&lt;CustomerProfile&gt;**](CustomerProfile.md) |  | 
 
 
 

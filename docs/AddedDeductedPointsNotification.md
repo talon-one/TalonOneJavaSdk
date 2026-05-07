@@ -16,9 +16,10 @@ Name | Type | Description | Notes
 **userID** | **Long** | The ID of the employee who added or deducted points. | 
 **amount** | [**BigDecimal**](BigDecimal.md) | The amount of added or deducted loyalty points. | 
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | The expiration date for loyalty points. |  [optional]
-**operation** | [**OperationEnum**](#OperationEnum) | The action (addition or deduction) made with loyalty points. | 
+**operation** | [**OperationEnum**](#OperationEnum) | The action (addition or subtraction) made with loyalty points. | 
 **reason** | **String** | The reason for the points addition or deduction. | 
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date for loyalty points. |  [optional]
+**transactionUUID** | [**UUID**](UUID.md) | The identifier of the transaction in the loyalty ledger. | 
 
 
 
@@ -46,7 +47,7 @@ MANAGEMENT_API | &quot;management_api&quot;
 Name | Value
 ---- | -----
 ADDITION | &quot;addition&quot;
-DEDUCTION | &quot;deduction&quot;
+SUBTRACTION | &quot;subtraction&quot;
 
 
 

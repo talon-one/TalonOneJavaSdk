@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
-**data** | [**List&lt;CampaignGroup&gt;**](CampaignGroup.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;Referral&gt;**](Referral.md) |  | 
 
 
 

@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -178,13 +179,13 @@ public class CardAddedDeductedPointsNotification {
   private OffsetDateTime expiryDate;
 
   /**
-   * The action (addition or deduction) made with loyalty points.
+   * The action (addition or subtraction) made with loyalty points.
    */
   @JsonAdapter(OperationEnum.Adapter.class)
   public enum OperationEnum {
     ADDITION("addition"),
     
-    DEDUCTION("deduction");
+    SUBTRACTION("subtraction");
 
     private String value;
 
@@ -235,6 +236,10 @@ public class CardAddedDeductedPointsNotification {
   public static final String SERIALIZED_NAME_START_DATE = "StartDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "TransactionUUID";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
+  private UUID transactionUUID;
 
 
   public CardAddedDeductedPointsNotification cardIdentifier(String cardIdentifier) {
@@ -515,10 +520,10 @@ public class CardAddedDeductedPointsNotification {
   }
 
    /**
-   * The action (addition or deduction) made with loyalty points.
+   * The action (addition or subtraction) made with loyalty points.
    * @return operation
   **/
-  @ApiModelProperty(required = true, value = "The action (addition or deduction) made with loyalty points.")
+  @ApiModelProperty(required = true, value = "The action (addition or subtraction) made with loyalty points.")
 
   public OperationEnum getOperation() {
     return operation;
@@ -575,6 +580,28 @@ public class CardAddedDeductedPointsNotification {
   }
 
 
+  public CardAddedDeductedPointsNotification transactionUUID(UUID transactionUUID) {
+    
+    this.transactionUUID = transactionUUID;
+    return this;
+  }
+
+   /**
+   * The identifier of the transaction in the loyalty ledger.
+   * @return transactionUUID
+  **/
+  @ApiModelProperty(required = true, value = "The identifier of the transaction in the loyalty ledger.")
+
+  public UUID getTransactionUUID() {
+    return transactionUUID;
+  }
+
+
+  public void setTransactionUUID(UUID transactionUUID) {
+    this.transactionUUID = transactionUUID;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -598,12 +625,13 @@ public class CardAddedDeductedPointsNotification {
         Objects.equals(this.expiryDate, cardAddedDeductedPointsNotification.expiryDate) &&
         Objects.equals(this.operation, cardAddedDeductedPointsNotification.operation) &&
         Objects.equals(this.reason, cardAddedDeductedPointsNotification.reason) &&
-        Objects.equals(this.startDate, cardAddedDeductedPointsNotification.startDate);
+        Objects.equals(this.startDate, cardAddedDeductedPointsNotification.startDate) &&
+        Objects.equals(this.transactionUUID, cardAddedDeductedPointsNotification.transactionUUID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cardIdentifier, employeeName, loyaltyProgramID, notificationType, profileIntegrationIDs, sessionIntegrationID, subledgerID, typeOfChange, userID, usersPerCardLimit, amount, expiryDate, operation, reason, startDate);
+    return Objects.hash(cardIdentifier, employeeName, loyaltyProgramID, notificationType, profileIntegrationIDs, sessionIntegrationID, subledgerID, typeOfChange, userID, usersPerCardLimit, amount, expiryDate, operation, reason, startDate, transactionUUID);
   }
 
 
@@ -626,6 +654,7 @@ public class CardAddedDeductedPointsNotification {
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -71,6 +71,10 @@ public class LedgerInfo {
   public static final String SERIALIZED_NAME_POINTS_TO_NEXT_TIER = "pointsToNextTier";
   @SerializedName(SERIALIZED_NAME_POINTS_TO_NEXT_TIER)
   private BigDecimal pointsToNextTier;
+
+  public static final String SERIALIZED_NAME_NEXT_TIER_NAME = "nextTierName";
+  @SerializedName(SERIALIZED_NAME_NEXT_TIER_NAME)
+  private String nextTierName;
 
 
   public LedgerInfo currentBalance(BigDecimal currentBalance) {
@@ -298,6 +302,29 @@ public class LedgerInfo {
   }
 
 
+  public LedgerInfo nextTierName(String nextTierName) {
+    
+    this.nextTierName = nextTierName;
+    return this;
+  }
+
+   /**
+   * The name of the next higher tier level in the loyalty program.  **Note**: - Returns &#x60;null&#x60; if the customer has reached the highest available tier. - Returns the lowest level tier name if the customer is not currently assigned to any tier. 
+   * @return nextTierName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Silver", value = "The name of the next higher tier level in the loyalty program.  **Note**: - Returns `null` if the customer has reached the highest available tier. - Returns the lowest level tier name if the customer is not currently assigned to any tier. ")
+
+  public String getNextTierName() {
+    return nextTierName;
+  }
+
+
+  public void setNextTierName(String nextTierName) {
+    this.nextTierName = nextTierName;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -316,12 +343,13 @@ public class LedgerInfo {
         Objects.equals(this.tentativePendingBalance, ledgerInfo.tentativePendingBalance) &&
         Objects.equals(this.tentativeNegativeBalance, ledgerInfo.tentativeNegativeBalance) &&
         Objects.equals(this.currentTier, ledgerInfo.currentTier) &&
-        Objects.equals(this.pointsToNextTier, ledgerInfo.pointsToNextTier);
+        Objects.equals(this.pointsToNextTier, ledgerInfo.pointsToNextTier) &&
+        Objects.equals(this.nextTierName, ledgerInfo.nextTierName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currentBalance, pendingBalance, negativeBalance, expiredBalance, spentBalance, tentativeCurrentBalance, tentativePendingBalance, tentativeNegativeBalance, currentTier, pointsToNextTier);
+    return Objects.hash(currentBalance, pendingBalance, negativeBalance, expiredBalance, spentBalance, tentativeCurrentBalance, tentativePendingBalance, tentativeNegativeBalance, currentTier, pointsToNextTier, nextTierName);
   }
 
 
@@ -339,6 +367,7 @@ public class LedgerInfo {
     sb.append("    tentativeNegativeBalance: ").append(toIndentedString(tentativeNegativeBalance)).append("\n");
     sb.append("    currentTier: ").append(toIndentedString(currentTier)).append("\n");
     sb.append("    pointsToNextTier: ").append(toIndentedString(pointsToNextTier)).append("\n");
+    sb.append("    nextTierName: ").append(toIndentedString(nextTierName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

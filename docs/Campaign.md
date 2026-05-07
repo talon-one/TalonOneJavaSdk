@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **endTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the campaign will become inactive. |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign. |  [optional]
 **state** | [**StateEnum**](#StateEnum) | A disabled or archived campaign is not evaluated for rules or coupons.  | 
-**activeRulesetId** | **Long** | [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation.  |  [optional]
+**activeRulesetId** | **Long** | [ID of Ruleset](https://docs.talon.one/management-api#tag/Campaigns/operation/getRulesets) this campaign applies on customer session evaluation.  |  [optional]
 **tags** | **List&lt;String&gt;** | A list of tags for the campaign. | 
 **reevaluateOnReturn** | **Boolean** | Indicates whether this campaign should be reevaluated when a customer returns an item. | 
 **features** | [**List&lt;FeaturesEnum&gt;**](#List&lt;FeaturesEnum&gt;) | The features enabled in this campaign. | 
@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **campaignGroups** | **List&lt;Long&gt;** | The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups) this campaign belongs to.  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items.  | 
 **linkedStoreIds** | **List&lt;Long&gt;** | A list of store IDs that you want to link to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store.  |  [optional]
+**couponAttributes** | [**Object**](.md) | Arbitrary properties associated with coupons in this campaign. |  [optional]
 **budgets** | [**List&lt;CampaignBudget&gt;**](CampaignBudget.md) | A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined.  |  [optional]
 **couponRedemptionCount** | **Long** | This property is **deprecated**. The count should be available under *budgets* property. Number of coupons redeemed in the campaign.  |  [optional]
 **referralRedemptionCount** | **Long** | This property is **deprecated**. The count should be available under *budgets* property. Number of referral codes redeemed in the campaign.  |  [optional]

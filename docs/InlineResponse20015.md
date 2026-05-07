@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
-**data** | [**List&lt;Experiment&gt;**](Experiment.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;CampaignTemplate&gt;**](CampaignTemplate.md) |  | 
 
 
 

@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.UUID;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -168,13 +169,13 @@ public class AddedDeductedPointsNotification {
   private OffsetDateTime expiryDate;
 
   /**
-   * The action (addition or deduction) made with loyalty points.
+   * The action (addition or subtraction) made with loyalty points.
    */
   @JsonAdapter(OperationEnum.Adapter.class)
   public enum OperationEnum {
     ADDITION("addition"),
     
-    DEDUCTION("deduction");
+    SUBTRACTION("subtraction");
 
     private String value;
 
@@ -225,6 +226,10 @@ public class AddedDeductedPointsNotification {
   public static final String SERIALIZED_NAME_START_DATE = "StartDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "TransactionUUID";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
+  private UUID transactionUUID;
 
 
   public AddedDeductedPointsNotification employeeName(String employeeName) {
@@ -456,10 +461,10 @@ public class AddedDeductedPointsNotification {
   }
 
    /**
-   * The action (addition or deduction) made with loyalty points.
+   * The action (addition or subtraction) made with loyalty points.
    * @return operation
   **/
-  @ApiModelProperty(required = true, value = "The action (addition or deduction) made with loyalty points.")
+  @ApiModelProperty(required = true, value = "The action (addition or subtraction) made with loyalty points.")
 
   public OperationEnum getOperation() {
     return operation;
@@ -516,6 +521,28 @@ public class AddedDeductedPointsNotification {
   }
 
 
+  public AddedDeductedPointsNotification transactionUUID(UUID transactionUUID) {
+    
+    this.transactionUUID = transactionUUID;
+    return this;
+  }
+
+   /**
+   * The identifier of the transaction in the loyalty ledger.
+   * @return transactionUUID
+  **/
+  @ApiModelProperty(required = true, value = "The identifier of the transaction in the loyalty ledger.")
+
+  public UUID getTransactionUUID() {
+    return transactionUUID;
+  }
+
+
+  public void setTransactionUUID(UUID transactionUUID) {
+    this.transactionUUID = transactionUUID;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -537,12 +564,13 @@ public class AddedDeductedPointsNotification {
         Objects.equals(this.expiryDate, addedDeductedPointsNotification.expiryDate) &&
         Objects.equals(this.operation, addedDeductedPointsNotification.operation) &&
         Objects.equals(this.reason, addedDeductedPointsNotification.reason) &&
-        Objects.equals(this.startDate, addedDeductedPointsNotification.startDate);
+        Objects.equals(this.startDate, addedDeductedPointsNotification.startDate) &&
+        Objects.equals(this.transactionUUID, addedDeductedPointsNotification.transactionUUID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(employeeName, loyaltyProgramID, notificationType, profileIntegrationID, sessionIntegrationID, subledgerID, typeOfChange, userID, amount, expiryDate, operation, reason, startDate);
+    return Objects.hash(employeeName, loyaltyProgramID, notificationType, profileIntegrationID, sessionIntegrationID, subledgerID, typeOfChange, userID, amount, expiryDate, operation, reason, startDate, transactionUUID);
   }
 
 
@@ -563,6 +591,7 @@ public class AddedDeductedPointsNotification {
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

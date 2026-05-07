@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -25,47 +25,20 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CatalogItem;
+import one.talon.model.Attribute;
 
 /**
  * InlineResponse20038
  */
 
 public class InlineResponse20038 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
-
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CatalogItem> data = new ArrayList<CatalogItem>();
-
-
-  public InlineResponse20038 hasMore(Boolean hasMore) {
-    
-    this.hasMore = hasMore;
-    return this;
-  }
-
-   /**
-   * Get hasMore
-   * @return hasMore
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getHasMore() {
-    return hasMore;
-  }
-
-
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
-  }
+  private List<Attribute> data = new ArrayList<Attribute>();
 
 
   public InlineResponse20038 totalResultSize(Long totalResultSize) {
@@ -78,8 +51,7 @@ public class InlineResponse20038 {
    * Get totalResultSize
    * @return totalResultSize
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "")
+  @ApiModelProperty(example = "1", required = true, value = "")
 
   public Long getTotalResultSize() {
     return totalResultSize;
@@ -91,13 +63,13 @@ public class InlineResponse20038 {
   }
 
 
-  public InlineResponse20038 data(List<CatalogItem> data) {
+  public InlineResponse20038 data(List<Attribute> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20038 addDataItem(CatalogItem dataItem) {
+  public InlineResponse20038 addDataItem(Attribute dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -108,12 +80,12 @@ public class InlineResponse20038 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<CatalogItem> getData() {
+  public List<Attribute> getData() {
     return data;
   }
 
 
-  public void setData(List<CatalogItem> data) {
+  public void setData(List<Attribute> data) {
     this.data = data;
   }
 
@@ -127,14 +99,13 @@ public class InlineResponse20038 {
       return false;
     }
     InlineResponse20038 inlineResponse20038 = (InlineResponse20038) o;
-    return Objects.equals(this.hasMore, inlineResponse20038.hasMore) &&
-        Objects.equals(this.totalResultSize, inlineResponse20038.totalResultSize) &&
+    return Objects.equals(this.totalResultSize, inlineResponse20038.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20038.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, totalResultSize, data);
+    return Objects.hash(totalResultSize, data);
   }
 
 
@@ -142,7 +113,6 @@ public class InlineResponse20038 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20038 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");

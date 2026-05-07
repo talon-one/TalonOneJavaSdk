@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | effect name. | 
 **value** | [**Object**](.md) | discount value. | 
+**excludedFromPriceHistory** | **Boolean** |  |  [optional]
 
 
 

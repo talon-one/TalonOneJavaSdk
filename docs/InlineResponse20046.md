@@ -6,9 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**totalResultSize** | **Long** |  |  [optional]
-**data** | [**List&lt;Store&gt;**](Store.md) |  | 
+**totalResultSize** | **Long** |  | 
+**data** | [**List&lt;RoleV2&gt;**](RoleV2.md) |  | 
 
 
 
