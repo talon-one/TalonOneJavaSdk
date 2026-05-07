@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -25,28 +25,52 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.SummaryCampaignStoreBudget;
+import one.talon.model.ApplicationCIF;
 
 /**
  * InlineResponse20048
  */
 
 public class InlineResponse20048 {
+  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
+
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<SummaryCampaignStoreBudget> data = null;
+  private List<ApplicationCIF> data = new ArrayList<ApplicationCIF>();
 
 
-  public InlineResponse20048 data(List<SummaryCampaignStoreBudget> data) {
+  public InlineResponse20048 hasMore(Boolean hasMore) {
+    
+    this.hasMore = hasMore;
+    return this;
+  }
+
+   /**
+   * Get hasMore
+   * @return hasMore
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getHasMore() {
+    return hasMore;
+  }
+
+
+  public void setHasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
+  }
+
+
+  public InlineResponse20048 data(List<ApplicationCIF> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20048 addDataItem(SummaryCampaignStoreBudget dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<SummaryCampaignStoreBudget>();
-    }
+  public InlineResponse20048 addDataItem(ApplicationCIF dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -55,15 +79,14 @@ public class InlineResponse20048 {
    * Get data
    * @return data
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
-  public List<SummaryCampaignStoreBudget> getData() {
+  public List<ApplicationCIF> getData() {
     return data;
   }
 
 
-  public void setData(List<SummaryCampaignStoreBudget> data) {
+  public void setData(List<ApplicationCIF> data) {
     this.data = data;
   }
 
@@ -77,12 +100,13 @@ public class InlineResponse20048 {
       return false;
     }
     InlineResponse20048 inlineResponse20048 = (InlineResponse20048) o;
-    return Objects.equals(this.data, inlineResponse20048.data);
+    return Objects.equals(this.hasMore, inlineResponse20048.hasMore) &&
+        Objects.equals(this.data, inlineResponse20048.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(hasMore, data);
   }
 
 
@@ -90,6 +114,7 @@ public class InlineResponse20048 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20048 {\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

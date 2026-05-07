@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -41,6 +41,10 @@ public class ExperimentVariantResult {
   public static final String SERIALIZED_NAME_VARIANT_WEIGHT = "variantWeight";
   @SerializedName(SERIALIZED_NAME_VARIANT_WEIGHT)
   private Long variantWeight;
+
+  public static final String SERIALIZED_NAME_IS_WINNER = "isWinner";
+  @SerializedName(SERIALIZED_NAME_IS_WINNER)
+  private Boolean isWinner;
 
   public static final String SERIALIZED_NAME_TOTAL_REVENUE = "totalRevenue";
   @SerializedName(SERIALIZED_NAME_TOTAL_REVENUE)
@@ -137,6 +141,29 @@ public class ExperimentVariantResult {
 
   public void setVariantWeight(Long variantWeight) {
     this.variantWeight = variantWeight;
+  }
+
+
+  public ExperimentVariantResult isWinner(Boolean isWinner) {
+    
+    this.isWinner = isWinner;
+    return this;
+  }
+
+   /**
+   * Calculated flag if the variant is the winner.
+   * @return isWinner
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Calculated flag if the variant is the winner.")
+
+  public Boolean getIsWinner() {
+    return isWinner;
+  }
+
+
+  public void setIsWinner(Boolean isWinner) {
+    this.isWinner = isWinner;
   }
 
 
@@ -313,6 +340,7 @@ public class ExperimentVariantResult {
     return Objects.equals(this.variantId, experimentVariantResult.variantId) &&
         Objects.equals(this.variantName, experimentVariantResult.variantName) &&
         Objects.equals(this.variantWeight, experimentVariantResult.variantWeight) &&
+        Objects.equals(this.isWinner, experimentVariantResult.isWinner) &&
         Objects.equals(this.totalRevenue, experimentVariantResult.totalRevenue) &&
         Objects.equals(this.sessionsCount, experimentVariantResult.sessionsCount) &&
         Objects.equals(this.avgItemsPerSession, experimentVariantResult.avgItemsPerSession) &&
@@ -324,7 +352,7 @@ public class ExperimentVariantResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(variantId, variantName, variantWeight, totalRevenue, sessionsCount, avgItemsPerSession, avgSessionValue, avgDiscountedSessionValue, totalDiscounts, couponsCount);
+    return Objects.hash(variantId, variantName, variantWeight, isWinner, totalRevenue, sessionsCount, avgItemsPerSession, avgSessionValue, avgDiscountedSessionValue, totalDiscounts, couponsCount);
   }
 
 
@@ -335,6 +363,7 @@ public class ExperimentVariantResult {
     sb.append("    variantId: ").append(toIndentedString(variantId)).append("\n");
     sb.append("    variantName: ").append(toIndentedString(variantName)).append("\n");
     sb.append("    variantWeight: ").append(toIndentedString(variantWeight)).append("\n");
+    sb.append("    isWinner: ").append(toIndentedString(isWinner)).append("\n");
     sb.append("    totalRevenue: ").append(toIndentedString(totalRevenue)).append("\n");
     sb.append("    sessionsCount: ").append(toIndentedString(sessionsCount)).append("\n");
     sb.append("    avgItemsPerSession: ").append(toIndentedString(avgItemsPerSession)).append("\n");

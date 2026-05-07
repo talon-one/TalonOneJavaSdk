@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Long** |  | 
-**data** | [**List&lt;Coupon&gt;**](Coupon.md) |  | 
+**data** | [**List&lt;Ruleset&gt;**](Ruleset.md) |  | 
 
 
 

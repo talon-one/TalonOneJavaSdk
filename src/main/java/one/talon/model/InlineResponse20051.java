@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -25,25 +25,52 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CouponFailureSummary;
+import one.talon.model.Achievement;
 
 /**
  * InlineResponse20051
  */
 
 public class InlineResponse20051 {
+  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
+
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CouponFailureSummary> data = new ArrayList<CouponFailureSummary>();
+  private List<Achievement> data = new ArrayList<Achievement>();
 
 
-  public InlineResponse20051 data(List<CouponFailureSummary> data) {
+  public InlineResponse20051 hasMore(Boolean hasMore) {
+    
+    this.hasMore = hasMore;
+    return this;
+  }
+
+   /**
+   * Get hasMore
+   * @return hasMore
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getHasMore() {
+    return hasMore;
+  }
+
+
+  public void setHasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
+  }
+
+
+  public InlineResponse20051 data(List<Achievement> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20051 addDataItem(CouponFailureSummary dataItem) {
+  public InlineResponse20051 addDataItem(Achievement dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -54,12 +81,12 @@ public class InlineResponse20051 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<CouponFailureSummary> getData() {
+  public List<Achievement> getData() {
     return data;
   }
 
 
-  public void setData(List<CouponFailureSummary> data) {
+  public void setData(List<Achievement> data) {
     this.data = data;
   }
 
@@ -73,12 +100,13 @@ public class InlineResponse20051 {
       return false;
     }
     InlineResponse20051 inlineResponse20051 = (InlineResponse20051) o;
-    return Objects.equals(this.data, inlineResponse20051.data);
+    return Objects.equals(this.hasMore, inlineResponse20051.hasMore) &&
+        Objects.equals(this.data, inlineResponse20051.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(hasMore, data);
   }
 
 
@@ -86,6 +114,7 @@ public class InlineResponse20051 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20051 {\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

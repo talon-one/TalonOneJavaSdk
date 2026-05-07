@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -25,20 +25,47 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AccountAdditionalCost;
+import one.talon.model.CatalogItem;
 
 /**
  * InlineResponse20039
  */
 
 public class InlineResponse20039 {
+  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
+
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<AccountAdditionalCost> data = new ArrayList<AccountAdditionalCost>();
+  private List<CatalogItem> data = new ArrayList<CatalogItem>();
+
+
+  public InlineResponse20039 hasMore(Boolean hasMore) {
+    
+    this.hasMore = hasMore;
+    return this;
+  }
+
+   /**
+   * Get hasMore
+   * @return hasMore
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getHasMore() {
+    return hasMore;
+  }
+
+
+  public void setHasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
+  }
 
 
   public InlineResponse20039 totalResultSize(Long totalResultSize) {
@@ -51,7 +78,8 @@ public class InlineResponse20039 {
    * Get totalResultSize
    * @return totalResultSize
   **/
-  @ApiModelProperty(example = "1", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "")
 
   public Long getTotalResultSize() {
     return totalResultSize;
@@ -63,13 +91,13 @@ public class InlineResponse20039 {
   }
 
 
-  public InlineResponse20039 data(List<AccountAdditionalCost> data) {
+  public InlineResponse20039 data(List<CatalogItem> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20039 addDataItem(AccountAdditionalCost dataItem) {
+  public InlineResponse20039 addDataItem(CatalogItem dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +108,12 @@ public class InlineResponse20039 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<AccountAdditionalCost> getData() {
+  public List<CatalogItem> getData() {
     return data;
   }
 
 
-  public void setData(List<AccountAdditionalCost> data) {
+  public void setData(List<CatalogItem> data) {
     this.data = data;
   }
 
@@ -99,13 +127,14 @@ public class InlineResponse20039 {
       return false;
     }
     InlineResponse20039 inlineResponse20039 = (InlineResponse20039) o;
-    return Objects.equals(this.totalResultSize, inlineResponse20039.totalResultSize) &&
+    return Objects.equals(this.hasMore, inlineResponse20039.hasMore) &&
+        Objects.equals(this.totalResultSize, inlineResponse20039.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20039.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalResultSize, data);
+    return Objects.hash(hasMore, totalResultSize, data);
   }
 
 
@@ -113,6 +142,7 @@ public class InlineResponse20039 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20039 {\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");

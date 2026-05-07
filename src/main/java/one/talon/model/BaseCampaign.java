@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -249,6 +249,10 @@ public class BaseCampaign {
   @SerializedName(SERIALIZED_NAME_LINKED_STORE_IDS)
   private List<Long> linkedStoreIds = null;
 
+  public static final String SERIALIZED_NAME_COUPON_ATTRIBUTES = "couponAttributes";
+  @SerializedName(SERIALIZED_NAME_COUPON_ATTRIBUTES)
+  private Object couponAttributes;
+
 
   public BaseCampaign name(String name) {
     
@@ -393,11 +397,11 @@ public class BaseCampaign {
   }
 
    /**
-   * [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. 
+   * [ID of Ruleset](https://docs.talon.one/management-api#tag/Campaigns/operation/getRulesets) this campaign applies on customer session evaluation. 
    * @return activeRulesetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "6", value = "[ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. ")
+  @ApiModelProperty(example = "6", value = "[ID of Ruleset](https://docs.talon.one/management-api#tag/Campaigns/operation/getRulesets) this campaign applies on customer session evaluation. ")
 
   public Long getActiveRulesetId() {
     return activeRulesetId;
@@ -644,6 +648,29 @@ public class BaseCampaign {
   }
 
 
+  public BaseCampaign couponAttributes(Object couponAttributes) {
+    
+    this.couponAttributes = couponAttributes;
+    return this;
+  }
+
+   /**
+   * Arbitrary properties associated with coupons in this campaign.
+   * @return couponAttributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Arbitrary properties associated with coupons in this campaign.")
+
+  public Object getCouponAttributes() {
+    return couponAttributes;
+  }
+
+
+  public void setCouponAttributes(Object couponAttributes) {
+    this.couponAttributes = couponAttributes;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -668,12 +695,13 @@ public class BaseCampaign {
         Objects.equals(this.limits, baseCampaign.limits) &&
         Objects.equals(this.campaignGroups, baseCampaign.campaignGroups) &&
         Objects.equals(this.type, baseCampaign.type) &&
-        Objects.equals(this.linkedStoreIds, baseCampaign.linkedStoreIds);
+        Objects.equals(this.linkedStoreIds, baseCampaign.linkedStoreIds) &&
+        Objects.equals(this.couponAttributes, baseCampaign.couponAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, reevaluateOnReturn, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds);
+    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, reevaluateOnReturn, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds, couponAttributes);
   }
 
 
@@ -697,6 +725,7 @@ public class BaseCampaign {
     sb.append("    campaignGroups: ").append(toIndentedString(campaignGroups)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    linkedStoreIds: ").append(toIndentedString(linkedStoreIds)).append("\n");
+    sb.append("    couponAttributes: ").append(toIndentedString(couponAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

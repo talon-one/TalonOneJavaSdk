@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
-**data** | [**List&lt;CampaignAnalytics&gt;**](CampaignAnalytics.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;AccessLogEntry&gt;**](AccessLogEntry.md) |  | 
 
 
 

@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -45,12 +45,8 @@ public class BestPriorPriceRequest {
   @SerializedName(SERIALIZED_NAME_TIMEFRAME)
   private String timeframe;
 
-  public static final String SERIALIZED_NAME_STRICT_END_DATE = "strictEndDate";
-  @SerializedName(SERIALIZED_NAME_STRICT_END_DATE)
-  private Boolean strictEndDate;
-
   /**
-   * Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - &#x60;strict&#x60;: The timeframe ends at the &#x60;timeframeEndDate&#x60; value. - &#x60;price&#x60;: The timeframe ends at the start of the current &#x60;contextId&#x60; with the current price value. Identical price records are merged. If there is no &#x60;contextId&#x60; for the most recent price, the most recent timestamp for the price is used.  - &#x60;sale&#x60;:  The timeframe ends at the start of current &#x60;contextId&#x60; and takes the prices prior to the start of the &#x60;contextId&#x60; into account. 
+   * Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - &#x60;strict&#x60;: The timeframe ends at the &#x60;timeframeEndDate&#x60; value. - &#x60;price&#x60;: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - &#x60;sale&#x60;:  The timeframe ends at the start of current &#x60;contextId&#x60; and takes the prices prior to the start of the &#x60;contextId&#x60; into account. 
    */
   @JsonAdapter(TimeframeEndDateTypeEnum.Adapter.class)
   public enum TimeframeEndDateTypeEnum {
@@ -178,28 +174,6 @@ public class BestPriorPriceRequest {
   }
 
 
-  public BestPriorPriceRequest strictEndDate(Boolean strictEndDate) {
-    
-    this.strictEndDate = strictEndDate;
-    return this;
-  }
-
-   /**
-   * This property is **deprecated**. Use &#x60;timeframeEndDateType&#x60; instead.  Indicates whether the timeframe includes the start of the current sale. - When &#x60;false&#x60;, the timeframe includes the start date of the current sale. - When &#x60;true&#x60;, the timeframe strictly uses the number of days specified in &#x60;timeframe&#x60;. 
-   * @return strictEndDate
-  **/
-  @ApiModelProperty(example = "true", required = true, value = "This property is **deprecated**. Use `timeframeEndDateType` instead.  Indicates whether the timeframe includes the start of the current sale. - When `false`, the timeframe includes the start date of the current sale. - When `true`, the timeframe strictly uses the number of days specified in `timeframe`. ")
-
-  public Boolean getStrictEndDate() {
-    return strictEndDate;
-  }
-
-
-  public void setStrictEndDate(Boolean strictEndDate) {
-    this.strictEndDate = strictEndDate;
-  }
-
-
   public BestPriorPriceRequest timeframeEndDateType(TimeframeEndDateTypeEnum timeframeEndDateType) {
     
     this.timeframeEndDateType = timeframeEndDateType;
@@ -207,11 +181,10 @@ public class BestPriorPriceRequest {
   }
 
    /**
-   * Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - &#x60;strict&#x60;: The timeframe ends at the &#x60;timeframeEndDate&#x60; value. - &#x60;price&#x60;: The timeframe ends at the start of the current &#x60;contextId&#x60; with the current price value. Identical price records are merged. If there is no &#x60;contextId&#x60; for the most recent price, the most recent timestamp for the price is used.  - &#x60;sale&#x60;:  The timeframe ends at the start of current &#x60;contextId&#x60; and takes the prices prior to the start of the &#x60;contextId&#x60; into account. 
+   * Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - &#x60;strict&#x60;: The timeframe ends at the &#x60;timeframeEndDate&#x60; value. - &#x60;price&#x60;: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - &#x60;sale&#x60;:  The timeframe ends at the start of current &#x60;contextId&#x60; and takes the prices prior to the start of the &#x60;contextId&#x60; into account. 
    * @return timeframeEndDateType
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "sale", value = "Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - `strict`: The timeframe ends at the `timeframeEndDate` value. - `price`: The timeframe ends at the start of the current `contextId` with the current price value. Identical price records are merged. If there is no `contextId` for the most recent price, the most recent timestamp for the price is used.  - `sale`:  The timeframe ends at the start of current `contextId` and takes the prices prior to the start of the `contextId` into account. ")
+  @ApiModelProperty(example = "sale", required = true, value = "Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - `strict`: The timeframe ends at the `timeframeEndDate` value. - `price`: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - `sale`:  The timeframe ends at the start of current `contextId` and takes the prices prior to the start of the `contextId` into account. ")
 
   public TimeframeEndDateTypeEnum getTimeframeEndDateType() {
     return timeframeEndDateType;
@@ -258,14 +231,13 @@ public class BestPriorPriceRequest {
     return Objects.equals(this.skus, bestPriorPriceRequest.skus) &&
         Objects.equals(this.timeframeEndDate, bestPriorPriceRequest.timeframeEndDate) &&
         Objects.equals(this.timeframe, bestPriorPriceRequest.timeframe) &&
-        Objects.equals(this.strictEndDate, bestPriorPriceRequest.strictEndDate) &&
         Objects.equals(this.timeframeEndDateType, bestPriorPriceRequest.timeframeEndDateType) &&
         Objects.equals(this.target, bestPriorPriceRequest.target);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(skus, timeframeEndDate, timeframe, strictEndDate, timeframeEndDateType, target);
+    return Objects.hash(skus, timeframeEndDate, timeframe, timeframeEndDateType, target);
   }
 
 
@@ -276,7 +248,6 @@ public class BestPriorPriceRequest {
     sb.append("    skus: ").append(toIndentedString(skus)).append("\n");
     sb.append("    timeframeEndDate: ").append(toIndentedString(timeframeEndDate)).append("\n");
     sb.append("    timeframe: ").append(toIndentedString(timeframe)).append("\n");
-    sb.append("    strictEndDate: ").append(toIndentedString(strictEndDate)).append("\n");
     sb.append("    timeframeEndDateType: ").append(toIndentedString(timeframeEndDateType)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("}");

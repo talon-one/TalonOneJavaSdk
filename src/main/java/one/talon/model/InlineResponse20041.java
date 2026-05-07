@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.EventType;
+import one.talon.model.WebhookWithOutgoingIntegrationDetails;
 
 /**
  * InlineResponse20041
@@ -38,7 +38,7 @@ public class InlineResponse20041 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<EventType> data = new ArrayList<EventType>();
+  private List<WebhookWithOutgoingIntegrationDetails> data = new ArrayList<WebhookWithOutgoingIntegrationDetails>();
 
 
   public InlineResponse20041 totalResultSize(Long totalResultSize) {
@@ -63,13 +63,13 @@ public class InlineResponse20041 {
   }
 
 
-  public InlineResponse20041 data(List<EventType> data) {
+  public InlineResponse20041 data(List<WebhookWithOutgoingIntegrationDetails> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20041 addDataItem(EventType dataItem) {
+  public InlineResponse20041 addDataItem(WebhookWithOutgoingIntegrationDetails dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20041 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<EventType> getData() {
+  public List<WebhookWithOutgoingIntegrationDetails> getData() {
     return data;
   }
 
 
-  public void setData(List<EventType> data) {
+  public void setData(List<WebhookWithOutgoingIntegrationDetails> data) {
     this.data = data;
   }
 

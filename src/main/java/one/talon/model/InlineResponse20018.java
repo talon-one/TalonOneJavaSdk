@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -25,51 +25,51 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.LoyaltyProgramTransaction;
+import one.talon.model.LoyaltyDashboardData;
 
 /**
  * InlineResponse20018
  */
 
 public class InlineResponse20018 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<LoyaltyProgramTransaction> data = new ArrayList<LoyaltyProgramTransaction>();
+  private List<LoyaltyDashboardData> data = new ArrayList<LoyaltyDashboardData>();
 
 
-  public InlineResponse20018 hasMore(Boolean hasMore) {
+  public InlineResponse20018 totalResultSize(Long totalResultSize) {
     
-    this.hasMore = hasMore;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get hasMore
-   * @return hasMore
+   * Get totalResultSize
+   * @return totalResultSize
   **/
-  @ApiModelProperty(example = "true", required = true, value = "")
+  @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Boolean getHasMore() {
-    return hasMore;
+  public Long getTotalResultSize() {
+    return totalResultSize;
   }
 
 
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
   }
 
 
-  public InlineResponse20018 data(List<LoyaltyProgramTransaction> data) {
+  public InlineResponse20018 data(List<LoyaltyDashboardData> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20018 addDataItem(LoyaltyProgramTransaction dataItem) {
+  public InlineResponse20018 addDataItem(LoyaltyDashboardData dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20018 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<LoyaltyProgramTransaction> getData() {
+  public List<LoyaltyDashboardData> getData() {
     return data;
   }
 
 
-  public void setData(List<LoyaltyProgramTransaction> data) {
+  public void setData(List<LoyaltyDashboardData> data) {
     this.data = data;
   }
 
@@ -99,13 +99,13 @@ public class InlineResponse20018 {
       return false;
     }
     InlineResponse20018 inlineResponse20018 = (InlineResponse20018) o;
-    return Objects.equals(this.hasMore, inlineResponse20018.hasMore) &&
+    return Objects.equals(this.totalResultSize, inlineResponse20018.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20018.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(totalResultSize, data);
   }
 
 
@@ -113,7 +113,7 @@ public class InlineResponse20018 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20018 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

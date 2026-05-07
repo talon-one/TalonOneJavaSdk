@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -191,12 +191,6 @@ public class CartItem {
   }
 
 
-  public CartItem returnedQuantity(Long returnedQuantity) {
-    
-    this.returnedQuantity = returnedQuantity;
-    return this;
-  }
-
    /**
    * Number of returned items, calculated internally based on returns of this item.
    * @return returnedQuantity
@@ -209,16 +203,7 @@ public class CartItem {
   }
 
 
-  public void setReturnedQuantity(Long returnedQuantity) {
-    this.returnedQuantity = returnedQuantity;
-  }
 
-
-  public CartItem remainingQuantity(Long remainingQuantity) {
-    
-    this.remainingQuantity = remainingQuantity;
-    return this;
-  }
 
    /**
    * Remaining quantity of the item, calculated internally based on returns of this item.
@@ -232,9 +217,6 @@ public class CartItem {
   }
 
 
-  public void setRemainingQuantity(Long remainingQuantity) {
-    this.remainingQuantity = remainingQuantity;
-  }
 
 
   public CartItem price(BigDecimal price) {
@@ -398,12 +380,6 @@ public class CartItem {
   }
 
 
-  public CartItem position(BigDecimal position) {
-    
-    this.position = position;
-    return this;
-  }
-
    /**
    * Position of the Cart Item in the Cart (calculated internally).
    * @return position
@@ -416,9 +392,6 @@ public class CartItem {
   }
 
 
-  public void setPosition(BigDecimal position) {
-    this.position = position;
-  }
 
 
   public CartItem attributes(Object attributes) {
@@ -475,12 +448,6 @@ public class CartItem {
   }
 
 
-  public CartItem catalogItemID(Long catalogItemID) {
-    
-    this.catalogItemID = catalogItemID;
-    return this;
-  }
-
    /**
    * The catalog item ID.
    * @return catalogItemID
@@ -493,16 +460,7 @@ public class CartItem {
   }
 
 
-  public void setCatalogItemID(Long catalogItemID) {
-    this.catalogItemID = catalogItemID;
-  }
 
-
-  public CartItem selectedPriceType(String selectedPriceType) {
-    
-    this.selectedPriceType = selectedPriceType;
-    return this;
-  }
 
    /**
    * The selected price type for this cart item (e.g. the price for members only).
@@ -516,16 +474,7 @@ public class CartItem {
   }
 
 
-  public void setSelectedPriceType(String selectedPriceType) {
-    this.selectedPriceType = selectedPriceType;
-  }
 
-
-  public CartItem adjustmentReferenceId(UUID adjustmentReferenceId) {
-    
-    this.adjustmentReferenceId = adjustmentReferenceId;
-    return this;
-  }
 
    /**
    * The reference ID of the selected price adjustment for this cart item. Only returned if the selected price resulted from a price adjustment.
@@ -539,16 +488,7 @@ public class CartItem {
   }
 
 
-  public void setAdjustmentReferenceId(UUID adjustmentReferenceId) {
-    this.adjustmentReferenceId = adjustmentReferenceId;
-  }
 
-
-  public CartItem adjustmentEffectiveFrom(OffsetDateTime adjustmentEffectiveFrom) {
-    
-    this.adjustmentEffectiveFrom = adjustmentEffectiveFrom;
-    return this;
-  }
 
    /**
    * The date and time from which the price adjustment is effective. Only returned if the selected price resulted from a price adjustment that contains this field.
@@ -562,16 +502,7 @@ public class CartItem {
   }
 
 
-  public void setAdjustmentEffectiveFrom(OffsetDateTime adjustmentEffectiveFrom) {
-    this.adjustmentEffectiveFrom = adjustmentEffectiveFrom;
-  }
 
-
-  public CartItem adjustmentEffectiveUntil(OffsetDateTime adjustmentEffectiveUntil) {
-    
-    this.adjustmentEffectiveUntil = adjustmentEffectiveUntil;
-    return this;
-  }
 
    /**
    * The date and time until which the price adjustment is effective. Only returned if the selected price resulted from a price adjustment that contains this field.
@@ -585,24 +516,7 @@ public class CartItem {
   }
 
 
-  public void setAdjustmentEffectiveUntil(OffsetDateTime adjustmentEffectiveUntil) {
-    this.adjustmentEffectiveUntil = adjustmentEffectiveUntil;
-  }
 
-
-  public CartItem prices(Map<String, PriceDetail> prices) {
-    
-    this.prices = prices;
-    return this;
-  }
-
-  public CartItem putPricesItem(String key, PriceDetail pricesItem) {
-    if (this.prices == null) {
-      this.prices = new HashMap<String, PriceDetail>();
-    }
-    this.prices.put(key, pricesItem);
-    return this;
-  }
 
    /**
    * A map of keys and values representing the price types and related price adjustment details for this cart item. The keys correspond to the &#x60;priceType&#x60; names. 
@@ -616,9 +530,6 @@ public class CartItem {
   }
 
 
-  public void setPrices(Map<String, PriceDetail> prices) {
-    this.prices = prices;
-  }
 
 
   @Override

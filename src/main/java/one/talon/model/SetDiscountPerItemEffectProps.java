@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -78,6 +78,10 @@ public class SetDiscountPerItemEffectProps {
   public static final String SERIALIZED_NAME_TARGETED_ITEM_SUB_POSITION = "targetedItemSubPosition";
   @SerializedName(SERIALIZED_NAME_TARGETED_ITEM_SUB_POSITION)
   private BigDecimal targetedItemSubPosition;
+
+  public static final String SERIALIZED_NAME_EXCLUDED_FROM_PRICE_HISTORY = "excludedFromPriceHistory";
+  @SerializedName(SERIALIZED_NAME_EXCLUDED_FROM_PRICE_HISTORY)
+  private Boolean excludedFromPriceHistory;
 
 
   public SetDiscountPerItemEffectProps name(String name) {
@@ -353,6 +357,29 @@ public class SetDiscountPerItemEffectProps {
   }
 
 
+  public SetDiscountPerItemEffectProps excludedFromPriceHistory(Boolean excludedFromPriceHistory) {
+    
+    this.excludedFromPriceHistory = excludedFromPriceHistory;
+    return this;
+  }
+
+   /**
+   * When set to &#x60;true&#x60;, the applied discount is excluded from the item&#39;s price history.
+   * @return excludedFromPriceHistory
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "When set to `true`, the applied discount is excluded from the item's price history.")
+
+  public Boolean getExcludedFromPriceHistory() {
+    return excludedFromPriceHistory;
+  }
+
+
+  public void setExcludedFromPriceHistory(Boolean excludedFromPriceHistory) {
+    this.excludedFromPriceHistory = excludedFromPriceHistory;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -373,12 +400,13 @@ public class SetDiscountPerItemEffectProps {
         Objects.equals(this.bundleIndex, setDiscountPerItemEffectProps.bundleIndex) &&
         Objects.equals(this.bundleName, setDiscountPerItemEffectProps.bundleName) &&
         Objects.equals(this.targetedItemPosition, setDiscountPerItemEffectProps.targetedItemPosition) &&
-        Objects.equals(this.targetedItemSubPosition, setDiscountPerItemEffectProps.targetedItemSubPosition);
+        Objects.equals(this.targetedItemSubPosition, setDiscountPerItemEffectProps.targetedItemSubPosition) &&
+        Objects.equals(this.excludedFromPriceHistory, setDiscountPerItemEffectProps.excludedFromPriceHistory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, value, position, subPosition, desiredValue, scope, totalDiscount, desiredTotalDiscount, bundleIndex, bundleName, targetedItemPosition, targetedItemSubPosition);
+    return Objects.hash(name, value, position, subPosition, desiredValue, scope, totalDiscount, desiredTotalDiscount, bundleIndex, bundleName, targetedItemPosition, targetedItemSubPosition, excludedFromPriceHistory);
   }
 
 
@@ -398,6 +426,7 @@ public class SetDiscountPerItemEffectProps {
     sb.append("    bundleName: ").append(toIndentedString(bundleName)).append("\n");
     sb.append("    targetedItemPosition: ").append(toIndentedString(targetedItemPosition)).append("\n");
     sb.append("    targetedItemSubPosition: ").append(toIndentedString(targetedItemSubPosition)).append("\n");
+    sb.append("    excludedFromPriceHistory: ").append(toIndentedString(excludedFromPriceHistory)).append("\n");
     sb.append("}");
     return sb.toString();
   }

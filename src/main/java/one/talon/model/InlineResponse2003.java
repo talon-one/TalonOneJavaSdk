@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -25,51 +25,51 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CardLedgerTransactionLogEntryIntegrationAPI;
+import one.talon.model.AchievementProgress;
 
 /**
  * InlineResponse2003
  */
 
 public class InlineResponse2003 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CardLedgerTransactionLogEntryIntegrationAPI> data = new ArrayList<CardLedgerTransactionLogEntryIntegrationAPI>();
+  private List<AchievementProgress> data = new ArrayList<AchievementProgress>();
 
 
-  public InlineResponse2003 hasMore(Boolean hasMore) {
+  public InlineResponse2003 totalResultSize(Long totalResultSize) {
     
-    this.hasMore = hasMore;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get hasMore
-   * @return hasMore
+   * Get totalResultSize
+   * @return totalResultSize
   **/
-  @ApiModelProperty(example = "true", required = true, value = "")
+  @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Boolean getHasMore() {
-    return hasMore;
+  public Long getTotalResultSize() {
+    return totalResultSize;
   }
 
 
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
   }
 
 
-  public InlineResponse2003 data(List<CardLedgerTransactionLogEntryIntegrationAPI> data) {
+  public InlineResponse2003 data(List<AchievementProgress> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse2003 addDataItem(CardLedgerTransactionLogEntryIntegrationAPI dataItem) {
+  public InlineResponse2003 addDataItem(AchievementProgress dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse2003 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<CardLedgerTransactionLogEntryIntegrationAPI> getData() {
+  public List<AchievementProgress> getData() {
     return data;
   }
 
 
-  public void setData(List<CardLedgerTransactionLogEntryIntegrationAPI> data) {
+  public void setData(List<AchievementProgress> data) {
     this.data = data;
   }
 
@@ -99,13 +99,13 @@ public class InlineResponse2003 {
       return false;
     }
     InlineResponse2003 inlineResponse2003 = (InlineResponse2003) o;
-    return Objects.equals(this.hasMore, inlineResponse2003.hasMore) &&
+    return Objects.equals(this.totalResultSize, inlineResponse2003.totalResultSize) &&
         Objects.equals(this.data, inlineResponse2003.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(totalResultSize, data);
   }
 
 
@@ -113,7 +113,7 @@ public class InlineResponse2003 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2003 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

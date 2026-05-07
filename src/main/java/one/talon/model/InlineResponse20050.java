@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -25,51 +25,28 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AchievementProgressWithDefinition;
+import one.talon.model.SummaryCampaignStoreBudget;
 
 /**
  * InlineResponse20050
  */
 
 public class InlineResponse20050 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<AchievementProgressWithDefinition> data = new ArrayList<AchievementProgressWithDefinition>();
+  private List<SummaryCampaignStoreBudget> data = null;
 
 
-  public InlineResponse20050 hasMore(Boolean hasMore) {
-    
-    this.hasMore = hasMore;
-    return this;
-  }
-
-   /**
-   * Get hasMore
-   * @return hasMore
-  **/
-  @ApiModelProperty(example = "true", required = true, value = "")
-
-  public Boolean getHasMore() {
-    return hasMore;
-  }
-
-
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
-  }
-
-
-  public InlineResponse20050 data(List<AchievementProgressWithDefinition> data) {
+  public InlineResponse20050 data(List<SummaryCampaignStoreBudget> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20050 addDataItem(AchievementProgressWithDefinition dataItem) {
+  public InlineResponse20050 addDataItem(SummaryCampaignStoreBudget dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<SummaryCampaignStoreBudget>();
+    }
     this.data.add(dataItem);
     return this;
   }
@@ -78,14 +55,15 @@ public class InlineResponse20050 {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public List<AchievementProgressWithDefinition> getData() {
+  public List<SummaryCampaignStoreBudget> getData() {
     return data;
   }
 
 
-  public void setData(List<AchievementProgressWithDefinition> data) {
+  public void setData(List<SummaryCampaignStoreBudget> data) {
     this.data = data;
   }
 
@@ -99,13 +77,12 @@ public class InlineResponse20050 {
       return false;
     }
     InlineResponse20050 inlineResponse20050 = (InlineResponse20050) o;
-    return Objects.equals(this.hasMore, inlineResponse20050.hasMore) &&
-        Objects.equals(this.data, inlineResponse20050.data);
+    return Objects.equals(this.data, inlineResponse20050.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(data);
   }
 
 
@@ -113,7 +90,6 @@ public class InlineResponse20050 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20050 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

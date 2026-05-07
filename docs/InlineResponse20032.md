@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
-**data** | **List&lt;String&gt;** |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;ApplicationEvent&gt;**](ApplicationEvent.md) |  | 
 
 
 

@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Long** |  | 
-**data** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) |  | 
+**data** | [**List&lt;Experiment&gt;**](Experiment.md) |  | 
 
 
 

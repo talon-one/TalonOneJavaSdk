@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -136,6 +136,10 @@ public class NewRevisionVersion {
   public static final String SERIALIZED_NAME_FEATURES = "features";
   @SerializedName(SERIALIZED_NAME_FEATURES)
   private List<FeaturesEnum> features = null;
+
+  public static final String SERIALIZED_NAME_COUPON_ATTRIBUTES = "couponAttributes";
+  @SerializedName(SERIALIZED_NAME_COUPON_ATTRIBUTES)
+  private Object couponAttributes;
 
 
   public NewRevisionVersion name(String name) {
@@ -438,6 +442,29 @@ public class NewRevisionVersion {
   }
 
 
+  public NewRevisionVersion couponAttributes(Object couponAttributes) {
+    
+    this.couponAttributes = couponAttributes;
+    return this;
+  }
+
+   /**
+   * Arbitrary properties associated with coupons in this campaign.
+   * @return couponAttributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Arbitrary properties associated with coupons in this campaign.")
+
+  public Object getCouponAttributes() {
+    return couponAttributes;
+  }
+
+
+  public void setCouponAttributes(Object couponAttributes) {
+    this.couponAttributes = couponAttributes;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -458,12 +485,13 @@ public class NewRevisionVersion {
         Objects.equals(this.referralSettings, newRevisionVersion.referralSettings) &&
         Objects.equals(this.limits, newRevisionVersion.limits) &&
         Objects.equals(this.reevaluateOnReturn, newRevisionVersion.reevaluateOnReturn) &&
-        Objects.equals(this.features, newRevisionVersion.features);
+        Objects.equals(this.features, newRevisionVersion.features) &&
+        Objects.equals(this.couponAttributes, newRevisionVersion.couponAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, startTime, endTime, attributes, description, activeRulesetId, tags, couponSettings, referralSettings, limits, reevaluateOnReturn, features);
+    return Objects.hash(name, startTime, endTime, attributes, description, activeRulesetId, tags, couponSettings, referralSettings, limits, reevaluateOnReturn, features, couponAttributes);
   }
 
 
@@ -483,6 +511,7 @@ public class NewRevisionVersion {
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    reevaluateOnReturn: ").append(toIndentedString(reevaluateOnReturn)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
+    sb.append("    couponAttributes: ").append(toIndentedString(couponAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

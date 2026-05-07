@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  | 
-**data** | [**List&lt;LoyaltyCard&gt;**](LoyaltyCard.md) |  | 
+**data** | [**List&lt;LoyaltyProgramTransaction&gt;**](LoyaltyProgramTransaction.md) |  | 
 
 
 

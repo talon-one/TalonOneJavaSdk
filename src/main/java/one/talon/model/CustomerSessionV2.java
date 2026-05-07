@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -157,6 +157,10 @@ public class CustomerSessionV2 {
   public static final String SERIALIZED_NAME_FIRST_SESSION = "firstSession";
   @SerializedName(SERIALIZED_NAME_FIRST_SESSION)
   private Boolean firstSession;
+
+  public static final String SERIALIZED_NAME_UPDATE_COUNT = "updateCount";
+  @SerializedName(SERIALIZED_NAME_UPDATE_COUNT)
+  private Long updateCount;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -610,6 +614,28 @@ public class CustomerSessionV2 {
   }
 
 
+  public CustomerSessionV2 updateCount(Long updateCount) {
+    
+    this.updateCount = updateCount;
+    return this;
+  }
+
+   /**
+   * The number of times the session was updated. When the session is created, this value is initialized to &#x60;1&#x60;.
+   * @return updateCount
+  **/
+  @ApiModelProperty(example = "3", required = true, value = "The number of times the session was updated. When the session is created, this value is initialized to `1`.")
+
+  public Long getUpdateCount() {
+    return updateCount;
+  }
+
+
+  public void setUpdateCount(Long updateCount) {
+    this.updateCount = updateCount;
+  }
+
+
   public CustomerSessionV2 total(BigDecimal total) {
     
     this.total = total;
@@ -724,6 +750,7 @@ public class CustomerSessionV2 {
         Objects.equals(this.identifiers, customerSessionV2.identifiers) &&
         Objects.equals(this.attributes, customerSessionV2.attributes) &&
         Objects.equals(this.firstSession, customerSessionV2.firstSession) &&
+        Objects.equals(this.updateCount, customerSessionV2.updateCount) &&
         Objects.equals(this.total, customerSessionV2.total) &&
         Objects.equals(this.cartItemTotal, customerSessionV2.cartItemTotal) &&
         Objects.equals(this.additionalCostTotal, customerSessionV2.additionalCostTotal) &&
@@ -732,7 +759,7 @@ public class CustomerSessionV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, experimentVariantAllocations, additionalCosts, identifiers, attributes, firstSession, total, cartItemTotal, additionalCostTotal, updated);
+    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, experimentVariantAllocations, additionalCosts, identifiers, attributes, firstSession, updateCount, total, cartItemTotal, additionalCostTotal, updated);
   }
 
 
@@ -757,6 +784,7 @@ public class CustomerSessionV2 {
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    firstSession: ").append(toIndentedString(firstSession)).append("\n");
+    sb.append("    updateCount: ").append(toIndentedString(updateCount)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    cartItemTotal: ").append(toIndentedString(cartItemTotal)).append("\n");
     sb.append("    additionalCostTotal: ").append(toIndentedString(additionalCostTotal)).append("\n");

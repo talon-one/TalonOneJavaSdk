@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) to integrate with our platform. - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment.  For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`. 
  *
  * The version of the OpenAPI document: 
  * 
@@ -253,6 +253,10 @@ public class UpdateCampaign {
   @SerializedName(SERIALIZED_NAME_LINKED_STORE_IDS)
   private List<Long> linkedStoreIds = null;
 
+  public static final String SERIALIZED_NAME_COUPON_ATTRIBUTES = "couponAttributes";
+  @SerializedName(SERIALIZED_NAME_COUPON_ATTRIBUTES)
+  private Object couponAttributes;
+
 
   public UpdateCampaign name(String name) {
     
@@ -398,11 +402,11 @@ public class UpdateCampaign {
   }
 
    /**
-   * [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. 
+   * [ID of Ruleset](https://docs.talon.one/management-api#tag/Campaigns/operation/getRulesets) this campaign applies on customer session evaluation. 
    * @return activeRulesetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2", value = "[ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. ")
+  @ApiModelProperty(example = "2", value = "[ID of Ruleset](https://docs.talon.one/management-api#tag/Campaigns/operation/getRulesets) this campaign applies on customer session evaluation. ")
 
   public Long getActiveRulesetId() {
     return activeRulesetId;
@@ -656,11 +660,11 @@ public class UpdateCampaign {
   }
 
    /**
-   * A list of store IDs that you want to link to the campaign.  **Note:** - Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. - If you linked stores to the campaign by uploading a CSV file, you cannot use this property and it should be empty. - Use of this property is limited to 50 stores. To link more than 50 stores, upload them via a CSV file. 
+   * A list of store IDs that you want to link to the campaign.  &gt; [!note] **Note** &gt; - Campaigns with linked store IDs will only be evaluated when there is a &gt;   [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) &gt;   that references a linked store. &gt; - If you linked stores to the campaign by uploading a CSV file, you cannot use this property and it should be empty. &gt; - Use of this property is limited to 50 stores. To link more than 50 stores, upload them via a CSV file. 
    * @return linkedStoreIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[1, 2, 3]", value = "A list of store IDs that you want to link to the campaign.  **Note:** - Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. - If you linked stores to the campaign by uploading a CSV file, you cannot use this property and it should be empty. - Use of this property is limited to 50 stores. To link more than 50 stores, upload them via a CSV file. ")
+  @ApiModelProperty(example = "[1, 2, 3]", value = "A list of store IDs that you want to link to the campaign.  > [!note] **Note** > - Campaigns with linked store IDs will only be evaluated when there is a >   [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) >   that references a linked store. > - If you linked stores to the campaign by uploading a CSV file, you cannot use this property and it should be empty. > - Use of this property is limited to 50 stores. To link more than 50 stores, upload them via a CSV file. ")
 
   public List<Long> getLinkedStoreIds() {
     return linkedStoreIds;
@@ -669,6 +673,29 @@ public class UpdateCampaign {
 
   public void setLinkedStoreIds(List<Long> linkedStoreIds) {
     this.linkedStoreIds = linkedStoreIds;
+  }
+
+
+  public UpdateCampaign couponAttributes(Object couponAttributes) {
+    
+    this.couponAttributes = couponAttributes;
+    return this;
+  }
+
+   /**
+   * Arbitrary properties associated with coupons in this campaign.
+   * @return couponAttributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Arbitrary properties associated with coupons in this campaign.")
+
+  public Object getCouponAttributes() {
+    return couponAttributes;
+  }
+
+
+  public void setCouponAttributes(Object couponAttributes) {
+    this.couponAttributes = couponAttributes;
   }
 
 
@@ -697,12 +724,13 @@ public class UpdateCampaign {
         Objects.equals(this.campaignGroups, updateCampaign.campaignGroups) &&
         Objects.equals(this.evaluationGroupId, updateCampaign.evaluationGroupId) &&
         Objects.equals(this.type, updateCampaign.type) &&
-        Objects.equals(this.linkedStoreIds, updateCampaign.linkedStoreIds);
+        Objects.equals(this.linkedStoreIds, updateCampaign.linkedStoreIds) &&
+        Objects.equals(this.couponAttributes, updateCampaign.couponAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, reevaluateOnReturn, features, couponSettings, referralSettings, limits, campaignGroups, evaluationGroupId, type, linkedStoreIds);
+    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, reevaluateOnReturn, features, couponSettings, referralSettings, limits, campaignGroups, evaluationGroupId, type, linkedStoreIds, couponAttributes);
   }
 
 
@@ -727,6 +755,7 @@ public class UpdateCampaign {
     sb.append("    evaluationGroupId: ").append(toIndentedString(evaluationGroupId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    linkedStoreIds: ").append(toIndentedString(linkedStoreIds)).append("\n");
+    sb.append("    couponAttributes: ").append(toIndentedString(couponAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
