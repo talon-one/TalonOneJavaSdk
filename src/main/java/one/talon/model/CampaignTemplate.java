@@ -153,7 +153,9 @@ public class CampaignTemplate {
     
     STRIKETHROUGH("strikethrough"),
     
-    ACHIEVEMENTS("achievements");
+    ACHIEVEMENTS("achievements"),
+    
+    ADVANCEDEVENTS("advancedEvents");
 
     private String value;
 

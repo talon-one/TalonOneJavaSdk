@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;addFreeItem\&quot; effect. This gets triggered whenever a validated rule contained an \&quot;add free item\&quot; effect.
+ * This effect indicates that a free item should be added to the shopping cart in the current session. In this example, add the SKU to the shopping cart and set its price to &#x60;0&#x60;.  The effect of a successful referral can mean a free item for someone else, such as the referrer.
  */
-@ApiModel(description = "The properties specific to the \"addFreeItem\" effect. This gets triggered whenever a validated rule contained an \"add free item\" effect.")
+@ApiModel(description = "This effect indicates that a free item should be added to the shopping cart in the current session. In this example, add the SKU to the shopping cart and set its price to `0`.  The effect of a successful referral can mean a free item for someone else, such as the referrer.")
 
 public class AddFreeItemEffectProps {
   public static final String SERIALIZED_NAME_SKU = "sku";
@@ -72,10 +72,10 @@ public class AddFreeItemEffectProps {
   }
 
    /**
-   * The name / description of the effect
+   * Description of the effect.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name / description of the effect")
+  @ApiModelProperty(required = true, value = "Description of the effect.")
 
   public String getName() {
     return name;

@@ -57,4 +57,20 @@ public class NewExperimentTest {
         // TODO: test campaign
     }
 
+    /**
+     * Test the property 'goalType'
+     */
+    @Test
+    public void goalTypeTest() {
+        // TODO: test goalType
+    }
+
+    /**
+     * Test the property 'goalDescription'
+     */
+    @Test
+    public void goalDescriptionTest() {
+        // TODO: test goalDescription
+    }
+
 }

@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.RuleMetadata;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -44,19 +45,19 @@ public class IntegrationCampaignTest {
     }
 
     /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
      * Test the property 'applicationId'
      */
     @Test
     public void applicationIdTest() {
         // TODO: test applicationId
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
     }
 
     /**
@@ -121,6 +122,30 @@ public class IntegrationCampaignTest {
     @Test
     public void featuresTest() {
         // TODO: test features
+    }
+
+    /**
+     * Test the property 'rules'
+     */
+    @Test
+    public void rulesTest() {
+        // TODO: test rules
+    }
+
+    /**
+     * Test the property 'linkedStoreIds'
+     */
+    @Test
+    public void linkedStoreIdsTest() {
+        // TODO: test linkedStoreIds
+    }
+
+    /**
+     * Test the property 'linkedAudienceIds'
+     */
+    @Test
+    public void linkedAudienceIdsTest() {
+        // TODO: test linkedAudienceIds
     }
 
 }

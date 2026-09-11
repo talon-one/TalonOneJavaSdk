@@ -23,6 +23,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * NewInternalAudience
@@ -40,6 +42,10 @@ public class NewInternalAudience {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
+  @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
+  private List<Long> subscribedApplicationsIds = null;
 
 
   public NewInternalAudience name(String name) {
@@ -110,6 +116,37 @@ public class NewInternalAudience {
   }
 
 
+  public NewInternalAudience subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+    
+    this.subscribedApplicationsIds = subscribedApplicationsIds;
+    return this;
+  }
+
+  public NewInternalAudience addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
+    if (this.subscribedApplicationsIds == null) {
+      this.subscribedApplicationsIds = new ArrayList<Long>();
+    }
+    this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of the IDs of the Applications that are connected to this audience.
+   * @return subscribedApplicationsIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[3, 13]", value = "A list of the IDs of the Applications that are connected to this audience.")
+
+  public List<Long> getSubscribedApplicationsIds() {
+    return subscribedApplicationsIds;
+  }
+
+
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+    this.subscribedApplicationsIds = subscribedApplicationsIds;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -121,12 +158,13 @@ public class NewInternalAudience {
     NewInternalAudience newInternalAudience = (NewInternalAudience) o;
     return Objects.equals(this.name, newInternalAudience.name) &&
         Objects.equals(this.sandbox, newInternalAudience.sandbox) &&
-        Objects.equals(this.description, newInternalAudience.description);
+        Objects.equals(this.description, newInternalAudience.description) &&
+        Objects.equals(this.subscribedApplicationsIds, newInternalAudience.subscribedApplicationsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, sandbox, description);
+    return Objects.hash(name, sandbox, description, subscribedApplicationsIds);
   }
 
 
@@ -137,6 +175,7 @@ public class NewInternalAudience {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    subscribedApplicationsIds: ").append(toIndentedString(subscribedApplicationsIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -51,7 +51,7 @@ public class PriceHistoryResponse {
    * The SKU of the item for which historical prices should be retrieved.
    * @return sku
   **/
-  @ApiModelProperty(example = "", required = true, value = "The SKU of the item for which historical prices should be retrieved.")
+  @ApiModelProperty(example = "SKU1241028", required = true, value = "The SKU of the item for which historical prices should be retrieved.")
 
   public String getSku() {
     return sku;

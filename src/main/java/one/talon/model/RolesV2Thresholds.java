@@ -29,9 +29,36 @@ import java.io.IOException;
  */
 
 public class RolesV2Thresholds {
+  public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_ID = "loyaltyProgramId";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_ID)
+  private Long loyaltyProgramId;
+
   public static final String SERIALIZED_NAME_LOYALTY_POINTS_LIMIT = "loyaltyPointsLimit";
   @SerializedName(SERIALIZED_NAME_LOYALTY_POINTS_LIMIT)
   private Long loyaltyPointsLimit;
+
+
+  public RolesV2Thresholds loyaltyProgramId(Long loyaltyProgramId) {
+    
+    this.loyaltyProgramId = loyaltyProgramId;
+    return this;
+  }
+
+   /**
+   * Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
+   * @return loyaltyProgramId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "8", value = "Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.")
+
+  public Long getLoyaltyProgramId() {
+    return loyaltyProgramId;
+  }
+
+
+  public void setLoyaltyProgramId(Long loyaltyProgramId) {
+    this.loyaltyProgramId = loyaltyProgramId;
+  }
 
 
   public RolesV2Thresholds loyaltyPointsLimit(Long loyaltyPointsLimit) {
@@ -66,12 +93,13 @@ public class RolesV2Thresholds {
       return false;
     }
     RolesV2Thresholds rolesV2Thresholds = (RolesV2Thresholds) o;
-    return Objects.equals(this.loyaltyPointsLimit, rolesV2Thresholds.loyaltyPointsLimit);
+    return Objects.equals(this.loyaltyProgramId, rolesV2Thresholds.loyaltyProgramId) &&
+        Objects.equals(this.loyaltyPointsLimit, rolesV2Thresholds.loyaltyPointsLimit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loyaltyPointsLimit);
+    return Objects.hash(loyaltyProgramId, loyaltyPointsLimit);
   }
 
 
@@ -79,6 +107,7 @@ public class RolesV2Thresholds {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RolesV2Thresholds {\n");
+    sb.append("    loyaltyProgramId: ").append(toIndentedString(loyaltyProgramId)).append("\n");
     sb.append("    loyaltyPointsLimit: ").append(toIndentedString(loyaltyPointsLimit)).append("\n");
     sb.append("}");
     return sb.toString();

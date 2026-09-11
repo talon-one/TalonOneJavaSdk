@@ -79,8 +79,12 @@ public class CustomerSessionV2 {
   @SerializedName(SERIALIZED_NAME_LOYALTY_CARDS)
   private List<String> loyaltyCards = null;
 
+  public static final String SERIALIZED_NAME_REWARD_INTEGRATION_IDS = "rewardIntegrationIds";
+  @SerializedName(SERIALIZED_NAME_REWARD_INTEGRATION_IDS)
+  private List<String> rewardIntegrationIds = null;
+
   /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; → &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
+   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; -&gt; &#x60;closed&#x60; 2. &#x60;open&#x60; -&gt; &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; -&gt; &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; -&gt; &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; -&gt; &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; -&gt; &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
@@ -173,6 +177,10 @@ public class CustomerSessionV2 {
   public static final String SERIALIZED_NAME_ADDITIONAL_COST_TOTAL = "additionalCostTotal";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST_TOTAL)
   private BigDecimal additionalCostTotal;
+
+  public static final String SERIALIZED_NAME_CART_ITEM_ADDITIONAL_COST_TOTAL = "cartItemAdditionalCostTotal";
+  @SerializedName(SERIALIZED_NAME_CART_ITEM_ADDITIONAL_COST_TOTAL)
+  private BigDecimal cartItemAdditionalCostTotal;
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
@@ -428,6 +436,37 @@ public class CustomerSessionV2 {
   }
 
 
+  public CustomerSessionV2 rewardIntegrationIds(List<String> rewardIntegrationIds) {
+    
+    this.rewardIntegrationIds = rewardIntegrationIds;
+    return this;
+  }
+
+  public CustomerSessionV2 addRewardIntegrationIdsItem(String rewardIntegrationIdsItem) {
+    if (this.rewardIntegrationIds == null) {
+      this.rewardIntegrationIds = new ArrayList<String>();
+    }
+    this.rewardIntegrationIds.add(rewardIntegrationIdsItem);
+    return this;
+  }
+
+   /**
+   * The integration IDs of the unlocked rewards that can be used in this session. 
+   * @return rewardIntegrationIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[5c0b5e6d-3f8a-4c2b-9f1e-2a7d6b4c8e90]", value = "The integration IDs of the unlocked rewards that can be used in this session. ")
+
+  public List<String> getRewardIntegrationIds() {
+    return rewardIntegrationIds;
+  }
+
+
+  public void setRewardIntegrationIds(List<String> rewardIntegrationIds) {
+    this.rewardIntegrationIds = rewardIntegrationIds;
+  }
+
+
   public CustomerSessionV2 state(StateEnum state) {
     
     this.state = state;
@@ -435,10 +474,10 @@ public class CustomerSessionV2 {
   }
 
    /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; → &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
+   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; -&gt; &#x60;closed&#x60; 2. &#x60;open&#x60; -&gt; &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; -&gt; &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; -&gt; &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; -&gt; &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; -&gt; &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
    * @return state
   **/
-  @ApiModelProperty(example = "open", required = true, value = "Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` → `closed` 2. `open` → `cancelled` 3. Either:    - `closed` → `cancelled` (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - `closed` → `partially_returned` (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - `closed` → `open` (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. `partially_returned` → `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). ")
+  @ApiModelProperty(example = "open", required = true, value = "Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` -> `closed` 2. `open` -> `cancelled` 3. Either:    - `closed` -> `cancelled` (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - `closed` -> `partially_returned` (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - `closed` -> `open` (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. `partially_returned` -> `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). ")
 
   public StateEnum getState() {
     return state;
@@ -646,7 +685,7 @@ public class CustomerSessionV2 {
    * The total value of cart items and additional costs in the session, before any discounts are applied.
    * @return total
   **/
-  @ApiModelProperty(example = "119.99", required = true, value = "The total value of cart items and additional costs in the session, before any discounts are applied.")
+  @ApiModelProperty(example = "134.99", required = true, value = "The total value of cart items and additional costs in the session, before any discounts are applied.")
 
   public BigDecimal getTotal() {
     return total;
@@ -702,6 +741,19 @@ public class CustomerSessionV2 {
   }
 
 
+   /**
+   * The total value of additional costs applied to individual items, before any discounts are applied.
+   * @return cartItemAdditionalCostTotal
+  **/
+  @ApiModelProperty(example = "15.0", required = true, value = "The total value of additional costs applied to individual items, before any discounts are applied.")
+
+  public BigDecimal getCartItemAdditionalCostTotal() {
+    return cartItemAdditionalCostTotal;
+  }
+
+
+
+
   public CustomerSessionV2 updated(OffsetDateTime updated) {
     
     this.updated = updated;
@@ -743,6 +795,7 @@ public class CustomerSessionV2 {
         Objects.equals(this.couponCodes, customerSessionV2.couponCodes) &&
         Objects.equals(this.referralCode, customerSessionV2.referralCode) &&
         Objects.equals(this.loyaltyCards, customerSessionV2.loyaltyCards) &&
+        Objects.equals(this.rewardIntegrationIds, customerSessionV2.rewardIntegrationIds) &&
         Objects.equals(this.state, customerSessionV2.state) &&
         Objects.equals(this.cartItems, customerSessionV2.cartItems) &&
         Objects.equals(this.experimentVariantAllocations, customerSessionV2.experimentVariantAllocations) &&
@@ -754,12 +807,13 @@ public class CustomerSessionV2 {
         Objects.equals(this.total, customerSessionV2.total) &&
         Objects.equals(this.cartItemTotal, customerSessionV2.cartItemTotal) &&
         Objects.equals(this.additionalCostTotal, customerSessionV2.additionalCostTotal) &&
+        Objects.equals(this.cartItemAdditionalCostTotal, customerSessionV2.cartItemAdditionalCostTotal) &&
         Objects.equals(this.updated, customerSessionV2.updated);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, experimentVariantAllocations, additionalCosts, identifiers, attributes, firstSession, updateCount, total, cartItemTotal, additionalCostTotal, updated);
+    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, rewardIntegrationIds, state, cartItems, experimentVariantAllocations, additionalCosts, identifiers, attributes, firstSession, updateCount, total, cartItemTotal, additionalCostTotal, cartItemAdditionalCostTotal, updated);
   }
 
 
@@ -777,6 +831,7 @@ public class CustomerSessionV2 {
     sb.append("    couponCodes: ").append(toIndentedString(couponCodes)).append("\n");
     sb.append("    referralCode: ").append(toIndentedString(referralCode)).append("\n");
     sb.append("    loyaltyCards: ").append(toIndentedString(loyaltyCards)).append("\n");
+    sb.append("    rewardIntegrationIds: ").append(toIndentedString(rewardIntegrationIds)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    cartItems: ").append(toIndentedString(cartItems)).append("\n");
     sb.append("    experimentVariantAllocations: ").append(toIndentedString(experimentVariantAllocations)).append("\n");
@@ -788,6 +843,7 @@ public class CustomerSessionV2 {
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    cartItemTotal: ").append(toIndentedString(cartItemTotal)).append("\n");
     sb.append("    additionalCostTotal: ").append(toIndentedString(additionalCostTotal)).append("\n");
+    sb.append("    cartItemAdditionalCostTotal: ").append(toIndentedString(cartItemAdditionalCostTotal)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("}");
     return sb.toString();

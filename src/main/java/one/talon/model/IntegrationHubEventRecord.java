@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.IntegrationHubEventType;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -30,37 +31,49 @@ import org.threeten.bp.OffsetDateTime;
  */
 
 public class IntegrationHubEventRecord {
-  public static final String SERIALIZED_NAME_ID = "Id";
+  public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private Long id;
 
-  public static final String SERIALIZED_NAME_FLOW_ID = "FlowId";
+  public static final String SERIALIZED_NAME_FLOW_ID = "flowId";
   @SerializedName(SERIALIZED_NAME_FLOW_ID)
   private Long flowId;
 
-  public static final String SERIALIZED_NAME_EVENT_TYPE = "EventType";
+  public static final String SERIALIZED_NAME_INTEGRATION_NAME = "integrationName";
+  @SerializedName(SERIALIZED_NAME_INTEGRATION_NAME)
+  private String integrationName;
+
+  public static final String SERIALIZED_NAME_INSTANCE_NAME = "instanceName";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_NAME)
+  private String instanceName;
+
+  public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-  private String eventType;
+  private IntegrationHubEventType eventType;
 
-  public static final String SERIALIZED_NAME_EVENT_DATA = "EventData";
-  @SerializedName(SERIALIZED_NAME_EVENT_DATA)
-  private Object eventData;
-
-  public static final String SERIALIZED_NAME_PUBLISHED_AT = "PublishedAt";
+  public static final String SERIALIZED_NAME_PUBLISHED_AT = "publishedAt";
   @SerializedName(SERIALIZED_NAME_PUBLISHED_AT)
   private OffsetDateTime publishedAt;
 
-  public static final String SERIALIZED_NAME_PROCESSED_AT = "ProcessedAt";
+  public static final String SERIALIZED_NAME_PROCESSED_AT = "processedAt";
   @SerializedName(SERIALIZED_NAME_PROCESSED_AT)
   private OffsetDateTime processedAt;
 
-  public static final String SERIALIZED_NAME_PROCESS_AFTER = "ProcessAfter";
-  @SerializedName(SERIALIZED_NAME_PROCESS_AFTER)
-  private OffsetDateTime processAfter;
+  public static final String SERIALIZED_NAME_DELIVERED_AT = "deliveredAt";
+  @SerializedName(SERIALIZED_NAME_DELIVERED_AT)
+  private OffsetDateTime deliveredAt;
 
-  public static final String SERIALIZED_NAME_RETRY = "Retry";
+  public static final String SERIALIZED_NAME_SCHEDULED_TO = "scheduledTo";
+  @SerializedName(SERIALIZED_NAME_SCHEDULED_TO)
+  private OffsetDateTime scheduledTo;
+
+  public static final String SERIALIZED_NAME_RETRY = "retry";
   @SerializedName(SERIALIZED_NAME_RETRY)
   private Long retry;
+
+  public static final String SERIALIZED_NAME_PAYLOAD = "payload";
+  @SerializedName(SERIALIZED_NAME_PAYLOAD)
+  private String payload;
 
 
   public IntegrationHubEventRecord id(Long id) {
@@ -70,10 +83,10 @@ public class IntegrationHubEventRecord {
   }
 
    /**
-   * Get id
+   * ID of the event record.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "ID of the event record.")
 
   public Long getId() {
     return id;
@@ -92,10 +105,10 @@ public class IntegrationHubEventRecord {
   }
 
    /**
-   * Get flowId
+   * ID of the integration hub flow.
    * @return flowId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "ID of the integration hub flow.")
 
   public Long getFlowId() {
     return flowId;
@@ -107,7 +120,53 @@ public class IntegrationHubEventRecord {
   }
 
 
-  public IntegrationHubEventRecord eventType(String eventType) {
+  public IntegrationHubEventRecord integrationName(String integrationName) {
+    
+    this.integrationName = integrationName;
+    return this;
+  }
+
+   /**
+   * Name of the integration.
+   * @return integrationName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Name of the integration.")
+
+  public String getIntegrationName() {
+    return integrationName;
+  }
+
+
+  public void setIntegrationName(String integrationName) {
+    this.integrationName = integrationName;
+  }
+
+
+  public IntegrationHubEventRecord instanceName(String instanceName) {
+    
+    this.instanceName = instanceName;
+    return this;
+  }
+
+   /**
+   * Name of the integration instance.
+   * @return instanceName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Name of the integration instance.")
+
+  public String getInstanceName() {
+    return instanceName;
+  }
+
+
+  public void setInstanceName(String instanceName) {
+    this.instanceName = instanceName;
+  }
+
+
+  public IntegrationHubEventRecord eventType(IntegrationHubEventType eventType) {
     
     this.eventType = eventType;
     return this;
@@ -119,35 +178,13 @@ public class IntegrationHubEventRecord {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public String getEventType() {
+  public IntegrationHubEventType getEventType() {
     return eventType;
   }
 
 
-  public void setEventType(String eventType) {
+  public void setEventType(IntegrationHubEventType eventType) {
     this.eventType = eventType;
-  }
-
-
-  public IntegrationHubEventRecord eventData(Object eventData) {
-    
-    this.eventData = eventData;
-    return this;
-  }
-
-   /**
-   * Get eventData
-   * @return eventData
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public Object getEventData() {
-    return eventData;
-  }
-
-
-  public void setEventData(Object eventData) {
-    this.eventData = eventData;
   }
 
 
@@ -158,10 +195,10 @@ public class IntegrationHubEventRecord {
   }
 
    /**
-   * Get publishedAt
+   * Timestamp when the event was published.
    * @return publishedAt
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Timestamp when the event was published.")
 
   public OffsetDateTime getPublishedAt() {
     return publishedAt;
@@ -180,11 +217,11 @@ public class IntegrationHubEventRecord {
   }
 
    /**
-   * Get processedAt
+   * Timestamp when the event was processed.
    * @return processedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Timestamp when the event was processed.")
 
   public OffsetDateTime getProcessedAt() {
     return processedAt;
@@ -196,25 +233,48 @@ public class IntegrationHubEventRecord {
   }
 
 
-  public IntegrationHubEventRecord processAfter(OffsetDateTime processAfter) {
+  public IntegrationHubEventRecord deliveredAt(OffsetDateTime deliveredAt) {
     
-    this.processAfter = processAfter;
+    this.deliveredAt = deliveredAt;
     return this;
   }
 
    /**
-   * Get processAfter
-   * @return processAfter
+   * Timestamp when the event was delivered.
+   * @return deliveredAt
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Timestamp when the event was delivered.")
 
-  public OffsetDateTime getProcessAfter() {
-    return processAfter;
+  public OffsetDateTime getDeliveredAt() {
+    return deliveredAt;
   }
 
 
-  public void setProcessAfter(OffsetDateTime processAfter) {
-    this.processAfter = processAfter;
+  public void setDeliveredAt(OffsetDateTime deliveredAt) {
+    this.deliveredAt = deliveredAt;
+  }
+
+
+  public IntegrationHubEventRecord scheduledTo(OffsetDateTime scheduledTo) {
+    
+    this.scheduledTo = scheduledTo;
+    return this;
+  }
+
+   /**
+   * Timestamp after which the event is scheduled to be processed.
+   * @return scheduledTo
+  **/
+  @ApiModelProperty(required = true, value = "Timestamp after which the event is scheduled to be processed.")
+
+  public OffsetDateTime getScheduledTo() {
+    return scheduledTo;
+  }
+
+
+  public void setScheduledTo(OffsetDateTime scheduledTo) {
+    this.scheduledTo = scheduledTo;
   }
 
 
@@ -225,10 +285,10 @@ public class IntegrationHubEventRecord {
   }
 
    /**
-   * Get retry
+   * Number of delivery retries attempted.
    * @return retry
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Number of delivery retries attempted.")
 
   public Long getRetry() {
     return retry;
@@ -237,6 +297,28 @@ public class IntegrationHubEventRecord {
 
   public void setRetry(Long retry) {
     this.retry = retry;
+  }
+
+
+  public IntegrationHubEventRecord payload(String payload) {
+    
+    this.payload = payload;
+    return this;
+  }
+
+   /**
+   * The event payload as a formatted JSON string.
+   * @return payload
+  **/
+  @ApiModelProperty(required = true, value = "The event payload as a formatted JSON string.")
+
+  public String getPayload() {
+    return payload;
+  }
+
+
+  public void setPayload(String payload) {
+    this.payload = payload;
   }
 
 
@@ -251,17 +333,20 @@ public class IntegrationHubEventRecord {
     IntegrationHubEventRecord integrationHubEventRecord = (IntegrationHubEventRecord) o;
     return Objects.equals(this.id, integrationHubEventRecord.id) &&
         Objects.equals(this.flowId, integrationHubEventRecord.flowId) &&
+        Objects.equals(this.integrationName, integrationHubEventRecord.integrationName) &&
+        Objects.equals(this.instanceName, integrationHubEventRecord.instanceName) &&
         Objects.equals(this.eventType, integrationHubEventRecord.eventType) &&
-        Objects.equals(this.eventData, integrationHubEventRecord.eventData) &&
         Objects.equals(this.publishedAt, integrationHubEventRecord.publishedAt) &&
         Objects.equals(this.processedAt, integrationHubEventRecord.processedAt) &&
-        Objects.equals(this.processAfter, integrationHubEventRecord.processAfter) &&
-        Objects.equals(this.retry, integrationHubEventRecord.retry);
+        Objects.equals(this.deliveredAt, integrationHubEventRecord.deliveredAt) &&
+        Objects.equals(this.scheduledTo, integrationHubEventRecord.scheduledTo) &&
+        Objects.equals(this.retry, integrationHubEventRecord.retry) &&
+        Objects.equals(this.payload, integrationHubEventRecord.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, flowId, eventType, eventData, publishedAt, processedAt, processAfter, retry);
+    return Objects.hash(id, flowId, integrationName, instanceName, eventType, publishedAt, processedAt, deliveredAt, scheduledTo, retry, payload);
   }
 
 
@@ -271,12 +356,15 @@ public class IntegrationHubEventRecord {
     sb.append("class IntegrationHubEventRecord {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    flowId: ").append(toIndentedString(flowId)).append("\n");
+    sb.append("    integrationName: ").append(toIndentedString(integrationName)).append("\n");
+    sb.append("    instanceName: ").append(toIndentedString(instanceName)).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
-    sb.append("    eventData: ").append(toIndentedString(eventData)).append("\n");
     sb.append("    publishedAt: ").append(toIndentedString(publishedAt)).append("\n");
     sb.append("    processedAt: ").append(toIndentedString(processedAt)).append("\n");
-    sb.append("    processAfter: ").append(toIndentedString(processAfter)).append("\n");
+    sb.append("    deliveredAt: ").append(toIndentedString(deliveredAt)).append("\n");
+    sb.append("    scheduledTo: ").append(toIndentedString(scheduledTo)).append("\n");
     sb.append("    retry: ").append(toIndentedString(retry)).append("\n");
+    sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("}");
     return sb.toString();
   }

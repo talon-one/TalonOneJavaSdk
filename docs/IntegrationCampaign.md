@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Unique ID of Campaign. | 
 **applicationId** | **Long** | The ID of the Application that owns this entity. | 
-**name** | **String** | A user-facing name for this campaign. | 
+**id** | **Long** | Unique ID of Campaign. | 
+**name** | **String** | The name of the campaign. | 
 **description** | **String** | A detailed description of the campaign. |  [optional]
 **startTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the campaign will become active. |  [optional]
 **endTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the campaign will become inactive. |  [optional]
@@ -16,6 +16,9 @@ Name | Type | Description | Notes
 **state** | [**StateEnum**](#StateEnum) | The state of the campaign.  | 
 **tags** | **List&lt;String&gt;** | A list of tags for the campaign. | 
 **features** | [**List&lt;FeaturesEnum&gt;**](#List&lt;FeaturesEnum&gt;) | The features enabled in this campaign. | 
+**rules** | [**List&lt;RuleMetadata&gt;**](RuleMetadata.md) | A list of rules containing customer-facing details of the rewards defined in the campaign. | 
+**linkedStoreIds** | **List&lt;Long&gt;** | A list of store IDs linked to this campaign. |  [optional]
+**linkedAudienceIds** | **List&lt;Long&gt;** | A list of audience IDs linked to this campaign. |  [optional]
 
 
 
@@ -37,6 +40,7 @@ LOYALTY | &quot;loyalty&quot;
 GIVEAWAYS | &quot;giveaways&quot;
 STRIKETHROUGH | &quot;strikethrough&quot;
 ACHIEVEMENTS | &quot;achievements&quot;
+ADVANCEDEVENTS | &quot;advancedEvents&quot;
 
 
 

@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.RoleV2PermissionSet;
 import one.talon.model.RoleV2RolesGroup;
+import one.talon.model.RolesV2Thresholds;
 
 /**
  * RoleV2Permissions
@@ -40,6 +41,10 @@ public class RoleV2Permissions {
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
   private RoleV2RolesGroup roles;
+
+  public static final String SERIALIZED_NAME_THRESHOLDS = "thresholds";
+  @SerializedName(SERIALIZED_NAME_THRESHOLDS)
+  private List<RolesV2Thresholds> thresholds = null;
 
 
   public RoleV2Permissions permissionSets(List<RoleV2PermissionSet> permissionSets) {
@@ -96,6 +101,37 @@ public class RoleV2Permissions {
   }
 
 
+  public RoleV2Permissions thresholds(List<RolesV2Thresholds> thresholds) {
+    
+    this.thresholds = thresholds;
+    return this;
+  }
+
+  public RoleV2Permissions addThresholdsItem(RolesV2Thresholds thresholdsItem) {
+    if (this.thresholds == null) {
+      this.thresholds = new ArrayList<RolesV2Thresholds>();
+    }
+    this.thresholds.add(thresholdsItem);
+    return this;
+  }
+
+   /**
+   * Support user limits for actions that require admin approval within the given application.
+   * @return thresholds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Support user limits for actions that require admin approval within the given application.")
+
+  public List<RolesV2Thresholds> getThresholds() {
+    return thresholds;
+  }
+
+
+  public void setThresholds(List<RolesV2Thresholds> thresholds) {
+    this.thresholds = thresholds;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -106,12 +142,13 @@ public class RoleV2Permissions {
     }
     RoleV2Permissions roleV2Permissions = (RoleV2Permissions) o;
     return Objects.equals(this.permissionSets, roleV2Permissions.permissionSets) &&
-        Objects.equals(this.roles, roleV2Permissions.roles);
+        Objects.equals(this.roles, roleV2Permissions.roles) &&
+        Objects.equals(this.thresholds, roleV2Permissions.thresholds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(permissionSets, roles);
+    return Objects.hash(permissionSets, roles, thresholds);
   }
 
 
@@ -121,6 +158,7 @@ public class RoleV2Permissions {
     sb.append("class RoleV2Permissions {\n");
     sb.append("    permissionSets: ").append(toIndentedString(permissionSets)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
+    sb.append("    thresholds: ").append(toIndentedString(thresholds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -74,7 +74,11 @@ public class TalangAttribute {
     
     STORE("Store"),
     
-    ACHIEVEMENTS("Achievements");
+    ACHIEVEMENTS("Achievements"),
+    
+    ADVANCEDEVENT("AdvancedEvent"),
+    
+    ADVANCEDEVENTCONNECTEDSESSION("AdvancedEventConnectedSession");
 
     private String value;
 

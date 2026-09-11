@@ -152,7 +152,9 @@ public class Campaign {
     
     STRIKETHROUGH("strikethrough"),
     
-    ACHIEVEMENTS("achievements");
+    ACHIEVEMENTS("achievements"),
+    
+    ADVANCEDEVENTS("advancedEvents");
 
     private String value;
 
@@ -1414,7 +1416,7 @@ public class Campaign {
    * @return updated
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Timestamp of the most recent update to the campaign's property. Updates to external entities used in this campaign are **not** registered by this property, such as collection or coupon updates. ")
+  @ApiModelProperty(example = "2022-10-27T15:00Z", value = "Timestamp of the most recent update to the campaign's property. Updates to external entities used in this campaign are **not** registered by this property, such as collection or coupon updates. ")
 
   public OffsetDateTime getUpdated() {
     return updated;

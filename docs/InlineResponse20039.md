@@ -6,9 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**totalResultSize** | **Long** |  |  [optional]
-**data** | [**List&lt;CatalogItem&gt;**](CatalogItem.md) |  | 
+**totalResultSize** | **Long** |  | 
+**data** | [**List&lt;Attribute&gt;**](Attribute.md) |  | 
 
 
 

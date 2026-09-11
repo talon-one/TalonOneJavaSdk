@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.Binding;
+import one.talon.model.RewardPointsRequired;
+import one.talon.model.Rule;
 
 /**
  * NewReward
@@ -50,6 +53,22 @@ public class NewReward {
   public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
   @SerializedName(SERIALIZED_NAME_SANDBOX)
   private Boolean sandbox;
+
+  public static final String SERIALIZED_NAME_ELIGIBILITY_CONDITIONS = "eligibilityConditions";
+  @SerializedName(SERIALIZED_NAME_ELIGIBILITY_CONDITIONS)
+  private Rule eligibilityConditions;
+
+  public static final String SERIALIZED_NAME_RULE = "rule";
+  @SerializedName(SERIALIZED_NAME_RULE)
+  private Rule rule;
+
+  public static final String SERIALIZED_NAME_BINDINGS = "bindings";
+  @SerializedName(SERIALIZED_NAME_BINDINGS)
+  private List<Binding> bindings = null;
+
+  public static final String SERIALIZED_NAME_POINTS_REQUIRED = "pointsRequired";
+  @SerializedName(SERIALIZED_NAME_POINTS_REQUIRED)
+  private List<RewardPointsRequired> pointsRequired = null;
 
 
   public NewReward name(String name) {
@@ -168,6 +187,114 @@ public class NewReward {
   }
 
 
+  public NewReward eligibilityConditions(Rule eligibilityConditions) {
+    
+    this.eligibilityConditions = eligibilityConditions;
+    return this;
+  }
+
+   /**
+   * Get eligibilityConditions
+   * @return eligibilityConditions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Rule getEligibilityConditions() {
+    return eligibilityConditions;
+  }
+
+
+  public void setEligibilityConditions(Rule eligibilityConditions) {
+    this.eligibilityConditions = eligibilityConditions;
+  }
+
+
+  public NewReward rule(Rule rule) {
+    
+    this.rule = rule;
+    return this;
+  }
+
+   /**
+   * Get rule
+   * @return rule
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Rule getRule() {
+    return rule;
+  }
+
+
+  public void setRule(Rule rule) {
+    this.rule = rule;
+  }
+
+
+  public NewReward bindings(List<Binding> bindings) {
+    
+    this.bindings = bindings;
+    return this;
+  }
+
+  public NewReward addBindingsItem(Binding bindingsItem) {
+    if (this.bindings == null) {
+      this.bindings = new ArrayList<Binding>();
+    }
+    this.bindings.add(bindingsItem);
+    return this;
+  }
+
+   /**
+   * A list of named variables created before the reward&#39;s rules are evaluated. Each binding pairs a name with a talang expression. The expression is evaluated once and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.
+   * @return bindings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "A list of named variables created before the reward's rules are evaluated. Each binding pairs a name with a talang expression. The expression is evaluated once and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.")
+
+  public List<Binding> getBindings() {
+    return bindings;
+  }
+
+
+  public void setBindings(List<Binding> bindings) {
+    this.bindings = bindings;
+  }
+
+
+  public NewReward pointsRequired(List<RewardPointsRequired> pointsRequired) {
+    
+    this.pointsRequired = pointsRequired;
+    return this;
+  }
+
+  public NewReward addPointsRequiredItem(RewardPointsRequired pointsRequiredItem) {
+    if (this.pointsRequired == null) {
+      this.pointsRequired = new ArrayList<RewardPointsRequired>();
+    }
+    this.pointsRequired.add(pointsRequiredItem);
+    return this;
+  }
+
+   /**
+   * The loyalty points required to activate the reward. Each object defines the specific loyalty program and subledger from which points are deducted when activating the reward.  **Note:** When creating a reward, the &#x60;id&#x60; of each entry is ignored and a new entry is always created. 
+   * @return pointsRequired
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The loyalty points required to activate the reward. Each object defines the specific loyalty program and subledger from which points are deducted when activating the reward.  **Note:** When creating a reward, the `id` of each entry is ignored and a new entry is always created. ")
+
+  public List<RewardPointsRequired> getPointsRequired() {
+    return pointsRequired;
+  }
+
+
+  public void setPointsRequired(List<RewardPointsRequired> pointsRequired) {
+    this.pointsRequired = pointsRequired;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -181,12 +308,16 @@ public class NewReward {
         Objects.equals(this.apiName, newReward.apiName) &&
         Objects.equals(this.description, newReward.description) &&
         Objects.equals(this.applicationIds, newReward.applicationIds) &&
-        Objects.equals(this.sandbox, newReward.sandbox);
+        Objects.equals(this.sandbox, newReward.sandbox) &&
+        Objects.equals(this.eligibilityConditions, newReward.eligibilityConditions) &&
+        Objects.equals(this.rule, newReward.rule) &&
+        Objects.equals(this.bindings, newReward.bindings) &&
+        Objects.equals(this.pointsRequired, newReward.pointsRequired);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, apiName, description, applicationIds, sandbox);
+    return Objects.hash(name, apiName, description, applicationIds, sandbox, eligibilityConditions, rule, bindings, pointsRequired);
   }
 
 
@@ -199,6 +330,10 @@ public class NewReward {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
+    sb.append("    eligibilityConditions: ").append(toIndentedString(eligibilityConditions)).append("\n");
+    sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
+    sb.append("    bindings: ").append(toIndentedString(bindings)).append("\n");
+    sb.append("    pointsRequired: ").append(toIndentedString(pointsRequired)).append("\n");
     sb.append("}");
     return sb.toString();
   }

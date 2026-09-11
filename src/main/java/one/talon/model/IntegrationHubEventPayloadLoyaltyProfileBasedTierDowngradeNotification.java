@@ -30,6 +30,10 @@ import org.threeten.bp.OffsetDateTime;
  */
 
 public class IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification {
+  public static final String SERIALIZED_NAME_EVENT_ID = "EventId";
+  @SerializedName(SERIALIZED_NAME_EVENT_ID)
+  private Long eventId;
+
   public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_I_D = "ProfileIntegrationID";
   @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_I_D)
   private String profileIntegrationID;
@@ -37,6 +41,10 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotificat
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_I_D = "LoyaltyProgramID";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_I_D)
   private Long loyaltyProgramID;
+
+  public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_NAME = "LoyaltyProgramName";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_NAME)
+  private String loyaltyProgramName;
 
   public static final String SERIALIZED_NAME_SUBLEDGER_I_D = "SubledgerID";
   @SerializedName(SERIALIZED_NAME_SUBLEDGER_I_D)
@@ -69,6 +77,28 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotificat
   public static final String SERIALIZED_NAME_PUBLISHED_AT = "PublishedAt";
   @SerializedName(SERIALIZED_NAME_PUBLISHED_AT)
   private OffsetDateTime publishedAt;
+
+
+  public IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification eventId(Long eventId) {
+    
+    this.eventId = eventId;
+    return this;
+  }
+
+   /**
+   * The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed.
+   * @return eventId
+  **/
+  @ApiModelProperty(example = "123", required = true, value = "The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed.")
+
+  public Long getEventId() {
+    return eventId;
+  }
+
+
+  public void setEventId(Long eventId) {
+    this.eventId = eventId;
+  }
 
 
   public IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification profileIntegrationID(String profileIntegrationID) {
@@ -112,6 +142,28 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotificat
 
   public void setLoyaltyProgramID(Long loyaltyProgramID) {
     this.loyaltyProgramID = loyaltyProgramID;
+  }
+
+
+  public IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification loyaltyProgramName(String loyaltyProgramName) {
+    
+    this.loyaltyProgramName = loyaltyProgramName;
+    return this;
+  }
+
+   /**
+   * The name of the loyalty program.
+   * @return loyaltyProgramName
+  **/
+  @ApiModelProperty(required = true, value = "The name of the loyalty program.")
+
+  public String getLoyaltyProgramName() {
+    return loyaltyProgramName;
+  }
+
+
+  public void setLoyaltyProgramName(String loyaltyProgramName) {
+    this.loyaltyProgramName = loyaltyProgramName;
   }
 
 
@@ -166,11 +218,11 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotificat
   }
 
    /**
-   * Get currentTier
+   * The name of the customer&#39;s current tier, or null if the customer was downgraded below all tiers.
    * @return currentTier
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of the customer's current tier, or null if the customer was downgraded below all tiers.")
 
   public String getCurrentTier() {
     return currentTier;
@@ -304,8 +356,10 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotificat
       return false;
     }
     IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification integrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification = (IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification) o;
-    return Objects.equals(this.profileIntegrationID, integrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.profileIntegrationID) &&
+    return Objects.equals(this.eventId, integrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.eventId) &&
+        Objects.equals(this.profileIntegrationID, integrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.profileIntegrationID) &&
         Objects.equals(this.loyaltyProgramID, integrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.loyaltyProgramID) &&
+        Objects.equals(this.loyaltyProgramName, integrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.loyaltyProgramName) &&
         Objects.equals(this.subledgerID, integrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.subledgerID) &&
         Objects.equals(this.sourceOfEvent, integrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.sourceOfEvent) &&
         Objects.equals(this.currentTier, integrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.currentTier) &&
@@ -318,7 +372,7 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotificat
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileIntegrationID, loyaltyProgramID, subledgerID, sourceOfEvent, currentTier, currentPoints, oldTier, tierExpirationDate, timestampOfTierChange, publishedAt);
+    return Objects.hash(eventId, profileIntegrationID, loyaltyProgramID, loyaltyProgramName, subledgerID, sourceOfEvent, currentTier, currentPoints, oldTier, tierExpirationDate, timestampOfTierChange, publishedAt);
   }
 
 
@@ -326,8 +380,10 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotificat
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification {\n");
+    sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");
     sb.append("    profileIntegrationID: ").append(toIndentedString(profileIntegrationID)).append("\n");
     sb.append("    loyaltyProgramID: ").append(toIndentedString(loyaltyProgramID)).append("\n");
+    sb.append("    loyaltyProgramName: ").append(toIndentedString(loyaltyProgramName)).append("\n");
     sb.append("    subledgerID: ").append(toIndentedString(subledgerID)).append("\n");
     sb.append("    sourceOfEvent: ").append(toIndentedString(sourceOfEvent)).append("\n");
     sb.append("    currentTier: ").append(toIndentedString(currentTier)).append("\n");

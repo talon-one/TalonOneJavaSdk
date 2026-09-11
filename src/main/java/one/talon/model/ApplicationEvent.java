@@ -58,6 +58,10 @@ public class ApplicationEvent {
   @SerializedName(SERIALIZED_NAME_STORE_INTEGRATION_ID)
   private String storeIntegrationId;
 
+  public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
+  @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
+  private String integrationId;
+
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
   private Long sessionId;
@@ -214,6 +218,29 @@ public class ApplicationEvent {
   }
 
 
+  public ApplicationEvent integrationId(String integrationId) {
+    
+    this.integrationId = integrationId;
+    return this;
+  }
+
+   /**
+   * The unique ID of the event. Only one event with this ID can be registered. 
+   * @return integrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "175KJPS947296", value = "The unique ID of the event. Only one event with this ID can be registered. ")
+
+  public String getIntegrationId() {
+    return integrationId;
+  }
+
+
+  public void setIntegrationId(String integrationId) {
+    this.integrationId = integrationId;
+  }
+
+
   public ApplicationEvent sessionId(Long sessionId) {
     
     this.sessionId = sessionId;
@@ -244,10 +271,10 @@ public class ApplicationEvent {
   }
 
    /**
-   * A string representing the event. Must not be a reserved event name.
+   * The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
    * @return type
   **/
-  @ApiModelProperty(required = true, value = "A string representing the event. Must not be a reserved event name.")
+  @ApiModelProperty(required = true, value = "The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.")
 
   public String getType() {
     return type;
@@ -354,6 +381,7 @@ public class ApplicationEvent {
         Objects.equals(this.profileId, applicationEvent.profileId) &&
         Objects.equals(this.storeId, applicationEvent.storeId) &&
         Objects.equals(this.storeIntegrationId, applicationEvent.storeIntegrationId) &&
+        Objects.equals(this.integrationId, applicationEvent.integrationId) &&
         Objects.equals(this.sessionId, applicationEvent.sessionId) &&
         Objects.equals(this.type, applicationEvent.type) &&
         Objects.equals(this.attributes, applicationEvent.attributes) &&
@@ -363,7 +391,7 @@ public class ApplicationEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, profileId, storeId, storeIntegrationId, sessionId, type, attributes, effects, ruleFailureReasons);
+    return Objects.hash(id, created, applicationId, profileId, storeId, storeIntegrationId, integrationId, sessionId, type, attributes, effects, ruleFailureReasons);
   }
 
 
@@ -377,6 +405,7 @@ public class ApplicationEvent {
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
     sb.append("    storeId: ").append(toIndentedString(storeId)).append("\n");
     sb.append("    storeIntegrationId: ").append(toIndentedString(storeIntegrationId)).append("\n");
+    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
     sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");

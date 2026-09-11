@@ -110,6 +110,22 @@ public class ExperimentTest {
     }
 
     /**
+     * Test the property 'goalType'
+     */
+    @Test
+    public void goalTypeTest() {
+        // TODO: test goalType
+    }
+
+    /**
+     * Test the property 'goalDescription'
+     */
+    @Test
+    public void goalDescriptionTest() {
+        // TODO: test goalDescription
+    }
+
+    /**
      * Test the property 'deletedat'
      */
     @Test

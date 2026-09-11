@@ -170,4 +170,12 @@ public class EffectEntityTest {
         // TODO: test adjustmentReferenceId
     }
 
+    /**
+     * Test the property 'rewardId'
+     */
+    @Test
+    public void rewardIdTest() {
+        // TODO: test rewardId
+    }
+
 }

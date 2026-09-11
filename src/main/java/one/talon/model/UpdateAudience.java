@@ -23,6 +23,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * UpdateAudience
@@ -32,6 +34,10 @@ public class UpdateAudience {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
+  @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
+  private List<Long> subscribedApplicationsIds = null;
 
 
   public UpdateAudience name(String name) {
@@ -56,6 +62,37 @@ public class UpdateAudience {
   }
 
 
+  public UpdateAudience subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+    
+    this.subscribedApplicationsIds = subscribedApplicationsIds;
+    return this;
+  }
+
+  public UpdateAudience addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
+    if (this.subscribedApplicationsIds == null) {
+      this.subscribedApplicationsIds = new ArrayList<Long>();
+    }
+    this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of the IDs of the Applications that are connected to this audience.
+   * @return subscribedApplicationsIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[3, 13]", value = "A list of the IDs of the Applications that are connected to this audience.")
+
+  public List<Long> getSubscribedApplicationsIds() {
+    return subscribedApplicationsIds;
+  }
+
+
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+    this.subscribedApplicationsIds = subscribedApplicationsIds;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -65,12 +102,13 @@ public class UpdateAudience {
       return false;
     }
     UpdateAudience updateAudience = (UpdateAudience) o;
-    return Objects.equals(this.name, updateAudience.name);
+    return Objects.equals(this.name, updateAudience.name) &&
+        Objects.equals(this.subscribedApplicationsIds, updateAudience.subscribedApplicationsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name);
+    return Objects.hash(name, subscribedApplicationsIds);
   }
 
 
@@ -79,6 +117,7 @@ public class UpdateAudience {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAudience {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    subscribedApplicationsIds: ").append(toIndentedString(subscribedApplicationsIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

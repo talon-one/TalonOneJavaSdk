@@ -169,13 +169,13 @@ public class CreateAchievementV2 {
   @SerializedName(SERIALIZED_NAME_ALLOW_ROLLBACK_AFTER_COMPLETION)
   private Boolean allowRollbackAfterCompletion;
 
-  public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
-  @SerializedName(SERIALIZED_NAME_SANDBOX)
-  private Boolean sandbox;
-
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS = "subscribedApplications";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS)
   private List<Long> subscribedApplications = null;
+
+  public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
+  @SerializedName(SERIALIZED_NAME_SANDBOX)
+  private Boolean sandbox;
 
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
@@ -408,28 +408,6 @@ public class CreateAchievementV2 {
   }
 
 
-  public CreateAchievementV2 sandbox(Boolean sandbox) {
-    
-    this.sandbox = sandbox;
-    return this;
-  }
-
-   /**
-   * Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
-   * @return sandbox
-  **/
-  @ApiModelProperty(example = "true", required = true, value = "Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.")
-
-  public Boolean getSandbox() {
-    return sandbox;
-  }
-
-
-  public void setSandbox(Boolean sandbox) {
-    this.sandbox = sandbox;
-  }
-
-
   public CreateAchievementV2 subscribedApplications(List<Long> subscribedApplications) {
     
     this.subscribedApplications = subscribedApplications;
@@ -458,6 +436,28 @@ public class CreateAchievementV2 {
 
   public void setSubscribedApplications(List<Long> subscribedApplications) {
     this.subscribedApplications = subscribedApplications;
+  }
+
+
+  public CreateAchievementV2 sandbox(Boolean sandbox) {
+    
+    this.sandbox = sandbox;
+    return this;
+  }
+
+   /**
+   * Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
+   * @return sandbox
+  **/
+  @ApiModelProperty(example = "true", required = true, value = "Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.")
+
+  public Boolean getSandbox() {
+    return sandbox;
+  }
+
+
+  public void setSandbox(Boolean sandbox) {
+    this.sandbox = sandbox;
   }
 
 
@@ -502,14 +502,14 @@ public class CreateAchievementV2 {
         Objects.equals(this.fixedStartDate, createAchievementV2.fixedStartDate) &&
         Objects.equals(this.endDate, createAchievementV2.endDate) &&
         Objects.equals(this.allowRollbackAfterCompletion, createAchievementV2.allowRollbackAfterCompletion) &&
-        Objects.equals(this.sandbox, createAchievementV2.sandbox) &&
         Objects.equals(this.subscribedApplications, createAchievementV2.subscribedApplications) &&
+        Objects.equals(this.sandbox, createAchievementV2.sandbox) &&
         Objects.equals(this.timezone, createAchievementV2.timezone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, title, description, target, period, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, sandbox, subscribedApplications, timezone);
+    return Objects.hash(name, title, description, target, period, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, subscribedApplications, sandbox, timezone);
   }
 
 
@@ -527,8 +527,8 @@ public class CreateAchievementV2 {
     sb.append("    fixedStartDate: ").append(toIndentedString(fixedStartDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    allowRollbackAfterCompletion: ").append(toIndentedString(allowRollbackAfterCompletion)).append("\n");
-    sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    subscribedApplications: ").append(toIndentedString(subscribedApplications)).append("\n");
+    sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("}");
     return sb.toString();

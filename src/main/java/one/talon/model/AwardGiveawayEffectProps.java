@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;awardGiveaway\&quot; effect. This effect contains information on the giveaway item, and which profile it was awarded to.
+ * This effect indicates the awarded giveaway item and to which profile the item was awarded. Learn more about [giveaways](https://docs.talon.one/docs/product/giveaways/overview).
  */
-@ApiModel(description = "The properties specific to the \"awardGiveaway\" effect. This effect contains information on the giveaway item, and which profile it was awarded to.")
+@ApiModel(description = "This effect indicates the awarded giveaway item and to which profile the item was awarded. Learn more about [giveaways](https://docs.talon.one/docs/product/giveaways/overview).")
 
 public class AwardGiveawayEffectProps {
   public static final String SERIALIZED_NAME_POOL_ID = "poolId";
@@ -58,10 +58,10 @@ public class AwardGiveawayEffectProps {
   }
 
    /**
-   * The ID of the giveaways pool the code was taken from.
+   * The internal ID of the giveaway pool.
    * @return poolId
   **/
-  @ApiModelProperty(example = "2", required = true, value = "The ID of the giveaways pool the code was taken from.")
+  @ApiModelProperty(example = "2", required = true, value = "The internal ID of the giveaway pool.")
 
   public Long getPoolId() {
     return poolId;
@@ -80,10 +80,10 @@ public class AwardGiveawayEffectProps {
   }
 
    /**
-   * The name of the giveaways pool the code was taken from.
+   * The name of the giveaway pool.
    * @return poolName
   **/
-  @ApiModelProperty(example = "My pool", required = true, value = "The name of the giveaways pool the code was taken from.")
+  @ApiModelProperty(example = "My pool", required = true, value = "The name of the giveaway pool.")
 
   public String getPoolName() {
     return poolName;
@@ -102,10 +102,10 @@ public class AwardGiveawayEffectProps {
   }
 
    /**
-   * The integration ID of the profile that was awarded the giveaway.
+   * The integration ID of the customer that receives the giveaway.
    * @return recipientIntegrationId
   **/
-  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID of the profile that was awarded the giveaway.")
+  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID of the customer that receives the giveaway.")
 
   public String getRecipientIntegrationId() {
     return recipientIntegrationId;
@@ -124,10 +124,10 @@ public class AwardGiveawayEffectProps {
   }
 
    /**
-   * The internal ID for the giveaway that was awarded.
+   * The internal ID of the giveaway.
    * @return giveawayId
   **/
-  @ApiModelProperty(example = "5", required = true, value = "The internal ID for the giveaway that was awarded.")
+  @ApiModelProperty(example = "5", required = true, value = "The internal ID of the giveaway.")
 
   public Long getGiveawayId() {
     return giveawayId;
@@ -146,10 +146,10 @@ public class AwardGiveawayEffectProps {
   }
 
    /**
-   * The giveaway code that was awarded.
+   * The giveaway code to be rewarded.
    * @return code
   **/
-  @ApiModelProperty(example = "57638t-67439hty", required = true, value = "The giveaway code that was awarded.")
+  @ApiModelProperty(example = "57638t-67439hty", required = true, value = "The giveaway code to be rewarded.")
 
   public String getCode() {
     return code;

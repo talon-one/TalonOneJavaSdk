@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.Campaign;
+import one.talon.model.CampaignEligibility;
 import one.talon.model.Coupon;
 import one.talon.model.CustomerProfile;
 import one.talon.model.Effect;
@@ -33,6 +34,7 @@ import one.talon.model.Event;
 import one.talon.model.Giveaway;
 import one.talon.model.Loyalty;
 import one.talon.model.Referral;
+import one.talon.model.RewardWithUnlocks;
 import one.talon.model.RuleFailureReason;
 
 /**
@@ -61,9 +63,17 @@ public class CustomerProfileIntegrationResponseV2 {
   @SerializedName(SERIALIZED_NAME_RULE_FAILURE_REASONS)
   private List<RuleFailureReason> ruleFailureReasons = null;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_ELIGIBILITY = "campaignEligibility";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ELIGIBILITY)
+  private List<CampaignEligibility> campaignEligibility = null;
+
   public static final String SERIALIZED_NAME_AWARDED_GIVEAWAYS = "awardedGiveaways";
   @SerializedName(SERIALIZED_NAME_AWARDED_GIVEAWAYS)
   private List<Giveaway> awardedGiveaways = null;
+
+  public static final String SERIALIZED_NAME_REWARDS = "rewards";
+  @SerializedName(SERIALIZED_NAME_REWARDS)
+  private List<RewardWithUnlocks> rewards = null;
 
   public static final String SERIALIZED_NAME_EFFECTS = "effects";
   @SerializedName(SERIALIZED_NAME_EFFECTS)
@@ -209,6 +219,37 @@ public class CustomerProfileIntegrationResponseV2 {
   }
 
 
+  public CustomerProfileIntegrationResponseV2 campaignEligibility(List<CampaignEligibility> campaignEligibility) {
+    
+    this.campaignEligibility = campaignEligibility;
+    return this;
+  }
+
+  public CustomerProfileIntegrationResponseV2 addCampaignEligibilityItem(CampaignEligibility campaignEligibilityItem) {
+    if (this.campaignEligibility == null) {
+      this.campaignEligibility = new ArrayList<CampaignEligibility>();
+    }
+    this.campaignEligibility.add(campaignEligibilityItem);
+    return this;
+  }
+
+   /**
+   * Get campaignEligibility
+   * @return campaignEligibility
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<CampaignEligibility> getCampaignEligibility() {
+    return campaignEligibility;
+  }
+
+
+  public void setCampaignEligibility(List<CampaignEligibility> campaignEligibility) {
+    this.campaignEligibility = campaignEligibility;
+  }
+
+
   public CustomerProfileIntegrationResponseV2 awardedGiveaways(List<Giveaway> awardedGiveaways) {
     
     this.awardedGiveaways = awardedGiveaways;
@@ -237,6 +278,37 @@ public class CustomerProfileIntegrationResponseV2 {
 
   public void setAwardedGiveaways(List<Giveaway> awardedGiveaways) {
     this.awardedGiveaways = awardedGiveaways;
+  }
+
+
+  public CustomerProfileIntegrationResponseV2 rewards(List<RewardWithUnlocks> rewards) {
+    
+    this.rewards = rewards;
+    return this;
+  }
+
+  public CustomerProfileIntegrationResponseV2 addRewardsItem(RewardWithUnlocks rewardsItem) {
+    if (this.rewards == null) {
+      this.rewards = new ArrayList<RewardWithUnlocks>();
+    }
+    this.rewards.add(rewardsItem);
+    return this;
+  }
+
+   /**
+   * The rewards for the customer profile.
+   * @return rewards
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The rewards for the customer profile.")
+
+  public List<RewardWithUnlocks> getRewards() {
+    return rewards;
+  }
+
+
+  public void setRewards(List<RewardWithUnlocks> rewards) {
+    this.rewards = rewards;
   }
 
 
@@ -335,7 +407,9 @@ public class CustomerProfileIntegrationResponseV2 {
         Objects.equals(this.loyalty, customerProfileIntegrationResponseV2.loyalty) &&
         Objects.equals(this.triggeredCampaigns, customerProfileIntegrationResponseV2.triggeredCampaigns) &&
         Objects.equals(this.ruleFailureReasons, customerProfileIntegrationResponseV2.ruleFailureReasons) &&
+        Objects.equals(this.campaignEligibility, customerProfileIntegrationResponseV2.campaignEligibility) &&
         Objects.equals(this.awardedGiveaways, customerProfileIntegrationResponseV2.awardedGiveaways) &&
+        Objects.equals(this.rewards, customerProfileIntegrationResponseV2.rewards) &&
         Objects.equals(this.effects, customerProfileIntegrationResponseV2.effects) &&
         Objects.equals(this.createdCoupons, customerProfileIntegrationResponseV2.createdCoupons) &&
         Objects.equals(this.createdReferrals, customerProfileIntegrationResponseV2.createdReferrals);
@@ -343,7 +417,7 @@ public class CustomerProfileIntegrationResponseV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerProfile, event, loyalty, triggeredCampaigns, ruleFailureReasons, awardedGiveaways, effects, createdCoupons, createdReferrals);
+    return Objects.hash(customerProfile, event, loyalty, triggeredCampaigns, ruleFailureReasons, campaignEligibility, awardedGiveaways, rewards, effects, createdCoupons, createdReferrals);
   }
 
 
@@ -356,7 +430,9 @@ public class CustomerProfileIntegrationResponseV2 {
     sb.append("    loyalty: ").append(toIndentedString(loyalty)).append("\n");
     sb.append("    triggeredCampaigns: ").append(toIndentedString(triggeredCampaigns)).append("\n");
     sb.append("    ruleFailureReasons: ").append(toIndentedString(ruleFailureReasons)).append("\n");
+    sb.append("    campaignEligibility: ").append(toIndentedString(campaignEligibility)).append("\n");
     sb.append("    awardedGiveaways: ").append(toIndentedString(awardedGiveaways)).append("\n");
+    sb.append("    rewards: ").append(toIndentedString(rewards)).append("\n");
     sb.append("    effects: ").append(toIndentedString(effects)).append("\n");
     sb.append("    createdCoupons: ").append(toIndentedString(createdCoupons)).append("\n");
     sb.append("    createdReferrals: ").append(toIndentedString(createdReferrals)).append("\n");

@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;showNotification\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;show notification\&quot; effect.
+ * You can use notifications to inform customers of certain events. There are four types of notification messages:  - &#x60;Info&#x60; - &#x60;Offer&#x60; - &#x60;Error&#x60; - &#x60;Misc&#x60;  It is up to you to use the Rule Builder to decide why and when to show notifications. Notifications can be used as both rule effects and failure effects.  A common use case is to display the notification at the top of the cart view in your web app. You can use the notification type to vary the styling of the notification message.
  */
-@ApiModel(description = "The properties specific to the \"showNotification\" effect. This gets triggered whenever a validated rule contained a \"show notification\" effect.")
+@ApiModel(description = "You can use notifications to inform customers of certain events. There are four types of notification messages:  - `Info` - `Offer` - `Error` - `Misc`  It is up to you to use the Rule Builder to decide why and when to show notifications. Notifications can be used as both rule effects and failure effects.  A common use case is to display the notification at the top of the cart view in your web app. You can use the notification type to vary the styling of the notification message.")
 
 public class ShowNotificationEffectProps {
   public static final String SERIALIZED_NAME_NOTIFICATION_TYPE = "notificationType";
@@ -50,10 +50,10 @@ public class ShowNotificationEffectProps {
   }
 
    /**
-   * The type of notification that should be shown (e.g. error/warning/info).
+   * The type of notification.
    * @return notificationType
   **/
-  @ApiModelProperty(required = true, value = "The type of notification that should be shown (e.g. error/warning/info).")
+  @ApiModelProperty(required = true, value = "The type of notification.")
 
   public String getNotificationType() {
     return notificationType;
@@ -72,10 +72,10 @@ public class ShowNotificationEffectProps {
   }
 
    /**
-   * Title of the notification.
+   * The title of the notification.
    * @return title
   **/
-  @ApiModelProperty(required = true, value = "Title of the notification.")
+  @ApiModelProperty(required = true, value = "The title of the notification.")
 
   public String getTitle() {
     return title;
@@ -94,10 +94,10 @@ public class ShowNotificationEffectProps {
   }
 
    /**
-   * Body of the notification.
+   * The body of the notification.
    * @return body
   **/
-  @ApiModelProperty(required = true, value = "Body of the notification.")
+  @ApiModelProperty(required = true, value = "The body of the notification.")
 
   public String getBody() {
     return body;

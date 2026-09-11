@@ -24,7 +24,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.Campaign;
+import one.talon.model.CampaignEligibility;
 import one.talon.model.Coupon;
+import one.talon.model.CustomerAchievement;
 import one.talon.model.CustomerProfile;
 import one.talon.model.CustomerSessionV2;
 import one.talon.model.Effect;
@@ -36,6 +38,7 @@ import one.talon.model.InventoryReferral;
 import one.talon.model.Loyalty;
 import one.talon.model.ModelReturn;
 import one.talon.model.Referral;
+import one.talon.model.RewardWithUnlocks;
 import one.talon.model.RuleFailureReason;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -81,6 +84,14 @@ public class IntegrationStateV2Test {
     }
 
     /**
+     * Test the property 'campaignEligibility'
+     */
+    @Test
+    public void campaignEligibilityTest() {
+        // TODO: test campaignEligibility
+    }
+
+    /**
      * Test the property 'effects'
      */
     @Test
@@ -118,6 +129,22 @@ public class IntegrationStateV2Test {
     @Test
     public void awardedGiveawaysTest() {
         // TODO: test awardedGiveaways
+    }
+
+    /**
+     * Test the property 'achievements'
+     */
+    @Test
+    public void achievementsTest() {
+        // TODO: test achievements
+    }
+
+    /**
+     * Test the property 'rewards'
+     */
+    @Test
+    public void rewardsTest() {
+        // TODO: test rewards
     }
 
     /**

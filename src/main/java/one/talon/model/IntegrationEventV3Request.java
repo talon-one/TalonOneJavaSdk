@@ -43,10 +43,6 @@ public class IntegrationEventV3Request {
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
   private List<Long> evaluableCampaignIds = null;
 
-  public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
-  @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
-  private String integrationId;
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
@@ -55,13 +51,17 @@ public class IntegrationEventV3Request {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
-  public static final String SERIALIZED_NAME_CONNECTED_SESSION_I_D = "connectedSessionID";
-  @SerializedName(SERIALIZED_NAME_CONNECTED_SESSION_I_D)
-  private String connectedSessionID;
+  public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
+  @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
+  private String integrationId;
 
-  public static final String SERIALIZED_NAME_PREVIOUS_EVENT_I_D = "previousEventID";
-  @SerializedName(SERIALIZED_NAME_PREVIOUS_EVENT_I_D)
-  private String previousEventID;
+  public static final String SERIALIZED_NAME_CONNECTED_SESSION_ID = "connectedSessionId";
+  @SerializedName(SERIALIZED_NAME_CONNECTED_SESSION_ID)
+  private String connectedSessionId;
+
+  public static final String SERIALIZED_NAME_REFERRAL_CODE = "referralCode";
+  @SerializedName(SERIALIZED_NAME_REFERRAL_CODE)
+  private String referralCode;
 
   public static final String SERIALIZED_NAME_LOYALTY_CARDS = "loyaltyCards";
   @SerializedName(SERIALIZED_NAME_LOYALTY_CARDS)
@@ -72,17 +72,19 @@ public class IntegrationEventV3Request {
    */
   @JsonAdapter(ResponseContentEnum.Adapter.class)
   public enum ResponseContentEnum {
-    CUSTOMERPROFILE("customerProfile"),
-    
-    TRIGGEREDCAMPAIGNS("triggeredCampaigns"),
-    
-    LOYALTY("loyalty"),
-    
     ADVANCEDEVENT("advancedEvent"),
     
     AWARDEDGIVEAWAYS("awardedGiveaways"),
     
-    RULEFAILUREREASONS("ruleFailureReasons");
+    CUSTOMERPROFILE("customerProfile"),
+    
+    LOYALTY("loyalty"),
+    
+    REFERRAL("referral"),
+    
+    RULEFAILUREREASONS("ruleFailureReasons"),
+    
+    TRIGGEREDCAMPAIGNS("triggeredCampaigns");
 
     private String value;
 
@@ -203,28 +205,6 @@ public class IntegrationEventV3Request {
   }
 
 
-  public IntegrationEventV3Request integrationId(String integrationId) {
-    
-    this.integrationId = integrationId;
-    return this;
-  }
-
-   /**
-   * The unique ID of the current event. Only one event with this ID could be activated, duplicated events are forbidden. 
-   * @return integrationId
-  **/
-  @ApiModelProperty(example = "175KJPS947296", required = true, value = "The unique ID of the current event. Only one event with this ID could be activated, duplicated events are forbidden. ")
-
-  public String getIntegrationId() {
-    return integrationId;
-  }
-
-
-  public void setIntegrationId(String integrationId) {
-    this.integrationId = integrationId;
-  }
-
-
   public IntegrationEventV3Request type(String type) {
     
     this.type = type;
@@ -232,10 +212,10 @@ public class IntegrationEventV3Request {
   }
 
    /**
-   * A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type &#x60;event&#x60; in the Campaign Manager. 
+   * The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
    * @return type
   **/
-  @ApiModelProperty(example = "pageViewed", required = true, value = "A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type `event` in the Campaign Manager. ")
+  @ApiModelProperty(example = "pageViewed", required = true, value = "The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.")
 
   public String getType() {
     return type;
@@ -270,49 +250,71 @@ public class IntegrationEventV3Request {
   }
 
 
-  public IntegrationEventV3Request connectedSessionID(String connectedSessionID) {
+  public IntegrationEventV3Request integrationId(String integrationId) {
     
-    this.connectedSessionID = connectedSessionID;
+    this.integrationId = integrationId;
     return this;
   }
 
    /**
-   * The ID of the session that happened in the past.
-   * @return connectedSessionID
+   * The unique ID of the event. Only one event with this ID can be registered. 
+   * @return integrationId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "175KJPS947296", value = "The ID of the session that happened in the past.")
+  @ApiModelProperty(example = "175KJPS947296", required = true, value = "The unique ID of the event. Only one event with this ID can be registered. ")
 
-  public String getConnectedSessionID() {
-    return connectedSessionID;
+  public String getIntegrationId() {
+    return integrationId;
   }
 
 
-  public void setConnectedSessionID(String connectedSessionID) {
-    this.connectedSessionID = connectedSessionID;
+  public void setIntegrationId(String integrationId) {
+    this.integrationId = integrationId;
   }
 
 
-  public IntegrationEventV3Request previousEventID(String previousEventID) {
+  public IntegrationEventV3Request connectedSessionId(String connectedSessionId) {
     
-    this.previousEventID = previousEventID;
+    this.connectedSessionId = connectedSessionId;
     return this;
   }
 
    /**
-   * The unique identifier of the event that happened in the past.
-   * @return previousEventID
+   * The ID of the session to reference. The session must be in &#x60;closed&#x60; state. Otherwise, the API call will fail.
+   * @return connectedSessionId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "175KJPS947296", value = "The unique identifier of the event that happened in the past.")
+  @ApiModelProperty(example = "175KJPS947296", value = "The ID of the session to reference. The session must be in `closed` state. Otherwise, the API call will fail.")
 
-  public String getPreviousEventID() {
-    return previousEventID;
+  public String getConnectedSessionId() {
+    return connectedSessionId;
   }
 
 
-  public void setPreviousEventID(String previousEventID) {
-    this.previousEventID = previousEventID;
+  public void setConnectedSessionId(String connectedSessionId) {
+    this.connectedSessionId = connectedSessionId;
+  }
+
+
+  public IntegrationEventV3Request referralCode(String referralCode) {
+    
+    this.referralCode = referralCode;
+    return this;
+  }
+
+   /**
+   * The referral code submitted with the event. The endpoint does not validate the code, and submitting a code does not redeem it. Use the \&quot;Referral code is valid\&quot; condition in the Rule Builder to validate and redeem the code, or \&quot;Referral code is valid (without redemption)\&quot; to validate without redeeming. 
+   * @return referralCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "NT2K54D9", value = "The referral code submitted with the event. The endpoint does not validate the code, and submitting a code does not redeem it. Use the \"Referral code is valid\" condition in the Rule Builder to validate and redeem the code, or \"Referral code is valid (without redemption)\" to validate without redeeming. ")
+
+  public String getReferralCode() {
+    return referralCode;
+  }
+
+
+  public void setReferralCode(String referralCode) {
+    this.referralCode = referralCode;
   }
 
 
@@ -390,18 +392,18 @@ public class IntegrationEventV3Request {
     return Objects.equals(this.profileId, integrationEventV3Request.profileId) &&
         Objects.equals(this.storeIntegrationId, integrationEventV3Request.storeIntegrationId) &&
         Objects.equals(this.evaluableCampaignIds, integrationEventV3Request.evaluableCampaignIds) &&
-        Objects.equals(this.integrationId, integrationEventV3Request.integrationId) &&
         Objects.equals(this.type, integrationEventV3Request.type) &&
         Objects.equals(this.attributes, integrationEventV3Request.attributes) &&
-        Objects.equals(this.connectedSessionID, integrationEventV3Request.connectedSessionID) &&
-        Objects.equals(this.previousEventID, integrationEventV3Request.previousEventID) &&
+        Objects.equals(this.integrationId, integrationEventV3Request.integrationId) &&
+        Objects.equals(this.connectedSessionId, integrationEventV3Request.connectedSessionId) &&
+        Objects.equals(this.referralCode, integrationEventV3Request.referralCode) &&
         Objects.equals(this.loyaltyCards, integrationEventV3Request.loyaltyCards) &&
         Objects.equals(this.responseContent, integrationEventV3Request.responseContent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, integrationId, type, attributes, connectedSessionID, previousEventID, loyaltyCards, responseContent);
+    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, type, attributes, integrationId, connectedSessionId, referralCode, loyaltyCards, responseContent);
   }
 
 
@@ -412,11 +414,11 @@ public class IntegrationEventV3Request {
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
     sb.append("    storeIntegrationId: ").append(toIndentedString(storeIntegrationId)).append("\n");
     sb.append("    evaluableCampaignIds: ").append(toIndentedString(evaluableCampaignIds)).append("\n");
-    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    connectedSessionID: ").append(toIndentedString(connectedSessionID)).append("\n");
-    sb.append("    previousEventID: ").append(toIndentedString(previousEventID)).append("\n");
+    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
+    sb.append("    connectedSessionId: ").append(toIndentedString(connectedSessionId)).append("\n");
+    sb.append("    referralCode: ").append(toIndentedString(referralCode)).append("\n");
     sb.append("    loyaltyCards: ").append(toIndentedString(loyaltyCards)).append("\n");
     sb.append("    responseContent: ").append(toIndentedString(responseContent)).append("\n");
     sb.append("}");

@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 
 public class StrikethroughLabelingNotification {
   /**
-   * The version of the strikethrough pricing notification.
+   * The version of the strikethrough pricing notification. Set for **scheduled** strikethrough pricing updates only. 
    */
   @JsonAdapter(VersionEnum.Adapter.class)
   public enum VersionEnum {
@@ -169,11 +169,11 @@ public class StrikethroughLabelingNotification {
   }
 
    /**
-   * The version of the strikethrough pricing notification.
+   * The version of the strikethrough pricing notification. Set for **scheduled** strikethrough pricing updates only. 
    * @return version
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The version of the strikethrough pricing notification.")
+  @ApiModelProperty(value = "The version of the strikethrough pricing notification. Set for **scheduled** strikethrough pricing updates only. ")
 
   public VersionEnum getVersion() {
     return version;

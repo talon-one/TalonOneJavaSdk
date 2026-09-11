@@ -24,6 +24,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import one.talon.model.BestPriorPriceMetadata;
 import org.threeten.bp.OffsetDateTime;
 
@@ -44,9 +46,9 @@ public class BestPriorPrice {
   @SerializedName(SERIALIZED_NAME_OBSERVED_AT)
   private OffsetDateTime observedAt;
 
-  public static final String SERIALIZED_NAME_CONTEXT_ID = "contextId";
-  @SerializedName(SERIALIZED_NAME_CONTEXT_ID)
-  private String contextId;
+  public static final String SERIALIZED_NAME_CONTEXT_IDS = "contextIds";
+  @SerializedName(SERIALIZED_NAME_CONTEXT_IDS)
+  private List<String> contextIds = new ArrayList<String>();
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -93,7 +95,7 @@ public class BestPriorPrice {
    * sku
    * @return sku
   **/
-  @ApiModelProperty(example = "NVR-GN-GV-UUP", required = true, value = "sku")
+  @ApiModelProperty(example = "SKU7345278", required = true, value = "sku")
 
   public String getSku() {
     return sku;
@@ -115,7 +117,7 @@ public class BestPriorPrice {
    * The date and time when the price was observed.
    * @return observedAt
   **/
-  @ApiModelProperty(example = "2020-11-10T23:00Z", required = true, value = "The date and time when the price was observed.")
+  @ApiModelProperty(example = "2025-11-10T23:00Z", required = true, value = "The date and time when the price was observed.")
 
   public OffsetDateTime getObservedAt() {
     return observedAt;
@@ -127,25 +129,30 @@ public class BestPriorPrice {
   }
 
 
-  public BestPriorPrice contextId(String contextId) {
+  public BestPriorPrice contextIds(List<String> contextIds) {
     
-    this.contextId = contextId;
+    this.contextIds = contextIds;
+    return this;
+  }
+
+  public BestPriorPrice addContextIdsItem(String contextIdsItem) {
+    this.contextIds.add(contextIdsItem);
     return this;
   }
 
    /**
-   * The context ID of the context active at the time of observation. 
-   * @return contextId
+   * The identifiers of the relevant context at the time the price was observed. Includes the context IDs of any price adjustments and of the campaigns that influenced the final price. 
+   * @return contextIds
   **/
-  @ApiModelProperty(example = "Summer Sale 2025", required = true, value = "The context ID of the context active at the time of observation. ")
+  @ApiModelProperty(example = "[SpringSale, SummerSale2025]", required = true, value = "The identifiers of the relevant context at the time the price was observed. Includes the context IDs of any price adjustments and of the campaigns that influenced the final price. ")
 
-  public String getContextId() {
-    return contextId;
+  public List<String> getContextIds() {
+    return contextIds;
   }
 
 
-  public void setContextId(String contextId) {
-    this.contextId = contextId;
+  public void setContextIds(List<String> contextIds) {
+    this.contextIds = contextIds;
   }
 
 
@@ -227,7 +234,7 @@ public class BestPriorPrice {
     return Objects.equals(this.id, bestPriorPrice.id) &&
         Objects.equals(this.sku, bestPriorPrice.sku) &&
         Objects.equals(this.observedAt, bestPriorPrice.observedAt) &&
-        Objects.equals(this.contextId, bestPriorPrice.contextId) &&
+        Objects.equals(this.contextIds, bestPriorPrice.contextIds) &&
         Objects.equals(this.price, bestPriorPrice.price) &&
         Objects.equals(this.metadata, bestPriorPrice.metadata) &&
         Objects.equals(this.target, bestPriorPrice.target);
@@ -235,7 +242,7 @@ public class BestPriorPrice {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, sku, observedAt, contextId, price, metadata, target);
+    return Objects.hash(id, sku, observedAt, contextIds, price, metadata, target);
   }
 
 
@@ -246,7 +253,7 @@ public class BestPriorPrice {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    observedAt: ").append(toIndentedString(observedAt)).append("\n");
-    sb.append("    contextId: ").append(toIndentedString(contextId)).append("\n");
+    sb.append("    contextIds: ").append(toIndentedString(contextIds)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");

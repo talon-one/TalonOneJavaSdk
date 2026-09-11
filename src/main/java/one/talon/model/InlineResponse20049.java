@@ -25,28 +25,52 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.ListCampaignStoreBudgets;
+import one.talon.model.ApplicationCIF;
 
 /**
  * InlineResponse20049
  */
 
 public class InlineResponse20049 {
+  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
+
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ListCampaignStoreBudgets> data = null;
+  private List<ApplicationCIF> data = new ArrayList<ApplicationCIF>();
 
 
-  public InlineResponse20049 data(List<ListCampaignStoreBudgets> data) {
+  public InlineResponse20049 hasMore(Boolean hasMore) {
+    
+    this.hasMore = hasMore;
+    return this;
+  }
+
+   /**
+   * Get hasMore
+   * @return hasMore
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getHasMore() {
+    return hasMore;
+  }
+
+
+  public void setHasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
+  }
+
+
+  public InlineResponse20049 data(List<ApplicationCIF> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20049 addDataItem(ListCampaignStoreBudgets dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<ListCampaignStoreBudgets>();
-    }
+  public InlineResponse20049 addDataItem(ApplicationCIF dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -55,15 +79,14 @@ public class InlineResponse20049 {
    * Get data
    * @return data
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
-  public List<ListCampaignStoreBudgets> getData() {
+  public List<ApplicationCIF> getData() {
     return data;
   }
 
 
-  public void setData(List<ListCampaignStoreBudgets> data) {
+  public void setData(List<ApplicationCIF> data) {
     this.data = data;
   }
 
@@ -77,12 +100,13 @@ public class InlineResponse20049 {
       return false;
     }
     InlineResponse20049 inlineResponse20049 = (InlineResponse20049) o;
-    return Objects.equals(this.data, inlineResponse20049.data);
+    return Objects.equals(this.hasMore, inlineResponse20049.hasMore) &&
+        Objects.equals(this.data, inlineResponse20049.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(hasMore, data);
   }
 
 
@@ -90,6 +114,7 @@ public class InlineResponse20049 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20049 {\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

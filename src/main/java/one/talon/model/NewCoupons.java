@@ -62,6 +62,10 @@ public class NewCoupons {
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_COUPONS)
   private Long numberOfCoupons;
 
+  public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
+  @SerializedName(SERIALIZED_NAME_BATCH_ID)
+  private String batchId;
+
   public static final String SERIALIZED_NAME_UNIQUE_PREFIX = "uniquePrefix";
   @SerializedName(SERIALIZED_NAME_UNIQUE_PREFIX)
   private String uniquePrefix;
@@ -89,6 +93,14 @@ public class NewCoupons {
   public static final String SERIALIZED_NAME_IMPLICITLY_RESERVED = "implicitlyReserved";
   @SerializedName(SERIALIZED_NAME_IMPLICITLY_RESERVED)
   private Boolean implicitlyReserved;
+
+  public static final String SERIALIZED_NAME_SUPPORT_REQUEST_ID = "supportRequestId";
+  @SerializedName(SERIALIZED_NAME_SUPPORT_REQUEST_ID)
+  private Long supportRequestId;
+
+  public static final String SERIALIZED_NAME_SUPPORT_REQUEST_NOTE = "supportRequestNote";
+  @SerializedName(SERIALIZED_NAME_SUPPORT_REQUEST_NOTE)
+  private String supportRequestNote;
 
 
   public NewCoupons usageLimit(Long usageLimit) {
@@ -264,6 +276,29 @@ public class NewCoupons {
   }
 
 
+  public NewCoupons batchId(String batchId) {
+    
+    this.batchId = batchId;
+    return this;
+  }
+
+   /**
+   * The batch ID that all coupons created by the request will bear. If omitted, a batch ID is generated automatically.
+   * @return batchId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3rdparty_fjsieoaa", value = "The batch ID that all coupons created by the request will bear. If omitted, a batch ID is generated automatically.")
+
+  public String getBatchId() {
+    return batchId;
+  }
+
+
+  public void setBatchId(String batchId) {
+    this.batchId = batchId;
+  }
+
+
   public NewCoupons uniquePrefix(String uniquePrefix) {
     
     this.uniquePrefix = uniquePrefix;
@@ -433,6 +468,52 @@ public class NewCoupons {
   }
 
 
+  public NewCoupons supportRequestId(Long supportRequestId) {
+    
+    this.supportRequestId = supportRequestId;
+    return this;
+  }
+
+   /**
+   * The identifier of the support request to link to the coupon creation. The request must exist and not yet be processed.
+   * @return supportRequestId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "42", value = "The identifier of the support request to link to the coupon creation. The request must exist and not yet be processed.")
+
+  public Long getSupportRequestId() {
+    return supportRequestId;
+  }
+
+
+  public void setSupportRequestId(Long supportRequestId) {
+    this.supportRequestId = supportRequestId;
+  }
+
+
+  public NewCoupons supportRequestNote(String supportRequestNote) {
+    
+    this.supportRequestNote = supportRequestNote;
+    return this;
+  }
+
+   /**
+   * A note recorded when the linked support request is approved or rejected. Applied when &#x60;supportRequestId&#x60; is provided.
+   * @return supportRequestNote
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Approved as compensation for the delayed order.", value = "A note recorded when the linked support request is approved or rejected. Applied when `supportRequestId` is provided.")
+
+  public String getSupportRequestNote() {
+    return supportRequestNote;
+  }
+
+
+  public void setSupportRequestNote(String supportRequestNote) {
+    this.supportRequestNote = supportRequestNote;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -449,18 +530,21 @@ public class NewCoupons {
         Objects.equals(this.expiryDate, newCoupons.expiryDate) &&
         Objects.equals(this.limits, newCoupons.limits) &&
         Objects.equals(this.numberOfCoupons, newCoupons.numberOfCoupons) &&
+        Objects.equals(this.batchId, newCoupons.batchId) &&
         Objects.equals(this.uniquePrefix, newCoupons.uniquePrefix) &&
         Objects.equals(this.attributes, newCoupons.attributes) &&
         Objects.equals(this.recipientIntegrationId, newCoupons.recipientIntegrationId) &&
         Objects.equals(this.validCharacters, newCoupons.validCharacters) &&
         Objects.equals(this.couponPattern, newCoupons.couponPattern) &&
         Objects.equals(this.isReservationMandatory, newCoupons.isReservationMandatory) &&
-        Objects.equals(this.implicitlyReserved, newCoupons.implicitlyReserved);
+        Objects.equals(this.implicitlyReserved, newCoupons.implicitlyReserved) &&
+        Objects.equals(this.supportRequestId, newCoupons.supportRequestId) &&
+        Objects.equals(this.supportRequestNote, newCoupons.supportRequestNote);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits, numberOfCoupons, uniquePrefix, attributes, recipientIntegrationId, validCharacters, couponPattern, isReservationMandatory, implicitlyReserved);
+    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits, numberOfCoupons, batchId, uniquePrefix, attributes, recipientIntegrationId, validCharacters, couponPattern, isReservationMandatory, implicitlyReserved, supportRequestId, supportRequestNote);
   }
 
 
@@ -475,6 +559,7 @@ public class NewCoupons {
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    numberOfCoupons: ").append(toIndentedString(numberOfCoupons)).append("\n");
+    sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    uniquePrefix: ").append(toIndentedString(uniquePrefix)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    recipientIntegrationId: ").append(toIndentedString(recipientIntegrationId)).append("\n");
@@ -482,6 +567,8 @@ public class NewCoupons {
     sb.append("    couponPattern: ").append(toIndentedString(couponPattern)).append("\n");
     sb.append("    isReservationMandatory: ").append(toIndentedString(isReservationMandatory)).append("\n");
     sb.append("    implicitlyReserved: ").append(toIndentedString(implicitlyReserved)).append("\n");
+    sb.append("    supportRequestId: ").append(toIndentedString(supportRequestId)).append("\n");
+    sb.append("    supportRequestNote: ").append(toIndentedString(supportRequestNote)).append("\n");
     sb.append("}");
     return sb.toString();
   }

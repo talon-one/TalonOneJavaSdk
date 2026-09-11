@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.AttributesSettings;
+import one.talon.model.BestPriorPriceSettings;
 import one.talon.model.LimitConfig;
 
 /**
@@ -243,6 +244,10 @@ public class NewApplication {
   public static final String SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT = "enableCampaignStateManagement";
   @SerializedName(SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT)
   private Boolean enableCampaignStateManagement;
+
+  public static final String SERIALIZED_NAME_BEST_PRIOR_PRICE_SETTINGS = "bestPriorPriceSettings";
+  @SerializedName(SERIALIZED_NAME_BEST_PRIOR_PRICE_SETTINGS)
+  private BestPriorPriceSettings bestPriorPriceSettings;
 
 
   public NewApplication name(String name) {
@@ -618,6 +623,29 @@ public class NewApplication {
   }
 
 
+  public NewApplication bestPriorPriceSettings(BestPriorPriceSettings bestPriorPriceSettings) {
+    
+    this.bestPriorPriceSettings = bestPriorPriceSettings;
+    return this;
+  }
+
+   /**
+   * Get bestPriorPriceSettings
+   * @return bestPriorPriceSettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BestPriorPriceSettings getBestPriorPriceSettings() {
+    return bestPriorPriceSettings;
+  }
+
+
+  public void setBestPriorPriceSettings(BestPriorPriceSettings bestPriorPriceSettings) {
+    this.bestPriorPriceSettings = bestPriorPriceSettings;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -642,12 +670,13 @@ public class NewApplication {
         Objects.equals(this.enablePartialDiscounts, newApplication.enablePartialDiscounts) &&
         Objects.equals(this.defaultDiscountAdditionalCostPerItemScope, newApplication.defaultDiscountAdditionalCostPerItemScope) &&
         Objects.equals(this.key, newApplication.key) &&
-        Objects.equals(this.enableCampaignStateManagement, newApplication.enableCampaignStateManagement);
+        Objects.equals(this.enableCampaignStateManagement, newApplication.enableCampaignStateManagement) &&
+        Objects.equals(this.bestPriorPriceSettings, newApplication.bestPriorPriceSettings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, key, enableCampaignStateManagement);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, key, enableCampaignStateManagement, bestPriorPriceSettings);
   }
 
 
@@ -671,6 +700,7 @@ public class NewApplication {
     sb.append("    defaultDiscountAdditionalCostPerItemScope: ").append(toIndentedString(defaultDiscountAdditionalCostPerItemScope)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    enableCampaignStateManagement: ").append(toIndentedString(enableCampaignStateManagement)).append("\n");
+    sb.append("    bestPriorPriceSettings: ").append(toIndentedString(bestPriorPriceSettings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

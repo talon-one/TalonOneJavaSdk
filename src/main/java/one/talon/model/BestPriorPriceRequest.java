@@ -118,7 +118,7 @@ public class BestPriorPriceRequest {
    * List of product SKUs to check when determining the best prior price.
    * @return skus
   **/
-  @ApiModelProperty(example = "[comma, period]", required = true, value = "List of product SKUs to check when determining the best prior price.")
+  @ApiModelProperty(example = "[SKU1241028, SKU7345278]", required = true, value = "List of product SKUs to check when determining the best prior price.")
 
   public List<String> getSkus() {
     return skus;

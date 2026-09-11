@@ -72,4 +72,20 @@ public class IntegrationHubFlowConfigTest {
         // TODO: test maxRetries
     }
 
+    /**
+     * Test the property 'instanceName'
+     */
+    @Test
+    public void instanceNameTest() {
+        // TODO: test instanceName
+    }
+
+    /**
+     * Test the property 'integrationName'
+     */
+    @Test
+    public void integrationNameTest() {
+        // TODO: test integrationName
+    }
+
 }

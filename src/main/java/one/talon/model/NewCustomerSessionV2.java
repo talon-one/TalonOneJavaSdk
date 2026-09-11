@@ -61,8 +61,12 @@ public class NewCustomerSessionV2 {
   @SerializedName(SERIALIZED_NAME_LOYALTY_CARDS)
   private List<String> loyaltyCards = null;
 
+  public static final String SERIALIZED_NAME_REWARD_INTEGRATION_IDS = "rewardIntegrationIds";
+  @SerializedName(SERIALIZED_NAME_REWARD_INTEGRATION_IDS)
+  private List<String> rewardIntegrationIds = null;
+
   /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; → &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
+   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; -&gt; &#x60;closed&#x60; 2. &#x60;open&#x60; -&gt; &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; -&gt; &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; -&gt; &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; -&gt; &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; -&gt; &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
@@ -299,6 +303,37 @@ public class NewCustomerSessionV2 {
   }
 
 
+  public NewCustomerSessionV2 rewardIntegrationIds(List<String> rewardIntegrationIds) {
+    
+    this.rewardIntegrationIds = rewardIntegrationIds;
+    return this;
+  }
+
+  public NewCustomerSessionV2 addRewardIntegrationIdsItem(String rewardIntegrationIdsItem) {
+    if (this.rewardIntegrationIds == null) {
+      this.rewardIntegrationIds = new ArrayList<String>();
+    }
+    this.rewardIntegrationIds.add(rewardIntegrationIdsItem);
+    return this;
+  }
+
+   /**
+   * The integration IDs of the unlocked rewards that can be used in this session. 
+   * @return rewardIntegrationIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[5c0b5e6d-3f8a-4c2b-9f1e-2a7d6b4c8e90]", value = "The integration IDs of the unlocked rewards that can be used in this session. ")
+
+  public List<String> getRewardIntegrationIds() {
+    return rewardIntegrationIds;
+  }
+
+
+  public void setRewardIntegrationIds(List<String> rewardIntegrationIds) {
+    this.rewardIntegrationIds = rewardIntegrationIds;
+  }
+
+
   public NewCustomerSessionV2 state(StateEnum state) {
     
     this.state = state;
@@ -306,11 +341,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; → &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
+   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; -&gt; &#x60;closed&#x60; 2. &#x60;open&#x60; -&gt; &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; -&gt; &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; -&gt; &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; -&gt; &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; -&gt; &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "open", value = "Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` → `closed` 2. `open` → `cancelled` 3. Either:    - `closed` → `cancelled` (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - `closed` → `partially_returned` (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - `closed` → `open` (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. `partially_returned` → `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). ")
+  @ApiModelProperty(example = "open", value = "Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` -> `closed` 2. `open` -> `cancelled` 3. Either:    - `closed` -> `cancelled` (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - `closed` -> `partially_returned` (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - `closed` -> `open` (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. `partially_returned` -> `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). ")
 
   public StateEnum getState() {
     return state;
@@ -484,6 +519,7 @@ public class NewCustomerSessionV2 {
         Objects.equals(this.couponCodes, newCustomerSessionV2.couponCodes) &&
         Objects.equals(this.referralCode, newCustomerSessionV2.referralCode) &&
         Objects.equals(this.loyaltyCards, newCustomerSessionV2.loyaltyCards) &&
+        Objects.equals(this.rewardIntegrationIds, newCustomerSessionV2.rewardIntegrationIds) &&
         Objects.equals(this.state, newCustomerSessionV2.state) &&
         Objects.equals(this.cartItems, newCustomerSessionV2.cartItems) &&
         Objects.equals(this.experimentVariantAllocations, newCustomerSessionV2.experimentVariantAllocations) &&
@@ -494,7 +530,7 @@ public class NewCustomerSessionV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, experimentVariantAllocations, additionalCosts, identifiers, attributes);
+    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, rewardIntegrationIds, state, cartItems, experimentVariantAllocations, additionalCosts, identifiers, attributes);
   }
 
 
@@ -508,6 +544,7 @@ public class NewCustomerSessionV2 {
     sb.append("    couponCodes: ").append(toIndentedString(couponCodes)).append("\n");
     sb.append("    referralCode: ").append(toIndentedString(referralCode)).append("\n");
     sb.append("    loyaltyCards: ").append(toIndentedString(loyaltyCards)).append("\n");
+    sb.append("    rewardIntegrationIds: ").append(toIndentedString(rewardIntegrationIds)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    cartItems: ").append(toIndentedString(cartItems)).append("\n");
     sb.append("    experimentVariantAllocations: ").append(toIndentedString(experimentVariantAllocations)).append("\n");

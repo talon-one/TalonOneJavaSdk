@@ -24,6 +24,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import one.talon.model.BestPriorPriceMetadata;
 import org.threeten.bp.OffsetDateTime;
 
@@ -40,9 +42,9 @@ public class History {
   @SerializedName(SERIALIZED_NAME_OBSERVED_AT)
   private OffsetDateTime observedAt;
 
-  public static final String SERIALIZED_NAME_CONTEXT_ID = "contextId";
-  @SerializedName(SERIALIZED_NAME_CONTEXT_ID)
-  private String contextId;
+  public static final String SERIALIZED_NAME_CONTEXT_IDS = "contextIds";
+  @SerializedName(SERIALIZED_NAME_CONTEXT_IDS)
+  private List<String> contextIds = new ArrayList<String>();
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -55,6 +57,14 @@ public class History {
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
   private Object target;
+
+  public static final String SERIALIZED_NAME_EXCLUDED_AT = "excludedAt";
+  @SerializedName(SERIALIZED_NAME_EXCLUDED_AT)
+  private OffsetDateTime excludedAt;
+
+  public static final String SERIALIZED_NAME_EXCLUSION_REASON = "exclusionReason";
+  @SerializedName(SERIALIZED_NAME_EXCLUSION_REASON)
+  private String exclusionReason;
 
 
   public History id(Long id) {
@@ -89,7 +99,7 @@ public class History {
    * The date and time when the price was observed.
    * @return observedAt
   **/
-  @ApiModelProperty(example = "2020-11-10T23:00Z", required = true, value = "The date and time when the price was observed.")
+  @ApiModelProperty(example = "2025-11-10T23:00Z", required = true, value = "The date and time when the price was observed.")
 
   public OffsetDateTime getObservedAt() {
     return observedAt;
@@ -101,25 +111,30 @@ public class History {
   }
 
 
-  public History contextId(String contextId) {
+  public History contextIds(List<String> contextIds) {
     
-    this.contextId = contextId;
+    this.contextIds = contextIds;
+    return this;
+  }
+
+  public History addContextIdsItem(String contextIdsItem) {
+    this.contextIds.add(contextIdsItem);
     return this;
   }
 
    /**
-   * Identifier of the relevant context at the time the price was observed (e.g. summer sale). 
-   * @return contextId
+   * The identifiers of the relevant context at the time the price was observed. Includes the context IDs of any price adjustments and of the campaigns that influenced the final price. 
+   * @return contextIds
   **/
-  @ApiModelProperty(example = "Summer Sale 2025", required = true, value = "Identifier of the relevant context at the time the price was observed (e.g. summer sale). ")
+  @ApiModelProperty(example = "[SpringSale, SummerSale2025]", required = true, value = "The identifiers of the relevant context at the time the price was observed. Includes the context IDs of any price adjustments and of the campaigns that influenced the final price. ")
 
-  public String getContextId() {
-    return contextId;
+  public List<String> getContextIds() {
+    return contextIds;
   }
 
 
-  public void setContextId(String contextId) {
-    this.contextId = contextId;
+  public void setContextIds(List<String> contextIds) {
+    this.contextIds = contextIds;
   }
 
 
@@ -189,6 +204,52 @@ public class History {
   }
 
 
+  public History excludedAt(OffsetDateTime excludedAt) {
+    
+    this.excludedAt = excludedAt;
+    return this;
+  }
+
+   /**
+   * The date and time when the historical price ID was excluded.
+   * @return excludedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2025-11-10T23:00Z", value = "The date and time when the historical price ID was excluded.")
+
+  public OffsetDateTime getExcludedAt() {
+    return excludedAt;
+  }
+
+
+  public void setExcludedAt(OffsetDateTime excludedAt) {
+    this.excludedAt = excludedAt;
+  }
+
+
+  public History exclusionReason(String exclusionReason) {
+    
+    this.exclusionReason = exclusionReason;
+    return this;
+  }
+
+   /**
+   * The reason for excluding this historical price ID.
+   * @return exclusionReason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Incorrect contextID value", value = "The reason for excluding this historical price ID.")
+
+  public String getExclusionReason() {
+    return exclusionReason;
+  }
+
+
+  public void setExclusionReason(String exclusionReason) {
+    this.exclusionReason = exclusionReason;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -200,15 +261,17 @@ public class History {
     History history = (History) o;
     return Objects.equals(this.id, history.id) &&
         Objects.equals(this.observedAt, history.observedAt) &&
-        Objects.equals(this.contextId, history.contextId) &&
+        Objects.equals(this.contextIds, history.contextIds) &&
         Objects.equals(this.price, history.price) &&
         Objects.equals(this.metadata, history.metadata) &&
-        Objects.equals(this.target, history.target);
+        Objects.equals(this.target, history.target) &&
+        Objects.equals(this.excludedAt, history.excludedAt) &&
+        Objects.equals(this.exclusionReason, history.exclusionReason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, observedAt, contextId, price, metadata, target);
+    return Objects.hash(id, observedAt, contextIds, price, metadata, target, excludedAt, exclusionReason);
   }
 
 
@@ -218,10 +281,12 @@ public class History {
     sb.append("class History {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    observedAt: ").append(toIndentedString(observedAt)).append("\n");
-    sb.append("    contextId: ").append(toIndentedString(contextId)).append("\n");
+    sb.append("    contextIds: ").append(toIndentedString(contextIds)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
+    sb.append("    excludedAt: ").append(toIndentedString(excludedAt)).append("\n");
+    sb.append("    exclusionReason: ").append(toIndentedString(exclusionReason)).append("\n");
     sb.append("}");
     return sb.toString();
   }

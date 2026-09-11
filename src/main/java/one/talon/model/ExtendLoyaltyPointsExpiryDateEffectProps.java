@@ -28,9 +28,9 @@ import java.util.List;
 import one.talon.model.LoyaltyLedgerEntryExpiryDateChange;
 
 /**
- * The properties specific to the \&quot;extendLoyaltyPointsExpiryDate\&quot; effect. This gets triggered when a validated rule contains the \&quot;extend expiry date\&quot; effect. The current expiry date gets extended by the time frame given in the effect. 
+ * If loyalty points have an expiry date, this effect extends the expiry of all active and pending point transactions by a selected duration. 
  */
-@ApiModel(description = "The properties specific to the \"extendLoyaltyPointsExpiryDate\" effect. This gets triggered when a validated rule contains the \"extend expiry date\" effect. The current expiry date gets extended by the time frame given in the effect. ")
+@ApiModel(description = "If loyalty points have an expiry date, this effect extends the expiry of all active and pending point transactions by a selected duration. ")
 
 public class ExtendLoyaltyPointsExpiryDateEffectProps {
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
@@ -79,10 +79,10 @@ public class ExtendLoyaltyPointsExpiryDateEffectProps {
   }
 
    /**
-   * API name of the loyalty program subledger that contains these points. added.
+   * API name of the loyalty program subledger that contains these points.
    * @return subLedgerId
   **/
-  @ApiModelProperty(required = true, value = "API name of the loyalty program subledger that contains these points. added.")
+  @ApiModelProperty(required = true, value = "API name of the loyalty program subledger that contains these points.")
 
   public String getSubLedgerId() {
     return subLedgerId;

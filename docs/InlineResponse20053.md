@@ -6,7 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;CouponFailureSummary&gt;**](CouponFailureSummary.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**data** | [**List&lt;AchievementV2&gt;**](AchievementV2.md) |  | 
 
 
 

@@ -24,6 +24,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import one.talon.model.AchievementProgress;
 import one.talon.model.TimePoint;
 import org.threeten.bp.OffsetDateTime;
@@ -184,6 +186,10 @@ public class AchievementStatusEntry {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private Long campaignId;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
+  private List<Long> campaignIds = null;
 
   /**
    * The status of the achievement.
@@ -541,11 +547,11 @@ public class AchievementStatusEntry {
   }
 
    /**
-   * The ID of the campaign the achievement belongs to.
+   * This property is **deprecated**. Use &#x60;referencedByCampaigns&#x60; instead. This field contains the first campaign ID from the related &#x60;referencedByCampaigns&#x60;, and is omitted when &#x60;referencedByCampaigns&#x60; is empty.
    * @return campaignId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "The ID of the campaign the achievement belongs to.")
+  @ApiModelProperty(example = "1", value = "This property is **deprecated**. Use `referencedByCampaigns` instead. This field contains the first campaign ID from the related `referencedByCampaigns`, and is omitted when `referencedByCampaigns` is empty.")
 
   public Long getCampaignId() {
     return campaignId;
@@ -554,6 +560,37 @@ public class AchievementStatusEntry {
 
   public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
+  }
+
+
+  public AchievementStatusEntry campaignIds(List<Long> campaignIds) {
+    
+    this.campaignIds = campaignIds;
+    return this;
+  }
+
+  public AchievementStatusEntry addCampaignIdsItem(Long campaignIdsItem) {
+    if (this.campaignIds == null) {
+      this.campaignIds = new ArrayList<Long>();
+    }
+    this.campaignIds.add(campaignIdsItem);
+    return this;
+  }
+
+   /**
+   * The IDs of the campaigns that reference this achievement, in ascending order.
+   * @return campaignIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[1, 14, 27]", value = "The IDs of the campaigns that reference this achievement, in ascending order.")
+
+  public List<Long> getCampaignIds() {
+    return campaignIds;
+  }
+
+
+  public void setCampaignIds(List<Long> campaignIds) {
+    this.campaignIds = campaignIds;
   }
 
 
@@ -626,13 +663,14 @@ public class AchievementStatusEntry {
         Objects.equals(this.endDate, achievementStatusEntry.endDate) &&
         Objects.equals(this.allowRollbackAfterCompletion, achievementStatusEntry.allowRollbackAfterCompletion) &&
         Objects.equals(this.campaignId, achievementStatusEntry.campaignId) &&
+        Objects.equals(this.campaignIds, achievementStatusEntry.campaignIds) &&
         Objects.equals(this.status, achievementStatusEntry.status) &&
         Objects.equals(this.currentProgress, achievementStatusEntry.currentProgress);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, name, title, description, target, period, periodEndOverride, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, campaignId, status, currentProgress);
+    return Objects.hash(id, created, name, title, description, target, period, periodEndOverride, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, campaignId, campaignIds, status, currentProgress);
   }
 
 
@@ -654,6 +692,7 @@ public class AchievementStatusEntry {
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    allowRollbackAfterCompletion: ").append(toIndentedString(allowRollbackAfterCompletion)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    currentProgress: ").append(toIndentedString(currentProgress)).append("\n");
     sb.append("}");

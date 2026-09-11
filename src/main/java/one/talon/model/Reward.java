@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.Binding;
+import one.talon.model.RewardPointsRequired;
+import one.talon.model.Rule;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -63,6 +66,26 @@ public class Reward {
   public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
   @SerializedName(SERIALIZED_NAME_SANDBOX)
   private Boolean sandbox;
+
+  public static final String SERIALIZED_NAME_ELIGIBILITY_CONDITIONS = "eligibilityConditions";
+  @SerializedName(SERIALIZED_NAME_ELIGIBILITY_CONDITIONS)
+  private Rule eligibilityConditions;
+
+  public static final String SERIALIZED_NAME_RULE = "rule";
+  @SerializedName(SERIALIZED_NAME_RULE)
+  private Rule rule;
+
+  public static final String SERIALIZED_NAME_BINDINGS = "bindings";
+  @SerializedName(SERIALIZED_NAME_BINDINGS)
+  private List<Binding> bindings = null;
+
+  public static final String SERIALIZED_NAME_POINTS_REQUIRED = "pointsRequired";
+  @SerializedName(SERIALIZED_NAME_POINTS_REQUIRED)
+  private List<RewardPointsRequired> pointsRequired = null;
+
+  public static final String SERIALIZED_NAME_MODIFIED = "modified";
+  @SerializedName(SERIALIZED_NAME_MODIFIED)
+  private OffsetDateTime modified;
 
   /**
    * The status of the reward.
@@ -298,6 +321,137 @@ public class Reward {
   }
 
 
+  public Reward eligibilityConditions(Rule eligibilityConditions) {
+    
+    this.eligibilityConditions = eligibilityConditions;
+    return this;
+  }
+
+   /**
+   * Get eligibilityConditions
+   * @return eligibilityConditions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Rule getEligibilityConditions() {
+    return eligibilityConditions;
+  }
+
+
+  public void setEligibilityConditions(Rule eligibilityConditions) {
+    this.eligibilityConditions = eligibilityConditions;
+  }
+
+
+  public Reward rule(Rule rule) {
+    
+    this.rule = rule;
+    return this;
+  }
+
+   /**
+   * Get rule
+   * @return rule
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Rule getRule() {
+    return rule;
+  }
+
+
+  public void setRule(Rule rule) {
+    this.rule = rule;
+  }
+
+
+  public Reward bindings(List<Binding> bindings) {
+    
+    this.bindings = bindings;
+    return this;
+  }
+
+  public Reward addBindingsItem(Binding bindingsItem) {
+    if (this.bindings == null) {
+      this.bindings = new ArrayList<Binding>();
+    }
+    this.bindings.add(bindingsItem);
+    return this;
+  }
+
+   /**
+   * A list of named variables created before the reward&#39;s rules are evaluated. Each binding pairs a name with a talang expression. The expression is evaluated once and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.
+   * @return bindings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "A list of named variables created before the reward's rules are evaluated. Each binding pairs a name with a talang expression. The expression is evaluated once and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.")
+
+  public List<Binding> getBindings() {
+    return bindings;
+  }
+
+
+  public void setBindings(List<Binding> bindings) {
+    this.bindings = bindings;
+  }
+
+
+  public Reward pointsRequired(List<RewardPointsRequired> pointsRequired) {
+    
+    this.pointsRequired = pointsRequired;
+    return this;
+  }
+
+  public Reward addPointsRequiredItem(RewardPointsRequired pointsRequiredItem) {
+    if (this.pointsRequired == null) {
+      this.pointsRequired = new ArrayList<RewardPointsRequired>();
+    }
+    this.pointsRequired.add(pointsRequiredItem);
+    return this;
+  }
+
+   /**
+   * The loyalty points required to activate the reward. Each object defines the specific loyalty program and subledger from which points are deducted when activating the reward.  **Note:** When creating a reward, the &#x60;id&#x60; of each entry is ignored and a new entry is always created. 
+   * @return pointsRequired
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The loyalty points required to activate the reward. Each object defines the specific loyalty program and subledger from which points are deducted when activating the reward.  **Note:** When creating a reward, the `id` of each entry is ignored and a new entry is always created. ")
+
+  public List<RewardPointsRequired> getPointsRequired() {
+    return pointsRequired;
+  }
+
+
+  public void setPointsRequired(List<RewardPointsRequired> pointsRequired) {
+    this.pointsRequired = pointsRequired;
+  }
+
+
+  public Reward modified(OffsetDateTime modified) {
+    
+    this.modified = modified;
+    return this;
+  }
+
+   /**
+   * The timestamp when the reward was last updated in RFC3339 format.
+   * @return modified
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The timestamp when the reward was last updated in RFC3339 format.")
+
+  public OffsetDateTime getModified() {
+    return modified;
+  }
+
+
+  public void setModified(OffsetDateTime modified) {
+    this.modified = modified;
+  }
+
+
   public Reward status(StatusEnum status) {
     
     this.status = status;
@@ -337,12 +491,17 @@ public class Reward {
         Objects.equals(this.description, reward.description) &&
         Objects.equals(this.applicationIds, reward.applicationIds) &&
         Objects.equals(this.sandbox, reward.sandbox) &&
+        Objects.equals(this.eligibilityConditions, reward.eligibilityConditions) &&
+        Objects.equals(this.rule, reward.rule) &&
+        Objects.equals(this.bindings, reward.bindings) &&
+        Objects.equals(this.pointsRequired, reward.pointsRequired) &&
+        Objects.equals(this.modified, reward.modified) &&
         Objects.equals(this.status, reward.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, name, apiName, description, applicationIds, sandbox, status);
+    return Objects.hash(id, created, accountId, name, apiName, description, applicationIds, sandbox, eligibilityConditions, rule, bindings, pointsRequired, modified, status);
   }
 
 
@@ -358,6 +517,11 @@ public class Reward {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
+    sb.append("    eligibilityConditions: ").append(toIndentedString(eligibilityConditions)).append("\n");
+    sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
+    sb.append("    bindings: ").append(toIndentedString(bindings)).append("\n");
+    sb.append("    pointsRequired: ").append(toIndentedString(pointsRequired)).append("\n");
+    sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

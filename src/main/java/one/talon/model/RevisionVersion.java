@@ -125,7 +125,9 @@ public class RevisionVersion {
     
     STRIKETHROUGH("strikethrough"),
     
-    ACHIEVEMENTS("achievements");
+    ACHIEVEMENTS("achievements"),
+    
+    ADVANCEDEVENTS("advancedEvents");
 
     private String value;
 

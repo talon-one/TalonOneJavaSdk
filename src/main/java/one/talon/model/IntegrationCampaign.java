@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.RuleMetadata;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -32,13 +33,13 @@ import org.threeten.bp.OffsetDateTime;
  */
 
 public class IntegrationCampaign {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
-
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
   private Long applicationId;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Long id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -128,7 +129,9 @@ public class IntegrationCampaign {
     
     STRIKETHROUGH("strikethrough"),
     
-    ACHIEVEMENTS("achievements");
+    ACHIEVEMENTS("achievements"),
+    
+    ADVANCEDEVENTS("advancedEvents");
 
     private String value;
 
@@ -172,27 +175,17 @@ public class IntegrationCampaign {
   @SerializedName(SERIALIZED_NAME_FEATURES)
   private List<FeaturesEnum> features = new ArrayList<FeaturesEnum>();
 
+  public static final String SERIALIZED_NAME_RULES = "rules";
+  @SerializedName(SERIALIZED_NAME_RULES)
+  private List<RuleMetadata> rules = new ArrayList<RuleMetadata>();
 
-  public IntegrationCampaign id(Long id) {
-    
-    this.id = id;
-    return this;
-  }
+  public static final String SERIALIZED_NAME_LINKED_STORE_IDS = "linkedStoreIds";
+  @SerializedName(SERIALIZED_NAME_LINKED_STORE_IDS)
+  private List<Long> linkedStoreIds = null;
 
-   /**
-   * Unique ID of Campaign.
-   * @return id
-  **/
-  @ApiModelProperty(example = "4", required = true, value = "Unique ID of Campaign.")
-
-  public Long getId() {
-    return id;
-  }
-
-
-  public void setId(Long id) {
-    this.id = id;
-  }
+  public static final String SERIALIZED_NAME_LINKED_AUDIENCE_IDS = "linkedAudienceIds";
+  @SerializedName(SERIALIZED_NAME_LINKED_AUDIENCE_IDS)
+  private List<Long> linkedAudienceIds = null;
 
 
   public IntegrationCampaign applicationId(Long applicationId) {
@@ -217,6 +210,28 @@ public class IntegrationCampaign {
   }
 
 
+  public IntegrationCampaign id(Long id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Unique ID of Campaign.
+   * @return id
+  **/
+  @ApiModelProperty(example = "4", required = true, value = "Unique ID of Campaign.")
+
+  public Long getId() {
+    return id;
+  }
+
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+
   public IntegrationCampaign name(String name) {
     
     this.name = name;
@@ -224,10 +239,10 @@ public class IntegrationCampaign {
   }
 
    /**
-   * A user-facing name for this campaign.
+   * The name of the campaign.
    * @return name
   **/
-  @ApiModelProperty(example = "Summer promotions", required = true, value = "A user-facing name for this campaign.")
+  @ApiModelProperty(example = "Summer promotions", required = true, value = "The name of the campaign.")
 
   public String getName() {
     return name;
@@ -407,6 +422,95 @@ public class IntegrationCampaign {
   }
 
 
+  public IntegrationCampaign rules(List<RuleMetadata> rules) {
+    
+    this.rules = rules;
+    return this;
+  }
+
+  public IntegrationCampaign addRulesItem(RuleMetadata rulesItem) {
+    this.rules.add(rulesItem);
+    return this;
+  }
+
+   /**
+   * A list of rules containing customer-facing details of the rewards defined in the campaign.
+   * @return rules
+  **/
+  @ApiModelProperty(required = true, value = "A list of rules containing customer-facing details of the rewards defined in the campaign.")
+
+  public List<RuleMetadata> getRules() {
+    return rules;
+  }
+
+
+  public void setRules(List<RuleMetadata> rules) {
+    this.rules = rules;
+  }
+
+
+  public IntegrationCampaign linkedStoreIds(List<Long> linkedStoreIds) {
+    
+    this.linkedStoreIds = linkedStoreIds;
+    return this;
+  }
+
+  public IntegrationCampaign addLinkedStoreIdsItem(Long linkedStoreIdsItem) {
+    if (this.linkedStoreIds == null) {
+      this.linkedStoreIds = new ArrayList<Long>();
+    }
+    this.linkedStoreIds.add(linkedStoreIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of store IDs linked to this campaign.
+   * @return linkedStoreIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[1, 2]", value = "A list of store IDs linked to this campaign.")
+
+  public List<Long> getLinkedStoreIds() {
+    return linkedStoreIds;
+  }
+
+
+  public void setLinkedStoreIds(List<Long> linkedStoreIds) {
+    this.linkedStoreIds = linkedStoreIds;
+  }
+
+
+  public IntegrationCampaign linkedAudienceIds(List<Long> linkedAudienceIds) {
+    
+    this.linkedAudienceIds = linkedAudienceIds;
+    return this;
+  }
+
+  public IntegrationCampaign addLinkedAudienceIdsItem(Long linkedAudienceIdsItem) {
+    if (this.linkedAudienceIds == null) {
+      this.linkedAudienceIds = new ArrayList<Long>();
+    }
+    this.linkedAudienceIds.add(linkedAudienceIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of audience IDs linked to this campaign.
+   * @return linkedAudienceIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[3, 4]", value = "A list of audience IDs linked to this campaign.")
+
+  public List<Long> getLinkedAudienceIds() {
+    return linkedAudienceIds;
+  }
+
+
+  public void setLinkedAudienceIds(List<Long> linkedAudienceIds) {
+    this.linkedAudienceIds = linkedAudienceIds;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -416,8 +520,8 @@ public class IntegrationCampaign {
       return false;
     }
     IntegrationCampaign integrationCampaign = (IntegrationCampaign) o;
-    return Objects.equals(this.id, integrationCampaign.id) &&
-        Objects.equals(this.applicationId, integrationCampaign.applicationId) &&
+    return Objects.equals(this.applicationId, integrationCampaign.applicationId) &&
+        Objects.equals(this.id, integrationCampaign.id) &&
         Objects.equals(this.name, integrationCampaign.name) &&
         Objects.equals(this.description, integrationCampaign.description) &&
         Objects.equals(this.startTime, integrationCampaign.startTime) &&
@@ -425,12 +529,15 @@ public class IntegrationCampaign {
         Objects.equals(this.attributes, integrationCampaign.attributes) &&
         Objects.equals(this.state, integrationCampaign.state) &&
         Objects.equals(this.tags, integrationCampaign.tags) &&
-        Objects.equals(this.features, integrationCampaign.features);
+        Objects.equals(this.features, integrationCampaign.features) &&
+        Objects.equals(this.rules, integrationCampaign.rules) &&
+        Objects.equals(this.linkedStoreIds, integrationCampaign.linkedStoreIds) &&
+        Objects.equals(this.linkedAudienceIds, integrationCampaign.linkedAudienceIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, applicationId, name, description, startTime, endTime, attributes, state, tags, features);
+    return Objects.hash(applicationId, id, name, description, startTime, endTime, attributes, state, tags, features, rules, linkedStoreIds, linkedAudienceIds);
   }
 
 
@@ -438,8 +545,8 @@ public class IntegrationCampaign {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationCampaign {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
@@ -448,6 +555,9 @@ public class IntegrationCampaign {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
+    sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
+    sb.append("    linkedStoreIds: ").append(toIndentedString(linkedStoreIds)).append("\n");
+    sb.append("    linkedAudienceIds: ").append(toIndentedString(linkedAudienceIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

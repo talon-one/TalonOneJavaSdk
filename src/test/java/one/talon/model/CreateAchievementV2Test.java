@@ -125,19 +125,19 @@ public class CreateAchievementV2Test {
     }
 
     /**
-     * Test the property 'sandbox'
-     */
-    @Test
-    public void sandboxTest() {
-        // TODO: test sandbox
-    }
-
-    /**
      * Test the property 'subscribedApplications'
      */
     @Test
     public void subscribedApplicationsTest() {
         // TODO: test subscribedApplications
+    }
+
+    /**
+     * Test the property 'sandbox'
+     */
+    @Test
+    public void sandboxTest() {
+        // TODO: test sandbox
     }
 
     /**

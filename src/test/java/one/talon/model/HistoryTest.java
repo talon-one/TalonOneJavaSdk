@@ -22,6 +22,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import one.talon.model.BestPriorPriceMetadata;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
@@ -60,11 +62,11 @@ public class HistoryTest {
     }
 
     /**
-     * Test the property 'contextId'
+     * Test the property 'contextIds'
      */
     @Test
-    public void contextIdTest() {
-        // TODO: test contextId
+    public void contextIdsTest() {
+        // TODO: test contextIds
     }
 
     /**
@@ -89,6 +91,22 @@ public class HistoryTest {
     @Test
     public void targetTest() {
         // TODO: test target
+    }
+
+    /**
+     * Test the property 'excludedAt'
+     */
+    @Test
+    public void excludedAtTest() {
+        // TODO: test excludedAt
+    }
+
+    /**
+     * Test the property 'exclusionReason'
+     */
+    @Test
+    public void exclusionReasonTest() {
+        // TODO: test exclusionReason
     }
 
 }

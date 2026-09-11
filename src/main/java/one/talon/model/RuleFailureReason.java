@@ -58,6 +58,14 @@ public class RuleFailureReason {
   @SerializedName(SERIALIZED_NAME_REFERRAL_VALUE)
   private String referralValue;
 
+  public static final String SERIALIZED_NAME_REWARD_ID = "rewardId";
+  @SerializedName(SERIALIZED_NAME_REWARD_ID)
+  private Long rewardId;
+
+  public static final String SERIALIZED_NAME_REWARD_INTEGRATION_ID = "rewardIntegrationId";
+  @SerializedName(SERIALIZED_NAME_REWARD_INTEGRATION_ID)
+  private String rewardIntegrationId;
+
   public static final String SERIALIZED_NAME_RULE_INDEX = "ruleIndex";
   @SerializedName(SERIALIZED_NAME_RULE_INDEX)
   private Long ruleIndex;
@@ -245,6 +253,52 @@ public class RuleFailureReason {
   }
 
 
+  public RuleFailureReason rewardId(Long rewardId) {
+    
+    this.rewardId = rewardId;
+    return this;
+  }
+
+   /**
+   * The ID of the reward that was being evaluated at the time of the rule failure.
+   * @return rewardId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "7", value = "The ID of the reward that was being evaluated at the time of the rule failure.")
+
+  public Long getRewardId() {
+    return rewardId;
+  }
+
+
+  public void setRewardId(Long rewardId) {
+    this.rewardId = rewardId;
+  }
+
+
+  public RuleFailureReason rewardIntegrationId(String rewardIntegrationId) {
+    
+    this.rewardIntegrationId = rewardIntegrationId;
+    return this;
+  }
+
+   /**
+   * The integration ID of the reward that was being evaluated at the time of the rule failure.
+   * @return rewardIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "5c0b5e6d-3f8a-4c2b-9f1e-2a7d6b4c8e90", value = "The integration ID of the reward that was being evaluated at the time of the rule failure.")
+
+  public String getRewardIntegrationId() {
+    return rewardIntegrationId;
+  }
+
+
+  public void setRewardIntegrationId(String rewardIntegrationId) {
+    this.rewardIntegrationId = rewardIntegrationId;
+  }
+
+
   public RuleFailureReason ruleIndex(Long ruleIndex) {
     
     this.ruleIndex = ruleIndex;
@@ -420,6 +474,8 @@ public class RuleFailureReason {
         Objects.equals(this.couponValue, ruleFailureReason.couponValue) &&
         Objects.equals(this.referralID, ruleFailureReason.referralID) &&
         Objects.equals(this.referralValue, ruleFailureReason.referralValue) &&
+        Objects.equals(this.rewardId, ruleFailureReason.rewardId) &&
+        Objects.equals(this.rewardIntegrationId, ruleFailureReason.rewardIntegrationId) &&
         Objects.equals(this.ruleIndex, ruleFailureReason.ruleIndex) &&
         Objects.equals(this.ruleName, ruleFailureReason.ruleName) &&
         Objects.equals(this.conditionIndex, ruleFailureReason.conditionIndex) &&
@@ -431,7 +487,7 @@ public class RuleFailureReason {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignID, campaignName, rulesetID, couponID, couponValue, referralID, referralValue, ruleIndex, ruleName, conditionIndex, effectIndex, details, evaluationGroupID, evaluationGroupMode);
+    return Objects.hash(campaignID, campaignName, rulesetID, couponID, couponValue, referralID, referralValue, rewardId, rewardIntegrationId, ruleIndex, ruleName, conditionIndex, effectIndex, details, evaluationGroupID, evaluationGroupMode);
   }
 
 
@@ -446,6 +502,8 @@ public class RuleFailureReason {
     sb.append("    couponValue: ").append(toIndentedString(couponValue)).append("\n");
     sb.append("    referralID: ").append(toIndentedString(referralID)).append("\n");
     sb.append("    referralValue: ").append(toIndentedString(referralValue)).append("\n");
+    sb.append("    rewardId: ").append(toIndentedString(rewardId)).append("\n");
+    sb.append("    rewardIntegrationId: ").append(toIndentedString(rewardIntegrationId)).append("\n");
     sb.append("    ruleIndex: ").append(toIndentedString(ruleIndex)).append("\n");
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
     sb.append("    conditionIndex: ").append(toIndentedString(conditionIndex)).append("\n");

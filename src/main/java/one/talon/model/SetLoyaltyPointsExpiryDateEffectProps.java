@@ -29,9 +29,9 @@ import one.talon.model.LoyaltyLedgerEntryExpiryDateChange;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * The properties specific to the \&quot;setLoyaltyPointsExpiryDate\&quot; effect. This gets triggered when a validated rule contains the \&quot;set expiry date\&quot; effect. The current expiry date gets set to the date given in the effect. 
+ * This effect updates the expiry date of all active, pending, and unlimited point transactions to a specific date. 
  */
-@ApiModel(description = "The properties specific to the \"setLoyaltyPointsExpiryDate\" effect. This gets triggered when a validated rule contains the \"set expiry date\" effect. The current expiry date gets set to the date given in the effect. ")
+@ApiModel(description = "This effect updates the expiry date of all active, pending, and unlimited point transactions to a specific date. ")
 
 public class SetLoyaltyPointsExpiryDateEffectProps {
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";

@@ -60,7 +60,13 @@ public class IntegrationRequest {
     
     RULEFAILUREREASONS("ruleFailureReasons"),
     
-    PREVIOUSRETURNS("previousReturns");
+    PREVIOUSRETURNS("previousReturns"),
+    
+    CAMPAIGNELIGIBILITY("campaignEligibility"),
+    
+    ACHIEVEMENTS("achievements"),
+    
+    UNLOCKEDREWARDS("unlockedRewards");
 
     private String value;
 

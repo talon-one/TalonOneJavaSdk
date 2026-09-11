@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;rollbackCoupon\&quot; effect. This gets triggered whenever previously closed session is now cancelled and a coupon redemption was cancelled on our internal usage limit counters.
+ * This effect indicates that a coupon code redemption has been rolled back. The coupon becomes redeemable again.  The effect is triggered when you [cancel](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#manage-the-sessions-state) a session where a coupon was accepted. See an example of use in the [cancelling a session tutorial](https://docs.talon.one/docs/dev/tutorials/roll-back-effects).
  */
-@ApiModel(description = "The properties specific to the \"rollbackCoupon\" effect. This gets triggered whenever previously closed session is now cancelled and a coupon redemption was cancelled on our internal usage limit counters.")
+@ApiModel(description = "This effect indicates that a coupon code redemption has been rolled back. The coupon becomes redeemable again.  The effect is triggered when you [cancel](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#manage-the-sessions-state) a session where a coupon was accepted. See an example of use in the [cancelling a session tutorial](https://docs.talon.one/docs/dev/tutorials/roll-back-effects).")
 
 public class RollbackCouponEffectProps {
   public static final String SERIALIZED_NAME_VALUE = "value";
@@ -42,10 +42,10 @@ public class RollbackCouponEffectProps {
   }
 
    /**
-   * The coupon code whose usage has been rolled back.
+   * The coupon code whose redemption has been rolled back.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The coupon code whose usage has been rolled back.")
+  @ApiModelProperty(required = true, value = "The coupon code whose redemption has been rolled back.")
 
   public String getValue() {
     return value;

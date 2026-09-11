@@ -26,12 +26,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.Campaign;
+import one.talon.model.CampaignEligibility;
 import one.talon.model.Coupon;
+import one.talon.model.CustomerAchievement;
 import one.talon.model.CustomerProfile;
 import one.talon.model.Effect;
 import one.talon.model.Giveaway;
 import one.talon.model.Loyalty;
 import one.talon.model.Referral;
+import one.talon.model.RewardWithUnlocks;
 import one.talon.model.RuleFailureReason;
 
 /**
@@ -52,6 +55,10 @@ public class IntegrationResponse {
   @SerializedName(SERIALIZED_NAME_TRIGGERED_CAMPAIGNS)
   private List<Campaign> triggeredCampaigns = null;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_ELIGIBILITY = "campaignEligibility";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ELIGIBILITY)
+  private List<CampaignEligibility> campaignEligibility = null;
+
   public static final String SERIALIZED_NAME_EFFECTS = "effects";
   @SerializedName(SERIALIZED_NAME_EFFECTS)
   private List<Effect> effects = new ArrayList<Effect>();
@@ -71,6 +78,14 @@ public class IntegrationResponse {
   public static final String SERIALIZED_NAME_AWARDED_GIVEAWAYS = "awardedGiveaways";
   @SerializedName(SERIALIZED_NAME_AWARDED_GIVEAWAYS)
   private List<Giveaway> awardedGiveaways = null;
+
+  public static final String SERIALIZED_NAME_ACHIEVEMENTS = "achievements";
+  @SerializedName(SERIALIZED_NAME_ACHIEVEMENTS)
+  private List<CustomerAchievement> achievements = null;
+
+  public static final String SERIALIZED_NAME_REWARDS = "rewards";
+  @SerializedName(SERIALIZED_NAME_REWARDS)
+  private List<RewardWithUnlocks> rewards = null;
 
 
   public IntegrationResponse customerProfile(CustomerProfile customerProfile) {
@@ -147,6 +162,37 @@ public class IntegrationResponse {
 
   public void setTriggeredCampaigns(List<Campaign> triggeredCampaigns) {
     this.triggeredCampaigns = triggeredCampaigns;
+  }
+
+
+  public IntegrationResponse campaignEligibility(List<CampaignEligibility> campaignEligibility) {
+    
+    this.campaignEligibility = campaignEligibility;
+    return this;
+  }
+
+  public IntegrationResponse addCampaignEligibilityItem(CampaignEligibility campaignEligibilityItem) {
+    if (this.campaignEligibility == null) {
+      this.campaignEligibility = new ArrayList<CampaignEligibility>();
+    }
+    this.campaignEligibility.add(campaignEligibilityItem);
+    return this;
+  }
+
+   /**
+   * A list of campaigns and their evaluation status for the current customer session.  **Note**:  - This response can **only** be included if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;.  - Do not include &#x60;triggeredCampaigns&#x60; or &#x60;ruleFailureReasons&#x60; in &#x60;responseContent&#x60; to avoid duplicate results. 
+   * @return campaignEligibility
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A list of campaigns and their evaluation status for the current customer session.  **Note**:  - This response can **only** be included if the `dry` parameter in the query is set to `true`.  - Do not include `triggeredCampaigns` or `ruleFailureReasons` in `responseContent` to avoid duplicate results. ")
+
+  public List<CampaignEligibility> getCampaignEligibility() {
+    return campaignEligibility;
+  }
+
+
+  public void setCampaignEligibility(List<CampaignEligibility> campaignEligibility) {
+    this.campaignEligibility = campaignEligibility;
   }
 
 
@@ -293,6 +339,68 @@ public class IntegrationResponse {
   }
 
 
+  public IntegrationResponse achievements(List<CustomerAchievement> achievements) {
+    
+    this.achievements = achievements;
+    return this;
+  }
+
+  public IntegrationResponse addAchievementsItem(CustomerAchievement achievementsItem) {
+    if (this.achievements == null) {
+      this.achievements = new ArrayList<CustomerAchievement>();
+    }
+    this.achievements.add(achievementsItem);
+    return this;
+  }
+
+   /**
+   * The achievements progress of the customer.
+   * @return achievements
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The achievements progress of the customer.")
+
+  public List<CustomerAchievement> getAchievements() {
+    return achievements;
+  }
+
+
+  public void setAchievements(List<CustomerAchievement> achievements) {
+    this.achievements = achievements;
+  }
+
+
+  public IntegrationResponse rewards(List<RewardWithUnlocks> rewards) {
+    
+    this.rewards = rewards;
+    return this;
+  }
+
+  public IntegrationResponse addRewardsItem(RewardWithUnlocks rewardsItem) {
+    if (this.rewards == null) {
+      this.rewards = new ArrayList<RewardWithUnlocks>();
+    }
+    this.rewards.add(rewardsItem);
+    return this;
+  }
+
+   /**
+   * The rewards for the customer profile.
+   * @return rewards
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The rewards for the customer profile.")
+
+  public List<RewardWithUnlocks> getRewards() {
+    return rewards;
+  }
+
+
+  public void setRewards(List<RewardWithUnlocks> rewards) {
+    this.rewards = rewards;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -305,16 +413,19 @@ public class IntegrationResponse {
     return Objects.equals(this.customerProfile, integrationResponse.customerProfile) &&
         Objects.equals(this.loyalty, integrationResponse.loyalty) &&
         Objects.equals(this.triggeredCampaigns, integrationResponse.triggeredCampaigns) &&
+        Objects.equals(this.campaignEligibility, integrationResponse.campaignEligibility) &&
         Objects.equals(this.effects, integrationResponse.effects) &&
         Objects.equals(this.ruleFailureReasons, integrationResponse.ruleFailureReasons) &&
         Objects.equals(this.createdCoupons, integrationResponse.createdCoupons) &&
         Objects.equals(this.createdReferrals, integrationResponse.createdReferrals) &&
-        Objects.equals(this.awardedGiveaways, integrationResponse.awardedGiveaways);
+        Objects.equals(this.awardedGiveaways, integrationResponse.awardedGiveaways) &&
+        Objects.equals(this.achievements, integrationResponse.achievements) &&
+        Objects.equals(this.rewards, integrationResponse.rewards);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerProfile, loyalty, triggeredCampaigns, effects, ruleFailureReasons, createdCoupons, createdReferrals, awardedGiveaways);
+    return Objects.hash(customerProfile, loyalty, triggeredCampaigns, campaignEligibility, effects, ruleFailureReasons, createdCoupons, createdReferrals, awardedGiveaways, achievements, rewards);
   }
 
 
@@ -325,11 +436,14 @@ public class IntegrationResponse {
     sb.append("    customerProfile: ").append(toIndentedString(customerProfile)).append("\n");
     sb.append("    loyalty: ").append(toIndentedString(loyalty)).append("\n");
     sb.append("    triggeredCampaigns: ").append(toIndentedString(triggeredCampaigns)).append("\n");
+    sb.append("    campaignEligibility: ").append(toIndentedString(campaignEligibility)).append("\n");
     sb.append("    effects: ").append(toIndentedString(effects)).append("\n");
     sb.append("    ruleFailureReasons: ").append(toIndentedString(ruleFailureReasons)).append("\n");
     sb.append("    createdCoupons: ").append(toIndentedString(createdCoupons)).append("\n");
     sb.append("    createdReferrals: ").append(toIndentedString(createdReferrals)).append("\n");
     sb.append("    awardedGiveaways: ").append(toIndentedString(awardedGiveaways)).append("\n");
+    sb.append("    achievements: ").append(toIndentedString(achievements)).append("\n");
+    sb.append("    rewards: ").append(toIndentedString(rewards)).append("\n");
     sb.append("}");
     return sb.toString();
   }

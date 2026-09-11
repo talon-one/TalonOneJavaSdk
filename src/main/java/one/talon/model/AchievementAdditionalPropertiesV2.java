@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.TimePoint;
 
 /**
  * AchievementAdditionalPropertiesV2
@@ -37,22 +38,24 @@ public class AchievementAdditionalPropertiesV2 {
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   private String createdBy;
 
+  public static final String SERIALIZED_NAME_PERIOD_END_OVERRIDE = "periodEndOverride";
+  @SerializedName(SERIALIZED_NAME_PERIOD_END_OVERRIDE)
+  private TimePoint periodEndOverride;
+
   public static final String SERIALIZED_NAME_HAS_PROGRESS = "hasProgress";
   @SerializedName(SERIALIZED_NAME_HAS_PROGRESS)
   private Boolean hasProgress;
 
   /**
-   * The status of the achievement.
+   * The status of the achievement.                                                                                               - &#x60;active&#x60;: The achievement is available to customers. - &#x60;scheduled&#x60;: The achievement has a &#x60;fixedStartDate&#x60; set in the future. - &#x60;expired&#x60;: The achievement&#39;s &#x60;endDate&#x60; is in the past. 
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    INPROGRESS("inprogress"),
+    ACTIVE("active"),
     
-    EXPIRED("expired"),
+    SCHEDULED("scheduled"),
     
-    NOT_STARTED("not_started"),
-    
-    COMPLETED("completed");
+    EXPIRED("expired");
 
     private String value;
 
@@ -142,6 +145,29 @@ public class AchievementAdditionalPropertiesV2 {
   }
 
 
+  public AchievementAdditionalPropertiesV2 periodEndOverride(TimePoint periodEndOverride) {
+    
+    this.periodEndOverride = periodEndOverride;
+    return this;
+  }
+
+   /**
+   * Get periodEndOverride
+   * @return periodEndOverride
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public TimePoint getPeriodEndOverride() {
+    return periodEndOverride;
+  }
+
+
+  public void setPeriodEndOverride(TimePoint periodEndOverride) {
+    this.periodEndOverride = periodEndOverride;
+  }
+
+
   public AchievementAdditionalPropertiesV2 hasProgress(Boolean hasProgress) {
     
     this.hasProgress = hasProgress;
@@ -172,11 +198,11 @@ public class AchievementAdditionalPropertiesV2 {
   }
 
    /**
-   * The status of the achievement.
+   * The status of the achievement.                                                                                               - &#x60;active&#x60;: The achievement is available to customers. - &#x60;scheduled&#x60;: The achievement has a &#x60;fixedStartDate&#x60; set in the future. - &#x60;expired&#x60;: The achievement&#39;s &#x60;endDate&#x60; is in the past. 
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "inprogress", value = "The status of the achievement.")
+  @ApiModelProperty(example = "active", value = "The status of the achievement.                                                                                               - `active`: The achievement is available to customers. - `scheduled`: The achievement has a `fixedStartDate` set in the future. - `expired`: The achievement's `endDate` is in the past. ")
 
   public StatusEnum getStatus() {
     return status;
@@ -199,13 +225,14 @@ public class AchievementAdditionalPropertiesV2 {
     AchievementAdditionalPropertiesV2 achievementAdditionalPropertiesV2 = (AchievementAdditionalPropertiesV2) o;
     return Objects.equals(this.userId, achievementAdditionalPropertiesV2.userId) &&
         Objects.equals(this.createdBy, achievementAdditionalPropertiesV2.createdBy) &&
+        Objects.equals(this.periodEndOverride, achievementAdditionalPropertiesV2.periodEndOverride) &&
         Objects.equals(this.hasProgress, achievementAdditionalPropertiesV2.hasProgress) &&
         Objects.equals(this.status, achievementAdditionalPropertiesV2.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, createdBy, hasProgress, status);
+    return Objects.hash(userId, createdBy, periodEndOverride, hasProgress, status);
   }
 
 
@@ -215,6 +242,7 @@ public class AchievementAdditionalPropertiesV2 {
     sb.append("class AchievementAdditionalPropertiesV2 {\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+    sb.append("    periodEndOverride: ").append(toIndentedString(periodEndOverride)).append("\n");
     sb.append("    hasProgress: ").append(toIndentedString(hasProgress)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

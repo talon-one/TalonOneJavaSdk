@@ -22,6 +22,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import one.talon.model.AchievementProgress;
 import one.talon.model.TimePoint;
 import org.threeten.bp.OffsetDateTime;
@@ -154,6 +156,14 @@ public class AchievementStatusEntryTest {
     @Test
     public void campaignIdTest() {
         // TODO: test campaignId
+    }
+
+    /**
+     * Test the property 'campaignIds'
+     */
+    @Test
+    public void campaignIdsTest() {
+        // TODO: test campaignIds
     }
 
     /**

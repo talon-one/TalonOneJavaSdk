@@ -26,9 +26,9 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * The properties specific to the \&quot;changeLoyaltyTierLevel\&quot; effect. This is triggered whenever the user&#39;s loyalty tier is upgraded due to a validated rule that contained an \&quot;addLoyaltyPoints\&quot; effect. 
+ * This effect indicates that a customer&#39;s loyalty tier has been upgraded.  This effect is generated only when the [Add loyalty points](https://docs.talon.one/docs/product/rules/effects/use-effects#add-loyalty-points) and the [Add loyalty points per cart item](https://docs.talon.one/docs/product/rules/effects/use-effects#add-loyalty-points-per-cart-item) effects are triggered for a particular customer, and, as a result, the customer&#39;s loyalty tier is upgraded.
  */
-@ApiModel(description = "The properties specific to the \"changeLoyaltyTierLevel\" effect. This is triggered whenever the user's loyalty tier is upgraded due to a validated rule that contained an \"addLoyaltyPoints\" effect. ")
+@ApiModel(description = "This effect indicates that a customer's loyalty tier has been upgraded.  This effect is generated only when the [Add loyalty points](https://docs.talon.one/docs/product/rules/effects/use-effects#add-loyalty-points) and the [Add loyalty points per cart item](https://docs.talon.one/docs/product/rules/effects/use-effects#add-loyalty-points-per-cart-item) effects are triggered for a particular customer, and, as a result, the customer's loyalty tier is upgraded.")
 
 public class ChangeLoyaltyTierLevelEffectProps {
   public static final String SERIALIZED_NAME_RULE_TITLE = "ruleTitle";
@@ -85,10 +85,10 @@ public class ChangeLoyaltyTierLevelEffectProps {
   }
 
    /**
-   * The ID of the loyalty program where these points were added.
+   * The ID of the loyalty program where the points were added.
    * @return programId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were added.")
+  @ApiModelProperty(required = true, value = "The ID of the loyalty program where the points were added.")
 
   public Long getProgramId() {
     return programId;
@@ -107,10 +107,10 @@ public class ChangeLoyaltyTierLevelEffectProps {
   }
 
    /**
-   * The ID of the subledger within the loyalty program where these points were added.
+   * The ID of the subledger within the loyalty program where the points were added.
    * @return subLedgerId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the subledger within the loyalty program where these points were added.")
+  @ApiModelProperty(required = true, value = "The ID of the subledger within the loyalty program where the points were added.")
 
   public String getSubLedgerId() {
     return subLedgerId;

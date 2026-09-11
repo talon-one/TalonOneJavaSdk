@@ -26,9 +26,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;setDiscountPerAdditionalCostPerItem\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;set discount per additional cost per item\&quot; effect. This is a discount that should be applied on a specific additional cost in a specific item.
+ * This effect indicates that a discount of a specific additional cost within a specific item should be applied. It gets triggered whenever a rule containing a **Discount additional cost per item** effect is validated.  Use this effect when **all** items in the cart have an additional cost. If one of more items do not have an additional cost, the rule will fail.
  */
-@ApiModel(description = "The properties specific to the \"setDiscountPerAdditionalCostPerItem\" effect. This gets triggered whenever a validated rule contained a \"set discount per additional cost per item\" effect. This is a discount that should be applied on a specific additional cost in a specific item.")
+@ApiModel(description = "This effect indicates that a discount of a specific additional cost within a specific item should be applied. It gets triggered whenever a rule containing a **Discount additional cost per item** effect is validated.  Use this effect when **all** items in the cart have an additional cost. If one of more items do not have an additional cost, the rule will fail.")
 
 public class SetDiscountPerAdditionalCostPerItemEffectProps {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -67,10 +67,10 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   }
 
    /**
-   * The name / description of this discount
+   * The description of this discount. &#x60;#number&#x60; is appended to the name. It is equal to the &#x60;position&#x60; property.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name / description of this discount")
+  @ApiModelProperty(required = true, value = "The description of this discount. `#number` is appended to the name. It is equal to the `position` property.")
 
   public String getName() {
     return name;
@@ -89,10 +89,10 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   }
 
    /**
-   * The ID of the additional cost.
+   * The identifier of the additional cost to be discounted.
    * @return additionalCostId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the additional cost.")
+  @ApiModelProperty(required = true, value = "The identifier of the additional cost to be discounted.")
 
   public Long getAdditionalCostId() {
     return additionalCostId;
@@ -111,10 +111,10 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   }
 
    /**
-   * The total monetary value of the discount.
+   * The monetary value of the effective discount applied to the item&#39;s additional cost.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The total monetary value of the discount.")
+  @ApiModelProperty(required = true, value = "The monetary value of the effective discount applied to the item's additional cost.")
 
   public BigDecimal getValue() {
     return value;
@@ -133,10 +133,10 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   }
 
    /**
-   * The index of the item in the cart item list containing the additional cost to be discounted.
+   * The index of the item in the &#x60;cartItem&#x60; object containing the additional cost that this discount applies to.
    * @return position
   **/
-  @ApiModelProperty(required = true, value = "The index of the item in the cart item list containing the additional cost to be discounted.")
+  @ApiModelProperty(required = true, value = "The index of the item in the `cartItem` object containing the additional cost that this discount applies to.")
 
   public BigDecimal getPosition() {
     return position;
@@ -155,11 +155,11 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   }
 
    /**
-   * For cart items with &#x60;quantity&#x60; &gt; 1, the sub position indicates which item the discount applies to. 
+   * The index of the item unit in its line item.
    * @return subPosition
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "For cart items with `quantity` > 1, the sub position indicates which item the discount applies to. ")
+  @ApiModelProperty(value = "The index of the item unit in its line item.")
 
   public BigDecimal getSubPosition() {
     return subPosition;
@@ -178,10 +178,10 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   }
 
    /**
-   * The name of the additional cost.
+   * The API name of the additional cost to be discounted.
    * @return additionalCost
   **/
-  @ApiModelProperty(required = true, value = "The name of the additional cost.")
+  @ApiModelProperty(required = true, value = "The API name of the additional cost to be discounted.")
 
   public String getAdditionalCost() {
     return additionalCost;
@@ -200,11 +200,11 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   }
 
    /**
-   * Only with [partial discounts enabled](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#partial-discounts). Represents the monetary value of the discount to be applied to additional discount without considering budget limitations. 
+   * _[(Partial discounts enabled only)](https://docs.talon.one/docs/product/applications/manage-general-settings#partial-discounts)_. The monetary value of the discount to be applied to the additional cost without considering budget limitations.
    * @return desiredValue
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Only with [partial discounts enabled](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#partial-discounts). Represents the monetary value of the discount to be applied to additional discount without considering budget limitations. ")
+  @ApiModelProperty(value = "_[(Partial discounts enabled only)](https://docs.talon.one/docs/product/applications/manage-general-settings#partial-discounts)_. The monetary value of the discount to be applied to the additional cost without considering budget limitations.")
 
   public BigDecimal getDesiredValue() {
     return desiredValue;

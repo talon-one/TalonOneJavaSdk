@@ -7,7 +7,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;AudienceAnalytics&gt;**](AudienceAnalytics.md) |  | 
+**totalResultSize** | **Long** |  |  [optional]
+**data** | [**List&lt;Audience&gt;**](Audience.md) |  | 
 
 
 

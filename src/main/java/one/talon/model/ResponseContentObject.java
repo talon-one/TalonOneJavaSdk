@@ -46,7 +46,13 @@ public class ResponseContentObject {
     
     AWARDEDGIVEAWAYS("awardedGiveaways"),
     
-    RULEFAILUREREASONS("ruleFailureReasons");
+    RULEFAILUREREASONS("ruleFailureReasons"),
+    
+    CAMPAIGNELIGIBILITY("campaignEligibility"),
+    
+    ACHIEVEMENTS("achievements"),
+    
+    UNLOCKEDREWARDS("unlockedRewards");
 
     private String value;
 

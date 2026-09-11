@@ -38,6 +38,65 @@ public class UpdateExperiment {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN)
   private UpdateCampaign campaign;
 
+  /**
+   * The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to &#x60;other&#x60;, multiple metrics are used. If omitted, the current value is preserved. 
+   */
+  @JsonAdapter(GoalTypeEnum.Adapter.class)
+  public enum GoalTypeEnum {
+    OTHER("other"),
+    
+    MAXIMIZE_REVENUE("maximize_revenue"),
+    
+    MAXIMIZE_ITEMS_SOLD("maximize_items_sold"),
+    
+    OPTIMIZE_DISCOUNT_EFFICIENCY("optimize_discount_efficiency");
+
+    private String value;
+
+    GoalTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static GoalTypeEnum fromValue(String value) {
+      for (GoalTypeEnum b : GoalTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<GoalTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final GoalTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public GoalTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return GoalTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_GOAL_TYPE = "goalType";
+  @SerializedName(SERIALIZED_NAME_GOAL_TYPE)
+  private GoalTypeEnum goalType;
+
+  public static final String SERIALIZED_NAME_GOAL_DESCRIPTION = "goalDescription";
+  @SerializedName(SERIALIZED_NAME_GOAL_DESCRIPTION)
+  private String goalDescription;
+
 
   public UpdateExperiment isVariantAssignmentExternal(Boolean isVariantAssignmentExternal) {
     
@@ -83,6 +142,52 @@ public class UpdateExperiment {
   }
 
 
+  public UpdateExperiment goalType(GoalTypeEnum goalType) {
+    
+    this.goalType = goalType;
+    return this;
+  }
+
+   /**
+   * The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to &#x60;other&#x60;, multiple metrics are used. If omitted, the current value is preserved. 
+   * @return goalType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to `other`, multiple metrics are used. If omitted, the current value is preserved. ")
+
+  public GoalTypeEnum getGoalType() {
+    return goalType;
+  }
+
+
+  public void setGoalType(GoalTypeEnum goalType) {
+    this.goalType = goalType;
+  }
+
+
+  public UpdateExperiment goalDescription(String goalDescription) {
+    
+    this.goalDescription = goalDescription;
+    return this;
+  }
+
+   /**
+   * A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. If omitted, the current value is preserved. 
+   * @return goalDescription
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Offering free shipping will increase average order revenue more than a 10% discount", value = "A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. If omitted, the current value is preserved. ")
+
+  public String getGoalDescription() {
+    return goalDescription;
+  }
+
+
+  public void setGoalDescription(String goalDescription) {
+    this.goalDescription = goalDescription;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -93,12 +198,14 @@ public class UpdateExperiment {
     }
     UpdateExperiment updateExperiment = (UpdateExperiment) o;
     return Objects.equals(this.isVariantAssignmentExternal, updateExperiment.isVariantAssignmentExternal) &&
-        Objects.equals(this.campaign, updateExperiment.campaign);
+        Objects.equals(this.campaign, updateExperiment.campaign) &&
+        Objects.equals(this.goalType, updateExperiment.goalType) &&
+        Objects.equals(this.goalDescription, updateExperiment.goalDescription);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isVariantAssignmentExternal, campaign);
+    return Objects.hash(isVariantAssignmentExternal, campaign, goalType, goalDescription);
   }
 
 
@@ -108,6 +215,8 @@ public class UpdateExperiment {
     sb.append("class UpdateExperiment {\n");
     sb.append("    isVariantAssignmentExternal: ").append(toIndentedString(isVariantAssignmentExternal)).append("\n");
     sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
+    sb.append("    goalType: ").append(toIndentedString(goalType)).append("\n");
+    sb.append("    goalDescription: ").append(toIndentedString(goalDescription)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -102,6 +102,14 @@ public class NewCouponsTest {
     }
 
     /**
+     * Test the property 'batchId'
+     */
+    @Test
+    public void batchIdTest() {
+        // TODO: test batchId
+    }
+
+    /**
      * Test the property 'uniquePrefix'
      */
     @Test
@@ -155,6 +163,22 @@ public class NewCouponsTest {
     @Test
     public void implicitlyReservedTest() {
         // TODO: test implicitlyReserved
+    }
+
+    /**
+     * Test the property 'supportRequestId'
+     */
+    @Test
+    public void supportRequestIdTest() {
+        // TODO: test supportRequestId
+    }
+
+    /**
+     * Test the property 'supportRequestNote'
+     */
+    @Test
+    public void supportRequestNoteTest() {
+        // TODO: test supportRequestNote
     }
 
 }

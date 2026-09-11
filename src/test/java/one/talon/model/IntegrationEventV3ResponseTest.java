@@ -24,13 +24,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.Campaign;
+import one.talon.model.CampaignEligibility;
 import one.talon.model.Coupon;
+import one.talon.model.CustomerAchievement;
 import one.talon.model.CustomerProfile;
 import one.talon.model.Effect;
 import one.talon.model.EventV3;
 import one.talon.model.Giveaway;
+import one.talon.model.InventoryReferral;
 import one.talon.model.Loyalty;
 import one.talon.model.Referral;
+import one.talon.model.RewardWithUnlocks;
 import one.talon.model.RuleFailureReason;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -76,6 +80,14 @@ public class IntegrationEventV3ResponseTest {
     }
 
     /**
+     * Test the property 'campaignEligibility'
+     */
+    @Test
+    public void campaignEligibilityTest() {
+        // TODO: test campaignEligibility
+    }
+
+    /**
      * Test the property 'effects'
      */
     @Test
@@ -116,11 +128,35 @@ public class IntegrationEventV3ResponseTest {
     }
 
     /**
+     * Test the property 'achievements'
+     */
+    @Test
+    public void achievementsTest() {
+        // TODO: test achievements
+    }
+
+    /**
+     * Test the property 'rewards'
+     */
+    @Test
+    public void rewardsTest() {
+        // TODO: test rewards
+    }
+
+    /**
      * Test the property 'advancedEvent'
      */
     @Test
     public void advancedEventTest() {
         // TODO: test advancedEvent
+    }
+
+    /**
+     * Test the property 'referral'
+     */
+    @Test
+    public void referralTest() {
+        // TODO: test referral
     }
 
 }
