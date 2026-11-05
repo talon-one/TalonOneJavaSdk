@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.ApplicationCIF;
+import one.talon.model.Change;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,6 +41,14 @@ public class InlineResponse20048Test {
     @Test
     public void testInlineResponse20048() {
         // TODO: test InlineResponse20048
+    }
+
+    /**
+     * Test the property 'totalResultSize'
+     */
+    @Test
+    public void totalResultSizeTest() {
+        // TODO: test totalResultSize
     }
 
     /**

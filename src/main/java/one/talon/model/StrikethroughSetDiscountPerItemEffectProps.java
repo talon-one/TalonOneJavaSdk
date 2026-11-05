@@ -50,10 +50,10 @@ public class StrikethroughSetDiscountPerItemEffectProps {
   }
 
    /**
-   * effect name.
+   * The effect name.
    * @return name
   **/
-  @ApiModelProperty(example = "1EuroOff", required = true, value = "effect name.")
+  @ApiModelProperty(example = "1EuroOff", required = true, value = "The effect name.")
 
   public String getName() {
     return name;
@@ -72,10 +72,10 @@ public class StrikethroughSetDiscountPerItemEffectProps {
   }
 
    /**
-   * discount value.
+   * The discount value.
    * @return value
   **/
-  @ApiModelProperty(example = "1", required = true, value = "discount value.")
+  @ApiModelProperty(example = "1", required = true, value = "The discount value.")
 
   public Object getValue() {
     return value;
@@ -94,11 +94,11 @@ public class StrikethroughSetDiscountPerItemEffectProps {
   }
 
    /**
-   * Get excludedFromPriceHistory
+   * When set to &#x60;true&#x60;, the applied discount is excluded from the item&#39;s price history.
    * @return excludedFromPriceHistory
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "When set to `true`, the applied discount is excluded from the item's price history.")
 
   public Boolean getExcludedFromPriceHistory() {
     return excludedFromPriceHistory;

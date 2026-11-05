@@ -26,9 +26,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;triggerWebhook\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;trigger webhook\&quot; effect. This is communicated as an FYI and should usually not require action on your side.
+ * This effect is triggered when a rule containing a [webhook effect](https://docs.talon.one/docs/product/rules/effects/available-effects#webhooks) is validated. The details are shared with you for your information only. It usually doesn&#39;t require an action on your side.
  */
-@ApiModel(description = "The properties specific to the \"triggerWebhook\" effect. This gets triggered whenever a validated rule contained a \"trigger webhook\" effect. This is communicated as an FYI and should usually not require action on your side.")
+@ApiModel(description = "This effect is triggered when a rule containing a [webhook effect](https://docs.talon.one/docs/product/rules/effects/available-effects#webhooks) is validated. The details are shared with you for your information only. It usually doesn't require an action on your side.")
 
 public class TriggerWebhookEffectProps {
   public static final String SERIALIZED_NAME_WEBHOOK_ID = "webhookId";
@@ -47,10 +47,10 @@ public class TriggerWebhookEffectProps {
   }
 
    /**
-   * The ID of the webhook that was triggered.
+   * The internal ID of the webhook.
    * @return webhookId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the webhook that was triggered.")
+  @ApiModelProperty(required = true, value = "The internal ID of the webhook.")
 
   public BigDecimal getWebhookId() {
     return webhookId;
@@ -69,10 +69,10 @@ public class TriggerWebhookEffectProps {
   }
 
    /**
-   * The name of the webhook that was triggered.
+   * The name of the webhook.
    * @return webhookName
   **/
-  @ApiModelProperty(required = true, value = "The name of the webhook that was triggered.")
+  @ApiModelProperty(required = true, value = "The name of the webhook.")
 
   public String getWebhookName() {
     return webhookName;

@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.AttributesSettings;
+import one.talon.model.BestPriorPriceSettings;
 import one.talon.model.LimitConfig;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -170,6 +171,14 @@ public class NewApplicationTest {
     @Test
     public void enableCampaignStateManagementTest() {
         // TODO: test enableCampaignStateManagement
+    }
+
+    /**
+     * Test the property 'bestPriorPriceSettings'
+     */
+    @Test
+    public void bestPriorPriceSettingsTest() {
+        // TODO: test bestPriorPriceSettings
     }
 
 }

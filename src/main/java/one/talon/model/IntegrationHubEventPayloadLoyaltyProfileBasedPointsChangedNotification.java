@@ -33,6 +33,10 @@ import org.threeten.bp.OffsetDateTime;
  */
 
 public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification {
+  public static final String SERIALIZED_NAME_EVENT_ID = "EventId";
+  @SerializedName(SERIALIZED_NAME_EVENT_ID)
+  private Long eventId;
+
   public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_I_D = "ProfileIntegrationID";
   @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_I_D)
   private String profileIntegrationID;
@@ -41,6 +45,10 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_I_D)
   private Long loyaltyProgramID;
 
+  public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_NAME = "LoyaltyProgramName";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_NAME)
+  private String loyaltyProgramName;
+
   public static final String SERIALIZED_NAME_SUBLEDGER_I_D = "SubledgerID";
   @SerializedName(SERIALIZED_NAME_SUBLEDGER_I_D)
   private String subledgerID;
@@ -48,6 +56,14 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
   public static final String SERIALIZED_NAME_SOURCE_OF_EVENT = "SourceOfEvent";
   @SerializedName(SERIALIZED_NAME_SOURCE_OF_EVENT)
   private String sourceOfEvent;
+
+  public static final String SERIALIZED_NAME_CURRENT_TIER = "CurrentTier";
+  @SerializedName(SERIALIZED_NAME_CURRENT_TIER)
+  private String currentTier;
+
+  public static final String SERIALIZED_NAME_SESSION_INTEGRATION_I_D = "SessionIntegrationID";
+  @SerializedName(SERIALIZED_NAME_SESSION_INTEGRATION_I_D)
+  private String sessionIntegrationID;
 
   public static final String SERIALIZED_NAME_EMPLOYEE_NAME = "EmployeeName";
   @SerializedName(SERIALIZED_NAME_EMPLOYEE_NAME)
@@ -68,6 +84,28 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
   public static final String SERIALIZED_NAME_PUBLISHED_AT = "PublishedAt";
   @SerializedName(SERIALIZED_NAME_PUBLISHED_AT)
   private OffsetDateTime publishedAt;
+
+
+  public IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification eventId(Long eventId) {
+    
+    this.eventId = eventId;
+    return this;
+  }
+
+   /**
+   * The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed.
+   * @return eventId
+  **/
+  @ApiModelProperty(example = "123", required = true, value = "The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed.")
+
+  public Long getEventId() {
+    return eventId;
+  }
+
+
+  public void setEventId(Long eventId) {
+    this.eventId = eventId;
+  }
 
 
   public IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification profileIntegrationID(String profileIntegrationID) {
@@ -114,6 +152,28 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
   }
 
 
+  public IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification loyaltyProgramName(String loyaltyProgramName) {
+    
+    this.loyaltyProgramName = loyaltyProgramName;
+    return this;
+  }
+
+   /**
+   * The name of the loyalty program.
+   * @return loyaltyProgramName
+  **/
+  @ApiModelProperty(required = true, value = "The name of the loyalty program.")
+
+  public String getLoyaltyProgramName() {
+    return loyaltyProgramName;
+  }
+
+
+  public void setLoyaltyProgramName(String loyaltyProgramName) {
+    this.loyaltyProgramName = loyaltyProgramName;
+  }
+
+
   public IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification subledgerID(String subledgerID) {
     
     this.subledgerID = subledgerID;
@@ -155,6 +215,51 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
 
   public void setSourceOfEvent(String sourceOfEvent) {
     this.sourceOfEvent = sourceOfEvent;
+  }
+
+
+  public IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification currentTier(String currentTier) {
+    
+    this.currentTier = currentTier;
+    return this;
+  }
+
+   /**
+   * The name of the customer&#39;s current tier.
+   * @return currentTier
+  **/
+  @ApiModelProperty(required = true, value = "The name of the customer's current tier.")
+
+  public String getCurrentTier() {
+    return currentTier;
+  }
+
+
+  public void setCurrentTier(String currentTier) {
+    this.currentTier = currentTier;
+  }
+
+
+  public IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification sessionIntegrationID(String sessionIntegrationID) {
+    
+    this.sessionIntegrationID = sessionIntegrationID;
+    return this;
+  }
+
+   /**
+   * The integration ID of the session through which the points were earned or lost. Only set when the change results from a rule engine execution; empty otherwise.
+   * @return sessionIntegrationID
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The integration ID of the session through which the points were earned or lost. Only set when the change results from a rule engine execution; empty otherwise.")
+
+  public String getSessionIntegrationID() {
+    return sessionIntegrationID;
+  }
+
+
+  public void setSessionIntegrationID(String sessionIntegrationID) {
+    this.sessionIntegrationID = sessionIntegrationID;
   }
 
 
@@ -288,10 +393,14 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
       return false;
     }
     IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification = (IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification) o;
-    return Objects.equals(this.profileIntegrationID, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.profileIntegrationID) &&
+    return Objects.equals(this.eventId, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.eventId) &&
+        Objects.equals(this.profileIntegrationID, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.profileIntegrationID) &&
         Objects.equals(this.loyaltyProgramID, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.loyaltyProgramID) &&
+        Objects.equals(this.loyaltyProgramName, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.loyaltyProgramName) &&
         Objects.equals(this.subledgerID, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.subledgerID) &&
         Objects.equals(this.sourceOfEvent, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.sourceOfEvent) &&
+        Objects.equals(this.currentTier, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.currentTier) &&
+        Objects.equals(this.sessionIntegrationID, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.sessionIntegrationID) &&
         Objects.equals(this.employeeName, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.employeeName) &&
         Objects.equals(this.userID, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.userID) &&
         Objects.equals(this.currentPoints, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.currentPoints) &&
@@ -301,7 +410,7 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileIntegrationID, loyaltyProgramID, subledgerID, sourceOfEvent, employeeName, userID, currentPoints, actions, publishedAt);
+    return Objects.hash(eventId, profileIntegrationID, loyaltyProgramID, loyaltyProgramName, subledgerID, sourceOfEvent, currentTier, sessionIntegrationID, employeeName, userID, currentPoints, actions, publishedAt);
   }
 
 
@@ -309,10 +418,14 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification {\n");
+    sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");
     sb.append("    profileIntegrationID: ").append(toIndentedString(profileIntegrationID)).append("\n");
     sb.append("    loyaltyProgramID: ").append(toIndentedString(loyaltyProgramID)).append("\n");
+    sb.append("    loyaltyProgramName: ").append(toIndentedString(loyaltyProgramName)).append("\n");
     sb.append("    subledgerID: ").append(toIndentedString(subledgerID)).append("\n");
     sb.append("    sourceOfEvent: ").append(toIndentedString(sourceOfEvent)).append("\n");
+    sb.append("    currentTier: ").append(toIndentedString(currentTier)).append("\n");
+    sb.append("    sessionIntegrationID: ").append(toIndentedString(sessionIntegrationID)).append("\n");
     sb.append("    employeeName: ").append(toIndentedString(employeeName)).append("\n");
     sb.append("    userID: ").append(toIndentedString(userID)).append("\n");
     sb.append("    currentPoints: ").append(toIndentedString(currentPoints)).append("\n");

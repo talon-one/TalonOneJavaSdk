@@ -27,9 +27,9 @@ import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * The properties specific to the \&quot;rollbackDeductedLoyaltyPoints\&quot; effect. This effect is triggered whenever a previously closed session is cancelled and a deductLoyaltyPoints effect was revoked.
+ * This effect is triggered in the following cases:  - A session is _cancelled_ and this session deducted loyalty points. The rollback action returns the redeemed loyalty points to the customer. - A session is impacted by a _partial return_. Only added loyalty points that are still **pending** are rolled back. - A session in which loyalty points were spent is reopened.  See the [session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states).  If you set custom activation and expiration dates for the loyalty points, use the &#x60;startDate&#x60; and &#x60;expiryDate&#x60; properties to identify when the reward will be active and when will expire.  If the loyalty program is [profile-based](https://docs.talon.one/docs/product/loyalty-programs/profile-based/profile-based-overview), use the &#x60;recipientIntegrationId&#x60; property to identify the user who receives the loyalty points. If the loyalty program is [card-based](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types), use the &#x60;cardIdentifier&#x60; property to identify the loyalty card where the points are reimbursed.
  */
-@ApiModel(description = "The properties specific to the \"rollbackDeductedLoyaltyPoints\" effect. This effect is triggered whenever a previously closed session is cancelled and a deductLoyaltyPoints effect was revoked.")
+@ApiModel(description = "This effect is triggered in the following cases:  - A session is _cancelled_ and this session deducted loyalty points. The rollback action returns the redeemed loyalty points to the customer. - A session is impacted by a _partial return_. Only added loyalty points that are still **pending** are rolled back. - A session in which loyalty points were spent is reopened.  See the [session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states).  If you set custom activation and expiration dates for the loyalty points, use the `startDate` and `expiryDate` properties to identify when the reward will be active and when will expire.  If the loyalty program is [profile-based](https://docs.talon.one/docs/product/loyalty-programs/profile-based/profile-based-overview), use the `recipientIntegrationId` property to identify the user who receives the loyalty points. If the loyalty program is [card-based](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types), use the `cardIdentifier` property to identify the loyalty card where the points are reimbursed.")
 
 public class RollbackDeductedLoyaltyPointsEffectProps {
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
@@ -116,10 +116,10 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   }
 
    /**
-   * The amount of reimbursed points that were added.
+   * The amount of points that were reimbursed.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The amount of reimbursed points that were added.")
+  @ApiModelProperty(required = true, value = "The amount of points that were reimbursed.")
 
   public BigDecimal getValue() {
     return value;
@@ -160,11 +160,11 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   }
 
    /**
-   * Date after which the reimbursed points will be valid.
+   * The date after which the reimbursed points will be valid.
    * @return startDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Date after which the reimbursed points will be valid.")
+  @ApiModelProperty(value = "The date after which the reimbursed points will be valid.")
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -183,11 +183,11 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   }
 
    /**
-   * Date after which the reimbursed points will expire.
+   * The date after which the reimbursed points will expire.
    * @return expiryDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Date after which the reimbursed points will expire.")
+  @ApiModelProperty(value = "The date after which the reimbursed points will expire.")
 
   public OffsetDateTime getExpiryDate() {
     return expiryDate;
@@ -206,10 +206,10 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   }
 
    /**
-   * The identifier of &#39;addition&#39; entries added to the ledger as the &#x60;deductLoyaltyPoints&#x60; effect is rolled back.
+   * The identifier of this loyalty point transaction.
    * @return transactionUUID
   **/
-  @ApiModelProperty(required = true, value = "The identifier of 'addition' entries added to the ledger as the `deductLoyaltyPoints` effect is rolled back.")
+  @ApiModelProperty(required = true, value = "The identifier of this loyalty point transaction.")
 
   public String getTransactionUUID() {
     return transactionUUID;

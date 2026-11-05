@@ -56,7 +56,13 @@ public class CustomerProfileIntegrationRequestV2 {
     
     AWARDEDGIVEAWAYS("awardedGiveaways"),
     
-    RULEFAILUREREASONS("ruleFailureReasons");
+    RULEFAILUREREASONS("ruleFailureReasons"),
+    
+    CAMPAIGNELIGIBILITY("campaignEligibility"),
+    
+    ACHIEVEMENTS("achievements"),
+    
+    UNLOCKEDREWARDS("unlockedRewards");
 
     private String value;
 
@@ -103,6 +109,10 @@ public class CustomerProfileIntegrationRequestV2 {
   public static final String SERIALIZED_NAME_AUDIENCES_CHANGES = "audiencesChanges";
   @SerializedName(SERIALIZED_NAME_AUDIENCES_CHANGES)
   private ProfileAudiencesChanges audiencesChanges;
+
+  public static final String SERIALIZED_NAME_REWARD_INTEGRATION_IDS = "rewardIntegrationIds";
+  @SerializedName(SERIALIZED_NAME_REWARD_INTEGRATION_IDS)
+  private List<String> rewardIntegrationIds = null;
 
 
   public CustomerProfileIntegrationRequestV2 attributes(Object attributes) {
@@ -213,6 +223,37 @@ public class CustomerProfileIntegrationRequestV2 {
   }
 
 
+  public CustomerProfileIntegrationRequestV2 rewardIntegrationIds(List<String> rewardIntegrationIds) {
+    
+    this.rewardIntegrationIds = rewardIntegrationIds;
+    return this;
+  }
+
+  public CustomerProfileIntegrationRequestV2 addRewardIntegrationIdsItem(String rewardIntegrationIdsItem) {
+    if (this.rewardIntegrationIds == null) {
+      this.rewardIntegrationIds = new ArrayList<String>();
+    }
+    this.rewardIntegrationIds.add(rewardIntegrationIdsItem);
+    return this;
+  }
+
+   /**
+   * The integration IDs of the unlocked rewards that can be used in this request. 
+   * @return rewardIntegrationIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[5c0b5e6d-3f8a-4c2b-9f1e-2a7d6b4c8e90]", value = "The integration IDs of the unlocked rewards that can be used in this request. ")
+
+  public List<String> getRewardIntegrationIds() {
+    return rewardIntegrationIds;
+  }
+
+
+  public void setRewardIntegrationIds(List<String> rewardIntegrationIds) {
+    this.rewardIntegrationIds = rewardIntegrationIds;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -225,12 +266,13 @@ public class CustomerProfileIntegrationRequestV2 {
     return Objects.equals(this.attributes, customerProfileIntegrationRequestV2.attributes) &&
         Objects.equals(this.evaluableCampaignIds, customerProfileIntegrationRequestV2.evaluableCampaignIds) &&
         Objects.equals(this.responseContent, customerProfileIntegrationRequestV2.responseContent) &&
-        Objects.equals(this.audiencesChanges, customerProfileIntegrationRequestV2.audiencesChanges);
+        Objects.equals(this.audiencesChanges, customerProfileIntegrationRequestV2.audiencesChanges) &&
+        Objects.equals(this.rewardIntegrationIds, customerProfileIntegrationRequestV2.rewardIntegrationIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, evaluableCampaignIds, responseContent, audiencesChanges);
+    return Objects.hash(attributes, evaluableCampaignIds, responseContent, audiencesChanges, rewardIntegrationIds);
   }
 
 
@@ -242,6 +284,7 @@ public class CustomerProfileIntegrationRequestV2 {
     sb.append("    evaluableCampaignIds: ").append(toIndentedString(evaluableCampaignIds)).append("\n");
     sb.append("    responseContent: ").append(toIndentedString(responseContent)).append("\n");
     sb.append("    audiencesChanges: ").append(toIndentedString(audiencesChanges)).append("\n");
+    sb.append("    rewardIntegrationIds: ").append(toIndentedString(rewardIntegrationIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

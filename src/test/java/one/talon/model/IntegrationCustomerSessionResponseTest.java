@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.CustomerSessionV2;
-import one.talon.model.Effect;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;

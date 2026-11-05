@@ -22,6 +22,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import one.talon.model.IntegrationHubFlowConfigResponse;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -50,11 +51,51 @@ public class IntegrationHubFlowResponseTest {
     }
 
     /**
-     * Test the property 'applicationID'
+     * Test the property 'integrationName'
      */
     @Test
-    public void applicationIDTest() {
-        // TODO: test applicationID
+    public void integrationNameTest() {
+        // TODO: test integrationName
+    }
+
+    /**
+     * Test the property 'instanceName'
+     */
+    @Test
+    public void instanceNameTest() {
+        // TODO: test instanceName
+    }
+
+    /**
+     * Test the property 'createdAt'
+     */
+    @Test
+    public void createdAtTest() {
+        // TODO: test createdAt
+    }
+
+    /**
+     * Test the property 'disabledUntil'
+     */
+    @Test
+    public void disabledUntilTest() {
+        // TODO: test disabledUntil
+    }
+
+    /**
+     * Test the property 'applicationId'
+     */
+    @Test
+    public void applicationIdTest() {
+        // TODO: test applicationId
+    }
+
+    /**
+     * Test the property 'loyaltyProgramId'
+     */
+    @Test
+    public void loyaltyProgramIdTest() {
+        // TODO: test loyaltyProgramId
     }
 
     /**
@@ -63,14 +104,6 @@ public class IntegrationHubFlowResponseTest {
     @Test
     public void eventTypeTest() {
         // TODO: test eventType
-    }
-
-    /**
-     * Test the property 'integrationHubFlowUrl'
-     */
-    @Test
-    public void integrationHubFlowUrlTest() {
-        // TODO: test integrationHubFlowUrl
     }
 
     /**

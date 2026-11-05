@@ -6,8 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
-**data** | [**List&lt;CampaignAnalytics&gt;**](CampaignAnalytics.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**totalResultSize** | **Long** |  |  [optional]
+**data** | [**List&lt;CollectionWithoutPayload&gt;**](CollectionWithoutPayload.md) |  | 
 
 
 

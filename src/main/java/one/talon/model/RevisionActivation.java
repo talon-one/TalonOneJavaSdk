@@ -42,11 +42,11 @@ public class RevisionActivation {
   }
 
    /**
-   * Get activateAt
+   * Timestamp when the revision will be activated.
    * @return activateAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "2026-10-08T09:30Z", value = "Timestamp when the revision will be activated.")
 
   public OffsetDateTime getActivateAt() {
     return activateAt;

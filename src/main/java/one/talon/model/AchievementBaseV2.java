@@ -169,17 +169,9 @@ public class AchievementBaseV2 {
   @SerializedName(SERIALIZED_NAME_ALLOW_ROLLBACK_AFTER_COMPLETION)
   private Boolean allowRollbackAfterCompletion;
 
-  public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
-  @SerializedName(SERIALIZED_NAME_SANDBOX)
-  private Boolean sandbox;
-
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS = "subscribedApplications";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS)
   private List<Long> subscribedApplications = null;
-
-  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
-  @SerializedName(SERIALIZED_NAME_TIMEZONE)
-  private String timezone;
 
 
   public AchievementBaseV2 name(String name) {
@@ -412,29 +404,6 @@ public class AchievementBaseV2 {
   }
 
 
-  public AchievementBaseV2 sandbox(Boolean sandbox) {
-    
-    this.sandbox = sandbox;
-    return this;
-  }
-
-   /**
-   * Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
-   * @return sandbox
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.")
-
-  public Boolean getSandbox() {
-    return sandbox;
-  }
-
-
-  public void setSandbox(Boolean sandbox) {
-    this.sandbox = sandbox;
-  }
-
-
   public AchievementBaseV2 subscribedApplications(List<Long> subscribedApplications) {
     
     this.subscribedApplications = subscribedApplications;
@@ -466,29 +435,6 @@ public class AchievementBaseV2 {
   }
 
 
-  public AchievementBaseV2 timezone(String timezone) {
-    
-    this.timezone = timezone;
-    return this;
-  }
-
-   /**
-   * A string containing an IANA timezone descriptor.
-   * @return timezone
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Europe/Berlin", value = "A string containing an IANA timezone descriptor.")
-
-  public String getTimezone() {
-    return timezone;
-  }
-
-
-  public void setTimezone(String timezone) {
-    this.timezone = timezone;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -508,14 +454,12 @@ public class AchievementBaseV2 {
         Objects.equals(this.fixedStartDate, achievementBaseV2.fixedStartDate) &&
         Objects.equals(this.endDate, achievementBaseV2.endDate) &&
         Objects.equals(this.allowRollbackAfterCompletion, achievementBaseV2.allowRollbackAfterCompletion) &&
-        Objects.equals(this.sandbox, achievementBaseV2.sandbox) &&
-        Objects.equals(this.subscribedApplications, achievementBaseV2.subscribedApplications) &&
-        Objects.equals(this.timezone, achievementBaseV2.timezone);
+        Objects.equals(this.subscribedApplications, achievementBaseV2.subscribedApplications);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, title, description, target, period, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, sandbox, subscribedApplications, timezone);
+    return Objects.hash(name, title, description, target, period, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, subscribedApplications);
   }
 
 
@@ -533,9 +477,7 @@ public class AchievementBaseV2 {
     sb.append("    fixedStartDate: ").append(toIndentedString(fixedStartDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    allowRollbackAfterCompletion: ").append(toIndentedString(allowRollbackAfterCompletion)).append("\n");
-    sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    subscribedApplications: ").append(toIndentedString(subscribedApplications)).append("\n");
-    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.IntegrationHubEventType;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -40,64 +41,9 @@ public class IntegrationHubPaginatedEventPayload {
   @SerializedName(SERIALIZED_NAME_BATCHED_AT)
   private OffsetDateTime batchedAt;
 
-  /**
-   * Gets or Sets eventType
-   */
-  @JsonAdapter(EventTypeEnum.Adapter.class)
-  public enum EventTypeEnum {
-    LOYALTYPOINTSCHANGED("LoyaltyPointsChanged"),
-    
-    LOYALTYTIERDOWNGRADE("LoyaltyTierDowngrade"),
-    
-    LOYALTYTIERUPGRADE("LoyaltyTierUpgrade"),
-    
-    COUPONCREATED("CouponCreated"),
-    
-    COUPONUPDATED("CouponUpdated"),
-    
-    COUPONDELETED("CouponDeleted");
-
-    private String value;
-
-    EventTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static EventTypeEnum fromValue(String value) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<EventTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final EventTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public EventTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return EventTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_EVENT_TYPE = "EventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-  private EventTypeEnum eventType;
+  private IntegrationHubEventType eventType;
 
   public static final String SERIALIZED_NAME_DATA = "Data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -149,7 +95,7 @@ public class IntegrationHubPaginatedEventPayload {
   }
 
 
-  public IntegrationHubPaginatedEventPayload eventType(EventTypeEnum eventType) {
+  public IntegrationHubPaginatedEventPayload eventType(IntegrationHubEventType eventType) {
     
     this.eventType = eventType;
     return this;
@@ -161,12 +107,12 @@ public class IntegrationHubPaginatedEventPayload {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public EventTypeEnum getEventType() {
+  public IntegrationHubEventType getEventType() {
     return eventType;
   }
 
 
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(IntegrationHubEventType eventType) {
     this.eventType = eventType;
   }
 

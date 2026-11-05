@@ -203,11 +203,11 @@ public class NewPriceAdjustment {
   }
 
    /**
-   * Identifier of the context of this price adjustment (e.g. summer sale).
+   * Identifier of the context of this price adjustment (the sales event, e.g. \&quot;Summer Sale\&quot;).
    * @return contextId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Summer2025", value = "Identifier of the context of this price adjustment (e.g. summer sale).")
+  @ApiModelProperty(example = "Summer2025", value = "Identifier of the context of this price adjustment (the sales event, e.g. \"Summer Sale\").")
 
   public String getContextId() {
     return contextId;

@@ -29,8 +29,9 @@ import java.util.Map;
 import one.talon.model.RoleV2ApplicationDetails;
 
 /**
- * RoleV2RolesGroup
+ * A map of target entities to their permission sets.
  */
+@ApiModel(description = "A map of target entities to their permission sets.")
 
 public class RoleV2RolesGroup {
   public static final String SERIALIZED_NAME_APPLICATIONS = "applications";
@@ -96,11 +97,11 @@ public class RoleV2RolesGroup {
   }
 
    /**
-   * A map of the link between the loyalty program-related permission set and the Application ID the permissions apply to.
+   * A map of the link between the loyalty program-related permission set and the loyalty program ID the permissions apply to.
    * @return loyaltyPrograms
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "{10=Loyalty program manager permission set}", value = "A map of the link between the loyalty program-related permission set and the Application ID the permissions apply to.")
+  @ApiModelProperty(example = "{10=Loyalty program manager permission set}", value = "A map of the link between the loyalty program-related permission set and the loyalty program ID the permissions apply to.")
 
   public Map<String, String> getLoyaltyPrograms() {
     return loyaltyPrograms;
@@ -127,11 +128,11 @@ public class RoleV2RolesGroup {
   }
 
    /**
-   * A map of the link between the campaign access group-related permission set and the Application ID the permissions apply to.
+   * A map of the link between the campaign access group-related permission set and the campaign access group ID the permissions apply to.
    * @return campaignAccessGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "{5=Campaign access group manager permission set}", value = "A map of the link between the campaign access group-related permission set and the Application ID the permissions apply to.")
+  @ApiModelProperty(example = "{5=Campaign access group manager permission set}", value = "A map of the link between the campaign access group-related permission set and the campaign access group ID the permissions apply to.")
 
   public Map<String, String> getCampaignAccessGroups() {
     return campaignAccessGroups;
@@ -150,11 +151,11 @@ public class RoleV2RolesGroup {
   }
 
    /**
-   * Name of the account-level permission set
+   * Name of the account-level permission set.
    * @return account
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the account-level permission set")
+  @ApiModelProperty(example = "Account administration permission set", value = "Name of the account-level permission set.")
 
   public String getAccount() {
     return account;

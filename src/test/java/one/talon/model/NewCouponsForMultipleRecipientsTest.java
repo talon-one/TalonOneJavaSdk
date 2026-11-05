@@ -85,6 +85,14 @@ public class NewCouponsForMultipleRecipientsTest {
     }
 
     /**
+     * Test the property 'batchId'
+     */
+    @Test
+    public void batchIdTest() {
+        // TODO: test batchId
+    }
+
+    /**
      * Test the property 'attributes'
      */
     @Test

@@ -49,6 +49,10 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   @SerializedName(SERIALIZED_NAME_CUSTOMER_SESSION_ID)
   private String customerSessionId;
 
+  public static final String SERIALIZED_NAME_STORE_INTEGRATION_ID = "storeIntegrationId";
+  @SerializedName(SERIALIZED_NAME_STORE_INTEGRATION_ID)
+  private String storeIntegrationId;
+
   /**
    * Type of transaction. Possible values:   - &#x60;addition&#x60;: Signifies added points.   - &#x60;subtraction&#x60;: Signifies deducted points. 
    */
@@ -227,6 +231,29 @@ public class LedgerTransactionLogEntryIntegrationAPI {
 
   public void setCustomerSessionId(String customerSessionId) {
     this.customerSessionId = customerSessionId;
+  }
+
+
+  public LedgerTransactionLogEntryIntegrationAPI storeIntegrationId(String storeIntegrationId) {
+    
+    this.storeIntegrationId = storeIntegrationId;
+    return this;
+  }
+
+   /**
+   * The integration ID of the store where the transaction occurred. Only set for transactions created by a customer session or event that referenced a store.
+   * @return storeIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store where the transaction occurred. Only set for transactions created by a customer session or event that referenced a store.")
+
+  public String getStoreIntegrationId() {
+    return storeIntegrationId;
+  }
+
+
+  public void setStoreIntegrationId(String storeIntegrationId) {
+    this.storeIntegrationId = storeIntegrationId;
   }
 
 
@@ -460,11 +487,11 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   }
 
    /**
-   * The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which &#x60;awaitsActivation&#x60; is &#x60;true&#x60; and &#x60;expiryDate&#x60; is not set. 
+   * The duration for which the points remain active, relative to the activation date.  **Note**: This only applies to points for which &#x60;awaitsActivation&#x60; is &#x60;true&#x60; and &#x60;expiryDate&#x60; is not set. 
    * @return validityDuration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "30D", value = "The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set. ")
+  @ApiModelProperty(example = "30D", value = "The duration for which the points remain active, relative to the activation date.  **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set. ")
 
   public String getValidityDuration() {
     return validityDuration;
@@ -489,6 +516,7 @@ public class LedgerTransactionLogEntryIntegrationAPI {
         Objects.equals(this.created, ledgerTransactionLogEntryIntegrationAPI.created) &&
         Objects.equals(this.programId, ledgerTransactionLogEntryIntegrationAPI.programId) &&
         Objects.equals(this.customerSessionId, ledgerTransactionLogEntryIntegrationAPI.customerSessionId) &&
+        Objects.equals(this.storeIntegrationId, ledgerTransactionLogEntryIntegrationAPI.storeIntegrationId) &&
         Objects.equals(this.type, ledgerTransactionLogEntryIntegrationAPI.type) &&
         Objects.equals(this.name, ledgerTransactionLogEntryIntegrationAPI.name) &&
         Objects.equals(this.startDate, ledgerTransactionLogEntryIntegrationAPI.startDate) &&
@@ -504,7 +532,7 @@ public class LedgerTransactionLogEntryIntegrationAPI {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionUUID, created, programId, customerSessionId, type, name, startDate, expiryDate, subledgerId, amount, id, rulesetId, ruleName, flags, validityDuration);
+    return Objects.hash(transactionUUID, created, programId, customerSessionId, storeIntegrationId, type, name, startDate, expiryDate, subledgerId, amount, id, rulesetId, ruleName, flags, validityDuration);
   }
 
 
@@ -516,6 +544,7 @@ public class LedgerTransactionLogEntryIntegrationAPI {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    programId: ").append(toIndentedString(programId)).append("\n");
     sb.append("    customerSessionId: ").append(toIndentedString(customerSessionId)).append("\n");
+    sb.append("    storeIntegrationId: ").append(toIndentedString(storeIntegrationId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");

@@ -14,13 +14,15 @@ Name | Type | Description | Notes
 **couponValue** | **String** | The code of the coupon that was being evaluated at the time of the rule failure. |  [optional]
 **referralID** | **Long** | The ID of the referral that was being evaluated at the time of the rule failure. |  [optional]
 **referralValue** | **String** | The code of the referral that was being evaluated at the time of the rule failure. |  [optional]
+**rewardId** | **Long** | The ID of the reward that was being evaluated at the time of the rule failure. |  [optional]
+**rewardIntegrationId** | **String** | The integration ID of the reward that was being evaluated at the time of the rule failure. |  [optional]
 **ruleIndex** | **Long** | The index of the rule that failed within the ruleset. | 
 **ruleName** | **String** | The name of the rule that failed within the ruleset. | 
 **conditionIndex** | **Long** | The index of the condition that failed. |  [optional]
 **effectIndex** | **Long** | The index of the effect that failed. |  [optional]
 **details** | **String** | More details about the failure. |  [optional]
 **evaluationGroupID** | **Long** | The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation). |  [optional]
-**evaluationGroupMode** | **String** | The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign- |  [optional]
+**evaluationGroupMode** | **String** | The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation). |  [optional]
 
 
 

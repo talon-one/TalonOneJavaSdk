@@ -83,6 +83,10 @@ public class ApplicationCustomer {
   @SerializedName(SERIALIZED_NAME_ADVOCATE_INTEGRATION_ID)
   private String advocateIntegrationId;
 
+  public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_JOIN_DATES = "loyaltyProgramJoinDates";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_JOIN_DATES)
+  private List<LoyaltyMembership> loyaltyProgramJoinDates = null;
+
 
   public ApplicationCustomer id(Long id) {
     
@@ -368,6 +372,37 @@ public class ApplicationCustomer {
   }
 
 
+  public ApplicationCustomer loyaltyProgramJoinDates(List<LoyaltyMembership> loyaltyProgramJoinDates) {
+    
+    this.loyaltyProgramJoinDates = loyaltyProgramJoinDates;
+    return this;
+  }
+
+  public ApplicationCustomer addLoyaltyProgramJoinDatesItem(LoyaltyMembership loyaltyProgramJoinDatesItem) {
+    if (this.loyaltyProgramJoinDates == null) {
+      this.loyaltyProgramJoinDates = new ArrayList<LoyaltyMembership>();
+    }
+    this.loyaltyProgramJoinDates.add(loyaltyProgramJoinDatesItem);
+    return this;
+  }
+
+   /**
+   * The dates on which the customer joined the profile-based loyalty programs they are part of. Returned only when the &#x60;withLoyaltyMemberships&#x60; query parameter is &#x60;true&#x60;.
+   * @return loyaltyProgramJoinDates
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The dates on which the customer joined the profile-based loyalty programs they are part of. Returned only when the `withLoyaltyMemberships` query parameter is `true`.")
+
+  public List<LoyaltyMembership> getLoyaltyProgramJoinDates() {
+    return loyaltyProgramJoinDates;
+  }
+
+
+  public void setLoyaltyProgramJoinDates(List<LoyaltyMembership> loyaltyProgramJoinDates) {
+    this.loyaltyProgramJoinDates = loyaltyProgramJoinDates;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -388,12 +423,13 @@ public class ApplicationCustomer {
         Objects.equals(this.audienceMemberships, applicationCustomer.audienceMemberships) &&
         Objects.equals(this.lastActivity, applicationCustomer.lastActivity) &&
         Objects.equals(this.sandbox, applicationCustomer.sandbox) &&
-        Objects.equals(this.advocateIntegrationId, applicationCustomer.advocateIntegrationId);
+        Objects.equals(this.advocateIntegrationId, applicationCustomer.advocateIntegrationId) &&
+        Objects.equals(this.loyaltyProgramJoinDates, applicationCustomer.loyaltyProgramJoinDates);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, audienceMemberships, lastActivity, sandbox, advocateIntegrationId);
+    return Objects.hash(id, created, integrationId, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, audienceMemberships, lastActivity, sandbox, advocateIntegrationId, loyaltyProgramJoinDates);
   }
 
 
@@ -413,6 +449,7 @@ public class ApplicationCustomer {
     sb.append("    lastActivity: ").append(toIndentedString(lastActivity)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    advocateIntegrationId: ").append(toIndentedString(advocateIntegrationId)).append("\n");
+    sb.append("    loyaltyProgramJoinDates: ").append(toIndentedString(loyaltyProgramJoinDates)).append("\n");
     sb.append("}");
     return sb.toString();
   }

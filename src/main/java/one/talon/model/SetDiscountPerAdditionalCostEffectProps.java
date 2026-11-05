@@ -26,9 +26,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;setDiscountPerAdditionalCost\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;set per additional cost discount\&quot; effect. This is a discount that should be applied on a specific additional cost.
+ * This effect indicates that a discount that should be applied on a specific additional cost. It is triggered whenever a rule containing a **Discount additional cost** effect is validated.  Enabling [partial rewards](https://docs.talon.one/docs/product/applications/manage-general-settings#partial-rewards) allows a rule that would fail because of insufficient budget to pass. The rule still fails when the budget reaches 0. Use the &#x60;desiredValue&#x60; property to identify the original amount of loyalty points.
  */
-@ApiModel(description = "The properties specific to the \"setDiscountPerAdditionalCost\" effect. This gets triggered whenever a validated rule contained a \"set per additional cost discount\" effect. This is a discount that should be applied on a specific additional cost.")
+@ApiModel(description = "This effect indicates that a discount that should be applied on a specific additional cost. It is triggered whenever a rule containing a **Discount additional cost** effect is validated.  Enabling [partial rewards](https://docs.talon.one/docs/product/applications/manage-general-settings#partial-rewards) allows a rule that would fail because of insufficient budget to pass. The rule still fails when the budget reaches 0. Use the `desiredValue` property to identify the original amount of loyalty points.")
 
 public class SetDiscountPerAdditionalCostEffectProps {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -59,10 +59,10 @@ public class SetDiscountPerAdditionalCostEffectProps {
   }
 
    /**
-   * The name / description of this discount
+   * The name of the discount.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name / description of this discount")
+  @ApiModelProperty(required = true, value = "The name of the discount.")
 
   public String getName() {
     return name;
@@ -81,10 +81,10 @@ public class SetDiscountPerAdditionalCostEffectProps {
   }
 
    /**
-   * The ID of the additional cost.
+   * The identifier of the additional cost.
    * @return additionalCostId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the additional cost.")
+  @ApiModelProperty(required = true, value = "The identifier of the additional cost.")
 
   public Long getAdditionalCostId() {
     return additionalCostId;
@@ -103,10 +103,10 @@ public class SetDiscountPerAdditionalCostEffectProps {
   }
 
    /**
-   * The name of the additional cost.
+   * The API name of the additional cost.
    * @return additionalCost
   **/
-  @ApiModelProperty(required = true, value = "The name of the additional cost.")
+  @ApiModelProperty(required = true, value = "The API name of the additional cost.")
 
   public String getAdditionalCost() {
     return additionalCost;
@@ -125,10 +125,10 @@ public class SetDiscountPerAdditionalCostEffectProps {
   }
 
    /**
-   * The total monetary value of the discount.
+   * The monetary value of the discount to apply.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The total monetary value of the discount.")
+  @ApiModelProperty(required = true, value = "The monetary value of the discount to apply.")
 
   public BigDecimal getValue() {
     return value;
@@ -147,11 +147,11 @@ public class SetDiscountPerAdditionalCostEffectProps {
   }
 
    /**
-   * The original value of the discount.
+   * _(Partial discounts enabled only)_ The monetary value of the discount to be applied without considering budget limitations.
    * @return desiredValue
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The original value of the discount.")
+  @ApiModelProperty(value = "_(Partial discounts enabled only)_ The monetary value of the discount to be applied without considering budget limitations.")
 
   public BigDecimal getDesiredValue() {
     return desiredValue;

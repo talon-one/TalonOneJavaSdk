@@ -63,6 +63,61 @@ public class TierWillDowngradeData {
   @SerializedName(SERIALIZED_NAME_TIER_EXPIRATION_DATE)
   private OffsetDateTime tierExpirationDate;
 
+  /**
+   * The source of the tier change, whether from a points change or boost.
+   */
+  @JsonAdapter(SourceEnum.Adapter.class)
+  public enum SourceEnum {
+    BOOST("boost"),
+    
+    POINTS("points");
+
+    private String value;
+
+    SourceEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SourceEnum fromValue(String value) {
+      for (SourceEnum b : SourceEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SourceEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SourceEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SourceEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SourceEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SOURCE = "Source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private SourceEnum source = SourceEnum.POINTS;
+
+  public static final String SERIALIZED_NAME_REASON = "Reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  private String reason;
+
 
   public TierWillDowngradeData customerProfileID(String customerProfileID) {
     
@@ -243,6 +298,52 @@ public class TierWillDowngradeData {
   }
 
 
+  public TierWillDowngradeData source(SourceEnum source) {
+    
+    this.source = source;
+    return this;
+  }
+
+   /**
+   * The source of the tier change, whether from a points change or boost.
+   * @return source
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The source of the tier change, whether from a points change or boost.")
+
+  public SourceEnum getSource() {
+    return source;
+  }
+
+
+  public void setSource(SourceEnum source) {
+    this.source = source;
+  }
+
+
+  public TierWillDowngradeData reason(String reason) {
+    
+    this.reason = reason;
+    return this;
+  }
+
+   /**
+   * The reason for the tier change.
+   * @return reason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The reason for the tier change.")
+
+  public String getReason() {
+    return reason;
+  }
+
+
+  public void setReason(String reason) {
+    this.reason = reason;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -259,12 +360,14 @@ public class TierWillDowngradeData {
         Objects.equals(this.currentPoints, tierWillDowngradeData.currentPoints) &&
         Objects.equals(this.pointsRequiredToRemain, tierWillDowngradeData.pointsRequiredToRemain) &&
         Objects.equals(this.nextTier, tierWillDowngradeData.nextTier) &&
-        Objects.equals(this.tierExpirationDate, tierWillDowngradeData.tierExpirationDate);
+        Objects.equals(this.tierExpirationDate, tierWillDowngradeData.tierExpirationDate) &&
+        Objects.equals(this.source, tierWillDowngradeData.source) &&
+        Objects.equals(this.reason, tierWillDowngradeData.reason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerProfileID, loyaltyProgramID, subledgerID, currentTier, currentPoints, pointsRequiredToRemain, nextTier, tierExpirationDate);
+    return Objects.hash(customerProfileID, loyaltyProgramID, subledgerID, currentTier, currentPoints, pointsRequiredToRemain, nextTier, tierExpirationDate, source, reason);
   }
 
 
@@ -280,6 +383,8 @@ public class TierWillDowngradeData {
     sb.append("    pointsRequiredToRemain: ").append(toIndentedString(pointsRequiredToRemain)).append("\n");
     sb.append("    nextTier: ").append(toIndentedString(nextTier)).append("\n");
     sb.append("    tierExpirationDate: ").append(toIndentedString(tierExpirationDate)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -169,17 +169,9 @@ public class UpdateAchievementV2 {
   @SerializedName(SERIALIZED_NAME_ALLOW_ROLLBACK_AFTER_COMPLETION)
   private Boolean allowRollbackAfterCompletion;
 
-  public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
-  @SerializedName(SERIALIZED_NAME_SANDBOX)
-  private Boolean sandbox;
-
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS = "subscribedApplications";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS)
-  private List<Long> subscribedApplications = null;
-
-  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
-  @SerializedName(SERIALIZED_NAME_TIMEZONE)
-  private String timezone;
+  private List<Long> subscribedApplications = new ArrayList<Long>();
 
 
   public UpdateAchievementV2 name(String name) {
@@ -192,8 +184,7 @@ public class UpdateAchievementV2 {
    * The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created. 
    * @return name
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Order50Discount", value = "The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created. ")
+  @ApiModelProperty(example = "Order50Discount", required = true, value = "The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created. ")
 
   public String getName() {
     return name;
@@ -215,8 +206,7 @@ public class UpdateAchievementV2 {
    * The display name for the achievement in the Campaign Manager.
    * @return title
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "50% off on 50th purchase.", value = "The display name for the achievement in the Campaign Manager.")
+  @ApiModelProperty(example = "50% off on 50th purchase.", required = true, value = "The display name for the achievement in the Campaign Manager.")
 
   public String getTitle() {
     return title;
@@ -238,8 +228,7 @@ public class UpdateAchievementV2 {
    * A description of the achievement.
    * @return description
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "50% off for every 50th purchase in a year.", value = "A description of the achievement.")
+  @ApiModelProperty(example = "50% off for every 50th purchase in a year.", required = true, value = "A description of the achievement.")
 
   public String getDescription() {
     return description;
@@ -261,8 +250,7 @@ public class UpdateAchievementV2 {
    * The required number of actions or the transactional milestone to complete the achievement.
    * @return target
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "50.0", value = "The required number of actions or the transactional milestone to complete the achievement.")
+  @ApiModelProperty(example = "50.0", required = true, value = "The required number of actions or the transactional milestone to complete the achievement.")
 
   public BigDecimal getTarget() {
     return target;
@@ -412,29 +400,6 @@ public class UpdateAchievementV2 {
   }
 
 
-  public UpdateAchievementV2 sandbox(Boolean sandbox) {
-    
-    this.sandbox = sandbox;
-    return this;
-  }
-
-   /**
-   * Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
-   * @return sandbox
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.")
-
-  public Boolean getSandbox() {
-    return sandbox;
-  }
-
-
-  public void setSandbox(Boolean sandbox) {
-    this.sandbox = sandbox;
-  }
-
-
   public UpdateAchievementV2 subscribedApplications(List<Long> subscribedApplications) {
     
     this.subscribedApplications = subscribedApplications;
@@ -442,9 +407,6 @@ public class UpdateAchievementV2 {
   }
 
   public UpdateAchievementV2 addSubscribedApplicationsItem(Long subscribedApplicationsItem) {
-    if (this.subscribedApplications == null) {
-      this.subscribedApplications = new ArrayList<Long>();
-    }
     this.subscribedApplications.add(subscribedApplicationsItem);
     return this;
   }
@@ -453,8 +415,7 @@ public class UpdateAchievementV2 {
    * A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
    * @return subscribedApplications
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "[132, 97]", value = "A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.")
+  @ApiModelProperty(example = "[132, 97]", required = true, value = "A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.")
 
   public List<Long> getSubscribedApplications() {
     return subscribedApplications;
@@ -463,29 +424,6 @@ public class UpdateAchievementV2 {
 
   public void setSubscribedApplications(List<Long> subscribedApplications) {
     this.subscribedApplications = subscribedApplications;
-  }
-
-
-  public UpdateAchievementV2 timezone(String timezone) {
-    
-    this.timezone = timezone;
-    return this;
-  }
-
-   /**
-   * A string containing an IANA timezone descriptor.
-   * @return timezone
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Europe/Berlin", value = "A string containing an IANA timezone descriptor.")
-
-  public String getTimezone() {
-    return timezone;
-  }
-
-
-  public void setTimezone(String timezone) {
-    this.timezone = timezone;
   }
 
 
@@ -508,14 +446,12 @@ public class UpdateAchievementV2 {
         Objects.equals(this.fixedStartDate, updateAchievementV2.fixedStartDate) &&
         Objects.equals(this.endDate, updateAchievementV2.endDate) &&
         Objects.equals(this.allowRollbackAfterCompletion, updateAchievementV2.allowRollbackAfterCompletion) &&
-        Objects.equals(this.sandbox, updateAchievementV2.sandbox) &&
-        Objects.equals(this.subscribedApplications, updateAchievementV2.subscribedApplications) &&
-        Objects.equals(this.timezone, updateAchievementV2.timezone);
+        Objects.equals(this.subscribedApplications, updateAchievementV2.subscribedApplications);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, title, description, target, period, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, sandbox, subscribedApplications, timezone);
+    return Objects.hash(name, title, description, target, period, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, subscribedApplications);
   }
 
 
@@ -533,9 +469,7 @@ public class UpdateAchievementV2 {
     sb.append("    fixedStartDate: ").append(toIndentedString(fixedStartDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    allowRollbackAfterCompletion: ").append(toIndentedString(allowRollbackAfterCompletion)).append("\n");
-    sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    subscribedApplications: ").append(toIndentedString(subscribedApplications)).append("\n");
-    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("}");
     return sb.toString();
   }

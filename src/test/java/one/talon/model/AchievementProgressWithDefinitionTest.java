@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.CampaignReference;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -120,6 +123,22 @@ public class AchievementProgressWithDefinitionTest {
     @Test
     public void campaignIdTest() {
         // TODO: test campaignId
+    }
+
+    /**
+     * Test the property 'campaignIds'
+     */
+    @Test
+    public void campaignIdsTest() {
+        // TODO: test campaignIds
+    }
+
+    /**
+     * Test the property 'referencedByCampaigns'
+     */
+    @Test
+    public void referencedByCampaignsTest() {
+        // TODO: test referencedByCampaigns
     }
 
     /**

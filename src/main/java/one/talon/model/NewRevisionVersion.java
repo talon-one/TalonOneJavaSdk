@@ -93,7 +93,9 @@ public class NewRevisionVersion {
     
     STRIKETHROUGH("strikethrough"),
     
-    ACHIEVEMENTS("achievements");
+    ACHIEVEMENTS("achievements"),
+    
+    ADVANCEDEVENTS("advancedEvents");
 
     private String value;
 

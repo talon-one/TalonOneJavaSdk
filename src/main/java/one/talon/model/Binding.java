@@ -75,7 +75,7 @@ public class Binding {
    * A descriptive name for the value to be bound.
    * @return name
   **/
-  @ApiModelProperty(example = "my property", required = true, value = "A descriptive name for the value to be bound.")
+  @ApiModelProperty(example = "Discount percentage", required = true, value = "A descriptive name for the value to be bound.")
 
   public String getName() {
     return name;
@@ -122,10 +122,10 @@ public class Binding {
   }
 
    /**
-   * A Talang expression that will be evaluated and its result attached to the name of the binding.
+   * A Talang expression that is evaluated, and its result is bound to the name of the binding. The first element must be one of the functions or operators supported by Talang, followed by its arguments. The arguments can be strings, numbers, or nested expressions. For example: - &#x60;[\&quot;list\&quot;, \&quot;10014\&quot;, \&quot;10015\&quot;]&#x60; calls the &#x60;list&#x60; function to build a list of strings. - &#x60;[\&quot;+\&quot;, 2, 0]&#x60; uses the &#x60;+&#x60; operator to add two numbers. 
    * @return expression
   **/
-  @ApiModelProperty(example = "[string1, string2]", required = true, value = "A Talang expression that will be evaluated and its result attached to the name of the binding.")
+  @ApiModelProperty(example = "[identity, 10]", required = true, value = "A Talang expression that is evaluated, and its result is bound to the name of the binding. The first element must be one of the functions or operators supported by Talang, followed by its arguments. The arguments can be strings, numbers, or nested expressions. For example: - `[\"list\", \"10014\", \"10015\"]` calls the `list` function to build a list of strings. - `[\"+\", 2, 0]` uses the `+` operator to add two numbers. ")
 
   public List<Object> getExpression() {
     return expression;
@@ -144,11 +144,11 @@ public class Binding {
   }
 
    /**
-   * Can be one of the following: - &#x60;string&#x60; - &#x60;number&#x60; - &#x60;boolean&#x60; 
+   * The data type of the value. One of the following: - &#x60;string&#x60; - &#x60;number&#x60; - &#x60;boolean&#x60; 
    * @return valueType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "string", value = "Can be one of the following: - `string` - `number` - `boolean` ")
+  @ApiModelProperty(example = "number", value = "The data type of the value. One of the following: - `string` - `number` - `boolean` ")
 
   public String getValueType() {
     return valueType;
@@ -213,11 +213,11 @@ public class Binding {
   }
 
    /**
-   * Id of the attribute attached to the placeholder.
+   * Identifier of the attribute attached to the placeholder.
    * @return attributeId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "100", value = "Id of the attribute attached to the placeholder.")
+  @ApiModelProperty(example = "100", value = "Identifier of the attribute attached to the placeholder.")
 
   public Long getAttributeId() {
     return attributeId;
@@ -236,11 +236,11 @@ public class Binding {
   }
 
    /**
-   * Describes the placeholder field and value in the template. This description can be used when creating campaigns from this template.
+   * Description of the placeholder field and its value in the template. This text can be shown when creating campaigns from this template.
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "This is a template parameter of type `number`.", value = "Describes the placeholder field and value in the template. This description can be used when creating campaigns from this template.")
+  @ApiModelProperty(example = "The percentage discount applied to the cart total.", value = "Description of the placeholder field and its value in the template. This text can be shown when creating campaigns from this template.")
 
   public String getDescription() {
     return description;

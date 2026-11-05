@@ -50,6 +50,14 @@ public class SamlConnectionTest {
     }
 
     /**
+     * Test the property 'certificateExpiry'
+     */
+    @Test
+    public void certificateExpiryTest() {
+        // TODO: test certificateExpiry
+    }
+
+    /**
      * Test the property 'accountId'
      */
     @Test

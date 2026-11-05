@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;Coupon&gt;**](Coupon.md) |  | 
+**totalResultSize** | **Long** |  | 
+**data** | [**List&lt;Ruleset&gt;**](Ruleset.md) |  | 
 
 
 

@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;CouponFailureSummary&gt;**](CouponFailureSummary.md) |  | 
+**data** | [**List&lt;ListCampaignStoreBudgets&gt;**](ListCampaignStoreBudgets.md) |  |  [optional]
 
 
 

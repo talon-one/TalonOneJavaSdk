@@ -6,9 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**totalResultSize** | **Long** |  |  [optional]
-**data** | [**List&lt;ApplicationReferee&gt;**](ApplicationReferee.md) |  | 
+**totalResultSize** | **Long** |  | 
+**data** | **List&lt;String&gt;** |  | 
 
 
 

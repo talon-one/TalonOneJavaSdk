@@ -73,4 +73,12 @@ public class UpdateExperimentVariantTest {
         // TODO: test weight
     }
 
+    /**
+     * Test the property 'audienceId'
+     */
+    @Test
+    public void audienceIdTest() {
+        // TODO: test audienceId
+    }
+
 }

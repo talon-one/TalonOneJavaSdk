@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.TimePoint;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -54,6 +55,14 @@ public class AchievementAdditionalPropertiesV2Test {
     @Test
     public void createdByTest() {
         // TODO: test createdBy
+    }
+
+    /**
+     * Test the property 'periodEndOverride'
+     */
+    @Test
+    public void periodEndOverrideTest() {
+        // TODO: test periodEndOverride
     }
 
     /**

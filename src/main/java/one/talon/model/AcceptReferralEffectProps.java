@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;acceptReferral\&quot; effect. TThis gets triggered whenever the referral code is valid and all other conditions in the rules of its campaign are met.
+ * This effect indicates that the referral code supplied is valid.  You should handle this effect by informing the user that the referral code is valid.  The code is automatically redeemed when you close the session.  Other effects will provide more information about the actual reward.
  */
-@ApiModel(description = "The properties specific to the \"acceptReferral\" effect. TThis gets triggered whenever the referral code is valid and all other conditions in the rules of its campaign are met.")
+@ApiModel(description = "This effect indicates that the referral code supplied is valid.  You should handle this effect by informing the user that the referral code is valid.  The code is automatically redeemed when you close the session.  Other effects will provide more information about the actual reward.")
 
 public class AcceptReferralEffectProps {
   public static final String SERIALIZED_NAME_VALUE = "value";
@@ -42,10 +42,10 @@ public class AcceptReferralEffectProps {
   }
 
    /**
-   * The referral code that was accepted.
+   * The referral code provided in the session.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The referral code that was accepted.")
+  @ApiModelProperty(required = true, value = "The referral code provided in the session.")
 
   public String getValue() {
     return value;

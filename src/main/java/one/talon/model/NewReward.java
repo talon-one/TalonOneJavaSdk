@@ -25,6 +25,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.Binding;
+import one.talon.model.RewardPointsRequired;
+import one.talon.model.Rule;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * NewReward
@@ -50,6 +54,30 @@ public class NewReward {
   public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
   @SerializedName(SERIALIZED_NAME_SANDBOX)
   private Boolean sandbox;
+
+  public static final String SERIALIZED_NAME_ELIGIBILITY_CONDITIONS = "eligibilityConditions";
+  @SerializedName(SERIALIZED_NAME_ELIGIBILITY_CONDITIONS)
+  private Rule eligibilityConditions;
+
+  public static final String SERIALIZED_NAME_RULE = "rule";
+  @SerializedName(SERIALIZED_NAME_RULE)
+  private Rule rule;
+
+  public static final String SERIALIZED_NAME_BINDINGS = "bindings";
+  @SerializedName(SERIALIZED_NAME_BINDINGS)
+  private List<Binding> bindings = null;
+
+  public static final String SERIALIZED_NAME_POINTS_REQUIRED = "pointsRequired";
+  @SerializedName(SERIALIZED_NAME_POINTS_REQUIRED)
+  private List<RewardPointsRequired> pointsRequired = null;
+
+  public static final String SERIALIZED_NAME_VALIDITY_DURATION = "validityDuration";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DURATION)
+  private String validityDuration;
+
+  public static final String SERIALIZED_NAME_EXPIRY_DATE = "expiryDate";
+  @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
+  private OffsetDateTime expiryDate;
 
 
   public NewReward name(String name) {
@@ -168,6 +196,160 @@ public class NewReward {
   }
 
 
+  public NewReward eligibilityConditions(Rule eligibilityConditions) {
+    
+    this.eligibilityConditions = eligibilityConditions;
+    return this;
+  }
+
+   /**
+   * Get eligibilityConditions
+   * @return eligibilityConditions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Rule getEligibilityConditions() {
+    return eligibilityConditions;
+  }
+
+
+  public void setEligibilityConditions(Rule eligibilityConditions) {
+    this.eligibilityConditions = eligibilityConditions;
+  }
+
+
+  public NewReward rule(Rule rule) {
+    
+    this.rule = rule;
+    return this;
+  }
+
+   /**
+   * Get rule
+   * @return rule
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Rule getRule() {
+    return rule;
+  }
+
+
+  public void setRule(Rule rule) {
+    this.rule = rule;
+  }
+
+
+  public NewReward bindings(List<Binding> bindings) {
+    
+    this.bindings = bindings;
+    return this;
+  }
+
+  public NewReward addBindingsItem(Binding bindingsItem) {
+    if (this.bindings == null) {
+      this.bindings = new ArrayList<Binding>();
+    }
+    this.bindings.add(bindingsItem);
+    return this;
+  }
+
+   /**
+   * A list of named variables created before the reward&#39;s rules are evaluated. Each binding pairs a name with a talang expression. The expression is evaluated once and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.
+   * @return bindings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "A list of named variables created before the reward's rules are evaluated. Each binding pairs a name with a talang expression. The expression is evaluated once and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.")
+
+  public List<Binding> getBindings() {
+    return bindings;
+  }
+
+
+  public void setBindings(List<Binding> bindings) {
+    this.bindings = bindings;
+  }
+
+
+  public NewReward pointsRequired(List<RewardPointsRequired> pointsRequired) {
+    
+    this.pointsRequired = pointsRequired;
+    return this;
+  }
+
+  public NewReward addPointsRequiredItem(RewardPointsRequired pointsRequiredItem) {
+    if (this.pointsRequired == null) {
+      this.pointsRequired = new ArrayList<RewardPointsRequired>();
+    }
+    this.pointsRequired.add(pointsRequiredItem);
+    return this;
+  }
+
+   /**
+   * The loyalty points required to activate the reward. Each object defines the specific loyalty program and subledger from which points are deducted when activating the reward.  **Note:** When creating a reward, the &#x60;id&#x60; of each entry is ignored and a new entry is always created. 
+   * @return pointsRequired
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The loyalty points required to activate the reward. Each object defines the specific loyalty program and subledger from which points are deducted when activating the reward.  **Note:** When creating a reward, the `id` of each entry is ignored and a new entry is always created. ")
+
+  public List<RewardPointsRequired> getPointsRequired() {
+    return pointsRequired;
+  }
+
+
+  public void setPointsRequired(List<RewardPointsRequired> pointsRequired) {
+    this.pointsRequired = pointsRequired;
+  }
+
+
+  public NewReward validityDuration(String validityDuration) {
+    
+    this.validityDuration = validityDuration;
+    return this;
+  }
+
+   /**
+   * The duration for which the customer rewards unlocked from this reward remain active, relative to when the customer reward was unlocked.  The time format is an **integer** followed by one letter indicating the time unit.  Examples: &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.  Available units:  - &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years  You can round certain units up or down: - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day. - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year.  This field cannot be used in combination with &#x60;expiryDate&#x60;. If both &#x60;validityDuration&#x60; and &#x60;expiryDate&#x60; are not set, customer rewards have unlimited validity. 
+   * @return validityDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3M_U", value = "The duration for which the customer rewards unlocked from this reward remain active, relative to when the customer reward was unlocked.  The time format is an **integer** followed by one letter indicating the time unit.  Examples: `5D`, `7W`, `10M`, `15Y`.  Available units:  - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can round certain units up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year.  This field cannot be used in combination with `expiryDate`. If both `validityDuration` and `expiryDate` are not set, customer rewards have unlimited validity. ")
+
+  public String getValidityDuration() {
+    return validityDuration;
+  }
+
+
+  public void setValidityDuration(String validityDuration) {
+    this.validityDuration = validityDuration;
+  }
+
+
+  public NewReward expiryDate(OffsetDateTime expiryDate) {
+    
+    this.expiryDate = expiryDate;
+    return this;
+  }
+
+   /**
+   * Expiry date of the customer rewards unlocked from this reward. Customer rewards never expire if this is omitted and &#x60;validityDuration&#x60; is not set.  **Note:** - The date must be in the future. - This field cannot be used in combination with &#x60;validityDuration&#x60;. 
+   * @return expiryDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2026-12-31T00:00Z", value = "Expiry date of the customer rewards unlocked from this reward. Customer rewards never expire if this is omitted and `validityDuration` is not set.  **Note:** - The date must be in the future. - This field cannot be used in combination with `validityDuration`. ")
+
+  public OffsetDateTime getExpiryDate() {
+    return expiryDate;
+  }
+
+
+  public void setExpiryDate(OffsetDateTime expiryDate) {
+    this.expiryDate = expiryDate;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -181,12 +363,18 @@ public class NewReward {
         Objects.equals(this.apiName, newReward.apiName) &&
         Objects.equals(this.description, newReward.description) &&
         Objects.equals(this.applicationIds, newReward.applicationIds) &&
-        Objects.equals(this.sandbox, newReward.sandbox);
+        Objects.equals(this.sandbox, newReward.sandbox) &&
+        Objects.equals(this.eligibilityConditions, newReward.eligibilityConditions) &&
+        Objects.equals(this.rule, newReward.rule) &&
+        Objects.equals(this.bindings, newReward.bindings) &&
+        Objects.equals(this.pointsRequired, newReward.pointsRequired) &&
+        Objects.equals(this.validityDuration, newReward.validityDuration) &&
+        Objects.equals(this.expiryDate, newReward.expiryDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, apiName, description, applicationIds, sandbox);
+    return Objects.hash(name, apiName, description, applicationIds, sandbox, eligibilityConditions, rule, bindings, pointsRequired, validityDuration, expiryDate);
   }
 
 
@@ -199,6 +387,12 @@ public class NewReward {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
+    sb.append("    eligibilityConditions: ").append(toIndentedString(eligibilityConditions)).append("\n");
+    sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
+    sb.append("    bindings: ").append(toIndentedString(bindings)).append("\n");
+    sb.append("    pointsRequired: ").append(toIndentedString(pointsRequired)).append("\n");
+    sb.append("    validityDuration: ").append(toIndentedString(validityDuration)).append("\n");
+    sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

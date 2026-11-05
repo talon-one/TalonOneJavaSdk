@@ -23,11 +23,11 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.RolesV2Thresholds;
 
 /**
- * RoleV2ApplicationDetails
+ * Details of the permission sets configured for an Application.
  */
+@ApiModel(description = "Details of the permission sets configured for an Application.")
 
 public class RoleV2ApplicationDetails {
   public static final String SERIALIZED_NAME_APPLICATION = "application";
@@ -46,10 +46,6 @@ public class RoleV2ApplicationDetails {
   @SerializedName(SERIALIZED_NAME_TOOLS)
   private String tools;
 
-  public static final String SERIALIZED_NAME_THRESHOLDS = "thresholds";
-  @SerializedName(SERIALIZED_NAME_THRESHOLDS)
-  private RolesV2Thresholds thresholds;
-
 
   public RoleV2ApplicationDetails application(String application) {
     
@@ -62,7 +58,7 @@ public class RoleV2ApplicationDetails {
    * @return application
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the Application-related permission set for the given Application.")
+  @ApiModelProperty(example = "Application permission set", value = "Name of the Application-related permission set for the given Application.")
 
   public String getApplication() {
     return application;
@@ -85,7 +81,7 @@ public class RoleV2ApplicationDetails {
    * @return campaign
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the campaign-related permission set for the given Application.")
+  @ApiModelProperty(example = "Campaign manager permission set", value = "Name of the campaign-related permission set for the given Application.")
 
   public String getCampaign() {
     return campaign;
@@ -108,7 +104,7 @@ public class RoleV2ApplicationDetails {
    * @return draftCampaign
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the draft campaign-related permission set for the given Application.")
+  @ApiModelProperty(example = "Campaign read-only permission set", value = "Name of the draft campaign-related permission set for the given Application.")
 
   public String getDraftCampaign() {
     return draftCampaign;
@@ -143,29 +139,6 @@ public class RoleV2ApplicationDetails {
   }
 
 
-  public RoleV2ApplicationDetails thresholds(RolesV2Thresholds thresholds) {
-    
-    this.thresholds = thresholds;
-    return this;
-  }
-
-   /**
-   * Get thresholds
-   * @return thresholds
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public RolesV2Thresholds getThresholds() {
-    return thresholds;
-  }
-
-
-  public void setThresholds(RolesV2Thresholds thresholds) {
-    this.thresholds = thresholds;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -178,13 +151,12 @@ public class RoleV2ApplicationDetails {
     return Objects.equals(this.application, roleV2ApplicationDetails.application) &&
         Objects.equals(this.campaign, roleV2ApplicationDetails.campaign) &&
         Objects.equals(this.draftCampaign, roleV2ApplicationDetails.draftCampaign) &&
-        Objects.equals(this.tools, roleV2ApplicationDetails.tools) &&
-        Objects.equals(this.thresholds, roleV2ApplicationDetails.thresholds);
+        Objects.equals(this.tools, roleV2ApplicationDetails.tools);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(application, campaign, draftCampaign, tools, thresholds);
+    return Objects.hash(application, campaign, draftCampaign, tools);
   }
 
 
@@ -196,7 +168,6 @@ public class RoleV2ApplicationDetails {
     sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
     sb.append("    draftCampaign: ").append(toIndentedString(draftCampaign)).append("\n");
     sb.append("    tools: ").append(toIndentedString(tools)).append("\n");
-    sb.append("    thresholds: ").append(toIndentedString(thresholds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

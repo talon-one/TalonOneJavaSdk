@@ -42,6 +42,14 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotificatio
     }
 
     /**
+     * Test the property 'eventId'
+     */
+    @Test
+    public void eventIdTest() {
+        // TODO: test eventId
+    }
+
+    /**
      * Test the property 'profileIntegrationID'
      */
     @Test
@@ -55,6 +63,14 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotificatio
     @Test
     public void loyaltyProgramIDTest() {
         // TODO: test loyaltyProgramID
+    }
+
+    /**
+     * Test the property 'loyaltyProgramName'
+     */
+    @Test
+    public void loyaltyProgramNameTest() {
+        // TODO: test loyaltyProgramName
     }
 
     /**

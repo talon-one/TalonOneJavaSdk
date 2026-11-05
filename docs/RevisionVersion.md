@@ -7,13 +7,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Long** | Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints. | 
-**accountId** | **Long** |  | 
-**applicationId** | **Long** |  | 
-**campaignId** | **Long** |  | 
-**created** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
-**createdBy** | **Long** |  | 
-**revisionId** | **Long** |  | 
-**version** | **Long** |  | 
+**accountId** | **Long** | The ID of the account that owns this entity. | 
+**applicationId** | **Long** | The ID of the Application that owns this entity. | 
+**campaignId** | **Long** | The ID of the campaign that the revision was created from. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the revision was created. | 
+**createdBy** | **Long** | The ID of the user who created this revision. | 
+**revisionId** | **Long** | The ID of the revision. | 
+**version** | **Long** | Incrementing number representing how many revisions have been activated on this campaign. Starts from &#x60;0&#x60; for a new campaign.  | 
 **name** | **String** | A user-facing name for this campaign. |  [optional]
 **startTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the campaign will become active. |  [optional]
 **endTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the campaign will become inactive. |  [optional]
@@ -40,6 +40,7 @@ LOYALTY | &quot;loyalty&quot;
 GIVEAWAYS | &quot;giveaways&quot;
 STRIKETHROUGH | &quot;strikethrough&quot;
 ACHIEVEMENTS | &quot;achievements&quot;
+ADVANCEDEVENTS | &quot;advancedEvents&quot;
 
 
 

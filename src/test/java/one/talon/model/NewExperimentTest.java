@@ -42,6 +42,14 @@ public class NewExperimentTest {
     }
 
     /**
+     * Test the property 'assignmentType'
+     */
+    @Test
+    public void assignmentTypeTest() {
+        // TODO: test assignmentType
+    }
+
+    /**
      * Test the property 'isVariantAssignmentExternal'
      */
     @Test
@@ -55,6 +63,22 @@ public class NewExperimentTest {
     @Test
     public void campaignTest() {
         // TODO: test campaign
+    }
+
+    /**
+     * Test the property 'goalType'
+     */
+    @Test
+    public void goalTypeTest() {
+        // TODO: test goalType
+    }
+
+    /**
+     * Test the property 'goalDescription'
+     */
+    @Test
+    public void goalDescriptionTest() {
+        // TODO: test goalDescription
     }
 
 }

@@ -2,7 +2,7 @@
 
 # ScimBaseUserName
 
-The components of the user’s real name.
+The components of the user's real name.
 ## Properties
 
 Name | Type | Description | Notes

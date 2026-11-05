@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Long** |  | 
-**data** | [**List&lt;CustomerProfile&gt;**](CustomerProfile.md) |  | 
+**data** | [**List&lt;CustomerReservation&gt;**](CustomerReservation.md) |  | 
 
 
 

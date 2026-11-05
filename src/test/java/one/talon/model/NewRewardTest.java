@@ -23,6 +23,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.Binding;
+import one.talon.model.RewardPointsRequired;
+import one.talon.model.Rule;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -80,6 +84,54 @@ public class NewRewardTest {
     @Test
     public void sandboxTest() {
         // TODO: test sandbox
+    }
+
+    /**
+     * Test the property 'eligibilityConditions'
+     */
+    @Test
+    public void eligibilityConditionsTest() {
+        // TODO: test eligibilityConditions
+    }
+
+    /**
+     * Test the property 'rule'
+     */
+    @Test
+    public void ruleTest() {
+        // TODO: test rule
+    }
+
+    /**
+     * Test the property 'bindings'
+     */
+    @Test
+    public void bindingsTest() {
+        // TODO: test bindings
+    }
+
+    /**
+     * Test the property 'pointsRequired'
+     */
+    @Test
+    public void pointsRequiredTest() {
+        // TODO: test pointsRequired
+    }
+
+    /**
+     * Test the property 'validityDuration'
+     */
+    @Test
+    public void validityDurationTest() {
+        // TODO: test validityDuration
+    }
+
+    /**
+     * Test the property 'expiryDate'
+     */
+    @Test
+    public void expiryDateTest() {
+        // TODO: test expiryDate
     }
 
 }

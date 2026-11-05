@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.CampaignReference;
+import one.talon.model.TimePoint;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -141,27 +143,11 @@ public class AchievementV2Test {
     }
 
     /**
-     * Test the property 'sandbox'
-     */
-    @Test
-    public void sandboxTest() {
-        // TODO: test sandbox
-    }
-
-    /**
      * Test the property 'subscribedApplications'
      */
     @Test
     public void subscribedApplicationsTest() {
         // TODO: test subscribedApplications
-    }
-
-    /**
-     * Test the property 'timezone'
-     */
-    @Test
-    public void timezoneTest() {
-        // TODO: test timezone
     }
 
     /**
@@ -181,6 +167,14 @@ public class AchievementV2Test {
     }
 
     /**
+     * Test the property 'periodEndOverride'
+     */
+    @Test
+    public void periodEndOverrideTest() {
+        // TODO: test periodEndOverride
+    }
+
+    /**
      * Test the property 'hasProgress'
      */
     @Test
@@ -194,6 +188,38 @@ public class AchievementV2Test {
     @Test
     public void statusTest() {
         // TODO: test status
+    }
+
+    /**
+     * Test the property 'sandbox'
+     */
+    @Test
+    public void sandboxTest() {
+        // TODO: test sandbox
+    }
+
+    /**
+     * Test the property 'timezone'
+     */
+    @Test
+    public void timezoneTest() {
+        // TODO: test timezone
+    }
+
+    /**
+     * Test the property 'campaignId'
+     */
+    @Test
+    public void campaignIdTest() {
+        // TODO: test campaignId
+    }
+
+    /**
+     * Test the property 'referencedByCampaigns'
+     */
+    @Test
+    public void referencedByCampaignsTest() {
+        // TODO: test referencedByCampaigns
     }
 
 }

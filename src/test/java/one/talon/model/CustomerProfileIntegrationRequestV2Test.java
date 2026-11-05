@@ -75,4 +75,12 @@ public class CustomerProfileIntegrationRequestV2Test {
         // TODO: test audiencesChanges
     }
 
+    /**
+     * Test the property 'rewardIntegrationIds'
+     */
+    @Test
+    public void rewardIntegrationIdsTest() {
+        // TODO: test rewardIntegrationIds
+    }
+
 }

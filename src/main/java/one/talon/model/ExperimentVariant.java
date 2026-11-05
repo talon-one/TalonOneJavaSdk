@@ -59,6 +59,10 @@ public class ExperimentVariant {
   @SerializedName(SERIALIZED_NAME_IS_PRIMARY)
   private Boolean isPrimary;
 
+  public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
+  private Long audienceId;
+
 
   public ExperimentVariant id(Long id) {
     
@@ -217,6 +221,29 @@ public class ExperimentVariant {
   }
 
 
+  public ExperimentVariant audienceId(Long audienceId) {
+    
+    this.audienceId = audienceId;
+    return this;
+  }
+
+   /**
+   * The ID of the audience this variant targets. Only used when the experiment &#x60;assignmentType&#x60; is &#x60;audience&#x60;. 
+   * @return audienceId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "55", value = "The ID of the audience this variant targets. Only used when the experiment `assignmentType` is `audience`. ")
+
+  public Long getAudienceId() {
+    return audienceId;
+  }
+
+
+  public void setAudienceId(Long audienceId) {
+    this.audienceId = audienceId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -232,12 +259,13 @@ public class ExperimentVariant {
         Objects.equals(this.experimentId, experimentVariant.experimentId) &&
         Objects.equals(this.ruleset, experimentVariant.ruleset) &&
         Objects.equals(this.weight, experimentVariant.weight) &&
-        Objects.equals(this.isPrimary, experimentVariant.isPrimary);
+        Objects.equals(this.isPrimary, experimentVariant.isPrimary) &&
+        Objects.equals(this.audienceId, experimentVariant.audienceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, name, experimentId, ruleset, weight, isPrimary);
+    return Objects.hash(id, created, name, experimentId, ruleset, weight, isPrimary, audienceId);
   }
 
 
@@ -252,6 +280,7 @@ public class ExperimentVariant {
     sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    isPrimary: ").append(toIndentedString(isPrimary)).append("\n");
+    sb.append("    audienceId: ").append(toIndentedString(audienceId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

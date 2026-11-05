@@ -23,6 +23,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -41,6 +43,10 @@ public class MultipleAudiencesItem {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
+  @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
+  private List<Long> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
@@ -166,6 +172,37 @@ public class MultipleAudiencesItem {
   }
 
 
+  public MultipleAudiencesItem subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+    
+    this.subscribedApplicationsIds = subscribedApplicationsIds;
+    return this;
+  }
+
+  public MultipleAudiencesItem addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
+    if (this.subscribedApplicationsIds == null) {
+      this.subscribedApplicationsIds = new ArrayList<Long>();
+    }
+    this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of the IDs of the Applications that are connected to this audience.
+   * @return subscribedApplicationsIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[3, 13]", value = "A list of the IDs of the Applications that are connected to this audience.")
+
+  public List<Long> getSubscribedApplicationsIds() {
+    return subscribedApplicationsIds;
+  }
+
+
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+    this.subscribedApplicationsIds = subscribedApplicationsIds;
+  }
+
+
   public MultipleAudiencesItem integrationId(String integrationId) {
     
     this.integrationId = integrationId;
@@ -222,13 +259,14 @@ public class MultipleAudiencesItem {
     return Objects.equals(this.id, multipleAudiencesItem.id) &&
         Objects.equals(this.created, multipleAudiencesItem.created) &&
         Objects.equals(this.name, multipleAudiencesItem.name) &&
+        Objects.equals(this.subscribedApplicationsIds, multipleAudiencesItem.subscribedApplicationsIds) &&
         Objects.equals(this.integrationId, multipleAudiencesItem.integrationId) &&
         Objects.equals(this.status, multipleAudiencesItem.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, name, integrationId, status);
+    return Objects.hash(id, created, name, subscribedApplicationsIds, integrationId, status);
   }
 
 
@@ -239,6 +277,7 @@ public class MultipleAudiencesItem {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    subscribedApplicationsIds: ").append(toIndentedString(subscribedApplicationsIds)).append("\n");
     sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

@@ -96,6 +96,14 @@ public class EffectEntity {
   @SerializedName(SERIALIZED_NAME_ADJUSTMENT_REFERENCE_ID)
   private UUID adjustmentReferenceId;
 
+  public static final String SERIALIZED_NAME_REWARD_ID = "rewardId";
+  @SerializedName(SERIALIZED_NAME_REWARD_ID)
+  private Long rewardId;
+
+  public static final String SERIALIZED_NAME_REWARD_INTEGRATION_ID = "rewardIntegrationId";
+  @SerializedName(SERIALIZED_NAME_REWARD_INTEGRATION_ID)
+  private String rewardIntegrationId;
+
 
   public EffectEntity experimentId(Long experimentId) {
     
@@ -215,10 +223,10 @@ public class EffectEntity {
   }
 
    /**
-   * The type of effect that was triggered. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
+   * See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
    * @return effectType
   **/
-  @ApiModelProperty(example = "rejectCoupon", required = true, value = "The type of effect that was triggered. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).")
+  @ApiModelProperty(example = "rejectCoupon", required = true, value = "See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).")
 
   public String getEffectType() {
     return effectType;
@@ -460,6 +468,52 @@ public class EffectEntity {
   }
 
 
+  public EffectEntity rewardId(Long rewardId) {
+    
+    this.rewardId = rewardId;
+    return this;
+  }
+
+   /**
+   * The ID of the reward that was being evaluated when this effect was triggered.
+   * @return rewardId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "7", value = "The ID of the reward that was being evaluated when this effect was triggered.")
+
+  public Long getRewardId() {
+    return rewardId;
+  }
+
+
+  public void setRewardId(Long rewardId) {
+    this.rewardId = rewardId;
+  }
+
+
+  public EffectEntity rewardIntegrationId(String rewardIntegrationId) {
+    
+    this.rewardIntegrationId = rewardIntegrationId;
+    return this;
+  }
+
+   /**
+   * The integration ID of the specific customer reward whose usage produced this effect.
+   * @return rewardIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "reward-unlock-123", value = "The integration ID of the specific customer reward whose usage produced this effect.")
+
+  public String getRewardIntegrationId() {
+    return rewardIntegrationId;
+  }
+
+
+  public void setRewardIntegrationId(String rewardIntegrationId) {
+    this.rewardIntegrationId = rewardIntegrationId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -484,12 +538,14 @@ public class EffectEntity {
         Objects.equals(this.campaignRevisionVersionId, effectEntity.campaignRevisionVersionId) &&
         Objects.equals(this.selectedPriceType, effectEntity.selectedPriceType) &&
         Objects.equals(this.selectedPrice, effectEntity.selectedPrice) &&
-        Objects.equals(this.adjustmentReferenceId, effectEntity.adjustmentReferenceId);
+        Objects.equals(this.adjustmentReferenceId, effectEntity.adjustmentReferenceId) &&
+        Objects.equals(this.rewardId, effectEntity.rewardId) &&
+        Objects.equals(this.rewardIntegrationId, effectEntity.rewardIntegrationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(experimentId, campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex, evaluationGroupID, evaluationGroupMode, campaignRevisionId, campaignRevisionVersionId, selectedPriceType, selectedPrice, adjustmentReferenceId);
+    return Objects.hash(experimentId, campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex, evaluationGroupID, evaluationGroupMode, campaignRevisionId, campaignRevisionVersionId, selectedPriceType, selectedPrice, adjustmentReferenceId, rewardId, rewardIntegrationId);
   }
 
 
@@ -513,6 +569,8 @@ public class EffectEntity {
     sb.append("    selectedPriceType: ").append(toIndentedString(selectedPriceType)).append("\n");
     sb.append("    selectedPrice: ").append(toIndentedString(selectedPrice)).append("\n");
     sb.append("    adjustmentReferenceId: ").append(toIndentedString(adjustmentReferenceId)).append("\n");
+    sb.append("    rewardId: ").append(toIndentedString(rewardId)).append("\n");
+    sb.append("    rewardIntegrationId: ").append(toIndentedString(rewardIntegrationId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

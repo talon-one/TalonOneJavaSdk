@@ -46,7 +46,7 @@ public class BestPriorPriceRequest {
   private String timeframe;
 
   /**
-   * Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - &#x60;strict&#x60;: The timeframe ends at the &#x60;timeframeEndDate&#x60; value. - &#x60;price&#x60;: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - &#x60;sale&#x60;:  The timeframe ends at the start of current &#x60;contextId&#x60; and takes the prices prior to the start of the &#x60;contextId&#x60; into account. 
+   * Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - &#x60;strict&#x60;: The timeframe ends at the &#x60;timeframeEndDate&#x60; value. - &#x60;price&#x60;: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - &#x60;sale&#x60;:  The timeframe ends at the start of the current sales event, as defined by the &#x60;contextId&#x60;. It takes the prices prior to the current sale event into account. 
    */
   @JsonAdapter(TimeframeEndDateTypeEnum.Adapter.class)
   public enum TimeframeEndDateTypeEnum {
@@ -118,7 +118,7 @@ public class BestPriorPriceRequest {
    * List of product SKUs to check when determining the best prior price.
    * @return skus
   **/
-  @ApiModelProperty(example = "[comma, period]", required = true, value = "List of product SKUs to check when determining the best prior price.")
+  @ApiModelProperty(example = "[SKU1241028, SKU7345278]", required = true, value = "List of product SKUs to check when determining the best prior price.")
 
   public List<String> getSkus() {
     return skus;
@@ -181,10 +181,10 @@ public class BestPriorPriceRequest {
   }
 
    /**
-   * Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - &#x60;strict&#x60;: The timeframe ends at the &#x60;timeframeEndDate&#x60; value. - &#x60;price&#x60;: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - &#x60;sale&#x60;:  The timeframe ends at the start of current &#x60;contextId&#x60; and takes the prices prior to the start of the &#x60;contextId&#x60; into account. 
+   * Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - &#x60;strict&#x60;: The timeframe ends at the &#x60;timeframeEndDate&#x60; value. - &#x60;price&#x60;: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - &#x60;sale&#x60;:  The timeframe ends at the start of the current sales event, as defined by the &#x60;contextId&#x60;. It takes the prices prior to the current sale event into account. 
    * @return timeframeEndDateType
   **/
-  @ApiModelProperty(example = "sale", required = true, value = "Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - `strict`: The timeframe ends at the `timeframeEndDate` value. - `price`: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - `sale`:  The timeframe ends at the start of current `contextId` and takes the prices prior to the start of the `contextId` into account. ")
+  @ApiModelProperty(example = "sale", required = true, value = "Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - `strict`: The timeframe ends at the `timeframeEndDate` value. - `price`: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - `sale`:  The timeframe ends at the start of the current sales event, as defined by the `contextId`. It takes the prices prior to the current sale event into account. ")
 
   public TimeframeEndDateTypeEnum getTimeframeEndDateType() {
     return timeframeEndDateType;

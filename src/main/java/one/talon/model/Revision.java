@@ -101,11 +101,11 @@ public class Revision {
   }
 
    /**
-   * Get activateAt
+   * Timestamp when the revision will be activated.
    * @return activateAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "2026-10-08T09:30Z", value = "Timestamp when the revision will be activated.")
 
   public OffsetDateTime getActivateAt() {
     return activateAt;
@@ -124,10 +124,10 @@ public class Revision {
   }
 
    /**
-   * Get accountId
+   * The ID of the account that owns this entity.
    * @return accountId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
   public Long getAccountId() {
     return accountId;
@@ -146,10 +146,10 @@ public class Revision {
   }
 
    /**
-   * Get applicationId
+   * The ID of the Application that owns this entity.
    * @return applicationId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "42", required = true, value = "The ID of the Application that owns this entity.")
 
   public Long getApplicationId() {
     return applicationId;
@@ -168,10 +168,10 @@ public class Revision {
   }
 
    /**
-   * Get campaignId
+   * The ID of the campaign that the revision was created from.
    * @return campaignId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "18", required = true, value = "The ID of the campaign that the revision was created from.")
 
   public Long getCampaignId() {
     return campaignId;
@@ -190,10 +190,10 @@ public class Revision {
   }
 
    /**
-   * Get created
+   * Timestamp when the revision was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "2026-10-01T08:00Z", required = true, value = "Timestamp when the revision was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -212,10 +212,10 @@ public class Revision {
   }
 
    /**
-   * Get createdBy
+   * The ID of the user who created this revision.
    * @return createdBy
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "134", required = true, value = "The ID of the user who created this revision.")
 
   public Long getCreatedBy() {
     return createdBy;
@@ -234,11 +234,11 @@ public class Revision {
   }
 
    /**
-   * Get activatedAt
+   * Timestamp when this revision was activated.
    * @return activatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "2026-10-08T09:30Z", value = "Timestamp when this revision was activated.")
 
   public OffsetDateTime getActivatedAt() {
     return activatedAt;
@@ -257,11 +257,11 @@ public class Revision {
   }
 
    /**
-   * Get activatedBy
+   * The ID of the user who activated this revision.
    * @return activatedBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "334", value = "The ID of the user who activated this revision.")
 
   public Long getActivatedBy() {
     return activatedBy;

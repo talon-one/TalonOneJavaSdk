@@ -6,8 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
-**data** | [**List&lt;WebhookWithOutgoingIntegrationDetails&gt;**](WebhookWithOutgoingIntegrationDetails.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**totalResultSize** | **Long** |  |  [optional]
+**data** | [**List&lt;ApplicationReferee&gt;**](ApplicationReferee.md) |  | 
 
 
 

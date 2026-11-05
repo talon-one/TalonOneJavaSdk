@@ -46,6 +46,10 @@ public class NewExperimentVariant {
   @SerializedName(SERIALIZED_NAME_IS_PRIMARY)
   private Boolean isPrimary;
 
+  public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
+  private Long audienceId;
+
 
   public NewExperimentVariant name(String name) {
     
@@ -76,12 +80,12 @@ public class NewExperimentVariant {
   }
 
    /**
-   * The percentage split of this variant. The sum of all variant percentages must be 100.
-   * minimum: 1
+   * The percentage split of this variant. For &#x60;random&#x60; assignment, the split must be between 1 and 99 and the sum across all variants must equal 100. Ignored for &#x60;audience&#x60; and &#x60;external&#x60; assignment. 
+   * minimum: 0
    * maximum: 99
    * @return weight
   **/
-  @ApiModelProperty(example = "13", required = true, value = "The percentage split of this variant. The sum of all variant percentages must be 100.")
+  @ApiModelProperty(example = "13", required = true, value = "The percentage split of this variant. For `random` assignment, the split must be between 1 and 99 and the sum across all variants must equal 100. Ignored for `audience` and `external` assignment. ")
 
   public Long getWeight() {
     return weight;
@@ -137,6 +141,29 @@ public class NewExperimentVariant {
   }
 
 
+  public NewExperimentVariant audienceId(Long audienceId) {
+    
+    this.audienceId = audienceId;
+    return this;
+  }
+
+   /**
+   * The ID of the audience this variant targets. Only used when the experiment &#x60;assignmentType&#x60; is &#x60;audience&#x60;. 
+   * @return audienceId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "55", value = "The ID of the audience this variant targets. Only used when the experiment `assignmentType` is `audience`. ")
+
+  public Long getAudienceId() {
+    return audienceId;
+  }
+
+
+  public void setAudienceId(Long audienceId) {
+    this.audienceId = audienceId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -149,12 +176,13 @@ public class NewExperimentVariant {
     return Objects.equals(this.name, newExperimentVariant.name) &&
         Objects.equals(this.weight, newExperimentVariant.weight) &&
         Objects.equals(this.ruleset, newExperimentVariant.ruleset) &&
-        Objects.equals(this.isPrimary, newExperimentVariant.isPrimary);
+        Objects.equals(this.isPrimary, newExperimentVariant.isPrimary) &&
+        Objects.equals(this.audienceId, newExperimentVariant.audienceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, weight, ruleset, isPrimary);
+    return Objects.hash(name, weight, ruleset, isPrimary, audienceId);
   }
 
 
@@ -166,6 +194,7 @@ public class NewExperimentVariant {
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
     sb.append("    isPrimary: ").append(toIndentedString(isPrimary)).append("\n");
+    sb.append("    audienceId: ").append(toIndentedString(audienceId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

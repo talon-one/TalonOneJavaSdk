@@ -142,4 +142,12 @@ public class ApplicationCustomerTest {
         // TODO: test advocateIntegrationId
     }
 
+    /**
+     * Test the property 'loyaltyProgramJoinDates'
+     */
+    @Test
+    public void loyaltyProgramJoinDatesTest() {
+        // TODO: test loyaltyProgramJoinDates
+    }
+
 }

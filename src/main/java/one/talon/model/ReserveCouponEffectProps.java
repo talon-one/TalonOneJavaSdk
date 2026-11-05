@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;reserveCoupon\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;reserve coupon\&quot; effect. This reserves the coupon currently on scope to the profile on scope.
+ * This effect indicates that the given coupon code was reserved for the given customer.  Talon.One provides soft and hard reservations. For more information, see [Reserve a coupon code](https://docs.talon.one/docs/product/rules/effects/use-effects#reserve-a-coupon-code).
  */
-@ApiModel(description = "The properties specific to the \"reserveCoupon\" effect. This gets triggered whenever a validated rule contained a \"reserve coupon\" effect. This reserves the coupon currently on scope to the profile on scope.")
+@ApiModel(description = "This effect indicates that the given coupon code was reserved for the given customer.  Talon.One provides soft and hard reservations. For more information, see [Reserve a coupon code](https://docs.talon.one/docs/product/rules/effects/use-effects#reserve-a-coupon-code).")
 
 public class ReserveCouponEffectProps {
   public static final String SERIALIZED_NAME_COUPON_VALUE = "couponValue";
@@ -50,10 +50,10 @@ public class ReserveCouponEffectProps {
   }
 
    /**
-   * The value of the coupon currently on scope.
+   * The coupon code that was created.
    * @return couponValue
   **/
-  @ApiModelProperty(required = true, value = "The value of the coupon currently on scope.")
+  @ApiModelProperty(required = true, value = "The coupon code that was created.")
 
   public String getCouponValue() {
     return couponValue;
@@ -72,10 +72,10 @@ public class ReserveCouponEffectProps {
   }
 
    /**
-   * The ID of this customer profile in the third-party integration.
+   * The integration identifier of the customer for whom this coupon was reserved.
    * @return profileIntegrationId
   **/
-  @ApiModelProperty(required = true, value = "The ID of this customer profile in the third-party integration.")
+  @ApiModelProperty(required = true, value = "The integration identifier of the customer for whom this coupon was reserved.")
 
   public String getProfileIntegrationId() {
     return profileIntegrationId;

@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.CampaignReference;
+import one.talon.model.TimePoint;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -177,17 +179,9 @@ public class AchievementV2 {
   @SerializedName(SERIALIZED_NAME_ALLOW_ROLLBACK_AFTER_COMPLETION)
   private Boolean allowRollbackAfterCompletion;
 
-  public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
-  @SerializedName(SERIALIZED_NAME_SANDBOX)
-  private Boolean sandbox;
-
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS = "subscribedApplications";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS)
   private List<Long> subscribedApplications = new ArrayList<Long>();
-
-  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
-  @SerializedName(SERIALIZED_NAME_TIMEZONE)
-  private String timezone;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
@@ -197,22 +191,24 @@ public class AchievementV2 {
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   private String createdBy;
 
+  public static final String SERIALIZED_NAME_PERIOD_END_OVERRIDE = "periodEndOverride";
+  @SerializedName(SERIALIZED_NAME_PERIOD_END_OVERRIDE)
+  private TimePoint periodEndOverride;
+
   public static final String SERIALIZED_NAME_HAS_PROGRESS = "hasProgress";
   @SerializedName(SERIALIZED_NAME_HAS_PROGRESS)
   private Boolean hasProgress;
 
   /**
-   * The status of the achievement.
+   * The status of the achievement.                                                                                               - &#x60;active&#x60;: The achievement is available to customers. - &#x60;scheduled&#x60;: The achievement has a &#x60;fixedStartDate&#x60; set in the future. - &#x60;expired&#x60;: The achievement&#39;s &#x60;endDate&#x60; is in the past. 
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    INPROGRESS("inprogress"),
+    ACTIVE("active"),
     
-    EXPIRED("expired"),
+    SCHEDULED("scheduled"),
     
-    NOT_STARTED("not_started"),
-    
-    COMPLETED("completed");
+    EXPIRED("expired");
 
     private String value;
 
@@ -255,6 +251,22 @@ public class AchievementV2 {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
+
+  public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
+  @SerializedName(SERIALIZED_NAME_SANDBOX)
+  private Boolean sandbox;
+
+  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
+  @SerializedName(SERIALIZED_NAME_TIMEZONE)
+  private String timezone;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private Long campaignId;
+
+  public static final String SERIALIZED_NAME_REFERENCED_BY_CAMPAIGNS = "referencedByCampaigns";
+  @SerializedName(SERIALIZED_NAME_REFERENCED_BY_CAMPAIGNS)
+  private List<CampaignReference> referencedByCampaigns = new ArrayList<CampaignReference>();
 
 
   public AchievementV2 id(Long id) {
@@ -525,28 +537,6 @@ public class AchievementV2 {
   }
 
 
-  public AchievementV2 sandbox(Boolean sandbox) {
-    
-    this.sandbox = sandbox;
-    return this;
-  }
-
-   /**
-   * Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
-   * @return sandbox
-  **/
-  @ApiModelProperty(example = "true", required = true, value = "Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.")
-
-  public Boolean getSandbox() {
-    return sandbox;
-  }
-
-
-  public void setSandbox(Boolean sandbox) {
-    this.sandbox = sandbox;
-  }
-
-
   public AchievementV2 subscribedApplications(List<Long> subscribedApplications) {
     
     this.subscribedApplications = subscribedApplications;
@@ -571,28 +561,6 @@ public class AchievementV2 {
 
   public void setSubscribedApplications(List<Long> subscribedApplications) {
     this.subscribedApplications = subscribedApplications;
-  }
-
-
-  public AchievementV2 timezone(String timezone) {
-    
-    this.timezone = timezone;
-    return this;
-  }
-
-   /**
-   * A string containing an IANA timezone descriptor.
-   * @return timezone
-  **/
-  @ApiModelProperty(example = "Europe/Berlin", required = true, value = "A string containing an IANA timezone descriptor.")
-
-  public String getTimezone() {
-    return timezone;
-  }
-
-
-  public void setTimezone(String timezone) {
-    this.timezone = timezone;
   }
 
 
@@ -641,6 +609,29 @@ public class AchievementV2 {
   }
 
 
+  public AchievementV2 periodEndOverride(TimePoint periodEndOverride) {
+    
+    this.periodEndOverride = periodEndOverride;
+    return this;
+  }
+
+   /**
+   * Get periodEndOverride
+   * @return periodEndOverride
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public TimePoint getPeriodEndOverride() {
+    return periodEndOverride;
+  }
+
+
+  public void setPeriodEndOverride(TimePoint periodEndOverride) {
+    this.periodEndOverride = periodEndOverride;
+  }
+
+
   public AchievementV2 hasProgress(Boolean hasProgress) {
     
     this.hasProgress = hasProgress;
@@ -671,11 +662,11 @@ public class AchievementV2 {
   }
 
    /**
-   * The status of the achievement.
+   * The status of the achievement.                                                                                               - &#x60;active&#x60;: The achievement is available to customers. - &#x60;scheduled&#x60;: The achievement has a &#x60;fixedStartDate&#x60; set in the future. - &#x60;expired&#x60;: The achievement&#39;s &#x60;endDate&#x60; is in the past. 
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "inprogress", value = "The status of the achievement.")
+  @ApiModelProperty(example = "active", value = "The status of the achievement.                                                                                               - `active`: The achievement is available to customers. - `scheduled`: The achievement has a `fixedStartDate` set in the future. - `expired`: The achievement's `endDate` is in the past. ")
 
   public StatusEnum getStatus() {
     return status;
@@ -684,6 +675,100 @@ public class AchievementV2 {
 
   public void setStatus(StatusEnum status) {
     this.status = status;
+  }
+
+
+  public AchievementV2 sandbox(Boolean sandbox) {
+    
+    this.sandbox = sandbox;
+    return this;
+  }
+
+   /**
+   * Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
+   * @return sandbox
+  **/
+  @ApiModelProperty(example = "true", required = true, value = "Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.")
+
+  public Boolean getSandbox() {
+    return sandbox;
+  }
+
+
+  public void setSandbox(Boolean sandbox) {
+    this.sandbox = sandbox;
+  }
+
+
+  public AchievementV2 timezone(String timezone) {
+    
+    this.timezone = timezone;
+    return this;
+  }
+
+   /**
+   * A string containing an IANA timezone descriptor.
+   * @return timezone
+  **/
+  @ApiModelProperty(example = "Europe/Berlin", required = true, value = "A string containing an IANA timezone descriptor.")
+
+  public String getTimezone() {
+    return timezone;
+  }
+
+
+  public void setTimezone(String timezone) {
+    this.timezone = timezone;
+  }
+
+
+  public AchievementV2 campaignId(Long campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * This property is **deprecated**. Use &#x60;referencedByCampaigns&#x60; instead. This field contains the first campaign ID from the related &#x60;referencedByCampaigns&#x60;, and is omitted when &#x60;referencedByCampaigns&#x60; is empty.
+   * @return campaignId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3", value = "This property is **deprecated**. Use `referencedByCampaigns` instead. This field contains the first campaign ID from the related `referencedByCampaigns`, and is omitted when `referencedByCampaigns` is empty.")
+
+  public Long getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(Long campaignId) {
+    this.campaignId = campaignId;
+  }
+
+
+  public AchievementV2 referencedByCampaigns(List<CampaignReference> referencedByCampaigns) {
+    
+    this.referencedByCampaigns = referencedByCampaigns;
+    return this;
+  }
+
+  public AchievementV2 addReferencedByCampaignsItem(CampaignReference referencedByCampaignsItem) {
+    this.referencedByCampaigns.add(referencedByCampaignsItem);
+    return this;
+  }
+
+   /**
+   * The campaigns that reference this achievement. They are sorted in ascending order by their id.
+   * @return referencedByCampaigns
+  **/
+  @ApiModelProperty(required = true, value = "The campaigns that reference this achievement. They are sorted in ascending order by their id.")
+
+  public List<CampaignReference> getReferencedByCampaigns() {
+    return referencedByCampaigns;
+  }
+
+
+  public void setReferencedByCampaigns(List<CampaignReference> referencedByCampaigns) {
+    this.referencedByCampaigns = referencedByCampaigns;
   }
 
 
@@ -708,18 +793,21 @@ public class AchievementV2 {
         Objects.equals(this.fixedStartDate, achievementV2.fixedStartDate) &&
         Objects.equals(this.endDate, achievementV2.endDate) &&
         Objects.equals(this.allowRollbackAfterCompletion, achievementV2.allowRollbackAfterCompletion) &&
-        Objects.equals(this.sandbox, achievementV2.sandbox) &&
         Objects.equals(this.subscribedApplications, achievementV2.subscribedApplications) &&
-        Objects.equals(this.timezone, achievementV2.timezone) &&
         Objects.equals(this.userId, achievementV2.userId) &&
         Objects.equals(this.createdBy, achievementV2.createdBy) &&
+        Objects.equals(this.periodEndOverride, achievementV2.periodEndOverride) &&
         Objects.equals(this.hasProgress, achievementV2.hasProgress) &&
-        Objects.equals(this.status, achievementV2.status);
+        Objects.equals(this.status, achievementV2.status) &&
+        Objects.equals(this.sandbox, achievementV2.sandbox) &&
+        Objects.equals(this.timezone, achievementV2.timezone) &&
+        Objects.equals(this.campaignId, achievementV2.campaignId) &&
+        Objects.equals(this.referencedByCampaigns, achievementV2.referencedByCampaigns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, name, title, description, target, period, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, sandbox, subscribedApplications, timezone, userId, createdBy, hasProgress, status);
+    return Objects.hash(id, created, name, title, description, target, period, recurrencePolicy, activationPolicy, fixedStartDate, endDate, allowRollbackAfterCompletion, subscribedApplications, userId, createdBy, periodEndOverride, hasProgress, status, sandbox, timezone, campaignId, referencedByCampaigns);
   }
 
 
@@ -739,13 +827,16 @@ public class AchievementV2 {
     sb.append("    fixedStartDate: ").append(toIndentedString(fixedStartDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    allowRollbackAfterCompletion: ").append(toIndentedString(allowRollbackAfterCompletion)).append("\n");
-    sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    subscribedApplications: ").append(toIndentedString(subscribedApplications)).append("\n");
-    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+    sb.append("    periodEndOverride: ").append(toIndentedString(periodEndOverride)).append("\n");
     sb.append("    hasProgress: ").append(toIndentedString(hasProgress)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    referencedByCampaigns: ").append(toIndentedString(referencedByCampaigns)).append("\n");
     sb.append("}");
     return sb.toString();
   }

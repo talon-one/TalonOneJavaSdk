@@ -6,8 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;CardLedgerTransactionLogEntryIntegrationAPI&gt;**](CardLedgerTransactionLogEntryIntegrationAPI.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**totalResultSize** | **Long** |  |  [optional]
+**data** | [**List&lt;CustomerProfileReward&gt;**](CustomerProfileReward.md) |  | 
 
 
 

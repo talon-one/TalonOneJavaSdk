@@ -6,7 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;SummaryCampaignStoreBudget&gt;**](SummaryCampaignStoreBudget.md) |  |  [optional]
+**totalResultSize** | **Long** | The total number of roles returned. | 
+**data** | [**List&lt;RoleV2&gt;**](RoleV2.md) | The list of roles. | 
 
 
 

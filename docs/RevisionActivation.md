@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**activateAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**activateAt** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the revision will be activated. |  [optional]
 
 
 

@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.RoleV2PermissionSet;
 import one.talon.model.RoleV2RolesGroup;
+import one.talon.model.RolesV2Thresholds;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -58,6 +59,14 @@ public class RoleV2PermissionsTest {
     @Test
     public void rolesTest() {
         // TODO: test roles
+    }
+
+    /**
+     * Test the property 'thresholds'
+     */
+    @Test
+    public void thresholdsTest() {
+        // TODO: test thresholds
     }
 
 }

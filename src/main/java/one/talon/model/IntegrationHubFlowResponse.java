@@ -24,29 +24,46 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import one.talon.model.IntegrationHubFlowConfigResponse;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * IntegrationHubFlowResponse
  */
 
 public class IntegrationHubFlowResponse {
-  public static final String SERIALIZED_NAME_ID = "Id";
+  public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private Long id;
 
-  public static final String SERIALIZED_NAME_APPLICATION_I_D = "ApplicationID";
-  @SerializedName(SERIALIZED_NAME_APPLICATION_I_D)
-  private Long applicationID;
+  public static final String SERIALIZED_NAME_INTEGRATION_NAME = "integrationName";
+  @SerializedName(SERIALIZED_NAME_INTEGRATION_NAME)
+  private String integrationName;
 
-  public static final String SERIALIZED_NAME_EVENT_TYPE = "EventType";
+  public static final String SERIALIZED_NAME_INSTANCE_NAME = "instanceName";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_NAME)
+  private String instanceName;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_DISABLED_UNTIL = "disabledUntil";
+  @SerializedName(SERIALIZED_NAME_DISABLED_UNTIL)
+  private OffsetDateTime disabledUntil;
+
+  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
+  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  private Long applicationId;
+
+  public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_ID = "loyaltyProgramId";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_ID)
+  private Long loyaltyProgramId;
+
+  public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
   private String eventType;
 
-  public static final String SERIALIZED_NAME_INTEGRATION_HUB_FLOW_URL = "IntegrationHubFlowUrl";
-  @SerializedName(SERIALIZED_NAME_INTEGRATION_HUB_FLOW_URL)
-  private String integrationHubFlowUrl;
-
-  public static final String SERIALIZED_NAME_CONFIG = "Config";
+  public static final String SERIALIZED_NAME_CONFIG = "config";
   @SerializedName(SERIALIZED_NAME_CONFIG)
   private IntegrationHubFlowConfigResponse config;
 
@@ -73,26 +90,140 @@ public class IntegrationHubFlowResponse {
   }
 
 
-  public IntegrationHubFlowResponse applicationID(Long applicationID) {
+  public IntegrationHubFlowResponse integrationName(String integrationName) {
     
-    this.applicationID = applicationID;
+    this.integrationName = integrationName;
     return this;
   }
 
    /**
-   * ID of application the flow is registered for.
-   * @return applicationID
+   * Name of the integration.
+   * @return integrationName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "54", value = "ID of application the flow is registered for.")
+  @ApiModelProperty(value = "Name of the integration.")
 
-  public Long getApplicationID() {
-    return applicationID;
+  public String getIntegrationName() {
+    return integrationName;
   }
 
 
-  public void setApplicationID(Long applicationID) {
-    this.applicationID = applicationID;
+  public void setIntegrationName(String integrationName) {
+    this.integrationName = integrationName;
+  }
+
+
+  public IntegrationHubFlowResponse instanceName(String instanceName) {
+    
+    this.instanceName = instanceName;
+    return this;
+  }
+
+   /**
+   * Name of the integration instance.
+   * @return instanceName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Name of the integration instance.")
+
+  public String getInstanceName() {
+    return instanceName;
+  }
+
+
+  public void setInstanceName(String instanceName) {
+    this.instanceName = instanceName;
+  }
+
+
+  public IntegrationHubFlowResponse createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Timestamp when the flow was created.
+   * @return createdAt
+  **/
+  @ApiModelProperty(required = true, value = "Timestamp when the flow was created.")
+
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public IntegrationHubFlowResponse disabledUntil(OffsetDateTime disabledUntil) {
+    
+    this.disabledUntil = disabledUntil;
+    return this;
+  }
+
+   /**
+   * Timestamp until which the flow is disabled. Null when the flow is active.
+   * @return disabledUntil
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Timestamp until which the flow is disabled. Null when the flow is active.")
+
+  public OffsetDateTime getDisabledUntil() {
+    return disabledUntil;
+  }
+
+
+  public void setDisabledUntil(OffsetDateTime disabledUntil) {
+    this.disabledUntil = disabledUntil;
+  }
+
+
+  public IntegrationHubFlowResponse applicationId(Long applicationId) {
+    
+    this.applicationId = applicationId;
+    return this;
+  }
+
+   /**
+   * ID of the application the flow is registered for.
+   * @return applicationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "54", value = "ID of the application the flow is registered for.")
+
+  public Long getApplicationId() {
+    return applicationId;
+  }
+
+
+  public void setApplicationId(Long applicationId) {
+    this.applicationId = applicationId;
+  }
+
+
+  public IntegrationHubFlowResponse loyaltyProgramId(Long loyaltyProgramId) {
+    
+    this.loyaltyProgramId = loyaltyProgramId;
+    return this;
+  }
+
+   /**
+   * ID of the loyalty program the flow is registered for.
+   * @return loyaltyProgramId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "12", value = "ID of the loyalty program the flow is registered for.")
+
+  public Long getLoyaltyProgramId() {
+    return loyaltyProgramId;
+  }
+
+
+  public void setLoyaltyProgramId(Long loyaltyProgramId) {
+    this.loyaltyProgramId = loyaltyProgramId;
   }
 
 
@@ -115,28 +246,6 @@ public class IntegrationHubFlowResponse {
 
   public void setEventType(String eventType) {
     this.eventType = eventType;
-  }
-
-
-  public IntegrationHubFlowResponse integrationHubFlowUrl(String integrationHubFlowUrl) {
-    
-    this.integrationHubFlowUrl = integrationHubFlowUrl;
-    return this;
-  }
-
-   /**
-   * The URL of the integration hub flow that we want to trigger for the event.
-   * @return integrationHubFlowUrl
-  **/
-  @ApiModelProperty(required = true, value = "The URL of the integration hub flow that we want to trigger for the event.")
-
-  public String getIntegrationHubFlowUrl() {
-    return integrationHubFlowUrl;
-  }
-
-
-  public void setIntegrationHubFlowUrl(String integrationHubFlowUrl) {
-    this.integrationHubFlowUrl = integrationHubFlowUrl;
   }
 
 
@@ -172,15 +281,19 @@ public class IntegrationHubFlowResponse {
     }
     IntegrationHubFlowResponse integrationHubFlowResponse = (IntegrationHubFlowResponse) o;
     return Objects.equals(this.id, integrationHubFlowResponse.id) &&
-        Objects.equals(this.applicationID, integrationHubFlowResponse.applicationID) &&
+        Objects.equals(this.integrationName, integrationHubFlowResponse.integrationName) &&
+        Objects.equals(this.instanceName, integrationHubFlowResponse.instanceName) &&
+        Objects.equals(this.createdAt, integrationHubFlowResponse.createdAt) &&
+        Objects.equals(this.disabledUntil, integrationHubFlowResponse.disabledUntil) &&
+        Objects.equals(this.applicationId, integrationHubFlowResponse.applicationId) &&
+        Objects.equals(this.loyaltyProgramId, integrationHubFlowResponse.loyaltyProgramId) &&
         Objects.equals(this.eventType, integrationHubFlowResponse.eventType) &&
-        Objects.equals(this.integrationHubFlowUrl, integrationHubFlowResponse.integrationHubFlowUrl) &&
         Objects.equals(this.config, integrationHubFlowResponse.config);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, applicationID, eventType, integrationHubFlowUrl, config);
+    return Objects.hash(id, integrationName, instanceName, createdAt, disabledUntil, applicationId, loyaltyProgramId, eventType, config);
   }
 
 
@@ -189,9 +302,13 @@ public class IntegrationHubFlowResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationHubFlowResponse {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    applicationID: ").append(toIndentedString(applicationID)).append("\n");
+    sb.append("    integrationName: ").append(toIndentedString(integrationName)).append("\n");
+    sb.append("    instanceName: ").append(toIndentedString(instanceName)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    disabledUntil: ").append(toIndentedString(disabledUntil)).append("\n");
+    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+    sb.append("    loyaltyProgramId: ").append(toIndentedString(loyaltyProgramId)).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
-    sb.append("    integrationHubFlowUrl: ").append(toIndentedString(integrationHubFlowUrl)).append("\n");
     sb.append("    config: ").append(toIndentedString(config)).append("\n");
     sb.append("}");
     return sb.toString();

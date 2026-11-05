@@ -28,9 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This effect is **deprecated**. The properties specific to the \&quot;ShowBundleMetadata\&quot; effect. This effect contains information that allows you to associate the discounts from a rule in a bundle campaign with specific cart items. This way you can distinguish from \&quot;normal\&quot; discounts that were not the result of a product bundle. 
+ * This effect is **deprecated**.  The &#x60;ShowBundleMetadata&#x60; effect contains information that allows you to associate the discounts from a rule in a bundle campaign with specific cart items. This way you can distinguish from \&quot;normal\&quot; discounts that were not the result of a product bundle.
  */
-@ApiModel(description = "This effect is **deprecated**. The properties specific to the \"ShowBundleMetadata\" effect. This effect contains information that allows you to associate the discounts from a rule in a bundle campaign with specific cart items. This way you can distinguish from \"normal\" discounts that were not the result of a product bundle. ")
+@ApiModel(description = "This effect is **deprecated**.  The `ShowBundleMetadata` effect contains information that allows you to associate the discounts from a rule in a bundle campaign with specific cart items. This way you can distinguish from \"normal\" discounts that were not the result of a product bundle.")
 
 public class ShowBundleMetadataEffectProps {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";

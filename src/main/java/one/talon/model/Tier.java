@@ -97,6 +97,61 @@ public class Tier {
   @SerializedName(SERIALIZED_NAME_DOWNGRADE_POLICY)
   private DowngradePolicyEnum downgradePolicy;
 
+  /**
+   * Indicates whether the customer&#39;s current tier was determined based on their points balance or a temporary boost.  - &#x60;points&#x60;: The tier reflects the customer&#39;s current point balance. - &#x60;boost&#x60;: A temporary tier boost is in effect where the customer is in a higher tier than their points-based tier. The boost expires after a set duration and the customer returns to their points-based tier. 
+   */
+  @JsonAdapter(SourceEnum.Adapter.class)
+  public enum SourceEnum {
+    BOOST("boost"),
+    
+    POINTS("points");
+
+    private String value;
+
+    SourceEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SourceEnum fromValue(String value) {
+      for (SourceEnum b : SourceEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SourceEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SourceEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SourceEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SourceEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private SourceEnum source = SourceEnum.POINTS;
+
+  public static final String SERIALIZED_NAME_REASON = "reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  private String reason;
+
 
   public Tier id(Long id) {
     
@@ -176,7 +231,7 @@ public class Tier {
    * @return expiryDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Date when tier level expires in the RFC3339 format (in the Loyalty Program's timezone).")
+  @ApiModelProperty(example = "2026-08-02T15:04:05+07:00", value = "Date when tier level expires in the RFC3339 format (in the Loyalty Program's timezone).")
 
   public OffsetDateTime getExpiryDate() {
     return expiryDate;
@@ -199,7 +254,7 @@ public class Tier {
    * @return downgradePolicy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - `one_down`: If the customer doesn't have enough points to stay in the current tier, they are downgraded by one tier.  - `balance_based`: The customer's tier is reevaluated based on the amount of active points they have at the moment. ")
+  @ApiModelProperty(example = "one_down", value = "The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - `one_down`: If the customer doesn't have enough points to stay in the current tier, they are downgraded by one tier.  - `balance_based`: The customer's tier is reevaluated based on the amount of active points they have at the moment. ")
 
   public DowngradePolicyEnum getDowngradePolicy() {
     return downgradePolicy;
@@ -208,6 +263,52 @@ public class Tier {
 
   public void setDowngradePolicy(DowngradePolicyEnum downgradePolicy) {
     this.downgradePolicy = downgradePolicy;
+  }
+
+
+  public Tier source(SourceEnum source) {
+    
+    this.source = source;
+    return this;
+  }
+
+   /**
+   * Indicates whether the customer&#39;s current tier was determined based on their points balance or a temporary boost.  - &#x60;points&#x60;: The tier reflects the customer&#39;s current point balance. - &#x60;boost&#x60;: A temporary tier boost is in effect where the customer is in a higher tier than their points-based tier. The boost expires after a set duration and the customer returns to their points-based tier. 
+   * @return source
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "points", value = "Indicates whether the customer's current tier was determined based on their points balance or a temporary boost.  - `points`: The tier reflects the customer's current point balance. - `boost`: A temporary tier boost is in effect where the customer is in a higher tier than their points-based tier. The boost expires after a set duration and the customer returns to their points-based tier. ")
+
+  public SourceEnum getSource() {
+    return source;
+  }
+
+
+  public void setSource(SourceEnum source) {
+    this.source = source;
+  }
+
+
+  public Tier reason(String reason) {
+    
+    this.reason = reason;
+    return this;
+  }
+
+   /**
+   * The reason for the tier assignment. 
+   * @return reason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Subscription to newsletter", value = "The reason for the tier assignment. ")
+
+  public String getReason() {
+    return reason;
+  }
+
+
+  public void setReason(String reason) {
+    this.reason = reason;
   }
 
 
@@ -224,12 +325,14 @@ public class Tier {
         Objects.equals(this.name, tier.name) &&
         Objects.equals(this.startDate, tier.startDate) &&
         Objects.equals(this.expiryDate, tier.expiryDate) &&
-        Objects.equals(this.downgradePolicy, tier.downgradePolicy);
+        Objects.equals(this.downgradePolicy, tier.downgradePolicy) &&
+        Objects.equals(this.source, tier.source) &&
+        Objects.equals(this.reason, tier.reason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, startDate, expiryDate, downgradePolicy);
+    return Objects.hash(id, name, startDate, expiryDate, downgradePolicy, source, reason);
   }
 
 
@@ -242,6 +345,8 @@ public class Tier {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    downgradePolicy: ").append(toIndentedString(downgradePolicy)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("}");
     return sb.toString();
   }

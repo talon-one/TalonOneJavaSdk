@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.IntegrationHubEventType;
 import one.talon.model.IntegrationHubFlowConfig;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -47,6 +48,14 @@ public class IntegrationHubFlowWithConfigTest {
     @Test
     public void applicationIDTest() {
         // TODO: test applicationID
+    }
+
+    /**
+     * Test the property 'loyaltyProgramID'
+     */
+    @Test
+    public void loyaltyProgramIDTest() {
+        // TODO: test loyaltyProgramID
     }
 
     /**

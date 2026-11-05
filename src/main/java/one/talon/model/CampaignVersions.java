@@ -181,11 +181,11 @@ public class CampaignVersions {
   }
 
    /**
-   * Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign. 
+   * Incrementing number representing how many revisions have been activated on this campaign. Starts from &#x60;0&#x60; for a new campaign. 
    * @return version
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "6", value = "Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign. ")
+  @ApiModelProperty(example = "6", value = "Incrementing number representing how many revisions have been activated on this campaign. Starts from `0` for a new campaign. ")
 
   public Long getVersion() {
     return version;

@@ -25,9 +25,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Definition of all the properties that are needed for a single catalog sync action.
+ * Definition of all the properties that are needed for a single catalog sync action. The &#x60;type&#x60; field selects the concrete action variant.
  */
-@ApiModel(description = "Definition of all the properties that are needed for a single catalog sync action.")
+@ApiModel(description = "Definition of all the properties that are needed for a single catalog sync action. The `type` field selects the concrete action variant.")
+
 
 public class CatalogAction {
   /**
@@ -87,12 +88,14 @@ public class CatalogAction {
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  protected TypeEnum type;
 
   public static final String SERIALIZED_NAME_PAYLOAD = "payload";
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
   private Object payload;
 
+  public CatalogAction() {
+  }
 
   public CatalogAction type(TypeEnum type) {
     
@@ -104,7 +107,8 @@ public class CatalogAction {
    * The type of sync action.
    * @return type
   **/
-  @ApiModelProperty(example = "ADD", required = true, value = "The type of sync action.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "ADD", value = "The type of sync action.")
 
   public TypeEnum getType() {
     return type;
@@ -126,7 +130,8 @@ public class CatalogAction {
    * Get payload
    * @return payload
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Object getPayload() {
     return payload;

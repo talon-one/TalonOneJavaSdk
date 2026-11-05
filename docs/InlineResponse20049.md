@@ -6,7 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;ListCampaignStoreBudgets&gt;**](ListCampaignStoreBudgets.md) |  |  [optional]
+**totalResultSize** | **Long** |  | 
+**data** | [**List&lt;Export&gt;**](Export.md) |  | 
 
 
 

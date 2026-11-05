@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;updateAttribute\&quot; effect. This gets triggered whenever a validated rule contained an \&quot;update an attribute\&quot; effect.
+ * This effect indicates that a rule containing an [Update attribute value](https://docs.talon.one/docs/product/rules/effects/available-effects#update-effects) or [Update cart item attribute value](https://docs.talon.one/docs/product/rules/effects/available-effects#update-effects) was validated. You should update the value of the attribute in your system based on the content of the returned effect.
  */
-@ApiModel(description = "The properties specific to the \"updateAttribute\" effect. This gets triggered whenever a validated rule contained an \"update an attribute\" effect.")
+@ApiModel(description = "This effect indicates that a rule containing an [Update attribute value](https://docs.talon.one/docs/product/rules/effects/available-effects#update-effects) or [Update cart item attribute value](https://docs.talon.one/docs/product/rules/effects/available-effects#update-effects) was validated. You should update the value of the attribute in your system based on the content of the returned effect.")
 
 public class UpdateAttributeEffectProps {
   public static final String SERIALIZED_NAME_PATH = "path";
@@ -46,10 +46,10 @@ public class UpdateAttributeEffectProps {
   }
 
    /**
-   * The exact path of the attribute that was updated.
+   * The entity type and the attribute name.
    * @return path
   **/
-  @ApiModelProperty(required = true, value = "The exact path of the attribute that was updated.")
+  @ApiModelProperty(required = true, value = "The entity type and the attribute name.")
 
   public String getPath() {
     return path;
@@ -68,10 +68,10 @@ public class UpdateAttributeEffectProps {
   }
 
    /**
-   * The new value of this attribute. The value can be of the following types: - boolean - location - number - string - time - list of any of those types 
+   * The new value of the attribute.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The new value of this attribute. The value can be of the following types: - boolean - location - number - string - time - list of any of those types ")
+  @ApiModelProperty(required = true, value = "The new value of the attribute.")
 
   public Object getValue() {
     return value;

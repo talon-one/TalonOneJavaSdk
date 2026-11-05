@@ -26,9 +26,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;deductLoyaltyPoints\&quot; effect. This gets triggered whenever a validated rule contained a condition to only trigger when the given number of loyalty points could be deduced. These points are automatically stored and managed inside Talon.One.
+ * This effect is triggered when a customer redeems loyalty points. The points are deducted from their active point balance.  If the loyalty program is card-based, use the &#x60;cardIdentifier&#x60; property to identify the loyalty card from which these points are deducted.  The Rule Engine deducts points in this order:  - Points with the earliest expiry date are deducted first, regardless of when they were added. - Points with an unlimited expiry date are deducted last. - For points with an unlimited expiry date, the points awarded first are deducted first.  The points only persist when the session is closed.
  */
-@ApiModel(description = "The properties specific to the \"deductLoyaltyPoints\" effect. This gets triggered whenever a validated rule contained a condition to only trigger when the given number of loyalty points could be deduced. These points are automatically stored and managed inside Talon.One.")
+@ApiModel(description = "This effect is triggered when a customer redeems loyalty points. The points are deducted from their active point balance.  If the loyalty program is card-based, use the `cardIdentifier` property to identify the loyalty card from which these points are deducted.  The Rule Engine deducts points in this order:  - Points with the earliest expiry date are deducted first, regardless of when they were added. - Points with an unlimited expiry date are deducted last. - For points with an unlimited expiry date, the points awarded first are deducted first.  The points only persist when the session is closed.")
 
 public class DeductLoyaltyPointsEffectProps {
   public static final String SERIALIZED_NAME_RULE_TITLE = "ruleTitle";
@@ -89,10 +89,10 @@ public class DeductLoyaltyPointsEffectProps {
   }
 
    /**
-   * The ID of the loyalty program where these points were added.
+   * The ID of the loyalty program from which these points were deducted.
    * @return programId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were added.")
+  @ApiModelProperty(required = true, value = "The ID of the loyalty program from which these points were deducted.")
 
   public Long getProgramId() {
     return programId;
@@ -111,10 +111,10 @@ public class DeductLoyaltyPointsEffectProps {
   }
 
    /**
-   * The ID of the subledger within the loyalty program where these points were added.
+   * The ID of the subledger within the loyalty program from which these points were deducted.
    * @return subLedgerId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the subledger within the loyalty program where these points were added.")
+  @ApiModelProperty(required = true, value = "The ID of the subledger within the loyalty program from which these points were deducted.")
 
   public String getSubLedgerId() {
     return subLedgerId;
@@ -155,10 +155,10 @@ public class DeductLoyaltyPointsEffectProps {
   }
 
    /**
-   * The identifier of this deduction in the loyalty ledger.
+   * The identifier of this loyalty point transaction.
    * @return transactionUUID
   **/
-  @ApiModelProperty(required = true, value = "The identifier of this deduction in the loyalty ledger.")
+  @ApiModelProperty(required = true, value = "The identifier of this loyalty point transaction.")
 
   public String getTransactionUUID() {
     return transactionUUID;
@@ -177,10 +177,10 @@ public class DeductLoyaltyPointsEffectProps {
   }
 
    /**
-   * The name property gets one of the following two values. It can be the loyalty program name or it can represent a reason for the respective deduction of loyalty points. The latter is an optional value defined in a deduction rule. 
+   * The reason of this loyalty points deduction.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name property gets one of the following two values. It can be the loyalty program name or it can represent a reason for the respective deduction of loyalty points. The latter is an optional value defined in a deduction rule. ")
+  @ApiModelProperty(required = true, value = "The reason of this loyalty points deduction.")
 
   public String getName() {
     return name;

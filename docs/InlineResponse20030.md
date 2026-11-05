@@ -6,8 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;CustomerActivityReport&gt;**](CustomerActivityReport.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**totalResultSize** | **Long** |  |  [optional]
+**data** | [**List&lt;ApplicationCustomer&gt;**](ApplicationCustomer.md) |  | 
 
 
 

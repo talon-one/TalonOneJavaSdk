@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * ExpiringPointsData
@@ -50,6 +51,18 @@ public class ExpiringPointsData {
   public static final String SERIALIZED_NAME_SUBLEDGER_I_D = "SubledgerID";
   @SerializedName(SERIALIZED_NAME_SUBLEDGER_I_D)
   private String subledgerID;
+
+  public static final String SERIALIZED_NAME_CREATED = "Created";
+  @SerializedName(SERIALIZED_NAME_CREATED)
+  private OffsetDateTime created;
+
+  public static final String SERIALIZED_NAME_AWAITS_ACTIVATION = "AwaitsActivation";
+  @SerializedName(SERIALIZED_NAME_AWAITS_ACTIVATION)
+  private Boolean awaitsActivation;
+
+  public static final String SERIALIZED_NAME_VALIDITY_DURATION = "ValidityDuration";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DURATION)
+  private String validityDuration;
 
 
   public ExpiringPointsData expiryDate(LocalDate expiryDate) {
@@ -163,6 +176,75 @@ public class ExpiringPointsData {
   }
 
 
+  public ExpiringPointsData created(OffsetDateTime created) {
+    
+    this.created = created;
+    return this;
+  }
+
+   /**
+   * The timestamp when the loyalty transaction occurred.
+   * @return created
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2023-01-24T14:15:22Z", value = "The timestamp when the loyalty transaction occurred.")
+
+  public OffsetDateTime getCreated() {
+    return created;
+  }
+
+
+  public void setCreated(OffsetDateTime created) {
+    this.created = created;
+  }
+
+
+  public ExpiringPointsData awaitsActivation(Boolean awaitsActivation) {
+    
+    this.awaitsActivation = awaitsActivation;
+    return this;
+  }
+
+   /**
+   * Indicates whether the points have an action-based start date. This property is returned only for point transactions with an action-based start date.
+   * @return awaitsActivation
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Indicates whether the points have an action-based start date. This property is returned only for point transactions with an action-based start date.")
+
+  public Boolean getAwaitsActivation() {
+    return awaitsActivation;
+  }
+
+
+  public void setAwaitsActivation(Boolean awaitsActivation) {
+    this.awaitsActivation = awaitsActivation;
+  }
+
+
+  public ExpiringPointsData validityDuration(String validityDuration) {
+    
+    this.validityDuration = validityDuration;
+    return this;
+  }
+
+   /**
+   * The duration for which the points remain active, relative to the activation date.  **Note**: This only applies to points for which &#x60;AwaitsActivation&#x60; is &#x60;true&#x60; and &#x60;ExpiryDate&#x60; is not set. 
+   * @return validityDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "30D", value = "The duration for which the points remain active, relative to the activation date.  **Note**: This only applies to points for which `AwaitsActivation` is `true` and `ExpiryDate` is not set. ")
+
+  public String getValidityDuration() {
+    return validityDuration;
+  }
+
+
+  public void setValidityDuration(String validityDuration) {
+    this.validityDuration = validityDuration;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -176,12 +258,15 @@ public class ExpiringPointsData {
         Objects.equals(this.loyaltyProgramID, expiringPointsData.loyaltyProgramID) &&
         Objects.equals(this.customerProfileID, expiringPointsData.customerProfileID) &&
         Objects.equals(this.amountOfExpiringPoints, expiringPointsData.amountOfExpiringPoints) &&
-        Objects.equals(this.subledgerID, expiringPointsData.subledgerID);
+        Objects.equals(this.subledgerID, expiringPointsData.subledgerID) &&
+        Objects.equals(this.created, expiringPointsData.created) &&
+        Objects.equals(this.awaitsActivation, expiringPointsData.awaitsActivation) &&
+        Objects.equals(this.validityDuration, expiringPointsData.validityDuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(expiryDate, loyaltyProgramID, customerProfileID, amountOfExpiringPoints, subledgerID);
+    return Objects.hash(expiryDate, loyaltyProgramID, customerProfileID, amountOfExpiringPoints, subledgerID, created, awaitsActivation, validityDuration);
   }
 
 
@@ -194,6 +279,9 @@ public class ExpiringPointsData {
     sb.append("    customerProfileID: ").append(toIndentedString(customerProfileID)).append("\n");
     sb.append("    amountOfExpiringPoints: ").append(toIndentedString(amountOfExpiringPoints)).append("\n");
     sb.append("    subledgerID: ").append(toIndentedString(subledgerID)).append("\n");
+    sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    awaitsActivation: ").append(toIndentedString(awaitsActivation)).append("\n");
+    sb.append("    validityDuration: ").append(toIndentedString(validityDuration)).append("\n");
     sb.append("}");
     return sb.toString();
   }

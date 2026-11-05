@@ -7,9 +7,9 @@ setDiscountPerItem effect in strikethrough pricing payload.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | effect name. | 
-**value** | [**Object**](.md) | discount value. | 
-**excludedFromPriceHistory** | **Boolean** |  |  [optional]
+**name** | **String** | The effect name. | 
+**value** | [**Object**](.md) | The discount value. | 
+**excludedFromPriceHistory** | **Boolean** | When set to &#x60;true&#x60;, the applied discount is excluded from the item&#39;s price history. |  [optional]
 
 
 

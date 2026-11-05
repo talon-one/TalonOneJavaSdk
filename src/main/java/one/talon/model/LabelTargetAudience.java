@@ -26,9 +26,9 @@ import java.io.IOException;
 import one.talon.model.AudienceReference;
 
 /**
- * Represents the targeted audience. 
+ * Target type when a specific audience is selected. 
  */
-@ApiModel(description = "Represents the targeted audience. ")
+@ApiModel(description = "Target type when a specific audience is selected. ")
 
 public class LabelTargetAudience {
   /**

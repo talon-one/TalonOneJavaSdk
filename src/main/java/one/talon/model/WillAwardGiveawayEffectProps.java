@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;awardGiveaway\&quot; effect when the session is not closed yet. This effect replaces \&quot;awardGiveaway\&quot; only when updating a session with any state other than \&quot;closed\&quot;. This is to ensure no giveaway codes are leaked when they are still not guaranteed to be awarded.
+ * The equivalent of the &#x60;awardGiveaway&#x60; effect but returned when updating a session with any state other than &#x60;closed&#x60;. This ensures no giveaway codes are leaked when they are still not guaranteed to be awarded.  For more information about session states, see [Manage the session&#39;s state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#manage-the-sessions-state).
  */
-@ApiModel(description = "The properties specific to the \"awardGiveaway\" effect when the session is not closed yet. This effect replaces \"awardGiveaway\" only when updating a session with any state other than \"closed\". This is to ensure no giveaway codes are leaked when they are still not guaranteed to be awarded.")
+@ApiModel(description = "The equivalent of the `awardGiveaway` effect but returned when updating a session with any state other than `closed`. This ensures no giveaway codes are leaked when they are still not guaranteed to be awarded.  For more information about session states, see [Manage the session's state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#manage-the-sessions-state).")
 
 public class WillAwardGiveawayEffectProps {
   public static final String SERIALIZED_NAME_POOL_ID = "poolId";
@@ -50,10 +50,10 @@ public class WillAwardGiveawayEffectProps {
   }
 
    /**
-   * The ID of the giveaways pool the code will be taken from.
+   * The internal ID of the giveaway pool.
    * @return poolId
   **/
-  @ApiModelProperty(example = "2", required = true, value = "The ID of the giveaways pool the code will be taken from.")
+  @ApiModelProperty(example = "2", required = true, value = "The internal ID of the giveaway pool.")
 
   public Long getPoolId() {
     return poolId;
@@ -72,10 +72,10 @@ public class WillAwardGiveawayEffectProps {
   }
 
    /**
-   * The name of the giveaways pool the code will be taken from.
+   * The name of the giveaway pool.
    * @return poolName
   **/
-  @ApiModelProperty(example = "My pool", required = true, value = "The name of the giveaways pool the code will be taken from.")
+  @ApiModelProperty(example = "My pool", required = true, value = "The name of the giveaway pool.")
 
   public String getPoolName() {
     return poolName;
@@ -94,10 +94,10 @@ public class WillAwardGiveawayEffectProps {
   }
 
    /**
-   * The integration ID of the profile that will be awarded the giveaway.
+   * The integration ID of the customer that receives the giveaway.
    * @return recipientIntegrationId
   **/
-  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID of the profile that will be awarded the giveaway.")
+  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID of the customer that receives the giveaway.")
 
   public String getRecipientIntegrationId() {
     return recipientIntegrationId;

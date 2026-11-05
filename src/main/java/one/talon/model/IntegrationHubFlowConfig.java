@@ -45,6 +45,14 @@ public class IntegrationHubFlowConfig {
   @SerializedName(SERIALIZED_NAME_MAX_RETRIES)
   private Long maxRetries = 10l;
 
+  public static final String SERIALIZED_NAME_INSTANCE_NAME = "InstanceName";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_NAME)
+  private String instanceName;
+
+  public static final String SERIALIZED_NAME_INTEGRATION_NAME = "IntegrationName";
+  @SerializedName(SERIALIZED_NAME_INTEGRATION_NAME)
+  private String integrationName;
+
 
   public IntegrationHubFlowConfig apiKey(String apiKey) {
     
@@ -141,6 +149,52 @@ public class IntegrationHubFlowConfig {
   }
 
 
+  public IntegrationHubFlowConfig instanceName(String instanceName) {
+    
+    this.instanceName = instanceName;
+    return this;
+  }
+
+   /**
+   * Name of the Prismatic instance that registered this flow.
+   * @return instanceName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Name of the Prismatic instance that registered this flow.")
+
+  public String getInstanceName() {
+    return instanceName;
+  }
+
+
+  public void setInstanceName(String instanceName) {
+    this.instanceName = instanceName;
+  }
+
+
+  public IntegrationHubFlowConfig integrationName(String integrationName) {
+    
+    this.integrationName = integrationName;
+    return this;
+  }
+
+   /**
+   * Name of the Prismatic integration that registered this flow.
+   * @return integrationName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Name of the Prismatic integration that registered this flow.")
+
+  public String getIntegrationName() {
+    return integrationName;
+  }
+
+
+  public void setIntegrationName(String integrationName) {
+    this.integrationName = integrationName;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -153,12 +207,14 @@ public class IntegrationHubFlowConfig {
     return Objects.equals(this.apiKey, integrationHubFlowConfig.apiKey) &&
         Objects.equals(this.workerCount, integrationHubFlowConfig.workerCount) &&
         Objects.equals(this.maxEventsPerMessage, integrationHubFlowConfig.maxEventsPerMessage) &&
-        Objects.equals(this.maxRetries, integrationHubFlowConfig.maxRetries);
+        Objects.equals(this.maxRetries, integrationHubFlowConfig.maxRetries) &&
+        Objects.equals(this.instanceName, integrationHubFlowConfig.instanceName) &&
+        Objects.equals(this.integrationName, integrationHubFlowConfig.integrationName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiKey, workerCount, maxEventsPerMessage, maxRetries);
+    return Objects.hash(apiKey, workerCount, maxEventsPerMessage, maxRetries, instanceName, integrationName);
   }
 
 
@@ -170,6 +226,8 @@ public class IntegrationHubFlowConfig {
     sb.append("    workerCount: ").append(toIndentedString(workerCount)).append("\n");
     sb.append("    maxEventsPerMessage: ").append(toIndentedString(maxEventsPerMessage)).append("\n");
     sb.append("    maxRetries: ").append(toIndentedString(maxRetries)).append("\n");
+    sb.append("    instanceName: ").append(toIndentedString(instanceName)).append("\n");
+    sb.append("    integrationName: ").append(toIndentedString(integrationName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

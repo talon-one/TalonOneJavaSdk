@@ -7,7 +7,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;Achievement&gt;**](Achievement.md) |  | 
+**totalResultSize** | **Long** |  |  [optional]
+**data** | [**List&lt;Store&gt;**](Store.md) |  | 
 
 
 

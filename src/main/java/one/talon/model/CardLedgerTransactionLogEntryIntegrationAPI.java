@@ -458,11 +458,11 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
   }
 
    /**
-   * The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which &#x60;awaitsActivation&#x60; is &#x60;true&#x60; and &#x60;expiryDate&#x60; is not set. 
+   * The duration for which the points remain active, relative to the activation date.  **Note**: This only applies to points for which &#x60;awaitsActivation&#x60; is &#x60;true&#x60; and &#x60;expiryDate&#x60; is not set. 
    * @return validityDuration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "30D", value = "The duration for which the points remain active, relative to the  activation date.  **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set. ")
+  @ApiModelProperty(example = "30D", value = "The duration for which the points remain active, relative to the activation date.  **Note**: This only applies to points for which `awaitsActivation` is `true` and `expiryDate` is not set. ")
 
   public String getValidityDuration() {
     return validityDuration;

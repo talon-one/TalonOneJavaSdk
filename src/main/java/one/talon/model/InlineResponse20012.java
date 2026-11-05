@@ -25,51 +25,51 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Coupon;
+import one.talon.model.Ruleset;
 
 /**
  * InlineResponse20012
  */
 
 public class InlineResponse20012 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Coupon> data = new ArrayList<Coupon>();
+  private List<Ruleset> data = new ArrayList<Ruleset>();
 
 
-  public InlineResponse20012 hasMore(Boolean hasMore) {
+  public InlineResponse20012 totalResultSize(Long totalResultSize) {
     
-    this.hasMore = hasMore;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get hasMore
-   * @return hasMore
+   * Get totalResultSize
+   * @return totalResultSize
   **/
-  @ApiModelProperty(example = "true", required = true, value = "")
+  @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Boolean getHasMore() {
-    return hasMore;
+  public Long getTotalResultSize() {
+    return totalResultSize;
   }
 
 
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
   }
 
 
-  public InlineResponse20012 data(List<Coupon> data) {
+  public InlineResponse20012 data(List<Ruleset> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20012 addDataItem(Coupon dataItem) {
+  public InlineResponse20012 addDataItem(Ruleset dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20012 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Coupon> getData() {
+  public List<Ruleset> getData() {
     return data;
   }
 
 
-  public void setData(List<Coupon> data) {
+  public void setData(List<Ruleset> data) {
     this.data = data;
   }
 
@@ -99,13 +99,13 @@ public class InlineResponse20012 {
       return false;
     }
     InlineResponse20012 inlineResponse20012 = (InlineResponse20012) o;
-    return Objects.equals(this.hasMore, inlineResponse20012.hasMore) &&
+    return Objects.equals(this.totalResultSize, inlineResponse20012.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20012.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(totalResultSize, data);
   }
 
 
@@ -113,7 +113,7 @@ public class InlineResponse20012 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20012 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
