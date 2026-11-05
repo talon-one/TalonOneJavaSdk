@@ -41,6 +41,14 @@ public class RolesV2ThresholdsTest {
     }
 
     /**
+     * Test the property 'loyaltyProgramId'
+     */
+    @Test
+    public void loyaltyProgramIdTest() {
+        // TODO: test loyaltyProgramId
+    }
+
+    /**
      * Test the property 'loyaltyPointsLimit'
      */
     @Test

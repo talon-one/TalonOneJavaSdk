@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -43,6 +44,38 @@ public class EventV3Test {
     }
 
     /**
+     * Test the property 'connectedSessionId'
+     */
+    @Test
+    public void connectedSessionIdTest() {
+        // TODO: test connectedSessionId
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'created'
+     */
+    @Test
+    public void createdTest() {
+        // TODO: test created
+    }
+
+    /**
+     * Test the property 'applicationId'
+     */
+    @Test
+    public void applicationIdTest() {
+        // TODO: test applicationId
+    }
+
+    /**
      * Test the property 'profileId'
      */
     @Test
@@ -56,22 +89,6 @@ public class EventV3Test {
     @Test
     public void storeIntegrationIdTest() {
         // TODO: test storeIntegrationId
-    }
-
-    /**
-     * Test the property 'evaluableCampaignIds'
-     */
-    @Test
-    public void evaluableCampaignIdsTest() {
-        // TODO: test evaluableCampaignIds
-    }
-
-    /**
-     * Test the property 'integrationId'
-     */
-    @Test
-    public void integrationIdTest() {
-        // TODO: test integrationId
     }
 
     /**
@@ -91,19 +108,27 @@ public class EventV3Test {
     }
 
     /**
-     * Test the property 'connectedSessionID'
+     * Test the property 'integrationId'
      */
     @Test
-    public void connectedSessionIDTest() {
-        // TODO: test connectedSessionID
+    public void integrationIdTest() {
+        // TODO: test integrationId
     }
 
     /**
-     * Test the property 'previousEventID'
+     * Test the property 'referralCode'
      */
     @Test
-    public void previousEventIDTest() {
-        // TODO: test previousEventID
+    public void referralCodeTest() {
+        // TODO: test referralCode
+    }
+
+    /**
+     * Test the property 'effects'
+     */
+    @Test
+    public void effectsTest() {
+        // TODO: test effects
     }
 
 }

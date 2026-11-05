@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AchievementProgressWithDefinition;
+import one.talon.model.ApplicationCIF;
 
 /**
  * InlineResponse20052
@@ -38,7 +38,7 @@ public class InlineResponse20052 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<AchievementProgressWithDefinition> data = new ArrayList<AchievementProgressWithDefinition>();
+  private List<ApplicationCIF> data = new ArrayList<ApplicationCIF>();
 
 
   public InlineResponse20052 hasMore(Boolean hasMore) {
@@ -51,7 +51,8 @@ public class InlineResponse20052 {
    * Get hasMore
    * @return hasMore
   **/
-  @ApiModelProperty(example = "true", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Boolean getHasMore() {
     return hasMore;
@@ -63,13 +64,13 @@ public class InlineResponse20052 {
   }
 
 
-  public InlineResponse20052 data(List<AchievementProgressWithDefinition> data) {
+  public InlineResponse20052 data(List<ApplicationCIF> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20052 addDataItem(AchievementProgressWithDefinition dataItem) {
+  public InlineResponse20052 addDataItem(ApplicationCIF dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +81,12 @@ public class InlineResponse20052 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<AchievementProgressWithDefinition> getData() {
+  public List<ApplicationCIF> getData() {
     return data;
   }
 
 
-  public void setData(List<AchievementProgressWithDefinition> data) {
+  public void setData(List<ApplicationCIF> data) {
     this.data = data;
   }
 

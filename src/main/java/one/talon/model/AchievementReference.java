@@ -45,6 +45,63 @@ public class AchievementReference {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private Long campaignId;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_NAME = "campaignName";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_NAME)
+  private String campaignName;
+
+  /**
+   * The state of the campaign that references this achievement.
+   */
+  @JsonAdapter(CampaignStateEnum.Adapter.class)
+  public enum CampaignStateEnum {
+    ENABLED("enabled"),
+    
+    DISABLED("disabled"),
+    
+    ARCHIVED("archived");
+
+    private String value;
+
+    CampaignStateEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CampaignStateEnum fromValue(String value) {
+      for (CampaignStateEnum b : CampaignStateEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<CampaignStateEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CampaignStateEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CampaignStateEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CampaignStateEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_STATE = "campaignState";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_STATE)
+  private CampaignStateEnum campaignState;
+
 
   public AchievementReference achievementId(Long achievementId) {
     
@@ -134,6 +191,50 @@ public class AchievementReference {
   }
 
 
+  public AchievementReference campaignName(String campaignName) {
+    
+    this.campaignName = campaignName;
+    return this;
+  }
+
+   /**
+   * The name of the campaign that references this achievement.
+   * @return campaignName
+  **/
+  @ApiModelProperty(example = "Summer promotions", required = true, value = "The name of the campaign that references this achievement.")
+
+  public String getCampaignName() {
+    return campaignName;
+  }
+
+
+  public void setCampaignName(String campaignName) {
+    this.campaignName = campaignName;
+  }
+
+
+  public AchievementReference campaignState(CampaignStateEnum campaignState) {
+    
+    this.campaignState = campaignState;
+    return this;
+  }
+
+   /**
+   * The state of the campaign that references this achievement.
+   * @return campaignState
+  **/
+  @ApiModelProperty(example = "enabled", required = true, value = "The state of the campaign that references this achievement.")
+
+  public CampaignStateEnum getCampaignState() {
+    return campaignState;
+  }
+
+
+  public void setCampaignState(CampaignStateEnum campaignState) {
+    this.campaignState = campaignState;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -146,12 +247,14 @@ public class AchievementReference {
     return Objects.equals(this.achievementId, achievementReference.achievementId) &&
         Objects.equals(this.applicationId, achievementReference.applicationId) &&
         Objects.equals(this.applicationName, achievementReference.applicationName) &&
-        Objects.equals(this.campaignId, achievementReference.campaignId);
+        Objects.equals(this.campaignId, achievementReference.campaignId) &&
+        Objects.equals(this.campaignName, achievementReference.campaignName) &&
+        Objects.equals(this.campaignState, achievementReference.campaignState);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(achievementId, applicationId, applicationName, campaignId);
+    return Objects.hash(achievementId, applicationId, applicationName, campaignId, campaignName, campaignState);
   }
 
 
@@ -163,6 +266,8 @@ public class AchievementReference {
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    applicationName: ").append(toIndentedString(applicationName)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    campaignName: ").append(toIndentedString(campaignName)).append("\n");
+    sb.append("    campaignState: ").append(toIndentedString(campaignState)).append("\n");
     sb.append("}");
     return sb.toString();
   }

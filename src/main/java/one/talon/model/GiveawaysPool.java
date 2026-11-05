@@ -28,9 +28,9 @@ import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * Giveaways pools is an entity for managing multiple similar giveaways.
+ * A giveaway pool is an entity for managing multiple similar giveaways.
  */
-@ApiModel(description = "Giveaways pools is an entity for managing multiple similar giveaways.")
+@ApiModel(description = "A giveaway pool is an entity for managing multiple similar giveaways.")
 
 public class GiveawaysPool {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -147,10 +147,10 @@ public class GiveawaysPool {
   }
 
    /**
-   * The name of this giveaways pool.
+   * The name of this giveaway pool.
    * @return name
   **/
-  @ApiModelProperty(example = "My giveaway pool", required = true, value = "The name of this giveaways pool.")
+  @ApiModelProperty(example = "My giveaway pool", required = true, value = "The name of this giveaway pool.")
 
   public String getName() {
     return name;
@@ -169,11 +169,11 @@ public class GiveawaysPool {
   }
 
    /**
-   * The description of this giveaways pool.
+   * The description of this giveaway pool.
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Generic pool", value = "The description of this giveaways pool.")
+  @ApiModelProperty(example = "Generic pool", value = "The description of this giveaway pool.")
 
   public String getDescription() {
     return description;
@@ -200,11 +200,11 @@ public class GiveawaysPool {
   }
 
    /**
-   * A list of the IDs of the applications that this giveaways pool is enabled for.
+   * A list of the IDs of the Applications that this giveaway pool is enabled for.
    * @return subscribedApplicationsIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[2, 4]", value = "A list of the IDs of the applications that this giveaways pool is enabled for.")
+  @ApiModelProperty(example = "[2, 4]", value = "A list of the IDs of the Applications that this giveaway pool is enabled for.")
 
   public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
@@ -245,11 +245,11 @@ public class GiveawaysPool {
   }
 
    /**
-   * Timestamp of the most recent update to the giveaways pool.
+   * Timestamp of the most recent update to the giveaway pool.
    * @return modified
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Timestamp of the most recent update to the giveaways pool.")
+  @ApiModelProperty(value = "Timestamp of the most recent update to the giveaway pool.")
 
   public OffsetDateTime getModified() {
     return modified;
@@ -268,10 +268,10 @@ public class GiveawaysPool {
   }
 
    /**
-   * ID of the user who created this giveaways pool.
+   * ID of the user who created this giveaway pool.
    * @return createdBy
   **/
-  @ApiModelProperty(required = true, value = "ID of the user who created this giveaways pool.")
+  @ApiModelProperty(required = true, value = "ID of the user who created this giveaway pool.")
 
   public Long getCreatedBy() {
     return createdBy;
@@ -290,11 +290,11 @@ public class GiveawaysPool {
   }
 
    /**
-   * ID of the user who last updated this giveaways pool if available.
+   * ID of the user who last updated this giveaway pool if available.
    * @return modifiedBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "ID of the user who last updated this giveaways pool if available.")
+  @ApiModelProperty(value = "ID of the user who last updated this giveaway pool if available.")
 
   public Long getModifiedBy() {
     return modifiedBy;

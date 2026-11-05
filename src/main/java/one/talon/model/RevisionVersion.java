@@ -125,7 +125,9 @@ public class RevisionVersion {
     
     STRIKETHROUGH("strikethrough"),
     
-    ACHIEVEMENTS("achievements");
+    ACHIEVEMENTS("achievements"),
+    
+    ADVANCEDEVENTS("advancedEvents");
 
     private String value;
 
@@ -203,10 +205,10 @@ public class RevisionVersion {
   }
 
    /**
-   * Get accountId
+   * The ID of the account that owns this entity.
    * @return accountId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
   public Long getAccountId() {
     return accountId;
@@ -225,10 +227,10 @@ public class RevisionVersion {
   }
 
    /**
-   * Get applicationId
+   * The ID of the Application that owns this entity.
    * @return applicationId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "42", required = true, value = "The ID of the Application that owns this entity.")
 
   public Long getApplicationId() {
     return applicationId;
@@ -247,10 +249,10 @@ public class RevisionVersion {
   }
 
    /**
-   * Get campaignId
+   * The ID of the campaign that the revision was created from.
    * @return campaignId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "18", required = true, value = "The ID of the campaign that the revision was created from.")
 
   public Long getCampaignId() {
     return campaignId;
@@ -269,10 +271,10 @@ public class RevisionVersion {
   }
 
    /**
-   * Get created
+   * Timestamp when the revision was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "2026-10-01T08:00Z", required = true, value = "Timestamp when the revision was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -291,10 +293,10 @@ public class RevisionVersion {
   }
 
    /**
-   * Get createdBy
+   * The ID of the user who created this revision.
    * @return createdBy
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "134", required = true, value = "The ID of the user who created this revision.")
 
   public Long getCreatedBy() {
     return createdBy;
@@ -313,10 +315,10 @@ public class RevisionVersion {
   }
 
    /**
-   * Get revisionId
+   * The ID of the revision.
    * @return revisionId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "6", required = true, value = "The ID of the revision.")
 
   public Long getRevisionId() {
     return revisionId;
@@ -335,10 +337,10 @@ public class RevisionVersion {
   }
 
    /**
-   * Get version
+   * Incrementing number representing how many revisions have been activated on this campaign. Starts from &#x60;0&#x60; for a new campaign. 
    * @return version
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Incrementing number representing how many revisions have been activated on this campaign. Starts from `0` for a new campaign. ")
 
   public Long getVersion() {
     return version;

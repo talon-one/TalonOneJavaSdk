@@ -78,7 +78,7 @@ public class CartItemFilterTemplate {
    * The Talang expression for the cart item filter.
    * @return expression
   **/
-  @ApiModelProperty(example = "[filter, [., Session, CartItems], [[Item], [catch, false, [=, [., Item, Category], Kitchen]]]]", required = true, value = "The Talang expression for the cart item filter.")
+  @ApiModelProperty(example = "[filter, [., Session, CartItems], [[Item], [catch, false, [contains, [., Item, Category], Kitchen]]]]", required = true, value = "The Talang expression for the cart item filter.")
 
   public List<Object> getExpression() {
     return expression;

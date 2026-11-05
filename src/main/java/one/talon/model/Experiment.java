@@ -46,6 +46,59 @@ public class Experiment {
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
   private Long applicationId;
 
+  /**
+   * Controls how customers are assigned to experiment variants. - &#x60;random&#x60;: Talon.One assigns customers randomly based on variant weights. - &#x60;external&#x60;: Variant assignment is handled externally. - &#x60;audience&#x60;: Each variant targets a specific audience; customers are assigned based on audience membership. 
+   */
+  @JsonAdapter(AssignmentTypeEnum.Adapter.class)
+  public enum AssignmentTypeEnum {
+    RANDOM("random"),
+    
+    EXTERNAL("external"),
+    
+    AUDIENCE("audience");
+
+    private String value;
+
+    AssignmentTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AssignmentTypeEnum fromValue(String value) {
+      for (AssignmentTypeEnum b : AssignmentTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AssignmentTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AssignmentTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AssignmentTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AssignmentTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ASSIGNMENT_TYPE = "assignmentType";
+  @SerializedName(SERIALIZED_NAME_ASSIGNMENT_TYPE)
+  private AssignmentTypeEnum assignmentType;
+
   public static final String SERIALIZED_NAME_IS_VARIANT_ASSIGNMENT_EXTERNAL = "isVariantAssignmentExternal";
   @SerializedName(SERIALIZED_NAME_IS_VARIANT_ASSIGNMENT_EXTERNAL)
   private Boolean isVariantAssignmentExternal;
@@ -114,6 +167,65 @@ public class Experiment {
   public static final String SERIALIZED_NAME_VARIANTS = "variants";
   @SerializedName(SERIALIZED_NAME_VARIANTS)
   private List<ExperimentVariant> variants = null;
+
+  /**
+   * The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to &#x60;other&#x60;, multiple metrics are used. 
+   */
+  @JsonAdapter(GoalTypeEnum.Adapter.class)
+  public enum GoalTypeEnum {
+    OTHER("other"),
+    
+    MAXIMIZE_REVENUE("maximize_revenue"),
+    
+    OPTIMIZE_DISCOUNT_EFFICIENCY("optimize_discount_efficiency"),
+    
+    MAXIMIZE_ITEMS_SOLD("maximize_items_sold");
+
+    private String value;
+
+    GoalTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static GoalTypeEnum fromValue(String value) {
+      for (GoalTypeEnum b : GoalTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<GoalTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final GoalTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public GoalTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return GoalTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_GOAL_TYPE = "goalType";
+  @SerializedName(SERIALIZED_NAME_GOAL_TYPE)
+  private GoalTypeEnum goalType;
+
+  public static final String SERIALIZED_NAME_GOAL_DESCRIPTION = "goalDescription";
+  @SerializedName(SERIALIZED_NAME_GOAL_DESCRIPTION)
+  private String goalDescription;
 
   public static final String SERIALIZED_NAME_DELETEDAT = "deletedat";
   @SerializedName(SERIALIZED_NAME_DELETEDAT)
@@ -186,6 +298,29 @@ public class Experiment {
   }
 
 
+  public Experiment assignmentType(AssignmentTypeEnum assignmentType) {
+    
+    this.assignmentType = assignmentType;
+    return this;
+  }
+
+   /**
+   * Controls how customers are assigned to experiment variants. - &#x60;random&#x60;: Talon.One assigns customers randomly based on variant weights. - &#x60;external&#x60;: Variant assignment is handled externally. - &#x60;audience&#x60;: Each variant targets a specific audience; customers are assigned based on audience membership. 
+   * @return assignmentType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "random", value = "Controls how customers are assigned to experiment variants. - `random`: Talon.One assigns customers randomly based on variant weights. - `external`: Variant assignment is handled externally. - `audience`: Each variant targets a specific audience; customers are assigned based on audience membership. ")
+
+  public AssignmentTypeEnum getAssignmentType() {
+    return assignmentType;
+  }
+
+
+  public void setAssignmentType(AssignmentTypeEnum assignmentType) {
+    this.assignmentType = assignmentType;
+  }
+
+
   public Experiment isVariantAssignmentExternal(Boolean isVariantAssignmentExternal) {
     
     this.isVariantAssignmentExternal = isVariantAssignmentExternal;
@@ -193,11 +328,11 @@ public class Experiment {
   }
 
    /**
-   * The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
+   * Deprecated. Use &#x60;assignmentType&#x60; instead. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
    * @return isVariantAssignmentExternal
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. ")
+  @ApiModelProperty(value = "Deprecated. Use `assignmentType` instead. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. ")
 
   public Boolean getIsVariantAssignmentExternal() {
     return isVariantAssignmentExternal;
@@ -308,6 +443,51 @@ public class Experiment {
   }
 
 
+  public Experiment goalType(GoalTypeEnum goalType) {
+    
+    this.goalType = goalType;
+    return this;
+  }
+
+   /**
+   * The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to &#x60;other&#x60;, multiple metrics are used. 
+   * @return goalType
+  **/
+  @ApiModelProperty(required = true, value = "The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to `other`, multiple metrics are used. ")
+
+  public GoalTypeEnum getGoalType() {
+    return goalType;
+  }
+
+
+  public void setGoalType(GoalTypeEnum goalType) {
+    this.goalType = goalType;
+  }
+
+
+  public Experiment goalDescription(String goalDescription) {
+    
+    this.goalDescription = goalDescription;
+    return this;
+  }
+
+   /**
+   * A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. 
+   * @return goalDescription
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Offering free shipping will increase average order revenue more than a 10% discount", value = "A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. ")
+
+  public String getGoalDescription() {
+    return goalDescription;
+  }
+
+
+  public void setGoalDescription(String goalDescription) {
+    this.goalDescription = goalDescription;
+  }
+
+
   public Experiment deletedat(OffsetDateTime deletedat) {
     
     this.deletedat = deletedat;
@@ -343,17 +523,20 @@ public class Experiment {
     return Objects.equals(this.id, experiment.id) &&
         Objects.equals(this.created, experiment.created) &&
         Objects.equals(this.applicationId, experiment.applicationId) &&
+        Objects.equals(this.assignmentType, experiment.assignmentType) &&
         Objects.equals(this.isVariantAssignmentExternal, experiment.isVariantAssignmentExternal) &&
         Objects.equals(this.campaign, experiment.campaign) &&
         Objects.equals(this.activated, experiment.activated) &&
         Objects.equals(this.state, experiment.state) &&
         Objects.equals(this.variants, experiment.variants) &&
+        Objects.equals(this.goalType, experiment.goalType) &&
+        Objects.equals(this.goalDescription, experiment.goalDescription) &&
         Objects.equals(this.deletedat, experiment.deletedat);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, isVariantAssignmentExternal, campaign, activated, state, variants, deletedat);
+    return Objects.hash(id, created, applicationId, assignmentType, isVariantAssignmentExternal, campaign, activated, state, variants, goalType, goalDescription, deletedat);
   }
 
 
@@ -364,11 +547,14 @@ public class Experiment {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+    sb.append("    assignmentType: ").append(toIndentedString(assignmentType)).append("\n");
     sb.append("    isVariantAssignmentExternal: ").append(toIndentedString(isVariantAssignmentExternal)).append("\n");
     sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
     sb.append("    activated: ").append(toIndentedString(activated)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    variants: ").append(toIndentedString(variants)).append("\n");
+    sb.append("    goalType: ").append(toIndentedString(goalType)).append("\n");
+    sb.append("    goalDescription: ").append(toIndentedString(goalDescription)).append("\n");
     sb.append("    deletedat: ").append(toIndentedString(deletedat)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CustomerProfile;
+import one.talon.model.ApplicationEvent;
 
 /**
  * InlineResponse20036
@@ -38,7 +38,7 @@ public class InlineResponse20036 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CustomerProfile> data = new ArrayList<CustomerProfile>();
+  private List<ApplicationEvent> data = new ArrayList<ApplicationEvent>();
 
 
   public InlineResponse20036 hasMore(Boolean hasMore) {
@@ -51,8 +51,7 @@ public class InlineResponse20036 {
    * Get hasMore
    * @return hasMore
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   public Boolean getHasMore() {
     return hasMore;
@@ -64,13 +63,13 @@ public class InlineResponse20036 {
   }
 
 
-  public InlineResponse20036 data(List<CustomerProfile> data) {
+  public InlineResponse20036 data(List<ApplicationEvent> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20036 addDataItem(CustomerProfile dataItem) {
+  public InlineResponse20036 addDataItem(ApplicationEvent dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -81,12 +80,12 @@ public class InlineResponse20036 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<CustomerProfile> getData() {
+  public List<ApplicationEvent> getData() {
     return data;
   }
 
 
-  public void setData(List<CustomerProfile> data) {
+  public void setData(List<ApplicationEvent> data) {
     this.data = data;
   }
 

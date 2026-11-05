@@ -23,7 +23,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Effect;
 import one.talon.model.RuleFailureReason;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
@@ -91,6 +90,14 @@ public class ApplicationEventTest {
     @Test
     public void storeIntegrationIdTest() {
         // TODO: test storeIntegrationId
+    }
+
+    /**
+     * Test the property 'integrationId'
+     */
+    @Test
+    public void integrationIdTest() {
+        // TODO: test integrationId
     }
 
     /**

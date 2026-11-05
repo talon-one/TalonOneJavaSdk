@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
-**data** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;CampaignTemplate&gt;**](CampaignTemplate.md) |  | 
 
 
 

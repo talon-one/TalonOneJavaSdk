@@ -102,6 +102,8 @@ public class LoyaltyCardBatch {
 
    /**
    * Number of loyalty cards in the batch.
+   * minimum: 1
+   * maximum: 20000
    * @return numberOfCards
   **/
   @ApiModelProperty(example = "5000", required = true, value = "Number of loyalty cards in the batch.")

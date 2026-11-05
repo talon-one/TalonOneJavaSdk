@@ -38,6 +38,10 @@ public class ApplicationReferee {
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
   private String sessionId;
 
+  public static final String SERIALIZED_NAME_ADVANCED_EVENT_INTEGRATION_ID = "advancedEventIntegrationId";
+  @SerializedName(SERIALIZED_NAME_ADVANCED_EVENT_INTEGRATION_ID)
+  private String advancedEventIntegrationId;
+
   public static final String SERIALIZED_NAME_ADVOCATE_INTEGRATION_ID = "advocateIntegrationId";
   @SerializedName(SERIALIZED_NAME_ADVOCATE_INTEGRATION_ID)
   private String advocateIntegrationId;
@@ -96,6 +100,29 @@ public class ApplicationReferee {
 
   public void setSessionId(String sessionId) {
     this.sessionId = sessionId;
+  }
+
+
+  public ApplicationReferee advancedEventIntegrationId(String advancedEventIntegrationId) {
+    
+    this.advancedEventIntegrationId = advancedEventIntegrationId;
+    return this;
+  }
+
+   /**
+   * The unique ID of the advanced event in which the customer redeemed the referral. Omitted when the referral was redeemed through a customer session rather than an advanced event.
+   * @return advancedEventIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "advanced_event_1234", value = "The unique ID of the advanced event in which the customer redeemed the referral. Omitted when the referral was redeemed through a customer session rather than an advanced event.")
+
+  public String getAdvancedEventIntegrationId() {
+    return advancedEventIntegrationId;
+  }
+
+
+  public void setAdvancedEventIntegrationId(String advancedEventIntegrationId) {
+    this.advancedEventIntegrationId = advancedEventIntegrationId;
   }
 
 
@@ -198,6 +225,7 @@ public class ApplicationReferee {
     ApplicationReferee applicationReferee = (ApplicationReferee) o;
     return Objects.equals(this.applicationId, applicationReferee.applicationId) &&
         Objects.equals(this.sessionId, applicationReferee.sessionId) &&
+        Objects.equals(this.advancedEventIntegrationId, applicationReferee.advancedEventIntegrationId) &&
         Objects.equals(this.advocateIntegrationId, applicationReferee.advocateIntegrationId) &&
         Objects.equals(this.friendIntegrationId, applicationReferee.friendIntegrationId) &&
         Objects.equals(this.code, applicationReferee.code) &&
@@ -206,7 +234,7 @@ public class ApplicationReferee {
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationId, sessionId, advocateIntegrationId, friendIntegrationId, code, created);
+    return Objects.hash(applicationId, sessionId, advancedEventIntegrationId, advocateIntegrationId, friendIntegrationId, code, created);
   }
 
 
@@ -216,6 +244,7 @@ public class ApplicationReferee {
     sb.append("class ApplicationReferee {\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
+    sb.append("    advancedEventIntegrationId: ").append(toIndentedString(advancedEventIntegrationId)).append("\n");
     sb.append("    advocateIntegrationId: ").append(toIndentedString(advocateIntegrationId)).append("\n");
     sb.append("    friendIntegrationId: ").append(toIndentedString(friendIntegrationId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");

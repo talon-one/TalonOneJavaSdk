@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.AttributesSettings;
+import one.talon.model.BestPriorPriceSettings;
 import one.talon.model.LimitConfig;
 import one.talon.model.LoyaltyProgram;
 import org.threeten.bp.OffsetDateTime;
@@ -265,6 +266,10 @@ public class Application {
   public static final String SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT = "enableCampaignStateManagement";
   @SerializedName(SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT)
   private Boolean enableCampaignStateManagement;
+
+  public static final String SERIALIZED_NAME_BEST_PRIOR_PRICE_SETTINGS = "bestPriorPriceSettings";
+  @SerializedName(SERIALIZED_NAME_BEST_PRIOR_PRICE_SETTINGS)
+  private BestPriorPriceSettings bestPriorPriceSettings;
 
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAMS = "loyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAMS)
@@ -755,6 +760,29 @@ public class Application {
   }
 
 
+  public Application bestPriorPriceSettings(BestPriorPriceSettings bestPriorPriceSettings) {
+    
+    this.bestPriorPriceSettings = bestPriorPriceSettings;
+    return this;
+  }
+
+   /**
+   * Get bestPriorPriceSettings
+   * @return bestPriorPriceSettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BestPriorPriceSettings getBestPriorPriceSettings() {
+    return bestPriorPriceSettings;
+  }
+
+
+  public void setBestPriorPriceSettings(BestPriorPriceSettings bestPriorPriceSettings) {
+    this.bestPriorPriceSettings = bestPriorPriceSettings;
+  }
+
+
   public Application loyaltyPrograms(List<LoyaltyProgram> loyaltyPrograms) {
     
     this.loyaltyPrograms = loyaltyPrograms;
@@ -812,12 +840,13 @@ public class Application {
         Objects.equals(this.defaultEvaluationGroupId, application.defaultEvaluationGroupId) &&
         Objects.equals(this.defaultCartItemFilterId, application.defaultCartItemFilterId) &&
         Objects.equals(this.enableCampaignStateManagement, application.enableCampaignStateManagement) &&
+        Objects.equals(this.bestPriorPriceSettings, application.bestPriorPriceSettings) &&
         Objects.equals(this.loyaltyPrograms, application.loyaltyPrograms);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, accountId, name, description, timezone, currency, caseSensitivity, attributes, limits, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, defaultEvaluationGroupId, defaultCartItemFilterId, enableCampaignStateManagement, loyaltyPrograms);
+    return Objects.hash(id, created, modified, accountId, name, description, timezone, currency, caseSensitivity, attributes, limits, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, defaultEvaluationGroupId, defaultCartItemFilterId, enableCampaignStateManagement, bestPriorPriceSettings, loyaltyPrograms);
   }
 
 
@@ -846,6 +875,7 @@ public class Application {
     sb.append("    defaultEvaluationGroupId: ").append(toIndentedString(defaultEvaluationGroupId)).append("\n");
     sb.append("    defaultCartItemFilterId: ").append(toIndentedString(defaultCartItemFilterId)).append("\n");
     sb.append("    enableCampaignStateManagement: ").append(toIndentedString(enableCampaignStateManagement)).append("\n");
+    sb.append("    bestPriorPriceSettings: ").append(toIndentedString(bestPriorPriceSettings)).append("\n");
     sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
     sb.append("}");
     return sb.toString();

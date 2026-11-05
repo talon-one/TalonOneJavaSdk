@@ -52,7 +52,8 @@ public class Example {
         // Parsing the returned effects list, please consult
         // https://developers.talon.one/Integration-API/handling-effects-v2 for the full
         // list of effects and their corresponding properties
-        for (Effect eff : is.getEffects()) {
+        for (Object effect : is.getEffects()) {
+            Effect eff = gson.fromJson(gson.toJson(effect), Effect.class);
             if (eff.getEffectType().equals("addLoyaltyPoints")) {
                 // Typecasting according to the specific effect type
                 AddLoyaltyPointsEffectProps props = gson.fromJson(

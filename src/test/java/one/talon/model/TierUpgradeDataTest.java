@@ -122,4 +122,20 @@ public class TierUpgradeDataTest {
         // TODO: test timestampOfTierChange
     }
 
+    /**
+     * Test the property 'source'
+     */
+    @Test
+    public void sourceTest() {
+        // TODO: test source
+    }
+
+    /**
+     * Test the property 'reason'
+     */
+    @Test
+    public void reasonTest() {
+        // TODO: test reason
+    }
+
 }

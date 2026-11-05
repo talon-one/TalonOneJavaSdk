@@ -6,8 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**totalResultSize** | **Long** |  |  [optional]
 **hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;ApplicationCIF&gt;**](ApplicationCIF.md) |  | 
+**data** | [**List&lt;Change&gt;**](Change.md) |  | 
 
 
 

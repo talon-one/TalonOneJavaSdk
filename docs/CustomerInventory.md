@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **coupons** | [**List&lt;InventoryCoupon&gt;**](InventoryCoupon.md) | The coupons reserved by this profile. This array includes hard and soft reservations.  |  [optional]
 **giveaways** | [**List&lt;Giveaway&gt;**](Giveaway.md) |  |  [optional]
 **achievements** | [**List&lt;AchievementProgressWithDefinition&gt;**](AchievementProgressWithDefinition.md) |  |  [optional]
+**rewards** | [**List&lt;RewardWithUnlocks&gt;**](RewardWithUnlocks.md) | The customer rewards that are &#x60;unlocked&#x60; and not yet &#x60;used&#x60;. |  [optional]
 
 
 

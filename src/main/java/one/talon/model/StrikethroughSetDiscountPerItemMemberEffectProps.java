@@ -46,10 +46,10 @@ public class StrikethroughSetDiscountPerItemMemberEffectProps {
   }
 
    /**
-   * effect name.
+   * The effect name.
    * @return name
   **/
-  @ApiModelProperty(example = "10% off members only", required = true, value = "effect name.")
+  @ApiModelProperty(example = "10% off members only", required = true, value = "The effect name.")
 
   public String getName() {
     return name;
@@ -68,10 +68,10 @@ public class StrikethroughSetDiscountPerItemMemberEffectProps {
   }
 
    /**
-   * discount value.
+   * The discount value.
    * @return value
   **/
-  @ApiModelProperty(example = "9", required = true, value = "discount value.")
+  @ApiModelProperty(example = "9", required = true, value = "The discount value.")
 
   public Object getValue() {
     return value;

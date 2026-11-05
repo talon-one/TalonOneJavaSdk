@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.CustomerSessionV2;
-import one.talon.model.Effect;
 
 /**
  * IntegrationCustomerSessionResponse
@@ -39,7 +38,7 @@ public class IntegrationCustomerSessionResponse {
 
   public static final String SERIALIZED_NAME_EFFECTS = "effects";
   @SerializedName(SERIALIZED_NAME_EFFECTS)
-  private List<Effect> effects = null;
+  private List<Object> effects = null;
 
 
   public IntegrationCustomerSessionResponse customerSession(CustomerSessionV2 customerSession) {
@@ -65,15 +64,15 @@ public class IntegrationCustomerSessionResponse {
   }
 
 
-  public IntegrationCustomerSessionResponse effects(List<Effect> effects) {
+  public IntegrationCustomerSessionResponse effects(List<Object> effects) {
     
     this.effects = effects;
     return this;
   }
 
-  public IntegrationCustomerSessionResponse addEffectsItem(Effect effectsItem) {
+  public IntegrationCustomerSessionResponse addEffectsItem(Object effectsItem) {
     if (this.effects == null) {
-      this.effects = new ArrayList<Effect>();
+      this.effects = new ArrayList<Object>();
     }
     this.effects.add(effectsItem);
     return this;
@@ -86,12 +85,12 @@ public class IntegrationCustomerSessionResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The returned effects.  **Note:** This endpoint returns only the effects that are valid after any rollback effects and their corresponding non-rollback effects are removed. ")
 
-  public List<Effect> getEffects() {
+  public List<Object> getEffects() {
     return effects;
   }
 
 
-  public void setEffects(List<Effect> effects) {
+  public void setEffects(List<Object> effects) {
     this.effects = effects;
   }
 

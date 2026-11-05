@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Represents the target type when no entity is selected.
+ * Target type when no specific audience is selected. Targets all customers who are not members of an audience.
  */
-@ApiModel(description = "Represents the target type when no entity is selected.")
+@ApiModel(description = "Target type when no specific audience is selected. Targets all customers who are not members of an audience.")
 
 public class LabelTargetNone {
   /**

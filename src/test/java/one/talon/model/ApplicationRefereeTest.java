@@ -58,6 +58,14 @@ public class ApplicationRefereeTest {
     }
 
     /**
+     * Test the property 'advancedEventIntegrationId'
+     */
+    @Test
+    public void advancedEventIntegrationIdTest() {
+        // TODO: test advancedEventIntegrationId
+    }
+
+    /**
      * Test the property 'advocateIntegrationId'
      */
     @Test

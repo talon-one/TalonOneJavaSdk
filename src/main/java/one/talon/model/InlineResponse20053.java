@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CouponFailureSummary;
+import one.talon.model.ListCampaignStoreBudgets;
 
 /**
  * InlineResponse20053
@@ -34,16 +34,19 @@ import one.talon.model.CouponFailureSummary;
 public class InlineResponse20053 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CouponFailureSummary> data = new ArrayList<CouponFailureSummary>();
+  private List<ListCampaignStoreBudgets> data = null;
 
 
-  public InlineResponse20053 data(List<CouponFailureSummary> data) {
+  public InlineResponse20053 data(List<ListCampaignStoreBudgets> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20053 addDataItem(CouponFailureSummary dataItem) {
+  public InlineResponse20053 addDataItem(ListCampaignStoreBudgets dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<ListCampaignStoreBudgets>();
+    }
     this.data.add(dataItem);
     return this;
   }
@@ -52,14 +55,15 @@ public class InlineResponse20053 {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public List<CouponFailureSummary> getData() {
+  public List<ListCampaignStoreBudgets> getData() {
     return data;
   }
 
 
-  public void setData(List<CouponFailureSummary> data) {
+  public void setData(List<ListCampaignStoreBudgets> data) {
     this.data = data;
   }
 

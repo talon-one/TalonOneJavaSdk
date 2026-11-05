@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;referralCreated\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;create referral\&quot; effect, and a referral code was created for a customer. See \&quot;createdReferrals\&quot; on the response for all details of this referral code.
+ * The &#x60;referralCreated&#x60; effect behaves similarly to [couponCreated](https://docs.talon.one/docs/dev/integration-api/api-effects#couponcreated). If the &#x60;friendProfileIntegrationId&#x60; parameter is empty, the referral code can be redeemed by anyone.
  */
-@ApiModel(description = "The properties specific to the \"referralCreated\" effect. This gets triggered whenever a validated rule contained a \"create referral\" effect, and a referral code was created for a customer. See \"createdReferrals\" on the response for all details of this referral code.")
+@ApiModel(description = "The `referralCreated` effect behaves similarly to [couponCreated](https://docs.talon.one/docs/dev/integration-api/api-effects#couponcreated). If the `friendProfileIntegrationId` parameter is empty, the referral code can be redeemed by anyone.")
 
 public class ReferralCreatedEffectProps {
   public static final String SERIALIZED_NAME_VALUE = "value";
@@ -42,10 +42,10 @@ public class ReferralCreatedEffectProps {
   }
 
    /**
-   * The referral code that was created.
+   * The referral code provided in the session.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The referral code that was created.")
+  @ApiModelProperty(required = true, value = "The referral code provided in the session.")
 
   public String getValue() {
     return value;

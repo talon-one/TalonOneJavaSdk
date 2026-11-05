@@ -55,10 +55,10 @@ public class NewGiveawaysPool {
   }
 
    /**
-   * The name of this giveaways pool.
+   * The name of this giveaway pool.
    * @return name
   **/
-  @ApiModelProperty(example = "My giveaway pool", required = true, value = "The name of this giveaways pool.")
+  @ApiModelProperty(example = "My giveaway pool", required = true, value = "The name of this giveaway pool.")
 
   public String getName() {
     return name;
@@ -77,11 +77,11 @@ public class NewGiveawaysPool {
   }
 
    /**
-   * The description of this giveaways pool.
+   * The description of this giveaway pool.
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Generic pool", value = "The description of this giveaways pool.")
+  @ApiModelProperty(example = "Generic pool", value = "The description of this giveaway pool.")
 
   public String getDescription() {
     return description;
@@ -108,11 +108,11 @@ public class NewGiveawaysPool {
   }
 
    /**
-   * A list of the IDs of the applications that this giveaways pool is enabled for.
+   * A list of the IDs of the Applications that this giveaway pool is enabled for.
    * @return subscribedApplicationsIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[2, 4]", value = "A list of the IDs of the applications that this giveaways pool is enabled for.")
+  @ApiModelProperty(example = "[2, 4]", value = "A list of the IDs of the Applications that this giveaway pool is enabled for.")
 
   public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;

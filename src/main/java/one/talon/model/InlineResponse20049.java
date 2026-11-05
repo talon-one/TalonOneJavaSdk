@@ -25,28 +25,51 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.ListCampaignStoreBudgets;
+import one.talon.model.Export;
 
 /**
  * InlineResponse20049
  */
 
 public class InlineResponse20049 {
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
+
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ListCampaignStoreBudgets> data = null;
+  private List<Export> data = new ArrayList<Export>();
 
 
-  public InlineResponse20049 data(List<ListCampaignStoreBudgets> data) {
+  public InlineResponse20049 totalResultSize(Long totalResultSize) {
+    
+    this.totalResultSize = totalResultSize;
+    return this;
+  }
+
+   /**
+   * Get totalResultSize
+   * @return totalResultSize
+  **/
+  @ApiModelProperty(example = "1", required = true, value = "")
+
+  public Long getTotalResultSize() {
+    return totalResultSize;
+  }
+
+
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
+  }
+
+
+  public InlineResponse20049 data(List<Export> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20049 addDataItem(ListCampaignStoreBudgets dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<ListCampaignStoreBudgets>();
-    }
+  public InlineResponse20049 addDataItem(Export dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -55,15 +78,14 @@ public class InlineResponse20049 {
    * Get data
    * @return data
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
-  public List<ListCampaignStoreBudgets> getData() {
+  public List<Export> getData() {
     return data;
   }
 
 
-  public void setData(List<ListCampaignStoreBudgets> data) {
+  public void setData(List<Export> data) {
     this.data = data;
   }
 
@@ -77,12 +99,13 @@ public class InlineResponse20049 {
       return false;
     }
     InlineResponse20049 inlineResponse20049 = (InlineResponse20049) o;
-    return Objects.equals(this.data, inlineResponse20049.data);
+    return Objects.equals(this.totalResultSize, inlineResponse20049.totalResultSize) &&
+        Objects.equals(this.data, inlineResponse20049.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(totalResultSize, data);
   }
 
 
@@ -90,6 +113,7 @@ public class InlineResponse20049 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20049 {\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

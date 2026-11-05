@@ -29,6 +29,7 @@ import one.talon.model.Giveaway;
 import one.talon.model.InventoryCoupon;
 import one.talon.model.InventoryReferral;
 import one.talon.model.Loyalty;
+import one.talon.model.RewardWithUnlocks;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -94,6 +95,14 @@ public class CustomerInventoryTest {
     @Test
     public void achievementsTest() {
         // TODO: test achievements
+    }
+
+    /**
+     * Test the property 'rewards'
+     */
+    @Test
+    public void rewardsTest() {
+        // TODO: test rewards
     }
 
 }

@@ -59,6 +59,18 @@ public class PendingActivePointsData {
   @SerializedName(SERIALIZED_NAME_SESSION_INTEGRATION_I_D)
   private String sessionIntegrationID;
 
+  public static final String SERIALIZED_NAME_CREATED = "Created";
+  @SerializedName(SERIALIZED_NAME_CREATED)
+  private OffsetDateTime created;
+
+  public static final String SERIALIZED_NAME_AWAITS_ACTIVATION = "AwaitsActivation";
+  @SerializedName(SERIALIZED_NAME_AWAITS_ACTIVATION)
+  private Boolean awaitsActivation;
+
+  public static final String SERIALIZED_NAME_VALIDITY_DURATION = "ValidityDuration";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DURATION)
+  private String validityDuration;
+
 
   public PendingActivePointsData loyaltyProgramID(Long loyaltyProgramID) {
     
@@ -218,6 +230,75 @@ public class PendingActivePointsData {
   }
 
 
+  public PendingActivePointsData created(OffsetDateTime created) {
+    
+    this.created = created;
+    return this;
+  }
+
+   /**
+   * The timestamp when the loyalty transaction occurred.
+   * @return created
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2023-08-20T12:22+02:00", value = "The timestamp when the loyalty transaction occurred.")
+
+  public OffsetDateTime getCreated() {
+    return created;
+  }
+
+
+  public void setCreated(OffsetDateTime created) {
+    this.created = created;
+  }
+
+
+  public PendingActivePointsData awaitsActivation(Boolean awaitsActivation) {
+    
+    this.awaitsActivation = awaitsActivation;
+    return this;
+  }
+
+   /**
+   * Indicates whether the points have an action-based start date. This property is returned only for point transactions with an action-based start date.
+   * @return awaitsActivation
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Indicates whether the points have an action-based start date. This property is returned only for point transactions with an action-based start date.")
+
+  public Boolean getAwaitsActivation() {
+    return awaitsActivation;
+  }
+
+
+  public void setAwaitsActivation(Boolean awaitsActivation) {
+    this.awaitsActivation = awaitsActivation;
+  }
+
+
+  public PendingActivePointsData validityDuration(String validityDuration) {
+    
+    this.validityDuration = validityDuration;
+    return this;
+  }
+
+   /**
+   * The duration for which the points remain active, relative to the activation date.  **Note**: This only applies to points for which &#x60;AwaitsActivation&#x60; is &#x60;true&#x60; and &#x60;ExpireOn&#x60; is not set. 
+   * @return validityDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "30D", value = "The duration for which the points remain active, relative to the activation date.  **Note**: This only applies to points for which `AwaitsActivation` is `true` and `ExpireOn` is not set. ")
+
+  public String getValidityDuration() {
+    return validityDuration;
+  }
+
+
+  public void setValidityDuration(String validityDuration) {
+    this.validityDuration = validityDuration;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -233,12 +314,15 @@ public class PendingActivePointsData {
         Objects.equals(this.points, pendingActivePointsData.points) &&
         Objects.equals(this.activeOn, pendingActivePointsData.activeOn) &&
         Objects.equals(this.expireOn, pendingActivePointsData.expireOn) &&
-        Objects.equals(this.sessionIntegrationID, pendingActivePointsData.sessionIntegrationID);
+        Objects.equals(this.sessionIntegrationID, pendingActivePointsData.sessionIntegrationID) &&
+        Objects.equals(this.created, pendingActivePointsData.created) &&
+        Objects.equals(this.awaitsActivation, pendingActivePointsData.awaitsActivation) &&
+        Objects.equals(this.validityDuration, pendingActivePointsData.validityDuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loyaltyProgramID, subledgerID, customerProfileID, points, activeOn, expireOn, sessionIntegrationID);
+    return Objects.hash(loyaltyProgramID, subledgerID, customerProfileID, points, activeOn, expireOn, sessionIntegrationID, created, awaitsActivation, validityDuration);
   }
 
 
@@ -253,6 +337,9 @@ public class PendingActivePointsData {
     sb.append("    activeOn: ").append(toIndentedString(activeOn)).append("\n");
     sb.append("    expireOn: ").append(toIndentedString(expireOn)).append("\n");
     sb.append("    sessionIntegrationID: ").append(toIndentedString(sessionIntegrationID)).append("\n");
+    sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    awaitsActivation: ").append(toIndentedString(awaitsActivation)).append("\n");
+    sb.append("    validityDuration: ").append(toIndentedString(validityDuration)).append("\n");
     sb.append("}");
     return sb.toString();
   }

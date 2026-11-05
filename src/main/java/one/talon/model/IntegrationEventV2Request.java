@@ -66,7 +66,13 @@ public class IntegrationEventV2Request {
     
     AWARDEDGIVEAWAYS("awardedGiveaways"),
     
-    RULEFAILUREREASONS("ruleFailureReasons");
+    RULEFAILUREREASONS("ruleFailureReasons"),
+    
+    CAMPAIGNELIGIBILITY("campaignEligibility"),
+    
+    ACHIEVEMENTS("achievements"),
+    
+    UNLOCKEDREWARDS("unlockedRewards");
 
     private String value;
 
@@ -113,6 +119,10 @@ public class IntegrationEventV2Request {
   public static final String SERIALIZED_NAME_LOYALTY_CARDS = "loyaltyCards";
   @SerializedName(SERIALIZED_NAME_LOYALTY_CARDS)
   private List<String> loyaltyCards = null;
+
+  public static final String SERIALIZED_NAME_REWARD_INTEGRATION_IDS = "rewardIntegrationIds";
+  @SerializedName(SERIALIZED_NAME_REWARD_INTEGRATION_IDS)
+  private List<String> rewardIntegrationIds = null;
 
 
   public IntegrationEventV2Request profileId(String profileId) {
@@ -199,10 +209,10 @@ public class IntegrationEventV2Request {
   }
 
    /**
-   * A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type &#x60;event&#x60; in the Campaign Manager. 
+   * The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
    * @return type
   **/
-  @ApiModelProperty(example = "pageViewed", required = true, value = "A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type `event` in the Campaign Manager. ")
+  @ApiModelProperty(example = "pageViewed", required = true, value = "The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.")
 
   public String getType() {
     return type;
@@ -299,6 +309,37 @@ public class IntegrationEventV2Request {
   }
 
 
+  public IntegrationEventV2Request rewardIntegrationIds(List<String> rewardIntegrationIds) {
+    
+    this.rewardIntegrationIds = rewardIntegrationIds;
+    return this;
+  }
+
+  public IntegrationEventV2Request addRewardIntegrationIdsItem(String rewardIntegrationIdsItem) {
+    if (this.rewardIntegrationIds == null) {
+      this.rewardIntegrationIds = new ArrayList<String>();
+    }
+    this.rewardIntegrationIds.add(rewardIntegrationIdsItem);
+    return this;
+  }
+
+   /**
+   * The integration IDs of the unlocked rewards that can be used in this event. 
+   * @return rewardIntegrationIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[5c0b5e6d-3f8a-4c2b-9f1e-2a7d6b4c8e90]", value = "The integration IDs of the unlocked rewards that can be used in this event. ")
+
+  public List<String> getRewardIntegrationIds() {
+    return rewardIntegrationIds;
+  }
+
+
+  public void setRewardIntegrationIds(List<String> rewardIntegrationIds) {
+    this.rewardIntegrationIds = rewardIntegrationIds;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -314,12 +355,13 @@ public class IntegrationEventV2Request {
         Objects.equals(this.type, integrationEventV2Request.type) &&
         Objects.equals(this.attributes, integrationEventV2Request.attributes) &&
         Objects.equals(this.responseContent, integrationEventV2Request.responseContent) &&
-        Objects.equals(this.loyaltyCards, integrationEventV2Request.loyaltyCards);
+        Objects.equals(this.loyaltyCards, integrationEventV2Request.loyaltyCards) &&
+        Objects.equals(this.rewardIntegrationIds, integrationEventV2Request.rewardIntegrationIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, type, attributes, responseContent, loyaltyCards);
+    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, type, attributes, responseContent, loyaltyCards, rewardIntegrationIds);
   }
 
 
@@ -334,6 +376,7 @@ public class IntegrationEventV2Request {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    responseContent: ").append(toIndentedString(responseContent)).append("\n");
     sb.append("    loyaltyCards: ").append(toIndentedString(loyaltyCards)).append("\n");
+    sb.append("    rewardIntegrationIds: ").append(toIndentedString(rewardIntegrationIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

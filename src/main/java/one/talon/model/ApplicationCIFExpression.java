@@ -166,7 +166,7 @@ public class ApplicationCIFExpression {
    * @return expression
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "{expr=[filter, [., Session, CartItems], [[Item], [catch, false, [=, [., Item, Category], Kitchen]]]]}", value = "Arbitrary additional JSON data associated with the Application cart item filter.")
+  @ApiModelProperty(example = "{expr=[filter, [., Session, CartItems], [[Item], [catch, false, [contains, [., Item, Category], Kitchen]]]]}", value = "Arbitrary additional JSON data associated with the Application cart item filter.")
 
   public List<Object> getExpression() {
     return expression;

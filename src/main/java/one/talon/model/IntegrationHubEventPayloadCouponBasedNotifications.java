@@ -33,6 +33,10 @@ import org.threeten.bp.OffsetDateTime;
  */
 
 public class IntegrationHubEventPayloadCouponBasedNotifications {
+  public static final String SERIALIZED_NAME_EVENT_ID = "EventId";
+  @SerializedName(SERIALIZED_NAME_EVENT_ID)
+  private Long eventId;
+
   public static final String SERIALIZED_NAME_ID = "Id";
   @SerializedName(SERIALIZED_NAME_ID)
   private Long id;
@@ -116,6 +120,28 @@ public class IntegrationHubEventPayloadCouponBasedNotifications {
   public static final String SERIALIZED_NAME_EMPLOYEE_NAME = "EmployeeName";
   @SerializedName(SERIALIZED_NAME_EMPLOYEE_NAME)
   private String employeeName;
+
+
+  public IntegrationHubEventPayloadCouponBasedNotifications eventId(Long eventId) {
+    
+    this.eventId = eventId;
+    return this;
+  }
+
+   /**
+   * The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed.
+   * @return eventId
+  **/
+  @ApiModelProperty(example = "123", required = true, value = "The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed.")
+
+  public Long getEventId() {
+    return eventId;
+  }
+
+
+  public void setEventId(Long eventId) {
+    this.eventId = eventId;
+  }
 
 
   public IntegrationHubEventPayloadCouponBasedNotifications id(Long id) {
@@ -609,7 +635,8 @@ public class IntegrationHubEventPayloadCouponBasedNotifications {
       return false;
     }
     IntegrationHubEventPayloadCouponBasedNotifications integrationHubEventPayloadCouponBasedNotifications = (IntegrationHubEventPayloadCouponBasedNotifications) o;
-    return Objects.equals(this.id, integrationHubEventPayloadCouponBasedNotifications.id) &&
+    return Objects.equals(this.eventId, integrationHubEventPayloadCouponBasedNotifications.eventId) &&
+        Objects.equals(this.id, integrationHubEventPayloadCouponBasedNotifications.id) &&
         Objects.equals(this.created, integrationHubEventPayloadCouponBasedNotifications.created) &&
         Objects.equals(this.campaignId, integrationHubEventPayloadCouponBasedNotifications.campaignId) &&
         Objects.equals(this.value, integrationHubEventPayloadCouponBasedNotifications.value) &&
@@ -634,7 +661,7 @@ public class IntegrationHubEventPayloadCouponBasedNotifications {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, value, usageLimit, discountLimit, reservationLimit, startDate, expiryDate, usageCounter, discountCounter, discountRemainder, referralId, recipientIntegrationId, importId, batchId, attributes, limits, publishedAt, sourceOfEvent, employeeName);
+    return Objects.hash(eventId, id, created, campaignId, value, usageLimit, discountLimit, reservationLimit, startDate, expiryDate, usageCounter, discountCounter, discountRemainder, referralId, recipientIntegrationId, importId, batchId, attributes, limits, publishedAt, sourceOfEvent, employeeName);
   }
 
 
@@ -642,6 +669,7 @@ public class IntegrationHubEventPayloadCouponBasedNotifications {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationHubEventPayloadCouponBasedNotifications {\n");
+    sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");

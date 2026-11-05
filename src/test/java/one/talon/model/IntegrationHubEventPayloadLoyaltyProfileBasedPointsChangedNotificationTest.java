@@ -45,6 +45,14 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
     }
 
     /**
+     * Test the property 'eventId'
+     */
+    @Test
+    public void eventIdTest() {
+        // TODO: test eventId
+    }
+
+    /**
      * Test the property 'profileIntegrationID'
      */
     @Test
@@ -61,6 +69,14 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
     }
 
     /**
+     * Test the property 'loyaltyProgramName'
+     */
+    @Test
+    public void loyaltyProgramNameTest() {
+        // TODO: test loyaltyProgramName
+    }
+
+    /**
      * Test the property 'subledgerID'
      */
     @Test
@@ -74,6 +90,22 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
     @Test
     public void sourceOfEventTest() {
         // TODO: test sourceOfEvent
+    }
+
+    /**
+     * Test the property 'currentTier'
+     */
+    @Test
+    public void currentTierTest() {
+        // TODO: test currentTier
+    }
+
+    /**
+     * Test the property 'sessionIntegrationID'
+     */
+    @Test
+    public void sessionIntegrationIDTest() {
+        // TODO: test sessionIntegrationID
     }
 
     /**

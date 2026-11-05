@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.LedgerPointsEntryIntegrationAPI;
+import one.talon.model.LedgerTransactionLogEntryManagementAPI;
 
 /**
  * InlineResponse2007
@@ -38,7 +38,7 @@ public class InlineResponse2007 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<LedgerPointsEntryIntegrationAPI> data = new ArrayList<LedgerPointsEntryIntegrationAPI>();
+  private List<LedgerTransactionLogEntryManagementAPI> data = new ArrayList<LedgerTransactionLogEntryManagementAPI>();
 
 
   public InlineResponse2007 hasMore(Boolean hasMore) {
@@ -63,13 +63,13 @@ public class InlineResponse2007 {
   }
 
 
-  public InlineResponse2007 data(List<LedgerPointsEntryIntegrationAPI> data) {
+  public InlineResponse2007 data(List<LedgerTransactionLogEntryManagementAPI> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse2007 addDataItem(LedgerPointsEntryIntegrationAPI dataItem) {
+  public InlineResponse2007 addDataItem(LedgerTransactionLogEntryManagementAPI dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse2007 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<LedgerPointsEntryIntegrationAPI> getData() {
+  public List<LedgerTransactionLogEntryManagementAPI> getData() {
     return data;
   }
 
 
-  public void setData(List<LedgerPointsEntryIntegrationAPI> data) {
+  public void setData(List<LedgerTransactionLogEntryManagementAPI> data) {
     this.data = data;
   }
 

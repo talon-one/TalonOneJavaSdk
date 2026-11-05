@@ -2,10 +2,12 @@
 
 # RolesV2Thresholds
 
+Support user limits for actions that require admin approval within the given loyalty program.
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**loyaltyProgramId** | **Long** | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. |  [optional]
 **loyaltyPointsLimit** | **Long** | Maximum number of loyalty points a support user can award without approval. |  [optional]
 
 

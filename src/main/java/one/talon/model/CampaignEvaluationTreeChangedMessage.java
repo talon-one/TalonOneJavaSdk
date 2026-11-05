@@ -37,7 +37,7 @@ public class CampaignEvaluationTreeChangedMessage {
    */
   @JsonAdapter(NotificationTypeEnum.Adapter.class)
   public enum NotificationTypeEnum {
-    CAMPAIGNNOTIFICATION("CampaignNotification");
+    CAMPAIGNEVALUATIONTREECHANGED("CampaignEvaluationTreeChanged");
 
     private String value;
 
@@ -87,7 +87,7 @@ public class CampaignEvaluationTreeChangedMessage {
 
   public static final String SERIALIZED_NAME_DATA = "Data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ApplicationNotification> data = null;
+  private List<ApplicationNotification> data = new ArrayList<ApplicationNotification>();
 
 
   public CampaignEvaluationTreeChangedMessage notificationType(NotificationTypeEnum notificationType) {
@@ -100,7 +100,7 @@ public class CampaignEvaluationTreeChangedMessage {
    * The type of the notification
    * @return notificationType
   **/
-  @ApiModelProperty(example = "CampaignNotification", required = true, value = "The type of the notification")
+  @ApiModelProperty(example = "CampaignEvaluationTreeChanged", required = true, value = "The type of the notification")
 
   public NotificationTypeEnum getNotificationType() {
     return notificationType;
@@ -141,9 +141,6 @@ public class CampaignEvaluationTreeChangedMessage {
   }
 
   public CampaignEvaluationTreeChangedMessage addDataItem(ApplicationNotification dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<ApplicationNotification>();
-    }
     this.data.add(dataItem);
     return this;
   }
@@ -152,8 +149,7 @@ public class CampaignEvaluationTreeChangedMessage {
    * The array of changes.
    * @return data
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The array of changes.")
+  @ApiModelProperty(required = true, value = "The array of changes.")
 
   public List<ApplicationNotification> getData() {
     return data;

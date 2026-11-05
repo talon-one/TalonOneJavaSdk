@@ -25,12 +25,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * EventV3
  */
 
 public class EventV3 {
+  public static final String SERIALIZED_NAME_CONNECTED_SESSION_ID = "connectedSessionId";
+  @SerializedName(SERIALIZED_NAME_CONNECTED_SESSION_ID)
+  private String connectedSessionId;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Long id;
+
+  public static final String SERIALIZED_NAME_CREATED = "created";
+  @SerializedName(SERIALIZED_NAME_CREATED)
+  private OffsetDateTime created;
+
+  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
+  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  private Long applicationId;
+
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
   private String profileId;
@@ -38,14 +55,6 @@ public class EventV3 {
   public static final String SERIALIZED_NAME_STORE_INTEGRATION_ID = "storeIntegrationId";
   @SerializedName(SERIALIZED_NAME_STORE_INTEGRATION_ID)
   private String storeIntegrationId;
-
-  public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
-  @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
-  private List<Long> evaluableCampaignIds = null;
-
-  public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
-  @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
-  private String integrationId;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -55,13 +64,106 @@ public class EventV3 {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
-  public static final String SERIALIZED_NAME_CONNECTED_SESSION_I_D = "connectedSessionID";
-  @SerializedName(SERIALIZED_NAME_CONNECTED_SESSION_I_D)
-  private String connectedSessionID;
+  public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
+  @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
+  private String integrationId;
 
-  public static final String SERIALIZED_NAME_PREVIOUS_EVENT_I_D = "previousEventID";
-  @SerializedName(SERIALIZED_NAME_PREVIOUS_EVENT_I_D)
-  private String previousEventID;
+  public static final String SERIALIZED_NAME_REFERRAL_CODE = "referralCode";
+  @SerializedName(SERIALIZED_NAME_REFERRAL_CODE)
+  private String referralCode;
+
+  public static final String SERIALIZED_NAME_EFFECTS = "effects";
+  @SerializedName(SERIALIZED_NAME_EFFECTS)
+  private List<Object> effects = new ArrayList<Object>();
+
+
+  public EventV3 connectedSessionId(String connectedSessionId) {
+    
+    this.connectedSessionId = connectedSessionId;
+    return this;
+  }
+
+   /**
+   * The ID of the session to reference. The session must be in &#x60;closed&#x60; state. Otherwise, the API call will fail.
+   * @return connectedSessionId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "175KJPS947296", value = "The ID of the session to reference. The session must be in `closed` state. Otherwise, the API call will fail.")
+
+  public String getConnectedSessionId() {
+    return connectedSessionId;
+  }
+
+
+  public void setConnectedSessionId(String connectedSessionId) {
+    this.connectedSessionId = connectedSessionId;
+  }
+
+
+  public EventV3 id(Long id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The internal ID of this entity.
+   * @return id
+  **/
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
+
+  public Long getId() {
+    return id;
+  }
+
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+
+  public EventV3 created(OffsetDateTime created) {
+    
+    this.created = created;
+    return this;
+  }
+
+   /**
+   * The time this entity was created.
+   * @return created
+  **/
+  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
+
+  public OffsetDateTime getCreated() {
+    return created;
+  }
+
+
+  public void setCreated(OffsetDateTime created) {
+    this.created = created;
+  }
+
+
+  public EventV3 applicationId(Long applicationId) {
+    
+    this.applicationId = applicationId;
+    return this;
+  }
+
+   /**
+   * The ID of the Application that owns this entity.
+   * @return applicationId
+  **/
+  @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
+
+  public Long getApplicationId() {
+    return applicationId;
+  }
+
+
+  public void setApplicationId(Long applicationId) {
+    this.applicationId = applicationId;
+  }
 
 
   public EventV3 profileId(String profileId) {
@@ -74,7 +176,8 @@ public class EventV3 {
    * ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known &#x60;profileId&#x60;, we recommend you use a guest &#x60;profileId&#x60;. 
    * @return profileId
   **/
-  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`. ")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "URNGV8294NV", value = "ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`. ")
 
   public String getProfileId() {
     return profileId;
@@ -109,59 +212,6 @@ public class EventV3 {
   }
 
 
-  public EventV3 evaluableCampaignIds(List<Long> evaluableCampaignIds) {
-    
-    this.evaluableCampaignIds = evaluableCampaignIds;
-    return this;
-  }
-
-  public EventV3 addEvaluableCampaignIdsItem(Long evaluableCampaignIdsItem) {
-    if (this.evaluableCampaignIds == null) {
-      this.evaluableCampaignIds = new ArrayList<Long>();
-    }
-    this.evaluableCampaignIds.add(evaluableCampaignIdsItem);
-    return this;
-  }
-
-   /**
-   * When using the &#x60;dry&#x60; query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. 
-   * @return evaluableCampaignIds
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "[10, 12]", value = "When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. ")
-
-  public List<Long> getEvaluableCampaignIds() {
-    return evaluableCampaignIds;
-  }
-
-
-  public void setEvaluableCampaignIds(List<Long> evaluableCampaignIds) {
-    this.evaluableCampaignIds = evaluableCampaignIds;
-  }
-
-
-  public EventV3 integrationId(String integrationId) {
-    
-    this.integrationId = integrationId;
-    return this;
-  }
-
-   /**
-   * The unique ID of the current event. Only one event with this ID could be activated, duplicated events are forbidden. 
-   * @return integrationId
-  **/
-  @ApiModelProperty(example = "175KJPS947296", required = true, value = "The unique ID of the current event. Only one event with this ID could be activated, duplicated events are forbidden. ")
-
-  public String getIntegrationId() {
-    return integrationId;
-  }
-
-
-  public void setIntegrationId(String integrationId) {
-    this.integrationId = integrationId;
-  }
-
-
   public EventV3 type(String type) {
     
     this.type = type;
@@ -169,10 +219,10 @@ public class EventV3 {
   }
 
    /**
-   * A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type &#x60;event&#x60; in the Campaign Manager. 
+   * The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
    * @return type
   **/
-  @ApiModelProperty(example = "pageViewed", required = true, value = "A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type `event` in the Campaign Manager. ")
+  @ApiModelProperty(example = "pageViewed", required = true, value = "The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.")
 
   public String getType() {
     return type;
@@ -191,11 +241,10 @@ public class EventV3 {
   }
 
    /**
-   * Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute).
+   * Arbitrary additional JSON data associated with the event.
    * @return attributes
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "{\"myAttribute\":\"myValue\"}", value = "Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute).")
+  @ApiModelProperty(example = "{\"myAttribute\":\"myValue\"}", required = true, value = "Arbitrary additional JSON data associated with the event.")
 
   public Object getAttributes() {
     return attributes;
@@ -207,49 +256,76 @@ public class EventV3 {
   }
 
 
-  public EventV3 connectedSessionID(String connectedSessionID) {
+  public EventV3 integrationId(String integrationId) {
     
-    this.connectedSessionID = connectedSessionID;
+    this.integrationId = integrationId;
     return this;
   }
 
    /**
-   * The ID of the session that happened in the past.
-   * @return connectedSessionID
+   * The unique ID of the event. Only one event with this ID can be registered. 
+   * @return integrationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "175KJPS947296", value = "The ID of the session that happened in the past.")
+  @ApiModelProperty(example = "175KJPS947296", value = "The unique ID of the event. Only one event with this ID can be registered. ")
 
-  public String getConnectedSessionID() {
-    return connectedSessionID;
+  public String getIntegrationId() {
+    return integrationId;
   }
 
 
-  public void setConnectedSessionID(String connectedSessionID) {
-    this.connectedSessionID = connectedSessionID;
+  public void setIntegrationId(String integrationId) {
+    this.integrationId = integrationId;
   }
 
 
-  public EventV3 previousEventID(String previousEventID) {
+  public EventV3 referralCode(String referralCode) {
     
-    this.previousEventID = previousEventID;
+    this.referralCode = referralCode;
     return this;
   }
 
    /**
-   * The unique identifier of the event that happened in the past.
-   * @return previousEventID
+   * The referral code submitted with the event. The endpoint does not validate the code, and submitting a code does not redeem it. Use the \&quot;Referral code is valid\&quot; condition in the Rule Builder to validate and redeem the code, or \&quot;Referral code is valid (without redemption)\&quot; to validate without redeeming. 
+   * @return referralCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "175KJPS947296", value = "The unique identifier of the event that happened in the past.")
+  @ApiModelProperty(example = "NT2K54D9", value = "The referral code submitted with the event. The endpoint does not validate the code, and submitting a code does not redeem it. Use the \"Referral code is valid\" condition in the Rule Builder to validate and redeem the code, or \"Referral code is valid (without redemption)\" to validate without redeeming. ")
 
-  public String getPreviousEventID() {
-    return previousEventID;
+  public String getReferralCode() {
+    return referralCode;
   }
 
 
-  public void setPreviousEventID(String previousEventID) {
-    this.previousEventID = previousEventID;
+  public void setReferralCode(String referralCode) {
+    this.referralCode = referralCode;
+  }
+
+
+  public EventV3 effects(List<Object> effects) {
+    
+    this.effects = effects;
+    return this;
+  }
+
+  public EventV3 addEffectsItem(Object effectsItem) {
+    this.effects.add(effectsItem);
+    return this;
+  }
+
+   /**
+   * An array of effects generated by the rules of the enabled campaigns of the Application.  You decide how to apply them in your system. See the list of [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects). 
+   * @return effects
+  **/
+  @ApiModelProperty(required = true, value = "An array of effects generated by the rules of the enabled campaigns of the Application.  You decide how to apply them in your system. See the list of [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects). ")
+
+  public List<Object> getEffects() {
+    return effects;
+  }
+
+
+  public void setEffects(List<Object> effects) {
+    this.effects = effects;
   }
 
 
@@ -262,19 +338,22 @@ public class EventV3 {
       return false;
     }
     EventV3 eventV3 = (EventV3) o;
-    return Objects.equals(this.profileId, eventV3.profileId) &&
+    return Objects.equals(this.connectedSessionId, eventV3.connectedSessionId) &&
+        Objects.equals(this.id, eventV3.id) &&
+        Objects.equals(this.created, eventV3.created) &&
+        Objects.equals(this.applicationId, eventV3.applicationId) &&
+        Objects.equals(this.profileId, eventV3.profileId) &&
         Objects.equals(this.storeIntegrationId, eventV3.storeIntegrationId) &&
-        Objects.equals(this.evaluableCampaignIds, eventV3.evaluableCampaignIds) &&
-        Objects.equals(this.integrationId, eventV3.integrationId) &&
         Objects.equals(this.type, eventV3.type) &&
         Objects.equals(this.attributes, eventV3.attributes) &&
-        Objects.equals(this.connectedSessionID, eventV3.connectedSessionID) &&
-        Objects.equals(this.previousEventID, eventV3.previousEventID);
+        Objects.equals(this.integrationId, eventV3.integrationId) &&
+        Objects.equals(this.referralCode, eventV3.referralCode) &&
+        Objects.equals(this.effects, eventV3.effects);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, integrationId, type, attributes, connectedSessionID, previousEventID);
+    return Objects.hash(connectedSessionId, id, created, applicationId, profileId, storeIntegrationId, type, attributes, integrationId, referralCode, effects);
   }
 
 
@@ -282,14 +361,17 @@ public class EventV3 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EventV3 {\n");
+    sb.append("    connectedSessionId: ").append(toIndentedString(connectedSessionId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
     sb.append("    storeIntegrationId: ").append(toIndentedString(storeIntegrationId)).append("\n");
-    sb.append("    evaluableCampaignIds: ").append(toIndentedString(evaluableCampaignIds)).append("\n");
-    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    connectedSessionID: ").append(toIndentedString(connectedSessionID)).append("\n");
-    sb.append("    previousEventID: ").append(toIndentedString(previousEventID)).append("\n");
+    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
+    sb.append("    referralCode: ").append(toIndentedString(referralCode)).append("\n");
+    sb.append("    effects: ").append(toIndentedString(effects)).append("\n");
     sb.append("}");
     return sb.toString();
   }

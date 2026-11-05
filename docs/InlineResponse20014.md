@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
-**data** | [**List&lt;CampaignGroup&gt;**](CampaignGroup.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;Coupon&gt;**](Coupon.md) |  | 
 
 
 

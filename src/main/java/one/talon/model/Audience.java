@@ -23,6 +23,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -53,6 +55,10 @@ public class Audience {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
+  @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
+  private List<Long> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_INTEGRATION = "integration";
   @SerializedName(SERIALIZED_NAME_INTEGRATION)
@@ -205,6 +211,37 @@ public class Audience {
   }
 
 
+  public Audience subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+    
+    this.subscribedApplicationsIds = subscribedApplicationsIds;
+    return this;
+  }
+
+  public Audience addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
+    if (this.subscribedApplicationsIds == null) {
+      this.subscribedApplicationsIds = new ArrayList<Long>();
+    }
+    this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of the IDs of the Applications that are connected to this audience.
+   * @return subscribedApplicationsIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[3, 13]", value = "A list of the IDs of the Applications that are connected to this audience.")
+
+  public List<Long> getSubscribedApplicationsIds() {
+    return subscribedApplicationsIds;
+  }
+
+
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+    this.subscribedApplicationsIds = subscribedApplicationsIds;
+  }
+
+
   public Audience integration(String integration) {
     
     this.integration = integration;
@@ -312,6 +349,7 @@ public class Audience {
         Objects.equals(this.name, audience.name) &&
         Objects.equals(this.sandbox, audience.sandbox) &&
         Objects.equals(this.description, audience.description) &&
+        Objects.equals(this.subscribedApplicationsIds, audience.subscribedApplicationsIds) &&
         Objects.equals(this.integration, audience.integration) &&
         Objects.equals(this.integrationId, audience.integrationId) &&
         Objects.equals(this.createdIn3rdParty, audience.createdIn3rdParty) &&
@@ -320,7 +358,7 @@ public class Audience {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, id, created, name, sandbox, description, integration, integrationId, createdIn3rdParty, lastUpdate);
+    return Objects.hash(accountId, id, created, name, sandbox, description, subscribedApplicationsIds, integration, integrationId, createdIn3rdParty, lastUpdate);
   }
 
 
@@ -334,6 +372,7 @@ public class Audience {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    subscribedApplicationsIds: ").append(toIndentedString(subscribedApplicationsIds)).append("\n");
     sb.append("    integration: ").append(toIndentedString(integration)).append("\n");
     sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
     sb.append("    createdIn3rdParty: ").append(toIndentedString(createdIn3rdParty)).append("\n");

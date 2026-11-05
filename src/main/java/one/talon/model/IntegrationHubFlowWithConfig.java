@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.IntegrationHubEventType;
 import one.talon.model.IntegrationHubFlowConfig;
 
 /**
@@ -34,9 +35,13 @@ public class IntegrationHubFlowWithConfig {
   @SerializedName(SERIALIZED_NAME_APPLICATION_I_D)
   private Long applicationID;
 
+  public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_I_D = "LoyaltyProgramID";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_I_D)
+  private Long loyaltyProgramID;
+
   public static final String SERIALIZED_NAME_EVENT_TYPE = "EventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-  private String eventType;
+  private IntegrationHubEventType eventType;
 
   public static final String SERIALIZED_NAME_INTEGRATION_HUB_FLOW_URL = "IntegrationHubFlowUrl";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_HUB_FLOW_URL)
@@ -54,11 +59,11 @@ public class IntegrationHubFlowWithConfig {
   }
 
    /**
-   * ID of application the flow is registered for.
+   * ID of the application the flow is registered for.
    * @return applicationID
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "54", value = "ID of application the flow is registered for.")
+  @ApiModelProperty(example = "54", value = "ID of the application the flow is registered for.")
 
   public Long getApplicationID() {
     return applicationID;
@@ -70,24 +75,47 @@ public class IntegrationHubFlowWithConfig {
   }
 
 
-  public IntegrationHubFlowWithConfig eventType(String eventType) {
+  public IntegrationHubFlowWithConfig loyaltyProgramID(Long loyaltyProgramID) {
+    
+    this.loyaltyProgramID = loyaltyProgramID;
+    return this;
+  }
+
+   /**
+   * ID of the loyalty program the flow is registered for.
+   * @return loyaltyProgramID
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "12", value = "ID of the loyalty program the flow is registered for.")
+
+  public Long getLoyaltyProgramID() {
+    return loyaltyProgramID;
+  }
+
+
+  public void setLoyaltyProgramID(Long loyaltyProgramID) {
+    this.loyaltyProgramID = loyaltyProgramID;
+  }
+
+
+  public IntegrationHubFlowWithConfig eventType(IntegrationHubEventType eventType) {
     
     this.eventType = eventType;
     return this;
   }
 
    /**
-   * The event type we want to register a flow for.
+   * Get eventType
    * @return eventType
   **/
-  @ApiModelProperty(required = true, value = "The event type we want to register a flow for.")
+  @ApiModelProperty(required = true, value = "")
 
-  public String getEventType() {
+  public IntegrationHubEventType getEventType() {
     return eventType;
   }
 
 
-  public void setEventType(String eventType) {
+  public void setEventType(IntegrationHubEventType eventType) {
     this.eventType = eventType;
   }
 
@@ -146,6 +174,7 @@ public class IntegrationHubFlowWithConfig {
     }
     IntegrationHubFlowWithConfig integrationHubFlowWithConfig = (IntegrationHubFlowWithConfig) o;
     return Objects.equals(this.applicationID, integrationHubFlowWithConfig.applicationID) &&
+        Objects.equals(this.loyaltyProgramID, integrationHubFlowWithConfig.loyaltyProgramID) &&
         Objects.equals(this.eventType, integrationHubFlowWithConfig.eventType) &&
         Objects.equals(this.integrationHubFlowUrl, integrationHubFlowWithConfig.integrationHubFlowUrl) &&
         Objects.equals(this.config, integrationHubFlowWithConfig.config);
@@ -153,7 +182,7 @@ public class IntegrationHubFlowWithConfig {
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationID, eventType, integrationHubFlowUrl, config);
+    return Objects.hash(applicationID, loyaltyProgramID, eventType, integrationHubFlowUrl, config);
   }
 
 
@@ -162,6 +191,7 @@ public class IntegrationHubFlowWithConfig {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationHubFlowWithConfig {\n");
     sb.append("    applicationID: ").append(toIndentedString(applicationID)).append("\n");
+    sb.append("    loyaltyProgramID: ").append(toIndentedString(loyaltyProgramID)).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
     sb.append("    integrationHubFlowUrl: ").append(toIndentedString(integrationHubFlowUrl)).append("\n");
     sb.append("    config: ").append(toIndentedString(config)).append("\n");

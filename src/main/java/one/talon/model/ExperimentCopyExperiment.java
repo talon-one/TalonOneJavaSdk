@@ -30,6 +30,59 @@ import one.talon.model.ExperimentCampaignCopy;
  */
 
 public class ExperimentCopyExperiment {
+  /**
+   * Controls how customers are assigned to experiment variants in the copied experiment. - &#x60;random&#x60;: Talon.One assigns customers randomly based on variant weights. - &#x60;external&#x60;: The variant assignment is handled externally. - &#x60;audience&#x60;: Each variant targets a specific audience; customers are assigned based on audience membership. This is the source of truth. When omitted, it is derived from the deprecated &#x60;isVariantAssignmentExternal&#x60; flag (&#x60;true&#x60; maps to &#x60;external&#x60;, otherwise &#x60;random&#x60;). 
+   */
+  @JsonAdapter(AssignmentTypeEnum.Adapter.class)
+  public enum AssignmentTypeEnum {
+    RANDOM("random"),
+    
+    EXTERNAL("external"),
+    
+    AUDIENCE("audience");
+
+    private String value;
+
+    AssignmentTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AssignmentTypeEnum fromValue(String value) {
+      for (AssignmentTypeEnum b : AssignmentTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AssignmentTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AssignmentTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AssignmentTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AssignmentTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ASSIGNMENT_TYPE = "assignmentType";
+  @SerializedName(SERIALIZED_NAME_ASSIGNMENT_TYPE)
+  private AssignmentTypeEnum assignmentType;
+
   public static final String SERIALIZED_NAME_IS_VARIANT_ASSIGNMENT_EXTERNAL = "isVariantAssignmentExternal";
   @SerializedName(SERIALIZED_NAME_IS_VARIANT_ASSIGNMENT_EXTERNAL)
   private Boolean isVariantAssignmentExternal;
@@ -37,6 +90,88 @@ public class ExperimentCopyExperiment {
   public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN)
   private ExperimentCampaignCopy campaign;
+
+  /**
+   * The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to &#x60;other&#x60;, multiple metrics are used. If omitted, the value from the source experiment is used. 
+   */
+  @JsonAdapter(GoalTypeEnum.Adapter.class)
+  public enum GoalTypeEnum {
+    OTHER("other"),
+    
+    MAXIMIZE_REVENUE("maximize_revenue"),
+    
+    MAXIMIZE_ITEMS_SOLD("maximize_items_sold"),
+    
+    OPTIMIZE_DISCOUNT_EFFICIENCY("optimize_discount_efficiency");
+
+    private String value;
+
+    GoalTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static GoalTypeEnum fromValue(String value) {
+      for (GoalTypeEnum b : GoalTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<GoalTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final GoalTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public GoalTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return GoalTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_GOAL_TYPE = "goalType";
+  @SerializedName(SERIALIZED_NAME_GOAL_TYPE)
+  private GoalTypeEnum goalType;
+
+  public static final String SERIALIZED_NAME_GOAL_DESCRIPTION = "goalDescription";
+  @SerializedName(SERIALIZED_NAME_GOAL_DESCRIPTION)
+  private String goalDescription;
+
+
+  public ExperimentCopyExperiment assignmentType(AssignmentTypeEnum assignmentType) {
+    
+    this.assignmentType = assignmentType;
+    return this;
+  }
+
+   /**
+   * Controls how customers are assigned to experiment variants in the copied experiment. - &#x60;random&#x60;: Talon.One assigns customers randomly based on variant weights. - &#x60;external&#x60;: The variant assignment is handled externally. - &#x60;audience&#x60;: Each variant targets a specific audience; customers are assigned based on audience membership. This is the source of truth. When omitted, it is derived from the deprecated &#x60;isVariantAssignmentExternal&#x60; flag (&#x60;true&#x60; maps to &#x60;external&#x60;, otherwise &#x60;random&#x60;). 
+   * @return assignmentType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "random", value = "Controls how customers are assigned to experiment variants in the copied experiment. - `random`: Talon.One assigns customers randomly based on variant weights. - `external`: The variant assignment is handled externally. - `audience`: Each variant targets a specific audience; customers are assigned based on audience membership. This is the source of truth. When omitted, it is derived from the deprecated `isVariantAssignmentExternal` flag (`true` maps to `external`, otherwise `random`). ")
+
+  public AssignmentTypeEnum getAssignmentType() {
+    return assignmentType;
+  }
+
+
+  public void setAssignmentType(AssignmentTypeEnum assignmentType) {
+    this.assignmentType = assignmentType;
+  }
 
 
   public ExperimentCopyExperiment isVariantAssignmentExternal(Boolean isVariantAssignmentExternal) {
@@ -46,10 +181,11 @@ public class ExperimentCopyExperiment {
   }
 
    /**
-   * The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. 
+   * The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. Deprecated: use &#x60;assignmentType&#x60; instead. Kept for backwards compatibility with older clients; when set and &#x60;assignmentType&#x60; is omitted, &#x60;true&#x60; maps to &#x60;external&#x60;. 
    * @return isVariantAssignmentExternal
   **/
-  @ApiModelProperty(required = true, value = "The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. ")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. Deprecated: use `assignmentType` instead. Kept for backwards compatibility with older clients; when set and `assignmentType` is omitted, `true` maps to `external`. ")
 
   public Boolean getIsVariantAssignmentExternal() {
     return isVariantAssignmentExternal;
@@ -83,6 +219,52 @@ public class ExperimentCopyExperiment {
   }
 
 
+  public ExperimentCopyExperiment goalType(GoalTypeEnum goalType) {
+    
+    this.goalType = goalType;
+    return this;
+  }
+
+   /**
+   * The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to &#x60;other&#x60;, multiple metrics are used. If omitted, the value from the source experiment is used. 
+   * @return goalType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to `other`, multiple metrics are used. If omitted, the value from the source experiment is used. ")
+
+  public GoalTypeEnum getGoalType() {
+    return goalType;
+  }
+
+
+  public void setGoalType(GoalTypeEnum goalType) {
+    this.goalType = goalType;
+  }
+
+
+  public ExperimentCopyExperiment goalDescription(String goalDescription) {
+    
+    this.goalDescription = goalDescription;
+    return this;
+  }
+
+   /**
+   * A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. If omitted, the value from the source experiment is used. 
+   * @return goalDescription
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. If omitted, the value from the source experiment is used. ")
+
+  public String getGoalDescription() {
+    return goalDescription;
+  }
+
+
+  public void setGoalDescription(String goalDescription) {
+    this.goalDescription = goalDescription;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -92,13 +274,16 @@ public class ExperimentCopyExperiment {
       return false;
     }
     ExperimentCopyExperiment experimentCopyExperiment = (ExperimentCopyExperiment) o;
-    return Objects.equals(this.isVariantAssignmentExternal, experimentCopyExperiment.isVariantAssignmentExternal) &&
-        Objects.equals(this.campaign, experimentCopyExperiment.campaign);
+    return Objects.equals(this.assignmentType, experimentCopyExperiment.assignmentType) &&
+        Objects.equals(this.isVariantAssignmentExternal, experimentCopyExperiment.isVariantAssignmentExternal) &&
+        Objects.equals(this.campaign, experimentCopyExperiment.campaign) &&
+        Objects.equals(this.goalType, experimentCopyExperiment.goalType) &&
+        Objects.equals(this.goalDescription, experimentCopyExperiment.goalDescription);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isVariantAssignmentExternal, campaign);
+    return Objects.hash(assignmentType, isVariantAssignmentExternal, campaign, goalType, goalDescription);
   }
 
 
@@ -106,8 +291,11 @@ public class ExperimentCopyExperiment {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExperimentCopyExperiment {\n");
+    sb.append("    assignmentType: ").append(toIndentedString(assignmentType)).append("\n");
     sb.append("    isVariantAssignmentExternal: ").append(toIndentedString(isVariantAssignmentExternal)).append("\n");
     sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
+    sb.append("    goalType: ").append(toIndentedString(goalType)).append("\n");
+    sb.append("    goalDescription: ").append(toIndentedString(goalDescription)).append("\n");
     sb.append("}");
     return sb.toString();
   }

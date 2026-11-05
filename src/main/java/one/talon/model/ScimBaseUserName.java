@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The components of the user’s real name.
+ * The components of the user&#39;s real name.
  */
-@ApiModel(description = "The components of the user’s real name.")
+@ApiModel(description = "The components of the user's real name.")
 
 public class ScimBaseUserName {
   public static final String SERIALIZED_NAME_FORMATTED = "formatted";

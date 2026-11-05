@@ -46,6 +46,10 @@ public class UpdateExperimentVariant {
   @SerializedName(SERIALIZED_NAME_WEIGHT)
   private Long weight;
 
+  public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
+  private Long audienceId;
+
 
   public UpdateExperimentVariant id(Long id) {
     
@@ -120,12 +124,12 @@ public class UpdateExperimentVariant {
   }
 
    /**
-   * The percentage split of this variant. The sum of all variant percentages must be 100.
-   * minimum: 1
+   * The percentage split of this variant. For &#x60;random&#x60; assignment, the split must be between 1 and 99 and the sum across all variants must equal 100. Ignored for &#x60;audience&#x60; and &#x60;external&#x60; assignment. 
+   * minimum: 0
    * maximum: 99
    * @return weight
   **/
-  @ApiModelProperty(example = "13", required = true, value = "The percentage split of this variant. The sum of all variant percentages must be 100.")
+  @ApiModelProperty(example = "13", required = true, value = "The percentage split of this variant. For `random` assignment, the split must be between 1 and 99 and the sum across all variants must equal 100. Ignored for `audience` and `external` assignment. ")
 
   public Long getWeight() {
     return weight;
@@ -134,6 +138,29 @@ public class UpdateExperimentVariant {
 
   public void setWeight(Long weight) {
     this.weight = weight;
+  }
+
+
+  public UpdateExperimentVariant audienceId(Long audienceId) {
+    
+    this.audienceId = audienceId;
+    return this;
+  }
+
+   /**
+   * The ID of the audience this variant targets. Only used when the experiment &#x60;assignmentType&#x60; is &#x60;audience&#x60;. 
+   * @return audienceId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "55", value = "The ID of the audience this variant targets. Only used when the experiment `assignmentType` is `audience`. ")
+
+  public Long getAudienceId() {
+    return audienceId;
+  }
+
+
+  public void setAudienceId(Long audienceId) {
+    this.audienceId = audienceId;
   }
 
 
@@ -149,12 +176,13 @@ public class UpdateExperimentVariant {
     return Objects.equals(this.id, updateExperimentVariant.id) &&
         Objects.equals(this.name, updateExperimentVariant.name) &&
         Objects.equals(this.ruleset, updateExperimentVariant.ruleset) &&
-        Objects.equals(this.weight, updateExperimentVariant.weight);
+        Objects.equals(this.weight, updateExperimentVariant.weight) &&
+        Objects.equals(this.audienceId, updateExperimentVariant.audienceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, ruleset, weight);
+    return Objects.hash(id, name, ruleset, weight, audienceId);
   }
 
 
@@ -166,6 +194,7 @@ public class UpdateExperimentVariant {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
+    sb.append("    audienceId: ").append(toIndentedString(audienceId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

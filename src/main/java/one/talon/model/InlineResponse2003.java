@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AchievementProgress;
+import one.talon.model.CustomerAchievementHistoryEntry;
 
 /**
  * InlineResponse2003
@@ -38,7 +38,7 @@ public class InlineResponse2003 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<AchievementProgress> data = new ArrayList<AchievementProgress>();
+  private List<CustomerAchievementHistoryEntry> data = new ArrayList<CustomerAchievementHistoryEntry>();
 
 
   public InlineResponse2003 totalResultSize(Long totalResultSize) {
@@ -63,13 +63,13 @@ public class InlineResponse2003 {
   }
 
 
-  public InlineResponse2003 data(List<AchievementProgress> data) {
+  public InlineResponse2003 data(List<CustomerAchievementHistoryEntry> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse2003 addDataItem(AchievementProgress dataItem) {
+  public InlineResponse2003 addDataItem(CustomerAchievementHistoryEntry dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse2003 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<AchievementProgress> getData() {
+  public List<CustomerAchievementHistoryEntry> getData() {
     return data;
   }
 
 
-  public void setData(List<AchievementProgress> data) {
+  public void setData(List<CustomerAchievementHistoryEntry> data) {
     this.data = data;
   }
 

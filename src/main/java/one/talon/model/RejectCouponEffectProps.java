@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;rejectCoupon\&quot; effect. This gets triggered whenever the coupon was rejected. See rejectionReason for more info on why.
+ * This effect indicates that the coupon code supplied couldn&#39;t be used.  You should handle this effect by informing their user the coupon code is invalid.
  */
-@ApiModel(description = "The properties specific to the \"rejectCoupon\" effect. This gets triggered whenever the coupon was rejected. See rejectionReason for more info on why.")
+@ApiModel(description = "This effect indicates that the coupon code supplied couldn't be used.  You should handle this effect by informing their user the coupon code is invalid.")
 
 public class RejectCouponEffectProps {
   public static final String SERIALIZED_NAME_VALUE = "value";
@@ -84,10 +84,10 @@ public class RejectCouponEffectProps {
   }
 
    /**
-   * The reason why this coupon was rejected.
+   * The reason why the code was rejected.  - &#x60;CampaignLimitReached&#x60;: The campaign-wide coupon code redemption limit has been reached. - &#x60;CouponExpired&#x60;: The coupon is expired. - &#x60;CouponLimitReached&#x60;: The coupon redemption limit or a campaign budget was reached. - &#x60;CouponNotFound&#x60;: The coupon code is incorrect. - &#x60;CouponPartOfNotRunningCampaign&#x60;: The campaign the coupon belongs to is currently not active. The campaignId field contains the ID of that campaign. - &#x60;CouponRecipientDoesNotMatch&#x60;: The given coupon value does not match the recipient or the coupon is linked to a &#x60;recipientIntegrationID&#x60; but there is no profile in the session. - &#x60;CouponRejectedByCondition&#x60;: Other conditions failed in the rule or all conditions passed but the &#x60;Coupon code is valid&#x60; condition is not present. - &#x60;CouponStartDateInFuture&#x60;: The coupon isn&#39;t active yet. - &#x60;EffectCouldNotBeApplied&#x60;: One of the effects in the campaign wasn&#39;t applied because a limit for that effect was reached (most common use case will be &#x60;setDiscount&#x60; cannot be applied because a discount limit is reached). - &#x60;ProfileLimitReached&#x60;: The profile-specific coupon redemption limit has been reached. - &#x60;CouponPartOfNotTriggeredCampaign&#x60;: The campaign the coupon belongs to was not triggered during evaluation (an exclusive or stackable campaign). The &#x60;campaignId&#x60; field contains the ID of that campaign. - &#x60;CouponReservationRequired&#x60;: The coupon&#39;s &#x60;isReservationMandatory&#x60; property is &#x60;true&#x60;, but the profile does not have a reservation. - &#x60;ProfileRequired&#x60;: The coupon&#39;s &#x60;isReservationMandatory&#x60; property is &#x60;true&#x60; or a [campaign profile budget](https://docs.talon.one/docs/product/campaigns/settings/manage-campaign-budgets) was set, but no profile exists in the session.
    * @return rejectionReason
   **/
-  @ApiModelProperty(required = true, value = "The reason why this coupon was rejected.")
+  @ApiModelProperty(required = true, value = "The reason why the code was rejected.  - `CampaignLimitReached`: The campaign-wide coupon code redemption limit has been reached. - `CouponExpired`: The coupon is expired. - `CouponLimitReached`: The coupon redemption limit or a campaign budget was reached. - `CouponNotFound`: The coupon code is incorrect. - `CouponPartOfNotRunningCampaign`: The campaign the coupon belongs to is currently not active. The campaignId field contains the ID of that campaign. - `CouponRecipientDoesNotMatch`: The given coupon value does not match the recipient or the coupon is linked to a `recipientIntegrationID` but there is no profile in the session. - `CouponRejectedByCondition`: Other conditions failed in the rule or all conditions passed but the `Coupon code is valid` condition is not present. - `CouponStartDateInFuture`: The coupon isn't active yet. - `EffectCouldNotBeApplied`: One of the effects in the campaign wasn't applied because a limit for that effect was reached (most common use case will be `setDiscount` cannot be applied because a discount limit is reached). - `ProfileLimitReached`: The profile-specific coupon redemption limit has been reached. - `CouponPartOfNotTriggeredCampaign`: The campaign the coupon belongs to was not triggered during evaluation (an exclusive or stackable campaign). The `campaignId` field contains the ID of that campaign. - `CouponReservationRequired`: The coupon's `isReservationMandatory` property is `true`, but the profile does not have a reservation. - `ProfileRequired`: The coupon's `isReservationMandatory` property is `true` or a [campaign profile budget](https://docs.talon.one/docs/product/campaigns/settings/manage-campaign-budgets) was set, but no profile exists in the session.")
 
   public String getRejectionReason() {
     return rejectionReason;
@@ -175,11 +175,11 @@ public class RejectCouponEffectProps {
   }
 
    /**
-   * The reason why the campaign was not applied.
+   * The reason why the campaign the coupon belongs to was excluded during [campaign evaluation](https://docs.talon.one/docs/product/applications/manage-campaign-evaluation), when &#x60;rejectionReason&#x60; was &#x60;CouponPartOfNotTriggeredCampaign&#x60;. Its possible values are:  - &#x60;CampaignGaveLowerDiscount&#x60;: The required campaign and coupon conditions were met, but another campaign in a [Highest discount value](https://docs.talon.one/docs/product/applications/manage-campaign-evaluation#set-campaign-evaluation-mode) group offered a higher discount value. - &#x60;CampaignIsNotFirst&#x60;: The campaign was not evaluated because another campaign in a [First campaign](https://docs.talon.one/docs/product/applications/manage-campaign-evaluation#set-campaign-evaluation-mode) group was picked and evaluated first. - &#x60;CampaignNotInEvaluationSet&#x60;: The campaign did not meet other evaluation requirements, for example, because the coupon is part of an archived campaign.
    * @return campaignExclusionReason
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "CampaignGaveLowerDiscount", value = "The reason why the campaign was not applied.")
+  @ApiModelProperty(example = "CampaignGaveLowerDiscount", value = "The reason why the campaign the coupon belongs to was excluded during [campaign evaluation](https://docs.talon.one/docs/product/applications/manage-campaign-evaluation), when `rejectionReason` was `CouponPartOfNotTriggeredCampaign`. Its possible values are:  - `CampaignGaveLowerDiscount`: The required campaign and coupon conditions were met, but another campaign in a [Highest discount value](https://docs.talon.one/docs/product/applications/manage-campaign-evaluation#set-campaign-evaluation-mode) group offered a higher discount value. - `CampaignIsNotFirst`: The campaign was not evaluated because another campaign in a [First campaign](https://docs.talon.one/docs/product/applications/manage-campaign-evaluation#set-campaign-evaluation-mode) group was picked and evaluated first. - `CampaignNotInEvaluationSet`: The campaign did not meet other evaluation requirements, for example, because the coupon is part of an archived campaign.")
 
   public String getCampaignExclusionReason() {
     return campaignExclusionReason;

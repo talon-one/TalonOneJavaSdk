@@ -35,6 +35,10 @@ public class SamlConnection {
   @SerializedName(SERIALIZED_NAME_ASSERTION_CONSUMER_SERVICE_U_R_L)
   private String assertionConsumerServiceURL;
 
+  public static final String SERIALIZED_NAME_CERTIFICATE_EXPIRY = "certificateExpiry";
+  @SerializedName(SERIALIZED_NAME_CERTIFICATE_EXPIRY)
+  private OffsetDateTime certificateExpiry;
+
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private Long accountId;
@@ -95,6 +99,29 @@ public class SamlConnection {
 
   public void setAssertionConsumerServiceURL(String assertionConsumerServiceURL) {
     this.assertionConsumerServiceURL = assertionConsumerServiceURL;
+  }
+
+
+  public SamlConnection certificateExpiry(OffsetDateTime certificateExpiry) {
+    
+    this.certificateExpiry = certificateExpiry;
+    return this;
+  }
+
+   /**
+   * The expiry date of the X.509 certificate.
+   * @return certificateExpiry
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-07-20T21:59Z", value = "The expiry date of the X.509 certificate.")
+
+  public OffsetDateTime getCertificateExpiry() {
+    return certificateExpiry;
+  }
+
+
+  public void setCertificateExpiry(OffsetDateTime certificateExpiry) {
+    this.certificateExpiry = certificateExpiry;
   }
 
 
@@ -330,6 +357,7 @@ public class SamlConnection {
     }
     SamlConnection samlConnection = (SamlConnection) o;
     return Objects.equals(this.assertionConsumerServiceURL, samlConnection.assertionConsumerServiceURL) &&
+        Objects.equals(this.certificateExpiry, samlConnection.certificateExpiry) &&
         Objects.equals(this.accountId, samlConnection.accountId) &&
         Objects.equals(this.name, samlConnection.name) &&
         Objects.equals(this.enabled, samlConnection.enabled) &&
@@ -344,7 +372,7 @@ public class SamlConnection {
 
   @Override
   public int hashCode() {
-    return Objects.hash(assertionConsumerServiceURL, accountId, name, enabled, issuer, signOnURL, signOutURL, metadataURL, audienceURI, id, created);
+    return Objects.hash(assertionConsumerServiceURL, certificateExpiry, accountId, name, enabled, issuer, signOnURL, signOutURL, metadataURL, audienceURI, id, created);
   }
 
 
@@ -353,6 +381,7 @@ public class SamlConnection {
     StringBuilder sb = new StringBuilder();
     sb.append("class SamlConnection {\n");
     sb.append("    assertionConsumerServiceURL: ").append(toIndentedString(assertionConsumerServiceURL)).append("\n");
+    sb.append("    certificateExpiry: ").append(toIndentedString(certificateExpiry)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");

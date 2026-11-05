@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.RolesV2Thresholds;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -71,14 +70,6 @@ public class RoleV2ApplicationDetailsTest {
     @Test
     public void toolsTest() {
         // TODO: test tools
-    }
-
-    /**
-     * Test the property 'thresholds'
-     */
-    @Test
-    public void thresholdsTest() {
-        // TODO: test thresholds
     }
 
 }

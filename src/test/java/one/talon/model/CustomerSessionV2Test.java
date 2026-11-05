@@ -130,6 +130,14 @@ public class CustomerSessionV2Test {
     }
 
     /**
+     * Test the property 'rewardIntegrationIds'
+     */
+    @Test
+    public void rewardIntegrationIdsTest() {
+        // TODO: test rewardIntegrationIds
+    }
+
+    /**
      * Test the property 'state'
      */
     @Test
@@ -215,6 +223,14 @@ public class CustomerSessionV2Test {
     @Test
     public void additionalCostTotalTest() {
         // TODO: test additionalCostTotal
+    }
+
+    /**
+     * Test the property 'cartItemAdditionalCostTotal'
+     */
+    @Test
+    public void cartItemAdditionalCostTotalTest() {
+        // TODO: test cartItemAdditionalCostTotal
     }
 
     /**

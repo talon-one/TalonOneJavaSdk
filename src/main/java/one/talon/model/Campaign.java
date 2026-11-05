@@ -152,7 +152,9 @@ public class Campaign {
     
     STRIKETHROUGH("strikethrough"),
     
-    ACHIEVEMENTS("achievements");
+    ACHIEVEMENTS("achievements"),
+    
+    ADVANCEDEVENTS("advancedEvents");
 
     private String value;
 
@@ -1414,7 +1416,7 @@ public class Campaign {
    * @return updated
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Timestamp of the most recent update to the campaign's property. Updates to external entities used in this campaign are **not** registered by this property, such as collection or coupon updates. ")
+  @ApiModelProperty(example = "2022-10-27T15:00Z", value = "Timestamp of the most recent update to the campaign's property. Updates to external entities used in this campaign are **not** registered by this property, such as collection or coupon updates. ")
 
   public OffsetDateTime getUpdated() {
     return updated;
@@ -1669,11 +1671,11 @@ public class Campaign {
   }
 
    /**
-   * Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign. 
+   * Incrementing number representing how many revisions have been activated on this campaign. Starts from &#x60;0&#x60; for a new campaign. 
    * @return version
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "6", value = "Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign. ")
+  @ApiModelProperty(example = "6", value = "Incrementing number representing how many revisions have been activated on this campaign. Starts from `0` for a new campaign. ")
 
   public Long getVersion() {
     return version;

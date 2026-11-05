@@ -2,6 +2,7 @@
 
 # RoleV2ApplicationDetails
 
+Details of the permission sets configured for an Application.
 ## Properties
 
 Name | Type | Description | Notes
@@ -10,7 +11,6 @@ Name | Type | Description | Notes
 **campaign** | **String** | Name of the campaign-related permission set for the given Application. |  [optional]
 **draftCampaign** | **String** | Name of the draft campaign-related permission set for the given Application. |  [optional]
 **tools** | **String** | Name of the tools-related permission set. |  [optional]
-**thresholds** | [**RolesV2Thresholds**](RolesV2Thresholds.md) |  |  [optional]
 
 
 

@@ -106,4 +106,20 @@ public class TierWillDowngradeDataTest {
         // TODO: test tierExpirationDate
     }
 
+    /**
+     * Test the property 'source'
+     */
+    @Test
+    public void sourceTest() {
+        // TODO: test source
+    }
+
+    /**
+     * Test the property 'reason'
+     */
+    @Test
+    public void reasonTest() {
+        // TODO: test reason
+    }
+
 }

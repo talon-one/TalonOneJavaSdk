@@ -25,20 +25,47 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CampaignAnalytics;
+import one.talon.model.CollectionWithoutPayload;
 
 /**
  * InlineResponse20025
  */
 
 public class InlineResponse20025 {
+  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
+
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CampaignAnalytics> data = new ArrayList<CampaignAnalytics>();
+  private List<CollectionWithoutPayload> data = new ArrayList<CollectionWithoutPayload>();
+
+
+  public InlineResponse20025 hasMore(Boolean hasMore) {
+    
+    this.hasMore = hasMore;
+    return this;
+  }
+
+   /**
+   * Get hasMore
+   * @return hasMore
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getHasMore() {
+    return hasMore;
+  }
+
+
+  public void setHasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
+  }
 
 
   public InlineResponse20025 totalResultSize(Long totalResultSize) {
@@ -51,7 +78,8 @@ public class InlineResponse20025 {
    * Get totalResultSize
    * @return totalResultSize
   **/
-  @ApiModelProperty(example = "1", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "")
 
   public Long getTotalResultSize() {
     return totalResultSize;
@@ -63,13 +91,13 @@ public class InlineResponse20025 {
   }
 
 
-  public InlineResponse20025 data(List<CampaignAnalytics> data) {
+  public InlineResponse20025 data(List<CollectionWithoutPayload> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20025 addDataItem(CampaignAnalytics dataItem) {
+  public InlineResponse20025 addDataItem(CollectionWithoutPayload dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +108,12 @@ public class InlineResponse20025 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<CampaignAnalytics> getData() {
+  public List<CollectionWithoutPayload> getData() {
     return data;
   }
 
 
-  public void setData(List<CampaignAnalytics> data) {
+  public void setData(List<CollectionWithoutPayload> data) {
     this.data = data;
   }
 
@@ -99,13 +127,14 @@ public class InlineResponse20025 {
       return false;
     }
     InlineResponse20025 inlineResponse20025 = (InlineResponse20025) o;
-    return Objects.equals(this.totalResultSize, inlineResponse20025.totalResultSize) &&
+    return Objects.equals(this.hasMore, inlineResponse20025.hasMore) &&
+        Objects.equals(this.totalResultSize, inlineResponse20025.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20025.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalResultSize, data);
+    return Objects.hash(hasMore, totalResultSize, data);
   }
 
 
@@ -113,6 +142,7 @@ public class InlineResponse20025 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20025 {\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");

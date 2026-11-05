@@ -98,4 +98,12 @@ public class ExperimentVariantTest {
         // TODO: test isPrimary
     }
 
+    /**
+     * Test the property 'audienceId'
+     */
+    @Test
+    public void audienceIdTest() {
+        // TODO: test audienceId
+    }
+
 }

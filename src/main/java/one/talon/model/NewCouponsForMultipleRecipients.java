@@ -53,6 +53,10 @@ public class NewCouponsForMultipleRecipients {
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
 
+  public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
+  @SerializedName(SERIALIZED_NAME_BATCH_ID)
+  private String batchId;
+
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
@@ -190,6 +194,29 @@ public class NewCouponsForMultipleRecipients {
   }
 
 
+  public NewCouponsForMultipleRecipients batchId(String batchId) {
+    
+    this.batchId = batchId;
+    return this;
+  }
+
+   /**
+   * The batch ID that all coupons created by the request will bear. If omitted, a batch ID is generated automatically.
+   * @return batchId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3rdparty_fjsieoaa", value = "The batch ID that all coupons created by the request will bear. If omitted, a batch ID is generated automatically.")
+
+  public String getBatchId() {
+    return batchId;
+  }
+
+
+  public void setBatchId(String batchId) {
+    this.batchId = batchId;
+  }
+
+
   public NewCouponsForMultipleRecipients attributes(Object attributes) {
     
     this.attributes = attributes;
@@ -308,6 +335,7 @@ public class NewCouponsForMultipleRecipients {
         Objects.equals(this.reservationLimit, newCouponsForMultipleRecipients.reservationLimit) &&
         Objects.equals(this.startDate, newCouponsForMultipleRecipients.startDate) &&
         Objects.equals(this.expiryDate, newCouponsForMultipleRecipients.expiryDate) &&
+        Objects.equals(this.batchId, newCouponsForMultipleRecipients.batchId) &&
         Objects.equals(this.attributes, newCouponsForMultipleRecipients.attributes) &&
         Objects.equals(this.recipientsIntegrationIds, newCouponsForMultipleRecipients.recipientsIntegrationIds) &&
         Objects.equals(this.validCharacters, newCouponsForMultipleRecipients.validCharacters) &&
@@ -316,7 +344,7 @@ public class NewCouponsForMultipleRecipients {
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, attributes, recipientsIntegrationIds, validCharacters, couponPattern);
+    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, batchId, attributes, recipientsIntegrationIds, validCharacters, couponPattern);
   }
 
 
@@ -329,6 +357,7 @@ public class NewCouponsForMultipleRecipients {
     sb.append("    reservationLimit: ").append(toIndentedString(reservationLimit)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
+    sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    recipientsIntegrationIds: ").append(toIndentedString(recipientsIntegrationIds)).append("\n");
     sb.append("    validCharacters: ").append(toIndentedString(validCharacters)).append("\n");

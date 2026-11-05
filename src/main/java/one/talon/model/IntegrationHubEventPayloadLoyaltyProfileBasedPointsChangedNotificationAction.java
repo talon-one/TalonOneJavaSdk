@@ -102,6 +102,18 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
   @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
   private UUID transactionUUID;
 
+  public static final String SERIALIZED_NAME_CREATED = "Created";
+  @SerializedName(SERIALIZED_NAME_CREATED)
+  private OffsetDateTime created;
+
+  public static final String SERIALIZED_NAME_AWAITS_ACTIVATION = "AwaitsActivation";
+  @SerializedName(SERIALIZED_NAME_AWAITS_ACTIVATION)
+  private Boolean awaitsActivation;
+
+  public static final String SERIALIZED_NAME_VALIDITY_DURATION = "ValidityDuration";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DURATION)
+  private String validityDuration;
+
 
   public IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction amount(Float amount) {
     
@@ -238,6 +250,75 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
   }
 
 
+  public IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction created(OffsetDateTime created) {
+    
+    this.created = created;
+    return this;
+  }
+
+   /**
+   * The timestamp when the loyalty transaction occurred.
+   * @return created
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2023-01-24T14:15:22Z", value = "The timestamp when the loyalty transaction occurred.")
+
+  public OffsetDateTime getCreated() {
+    return created;
+  }
+
+
+  public void setCreated(OffsetDateTime created) {
+    this.created = created;
+  }
+
+
+  public IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction awaitsActivation(Boolean awaitsActivation) {
+    
+    this.awaitsActivation = awaitsActivation;
+    return this;
+  }
+
+   /**
+   * Indicates whether the points have an action-based start date. This property is returned only for point transactions with an action-based start date.
+   * @return awaitsActivation
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Indicates whether the points have an action-based start date. This property is returned only for point transactions with an action-based start date.")
+
+  public Boolean getAwaitsActivation() {
+    return awaitsActivation;
+  }
+
+
+  public void setAwaitsActivation(Boolean awaitsActivation) {
+    this.awaitsActivation = awaitsActivation;
+  }
+
+
+  public IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction validityDuration(String validityDuration) {
+    
+    this.validityDuration = validityDuration;
+    return this;
+  }
+
+   /**
+   * The duration for which the points remain active, relative to the activation date.  **Note**: This only applies to points for which &#x60;AwaitsActivation&#x60; is &#x60;true&#x60; and &#x60;ExpiryDate&#x60; is not set. 
+   * @return validityDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "30D", value = "The duration for which the points remain active, relative to the activation date.  **Note**: This only applies to points for which `AwaitsActivation` is `true` and `ExpiryDate` is not set. ")
+
+  public String getValidityDuration() {
+    return validityDuration;
+  }
+
+
+  public void setValidityDuration(String validityDuration) {
+    this.validityDuration = validityDuration;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -252,12 +333,15 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
         Objects.equals(this.operation, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.operation) &&
         Objects.equals(this.startDate, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.startDate) &&
         Objects.equals(this.expiryDate, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.expiryDate) &&
-        Objects.equals(this.transactionUUID, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.transactionUUID);
+        Objects.equals(this.transactionUUID, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.transactionUUID) &&
+        Objects.equals(this.created, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.created) &&
+        Objects.equals(this.awaitsActivation, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.awaitsActivation) &&
+        Objects.equals(this.validityDuration, integrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.validityDuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, reason, operation, startDate, expiryDate, transactionUUID);
+    return Objects.hash(amount, reason, operation, startDate, expiryDate, transactionUUID, created, awaitsActivation, validityDuration);
   }
 
 
@@ -271,6 +355,9 @@ public class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificat
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
+    sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    awaitsActivation: ").append(toIndentedString(awaitsActivation)).append("\n");
+    sb.append("    validityDuration: ").append(toIndentedString(validityDuration)).append("\n");
     sb.append("}");
     return sb.toString();
   }

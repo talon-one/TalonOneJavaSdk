@@ -25,51 +25,51 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.LoyaltyCard;
+import one.talon.model.LoyaltyDashboardData;
 
 /**
  * InlineResponse20020
  */
 
 public class InlineResponse20020 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<LoyaltyCard> data = new ArrayList<LoyaltyCard>();
+  private List<LoyaltyDashboardData> data = new ArrayList<LoyaltyDashboardData>();
 
 
-  public InlineResponse20020 hasMore(Boolean hasMore) {
+  public InlineResponse20020 totalResultSize(Long totalResultSize) {
     
-    this.hasMore = hasMore;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get hasMore
-   * @return hasMore
+   * Get totalResultSize
+   * @return totalResultSize
   **/
-  @ApiModelProperty(example = "true", required = true, value = "")
+  @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Boolean getHasMore() {
-    return hasMore;
+  public Long getTotalResultSize() {
+    return totalResultSize;
   }
 
 
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
+  public void setTotalResultSize(Long totalResultSize) {
+    this.totalResultSize = totalResultSize;
   }
 
 
-  public InlineResponse20020 data(List<LoyaltyCard> data) {
+  public InlineResponse20020 data(List<LoyaltyDashboardData> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20020 addDataItem(LoyaltyCard dataItem) {
+  public InlineResponse20020 addDataItem(LoyaltyDashboardData dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20020 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<LoyaltyCard> getData() {
+  public List<LoyaltyDashboardData> getData() {
     return data;
   }
 
 
-  public void setData(List<LoyaltyCard> data) {
+  public void setData(List<LoyaltyDashboardData> data) {
     this.data = data;
   }
 
@@ -99,13 +99,13 @@ public class InlineResponse20020 {
       return false;
     }
     InlineResponse20020 inlineResponse20020 = (InlineResponse20020) o;
-    return Objects.equals(this.hasMore, inlineResponse20020.hasMore) &&
+    return Objects.equals(this.totalResultSize, inlineResponse20020.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20020.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(totalResultSize, data);
   }
 
 
@@ -113,7 +113,7 @@ public class InlineResponse20020 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20020 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

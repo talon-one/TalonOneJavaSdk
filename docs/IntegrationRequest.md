@@ -26,6 +26,9 @@ EVENT | &quot;event&quot;
 AWARDEDGIVEAWAYS | &quot;awardedGiveaways&quot;
 RULEFAILUREREASONS | &quot;ruleFailureReasons&quot;
 PREVIOUSRETURNS | &quot;previousReturns&quot;
+CAMPAIGNELIGIBILITY | &quot;campaignEligibility&quot;
+ACHIEVEMENTS | &quot;achievements&quot;
+UNLOCKEDREWARDS | &quot;unlockedRewards&quot;
 
 
 

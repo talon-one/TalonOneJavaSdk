@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Experiment;
+import one.talon.model.CampaignGroup;
 
 /**
  * InlineResponse20016
@@ -38,7 +38,7 @@ public class InlineResponse20016 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Experiment> data = new ArrayList<Experiment>();
+  private List<CampaignGroup> data = new ArrayList<CampaignGroup>();
 
 
   public InlineResponse20016 totalResultSize(Long totalResultSize) {
@@ -63,13 +63,13 @@ public class InlineResponse20016 {
   }
 
 
-  public InlineResponse20016 data(List<Experiment> data) {
+  public InlineResponse20016 data(List<CampaignGroup> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20016 addDataItem(Experiment dataItem) {
+  public InlineResponse20016 addDataItem(CampaignGroup dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20016 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Experiment> getData() {
+  public List<CampaignGroup> getData() {
     return data;
   }
 
 
-  public void setData(List<Experiment> data) {
+  public void setData(List<CampaignGroup> data) {
     this.data = data;
   }
 

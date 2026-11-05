@@ -18,6 +18,7 @@ import one.talon.model.Account;
 import one.talon.model.AccountAdditionalCost;
 import one.talon.model.AccountAnalytics;
 import one.talon.model.Achievement;
+import one.talon.model.AchievementV2;
 import one.talon.model.AddLoyaltyPoints;
 import one.talon.model.Application;
 import one.talon.model.ApplicationApiHealth;
@@ -35,6 +36,7 @@ import one.talon.model.CampaignSearch;
 import one.talon.model.Collection;
 import one.talon.model.Coupon;
 import one.talon.model.CreateAchievement;
+import one.talon.model.CreateAchievementV2;
 import one.talon.model.CreateTemplateCampaign;
 import one.talon.model.CreateTemplateCampaignResponse;
 import one.talon.model.CustomerActivityReport;
@@ -45,7 +47,9 @@ import one.talon.model.DeductLoyaltyPoints;
 import one.talon.model.DeleteUserRequest;
 import one.talon.model.ErrorResponse;
 import one.talon.model.ErrorResponseWithStatus;
+import one.talon.model.ExcludePriceObservationsRequest;
 import one.talon.model.Experiment;
+import one.talon.model.GiveawaysPool;
 import one.talon.model.InlineResponse20010;
 import one.talon.model.InlineResponse20011;
 import one.talon.model.InlineResponse20012;
@@ -86,13 +90,16 @@ import one.talon.model.InlineResponse20046;
 import one.talon.model.InlineResponse20047;
 import one.talon.model.InlineResponse20048;
 import one.talon.model.InlineResponse20049;
-import one.talon.model.InlineResponse2005;
 import one.talon.model.InlineResponse20050;
 import one.talon.model.InlineResponse20051;
 import one.talon.model.InlineResponse20052;
 import one.talon.model.InlineResponse20053;
-import one.talon.model.InlineResponse2008;
-import one.talon.model.InlineResponse2009;
+import one.talon.model.InlineResponse20054;
+import one.talon.model.InlineResponse20055;
+import one.talon.model.InlineResponse20056;
+import one.talon.model.InlineResponse20057;
+import one.talon.model.InlineResponse20058;
+import one.talon.model.InlineResponse2007;
 import one.talon.model.LoginParams;
 import one.talon.model.LoyaltyBalancesWithTiers;
 import one.talon.model.LoyaltyCard;
@@ -105,6 +112,7 @@ import one.talon.model.MessageLogEntries;
 import one.talon.model.ModelImport;
 import one.talon.model.NewAdditionalCost;
 import one.talon.model.NewAttribute;
+import one.talon.model.NewCampaign;
 import one.talon.model.NewCampaignCollection;
 import one.talon.model.NewCampaignStoreBudget;
 import one.talon.model.NewCollection;
@@ -122,9 +130,11 @@ import org.threeten.bp.OffsetDateTime;
 import one.talon.model.PriceHistoryRequest;
 import one.talon.model.PriceHistoryResponse;
 import one.talon.model.Referral;
+import one.talon.model.Revision;
 import one.talon.model.RoleV2;
 import one.talon.model.RoleV2Base;
 import one.talon.model.Ruleset;
+import one.talon.model.RulesetV2;
 import one.talon.model.ScimBaseGroup;
 import one.talon.model.ScimGroup;
 import one.talon.model.ScimGroupsListResponse;
@@ -139,6 +149,7 @@ import one.talon.model.Session;
 import one.talon.model.Store;
 import one.talon.model.TransferLoyaltyCard;
 import one.talon.model.UpdateAchievement;
+import one.talon.model.UpdateAchievementV2;
 import one.talon.model.UpdateCampaign;
 import one.talon.model.UpdateCampaignCollection;
 import one.talon.model.UpdateCollection;
@@ -231,7 +242,7 @@ public class ManagementApiTest {
         Long applicationId = null;
         Long campaignId = null;
         CampaignCopy body = null;
-        InlineResponse2009 response = api.copyCampaignToApplications(applicationId, campaignId, body);
+        InlineResponse20011 response = api.copyCampaignToApplications(applicationId, campaignId, body);
 
         // TODO: test validations
     }
@@ -266,6 +277,22 @@ public class ManagementApiTest {
         Long campaignId = null;
         CreateAchievement body = null;
         Achievement response = api.createAchievement(applicationId, campaignId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Create achievement
+     *
+     * Create a new account-level achievement.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createAchievementV2Test() throws ApiException {
+        CreateAchievementV2 body = null;
+        AchievementV2 response = api.createAchievementV2(body);
 
         // TODO: test validations
     }
@@ -315,6 +342,23 @@ public class ManagementApiTest {
         Long loyaltyProgramId = null;
         LoyaltyCardBatch body = null;
         LoyaltyCardBatchResponse response = api.createBatchLoyaltyCards(loyaltyProgramId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Create campaign
+     *
+     * Create a campaign. A campaign is part of an Application and contains a set of rules. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createCampaignTest() throws ApiException {
+        Long applicationId = null;
+        NewCampaign body = null;
+        Campaign response = api.createCampaign(applicationId, body);
 
         // TODO: test validations
     }
@@ -386,7 +430,7 @@ public class ManagementApiTest {
         Long campaignId = null;
         NewCoupons body = null;
         String silent = null;
-        InlineResponse20011 response = api.createCoupons(applicationId, campaignId, body, silent);
+        InlineResponse20013 response = api.createCoupons(applicationId, campaignId, body, silent);
 
         // TODO: test validations
     }
@@ -441,7 +485,7 @@ public class ManagementApiTest {
         Long campaignId = null;
         NewCouponsForMultipleRecipients body = null;
         String silent = null;
-        InlineResponse20011 response = api.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
+        InlineResponse20013 response = api.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
 
         // TODO: test validations
     }
@@ -490,6 +534,24 @@ public class ManagementApiTest {
     public void createPasswordRecoveryEmailTest() throws ApiException {
         NewPasswordEmail body = null;
         NewPasswordEmail response = api.createPasswordRecoveryEmail(body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Create ruleset (V2)
+     *
+     * Create a ruleset from promotion and strikethrough rules in the V2 JSON block format. A ruleset is a revision of all the rules of a campaign.  Only the first block of a rule can be a condition. Every other block must be an effect.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createRulesetV2Test() throws ApiException {
+        Long applicationId = null;
+        Long campaignId = null;
+        RulesetV2 body = null;
+        RulesetV2 response = api.createRulesetV2(applicationId, campaignId, body);
 
         // TODO: test validations
     }
@@ -591,6 +653,22 @@ public class ManagementApiTest {
         Long campaignId = null;
         Long achievementId = null;
         api.deleteAchievement(applicationId, campaignId, achievementId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Delete achievement
+     *
+     * Delete a specific achievement.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteAchievementV2Test() throws ApiException {
+        Long achievementId = null;
+        api.deleteAchievementV2(achievementId);
 
         // TODO: test validations
     }
@@ -814,6 +892,23 @@ public class ManagementApiTest {
     }
     
     /**
+     * Exclude price records from price history
+     *
+     * Select a batch of historical price IDs to exclude from [best prior price calculation](https://docs.talon.one/integration-api#tag/Catalogs/operation/bestPriorPrice). All IDs in the batch must be valid &#x60;id&#x60; values obtained from the [Get summary of price history](https://docs.talon.one/management-api#tag/Catalogs/operation/priceHistory.responses.200.history) endpoint, must belong to the specified Application, must not already be excluded from best prior price calculation, and must not be associated with a scheduled strikethrough pricing notification. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void excludePriceHistoryTest() throws ApiException {
+        Long applicationId = null;
+        ExcludePriceObservationsRequest body = null;
+        api.excludePriceHistory(applicationId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Export account-level collection&#39;s items
      *
      * Download a CSV file containing items from a given account-level collection.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files). 
@@ -825,6 +920,22 @@ public class ManagementApiTest {
     public void exportAccountCollectionItemsTest() throws ApiException {
         Long collectionId = null;
         String response = api.exportAccountCollectionItems(collectionId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Export achievement customer data
+     *
+     * Download a CSV file containing a list of all the customers who have participated in and are currently participating in the given achievement.  The CSV file contains the following columns: - &#x60;profileIntegrationID&#x60;: The integration ID of the customer profile participating in the achievement. - &#x60;title&#x60;: The display name of the achievement in the Campaign Manager. - &#x60;target&#x60;: The required number of actions or the transactional milestone to complete the achievement. - &#x60;progress&#x60;: The current progress of the customer in the achievement. - &#x60;status&#x60;: The status of the achievement. Can be one of: [&#39;inprogress&#39;, &#39;completed&#39;, &#39;expired&#39;]. - &#x60;startDate&#x60;: The date on which the customer profile started the achievement in RFC3339. - &#x60;endDate&#x60;: The date on which the achievement ends and resets for the customer profile in RFC3339. - &#x60;completionDate&#x60;: The date on which the customer profile completed the achievement in RFC3339. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void exportAchievementV2Test() throws ApiException {
+        Long achievementId = null;
+        String response = api.exportAchievementV2(achievementId);
 
         // TODO: test validations
     }
@@ -979,7 +1090,9 @@ public class ManagementApiTest {
         String dateFormat = null;
         String campaignState = null;
         Boolean valuesOnly = null;
-        String response = api.exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState, valuesOnly);
+        OffsetDateTime deletedBefore = null;
+        OffsetDateTime deletedAfter = null;
+        String response = api.exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState, valuesOnly, deletedBefore, deletedAfter);
 
         // TODO: test validations
     }
@@ -997,10 +1110,12 @@ public class ManagementApiTest {
         Long applicationId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
+        OffsetDateTime updatedBefore = null;
+        OffsetDateTime updatedAfter = null;
         String profileIntegrationId = null;
         String dateFormat = null;
         String customerSessionState = null;
-        String response = api.exportCustomerSessions(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState);
+        String response = api.exportCustomerSessions(applicationId, createdBefore, createdAfter, updatedBefore, updatedAfter, profileIntegrationId, dateFormat, customerSessionState);
 
         // TODO: test validations
     }
@@ -1026,7 +1141,7 @@ public class ManagementApiTest {
     /**
      * Export triggered effects
      *
-     * Download a CSV file containing the triggered effects that match the given attributes.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;couponid&#x60;: The ID of the coupon, when applicable to the effect. - &#x60;created&#x60;: The timestamp of the effect. - &#x60;event_type&#x60;: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/events). - &#x60;eventid&#x60;: The internal ID of the effect. - &#x60;name&#x60;: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - &#x60;profileintegrationid&#x60;: The ID of the customer profile, when applicable. - &#x60;props&#x60;: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - &#x60;ruleindex&#x60;: The index of the rule. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;sessionid&#x60;: The internal ID of the session that triggered the effect. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;sessionintegrationid&#x60;: The integration ID of the session. - &#x60;total_revenue&#x60;: The total revenue. - &#x60;store_integration_id&#x60;: The integration ID of the store. You choose this ID when you create a store. 
+     * Download a CSV file containing the triggered effects that match the given attributes.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;couponid&#x60;: The ID of the coupon, when applicable to the effect. - &#x60;created&#x60;: The timestamp of the effect. - &#x60;event_type&#x60;: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/events). - &#x60;eventid&#x60;: The internal ID of the effect. - &#x60;name&#x60;: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - &#x60;profileintegrationid&#x60;: The ID of the customer profile, when applicable. - &#x60;props&#x60;: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - &#x60;ruleindex&#x60;: The index of the rule. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;sessionid&#x60;: The internal ID of the session that triggered the effect. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;sessionintegrationid&#x60;: The integration ID of the session. - &#x60;total_revenue&#x60;: The total revenue. - &#x60;store_integration_id&#x60;: The integration ID of the store. You choose this ID when you create a store. - &#x60;reward_id&#x60;: The ID of the reward whose rule generated this effect, when applicable. - &#x60;reward_integration_id&#x60;: The integration ID of the specific customer reward whose usage produced this effect, when applicable. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1055,7 +1170,8 @@ public class ManagementApiTest {
     public void exportLoyaltyBalanceTest() throws ApiException {
         String loyaltyProgramId = null;
         OffsetDateTime endDate = null;
-        String response = api.exportLoyaltyBalance(loyaltyProgramId, endDate);
+        String balances = null;
+        String response = api.exportLoyaltyBalance(loyaltyProgramId, endDate, balances);
 
         // TODO: test validations
     }
@@ -1063,7 +1179,7 @@ public class ManagementApiTest {
     /**
      * Export customer loyalty balances
      *
-     * Download a CSV file containing the balance of each customer in the loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;loyaltyProgramID&#x60;: The ID of the loyalty program. - &#x60;loyaltySubledger&#x60;: The name of the subledger, when applicable. - &#x60;profileIntegrationID&#x60;: The integration ID of the customer profile. - &#x60;currentBalance&#x60;: The current point balance. - &#x60;pendingBalance&#x60;: The number of pending points. - &#x60;expiredBalance&#x60;: The number of expired points. - &#x60;spentBalance&#x60;: The number of spent points. - &#x60;currentTier&#x60;: The tier that the customer is in at the time of the export. 
+     * Download a CSV file containing the balance of each customer in the loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file contains the following columns:  - &#x60;loyaltyProgramID&#x60;: The ID of the loyalty program. - &#x60;loyaltySubledger&#x60;: The name of the subledger, when applicable. - &#x60;profileIntegrationID&#x60;: The integration ID of the customer profile. - &#x60;currentBalance&#x60;: The current point balance. - &#x60;pendingBalance&#x60;: The number of pending points. - &#x60;expiredBalance&#x60;: The number of expired points. - &#x60;spentBalance&#x60;: The number of spent points. - &#x60;currentTier&#x60;: The tier that the customer is in at the time of the export. - &#x60;negativeBalance&#x60;: The number of negative points. Only contains a value when requested via &#x60;balances&#x60; and the program uses negative points. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1072,7 +1188,9 @@ public class ManagementApiTest {
     public void exportLoyaltyBalancesTest() throws ApiException {
         String loyaltyProgramId = null;
         OffsetDateTime endDate = null;
-        String response = api.exportLoyaltyBalances(loyaltyProgramId, endDate);
+        String balances = null;
+        List<String> subledgerIds = null;
+        String response = api.exportLoyaltyBalances(loyaltyProgramId, endDate, balances, subledgerIds);
 
         // TODO: test validations
     }
@@ -1089,7 +1207,8 @@ public class ManagementApiTest {
     public void exportLoyaltyCardBalancesTest() throws ApiException {
         Long loyaltyProgramId = null;
         OffsetDateTime endDate = null;
-        String response = api.exportLoyaltyCardBalances(loyaltyProgramId, endDate);
+        String balances = null;
+        String response = api.exportLoyaltyCardBalances(loyaltyProgramId, endDate, balances);
 
         // TODO: test validations
     }
@@ -1097,7 +1216,7 @@ public class ManagementApiTest {
     /**
      * Export card&#39;s ledger log
      *
-     * Download a CSV file containing a loyalty card ledger log of the loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files). 
+     * Download a CSV file containing a loyalty card ledger log of the loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;cardidentifier&#x60;: The identifier of the loyalty card. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;sessionid&#x60;: The ID of the session. - &#x60;customersessionid&#x60;: The integration ID of the customer session. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;rulename&#x60;: The name of the rule. - &#x60;programid&#x60;: The ID of the loyalty program. - &#x60;type&#x60;: The transaction type, such as &#x60;addition&#x60; or &#x60;subtraction&#x60;. - &#x60;name&#x60;: The reason for the transaction. - &#x60;subledgerid&#x60;: The ID of the subledger, when applicable. - &#x60;startdate&#x60;: The start date of the points. - &#x60;expirydate&#x60;: The expiration date of the points. - &#x60;id&#x60;: The ID of the transaction. - &#x60;created&#x60;: The timestamp of the transaction creation. - &#x60;amount&#x60;: The number of points in that transaction. - &#x60;archived&#x60;: Whether the session related to the transaction is archived. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;transactionUUID&#x60;: Unique identifier of the transaction in the UUID format. - &#x60;validityDuration&#x60;: The duration for which the points remain active, relative to the activation date. - &#x60;remainingAmount&#x60;: The current unused amount of points, when applicable to &#x60;addition&#x60; transactions. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1117,7 +1236,7 @@ public class ManagementApiTest {
     /**
      * Export loyalty cards
      *
-     * Download a CSV file containing the loyalty cards from a specified loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The CSV file contains the following columns:  - &#x60;identifier&#x60;: The unique identifier of the loyalty card. - &#x60;created&#x60;: The date and time the loyalty card was created. - &#x60;status&#x60;: The status of the loyalty card. - &#x60;userpercardlimit&#x60;: The maximum number of customer profiles that can be linked to the card. - &#x60;customerprofileids&#x60;: Integration IDs of the customer profiles linked to the card. - &#x60;blockreason&#x60;: The reason for transferring and blocking the loyalty card. - &#x60;generated&#x60;: An indicator of whether the loyalty card was generated. - &#x60;batchid&#x60;: The ID of the batch the loyalty card is in. - &#x60;attributes&#x60;: The custom attributes of this loyalty card. Currently, this feature is only available upon request. 
+     * Download a CSV file containing the loyalty cards from a specified loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The CSV file contains the following columns:  - &#x60;identifier&#x60;: The unique identifier of the loyalty card. - &#x60;created&#x60;: The date and time the loyalty card was created. - &#x60;status&#x60;: The status of the loyalty card. - &#x60;userpercardlimit&#x60;: The maximum number of customer profiles that can be linked to the card. - &#x60;customerprofileids&#x60;: Integration IDs of the customer profiles linked to the card. - &#x60;blockreason&#x60;: The reason for transferring and blocking the loyalty card. - &#x60;generated&#x60;: An indicator of whether the loyalty card was generated. - &#x60;batchid&#x60;: The ID of the batch the loyalty card is in. - &#x60;attributes&#x60;: The custom attributes of this loyalty card. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1153,7 +1272,7 @@ public class ManagementApiTest {
     /**
      * Export customer&#39;s transaction logs
      *
-     * Download a CSV file containing a customer&#39;s transaction logs in the loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;customerprofileid&#x60;: The ID of the profile. - &#x60;customersessionid&#x60;: The ID of the customer session. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;rulename&#x60;: The name of the rule. - &#x60;programid&#x60;: The ID of the loyalty program. - &#x60;type&#x60;: The transaction type, such as &#x60;addition&#x60; or &#x60;subtraction&#x60;. - &#x60;name&#x60;: The reason for the transaction. - &#x60;subledgerid&#x60;: The ID of the subledger, when applicable. - &#x60;startdate&#x60;: The start date of the program. - &#x60;expirydate&#x60;: The expiration date of the program. - &#x60;id&#x60;: The ID of the transaction. - &#x60;created&#x60;: The timestamp of the creation of the loyalty program. - &#x60;amount&#x60;: The number of points in that transaction. - &#x60;archived&#x60;: Whether the session related to the transaction is archived. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;flags&#x60;: The flags of the transaction, when applicable. The &#x60;createsNegativeBalance&#x60; flag indicates whether the transaction results in a negative balance. - &#x60;transactionUUID&#x60;: Unique identifier of the transaction in the UUID format. 
+     * Download a CSV file containing a customer&#39;s transaction logs in the loyalty program.  &gt; [!tip] If the exported CSV file is too large to view, you can &gt; [split it into multiple files](https://www.google.com/search?q&#x3D;split+CSV+into+multiple+files).  The generated file can contain the following columns:  - &#x60;customerprofileid&#x60;: The ID of the profile. - &#x60;customersessionid&#x60;: The ID of the customer session. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;rulename&#x60;: The name of the rule. - &#x60;programid&#x60;: The ID of the loyalty program. - &#x60;type&#x60;: The transaction type, such as &#x60;addition&#x60; or &#x60;subtraction&#x60;. - &#x60;name&#x60;: The reason for the transaction. - &#x60;subledgerid&#x60;: The ID of the subledger, when applicable. - &#x60;startdate&#x60;: The start date of the program. - &#x60;expirydate&#x60;: The expiration date of the program. - &#x60;id&#x60;: The ID of the transaction. - &#x60;created&#x60;: The timestamp of the creation of the loyalty program. - &#x60;amount&#x60;: The number of points in that transaction. - &#x60;archived&#x60;: Whether the session related to the transaction is archived. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;flags&#x60;: The flags of the transaction, when applicable. The &#x60;createsNegativeBalance&#x60; flag indicates whether the transaction results in a negative balance. - &#x60;transactionUUID&#x60;: Unique identifier of the transaction in the UUID format. - &#x60;validityDuration&#x60;: The duration for which the points remain active, relative to the activation date. - &#x60;remainingAmount&#x60;: The current unused amount of points, when applicable to &#x60;addition&#x60; transactions. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1225,7 +1344,7 @@ public class ManagementApiTest {
         BigDecimal applicationId = null;
         String language = null;
         String couponCode = null;
-        InlineResponse20053 response = api.generateCouponRejections(sessionIntegrationId, applicationId, language, couponCode);
+        InlineResponse20058 response = api.generateCouponRejections(sessionIntegrationId, applicationId, language, couponCode);
 
         // TODO: test validations
     }
@@ -1249,7 +1368,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse20024 response = api.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+        InlineResponse20027 response = api.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1321,6 +1440,22 @@ public class ManagementApiTest {
     }
     
     /**
+     * Get achievement
+     *
+     * Retrieve the details of a specific achievement.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAchievementV2Test() throws ApiException {
+        Long achievementId = null;
+        AchievementV2 response = api.getAchievementV2(achievementId);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Get additional cost
      *
      * Returns the additional cost. 
@@ -1349,7 +1484,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse20040 response = api.getAdditionalCosts(pageSize, skip, sort);
+        InlineResponse20044 response = api.getAdditionalCosts(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1437,7 +1572,7 @@ public class ManagementApiTest {
         Long skip = null;
         String sort = null;
         Boolean withTotalResultSize = null;
-        InlineResponse20037 response = api.getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize);
+        InlineResponse20041 response = api.getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize);
 
         // TODO: test validations
     }
@@ -1457,7 +1592,8 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         Boolean withTotalResultSize = null;
-        InlineResponse20026 response = api.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
+        Boolean withLoyaltyMemberships = null;
+        InlineResponse20029 response = api.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize, withLoyaltyMemberships);
 
         // TODO: test validations
     }
@@ -1477,7 +1613,8 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         Boolean withTotalResultSize = null;
-        InlineResponse20027 response = api.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
+        Boolean withLoyaltyMemberships = null;
+        InlineResponse20030 response = api.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize, withLoyaltyMemberships);
 
         // TODO: test validations
     }
@@ -1496,7 +1633,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse20033 response = api.getApplicationEventTypes(applicationId, pageSize, skip, sort);
+        InlineResponse20037 response = api.getApplicationEventTypes(applicationId, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1527,7 +1664,7 @@ public class ManagementApiTest {
         String ruleQuery = null;
         String campaignQuery = null;
         String effectType = null;
-        InlineResponse20032 response = api.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery, effectType);
+        InlineResponse20036 response = api.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery, effectType);
 
         // TODO: test validations
     }
@@ -1572,7 +1709,27 @@ public class ManagementApiTest {
         String referral = null;
         String integrationId = null;
         String storeIntegrationId = null;
-        InlineResponse20031 response = api.getApplicationSessions(applicationId, pageSize, skip, sort, partialMatch, profile, state, createdBefore, createdAfter, coupon, referral, integrationId, storeIntegrationId);
+        InlineResponse20034 response = api.getApplicationSessions(applicationId, pageSize, skip, sort, partialMatch, profile, state, createdBefore, createdAfter, coupon, referral, integrationId, storeIntegrationId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List Application sessions matching the given customer attributes
+     *
+     * Get a list of the Application sessions matching the provided customer profile attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getApplicationSessionsByCustomerAttributesTest() throws ApiException {
+        Long applicationId = null;
+        CustomerProfileSearchQuery body = null;
+        Long pageSize = null;
+        Long skip = null;
+        Boolean withTotalResultSize = null;
+        InlineResponse20035 response = api.getApplicationSessionsByCustomerAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
 
         // TODO: test validations
     }
@@ -1590,7 +1747,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse2008 response = api.getApplications(pageSize, skip, sort);
+        InlineResponse20010 response = api.getApplications(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1626,10 +1783,11 @@ public class ManagementApiTest {
         String sort = null;
         String entity = null;
         String applicationIds = null;
+        String loyaltyProgramIds = null;
         String type = null;
         String kind = null;
         String search = null;
-        InlineResponse20038 response = api.getAttributes(pageSize, skip, sort, entity, applicationIds, type, kind, search);
+        InlineResponse20042 response = api.getAttributes(pageSize, skip, sort, entity, applicationIds, loyaltyProgramIds, type, kind, search);
 
         // TODO: test validations
     }
@@ -1649,7 +1807,7 @@ public class ManagementApiTest {
         Long skip = null;
         String sort = null;
         String profileQuery = null;
-        InlineResponse20036 response = api.getAudienceMemberships(audienceId, pageSize, skip, sort, profileQuery);
+        InlineResponse20040 response = api.getAudienceMemberships(audienceId, pageSize, skip, sort, profileQuery);
 
         // TODO: test validations
     }
@@ -1668,7 +1826,7 @@ public class ManagementApiTest {
         Long skip = null;
         String sort = null;
         Boolean withTotalResultSize = null;
-        InlineResponse20034 response = api.getAudiences(pageSize, skip, sort, withTotalResultSize);
+        InlineResponse20038 response = api.getAudiences(pageSize, skip, sort, withTotalResultSize);
 
         // TODO: test validations
     }
@@ -1685,7 +1843,7 @@ public class ManagementApiTest {
     public void getAudiencesAnalyticsTest() throws ApiException {
         String audienceIds = null;
         String sort = null;
-        InlineResponse20035 response = api.getAudiencesAnalytics(audienceIds, sort);
+        InlineResponse20039 response = api.getAudiencesAnalytics(audienceIds, sort);
 
         // TODO: test validations
     }
@@ -1722,7 +1880,7 @@ public class ManagementApiTest {
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
         String granularity = null;
-        InlineResponse20025 response = api.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
+        InlineResponse20028 response = api.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
 
         // TODO: test validations
     }
@@ -1743,7 +1901,7 @@ public class ManagementApiTest {
         Long skip = null;
         String sort = null;
         String campaignState = null;
-        InlineResponse2009 response = api.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
+        InlineResponse20011 response = api.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
 
         // TODO: test validations
     }
@@ -1777,7 +1935,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse20014 response = api.getCampaignGroups(pageSize, skip, sort);
+        InlineResponse20016 response = api.getCampaignGroups(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1799,7 +1957,7 @@ public class ManagementApiTest {
         String name = null;
         String tags = null;
         Long userId = null;
-        InlineResponse20015 response = api.getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId);
+        InlineResponse20017 response = api.getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId);
 
         // TODO: test validations
     }
@@ -1820,7 +1978,7 @@ public class ManagementApiTest {
         String sort = null;
         String campaignState = null;
         String name = null;
-        String tags = null;
+        List<String> tags = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
         OffsetDateTime startBefore = null;
@@ -1830,7 +1988,7 @@ public class ManagementApiTest {
         Long campaignGroupId = null;
         Long templateId = null;
         Long storeId = null;
-        InlineResponse2009 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, startBefore, startAfter, endBefore, endAfter, campaignGroupId, templateId, storeId);
+        InlineResponse20011 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, startBefore, startAfter, endBefore, endAfter, campaignGroupId, templateId, storeId);
 
         // TODO: test validations
     }
@@ -1856,7 +2014,7 @@ public class ManagementApiTest {
         Boolean withTotalResultSize = null;
         Long managementKeyId = null;
         Boolean includeOld = null;
-        InlineResponse20044 response = api.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
+        InlineResponse20048 response = api.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
 
         // TODO: test validations
     }
@@ -1892,7 +2050,7 @@ public class ManagementApiTest {
         Long collectionId = null;
         Long pageSize = null;
         Long skip = null;
-        InlineResponse20023 response = api.getCollectionItems(collectionId, pageSize, skip);
+        InlineResponse20026 response = api.getCollectionItems(collectionId, pageSize, skip);
 
         // TODO: test validations
     }
@@ -1927,7 +2085,24 @@ public class ManagementApiTest {
         OffsetDateTime startsBefore = null;
         OffsetDateTime startsAfter = null;
         Boolean valuesOnly = null;
-        InlineResponse20012 response = api.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, redeemed, referralId, recipientIntegrationId, batchId, exactMatch, expiresBefore, expiresAfter, startsBefore, startsAfter, valuesOnly);
+        InlineResponse20014 response = api.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, redeemed, referralId, recipientIntegrationId, batchId, exactMatch, expiresBefore, expiresAfter, startsBefore, startsAfter, valuesOnly);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get current revision version
+     *
+     * Get the current revision version for the given campaign.  **Note:** The [Campaign staging and revisions](https://docs.talon.one/docs/product/applications/manage-general-settings#campaign-staging-and-revisions) feature must be enabled for your Application. For more information, see [Revise campaigns](https://docs.talon.one/docs/product/campaigns/revise-campaigns). 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCurrentRevisionTest() throws ApiException {
+        Long applicationId = null;
+        Long campaignId = null;
+        Revision response = api.getCurrentRevision(applicationId, campaignId);
 
         // TODO: test validations
     }
@@ -1973,7 +2148,7 @@ public class ManagementApiTest {
         String integrationId = null;
         String campaignName = null;
         String advocateName = null;
-        InlineResponse20030 response = api.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+        InlineResponse20033 response = api.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
 
         // TODO: test validations
     }
@@ -2030,7 +2205,7 @@ public class ManagementApiTest {
         Long skip = null;
         Long achievementId = null;
         String title = null;
-        InlineResponse20052 response = api.getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title);
+        InlineResponse20057 response = api.getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title);
 
         // TODO: test validations
     }
@@ -2048,7 +2223,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         Boolean sandbox = null;
-        InlineResponse20029 response = api.getCustomerProfiles(pageSize, skip, sandbox);
+        InlineResponse20032 response = api.getCustomerProfiles(pageSize, skip, sandbox);
 
         // TODO: test validations
     }
@@ -2067,7 +2242,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         Boolean sandbox = null;
-        InlineResponse20028 response = api.getCustomersByAttributes(body, pageSize, skip, sandbox);
+        InlineResponse20031 response = api.getCustomersByAttributes(body, pageSize, skip, sandbox);
 
         // TODO: test validations
     }
@@ -2086,7 +2261,7 @@ public class ManagementApiTest {
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
         String subledgerId = null;
-        InlineResponse20018 response = api.getDashboardStatistics(loyaltyProgramId, rangeStart, rangeEnd, subledgerId);
+        InlineResponse20020 response = api.getDashboardStatistics(loyaltyProgramId, rangeStart, rangeEnd, subledgerId);
 
         // TODO: test validations
     }
@@ -2106,7 +2281,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse20042 response = api.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
+        InlineResponse20046 response = api.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -2143,7 +2318,23 @@ public class ManagementApiTest {
         BigDecimal applicationId = null;
         Long campaignId = null;
         String entity = null;
-        InlineResponse20045 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
+        InlineResponse20049 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get giveaway pool
+     *
+     * Retrieve the details of a specified giveaway pool.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getGiveawaysPoolTest() throws ApiException {
+        Long poolId = null;
+        GiveawaysPool response = api.getGiveawaysPool(poolId);
 
         // TODO: test validations
     }
@@ -2166,9 +2357,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * List card&#39;s transactions
+     * List card&#39;s transactions (Management API)
      *
-     * Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
+     * Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied.  &gt; [!note] For most use cases, especially real-time integrations, use the Integration API endpoint: &gt; [List card&#39;s transactions](https://docs.talon.one/integration-api#tag/Loyalty-cards/operation/getLoyaltyCardTransactions).  If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2184,7 +2375,7 @@ public class ManagementApiTest {
         String subledgerId = null;
         List<String> customerSessionIDs = null;
         List<String> transactionUUIDs = null;
-        InlineResponse20021 response = api.getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId, customerSessionIDs, transactionUUIDs);
+        InlineResponse20023 response = api.getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId, customerSessionIDs, transactionUUIDs);
 
         // TODO: test validations
     }
@@ -2206,15 +2397,15 @@ public class ManagementApiTest {
         String identifier = null;
         Long profileId = null;
         String batchId = null;
-        InlineResponse20020 response = api.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId, batchId);
+        InlineResponse20022 response = api.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId, batchId);
 
         // TODO: test validations
     }
     
     /**
-     * Get customer&#39;s loyalty balances
+     * Get customer&#39;s loyalty balances (Management API)
      *
-     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program.  You can filter balances by date and subledger ID, and include tier-related information in the response.  &gt; [!note] If no filtering options are applied, you retrieve all loyalty &gt; balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see:  - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)  - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
+     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program.  You can filter balances by date and subledger ID, and include tier-related information in the response.  &gt; [!note] **Note** &gt; - For most use cases, especially real-time integrations, use the Integration API endpoint:     [Get customer&#39;s loyalty balances](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyBalances). &gt; - If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see:  - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)  - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2266,9 +2457,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * List customer&#39;s loyalty transactions
+     * List customer&#39;s loyalty transactions (Management API)
      *
-     * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  &gt; [!note] To retrieve all loyalty program transaction logs in a given &gt; loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) &gt; endpoint. 
+     * Retrieve paginated results of loyalty transaction logs for the given integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger), and include the UUIDs of transactions referenced by deductions. If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  &gt; [!note] **Note** &gt; - For most use cases, especially real-time integrations, use the Integration API endpoint: &gt;   [List customer&#39;s loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions). &gt; - To retrieve all loyalty program transaction logs in a given loyalty program, use the &gt;   [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2285,8 +2476,9 @@ public class ManagementApiTest {
         OffsetDateTime endDate = null;
         Long pageSize = null;
         Long skip = null;
+        Boolean includeReferences = null;
         Boolean awaitsActivation = null;
-        InlineResponse2005 response = api.getLoyaltyProgramProfileLedgerTransactions(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, awaitsActivation);
+        InlineResponse2007 response = api.getLoyaltyProgramProfileLedgerTransactions(loyaltyProgramId, integrationId, customerSessionIDs, transactionUUIDs, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, includeReferences, awaitsActivation);
 
         // TODO: test validations
     }
@@ -2311,7 +2503,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         Boolean awaitsActivation = null;
-        InlineResponse20019 response = api.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip, awaitsActivation);
+        InlineResponse20021 response = api.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, customerSessionIDs, transactionUUIDs, startDate, endDate, pageSize, skip, awaitsActivation);
 
         // TODO: test validations
     }
@@ -2326,7 +2518,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getLoyaltyProgramsTest() throws ApiException {
-        InlineResponse20017 response = api.getLoyaltyPrograms();
+        InlineResponse20019 response = api.getLoyaltyPrograms();
 
         // TODO: test validations
     }
@@ -2334,7 +2526,7 @@ public class ManagementApiTest {
     /**
      * Get loyalty program statistics
      *
-     * &gt; [warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
+     * &gt; [!warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2364,6 +2556,7 @@ public class ManagementApiTest {
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
         byte[] cursor = null;
+        Long pageSize = null;
         String period = null;
         Boolean isSuccessful = null;
         BigDecimal applicationId = null;
@@ -2371,7 +2564,7 @@ public class ManagementApiTest {
         Long loyaltyProgramId = null;
         Long responseCode = null;
         String webhookIDs = null;
-        MessageLogEntries response = api.getMessageLogs(entityType, messageID, changeType, notificationIDs, createdBefore, createdAfter, cursor, period, isSuccessful, applicationId, campaignId, loyaltyProgramId, responseCode, webhookIDs);
+        MessageLogEntries response = api.getMessageLogs(entityType, messageID, changeType, notificationIDs, createdBefore, createdAfter, cursor, pageSize, period, isSuccessful, applicationId, campaignId, loyaltyProgramId, responseCode, webhookIDs);
 
         // TODO: test validations
     }
@@ -2397,7 +2590,7 @@ public class ManagementApiTest {
         String valid = null;
         String usable = null;
         String advocate = null;
-        InlineResponse20013 response = api.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+        InlineResponse20015 response = api.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
 
         // TODO: test validations
     }
@@ -2437,6 +2630,24 @@ public class ManagementApiTest {
     }
     
     /**
+     * Get ruleset (V2)
+     *
+     * Retrieve the specified ruleset as a JSON object.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getRulesetV2Test() throws ApiException {
+        Long applicationId = null;
+        Long campaignId = null;
+        Long rulesetId = null;
+        RulesetV2 response = api.getRulesetV2(applicationId, campaignId, rulesetId);
+
+        // TODO: test validations
+    }
+    
+    /**
      * List campaign rulesets
      *
      * List all rulesets of this campaign. A ruleset is a revision of the rules of a campaign. **Important:** The response also includes deleted rules. You should only consider the latest revision of the returned rulesets. 
@@ -2451,7 +2662,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse20010 response = api.getRulesets(applicationId, campaignId, pageSize, skip, sort);
+        InlineResponse20012 response = api.getRulesets(applicationId, campaignId, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -2502,7 +2713,7 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse20043 response = api.getUsers(pageSize, skip, sort);
+        InlineResponse20047 response = api.getUsers(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -2541,7 +2752,7 @@ public class ManagementApiTest {
         String visibility = null;
         Long outgoingIntegrationsTypeId = null;
         String title = null;
-        InlineResponse20041 response = api.getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title);
+        InlineResponse20045 response = api.getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title);
 
         // TODO: test validations
     }
@@ -2676,7 +2887,7 @@ public class ManagementApiTest {
     /**
      * Import loyalty cards
      *
-     * Upload a CSV file containing the loyalty cards that you want to use in your card-based loyalty program.  Send the file as multipart data.  It contains the following columns for each card:  - &#x60;identifier&#x60; (required): The identifier of the loyalty card, which must match the regular expression &#x60;^[A-Za-z0-9._%+@-]+$&#x60;. - &#x60;state&#x60; (required): The state of the loyalty card. It can be &#x60;active&#x60; or &#x60;inactive&#x60;. - &#x60;customerprofileids&#x60; (optional): An array of strings representing the identifiers of the customer profiles linked to the loyalty card. The identifiers should be separated with a semicolon (;).  &gt; [!note] We recommend limiting your file size to 500MB.  ## Example  &#x60;&#x60;&#x60;csv identifier,state,customerprofileids 123-456-789AT,active,Alexa001;UserA &#x60;&#x60;&#x60; 
+     * Upload a CSV file containing the loyalty cards that you want to use in your card-based loyalty program.  Send the file as multipart data.  It contains the following columns for each card:  - &#x60;identifier&#x60; (required): The identifier of the loyalty card, which must match the regular expression &#x60;^[A-Za-z0-9._%+@-]+$&#x60;. - &#x60;state&#x60; (required): The state of the loyalty card. It can be &#x60;active&#x60; or &#x60;inactive&#x60;. - &#x60;customerprofileids&#x60; (optional): An array of strings representing the identifiers of the customer profiles linked to the loyalty card. The identifiers should be separated with a semicolon (;). - &#x60;attributes&#x60; (optional): A JSON object that contains the loyalty card&#39;s custom attributes and their values. These attributes must be created and connected to this loyalty program before they can be assigned to the cards through this endpoint.  &gt; [!note] Your CSV file must contain less than 500,000 rows. Requests time out after 30 seconds.  ## Example  &#x60;&#x60;&#x60;csv identifier,state,customerprofileids,attributes 123-456-789AT,active,Alexa001;UserA,&#39;{\&quot;\&quot;my_attributes\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot; &#x60;&#x60;&#x60; 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2693,7 +2904,7 @@ public class ManagementApiTest {
     /**
      * Import customers into loyalty tiers
      *
-     * Upload a CSV file containing existing customers to be assigned to existing tiers.  Send the file as multipart data.  &gt; [!important] This endpoint only works with loyalty programs with advanced &gt; tiers (with expiration and downgrade policy) feature enabled.  The CSV file should contain the following columns:  - &#x60;subledgerid&#x60; (optional): The ID of the subledger. If this field is empty, the main ledger will be used. - &#x60;customerprofileid&#x60;: The integration ID of the customer profile to whom the tier should be assigned. - &#x60;tiername&#x60;: The name of an existing tier to assign to the customer. - &#x60;expirydate&#x60;: The expiration date of the tier when the tier is reevaluated. It should be a future date.  About customer assignment to a tier:  - If the customer isn&#39;t already in a tier, the customer is assigned to the specified tier during the tier import. - If the customer is already in the tier that&#39;s specified in the CSV file, only the expiration date is updated.  &gt; [!note] We recommend not using this endpoint to update the tier of a customer.  To update a customer&#39;s tier, you can [add](/management-api#tag/Loyalty/operation/addLoyaltyPoints) or [deduct](/management-api#tag/Loyalty/operation/removeLoyaltyPoints) their loyalty points.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  &gt; [!note] We recommend limiting your file size to 500 MB.  ## Example  &#x60;&#x60;&#x60;csv subledgerid,customerprofileid,tiername,expirydate SUB1,alexa,Gold,2024-03-21T07:32:14Z ,george,Silver,2025-04-16T21:12:37Z SUB2,avocado,Bronze,2026-05-03T11:47:01Z &#x60;&#x60;&#x60; 
+     * Upload a CSV file containing existing customers to be assigned to existing tiers.  Send the file as multipart data.  &gt; [!important] This endpoint only works with loyalty programs with advanced &gt; tiers (with expiration and downgrade policy) feature enabled.  The CSV file should contain the following columns:  - &#x60;subledgerid&#x60; (optional): The ID of the subledger. If this field is empty, the main ledger will be used. - &#x60;customerprofileid&#x60;: The integration ID of the customer profile to whom the tier should be assigned. - &#x60;tiername&#x60;: The name of an existing tier to assign to the customer. - &#x60;expirydate&#x60;: The expiry date of the tier when the tier is reevaluated. It should be a future date.  About customer assignment to a tier:  - If the customer isn&#39;t already in a tier, the customer is assigned to the specified tier during the tier import. - If the customer is already in the tier that&#39;s specified in the CSV file, only the expiry date is updated.  &gt; [!note] We recommend importing customers into the tier that matches their &gt; current balance. If a customer is imported into a lower tier, any session &gt; or points update automatically upgrades them to the tier they qualify for.  To update a customer&#39;s tier, you can [add](/management-api#tag/Loyalty/operation/addLoyaltyPoints) or [deduct](/management-api#tag/Loyalty/operation/removeLoyaltyPoints) their loyalty points.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  &gt; [!note] We recommend limiting your file size to 500 MB.  ## Example  &#x60;&#x60;&#x60;csv subledgerid,customerprofileid,tiername,expirydate SUB1,alexa,Gold,2024-03-21T07:32:14Z ,george,Silver,2025-04-16T21:12:37Z SUB2,avocado,Bronze,2026-05-03T11:47:01Z &#x60;&#x60;&#x60; 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2703,6 +2914,23 @@ public class ManagementApiTest {
         Long loyaltyProgramId = null;
         String upFile = null;
         ModelImport response = api.importLoyaltyCustomersTiers(loyaltyProgramId, upFile);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Import join dates for a loyalty program
+     *
+     * Upload a CSV file containing customer profile IDs and their join dates for the specified loyalty program. Send the file as multipart data.  &gt; [!important] This endpoint only works with profile-based loyalty programs.  The CSV file **must** contain the following columns:  - &#x60;customerprofileid&#x60;: The integration ID of the customer profile whose join   date you want to update. - &#x60;joindate&#x60;: The join date for the customer in RFC3339 format. You   can use the time zone of your choice. It is converted to UTC internally   by Talon.One.  **Note**: - Customer profiles must already exist. If a referenced profile does not exist, the import fails with a &#x60;400&#x60; error. - If a join date already exists for a profile, the uploaded date replaces it. - If a join date is in the future at the time of the import, the import fails with a &#x60;400&#x60; error.  &gt; [!note] We recommend limiting your file size to 500 MB.  ## Example  &#x60;&#x60;&#x60;csv customerprofileid,joindate customer1,2024-03-21T07:32:14Z customer2,2025-04-16T21:12:37Z customer3,2026-05-03T11:47:01Z &#x60;&#x60;&#x60; 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void importLoyaltyJoinDatesTest() throws ApiException {
+        Long loyaltyProgramId = null;
+        String upFile = null;
+        ModelImport response = api.importLoyaltyJoinDates(loyaltyProgramId, upFile);
 
         // TODO: test validations
     }
@@ -2791,7 +3019,7 @@ public class ManagementApiTest {
         String sort = null;
         Boolean withTotalResultSize = null;
         String name = null;
-        InlineResponse20022 response = api.listAccountCollections(pageSize, skip, sort, withTotalResultSize, name);
+        InlineResponse20025 response = api.listAccountCollections(pageSize, skip, sort, withTotalResultSize, name);
 
         // TODO: test validations
     }
@@ -2811,7 +3039,28 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String title = null;
-        InlineResponse20051 response = api.listAchievements(applicationId, campaignId, pageSize, skip, title);
+        InlineResponse20055 response = api.listAchievements(applicationId, campaignId, pageSize, skip, title);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List achievements
+     *
+     * List all achievements. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listAchievementsV2Test() throws ApiException {
+        Long pageSize = null;
+        List<Long> campaignId = null;
+        Long skip = null;
+        String sort = null;
+        String title = null;
+        Long applicationId = null;
+        InlineResponse20056 response = api.listAchievementsV2(pageSize, campaignId, skip, sort, title, applicationId);
 
         // TODO: test validations
     }
@@ -2819,14 +3068,14 @@ public class ManagementApiTest {
     /**
      * List roles
      *
-     * List all roles.
+     * List the roles defined in the deployment.  The roles returned depend on the role of the user calling this endpoint: - If the user has an admin role, all roles defined in the deployment are returned. - If the user does not have an admin role, only the roles currently assigned to this user are returned.  If your identity provider provisions roles through SCIM, any admin roles it defines are not included in this list.  To view the details of a specific role, use the [Get role](https://docs.talon.one/management-api#tag/Roles/operation/getRoleV2) endpoint. 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void listAllRolesV2Test() throws ApiException {
-        InlineResponse20046 response = api.listAllRolesV2();
+        InlineResponse20050 response = api.listAllRolesV2();
 
         // TODO: test validations
     }
@@ -2844,8 +3093,8 @@ public class ManagementApiTest {
         Long applicationId = null;
         Long pageSize = null;
         Long skip = null;
-        String title = null;
-        InlineResponse20048 response = api.listApplicationCartItemFilters(applicationId, pageSize, skip, title);
+        String name = null;
+        InlineResponse20052 response = api.listApplicationCartItemFilters(applicationId, pageSize, skip, name);
 
         // TODO: test validations
     }
@@ -2864,7 +3113,7 @@ public class ManagementApiTest {
         Long campaignId = null;
         String action = null;
         String period = null;
-        InlineResponse20049 response = api.listCampaignStoreBudgetLimits(applicationId, campaignId, action, period);
+        InlineResponse20053 response = api.listCampaignStoreBudgetLimits(applicationId, campaignId, action, period);
 
         // TODO: test validations
     }
@@ -2885,7 +3134,7 @@ public class ManagementApiTest {
         Boolean withTotalResultSize = null;
         List<String> sku = null;
         List<String> productNames = null;
-        InlineResponse20039 response = api.listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku, productNames);
+        InlineResponse20043 response = api.listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku, productNames);
 
         // TODO: test validations
     }
@@ -2907,7 +3156,7 @@ public class ManagementApiTest {
         String sort = null;
         Boolean withTotalResultSize = null;
         String name = null;
-        InlineResponse20022 response = api.listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name);
+        InlineResponse20025 response = api.listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name);
 
         // TODO: test validations
     }
@@ -2928,7 +3177,7 @@ public class ManagementApiTest {
         String sort = null;
         Boolean withTotalResultSize = null;
         String name = null;
-        InlineResponse20022 response = api.listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name);
+        InlineResponse20025 response = api.listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name);
 
         // TODO: test validations
     }
@@ -2947,7 +3196,27 @@ public class ManagementApiTest {
         Long pageSize = null;
         Long skip = null;
         String sort = null;
-        InlineResponse20016 response = api.listExperiments(applicationId, pageSize, skip, sort);
+        InlineResponse20018 response = api.listExperiments(applicationId, pageSize, skip, sort);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List giveaway pools
+     *
+     * Retrieve all the giveaway pools for an account.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listGiveawaysPoolTest() throws ApiException {
+        Long pageSize = null;
+        Long skip = null;
+        String sort = null;
+        Boolean withTotalResultSize = null;
+        String applicationIds = null;
+        InlineResponse20024 response = api.listGiveawaysPool(pageSize, skip, sort, withTotalResultSize, applicationIds);
 
         // TODO: test validations
     }
@@ -2971,7 +3240,7 @@ public class ManagementApiTest {
         String name = null;
         String integrationId = null;
         String query = null;
-        InlineResponse20047 response = api.listStores(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query);
+        InlineResponse20051 response = api.listStores(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query);
 
         // TODO: test validations
     }
@@ -3306,7 +3575,7 @@ public class ManagementApiTest {
         String batchId = null;
         Boolean exactMatch = null;
         String campaignState = null;
-        InlineResponse20012 response = api.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+        InlineResponse20014 response = api.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
 
         // TODO: test validations
     }
@@ -3336,7 +3605,7 @@ public class ManagementApiTest {
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         String batchId = null;
-        InlineResponse20012 response = api.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+        InlineResponse20014 response = api.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
 
         // TODO: test validations
     }
@@ -3353,7 +3622,7 @@ public class ManagementApiTest {
     public void summarizeCampaignStoreBudgetTest() throws ApiException {
         Long applicationId = null;
         Long campaignId = null;
-        InlineResponse20050 response = api.summarizeCampaignStoreBudget(applicationId, campaignId);
+        InlineResponse20054 response = api.summarizeCampaignStoreBudget(applicationId, campaignId);
 
         // TODO: test validations
     }
@@ -3408,6 +3677,23 @@ public class ManagementApiTest {
         Long achievementId = null;
         UpdateAchievement body = null;
         Achievement response = api.updateAchievement(applicationId, campaignId, achievementId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update achievement
+     *
+     * Update the details of a specific achievement.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateAchievementV2Test() throws ApiException {
+        Long achievementId = null;
+        UpdateAchievementV2 body = null;
+        AchievementV2 response = api.updateAchievementV2(achievementId, body);
 
         // TODO: test validations
     }

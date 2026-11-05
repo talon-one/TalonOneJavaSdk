@@ -31,6 +31,7 @@ import one.talon.model.Giveaway;
 import one.talon.model.InventoryCoupon;
 import one.talon.model.InventoryReferral;
 import one.talon.model.Loyalty;
+import one.talon.model.RewardWithUnlocks;
 
 /**
  * CustomerInventory
@@ -60,6 +61,10 @@ public class CustomerInventory {
   public static final String SERIALIZED_NAME_ACHIEVEMENTS = "achievements";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENTS)
   private List<AchievementProgressWithDefinition> achievements = null;
+
+  public static final String SERIALIZED_NAME_REWARDS = "rewards";
+  @SerializedName(SERIALIZED_NAME_REWARDS)
+  private List<RewardWithUnlocks> rewards = null;
 
 
   public CustomerInventory profile(CustomerProfile profile) {
@@ -232,6 +237,37 @@ public class CustomerInventory {
   }
 
 
+  public CustomerInventory rewards(List<RewardWithUnlocks> rewards) {
+    
+    this.rewards = rewards;
+    return this;
+  }
+
+  public CustomerInventory addRewardsItem(RewardWithUnlocks rewardsItem) {
+    if (this.rewards == null) {
+      this.rewards = new ArrayList<RewardWithUnlocks>();
+    }
+    this.rewards.add(rewardsItem);
+    return this;
+  }
+
+   /**
+   * The customer rewards that are &#x60;unlocked&#x60; and not yet &#x60;used&#x60;.
+   * @return rewards
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The customer rewards that are `unlocked` and not yet `used`.")
+
+  public List<RewardWithUnlocks> getRewards() {
+    return rewards;
+  }
+
+
+  public void setRewards(List<RewardWithUnlocks> rewards) {
+    this.rewards = rewards;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -246,12 +282,13 @@ public class CustomerInventory {
         Objects.equals(this.referrals, customerInventory.referrals) &&
         Objects.equals(this.coupons, customerInventory.coupons) &&
         Objects.equals(this.giveaways, customerInventory.giveaways) &&
-        Objects.equals(this.achievements, customerInventory.achievements);
+        Objects.equals(this.achievements, customerInventory.achievements) &&
+        Objects.equals(this.rewards, customerInventory.rewards);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profile, loyalty, referrals, coupons, giveaways, achievements);
+    return Objects.hash(profile, loyalty, referrals, coupons, giveaways, achievements, rewards);
   }
 
 
@@ -265,6 +302,7 @@ public class CustomerInventory {
     sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
     sb.append("    giveaways: ").append(toIndentedString(giveaways)).append("\n");
     sb.append("    achievements: ").append(toIndentedString(achievements)).append("\n");
+    sb.append("    rewards: ").append(toIndentedString(rewards)).append("\n");
     sb.append("}");
     return sb.toString();
   }

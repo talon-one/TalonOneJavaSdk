@@ -24,6 +24,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.CampaignReference;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -122,6 +125,14 @@ public class AchievementProgressWithDefinition {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private Long campaignId;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
+  private List<Long> campaignIds = new ArrayList<Long>();
+
+  public static final String SERIALIZED_NAME_REFERENCED_BY_CAMPAIGNS = "referencedByCampaigns";
+  @SerializedName(SERIALIZED_NAME_REFERENCED_BY_CAMPAIGNS)
+  private List<CampaignReference> referencedByCampaigns = new ArrayList<CampaignReference>();
 
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
@@ -452,10 +463,11 @@ public class AchievementProgressWithDefinition {
   }
 
    /**
-   * The ID of the campaign the achievement belongs to.
+   * This property is **deprecated**. Use &#x60;campaignIds&#x60; (Integration API) or &#x60;referencedByCampaigns&#x60; (Management API) instead. This field contains the first campaign ID from the related &#x60;campaignIds&#x60;, and is omitted when &#x60;campaignIds&#x60; is empty.
    * @return campaignId
   **/
-  @ApiModelProperty(example = "3", required = true, value = "The ID of the campaign the achievement belongs to.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3", value = "This property is **deprecated**. Use `campaignIds` (Integration API) or `referencedByCampaigns` (Management API) instead. This field contains the first campaign ID from the related `campaignIds`, and is omitted when `campaignIds` is empty.")
 
   public Long getCampaignId() {
     return campaignId;
@@ -464,6 +476,60 @@ public class AchievementProgressWithDefinition {
 
   public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
+  }
+
+
+  public AchievementProgressWithDefinition campaignIds(List<Long> campaignIds) {
+    
+    this.campaignIds = campaignIds;
+    return this;
+  }
+
+  public AchievementProgressWithDefinition addCampaignIdsItem(Long campaignIdsItem) {
+    this.campaignIds.add(campaignIdsItem);
+    return this;
+  }
+
+   /**
+   * The IDs of the campaigns that reference this achievement, in ascending order.
+   * @return campaignIds
+  **/
+  @ApiModelProperty(example = "[1, 14, 27]", required = true, value = "The IDs of the campaigns that reference this achievement, in ascending order.")
+
+  public List<Long> getCampaignIds() {
+    return campaignIds;
+  }
+
+
+  public void setCampaignIds(List<Long> campaignIds) {
+    this.campaignIds = campaignIds;
+  }
+
+
+  public AchievementProgressWithDefinition referencedByCampaigns(List<CampaignReference> referencedByCampaigns) {
+    
+    this.referencedByCampaigns = referencedByCampaigns;
+    return this;
+  }
+
+  public AchievementProgressWithDefinition addReferencedByCampaignsItem(CampaignReference referencedByCampaignsItem) {
+    this.referencedByCampaigns.add(referencedByCampaignsItem);
+    return this;
+  }
+
+   /**
+   * The campaigns that reference this achievement, in ascending order of their &#x60;id&#x60;.
+   * @return referencedByCampaigns
+  **/
+  @ApiModelProperty(required = true, value = "The campaigns that reference this achievement, in ascending order of their `id`.")
+
+  public List<CampaignReference> getReferencedByCampaigns() {
+    return referencedByCampaigns;
+  }
+
+
+  public void setReferencedByCampaigns(List<CampaignReference> referencedByCampaigns) {
+    this.referencedByCampaigns = referencedByCampaigns;
   }
 
 
@@ -622,6 +688,8 @@ public class AchievementProgressWithDefinition {
         Objects.equals(this.title, achievementProgressWithDefinition.title) &&
         Objects.equals(this.description, achievementProgressWithDefinition.description) &&
         Objects.equals(this.campaignId, achievementProgressWithDefinition.campaignId) &&
+        Objects.equals(this.campaignIds, achievementProgressWithDefinition.campaignIds) &&
+        Objects.equals(this.referencedByCampaigns, achievementProgressWithDefinition.referencedByCampaigns) &&
         Objects.equals(this.target, achievementProgressWithDefinition.target) &&
         Objects.equals(this.achievementRecurrencePolicy, achievementProgressWithDefinition.achievementRecurrencePolicy) &&
         Objects.equals(this.achievementActivationPolicy, achievementProgressWithDefinition.achievementActivationPolicy) &&
@@ -632,7 +700,7 @@ public class AchievementProgressWithDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, progress, startDate, completionDate, endDate, achievementId, name, title, description, campaignId, target, achievementRecurrencePolicy, achievementActivationPolicy, achievementFixedStartDate, achievementEndDate, achievementAllowRollbackAfterCompletion);
+    return Objects.hash(status, progress, startDate, completionDate, endDate, achievementId, name, title, description, campaignId, campaignIds, referencedByCampaigns, target, achievementRecurrencePolicy, achievementActivationPolicy, achievementFixedStartDate, achievementEndDate, achievementAllowRollbackAfterCompletion);
   }
 
 
@@ -650,6 +718,8 @@ public class AchievementProgressWithDefinition {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
+    sb.append("    referencedByCampaigns: ").append(toIndentedString(referencedByCampaigns)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("    achievementRecurrencePolicy: ").append(toIndentedString(achievementRecurrencePolicy)).append("\n");
     sb.append("    achievementActivationPolicy: ").append(toIndentedString(achievementActivationPolicy)).append("\n");
